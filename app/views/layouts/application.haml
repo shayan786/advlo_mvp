@@ -14,3 +14,13 @@
 
     #footer-container
       = render partial: 'shared/footer'
+
+
+:javascript
+  // we need a callback url for FB
+  $(document).ready(function(e) {
+    if (window.location.hash && window.location.hash == '#_=_') { 
+      console.log(window.location.hash)
+      window.location.hash = ''
+    }
+  }); 
