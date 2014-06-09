@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+
+.advlo_logo {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 100px;
+}
+
+.advlo_logo img {
+  width: 100%;
+}
+
+#header-container {
+  width: 100%;
+  float: left;
+}
+#footer-container {
+  width: 100%;
+  float: left;
+}
