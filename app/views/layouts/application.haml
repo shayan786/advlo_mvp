@@ -6,8 +6,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+
     #header-container
       = render partial: 'shared/header'
+
     = yield
-    #header-container
+
+    #footer-container
       = render partial: 'shared/footer'
