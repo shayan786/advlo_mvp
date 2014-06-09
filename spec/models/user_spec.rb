@@ -1,5 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+describe User do
+  it "orders by last name" do
+    user1 = User.create!(email: "Andy@gmail.com", password: 'password', password_confirmation: 'password')
+    user2 = User.create!(email: "zulu@gmail.com", password: 'password', password_confirmation: 'password')
+
+    expect(User.first).to eq(user1)
+  end
 end
