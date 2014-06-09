@@ -1,6 +1,6 @@
 .advlo_logo= link_to (image_tag 'advlo_horiz_V3.png'), '/'
 
-- if current_user
+- if current_user 
   .account-page= link_to "hello #{current_user.email}", edit_user_registration_path
   .logout-link= link_to 'Sign out', destroy_user_session_path, method: :delete
 - else

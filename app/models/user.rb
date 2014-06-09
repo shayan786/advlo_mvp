@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
         
         user = User.create( 
                             name: auth.extra.raw_info.name,
+                            avatar_url: auth.info.image,
                             provider: auth.provider,
                             uid: auth.uid,
                             email: auth.info.email,
