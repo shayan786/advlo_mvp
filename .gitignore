@@ -23,3 +23,6 @@
 /public/stylesheets/compiled
 /public/system/*
 /spec/tmp/*
+
+#ignore sublime files
+/.sublime-workspace

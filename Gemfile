@@ -15,10 +15,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'twitter-bootstrap-rails'
 
 group :production do 
   gem 'rails_12factor'
+  gem 'thin'
 end
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -30,6 +30,16 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
 end
+
+#FRONT-END and JS
+# jQuery
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+#bootstrap
+gem 'twitter-bootstrap-rails'
+# font-awesome
+gem 'font-awesome-rails'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
