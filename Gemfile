@@ -14,7 +14,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'twitter-bootstrap-rails'
 
 group :production do 
   gem 'rails_12factor'
@@ -29,6 +28,16 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
 end
+
+#FRONT-END and JS
+# jQuery
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+#bootstrap
+gem 'twitter-bootstrap-rails'
+# font-awesome
+gem 'font-awesome-rails'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
