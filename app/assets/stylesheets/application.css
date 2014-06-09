@@ -10,10 +10,23 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ * require_tree .
  *= require_self
+ *= require_tree ./adventure
+ *= require_tree ./homepage
+ *= require_tree ./profile
+ *= require adventure_box
+ *= require footer
+ *= require header
+ *= require homepage
+ *= require host_circle
+ *= require primitives
+ *= require variables 
+ *= require mixins
+ *= require font-awesome
  */
 
+@import "bootstrap";
 
 .advlo_logo {
   position: relative;

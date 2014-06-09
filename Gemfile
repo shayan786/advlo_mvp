@@ -37,7 +37,7 @@ end
 # jQuery
 gem 'jquery-ui-rails'
 #bootstrap
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
 # font-awesome
 gem 'font-awesome-rails'
 
