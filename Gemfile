@@ -13,8 +13,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook' 
 
 group :production do 
   gem 'rails_12factor'
@@ -33,7 +35,6 @@ end
 
 #FRONT-END and JS
 # jQuery
-gem 'jquery-rails'
 gem 'jquery-ui-rails'
 #bootstrap
 gem 'twitter-bootstrap-rails'

@@ -1,8 +1,10 @@
 .advlo_logo= link_to (image_tag 'advlo_horiz_V3.png'), '/'
 
 - if current_user
-  .account-page= link_to 'account', edit_user_registration_path
-  .logout-link= link_to 'logout', destroy_user_session_path, method: :delete
+  .account-page= link_to "hello #{current_user.email}", edit_user_registration_path
+  .logout-link= link_to 'Sign out', destroy_user_session_path, method: :delete
 - else
-  .login_items#signup= link_to "Sign up", new_user_registration_path
-  .login_items#login= link_to "Login", new_user_session_path, method: :get
+  .login_item#login= link_to "Login", new_user_session_path, method: :get
+  .login_item#facebook= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+  .login_item#signup= link_to "Sign up", new_user_registration_path
+
