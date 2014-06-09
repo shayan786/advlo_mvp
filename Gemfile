@@ -17,6 +17,8 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 group :production do 
   gem 'rails_12factor'
+  gem 'thin'
+  gem 'pg'
 end
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
