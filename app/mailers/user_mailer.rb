@@ -1,7 +1,9 @@
 class UserMailer < ActionMailer::Base
   default from: "info@advlo.com"
 
-  def appointment_email(user)
-    mail(to: user.email, subject: 'Thanks for joining Advlo!')
+  def welcome_email(user)
+    @user = user
+    @url = 'http://localhost:3000/users/sign_in'
+    mail(to: @user.email, subject: 'Welcome to Adventure Local')
   end
 end

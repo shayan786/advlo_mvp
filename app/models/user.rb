@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-
   after_create :send_welcome_email
 
 
@@ -30,8 +29,7 @@ class User < ActiveRecord::Base
     end
   end
 
-
-  def send_welcome_email(user)
-    UserMailer.appointment_email(@appointment).deliver    
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
   end
 end
