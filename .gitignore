@@ -25,4 +25,4 @@
 /spec/tmp/*
 
 #ignore sublime files
-/.sublime-workspace
+./sublime-workspace
