@@ -1,4 +1,4 @@
-class UserMailer < ActionMailer::Base
+class Notifier < ActionMailer::Base
   default from: "info@advlo.com"
 
   def welcome_email(user)
