@@ -1,0 +1,13 @@
+/* Define global primitives here */
+
+//Change to Advlo Fonts
+body, input, textarea 
+{
+  font-family: $primary_font, $secondary_font, $tertiary_font !important;
+  text-shadow: none !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	font-family: $primary_font, $secondary_font, $tertiary_font !important;
+}

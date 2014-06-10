@@ -1,0 +1,8 @@
+//Commonly used mixins
+
+//BOX SHADOW
+@mixin box_shadow($thickness) {
+	-webkit-box-shadow: 0 0 $thickness 1px $color_grey;
+    -moz-box-shadow: 0 0 $thickness 1px $color_grey;
+    box-shadow: 0 0 $thickness 1px $color_grey;
+}

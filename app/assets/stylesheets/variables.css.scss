@@ -1,0 +1,95 @@
+/* ADVLO FONTS */
+@font-face
+{
+font-family: cabin_bold;
+src: asset-url("Cabin-Bold.otf", font);
+}
+
+@font-face
+{
+font-family: cabin_bolditalic;
+src: asset-url("Cabin-BoldItalic.otf", font);
+}
+
+@font-face
+{
+font-family: cabin_italic;
+src: asset-url("Cabin-Italic.otf", font);
+}
+
+@font-face
+{
+font-family: cabin_medium;
+src: asset-url("Cabin-Medium.otf", font);
+}
+
+@font-face
+{
+font-family: cabin_mediumitalic;
+src: asset-url("Cabin-MediumItalic.otf", font);
+}
+
+@font-face
+{
+font-family: cabin_regular;
+src: asset-url("Cabin-Regular.otf", font);
+}
+
+@font-face
+{
+font-family: cabin_semibold;
+src: asset-url("Cabin-SemiBold.otf", font);
+}
+
+@font-face
+{
+font-family: cabin_semibolditalic;
+src: asset-url("Cabin-SemiBoldItalic.otf", font);
+}
+
+@font-face
+{
+font-family: nexa_bold;
+src: asset-url("Nexa-Bold.otf", font);
+}
+
+@font-face
+{
+font-family: nexa_light;
+src: asset-url("Nexa-Light.otf", font);
+}
+
+$primary_font:   	cabin_regular;
+$secondary_font: 	cabin_regular;
+$tertiary_font:  	cabin_regular;
+
+$header_font: 		cabin_bold;
+$paragraph_font: 	cabin_regular;
+
+/* Advlo Colors */
+//ORANGES
+$advlo_orange: 	#C35B26;
+$dark_orange: 	#E86100;
+$orange: 		#E56B2D;
+
+//GREENS
+$advlo_green:	#699967;
+$dark_green: 	#364033;
+$light_green: 	#809778;
+$light_orange: 	#FF7732;
+
+//GRAY
+$light_gray: 	#F8F8F8;
+$gray: 			#77787B;
+$charcoal: 		#333;
+
+//OTHER
+$tan: 			#EAE4CE;
+$off_white: 	#F7F0DD;
+
+
+//---------------------HEADER VARIALBES----------------
+$header_text_color:			#FFFFFF;
+$header_btn_color:			$advlo_orange !default;
+$header_btn_color_hover: 	$light_orange !default;
+

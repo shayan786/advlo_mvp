@@ -12,39 +12,7 @@
  *
  * require_tree .
  *= require_self
- *= require_tree ./adventure
- *= require_tree ./homepage
- *= require_tree ./profile
- *= require adventure_box
- *= require footer
- *= require header
- *= require homepage
- *= require host_circle
- *= require primitives
- *= require variables 
- *= require mixins
+ *= require main
+ *= jquery.ui.all
  *= require font-awesome
  */
-
-@import "bootstrap";
-
-.advlo_logo {
-  position: relative;
-  float: left;
-  width: 300px;
-  height: 100px;
-}
-
-.advlo_logo img {
-  width: 100%;
-}
-
-#header-container {
-  width: 100%;
-  float: left;
-}
-
-#footer-container {
-  width: 100%;
-  float: left;
-}

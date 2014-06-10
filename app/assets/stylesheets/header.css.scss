@@ -1,0 +1,40 @@
+//NAVBAR CUSTOMIZATIONS
+.navbar {
+	font-family: $header_font;
+	background: rgba(0, 0, 0, 0.40);
+	padding: 10px 10px 10px 20px;
+	z-index: 100;
+	border-color: rgba(0,0,0, 0.40);
+
+	.navbar-brand {
+		background: asset-url("logos/advlo_header_logo.png",image) no-repeat left center;
+		background-size: cover;
+		width: 194px !important; 
+	}
+}
+
+.navbar .nav {
+	li {	
+		a {
+			line-height: 19px;
+		    color:  $header_text_color;
+		    padding-top: 18px;
+		    padding-bottom: 12px;
+	    	font-size: 1.3em;
+		}
+
+		a:hover {
+			color: $light_orange;
+		}
+	}
+}
+
+.navbar-collapse {
+	.align_center {
+		margin-left: 22%;
+
+		.adventure_margin {
+			margin-right: 65px;
+		}
+	}
+}
