@@ -14,7 +14,7 @@ class AdventuresController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def appointment_params
-    params.required(:adventure).permit(:title, :subtitle, :featured_image)
+    params.required(:adventure).permit(:title, :subtitle, :attachment)
   end
 end
 

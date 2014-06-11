@@ -3,6 +3,9 @@ ActiveAdmin.register Adventure do
   index do
     column :title
     column :subtitle
+    column 'attachment' do |adv|
+      image_tag(adv.attachment(:thumb))
+    end
     actions
   end
 
@@ -10,6 +13,7 @@ ActiveAdmin.register Adventure do
     f.inputs do
       f.input :title
       f.input :subtitle
+      f.input :attachment, as: :file
     end
     f.actions
   end
