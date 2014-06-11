@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
 
   
   def homepage
-    @featured_adventures = Adventure.all
+    
   end
 end
