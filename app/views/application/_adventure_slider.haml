@@ -2,5 +2,10 @@
   .container
     %h1 FEATURED ADVENTURES
     %span.small_text VIEW ALL >>>
-=======
-%h2 Featured Adventures
+
+  .slider-container
+    - @feat_adventures.each do |adv|
+      .adventure-box
+        %h3= adv.title
+        %p= adv.subtitle
+
