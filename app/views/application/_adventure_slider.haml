@@ -6,8 +6,9 @@
   .slider-container
     - if @feat_adventures
       - @feat_adventures.each do |adv|
-        .adventure-box
-          .adventure-image= image_tag adv.attachment(:medium)
-          %h3= adv.title
-          %p= adv.subtitle
+        = link_to adventure_path(adv) do
+          .adventure-box
+            .adventure-image= image_tag adv.attachment(:medium)
+            %h3= adv.title
+            %p= adv.subtitle
 
