@@ -1,4 +1,8 @@
 #adventure_slider {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  float: left;
 	min-height: 400px;
 	padding-top: 50px;
 	padding-bottom: 30px;
@@ -13,4 +17,10 @@
 		text-decoration: none;
 		color: #FFF;
 	}
+
+  .slider-container {
+    width: 100%;
+    position: relative;
+    float: left;
+  }
 }
