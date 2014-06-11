@@ -12,6 +12,9 @@
         - if @feat_adventures
           - @feat_adventures.each do |adv|
             %a.swiper-slide{href: adventure_path(adv), data: "adv-#{adv.title}", class: 'adventure-slide'}
-              = image_tag adv.attachment.url(:large)
-              #title= adv.title if adv.title
+              .square-wrapper
+                = image_tag adv.attachment.url(:large)
+              .copy
+                %h3#title= adv.title if adv.title
+                %p#subtitle= adv.subtitle if adv.subtitle
 
