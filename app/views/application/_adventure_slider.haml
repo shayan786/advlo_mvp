@@ -4,8 +4,17 @@
     %a.small_text{href: "#"} VIEW ALL >>>
 
   .slider-container
-    - @feat_adventures.each do |adv|
-      .adventure-box
-        %h3= adv.title
-        %p= adv.subtitle
+    %i#next-slide.fa.fa-chevron-right
+    %i#prev-slide.fa.fa-chevron-left
+
+    .swiper-container
+      .swiper-wrapper
+        - if @feat_adventures
+          - @feat_adventures.each do |adv|
+            %a.swiper-slide{href: adventure_path(adv), data: "adv-#{adv.title}", class: 'adventure-slide'}
+              .square-wrapper
+                = image_tag adv.attachment.url(:large)
+              .copy
+                %h3#title= adv.title if adv.title
+                %p#subtitle= adv.subtitle if adv.subtitle
 

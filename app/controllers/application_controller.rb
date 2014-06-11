@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
 
   
   def homepage
-    @feat_adventures = Adventure.all.limit(3)
+    @feat_adventures = Adventure.all
   end
 end

@@ -17,7 +17,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook' 
-
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 
 group :production do 
   gem 'rails_12factor'
