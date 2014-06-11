@@ -18,6 +18,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook' 
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
+
 
 group :production do 
   gem 'rails_12factor'
