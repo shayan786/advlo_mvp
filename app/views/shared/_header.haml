@@ -16,26 +16,37 @@
           %a.adventure_margin{href: "#"} ADVENTURE
         %li
           %a{href: "#"} HOST
-      %ul.nav.navbar-nav.navbar-right
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            -#Conditional Login show
-            - if current_user
+
+      - if current_user
+        %ul.nav.navbar-nav.navbar-right.current_user_fix
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               = image_tag "#{current_user.avatar_url}", :class => "img-circle profile_img"
               #{current_user.name}
-            - else
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{href: "#"} Action 1
+                %a{href: "#"} Action 2
+                /%a{href: "/users/sign_out/#delete", 'data-remote' => true} Sign Out
+                = link_to 'Sign out', destroy_user_session_path, method: :delete
+      - else
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               LOGIN
-            %b.caret
-          %ul.dropdown-menu
-            %li
-              %a{href: "#"} Action
-            %li
-              %a{href: "#"} Another action
-            %li
-              %a{href: "#"} Something else here
-            %li.divider
-            %li
-              %a{href: "#"} Separated link
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %form.sign_in_form{"accept-charset" => "UTF-8", action: "#", method: "post", roll: "form"}
+                  .form-group
+                    %input.form-control{placeholder: "Email Address", type: "email", required: "required"}
+                  .form-group
+                    %input.form-control{placeholder: "Password", type: "password", required: "required"}
+                  %input.btn.btn-primary.sign_in_btn{name: "sign_in", type: "submit", value: "Sign In"}
+                  %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
+                    %i.fa.fa-facebook
+                    Connect with facebook
     / /.navbar-collapse
   / /.container-fluid
 

@@ -18,3 +18,11 @@
 	background: linear-gradient(to bottom,  $color 0%,$color 50%,$color 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '$color', endColorstr = '$color', GradientType = 0);
 }
+
+//border radius
+@mixin border_radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
