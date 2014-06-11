@@ -77,7 +77,8 @@ sizes, pagination, etc.
   height: 500px;
 }
 .swiper-slide {
-  /* Specify Slides's Size: */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 
