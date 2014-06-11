@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   
   
   
-  #resources :adventures
+  resources :adventures
 
 end	

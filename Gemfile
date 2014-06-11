@@ -18,6 +18,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook' 
 
+
 group :production do 
   gem 'rails_12factor'
   gem 'thin'
