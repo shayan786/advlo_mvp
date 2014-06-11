@@ -8,7 +8,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{href: "#"}
+      %a.navbar-brand{href: "/"}
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.nav_center
@@ -21,7 +21,7 @@
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             -#Conditional Login show
             - if current_user
-              image_tag '#{current_user.avatar_url}', :class => "img-circle profile_img"
+              = image_tag "#{current_user.avatar_url}", :class => "img-circle profile_img"
               #{current_user.name}
             - else
               LOGIN

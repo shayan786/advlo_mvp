@@ -2,3 +2,11 @@
   .container
     %h1 FEATURED ADVENTURES
     %a.small_text{href: "#"} VIEW ALL >>>
+    %span.small_text VIEW ALL >>>
+
+  .slider-container
+    - @feat_adventures.each do |adv|
+      .adventure-box
+        %h3= adv.title
+        %p= adv.subtitle
+
