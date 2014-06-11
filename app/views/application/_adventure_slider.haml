@@ -4,11 +4,11 @@
     %a.small_text{href: "#"} VIEW ALL >>>
 
   .slider-container
-    - if @feat_adventures
-      - @feat_adventures.each do |adv|
-        = link_to adventure_path(adv) do
-          .adventure-box
-            .adventure-image= image_tag adv.attachment(:medium)
-            %h3= adv.title
-            %p= adv.subtitle
+    .swiper-container
+      .swiper-wrapper
+        - if @feat_adventures
+          - @feat_adventures.each do |adv|
+            %a.swiper-slide{href: adventure_path(adv), data: "adv-#{adv.title}", class: 'adventure-slide'}
+              = image_tag adv.attachment.url(:medium)
+              #title= adv.title if adv.title
 
