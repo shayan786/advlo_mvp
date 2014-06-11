@@ -23,6 +23,23 @@
     position: relative;
     float: left;
     border: 1px solid black;
+
+    #next-slide {
+      color: #fff;
+      font-size: 4em;
+      position: absolute;
+      top: 45%;
+      right: 3%;
+      cursor: pointer;
+    }
+    #prev-slide {
+      color: #fff;
+      font-size: 4em;
+      position: absolute;
+      top: 45%;
+      left: 3%;
+      cursor: pointer;
+    }
   }
 
   .swiper-slide {
