@@ -1,0 +1,42 @@
+#how_it_works {
+	min-height: 50vh;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 75%;
+	margin: 0 auto;
+
+	a {
+		text-decoration: none;
+		width: 255px !important;
+
+		&:hover {
+
+		}
+
+		.large_text {
+			color: $how_it_works_font_color !important;
+			font-size: 4.3em;
+		}
+
+		.small_text {
+			@extend .large_text;
+			font-size: 1.6em;
+			line-height: 0.3em;
+		}
+
+		.find_icon {
+			background-image: asset-url($find_icon,image);
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 222px;
+			width: 217px;
+			margin: 0 auto;
+		}
+
+		.host_icon {
+			@extend .find_icon;
+			background-image: asset-url($host_icon,image);
+		}
+
+	}
+}

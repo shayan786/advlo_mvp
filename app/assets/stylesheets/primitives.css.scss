@@ -1,5 +1,10 @@
 /* Define global primitives here */
 
+html, body {
+	width: auto !important;
+  	overflow-x: hidden !important;
+}
+
 //Change to Advlo Fonts
 body, input, textarea 
 {

@@ -1,8 +1,8 @@
 .jumbotron_fix {
 	margin-top: -80px;
-	padding-top: 200px;
-	min-height: 600px; //add js fix for style hight
-	background-image: asset-url("background/banner_background.png",image);
+	padding-top: 35vh;
+	min-height: 95vh; //add js fix for style height on older browsers
+	background-image: asset-url($banner_image,image);
 	background-repeat: no-repeat;
 	background-size: cover; 
 
@@ -31,10 +31,19 @@
 	border-color: $header_btn_color;
 	font-size: 1.0em;
 
-	padding: 10px 20px;
+	padding: 12px 30px;
 
 	&:hover {
 		background-color: $header_btn_color_hover;
 		border-color: $header_btn_color_hover;
 	}
+
+	&:active {
+		background-color: $header_btn_color_hover;
+		border-color: $header_btn_color_hover;
+	}
+}
+
+.profile_img {
+
 }

@@ -14,7 +14,9 @@
 }
 
 .navbar .nav {
-	li {	
+	li {
+		display: inline-block;
+		float: none;
 		a {
 			line-height: 19px;
 		    color:  $header_text_color;
@@ -30,11 +32,18 @@
 }
 
 .navbar-collapse {
-	.align_center {
-		margin-left: 22%;
+	text-align: center;
+
+	ul.nav_center {
+		float: none !important;
+		display: inline-block;
+
 
 		.adventure_margin {
-			margin-right: 65px;
+			margin-left: -100px;
+			padding-right: 140px;
 		}
 	}
+
 }
+

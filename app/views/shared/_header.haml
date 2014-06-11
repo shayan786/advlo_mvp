@@ -11,7 +11,7 @@
       %a.navbar-brand{href: "#"}
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav.align_center
+      %ul.nav.navbar-nav.nav_center
         %li
           %a.adventure_margin{href: "#"} ADVENTURE
         %li
@@ -19,9 +19,10 @@
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            -#Conditional Login.
+            -#Conditional Login show
             - if current_user
-              Hi, #{current_user.email}
+              image_tag '#{current_user.avatar_url}', :class => "img-circle profile_img"
+              #{current_user.name}
             - else
               LOGIN
             %b.caret

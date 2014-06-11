@@ -71,25 +71,41 @@ $paragraph_font: 	cabin_regular;
 $advlo_orange: 	#C35B26;
 $dark_orange: 	#E86100;
 $orange: 		#E56B2D;
+$light_orange: 	#FF7732;
 
 //GREENS
 $advlo_green:	#699967;
 $dark_green: 	#364033;
 $light_green: 	#809778;
-$light_orange: 	#FF7732;
 
 //GRAY
 $light_gray: 	#F8F8F8;
 $gray: 			#77787B;
-$charcoal: 		#333;
+$dark_gray: 	#333333;
+$light_gray:	#666666;		
 
 //OTHER
 $tan: 			#EAE4CE;
 $off_white: 	#F7F0DD;
 
 
-//---------------------HEADER VARIALBES----------------
+//---------------------HEADER VARIALBES--------------------
 $header_text_color:			#FFFFFF;
 $header_btn_color:			$advlo_orange !default;
-$header_btn_color_hover: 	$light_orange !default;
+$header_btn_color_hover: 	$orange !default;
+
+
+//---------------------HERO IMAGE VARIABLES----------------
+$banner_image:				"background/banner_background.png";
+
+
+//---------------------HOW IT WORKS VARIABLES--------------
+$how_it_works_font_color:		$gray !default;
+$find_icon:						"icons/find_icon.png";
+$host_icon:						"icons/create_icon.png";
+
+//---------------------ADV. SLIDER VARIABLES---------------
+$adv_slider_background_color:			$dark_gray !default;
+$adv_slider_font_color:					$advlo_orange !default;
+
 
