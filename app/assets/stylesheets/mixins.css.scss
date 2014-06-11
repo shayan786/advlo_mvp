@@ -1,8 +1,20 @@
 //Commonly used mixins
 
 //BOX SHADOW
-@mixin box_shadow($thickness) {
-	-webkit-box-shadow: 0 0 $thickness 1px $color_grey;
-    -moz-box-shadow: 0 0 $thickness 1px $color_grey;
-    box-shadow: 0 0 $thickness 1px $color_grey;
+@mixin box_shadow($thickness, $color) {
+	-webkit-box-shadow: 0 0 $thickness 1px $color;
+    -moz-box-shadow: 0 0 $thickness 1px $color;
+    box-shadow: 0 0 $thickness 1px $color;
+}
+
+//add browser background mixin gradient?
+@mixin background_color($color) {
+	background: $color; /* Old browsers */
+	background: -moz-linear-gradient(top,  $color 0%, $color 50%, $color 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$color), color-stop(50%,$color), color-stop(100%,$color)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $color 0%,$color 50%,$color 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $color 0%,$color 50%,$color 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $color 0%,$color 50%,$color 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  $color 0%,$color 50%,$color 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '$color', endColorstr = '$color', GradientType = 0);
 }

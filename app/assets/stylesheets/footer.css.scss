@@ -1,4 +1,28 @@
-#footer-container {
-  width: 100%;
-  float: left;
+#footer {
+	height: 75px;
+	background-color: $footer_background_color;
+	overflow-y: hidden !important;
+
+	.container {
+		font-size: 1.2em;
+
+		.footer_text {
+			margin-top: 17px;
+
+			a {
+				text-decoration: none;
+				color: $gray;
+
+				.fa {
+					margin-top: 10px;
+					margin-right: 20px;
+					font-size: 1.6em;
+
+					&:hover {
+						color: $orange;
+					}
+				}
+			}
+		}
+	}
 }

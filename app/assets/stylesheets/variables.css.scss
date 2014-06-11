@@ -82,11 +82,13 @@ $light_green: 	#809778;
 $light_gray: 	#F8F8F8;
 $gray: 			#77787B;
 $dark_gray: 	#333333;
-$light_gray:	#666666;		
+$light_gray:	#666666;
+$lighter_gray:	#E6E6E6;		
 
 //OTHER
 $tan: 			#EAE4CE;
 $off_white: 	#F7F0DD;
+$white:			#FFFFFF;
 
 
 //---------------------HEADER VARIALBES--------------------
@@ -100,12 +102,16 @@ $banner_image:				"background/banner_background.png";
 
 
 //---------------------HOW IT WORKS VARIABLES--------------
-$how_it_works_font_color:		$gray !default;
+$how_it_works_background_color:	$light_gray !default;
+$how_it_works_font_color:		$white !default;
 $find_icon:						"icons/find_icon.png";
 $host_icon:						"icons/create_icon.png";
 
-//---------------------ADV. SLIDER VARIABLES---------------
+//---------------------ADV./HOST SLIDER VARIABLES-----------
 $adv_slider_background_color:			$dark_gray !default;
-$adv_slider_font_color:					$advlo_orange !default;
+$adv_slider_font_color:					$orange !default;
+
+//---------------------FOOTER VARIABLES---------------------
+$footer_background_color:		$white !default;
 
 
