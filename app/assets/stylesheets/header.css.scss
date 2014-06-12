@@ -95,7 +95,7 @@
 
 	.fb_btn {
 		width: 92%;
-		margin: 10px 0 0 10px;
+		margin: 10px 0 15px 10px;
 		color: #FFFFFF !important;
 		font-size: 1.2em;
 
@@ -109,13 +109,15 @@
 .dropdown-menu {
 	.sign_up_link {
 		a {
-			color: $gray !important;
+			color: #FFFFFF !important;
 			text-decoration: none !important;
 			margin-bottom: 0 !important;
 			padding-bottom: 0 !important;
+			margin-top: 0 !important;
+			padding-top: 0 !important;
 
 			&:hover {
-				background-color: #FFFFFF;
+				background: rgba(0, 0, 0, 0);
 			}
 		}
 	}
