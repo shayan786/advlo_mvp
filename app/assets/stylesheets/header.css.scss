@@ -19,20 +19,19 @@
 		float: none;
 		a {
 			line-height: 19px;
-		    color:  $header_text_color;
+		    color:  $header_text_color !important;
 		    padding-top: 18px;
 		    padding-bottom: 12px;
 	    	font-size: 1.3em;
 
 	    	&:hover {
-	    		color: $light_orange;
+	    		color: $light_orange !important;
 	    	}
 
-	    	&:active {
+	    	&:focus {
 	    		color: $header_text_color;
 	    	}
 		}
-
 	}
 }
 
@@ -50,6 +49,7 @@
 
 
 .navbar-right {
+	margin-left: 20px;
 
 	li {
 		.dropdown-menu {
@@ -58,53 +58,59 @@
 			@include border_radius(3px);
 			background: rgba(0, 0, 0, 0.4);
 			margin-top: 12.5px;
+
+			a {
+				&:hover {
+					background: rgba(0, 0, 0, 0);
+				}
+			}
+
+			.sign_in_form {
+
+				input {
+					width: 92%;
+					margin-left: 10px;
+				}
+
+				.sign_in_btn {
+					width: 92%; 
+					font-size: 1.2em;
+					background-color: $login_btn_color;
+					border-color: $login_btn_color;
+					margin-left: 10px;
+					margin-bottom: 5px;
+
+
+					&:hover {
+						background-color: $login_btn_color_hover;
+						border-color: $login_btn_color_hover;
+					}
+				}
+
+				.fb_btn {
+					width: 92%;
+					margin: 10px 0 15px 10px;
+					color: #FFFFFF !important;
+					font-size: 1.2em;
+
+					&:hover {
+						background-color: #3B5998 !important;
+						border-color: #3B5998 !important;
+						color: #FFFFFF !important;
+					}
+
+					.fa {
+						margin-right: 10px;
+					}
+				}
+				
+			}
 		}
 	}
 
 	//fix this box white color!
-	.dropdown {
-
-		.open {
-			background-color: inherit !important;
-		}
-
-	}
 }
 
-
-.sign_in_form {
-
-	input {
-		width: 92%;
-		margin-left: 10px;
-	}
-
-	.sign_in_btn {
-		width: 92%; 
-		font-size: 1.2em;
-		background-color: $login_btn_color;
-		border-color: $login_btn_color;
-		margin-left: 10px;
-
-
-		&:hover {
-			background-color: $login_btn_color_hover;
-			border-color: $login_btn_color_hover;
-		}
-	}
-
-	.fb_btn {
-		width: 92%;
-		margin: 10px 0 15px 10px;
-		color: #FFFFFF !important;
-		font-size: 1.2em;
-
-		.fa {
-			margin-right: 10px;
-		}
-	}
-	
-}
 
 .dropdown-menu {
 	.sign_up_link {
@@ -121,6 +127,10 @@
 			}
 		}
 	}
+
+	.fa {
+		margin-right: 20px;
+	}
 }
 
 //fix spacing when user logged in
@@ -131,7 +141,6 @@
 	.profile_img {
 		display: inline-block;
 		margin-right: 15px !important;
-		//width: 50px;
 	}
 
 	.dropdown-menu {
@@ -139,9 +148,6 @@
 
 		li {
 			width: 100%;
-			a {
-				color: $gray;
-			}
 		}
 	}
 }

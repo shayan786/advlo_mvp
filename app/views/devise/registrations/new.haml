@@ -1,17 +1,16 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  %div
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  %div= f.submit "Sign up"
-= render "devise/shared/links"
+#d_sign_up
+  .container
+    %h2.text-center Sign Up
+    %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form"}
+      = devise_error_messages!
+      =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      .form-group
+        %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+      .form-group
+        %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]"}
+      .form-group
+        %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
+      %input.btn.btn-primary.sign_up_btn{name: "sign_in", type: "submit", value: "Sign Up"}
+      %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
+        %i.fa.fa-facebook
+        Connect with facebook
