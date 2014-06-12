@@ -1,7 +1,7 @@
 .adventure-page-container { 
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 0;
+  top: -81px;
   left: 0;
   padding: 0px;
 
@@ -32,9 +32,7 @@
     width: 85%;
     margin: 0 auto;
     .adventure-brick {
-      -webkit-box-shadow: -6px -6px 18px 0px rgba(51, 50, 50, 0.36);
-      -moz-box-shadow: -6px -6px 18px 0px rgba(51, 50, 50, 0.36);
-      box-shadow: -1px -3px 18px -2px #fff;
+      
       height: 375px;
       width: 375px;
       float: left;

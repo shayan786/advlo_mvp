@@ -43,14 +43,16 @@
   }
 
   .swiper-slide {
-    /* border: 1px solid black; */
-    width: 444px;
+    height: 375px;
+    width: 375px;
+    float: left;
+    overflow: hidden;
 
     
     .image-wrapper {
       position: relative;
-      height: 325px;
-      width: auto;
+      height: 375px;
+      width: 375px;
       top: 85px;
     }
   }

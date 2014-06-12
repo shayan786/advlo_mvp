@@ -3,8 +3,9 @@
   .filter-container
   
   .adventure-container
-    .brick-wrapper
+    .brick-wrapper.masonry.js-masonry{"data-masonry-options" => "{ \"isFitWidth\": true }"}
       - @adventures.each do |adv|
         .adventure-brick
           %a{href: adventure_path(adv)}
             .adventure-image{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+
