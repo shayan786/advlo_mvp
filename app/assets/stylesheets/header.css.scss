@@ -2,7 +2,7 @@
 .navbar {
 	font-family: $header_font;
 	background: rgba(0, 0, 0, 0.40);
-	padding: 10px 10px 10px 20px;
+	padding: 10px 0px 10px 20px;
 	z-index: 100;
 	border-color: rgba(0,0,0, 0.40);
 
@@ -37,17 +37,13 @@
 }
 
 .navbar-collapse {
-	text-align: center;
 
-	ul.nav_center {
-		float: none !important;
-		display: inline-block;
+	.adventure_margin {
+		margin-right: 10px;
+	}
 
-
-		.adventure_margin {
-			margin-left: -100px;
-			padding-right: 140px;
-		}
+	.host_margin {
+		margin-right: 20px;
 	}
 
 }
@@ -88,7 +84,7 @@
 		font-size: 1.2em;
 		background-color: $login_btn_color;
 		border-color: $login_btn_color;
-		margin: 0px auto;
+		margin-left: 10px;
 
 
 		&:hover {
@@ -99,7 +95,7 @@
 
 	.fb_btn {
 		width: 92%;
-		margin: 10px auto 0 auto;
+		margin: 10px 0 0 10px;
 		color: #FFFFFF !important;
 		font-size: 1.2em;
 
@@ -108,6 +104,21 @@
 		}
 	}
 	
+}
+
+.dropdown-menu {
+	.sign_up_link {
+		a {
+			color: $gray !important;
+			text-decoration: none !important;
+			margin-bottom: 0 !important;
+			padding-bottom: 0 !important;
+
+			&:hover {
+				background-color: #FFFFFF;
+			}
+		}
+	}
 }
 
 //fix spacing when user logged in

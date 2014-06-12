@@ -1,7 +1,7 @@
 .jumbotron_fix {
 	margin-top: -80px;
-	padding-top: 35vh;
-	min-height: 95vh; //add js fix for style height on older browsers
+	padding-top: 30vh;
+	min-height: 85vh; //add js fix for style height on older browsers
 	background-image: asset-url($banner_image,image);
 	background-repeat: no-repeat;
 	background-size: cover; 

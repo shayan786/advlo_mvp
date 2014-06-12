@@ -11,12 +11,6 @@
       %a.navbar-brand{href: "/"}
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav.nav_center
-        %li
-          %a.adventure_margin{href: "#"} ADVENTURE
-        %li
-          %a{href: "#"} HOST
-
       - if current_user
         %ul.nav.navbar-nav.navbar-right.current_user_fix
           %li.dropdown
@@ -47,6 +41,13 @@
                   %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
                     %i.fa.fa-facebook
                     Connect with facebook
+              %li.sign_up_link
+                = link_to "Not an adventurer? Sign up", new_user_registration_path
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a.adventure_margin{href: "/adventures"} ADVENTURE
+        %li
+          %a.host_margin{href: "#"} HOST
     / /.navbar-collapse
   / /.container-fluid
 
