@@ -27,12 +27,22 @@
   background-color: #333333;
   float: left;
 
-  .adventure-brick {
-    border: 1px solid #fff;
-    height: 325px;
-    max-width: 325px;
-    margin: 10px;
-    float: left;
-    overflow: hidden;
+  .brick-wrapper{
+    position: relative;
+    width: 85%;
+    margin: 0 auto;
+    .adventure-brick {
+      border: 1px solid #fff;
+      height: 100%;
+      width: 22%;
+      float: left;
+      overflow: hidden;
+      margin: 1%;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 }
