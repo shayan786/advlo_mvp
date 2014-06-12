@@ -6,4 +6,5 @@
     .brick-wrapper
       - @adventures.each do |adv|
         .adventure-brick
-          .adventure-image= link_to (image_tag adv.attachment.url(:large)), adventure_path(adv)
+          %a{href: adventure_path(adv)}
+            .adventure-image{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}

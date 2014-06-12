@@ -44,22 +44,14 @@
 
   .swiper-slide {
     /* border: 1px solid black; */
+    width: 444px;
 
-    .square-wrapper{
+    
+    .image-wrapper {
       position: relative;
-      width: 100%;
-      height: 250px;
-      top: 100px;
-      overflow: hidden;    
-      img {
-        width: 100%;
-      }
-    }
-
-    .copy {
-      position: absolute;
-      bottom: 75px;
-      color: #fff;
+      height: 325px;
+      width: auto;
+      top: 85px;
     }
   }
 }

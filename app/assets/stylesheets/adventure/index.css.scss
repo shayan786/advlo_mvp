@@ -32,15 +32,17 @@
     width: 85%;
     margin: 0 auto;
     .adventure-brick {
-      border: 1px solid #fff;
-      height: 325px;
-      width: 22%;
+      -webkit-box-shadow: -6px -6px 18px 0px rgba(51, 50, 50, 0.36);
+      -moz-box-shadow: -6px -6px 18px 0px rgba(51, 50, 50, 0.36);
+      box-shadow: -1px -3px 18px -2px #fff;
+      height: 375px;
+      width: 375px;
       float: left;
       overflow: hidden;
-      margin: 1%;
+      margin: 40px;
 
       .adventure-image{
-
+        height: 100%;
         img {
           height: 100%;
           margin-left: -30%;
