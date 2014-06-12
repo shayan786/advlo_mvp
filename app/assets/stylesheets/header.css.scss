@@ -55,10 +55,14 @@
 
 .navbar-right {
 
-	.dropdown-menu {
-		min-width: 250px;
-		padding: 15px 0px;
-		@include border_radius(3px);
+	li {
+		.dropdown-menu {
+			min-width: 250px;
+			padding: 15px 0px;
+			@include border_radius(3px);
+			background: rgba(0, 0, 0, 0.4);
+			margin-top: 12.5px;
+		}
 	}
 
 	//fix this box white color!
