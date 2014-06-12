@@ -1,0 +1,38 @@
+.adventure-page-container { 
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 0px;
+
+  .hero-image {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .filter-container {
+    position: relative;
+    width: 100%;
+    float: left;
+    height: 60px;  
+    background: #000;
+  }
+}
+
+.adventure-container {
+  position: relative;
+  width: 100%;
+  background-color: #333333;
+  float: left;
+
+  .adventure-brick {
+    border: 1px solid #fff;
+    height: 325px;
+    max-width: 325px;
+    margin: 10px;
+    float: left;
+    overflow: hidden;
+  }
+}

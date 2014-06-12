@@ -1,7 +1,9 @@
 class AdventuresController < ApplicationController
 
   def index
+    # @adventures = Adventure.where(region: params[:region])
     @adventures = Adventure.all
+    @hero_image = HeroImage.where(region: 'Colorado').last
   end
 
   def show

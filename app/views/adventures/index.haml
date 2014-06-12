@@ -1,1 +1,9 @@
-@adventures
+.adventure-page-container.col-md-12
+  .hero-image= image_tag @hero_image.attachment.url(:hero)
+  .filter-container
+  
+
+  .adventure-container
+    - @adventures.each do |adv|
+      .adventure-brick
+        .adventure-image= link_to (image_tag adv.attachment.url(:large)), adventure_path(adv)
