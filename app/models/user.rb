@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
 
   after_create :send_welcome_email
 
+  validates_presence_of :name, :avatar_url, :location, :skillset, :language, :sex, :age, :bio, :if => :is_guide?
+
+
+  def is_guide?
+    is_guide == true
+  end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
