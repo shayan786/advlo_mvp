@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require idangerous.swiper.min
+//= require masonry.pkgd.min.js
 //= require_tree .

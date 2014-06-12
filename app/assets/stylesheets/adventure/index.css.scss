@@ -1,7 +1,7 @@
 .adventure-page-container { 
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 0;
+  top: -81px;
   left: 0;
   padding: 0px;
 
@@ -27,12 +27,25 @@
   background-color: #333333;
   float: left;
 
-  .adventure-brick {
-    border: 1px solid #fff;
-    height: 325px;
-    max-width: 325px;
-    margin: 10px;
-    float: left;
-    overflow: hidden;
+  .brick-wrapper{
+    position: relative;
+    width: 85%;
+    margin: 0 auto;
+    .adventure-brick {
+      
+      height: 375px;
+      width: 375px;
+      float: left;
+      overflow: hidden;
+      margin: 40px;
+
+      .adventure-image{
+        height: 100%;
+        img {
+          height: 100%;
+          margin-left: -30%;
+        }
+      }
+    }
   }
 }

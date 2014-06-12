@@ -2,8 +2,10 @@
   .hero-image= image_tag @hero_image.attachment.url(:hero)
   .filter-container
   
-
   .adventure-container
-    - @adventures.each do |adv|
-      .adventure-brick
-        .adventure-image= link_to (image_tag adv.attachment.url(:large)), adventure_path(adv)
+    .brick-wrapper.masonry.js-masonry{"data-masonry-options" => "{ \"isFitWidth\": true }"}
+      - @adventures.each do |adv|
+        .adventure-brick
+          %a{href: adventure_path(adv)}
+            .adventure-image{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+

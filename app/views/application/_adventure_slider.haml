@@ -11,10 +11,16 @@
       .swiper-wrapper
         - if @feat_adventures
           - @feat_adventures.each do |adv|
-            %a.swiper-slide{href: adventure_path(adv), data: "adv-#{adv.title}", class: 'adventure-slide'}
-              .square-wrapper
-                = image_tag adv.attachment.url(:large)
-              .copy
-                %h3#title= adv.title if adv.title
-                %p#subtitle= adv.subtitle if adv.subtitle
+            %a.swiper-slide{href: adventure_path(adv), data: "adv-#{adv.title}"}
+              .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+            
+              
+              
+                
 
+:javascript
+  sliderInit();
+  $(window).resize(function(){
+    sliderInit();
+  })
+  
