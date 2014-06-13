@@ -1,7 +1,7 @@
 $(document).ready(function(){
+
   function adventureHover(){
     $('.hover-block').hover(function(){
-
       $('.copy-'+$(this).attr('id')).stop().animate({
         opacity: 0
       },500)
@@ -9,6 +9,7 @@ $(document).ready(function(){
       $(this).stop().animate({
         opacity: 1
       })
+
     },function(){
       $('.copy-'+$(this).attr('id')).stop().animate({
         opacity: 1
@@ -18,6 +19,5 @@ $(document).ready(function(){
       })
     })
   }
-
   adventureHover();
 })

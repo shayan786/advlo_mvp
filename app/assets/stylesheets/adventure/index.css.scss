@@ -72,11 +72,11 @@
           position: absolute;
           z-index: 100;
           left: 15px;
-          #title {
+          .title {
             font-size: 20px;
           }
 
-          #location {
+          .location {
             color: #C35B26;
             margin-left: 20px;
           }
@@ -88,6 +88,15 @@
             background-size: 100% 100%;
             position: absolute;
           }
+        }
+
+        .price {
+          position: absolute;
+          bottom: 0px;
+          right: 4px;
+          font-size: 25px;
+          z-index: 10;
+          color: #fff;
         }
         .hover-block {
           position: absolute;
@@ -107,7 +116,39 @@
         }
       }
     }
+    .adventure-brick:hover {
+      /* border: 1px solid #C35B26; */
+    }
   }
 }
 
 
+
+@media screen and (max-width: 1335px){
+  .adventure-container .brick-wrapper .adventure-brick {
+    height: 200px;
+    width: 300px;
+  }
+
+  .adventure-container .brick-wrapper .adventure-brick .image-wrapper {
+    height: 200px;
+    width: 300px;
+  }
+
+  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy {
+    bottom: 10px;
+  }
+  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy #location {
+    font-size: 11px;
+  }
+
+  .adventure-container .brick-wrapper .adventure-brick #guide-image {
+    top: 10px;
+  }
+  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy .title {
+    font-size: 16px;
+  }
+  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy .location {
+    font-size: 11px;
+  }
+}
