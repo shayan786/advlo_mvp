@@ -12,18 +12,44 @@
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       - if current_user
-        %ul.nav.navbar-nav.navbar-right.current_user_fix
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              = image_tag "#{current_user.avatar_url}", :class => "img-circle profile_img"
-              #{current_user.name}
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                %a{href: "#"} Action 1
-                %a{href: "#"} Action 2
-                /%a{href: "/users/sign_out/#delete", 'data-remote' => true} Sign Out
-                = link_to 'Sign out', destroy_user_session_path, method: :delete
+        - if current_user.avatar_url.nil? || current_user.avatar_url.empty?
+          %ul.nav.navbar-nav.navbar-right
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                - if current_user.name.nil? || current_user.name.emptry?
+                  #{current_user.email}
+                - else
+                  #{current_user.name}
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{href: "#"} 
+                    %i.fa.fa-user 
+                    Edit My Profile
+                  %a{href: "#"} 
+                    %i.fa.fa-envelope-o
+                    My Messages
+                  %a{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} 
+                    %i.fa.fa-sign-out
+                    Sign Out
+        - else 
+          %ul.nav.navbar-nav.navbar-right.current_user_fix
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                = image_tag "#{current_user.avatar_url}", :class => "img-circle profile_img"
+                #{current_user.name}
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{href: "#"} 
+                    %i.fa.fa-user 
+                    Edit My Profile
+                  %a{href: "#"} 
+                    %i.fa.fa-envelope-o
+                    My Messages
+                  %a{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} 
+                    %i.fa.fa-sign-out
+                    Sign Out
       - else
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
@@ -51,14 +77,3 @@
           %a.host_margin{href: "#"} HOST
     / /.navbar-collapse
   / /.container-fluid
-
-
--# .advlo_logo= link_to (image_tag 'advlo_horiz_V3.png'), '/'
-<br><br><br><br>
-/- if current_user
-/  .account-page= link_to "hello #{current_user.email}", edit_user_registration_path
-/  .logout-link= link_to 'Sign out', destroy_user_session_path, method: :delete
-/- else
-/  .login_item#login= link_to "Login", new_user_session_path, method: :get
-/  .login_item#facebook= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
-/  .login_item#signup= link_to "Sign up", new_user_registration_path
