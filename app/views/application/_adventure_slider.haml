@@ -12,9 +12,9 @@
         - if @feat_adventures
           - @feat_adventures.each_with_index do |adv, i|
             %a.swiper-slide{href: adventure_path(adv)}
-              .image-hover{id: 'hover-'+"#{i}"}
-              .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;", id: i}
-                .copy-block
+              .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+                .hover-block{id: i}
+                .copy-container{class: "copy-#{i}"}
             
               
               

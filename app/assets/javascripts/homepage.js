@@ -1,10 +1,20 @@
 $(document).ready(function(){
-  $('.swiper-slide').hover(function(){
-    $(this).find('.image-hover').animate({
+  $('.hover-block').hover(function(){
+    
+    $('.copy-'+$(this).attr('id')).stop().animate({
+      opacity: 0
+    },500)
+
+    $(this).stop().animate({
       opacity: 1
     })
   },function(){
-    $(this).find('.image-hover').animate({
+
+    $('.copy-'+$(this).attr('id')).stop().animate({
+      opacity: 1
+    },500)
+
+    $(this).stop().animate({
       opacity: 0
     })
   })
