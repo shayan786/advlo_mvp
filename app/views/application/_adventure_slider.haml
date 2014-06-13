@@ -13,6 +13,17 @@
           - @feat_adventures.each_with_index do |adv, i|
             %a.swiper-slide{href: adventure_path(adv)}
               .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+                .copy
+                  - if adv.title.length > 38
+                    #title= "#{adv.title[0..38]}..."
+                  -else
+                    #title= adv.title
+
+                  - if adv.subtitle.length > 60
+                    #location= "#{adv.subtitle[0..59]}..."
+                  -else
+                    #location= adv.subtitle
+
                 .hover-block{id: i}
                 .copy-container{class: "copy-#{i}"}
             

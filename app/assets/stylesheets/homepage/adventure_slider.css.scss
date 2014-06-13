@@ -57,7 +57,19 @@
       top: 85px;
       border: 1.5px solid #000;
 
-  
+      .copy{
+        color: #fff;
+        bottom: 10px;
+        position: absolute;
+        z-index: 100;
+        left: 15px;
+        #title {
+          font-size: 20px;
+        }
+        #location {
+          font-style: italic;
+        }
+      }
       .hover-block {
         position: absolute;
         top: 0;

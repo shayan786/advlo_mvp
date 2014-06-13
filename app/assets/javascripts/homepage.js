@@ -12,7 +12,7 @@ $(document).ready(function(){
 
     $('.copy-'+$(this).attr('id')).stop().animate({
       opacity: 1
-    },500)
+    },300)
 
     $(this).stop().animate({
       opacity: 0
