@@ -31,11 +31,13 @@
     position: relative;
     width: 85%;
     margin: 0 auto;
+
     .adventure-brick {
       height: 375px;
       width: 375px;
       float: left;
       overflow: hidden;
+      margin: 20px;
 
       #guide-image {
         position: absolute;
