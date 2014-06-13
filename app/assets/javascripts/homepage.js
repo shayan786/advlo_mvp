@@ -1,14 +1,11 @@
 $(document).ready(function(){
-  $('.image-wrapper').hover(function(){
-
-    var id = $(this).attr('id').toString()
-    $('#hover-'+id).fadeIn()
-
+  $('.swiper-slide').hover(function(){
+    $(this).find('.image-hover').animate({
+      opacity: 1
+    })
   },function(){
-
-    var id = $(this).attr('id')
-    $('#hover-'+id).fadeOut()
-    
-
+    $(this).find('.image-hover').animate({
+      opacity: 0
+    })
   })
 })
