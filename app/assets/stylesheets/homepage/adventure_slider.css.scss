@@ -66,8 +66,18 @@
         #title {
           font-size: 20px;
         }
+
         #location {
-          font-style: italic;
+          color: #C35B26;
+          margin-left: 20px;
+        }
+
+        .ping {
+          background: asset-url("icons/orange-tag.png",image) no-repeat left center;
+          height: 20px;
+          width: 15px;
+          background-size: 100% 100%;
+          position: absolute;
         }
       }
       .hover-block {

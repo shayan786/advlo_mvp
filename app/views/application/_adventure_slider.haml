@@ -19,10 +19,11 @@
                   -else
                     #title= adv.title
 
-                  - if adv.subtitle.length > 60
-                    #location= "#{adv.subtitle[0..59]}..."
+                  .ping
+                  - if adv.subtitle.length > 40
+                    #location= "#{adv.subtitle.upcase[0..40]}..."
                   -else
-                    #location= adv.subtitle
+                    #location= adv.subtitle.upcase
 
                 .hover-block{id: i}
                 .copy-container{class: "copy-#{i}"}
