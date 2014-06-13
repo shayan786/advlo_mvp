@@ -32,20 +32,71 @@
     width: 85%;
     margin: 0 auto;
     .adventure-brick {
-      
       height: 375px;
       width: 375px;
       float: left;
       overflow: hidden;
-      margin: 40px;
 
-      .adventure-image{
-        height: 100%;
-        img {
+      #guide-image {
+        position: absolute;
+        top: 50px;
+        width: 100%;
+        text-align: center;
+        img{
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+        }
+      }
+      
+      .image-wrapper {
+        position: relative;
+        height: 375px;  
+        width: 375px;
+        border: 1.5px solid #000;
+
+        .copy{
+          color: #fff;
+          bottom: 10px;
+          position: absolute;
+          z-index: 100;
+          left: 15px;
+          #title {
+            font-size: 20px;
+          }
+
+          #location {
+            color: #C35B26;
+            margin-left: 20px;
+          }
+
+          .ping {
+            background: asset-url("icons/orange-tag.png",image) no-repeat left center;
+            height: 20px;
+            width: 15px;
+            background-size: 100% 100%;
+            position: absolute;
+          }
+        }
+        .hover-block {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
           height: 100%;
-          margin-left: -30%;
+          background: rgba(0, 0, 0, 0.75);
+          opacity: 0;
+        }
+        .copy-container {
+          position: absolute;
+          bottom: 0px;
+          height: 65px;
+          background: rgba(0, 0, 0, 0.75);
+          width: 100%;
         }
       }
     }
   }
 }
+
+

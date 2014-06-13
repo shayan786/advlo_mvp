@@ -4,8 +4,22 @@
   
   .adventure-container
     .brick-wrapper.masonry.js-masonry{"data-masonry-options" => "{ \"isFitWidth\": true }"}
-      - @adventures.each do |adv|
-        .adventure-brick
-          %a{href: adventure_path(adv)}
-            .adventure-image{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+      - if @adventures
+        - @adventures.each_with_index do |adv, i|
+          %a.adventure-brick{href: adventure_path(adv)}
+            .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+              .copy
+                - if adv.title.length > 38
+                  #title= "#{adv.title[0..38]}..."
+                -else
+                  #title= adv.title
 
+                .ping
+                - if adv.subtitle.length > 40
+                  #location= "#{adv.subtitle.upcase[0..40]}..."
+                -else
+                  #location= adv.subtitle.upcase
+
+              .hover-block{id: i}
+                #guide-image= image_tag "#{current_user.avatar_url}?type=large"
+              .copy-container{class: "copy-#{i}"}
