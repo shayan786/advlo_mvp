@@ -1,5 +1,6 @@
 .adventure-page-container.col-md-12
-  .hero-image= image_tag @hero_image.attachment.url(:hero)
+  / .jumbotron.jumbotron-adventure{style: "background: url(#{@hero_image.attachment.url(:hero)})"}
+  #hero_image=image_tag @hero_image.attachment.url(:hero)
   .filter-container
   
   .adventure-container
