@@ -10,9 +10,11 @@
     .swiper-container
       .swiper-wrapper
         - if @feat_adventures
-          - @feat_adventures.each do |adv|
-            %a.swiper-slide{href: adventure_path(adv), data: "adv-#{adv.title}"}
-              .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+          - @feat_adventures.each_with_index do |adv, i|
+            %a.swiper-slide{href: adventure_path(adv)}
+              .image-hover{id: 'hover-'+"#{i}"}
+              .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;", id: i}
+                .copy-block
             
               
               

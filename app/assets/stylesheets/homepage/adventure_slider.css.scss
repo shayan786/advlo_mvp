@@ -48,12 +48,32 @@
     float: left;
     overflow: hidden;
 
+    .image-hover {
+      position: absolute;
+      height: 309px;
+      width: 375px;
+      top: 85px;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1;
+      display: none;
+    }
     
     .image-wrapper {
       position: relative;
       height: 375px;
       width: 375px;
       top: 85px;
+      border: 1.5px solid #000;
+
+      .copy-block {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        height: 65px;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.75);
+        width: 100%;
+      }
     }
   }
 }
