@@ -133,6 +133,11 @@
 	}
 }
 
+//dropdown focus background color
+.navbar-default .navbar-nav > .open > a:focus {
+	background-color: transparent;
+}
+
 //fix spacing when user logged in
 .current_user_fix {
 	height: 40px;
