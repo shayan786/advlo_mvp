@@ -1,0 +1,8 @@
+- #If the user meet min. requirements to be a guide
+- if current_user.is_guide(current_user.id)
+	
+- elseif current_user && current_user.is_guide(current_user.id) == false
+- #If the user has an account but is not a guide, must update his profile to include guide req. info.
+	
+- else
+- #User is not a registered user and must fill out a custom form to continue
