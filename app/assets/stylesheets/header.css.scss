@@ -133,6 +133,10 @@
 	}
 }
 
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	background-color: transparent;
+}
+
 //fix spacing when user logged in
 .current_user_fix {
 	height: 40px;

@@ -37,4 +37,16 @@ class User < ActiveRecord::Base
   def send_welcome_email
     Notifier.welcome_email(self).deliver
   end
+
+  def self.is_guide(user_id)
+    @user = User.find_by!(:id => user_id)
+
+    #check to verify certain parmaters exist to make sure user is eligible to be guide
+    if @user.avatar_url.nil? || @user.name.nil? || @user.location.nil? || @user.skillset.nil? || @user.language.nil? || @user.age.nil? || @user.sex.nil? || @user.bio.nil?
+      false
+    else
+      true
+    end
+  end
+
 end
