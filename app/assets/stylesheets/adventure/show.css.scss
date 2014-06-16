@@ -1,0 +1,39 @@
+.adventure-show-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  float: left;
+  padding: 0px;
+
+  #main_image{
+    overflow: hidden;
+    float: left;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 800px;
+    img{
+      width: 100%;
+      margin-top: -10%;
+    }
+  }
+
+
+  .adventure-copy-wrapper {
+    position: relative;
+    width: 100%;
+    float: left;
+    height: 100%;
+    background: $dark_gray;
+
+
+    .copy-brick {
+      position: relative;
+      width: 70%;
+      float: left;
+      margin: 20px;
+      height: 100%;
+      background: $light_gray;
+    }
+  }
+}

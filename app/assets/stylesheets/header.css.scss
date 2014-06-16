@@ -1,10 +1,10 @@
 //NAVBAR CUSTOMIZATIONS
 .navbar {
 	font-family: $header_font;
-	background: rgba(0, 0, 0, 0.40);
+	background: $dark_gray;
 	padding: 10px 0px 10px 20px;
-	z-index: 100;
-	border-color: rgba(0,0,0, 0.40);
+	z-index: 1000;
+	border-color: $dark_gray;
 
 	.navbar-brand {
 		background: asset-url("logos/advlo_header_logo.png",image) no-repeat left center;

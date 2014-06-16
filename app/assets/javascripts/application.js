@@ -23,6 +23,7 @@ var init;
 init = function() {
   adventureHover();
   heroScroll();
+  filterCatch();
 };
 
 $(document).ready(init);
