@@ -16,8 +16,8 @@
                   .title= adv.title
 
                 .ping
-                - if adv.subtitle.length > 40
-                  .location= "#{adv.subtitle.upcase[0..40]}..."
+                - if adv.subtitle.length > 33
+                  .location= "#{adv.subtitle.upcase[0..33]}..."
                 -else
                   .location= adv.subtitle.upcase
 
@@ -28,6 +28,9 @@
               .copy-container{class: "copy-#{i}"}
 
 :javascript
-  adventureHover();
-  heroScroll();
-  
+
+  $(document).on('page:load', function() {
+    // turbolinks
+    adventureHover();
+    heroScroll();
+  });

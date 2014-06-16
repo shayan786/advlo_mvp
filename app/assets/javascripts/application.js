@@ -18,3 +18,14 @@
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
 //= require_tree .
+
+var init;
+init = function() {
+  adventureHover();
+  heroScroll();
+};
+
+$(document).ready(init);
+$(document).on('page:load', init);
+
+
