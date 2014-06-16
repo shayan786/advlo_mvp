@@ -1,11 +1,4 @@
-#hero_image{
-  margin-top: 71px;
-  position: relative;
-  img{
-    width: 110%;
-    margin-left: -5%;
-  }
-}
+
 
 .adventure-page-container { 
   position: relative;
@@ -14,12 +7,25 @@
   left: 0;
   padding: 0px;
 
-  .hero-image {
-    img {
-      width: 100%;
-      height: auto;
+  #hero_image{
+    margin-top: 71px;
+    position: relative;
+    img{
+      width: 110%;
     }
   }
+
+  #location_text {
+    position: absolute;
+    top: 16%;
+    text-align: center;
+    width: 100%;
+    font-size: 100px;
+    color: #fff;
+    font-family: 'nexa_light';
+    letter-spacing: 35px;
+  }
+
 
   .filter-container {
     position: relative;

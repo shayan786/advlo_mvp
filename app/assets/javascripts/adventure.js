@@ -1,9 +1,10 @@
 function heroScroll(){
   var hero = $('#hero_image img');
+  var heroFont = $('#location_text');
   $(window).scroll(function(){
     var s = $(window).scrollTop()
-    console.log(s)
     hero.css('-webkit-transform','translateY(' + (s/1.5) + 'px')
+    heroFont.css('-webkit-transform','translateY(' + (s/2) + 'px')
   })
 }
 
