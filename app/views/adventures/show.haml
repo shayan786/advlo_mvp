@@ -4,11 +4,32 @@
   .adventure-copy-wrapper
     / - @adventure.attributes.each do etc..
     - attributes = {:overview => 'Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.', :itinerary => 'Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.', :reviews => 'Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.'}
-    - attributes.each do |key, array|
-      .copy-brick.container-fluid
-        %h1= key
-        %p= array
 
+    .row
+      .col-md-3#mobile-adventure-nav
+        .navigation-brick
+          .item
+            overview
+          .item
+            itinerary
+          .item
+            reviews
+          .item
+            policy
 
+    .col-md-9
+      - attributes.each do |key, array|
+        .copy-brick.container-fluid
+          %h1= key
+          %p= array
 
-
+    .col-md-3#desktop-adventure-nav
+      .navigation-brick
+        .item
+          overview
+        .item
+          itinerary
+        .item
+          reviews
+        .item
+          policy

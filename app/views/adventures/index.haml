@@ -16,7 +16,7 @@
   
 
   .adventure-container
-    .brick-wrapper.masonry.js-masonry{"data-masonry-options" => "{ \"isFitWidth\": true }"}
+    .brick-wrapper.masonry.js-masonry
       - if @adventures
         - @adventures.each_with_index do |adv, i|
           %a.adventure-brick{href: adventure_path(adv)}
@@ -41,9 +41,15 @@
 
 
 :javascript
+  
+  $(document).ready(function(){
+    masonrySetup();
+  })
 
   $(document).on('page:load', function() {
     // turbolinks
     adventureHover();
     heroScroll();
+    filterCatch();
+    masonrySetup();
   });

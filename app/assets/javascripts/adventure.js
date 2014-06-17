@@ -30,21 +30,21 @@ function adventureHover(){
 
 function filterCatch(){
   $(window).scroll(function(){
-
     var s = ($(window).scrollTop() + parseInt($('.filter-container').css('height')))
     var fixedHeight = $('.filter-container').position().top
-
     if(s > fixedHeight ){
-
       $('.filter-static').fadeIn();
       $('.filter-container').css('opacity',0)
-
     }else if( s < fixedHeight ){
-
       $('.filter-static').fadeOut('fast')
       $('.filter-container').css('opacity',1)
-
     }
   })
 }
 
+function masonrySetup(){
+  $('.js-masonry').masonry({
+    isFitWidth: true,
+    itemSelector: '.adventure-brick'
+  });
+}
