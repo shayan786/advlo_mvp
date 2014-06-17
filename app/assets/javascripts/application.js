@@ -21,10 +21,8 @@
 
 var init;
 init = function() {
-  adventureHover();
+  
 };
 
 $(document).ready(init);
 $(document).on('page:load', init);
-
-

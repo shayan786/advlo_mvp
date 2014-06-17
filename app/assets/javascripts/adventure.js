@@ -27,18 +27,22 @@ function adventureHover(){
 }
 
 function filterCatch(){
-  $(window).scroll(function(){
-    var s = ($(window).scrollTop() + parseInt($('.filter-container').css('height')))
-    var fixedHeight = $('.filter-container').position().top
-    if(s > fixedHeight ){
-      $('.filter-static').fadeIn();
-      $('.filter-container').css('opacity',0)
-    }else if( s < fixedHeight ){
-      $('.filter-static').fadeOut('fast')
-      $('.filter-container').css('opacity',1)
-    }
-  })
-}
+  if(location.pathname == '/adventures'){
+    $(window).scroll(function(){
+      var s = ($(window).scrollTop() + parseInt($('.filter-container').css('height')))
+      var fixedHeight = $('.filter-container').position().top
+      if(s > fixedHeight ){
+        $('.filter-static').fadeIn();
+        $('.filter-container').css('opacity',0)
+      }else if( s < fixedHeight ){
+        $('.filter-static').fadeOut('fast')
+        $('.filter-container').css('opacity',1)
+      }
+    })
+  }else{
+    $(window).unbind('scroll')
+  }
+} 
 
 function masonrySetup(){
   $('.js-masonry').masonry({
