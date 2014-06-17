@@ -19,6 +19,16 @@
     }
   }
 
+  .adventure-show-infographic {
+    position: fixed;
+    top: 100px;
+    background: $shaded_gray;
+    right: 0px;
+    margin-right: 15px;
+    margin-left: 15px;
+    height: 400px;
+    z-index: 1000;
+  }
 
   .adventure-copy-wrapper {
     position: relative;
@@ -34,12 +44,44 @@
       display: none;
     }
 
+    #mobile-adventure-infographic {
+      margin: 35px;
+      display: none;
+    }
+
     .copy-brick {
       position: relative;
       float: left;
       margin: 20px;
       height: 100%;
-      background: $light_gray;
+      background: $shaded_gray;
+
+      .ping {
+        background: url(/assets/icons/orange-tag.png) no-repeat left center;
+        height: 40px;
+        width: 30px;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 10px;
+      }
+
+      .brick-title {
+        position: relative;
+        top: 5px;
+        left: 42px;
+        font-size: 43px;
+        text-transform: uppercase;
+        color: #C35B26;
+        font-family: 'nexa_light';
+        float: left;
+        width: 95%;
+        text-shadow: 0px -1px #000;
+      }
+
+      .brick-copy {
+        color: #fff;
+        font-size: 20px;
+      }
     }
     .navigation-brick {
       position: relative;
@@ -47,6 +89,24 @@
       margin-top: 20px;
       height: 100%;
       width: 100%;
+      border: 1px solid #C35B26;
+
+      .item {
+        height: 50px;
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase;
+        border: 1px solid #C35B26;
+        color: #fff;
+
+        span {
+          position: relative;
+          top: 4px;
+        }
+      }
+    }
+    .item:hover {
+      cursor: pointer;
       background: $light_gray;
     }
   }
@@ -56,7 +116,14 @@
   #desktop-adventure-nav {
     display: none;
   }
-  .adventure-show-container .adventure-copy-wrapper #mobile-adventure-nav {
+  .adventure-show-container .adventure-copy-wrapper #mobile-adventure-infographic {
+    display: block;
+  }
+  .adventure-show-container .adventure-show-infographic {
+    display: none;
+  }
+
+  #mobile-adventure-infographic {
     display: block;
   }
 }

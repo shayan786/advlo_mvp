@@ -13,11 +13,9 @@ function adventureHover(){
     $('.copy-'+$(this).attr('id')).stop().animate({
       opacity: 0
     },500)
-
     $(this).stop().animate({
       opacity: 1
     })
-
   },function(){
     $('.copy-'+$(this).attr('id')).stop().animate({
       opacity: 1
@@ -48,3 +46,23 @@ function masonrySetup(){
     itemSelector: '.adventure-brick'
   });
 }
+
+
+function sizeSidebar(){
+  $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 28)
+}
+
+adventureInit = function() {
+  sizeSidebar()
+  adventureHover();
+  heroScroll();
+  filterCatch();
+  masonrySetup();
+};
+
+$(window).resize(function(){
+  sizeSidebar();
+})
+
+$(document).ready(adventureInit);
+$(document).on('page:load', adventureInit);

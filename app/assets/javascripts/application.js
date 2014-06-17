@@ -22,7 +22,6 @@
 var init;
 init = function() {
   adventureHover();
-  heroScroll();
 };
 
 $(document).ready(init);

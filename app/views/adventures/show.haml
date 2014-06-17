@@ -1,35 +1,34 @@
 .adventure-show-container.col-md-12
   #main_image.img-responsive= image_tag @adventure.attachment.url(:large)
 
+  .col-md-3.adventure-show-infographic
+    hello
+
   .adventure-copy-wrapper
     / - @adventure.attributes.each do etc..
-    - attributes = {:overview => 'Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.', :itinerary => 'Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.', :reviews => 'Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.'}
+    - attributes = {:overview => 'Maecenas faucibus mollis interdum. Etiam porta sem maleEtiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.suada magna mollis euismod. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.', :itinerary => 'Maecenas faucibus mollis interdum. Etiam porta sEtiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.em malesuada magna mollis euismod. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.', :reviews => 'Maecenas faucibus mollis interdum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio duiEtiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.'}
 
     .row
-      .col-md-3#mobile-adventure-nav
+      .col-md-3#mobile-adventure-infographic
         .navigation-brick
-          .item
-            overview
-          .item
-            itinerary
-          .item
-            reviews
-          .item
-            policy
+          = image_tag current_user.avatar_url
 
     .col-md-9
       - attributes.each do |key, array|
         .copy-brick.container-fluid
-          %h1= key
-          %p= array
+          .ping
+          .brick-title= key
+          .brick-copy= array
+
+
 
     .col-md-3#desktop-adventure-nav
       .navigation-brick
         .item
-          overview
+          %span overview
         .item
-          itinerary
+          %span itinerary
         .item
-          reviews
+          %span reviews
         .item
-          policy
+          %span policy
