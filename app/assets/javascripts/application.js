@@ -10,14 +10,18 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// require_tree .
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
-//= require_tree .
+//= require adventure.js
+//= require homepage.js
+//= require slider.js
 
 var init;
 init = function() {

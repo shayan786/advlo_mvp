@@ -1,31 +1,101 @@
 #d_user_edit
   .container
-    %h2.text-center Edit My Profile
     .d_error_msgs= devise_error_messages!
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      %div
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
-      %div
-        = f.label :password
-        %i (leave blank if you don't want to change it)
-        %br/
-        = f.password_field :password, autocomplete: "off"
-      %div
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "off"
-      %div
-        = f.label :current_password
-        %i (we need your current password to confirm your changes)
-        %br/
-        = f.password_field :current_password, autocomplete: "off"
-      %div= f.submit "Update"
-    %h3 Cancel my account
-    %p
-      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-    = link_to "Back", :back
+    .panel.panel-default.container
+      %h2.panel-heading Edit My Profile
+      %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: "user_edit_form"}
+        =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        .panel-body
+          .col-md-6
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Name
+              .col-md-8
+                %input.form-control{placeholder: "Name", type: "text", required: "required", name: "user[name]", id: "user_name", value: "#{current_user.name}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Display Name"}}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Email
+              .col-md-8
+                %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", value: "#{current_user.email}"}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Location
+              .col-md-8
+                %input.form-control{placeholder: "Location", type: "text", required: "required", name: "user[location]", id: "user_location", value: "#{current_user.location}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Current Location"}}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Sex
+              .col-md-3
+                %select.form-control{name: "user[sex]", id: "user_sex"}
+                  %option Male
+                  %option Female
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Date of Birth
+              .col-md-4
+                %input.form-control{type: "text", required: "required", name: "user[dob]", id: "user_dob", value: "#{current_user.dob}"}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Biography
+              .col-md-8
+                %textarea.form-control{rows: "8", name: "user[bio]", id: "user_bio", value: "#{current_user.bio}", placeholder: "Whats your story?", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you! Share your story!"}}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Languages
+              .col-md-8
+                %input.form-control{placeholder: "Languages", type: "text", required: "required", name: "user[language]", id: "user_language", value: "#{current_user.language}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Languagues Spoken, seperate by a comma (,) (e.g. English, French)"}}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Skills / Certifications
+              .col-md-8
+                %textarea.form-control{rows: "7", name: "user[skillset]", id: "user_skillset", value: "#{current_user.skillset}", placeholder: "Have specialized training or skills?", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Skills or Certifications, seperate by a comma (,) (e.g. Certified Scuba Diver, Licenced Kayak Instructor)"}}
+            .row
+              .col-md-4
+                .form_label.text-right Password
+              .col-md-8.forgot_pass_fix
+                %a.forgot_password{href: "/users/password/new"} Reset Password
+          .col-md-6.text-center
+            .row
+              - if current_user.avatar_url.nil? || current_user.avatar_url.empty?
+              - else
+                = image_tag "#{current_user.avatar_url}?type=square&height=100&width=100", :class => "img-thumbnail img-responsive"
+            .row
+              .btn.btn-primary.img_btn SET PHOTO
+        .panel-footer.text-center
+          %input.btn.btn-primary.update_btn{name: "commit", type: "submit", value: "UPDATE"}
+
+
+    / = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    /   %div
+    /     = f.label :email
+    /     %br/
+    /     = f.email_field :email, autofocus: true
+    /   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    /     %div
+    /       Currently waiting confirmation for: #{resource.unconfirmed_email}6
+    /   %div
+    /     = f.label :password
+    /     %i (leave blank if you don't want to change it)
+    /     %br/
+    /     = f.password_field :password, autocomplete: "off"
+    /   %div
+    /     = f.label :password_confirmation
+    /     %br/
+    /     = f.password_field :password_confirmation, autocomplete: "off"
+    /   %div
+    /     = f.label :current_password
+    /     %i (we need your current password to confirm your changes)
+    /     %br/
+    /     = f.password_field :current_password, autocomplete: "off"
+    /   %div= f.submit "Update"
+    / %h3 Cancel my account
+    / %p
+    /   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+    / = link_to "Back", :back
+
+:javascript
+  $('[data-toggle="popover"]').popover({
+    trigger: 'focus'
+  });
+
+  $('#user_dob').datepicker();
