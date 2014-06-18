@@ -1,16 +1,16 @@
 class Adventure < ActiveRecord::Base
-  belongs_to :user
+  has_many :user_adventures
+  has_many :users, through: :user_adventures
+  accepts_nested_attributes_for :user_adventures, :allow_destroy => true
+  
 
   has_attached_file :attachment, :styles => { :large => "600x750>", :medium => "325x285>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
   
   #Create a new adventure
   def self.create!(options = {})
-  	@adventure 			= Adventure.new
-
-
+  	@adventure = Adventure.new
   	@adventure.save!
-
   	@adventure
   end
 
