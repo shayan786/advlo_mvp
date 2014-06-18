@@ -1,8 +1,8 @@
 #d_forgot_pass
   .container
     %h2.text-center Forgot your password?
+    .d_error_msgs= devise_error_messages!
     %form{"accept-charset" => "UTF-8", action: "/users/password", method: "post", roll: "form"}
-      = devise_error_messages!
       = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
       .form-group
         %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", autofocus: "autofocus"}

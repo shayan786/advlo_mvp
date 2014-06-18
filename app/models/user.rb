@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :adventures
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,10 +10,6 @@ class User < ActiveRecord::Base
 
   # validates_presence_of :name, :avatar_url, :location, :skillset, :language, :sex, :age, :bio, :if => :is_guide?
 
-
-  # def is_guide?
-  #   is_guide == true
-  # end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -38,8 +36,8 @@ class User < ActiveRecord::Base
     Notifier.welcome_email(self).deliver
   end
 
-  def self.is_guide(user_id)
-    @user = User.find_by!(:id => user_id)
+  def self.is_guide?
+    @user = User.find_by!(:id => current_user.id)
 
     #check to verify certain parmaters exist to make sure user is eligible to be guide
     if @user.avatar_url.nil? || @user.name.nil? || @user.location.nil? || @user.skillset.nil? || @user.language.nil? || @user.age.nil? || @user.sex.nil? || @user.bio.nil?

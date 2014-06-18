@@ -5,5 +5,10 @@ Rails.application.routes.draw do
   
   root 'application#homepage'
   
+  #adventure controller routes
+  get '/adventures/create_prefill'		=> 'adventures#create_prefill'
+  post '/adventures/create_postfill'	=> 'adventures#create_postfill'
   resources :adventures
+ 
+
 end	
