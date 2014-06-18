@@ -55,6 +55,7 @@
           width: 125px;
           height: 125px;
           border-radius: 50%;
+          border: 2px solid;
         }
       }
     }
@@ -137,7 +138,7 @@
         .adventure-block {
           padding-left: 0px;
           padding-right: 0px;
-          
+
           #adventure-price{
             font-size: 45px;
             color: $advlo_green;
@@ -184,7 +185,7 @@
         font-size: 43px;
         text-transform: uppercase;
         color: #C35B26;
-        font-family: 'nexa_light';
+        font-family: 'nexa_bold';
         float: left;
         width: 95%;
         text-shadow: 0px -1px #000;
