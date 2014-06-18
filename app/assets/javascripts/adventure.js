@@ -58,7 +58,6 @@ function sizeSidebar(){
 
 
 function navBarCatch(){
-  
   $('#main_image img').load(function(){
     $(window).scroll(function(){
       var s = $(window).scrollTop()
@@ -87,8 +86,6 @@ function widthOfBrowserHeight(){
     return 225;
   }
 }
-
-
 
 function fixSidebar(){
   $('#desktop-adventure-nav').css({

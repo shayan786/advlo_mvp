@@ -22,12 +22,67 @@
   .adventure-show-infographic {
     position: fixed;
     top: 100px;
-    background: $shaded_gray;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
     right: 0px;
     margin-right: 15px;
     margin-left: 15px;
     height: 400px;
     z-index: 1000;
+
+    .guide-block {
+      color: #fff;
+      #guide-name {
+        font-size: 40px;
+      }
+      #guide-title {
+        position: relative;
+        top: 124px;
+        letter-spacing: 3px;
+        font-style: italic;
+      }
+
+      #guide-profile-image {
+        position: absolute;
+        top: 50px;
+        right: 0px;
+        width: 100%;
+        text-align: center;
+        img{
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .adventure-block {
+      position: relative;
+      width: 100%;
+      float: left;
+      top: 130px;
+      height: 180px;
+
+      #adventure-title {
+        color: #fff;
+        font-size: 25px;
+      }
+      #adventure-price{
+        font-size: 45px;
+        color: $advlo_green;
+      }
+      #book-it-bro {
+        width: 80%;
+        margin: 0 auto;
+        height: 41px;
+        background: $advlo_orange;
+        span {
+          color: #fff;
+          font-size: 25px;
+          position: relative;
+          top: 3px;
+        }
+      }
+    }
   }
 
   .adventure-copy-wrapper {
@@ -45,8 +100,11 @@
     }
 
     #mobile-adventure-infographic {
+
       margin: 35px;
       display: none;
+
+      
     }
 
     .copy-brick {
@@ -85,6 +143,7 @@
     }
     .navigation-brick {
       position: relative;
+      color: #fff;
       float: left;
       margin-top: 20px;
       height: 100%;
