@@ -7,7 +7,7 @@ class AdventuresController < ApplicationController
   end
 
   def show
-    @adventure = Adventure.find(params[:id])
+    @adventure = Adventure.find_by_slug(params[:id])
   end
 
   #------------------------HOST LOGIC START----------------------------
