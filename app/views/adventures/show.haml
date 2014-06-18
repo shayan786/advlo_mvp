@@ -5,14 +5,14 @@
     .guide-block
       #guide-name
         Gustavo
-      #guide-title
-        climbing guru
       #guide-profile-image
         = image_tag "#{current_user.avatar_url}?type=large" if current_user && current_user.avatar_url
+      #guide-title
+        climbing guru
 
     .adventure-block
       #adventure-title
-        = @adventure.title
+
       #adventure-price
         %span $60
       #book-it-bro
@@ -41,7 +41,9 @@
             #book-it-bro
               %span BOOK IT
 
-    .col-md-9
+    .col-md-9.information-container
+      #adventure-title= @adventure.title
+      #adventure-description future description ... goes here
       - attributes.each_with_index do |(key, array), i|
         - case i
         - when 0
@@ -63,15 +65,12 @@
           .item
             %span 
               overview
-
         %a{href: '#itinerary'}
           .item
             %span itinerary
-
         %a{href: '#reviews'}
           .item
             %span reviews
-
         %a{href: '#policy'}
           .item
             %span policy

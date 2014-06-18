@@ -53,7 +53,7 @@ function masonrySetup(){
 
 
 function sizeSidebar(){
-  $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 28)
+  $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 32)
 }
 
 
