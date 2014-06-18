@@ -14,4 +14,15 @@
 		text-decoration: none;
 		color: #FFF;
 	}
+
+
+	.host-slider-image {
+		overflow: hidden;
+		.main-img{
+			width: 100%;
+			margin-top: -10%;
+			margin-left: -5%;
+
+		}
+	}
 }

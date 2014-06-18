@@ -1,9 +1,9 @@
-#adventure_slider
+.homepage-slider-container
   .container
     %h1 FEATURED ADVENTURES
     %a.small_text{href: "#"} VIEW ALL >>>
 
-  .slider-container
+  .slider-wrapper
     %i#next-slide.fa.fa-chevron-right
     %i#prev-slide.fa.fa-chevron-left
 
@@ -26,7 +26,7 @@
                     #location= adv.subtitle.upcase
 
                 .hover-block{id: i}
-                  #guide-image= image_tag "#{current_user.avatar_url}?type=large" if current_user && current_user.avatar_url
+                  #guide-image= image_tag "#{adv.users.first.avatar_url}?type=large" if adv.users.first && adv.users.first.avatar_url
                 .copy-container{class: "copy-#{i}"}
 
                 

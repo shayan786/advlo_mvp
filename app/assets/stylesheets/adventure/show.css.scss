@@ -20,6 +20,7 @@
   }
 
   .adventure-show-infographic {
+    z-index: 100;
     position: fixed;
     top: 100px;
     background: rgba(0, 0, 0, 0.5);
@@ -28,16 +29,17 @@
     margin-right: 15px;
     margin-left: 15px;
     height: 400px;
-    z-index: 1000;
+    border: 1px solid #C35B26;
 
     .guide-block {
       color: #fff;
+      height: 240px;
       #guide-name {
         font-size: 40px;
       }
       #guide-title {
         position: relative;
-        top: 124px;
+        margin-top: 150px;
         letter-spacing: 3px;
         font-style: italic;
       }
@@ -48,10 +50,12 @@
         right: 0px;
         width: 100%;
         text-align: center;
+        margin-top: 15px;
         img{
           width: 125px;
           height: 125px;
           border-radius: 50%;
+          border: 2px solid;
         }
       }
     }
@@ -59,8 +63,8 @@
       position: relative;
       width: 100%;
       float: left;
-      top: 130px;
-      height: 180px;
+      top: 25px;
+      height: 140px;
 
       #adventure-title {
         color: #fff;
@@ -93,6 +97,23 @@
     background: $dark_gray;
     padding-bottom: 25px;
 
+    .information-container{
+      #adventure-title {
+        color: #fff;
+        font-family: 'nexa_bold';
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 30px;
+        margin: 20px;
+      }
+      #adventure-description {
+        margin: 20px;
+        color: #fff;
+        font-size: 20px;
+        text-transform: capitalize;
+      }
+    }
+
 
     #mobile-adventure-nav {
       margin: 35px;
@@ -100,11 +121,45 @@
     }
 
     #mobile-adventure-infographic {
-
       margin: 35px;
       display: none;
+      .navigation-brick{
 
+        .guide-block {
       
+
+          #guide-name {
+            font-size: 25px;
+            margin-bottom: 10px; 
+          }
+          
+        }
+
+        .adventure-block {
+          padding-left: 0px;
+          padding-right: 0px;
+
+          #adventure-price{
+            font-size: 45px;
+            color: $advlo_green;
+            text-align: center;
+          }
+          #book-it-bro {
+            width: 100%;
+            margin: 0 auto;
+            height: 41px;
+            background: #c35b26;
+            text-align: center;
+
+            span {
+              color: #fff;
+              font-size: 25px;
+              position: relative;
+              top: 3px;
+            }
+          }
+        }
+      }
     }
 
     .copy-brick {
@@ -130,7 +185,7 @@
         font-size: 43px;
         text-transform: uppercase;
         color: #C35B26;
-        font-family: 'nexa_light';
+        font-family: 'nexa_bold';
         float: left;
         width: 95%;
         text-shadow: 0px -1px #000;
@@ -148,7 +203,11 @@
       margin-top: 20px;
       height: 100%;
       width: 100%;
-      border: 1px solid #C35B26;
+      
+
+      a {
+        text-decoration: none;
+      }
 
       .item {
         height: 50px;

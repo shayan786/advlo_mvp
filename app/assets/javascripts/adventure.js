@@ -53,7 +53,7 @@ function masonrySetup(){
 
 
 function sizeSidebar(){
-  $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 28)
+  $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 32)
 }
 
 
@@ -61,7 +61,7 @@ function navBarCatch(){
   $('#main_image img').load(function(){
     $(window).scroll(function(){
       var s = $(window).scrollTop()
-      if(s > widthOfBrowserHeight()){
+      if(s > widthOfBrowser()){
         fixSidebar()        
       }else{
         resetSideBar()        
@@ -70,7 +70,7 @@ function navBarCatch(){
   })
 }
 
-function widthOfBrowserHeight(){
+function widthOfBrowser(){
   var windowWidth = $(window).width()
   if( windowWidth > 1090 ){
     return 290;
@@ -101,18 +101,6 @@ function resetSideBar(){
     top: '0px'
   })
 }
-
-
-  // .adventure-show-container .adventure-copy-wrapper .navigation-brick {
-  // position: fixed;
-  // float: left;
-  // margin-top: 20px;
-  // height: 100%;
-  // height: 200px;
-  // border: 1px solid #C35B26;
-  // top: 480px;
-  // right: 15px;
-  // width: 23%;
 
 adventureInit = function() {
   sizeSidebar()

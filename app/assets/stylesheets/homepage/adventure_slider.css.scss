@@ -1,4 +1,4 @@
-#adventure_slider {
+.homepage-slider-container {
   height: 100%;
   width: 100%;
   position: relative;
@@ -18,7 +18,7 @@
 		color: #FFF;
 	}
 
-  .slider-container {
+  .slider-wrapper {
     margin-top: 20px;
     width: 100%;
     position: relative;
@@ -66,6 +66,7 @@
       height: 375px;  
       width: 375px;
       border: 1.5px solid #000;
+      margin: 0 auto;
 
       .copy{
         color: #fff;

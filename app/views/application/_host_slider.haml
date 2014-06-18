@@ -1,4 +1,20 @@
-#host_slider
+.homepage-slider-container#host_slider
   .container
     %h1 FEATURED HOSTS
     %a.small_text{href: "#"} VIEW ALL >>>
+
+  
+    .feat-hosts-container
+      - if @feat_hosts
+        - @feat_hosts.each_with_index do |user, i|
+          .host= user.inspect
+                        
+
+              
+
+:javascript
+  sliderInit();
+  $(window).resize(function(){
+    sliderInit();
+  })
+  
