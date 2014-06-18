@@ -8,7 +8,7 @@ class Adventure < ActiveRecord::Base
 
   validates_uniqueness_of :title
 
-  before_save :set_slug
+  after_save :set_slug
 
   #Generate display url accessable to viewers / hosts e.g. adventures/go-to-this-awesome-place
   def set_slug
