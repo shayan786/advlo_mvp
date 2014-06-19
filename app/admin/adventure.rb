@@ -12,6 +12,7 @@ ActiveAdmin.register Adventure do
   form multipart: true do |f|
     f.inputs do
       f.input :title
+      f.input :slug, label: 'permalink'
       f.input :subtitle
       f.input :attachment, as: :file
       f.has_many :user_adventures do |app|

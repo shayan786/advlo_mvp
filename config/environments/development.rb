@@ -40,5 +40,5 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 end

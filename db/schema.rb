@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140618223738) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.string   "slug"
   end
 
   create_table "hero_images", force: true do |t|
