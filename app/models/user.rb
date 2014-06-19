@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 
   # validates_presence_of :name, :avatar_url, :location, :skillset, :language, :sex, :age, :bio, :if => :is_guide?
 
+  #DO WE WANT TO DO SLUG NAME FOR PROFILE SHOW?
+  #validates_uniqueness_of :name  <-- wont work
+  #before_save :set_slug
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -50,6 +53,17 @@ class User < ActiveRecord::Base
       false
     else
       true
+    end
+  end
+
+  #Generate display url accessable to viewers / hosts e.g. users/chris-knight-rocks
+  def set_slug
+    if self.slug == nil || self.slug == ''
+      self.slug = self.name.gsub('-','')
+                            .gsub('.','')
+                            .gsub("'",'')
+                            .gsub('&','')
+                            .gsub(' ','-')
     end
   end
 
