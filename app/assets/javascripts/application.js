@@ -13,10 +13,11 @@
 // require_tree .
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+// require jquery.ui.all
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require bootstrap-filestyle.min
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
 //= require adventure.js
