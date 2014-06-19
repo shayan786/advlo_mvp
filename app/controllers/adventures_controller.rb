@@ -17,7 +17,7 @@ class AdventuresController < ApplicationController
   #     => redirect to register / sign in
   # 2) User is logged in but is not an authorized guide i.e is missing vital information in their profile to be a host
   #     => redirect to edit profile with with required info.
-  # 3) User is logged in and profile is setup to have
+  # 3) User is logged in and profile is setup to host
   #     => redirect to create an adventure form
 
   def create_prefill
@@ -58,7 +58,7 @@ class AdventuresController < ApplicationController
   # Using a private method to encapsulate the permissible parameters is just a good pattern
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
-  def appointment_params
+  def adventure_params
     params.required(:adventure).permit(:title, :subtitle, :attachment)
   end
 end
