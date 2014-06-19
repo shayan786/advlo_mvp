@@ -3,7 +3,10 @@
     .d_error_msgs= devise_error_messages!
     .panel.panel-default.container
       %h2.panel-heading Edit My Profile
-      %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_edit_form"}
+      .text-center
+        .update_notice
+          = notice
+      %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_edit_form", enctype: "multipart/form-data"}
         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
         .panel-body
@@ -65,11 +68,14 @@
                 %a.forgot_password{href: "/users/password/new"} Reset Password
           .col-md-6.text-center
             .row
-              - if current_user.avatar_url.nil? || current_user.avatar_url.empty?
-              - else
+              - if !current_user.avatar_file_name.nil?
+                = image_tag "#{current_user.avatar.url(:profile)}", :class => "img-thumbnail img-responsive"
+              - elsif !current_user.avatar_url.nil? || current_user.avatar_url.empty?
                 = image_tag "#{current_user.avatar_url}?type=square&height=100&width=100", :class => "img-thumbnail img-responsive"
+              - else 
+                = image_tag "#{current_user.avatar.url(:thumb)}", :class => "img-thumbnail img-responsive"
             .row.form-group
-              %input.filestyle{type: "file", :data => {:input => "false", :icon => "false", :buttonText => "SET PHOTO"}}
+              %input.filestyle{type: "file", name: "user[avatar]", id: "user_avatar", :data => {:input => "false", :icon => "false", :buttonText => "SET PHOTO"}}
             - if !current_user.is_guide?
               .row
                 .col-md-6.col-md-offset-3
@@ -87,44 +93,25 @@
                         %li Languagues
                       - if current_user.skillset.nil? || current_user.skillset.empty?
                         %li Skills / Certifications
+            - else
+              .row
+                .col-md-6.col-md-offset-3
+                  .panel.panel-default
+                    .panel-heading.panel-title.be_host_title Your ready to host!
+                    .panel-body.text-left
+                      Your profile is complete and is ready to start offering adventures with your expertise!
         .panel-footer.text-center
           %input.btn.btn-primary.update_btn{name: "commit", type: "submit", value: "UPDATE"}
 
-/ = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-/   %div
-/     = f.label :email
-/     %br/
-/     = f.email_field :email, autofocus: true
-/   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-/     %div
-/       Currently waiting confirmation for: #{resource.unconfirmed_email}6
-/   %div
-/     = f.label :password
-/     %i (leave blank if you don't want to change it)
-/     %br/
-/     = f.password_field :password, autocomplete: "off"
-/   %div
-/     = f.label :password_confirmation
-/     %br/
-/     = f.password_field :password_confirmation, autocomplete: "off"
-/   %div
-/     = f.label :current_password
-/     %i (we need your current password to confirm your changes)
-/     %br/
-/     = f.password_field :current_password, autocomplete: "off"
-/   %div= f.submit "Update"
-/ %h3 Cancel my account
-/ %p
-/   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-/ = link_to "Back", :back
+
+/ = form_for :user, :url => user_registration_path, :html => { :multipart => true, :name => "_method", :value => "put"} do |form|
+/   = form.file_field :avatar
+/   = form.submit
 
 :javascript
   $('[data-toggle="popover"]').popover({
     trigger: 'focus'
   });
-
-  //var datepicker = $.fn.datepicker.noConflict();
-  //$.fn.bootstrapDP = datepicker;
 
   $('#user_dob').datepicker({
     format: "mm/dd/yyyy",
