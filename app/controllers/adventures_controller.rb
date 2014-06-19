@@ -22,14 +22,14 @@ class AdventuresController < ApplicationController
 
   def create_prefill
     #define recursive call back url
-    redirect_url = '/adventures/create_prefill'
+    #redirect_url = '/adventures/create_prefill'
 
     #add option / params to redirect url after signing in and not redirect back to homepage to the first two ifs
     if !user_signed_in?
       redirect_to new_user_session_path
 
     elsif user_signed_in? && !current_user.is_guide?
-      redirect_to edit_user_registration_path
+      redirect_to '/users/edit', notice: "Please complete your profile so travelers know more about their host!"
 
     else
       #All checks out with user and being a guide

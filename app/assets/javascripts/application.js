@@ -17,16 +17,17 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
-//= require bootstrap-filestyle.min
+//= require bootstrap-filestyle
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
 //= require adventure.js
 //= require homepage.js
 //= require slider.js
+//= require user.js
 
 var init;
+
 init = function() {
-  
 };
 
 $(document).ready(init);
