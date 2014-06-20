@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   #Image Magick Config.
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :profile => "250x250>", :thumb => "100x100>" }, :default_url => "/system/users/avatars/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "100x100>" }, :default_url => "/system/users/avatars/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   # validates_presence_of :name, :avatar_url, :location, :skillset, :language, :sex, :age, :bio, :if => :is_guide?
@@ -49,11 +49,21 @@ class User < ActiveRecord::Base
     @user = User.find_by!(:id => current_user.id)
 
     #check to verify certain parmaters exist to make sure user is eligible to be guide
-    if @user.avatar_url.nil? || @user.name.nil? || @user.location.nil? || @user.skillset.nil? || @user.language.nil? || @user.dob.empty? || @user.sex.nil? || @user.bio.nil?
+    if @user.avatar_url.nil? || @user.name.nil? || @user.location.nil? || @user.skillset.nil? || @user.language.nil? || @user.dob.empty? || @user.sex.nil? || @user.bio.nil? || @user.short_description.nil?
       false
     else
       true
     end
+  end
+
+  def get_age(user_id)
+    @user = User.find_by!(:id => user_id)
+
+    now = Time.now.utc
+    birthday = @user.dob
+    current_age = now.year - birthday.year - (birthday.to_time.change(:year => now.year) > now ? 1 : 0)
+
+    return current_age
   end
 
   #Generate display url accessable to viewers / hosts e.g. users/chris-knight-rocks

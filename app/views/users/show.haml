@@ -1,6 +1,62 @@
 #p_banner
+  .container
+    .row
+      .col-md-4.col-md-offset-4
+        .panel.panel-default
+          .panel-body.text-center
+            - if !@user.avatar_file_name.nil?
+              = image_tag "#{@user.avatar.url(:profile_circle)}", :class => "img-circle img-responsive img_uploaded"
+            - elsif !@user.avatar_url.nil?
+              = image_tag "#{@user.avatar_url}?type=square&height=100&width=100", :class => "img-circle img-responsive"
+            - else 
+              = image_tag "#{@user.avatar.url(:profile_circle)}", :class => "img-circle img-responsive"
+
+            .banner_name= @user.name
+            .banner_subtitle= @user.short_description
+
 
 #p_overview
+  .container
+    .row
+      .col-md-9
+        .panel.panel-default
+          .panel-body
+            .col-md-1
+            .col-md-5
+              %li.overview_item
+                = @user.sex
+              %li.overview_item
+                = @user.get_age(@user.id)
+                YEARS OLD
+              %li.overview_item 
+                BASED IN 
+                = @user.location
+            .col-md-5
+              %li.overview_item_header
+                LANGUAGES:
+                .over_item_sub= @user.language
+              %li.overview_item_header
+                CERTIFICATIONS:
+                .over_item_sub= @user.skillset
+            .col-md-1
+      .col-md-3
+        .panel.panel-default
+          .panel-body
+            .box_header.text-center 
+              CONTACT ME
+            .box_header_line
+            .box_content
+            .box_social.container
+              - if !@user.fb_url.nil? && !@user.fb_url.empty?
+                %a{href: "http://#{@user.fb_url}", target: "_blank"}
+                  %i.fa.fa-facebook-square
+              - if !@user.tw_url.nil? && !@user.tw_url.empty?
+                %a{href: "http://#{@user.tw_url}", target: "_blank"}
+                  %i.fa.fa-twitter-square
+              - if !@user.li_url.nil? && !@user.li_url.empty?
+                %a{href: "http://#{@user.li_url}", target: "_blank"}
+                  %i.fa.fa-linkedin-square
+
 
 #p_my_adventures
 

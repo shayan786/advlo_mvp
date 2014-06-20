@@ -33,7 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
  
   # Customize User Profile Update Devise Params
   def account_update_params
-    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :li_url)
   end
 
   # check if we need password to update user data

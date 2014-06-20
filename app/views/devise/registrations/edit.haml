@@ -23,6 +23,11 @@
                 %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", value: "#{current_user.email}"}
             .form-group.row
               .col-md-4
+                .form_label.text-right Short Description
+              .col-md-8
+                %input.form-control{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! e.g. Climber, Hiker"}}
+            .form-group.row
+              .col-md-4
                 .form_label.text-right Location
               .col-md-8
                 %input.form-control{placeholder: "Location", type: "text", name: "user[location]", id: "user_location", value: "#{current_user.location}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Current Location"}}
@@ -61,6 +66,21 @@
                 %textarea.form-control{rows: "7", name: "user[skillset]", id: "user_skillset", placeholder: "Have specialized training or skills?", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Skills or Certifications, seperate by a comma (,) (e.g. Certified Scuba Diver, Licenced Kayak Instructor)"}}
                   - if !current_user.skillset.nil?
                     #{current_user.skillset}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Facebook Url
+              .col-md-8
+                %input.form-control{placeholder: "www.facebook.com/myname", type: "text", name: "user[fb_url]", id: "user_fb_url", value: "#{current_user.fb_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Enter your facebook user url, it will be displayed on the host profile page"}}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Twitter Url
+              .col-md-8
+                %input.form-control{placeholder: "www.twitter.com/myname", type: "text", name: "user[tw_url]", id: "user_tw_url", value: "#{current_user.tw_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Enter your twitter user url, it will be displayed on the host profile page"}}
+            .form-group.row
+              .col-md-4
+                .form_label.text-right LinkedIn Url
+              .col-md-8
+                %input.form-control{placeholder: "www.linkedin.com/myname", type: "text", name: "user[li_url]", id: "user_li_url", value: "#{current_user.li_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Enter your linkedin user url, it will be displayed on the host profile page"}}
             / .row
             /   .col-md-4
             /     .form_label.text-right Password
@@ -85,6 +105,8 @@
                       %b Please fill in the following:
                       - if current_user.name.nil? || current_user.name.empty?
                         %li Name
+                      - if current_user.name.nil? || current_user.name.empty?
+                        %li Short Description
                       - if current_user.location.nil? || current_user.location.empty?
                         %li Location
                       - if current_user.dob.nil?
