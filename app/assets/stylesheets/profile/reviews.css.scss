@@ -1,0 +1,24 @@
+#p_reviews {
+	min-height: 300px;
+	background-color: $profile_overview_background_color;
+
+	.panel {
+		background-color: $profile_overview_box_color;
+		color: $white;
+		border-color: $profile_overview_box_color;
+		@include border_radius(0px);
+		min-height: 260px;
+		padding-left: 20px;
+		padding-right: 20px;
+
+		.review_header {
+			font-family: nexa_bold !important;
+			color: $profile_box_header_font_color;
+			font-size: 2.8em;
+		}
+
+	}
+
+	
+
+}

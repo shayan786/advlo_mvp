@@ -45,21 +45,49 @@
             .box_header.text-center 
               CONTACT ME
             .box_header_line
-            .box_content
-            .box_social.container
-              - if !@user.fb_url.nil? && !@user.fb_url.empty?
-                %a{href: "http://#{@user.fb_url}", target: "_blank"}
-                  %i.fa.fa-facebook-square
-              - if !@user.tw_url.nil? && !@user.tw_url.empty?
-                %a{href: "http://#{@user.tw_url}", target: "_blank"}
-                  %i.fa.fa-twitter-square
-              - if !@user.li_url.nil? && !@user.li_url.empty?
-                %a{href: "http://#{@user.li_url}", target: "_blank"}
-                  %i.fa.fa-linkedin-square
-
+            .text-center
+              %a.btn.btn-primary.msg_btn{href: "#"}
+                %i.fa.fa-envelope-o
+                SEND MESSAGE
+            .row.box_social.text-center
+              .col-md-12
+                - if !@user.fb_url.nil? && !@user.fb_url.empty?
+                  %a{href: "http://#{@user.fb_url}", target: "_blank", style: "padding-right: 25px;"}
+                    %i.fa.fa-facebook-square
+                - if !@user.tw_url.nil? && !@user.tw_url.empty?
+                  %a{href: "http://#{@user.tw_url}", target: "_blank", style: "padding-right: 25px;"}
+                    %i.fa.fa-twitter-square
+                - if !@user.li_url.nil? && !@user.li_url.empty?
+                  %a{href: "http://#{@user.li_url}", target: "_blank"}
+                    %i.fa.fa-linkedin-square
 
 #p_my_adventures
+  .container
+    .my_adv_header 
+      MY ADVENTURES
+      %span.header_sub 
+        VIEW ALL >>>
+
+- #ADD ADVENTURE FORMATTING DOWN BY CK 
+
 
 #p_bio
+  .container
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            .bio_header
+              THE BIO
+            .bio_body
+              = @user.bio
+
 
 #p_reviews
+  .container
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            .review_header
+              REVIEWS
