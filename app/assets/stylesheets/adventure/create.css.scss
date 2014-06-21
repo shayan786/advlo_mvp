@@ -11,6 +11,22 @@
 				background-color: #FFF;
 			}
 
+			.panel-footer {
+				background-color: $white;
+
+				.preview_btn {
+					font-size: 1.4em;
+					background-color: $login_btn_color;
+					border-color: $login_btn_color;
+					padding: 10px 20px;
+
+					&:hover {
+						background-color: $login_btn_color_hover;
+						border-color: $login_btn_color_hover;
+					}
+				}
+			}
+
 		}
 
 	}

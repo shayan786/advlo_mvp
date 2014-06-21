@@ -41,19 +41,15 @@ class AdventuresController < ApplicationController
     # 1
     if !user_signed_in?
       redirect_to new_user_session_path
-    end
-
     # 2
-    if user_signed_in? && !current_user.is_guide?(current_user.id)
+    elsif user_signed_in? && !current_user.is_guide?(current_user.id)
       redirect_to '/users/edit', notice: "Please complete your profile so travelers know more about their host!"
-    end
-
     # 3
-    if user_signed_in? && current_user.is_guide?(current_user.id) && !UserAdventure.where(user_id: current_user.id).present?
-      redirect_to '/adventure/info'
+    elsif user_signed_in? && current_user.is_guide?(current_user.id) && !UserAdventure.where(user_id: current_user.id).present?
+      redirect_to '/adventures/info'
+    else 
+      redirect_to '/adventures/create'
     end
-
-    redirect_to '/adventure/create'
 
   end
 
@@ -61,7 +57,7 @@ class AdventuresController < ApplicationController
   def create
     #add another check...before actually showing the form
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
-      redirect_to '/adventure/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
+      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
 
   end
