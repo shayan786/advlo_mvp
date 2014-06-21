@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'users/:id'						=> 'users#show'
 
   #adventure controller routes
+  get '/adventures/info'              => 'adventures#hosting_info'
+  get '/adventures/request'           => 'adventures#request_info'
   get '/adventures/create_prefill'		=> 'adventures#create_prefill'
   post '/adventures/create_postfill'	=> 'adventures#create_postfill'
   resources :adventures

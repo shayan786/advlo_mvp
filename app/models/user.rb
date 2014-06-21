@@ -45,11 +45,11 @@ class User < ActiveRecord::Base
     Notifier.welcome_email(self).deliver
   end
 
-  def self.is_guide?
-    @user = User.find_by!(:id => current_user.id)
+  def is_guide?(user_id)
+    @user = User.find_by!(:id => user_id)
 
     #check to verify certain parmaters exist to make sure user is eligible to be guide
-    if @user.avatar_url.nil? || @user.name.nil? || @user.location.nil? || @user.skillset.nil? || @user.language.nil? || @user.dob.empty? || @user.sex.nil? || @user.bio.nil? || @user.short_description.nil?
+    if @user.avatar_url.nil? || @user.avatar_url.empty? || @user.name.nil? || @user.name.empty? || @user.location.nil? || @user.location.empty? || @user.skillset.nil? || @user.skillset.empty? || @user.language.nil? || @user.language.empty? || @user.dob.nil? || @user.sex.nil? || @user.sex.empty? || @user.bio.nil? || @user.bio.empty? || @user.short_description.nil? || @user.short_description.empty?
       false
     else
       true
@@ -61,6 +61,11 @@ class User < ActiveRecord::Base
 
     now = Time.now.utc
     birthday = @user.dob
+
+    if birthday.nil? 
+      return nil
+    end
+
     current_age = now.year - birthday.year - (birthday.to_time.change(:year => now.year) > now ? 1 : 0)
 
     return current_age

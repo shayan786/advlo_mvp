@@ -24,7 +24,10 @@ class Adventure < ActiveRecord::Base
   #Create a new adventure
   def self.create!(options = {})
   	@adventure = Adventure.new
+
+    
   	@adventure.save!
+
   	@adventure
   end
 
