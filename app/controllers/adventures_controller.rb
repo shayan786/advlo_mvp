@@ -61,7 +61,7 @@ class AdventuresController < ApplicationController
   def create
     #add another check...before actually showing the form
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
-      redirect_to '/adventure/create_prefill'
+      redirect_to '/adventure/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
 
   end

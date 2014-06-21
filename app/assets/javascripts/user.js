@@ -13,3 +13,21 @@ function input_datepicker() {
       autoclose: true
     });
 }
+
+function input_maxlength() {
+  $('input.show_ml').maxlength({
+    alwaysShow: true,
+    warningClass: "label label-success",
+    limitReachedClass: "label label-danger",
+    validate: true,
+    placement: 'bottom'
+  });
+
+  $('textarea').maxlength({
+    alwaysShow: true,
+    warningClass: "label label-success",
+    limitReachedClass: "label label-danger",
+    validate: true,
+    placement: 'bottom'
+  });
+}

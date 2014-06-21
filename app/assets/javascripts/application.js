@@ -18,6 +18,7 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-filestyle
+//= require bootstrap-maxlength
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
 //= require adventure.js

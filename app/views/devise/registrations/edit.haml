@@ -25,7 +25,7 @@
               .col-md-4
                 .form_label.text-right Short Description
               .col-md-8
-                %input.form-control{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! e.g. Climber, Hiker"}}
+                %input.form-control.show_ml{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", maxlength: "25", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! e.g. Climber, Hiker"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Location
@@ -51,19 +51,19 @@
               .col-md-4
                 .form_label.text-right Biography
               .col-md-8
-                %textarea.form-control{rows: "8", name: "user[bio]", id: "user_bio", placeholder: "Whats your story?", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you! Share your story!"}}
+                %textarea.form-control.show_ml{rows: "8", name: "user[bio]", id: "user_bio", placeholder: "Whats your story?", maxlength: "300", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you! Share your story!"}}
                   - if !current_user.bio.nil?
                     #{current_user.bio}
             .form-group.row
               .col-md-4
                 .form_label.text-right Languages
               .col-md-8
-                %input.form-control{placeholder: "Languages", type: "text", name: "user[language]", id: "user_language", value: "#{current_user.language}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Languagues Spoken, seperate by a comma (,) (e.g. English, French)"}}
+                %input.form-control.show_ml{placeholder: "Languages", type: "text", name: "user[language]", id: "user_language", value: "#{current_user.language}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Languagues Spoken, seperate by a comma (,) (e.g. English, French)"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Skills / Certifications
               .col-md-8
-                %textarea.form-control{rows: "7", name: "user[skillset]", id: "user_skillset", placeholder: "Have specialized training or skills?", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Skills or Certifications, seperate by a comma (,) (e.g. Certified Scuba Diver, Licenced Kayak Instructor)"}}
+                %textarea.form-control.show_ml{rows: "7", name: "user[skillset]", id: "user_skillset", placeholder: "Have specialized training or skills?", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Skills or Certifications, seperate by a comma (,) (e.g. Certified Scuba Diver, Licenced Kayak Instructor)"}}
                   - if !current_user.skillset.nil?
                     #{current_user.skillset}
             .form-group.row
@@ -136,6 +136,7 @@
   $(document).ready(function() {
     input_datepicker();
     input_popover();
+    input_maxlength();
   });
 
 
