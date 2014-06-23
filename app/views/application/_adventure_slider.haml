@@ -29,13 +29,3 @@
                   #guide-image= image_tag "#{adv.users.first.avatar_url}?type=large" if adv.users.first && adv.users.first.avatar_url
                 .copy-container{class: "copy-#{i}"}
 
-                
-
-                
-
-:javascript
-  sliderInit();
-  $(window).resize(function(){
-    sliderInit();
-  })
-  

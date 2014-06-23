@@ -14,7 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 // require jquery.ui.all
-//= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-filestyle
@@ -23,13 +22,4 @@
 //= require masonry.pkgd.min.js
 //= require adventure.js
 //= require homepage.js
-//= require slider.js
 //= require user.js
-
-var init;
-
-init = function() {
-};
-
-$(document).ready(init);
-$(document).on('page:load', init);
