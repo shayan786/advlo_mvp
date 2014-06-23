@@ -106,13 +106,38 @@ function resetSideBar(){
   })
 }
 
-adventureInit = function() {
+function navigationBreadcrumbs(){
+  $(document).ready(function() {
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top-77
+          }, 1000);
+          return false;
+        }
+      }
+    });
+  });
+
+  if($(window).height() < 705){
+    $('.navigation-brick').last().hide()
+  }
+}
+
+
+adventureShow = function() {
   sizeSidebar()
-  adventureHover();
-  heroScroll();
-  filterCatch();
-  masonrySetup();
   navBarCatch(); 
-  positionLocationText()
-  masonrySetup();
+  navigationBreadcrumbs();
 };
+
+adventureIndex = function() {
+  positionLocationText();
+  masonrySetup();
+  filterCatch();
+  heroScroll();
+  adventureHover();
+}
