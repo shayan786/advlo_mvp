@@ -16,7 +16,7 @@
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                - if current_user.name.nil? || current_user.name.emptry?
+                - if current_user.name.nil? || current_user.name.empty?
                   #{current_user.email}
                 - else
                   #{current_user.name}
