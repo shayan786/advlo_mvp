@@ -1,4 +1,7 @@
 class Adventure < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   has_many :user_adventures
   has_many :users, through: :user_adventures
   accepts_nested_attributes_for :user_adventures, :allow_destroy => true
@@ -8,23 +11,15 @@ class Adventure < ActiveRecord::Base
 
   validates_uniqueness_of :title
 
-  before_save :set_slug
-  
-  #Generate display url accessable to viewers / hosts e.g. adventures/go-to-this-awesome-place
-  def set_slug
-    if self.slug == nil || self.slug == ''
-      self.slug = self.title.gsub('-','')
-                            .gsub('.','')
-                            .gsub("'",'')
-                            .gsub('&','')
-                            .gsub(' ','-')
-    end
+
+  def should_generate_new_friendly_id?
+    new_record?
   end
   
   #Create a new adventure
+  #these methods should be handled in the controller
   def self.create!(options = {})
   	@adventure = Adventure.new
-
     
   	@adventure.save!
 

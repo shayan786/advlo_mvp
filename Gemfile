@@ -19,7 +19,7 @@ gem 'omniauth'
 gem 'omniauth-facebook' 
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
-
+gem 'friendly_id', '~> 5.0.0'
 
 group :production do 
   gem 'rails_12factor'

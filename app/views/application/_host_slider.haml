@@ -5,12 +5,14 @@
 
   
     .feat-hosts-container
-      - if @feat_hosts
-        - @feat_hosts.each_with_index do |user, i|
-          - if user.avatar_url
-            .img-circle.col-lg-4.host= image_tag "#{user.avatar_url}?type=large"
-          - else
-            .img-circle.col-lg-4.host= image_tag user.avatar.url(:large) 
-                        
+      .host-swiper-container
+        - if @feat_hosts
+          - @feat_hosts.each_with_index do |user, i|
+            %a.swiper-slide{href: user_path(user)}
+              - if user.avatar_url
+                .col-lg-4.host= image_tag "#{user.avatar_url}?type=large"
+              - else
+                .col-lg-4.host= image_tag user.avatar.url(:large) 
+                            
 
-              
+                  
