@@ -36,18 +36,4 @@
                 #guide-image= image_tag "#{current_user.avatar_url}?type=large" if current_user && current_user.avatar_url
               .copy-container{class: "copy-#{i}"}
 
-
-:javascript
-  
-  $(document).ready(function(){ 
-    positionLocationText()
-    masonrySetup();
-  })
-
-  $(document).on('page:load', function() {
-    // turbolinks
-    positionLocationText()
-    adventureHover();
-    heroScroll();
-    masonrySetup();
-  });
+              

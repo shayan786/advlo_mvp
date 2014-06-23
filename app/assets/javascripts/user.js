@@ -1,17 +1,17 @@
 function input_popover() {
 	$('[data-toggle="popover"]').popover({
-      trigger: 'focus'
-    });
+    trigger: 'focus'
+  });
 }
 
 function input_datepicker() {
-    $('#user_dob').datepicker({
-      format: "mm/dd/yyyy",
-      startDate: "01/01/1940",
-      startView: 2,
-      orientation: "auto right",
-      autoclose: true
-    });
+  $('#user_dob').datepicker({
+    format: "mm/dd/yyyy",
+    startDate: "01/01/1940",
+    startView: 2,
+    orientation: "auto right",
+    autoclose: true
+  });
 }
 
 function input_maxlength() {
@@ -30,4 +30,16 @@ function input_maxlength() {
     validate: true,
     placement: 'bottom'
   });
+}
+
+function photoInput(){
+  $(":file").filestyle({input: false, icon: false, buttonText: "SET PHOTO"});
+}
+
+
+function usersInit(){
+  input_popover();
+  input_datepicker();
+  input_maxlength();
+  photoInput();
 }

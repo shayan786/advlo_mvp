@@ -95,7 +95,7 @@
               - else 
                 = image_tag "#{current_user.avatar.url(:profile)}", :class => "img-thumbnail img-responsive"
             .row.form-group
-              %input.filestyle{type: "file", name: "user[avatar]", id: "user_avatar", :data => {:input => "false", :icon => "false", :buttonText => "SET PHOTO"}}
+              %input.filestyle{type: "file", name: "user[avatar]", id: "user_avatar"}
             - if !current_user.is_guide?(current_user.id)
               .row
                 .col-md-6.col-md-offset-3
@@ -133,10 +133,4 @@
 /   = form.submit
 
 :javascript
-  $(document).ready(function() {
-    input_datepicker();
-    input_popover();
-    input_maxlength();
-  });
-
-
+  photoInput()

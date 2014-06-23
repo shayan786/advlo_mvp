@@ -29,7 +29,35 @@
 var init;
 
 init = function() {
+  adventureInit();
+  usersInit();
+  resizeFunctions();
 };
 
-$(document).ready(init);
-$(document).on('page:load', init);
+
+$(document).ready(function(){
+ init();
+ console.log('doc ready')
+});
+
+$(window).load(function(){
+ init();
+ console.log('window load')
+});
+
+$(document).on('page:load', function(){
+ init();
+ console.log('doc load')
+});
+
+$(document).on('page:change', function(){
+  init();
+  console.log('page change')
+});
+
+function resizeFunctions(){
+  $(window).resize(function(){
+    sizeSidebar();
+    homepageInit();
+  })
+}

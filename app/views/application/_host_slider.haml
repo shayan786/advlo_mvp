@@ -7,14 +7,10 @@
     .feat-hosts-container
       - if @feat_hosts
         - @feat_hosts.each_with_index do |user, i|
-          .host= user.inspect
+          - if user.avatar_url
+            .img-circle.col-lg-4.host= image_tag "#{user.avatar_url}?type=large"
+          - else
+            .img-circle.col-lg-4.host= image_tag user.avatar.url(:large) 
                         
 
               
-
-:javascript
-  sliderInit();
-  $(window).resize(function(){
-    sliderInit();
-  })
-  

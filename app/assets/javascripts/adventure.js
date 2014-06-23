@@ -1,4 +1,3 @@
-
 function positionLocationText(){
   $('#location_text').css('top', ($('#hero_image').height() / 2))
 }
@@ -114,15 +113,6 @@ adventureInit = function() {
   filterCatch();
   masonrySetup();
   navBarCatch(); 
+  positionLocationText()
+  masonrySetup();
 };
-
-$(window).resize(function(){
-  sizeSidebar();
-})
-
-$(document).ready(adventureInit);
-$(document).on('page:load', adventureInit);
-
-
-
-
