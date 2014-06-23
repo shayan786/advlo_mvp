@@ -12,12 +12,10 @@ class AdventuresController < ApplicationController
 
   # info page for creating a new adventure
   def hosting_info
-
   end
 
   # info page for requesting a certain adventure
   def request_info
-
   end
 
   #------------------------HOST LOGIC START----------------------------
