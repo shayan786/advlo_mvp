@@ -1,9 +1,119 @@
 #adventure_create
   .container
     .panel.panel-default.container
-      %h2.panel-heading Guide A New Adventure
+      .panel-heading
+        %ul.nav.nav-pills
+          %li.active
+            %a{href: "#"}
+              BASICS
+          %li
+            %i.fa.fa-long-arrow-right
+          %li
+            %a{href: "#"}
+              PHOTOS
+          %li
+            %i.fa.fa-long-arrow-right
+          %li
+            %a{href: "#"}
+              SCHEDULE
+          %li
+            %i.fa.fa-long-arrow-right
+          %li
+            %a{href: "#"}
+              PROFILE
+          %li
+            %i.fa.fa-long-arrow-right
+          %li
+            %a{href: "#"}
+              PAYMENT
+          %li
+            %i.fa.fa-long-arrow-right
+          %li
+            %a{href: "#"}
+              PUBLISH
+
+      .panel.panel-default
+        .panel-heading.text-center
+          BASICS
+        .panel-body
+          .form-group.row
+            .col-md-4
+              .form_label.text-right Title *
+            .col-md-6
+              %input.form-control.show_ml{type: "text", required: "required", name: "adventure[title]", id: "adv_name", value: "", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Surfing in la punta"}}
+          .form-group.row
+            .col-md-4
+              .form_label.text-right Location *
+            .col-md-6
+              %input.form-control.show_ml{type: "text", required: "required", name: "adventure[location]", id: "adv_location", value: "", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Meeting Address, Ex: 123 Hiking St. Denver, CO 80219"}}
+          .form-group.row
+            .col-md-4
+              .form_label.text-right Summary *
+            .col-md-6
+              %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", value: "", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This is the description for your adventure! Sell it with a detailed & informative summary!"}}
+          .form-group.row
+            .col-md-4
+              .form_label.text-right Capacity *
+            .col-md-1
+              %input.form-control{type: "text", required: "required", name: "adventure[cap_min]", id: "adv_cap_min", value: ""}
+              .text-center Min
+            .col-md-1
+              %input.form-control{type: "text", required: "required", name: "adventure[cap_max]", id: "adv_cap_max", value: ""}
+              .text-center Max
+          .form-group.row
+            .col-md-4
+              .form_label.text-right Duration *
+            .col-md-1
+              %input.form-control{type: "text", required: "required", name: "adventure[duration_num]", id: "adv_duration_num", value: ""}
+            .col-md-2
+              %select.form-control{name: "user[duration_type]", id: "adv_duration_type"}
+                %option Minutes
+                %option Hours
+                %option Days
+          .form-group.row
+            .col-md-4
+              .form_label.text-right Price *
+            .col-md-2
+              .input-group
+                %span.input-group-addon
+                  $
+                %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: ""}
+                %span.input-group-addon
+                  USD
+            .col-md-3
+              %label.radio-inline
+                %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_person"}
+                  Per Person
+              %label.radio-inline
+                %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_adv"}
+                  Flat Rate
+          .form-group.row
+            .col-md-4
+              .form_label.text-right Category
+            .col-md-2
+              %select.form-control{name: "user[category]", id: "adv_category"}
+                %option 
+                %option Hiking
+                %option Climbing
+                %option Skiing
+                %option Surfing
+          .form-group.row
+            .col-md-4
+              .form_label.text-right Other Notes
+            .col-md-6
+              %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", value: "", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
+
+            
 
 
       .panel-footer.text-center
         %a.btn.btn-primary.preview_btn{href: "#"}
-          PREVIEW
+          NEXT
+
+
+:javascript
+  $(document).ready(function() {
+    //input_datepicker();
+    input_popover();
+    input_maxlength();
+  });

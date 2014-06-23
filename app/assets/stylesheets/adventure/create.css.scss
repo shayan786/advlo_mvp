@@ -5,17 +5,54 @@
 
 		.panel {
 
-			h2 {
-				font-size: 2.6em;
-				margin-bottom: 30px;
+			.panel-heading {
+				font-size: 1.6em;
 				background-color: #FFF;
+
+
+				.nav {
+					padding-left: 70px;
+				}
 			}
+
+			.fa {
+				padding-top: 15px;
+				padding-left: 15px;
+				padding-right: 15px;
+				color: $light_gray;
+			}
+
+			//FORM FORMATTING
+			.panel {
+				margin-top: 20px;
+				border-color: #FFF;
+
+				.panel-heading {
+					font-size: 2.0em;
+				}
+
+
+				.form_label {
+					padding-top: 5px;
+					font-size: 1.2em;
+					font-weight: bold;
+				}
+
+				.radio-inline {
+					padding-top: 8px;
+				}
+
+				.panel-body {
+					padding-top: 25px;
+				}
+			}
+
 
 			.panel-footer {
 				background-color: $white;
 
 				.preview_btn {
-					font-size: 1.4em;
+					font-size: 1.8em;
 					background-color: $login_btn_color;
 					border-color: $login_btn_color;
 					padding: 10px 20px;
