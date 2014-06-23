@@ -39,12 +39,14 @@
 
 :javascript
   
-  $(document).ready(function(){
+  $(document).ready(function(){ 
+    positionLocationText()
     masonrySetup();
   })
 
   $(document).on('page:load', function() {
     // turbolinks
+    positionLocationText()
     adventureHover();
     heroScroll();
     masonrySetup();

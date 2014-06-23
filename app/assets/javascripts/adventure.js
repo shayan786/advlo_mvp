@@ -1,3 +1,8 @@
+
+function positionLocationText(){
+  $('#location_text').css('top', ($('#hero_image').height() / 2))
+}
+
 function heroScroll(){
   var hero = $('#hero_image img');
   var heroFont = $('#location_text');
@@ -15,7 +20,7 @@ function adventureHover(){
     },500)
     $(this).stop().animate({
       opacity: 1
-    })
+    },140)
   },function(){
     $('.copy-'+$(this).attr('id')).stop().animate({
       opacity: 1
