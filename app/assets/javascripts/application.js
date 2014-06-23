@@ -13,19 +13,22 @@
 // require_tree .
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+// require jquery.ui.all
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require bootstrap-filestyle
+//= require bootstrap-maxlength
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
 //= require adventure.js
 //= require homepage.js
 //= require slider.js
+//= require user.js
 
 var init;
+
 init = function() {
-  
 };
 
 $(document).ready(init);

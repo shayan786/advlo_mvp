@@ -11,10 +11,14 @@
 
 		.panel {
 
-			.panel-heading {
+			h2 {
 				font-size: 2.6em;
 				margin-bottom: 30px;
 				background-color: #FFF;
+			}
+
+			.update_notice {
+				font-size: 1.2em;
 			}
 
 			form {
@@ -37,11 +41,17 @@
 					}
 				}
 
-				.img_btn {
-					font-size: 1.2em;
-					margin-top: 10px;
-					margin-bottom: 10px;
-					padding: 10px 20px;
+				.bootstrap-filestyle {
+					margin: 10px auto;
+
+					.btn {
+						font-size: 1.2em;
+						padding: 10px 30px;
+
+						&:hover {
+
+						}
+					}
 				}
 
 				.panel-footer {
@@ -55,6 +65,10 @@
 
 				.forgot_password {
 					text-decoration: none;
+					font-size: 1.3em;
+				}
+
+				.be_host_title {
 					font-size: 1.3em;
 				}
 			}

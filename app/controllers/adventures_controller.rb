@@ -10,6 +10,16 @@ class AdventuresController < ApplicationController
     @adventure = Adventure.find_by_slug(params[:id])
   end
 
+  # info page for creating a new adventure
+  def hosting_info
+
+  end
+
+  # info page for requesting a certain adventure
+  def request_info
+
+  end
+
   #------------------------HOST LOGIC START----------------------------
 
   # Method to handle hosting/creating an adventure logic as follows:
@@ -17,22 +27,27 @@ class AdventuresController < ApplicationController
   #     => redirect to register / sign in
   # 2) User is logged in but is not an authorized guide i.e is missing vital information in their profile to be a host
   #     => redirect to edit profile with with required info.
-  # 3) User is logged in and profile is setup to host
+  # 3) User is logged in and profile is setup to host but has never hosted before
+  #     => redirect to create an adventure info. page
+  # 4) User is logged in and profile is setup to host and has hosted before
   #     => redirect to create an adventure form
 
   def create_prefill
     #define recursive call back url
-    redirect_url = '/adventures/create_prefill'
+    #redirect_url = '/adventures/create_prefill'
 
     #add option / params to redirect url after signing in and not redirect back to homepage to the first two ifs
+    
+    # 1
     if !user_signed_in?
       redirect_to new_user_session_path
-
-    elsif user_signed_in? && !current_user.is_guide?
-      redirect_to edit_user_registration_path
-
-    else
-      #All checks out with user and being a guide
+    # 2
+    elsif user_signed_in? && !current_user.is_guide?(current_user.id)
+      redirect_to '/users/edit', notice: "Please complete your profile so travelers know more about their host!"
+    # 3
+    elsif user_signed_in? && current_user.is_guide?(current_user.id) && !UserAdventure.where(user_id: current_user.id).present?
+      redirect_to '/adventures/info'
+    else 
       redirect_to '/adventures/create'
     end
 
@@ -40,16 +55,15 @@ class AdventuresController < ApplicationController
 
   #Show the create an Adventure Form and create a new entry for an adventure
   def create
-    #insert url inject session check for current user
-    if current_user.is_guide(current_user.id) == true
-      @adventure = Adventure.create!(params)
-    else
-      redirect_to '/adventures/create_prefill'
+    #add another check...before actually showing the form
+    if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
+      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
+
   end
 
   def create_postfill
-
+    @adventure = Adventure.create(params)
   end
 
   #------------------------HOST LOGIC END-----------------------------

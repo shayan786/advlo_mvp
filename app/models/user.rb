@@ -11,11 +11,14 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   #Image Magick Config.
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "100x100>" }, :default_url => "/system/users/avatars/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   # validates_presence_of :name, :avatar_url, :location, :skillset, :language, :sex, :age, :bio, :if => :is_guide?
 
+  #DO WE WANT TO DO SLUG NAME FOR PROFILE SHOW?
+  #validates_uniqueness_of :name  <-- wont work
+  #before_save :set_slug
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -42,14 +45,40 @@ class User < ActiveRecord::Base
     Notifier.welcome_email(self).deliver
   end
 
-  def self.is_guide?
-    @user = User.find_by!(:id => current_user.id)
+  def is_guide?(user_id)
+    @user = User.find_by!(:id => user_id)
 
     #check to verify certain parmaters exist to make sure user is eligible to be guide
-    if @user.avatar_url.nil? || @user.name.nil? || @user.location.nil? || @user.skillset.nil? || @user.language.nil? || @user.age.nil? || @user.sex.nil? || @user.bio.nil?
+    if @user.avatar_url.nil? || @user.avatar_url.empty? || @user.name.nil? || @user.name.empty? || @user.location.nil? || @user.location.empty? || @user.skillset.nil? || @user.skillset.empty? || @user.language.nil? || @user.language.empty? || @user.dob.nil? || @user.sex.nil? || @user.sex.empty? || @user.bio.nil? || @user.bio.empty? || @user.short_description.nil? || @user.short_description.empty?
       false
     else
       true
+    end
+  end
+
+  def get_age(user_id)
+    @user = User.find_by!(:id => user_id)
+
+    now = Time.now.utc
+    birthday = @user.dob
+
+    if birthday.nil? 
+      return nil
+    end
+
+    current_age = now.year - birthday.year - (birthday.to_time.change(:year => now.year) > now ? 1 : 0)
+
+    return current_age
+  end
+
+  #Generate display url accessable to viewers / hosts e.g. users/chris-knight-rocks
+  def set_slug
+    if self.slug == nil || self.slug == ''
+      self.slug = self.name.gsub('-','')
+                            .gsub('.','')
+                            .gsub("'",'')
+                            .gsub('&','')
+                            .gsub(' ','-')
     end
   end
 

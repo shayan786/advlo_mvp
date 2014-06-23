@@ -122,8 +122,29 @@ $footer_background_color:		$white !default;
 
 
 //---------------------PROFILE PAGE (EDIT/SHOW)-------------
-$profile_background_color: 		$lighter_gray !default;
-$profile_font_color:			$dark_gray !default;
+//EDIT
+$profile_background_color: 				$lighter_gray !default;
+$profile_font_color:					$dark_gray !default;
+
+//SHOW
+$profile_banner_font_color:				$white !default;
+$profile_banner_name_font:				cabin_bold;
+$profile_banner_subtitle_font:			cabin_regular;
+
+$profile_box_header_font_color:			$orange !default;
+
+$profile_over_item_font:				cabin_bold;
+$profile_overview_background_color:		$dark_gray !default;
+$profile_overview_box_color:			$light_gray !default;
+
+$profile_box_header_font:				cabin_bold;
+$profile_box_header_font_color:			$orange !default;
 
 
+//-----------------ADVENTURE PAGES-----------------------
+//SHOW
+//EDIT
+//CREATE - FORM
+//HOST INFO PAGE
+//REQUEST INFO PAGE
 
