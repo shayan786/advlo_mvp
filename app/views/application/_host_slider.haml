@@ -20,7 +20,7 @@
                     .desc= user.short_description
             -else
               %a.swiper-slide{href: user_path(user)}
-                .image-wrapper.host-image{style: "background: url(#{user.avatar.url(:large)}) no-repeat center center;"}
+                .image-wrapper.host-image{style: "background: url(#{user.avatar.url(:large)}) no-repeat center center; height: 100%;"}
                   .copy
                     .name= user.name
                     .location= user.location
