@@ -127,6 +127,10 @@ function navigationBreadcrumbs(){
   }
 }
 
+function AdvPhotoInput(){
+  $("#adv_cover_img").filestyle({input: false, icon: false, buttonText: "SET COVER IMAGE"});
+  $("#adv_gallery_img").filestyle({input: false, icon: false, buttonText: "SELECT GALLERY IMAGES"});
+}
 
 adventureShow = function() {
   sizeSidebar()
@@ -140,4 +144,12 @@ adventureIndex = function() {
   filterCatch();
   heroScroll();
   adventureHover();
+}
+
+adventureCreate = function() {
+  AdvPhotoInput();
+  input_popover();
+  input_datepicker();
+  input_maxlength();
+  create_tabs();
 }

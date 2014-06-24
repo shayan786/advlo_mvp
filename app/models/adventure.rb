@@ -1,7 +1,11 @@
 class Adventure < ActiveRecord::Base
   has_many :user_adventures
   has_many :users, through: :user_adventures
-  accepts_nested_attributes_for :user_adventures, :allow_destroy => true
+
+  #has_one :adventure_cover_img
+  has_many :adventure_gallery_images
+
+  accepts_nested_attributes_for :user_adventures, :adventure_gallery_images, :allow_destroy => true
 
   has_attached_file :attachment, :styles => { :large => "600x750>", :medium => "325x285>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
@@ -22,18 +26,18 @@ class Adventure < ActiveRecord::Base
   end
   
   #Create a new adventure
-  def self.create!(options = {})
-  	@adventure = Adventure.new
-
+  # def self.create!(options = {})
+  # 	@adventure = Adventure.new
     
-  	@adventure.save!
+    
+  # 	@adventure.save!
 
-  	@adventure
-  end
+  # 	@adventure
+  # end
 
 
-  #Edit a new adventure
-  def self.edit!(options = {})
+  # #Edit a new adventure
+  # def self.edit!(options = {})
 
-  end
+  # end
 end

@@ -49,5 +49,4 @@ function usersInit(){
   input_datepicker();
   input_maxlength();
   photoInput();
-  create_tabs();
 }

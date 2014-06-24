@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get '/adventures/request'           => 'adventures#request_info'
   get '/adventures/create'            => 'adventures#create'
   get '/adventures/create_prefill'		=> 'adventures#create_prefill'
-  post '/adventures/create_postfill'	=> 'adventures#create_postfill'
   resources :adventures
  
 

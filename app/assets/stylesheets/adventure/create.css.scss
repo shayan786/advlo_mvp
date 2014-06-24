@@ -28,7 +28,7 @@
 				border-color: #FFF;
 
 				.panel-heading {
-					font-size: 2.0em;
+					font-size: 2.2em;
 				}
 
 
@@ -44,6 +44,26 @@
 
 				.panel-body {
 					padding-top: 25px;
+					padding-bottom: 25px;
+
+					.bootstrap-filestyle {
+						margin: 0px auto;
+
+						.btn {
+							font-size: 1.2em;
+							padding: 10px 30px;
+
+							&:hover {
+
+							}
+						}
+					}
+
+					.divider {
+						border: 1px solid $lighter_gray;
+						margin: 20px 0;
+					}
+
 				}
 			}
 

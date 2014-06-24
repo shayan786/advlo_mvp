@@ -58,13 +58,25 @@ class AdventuresController < ApplicationController
       redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
 
-  end
-
-  def create_postfill
-    @adventure = Adventure.create(params)
+    @adventure = Adventure.new
   end
 
   #------------------------HOST LOGIC END-----------------------------
+
+  def edit 
+    #@adventure = Adventure.find
+  end
+
+  def update
+    @adventure = Adventure.update(params)
+
+    if @adventure.save
+      redirect_to @adventure, notice: "Adventure was successfully updated"
+    else
+      render :edit
+    end
+
+  end
 
   private
   # Using a private method to encapsulate the permissible parameters is just a good pattern
