@@ -7,7 +7,8 @@ function adventureSliderInit(){
   }else{
     slideCount = 1;
   }
-  var adventureSlider = $('.swiper-container').swiper({
+  
+var adventureSlider = $('.swiper-container').swiper({
     mode:'horizontal',
     slidesPerView: slideCount,
     keyboardControl: true,

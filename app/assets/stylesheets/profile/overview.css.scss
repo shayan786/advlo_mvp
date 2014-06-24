@@ -18,6 +18,10 @@
 		.overview_item {
 			font-family: $profile_over_item_font;
 			font-size: 1.8em;
+			color: $orange;
+			span {
+				color: #fff;
+			}
 		}
 
 		.overview_item_header {
