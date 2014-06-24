@@ -5,11 +5,12 @@
         .panel.panel-default
           .panel-body.text-center
             - if !@user.avatar_file_name.nil?
-              = image_tag "#{@user.avatar.url(:profile_circle)}", :class => "img-circle img-responsive img_uploaded"
+              .profile-image{style: "background: url(#{@user.avatar.url(:medium)}) no-repeat center center;"}
+
             - elsif !@user.avatar_url.nil?
-              = image_tag "#{@user.avatar_url}?type=square&height=150&width=150", :class => "img-circle img-responsive"
+              .profile-image{style: "background: url(#{@user.avatar_url}?type=large) no-repeat center center;"}
             - else 
-              = image_tag "#{@user.avatar.url(:profile_circle)}", :class => "img-circle img-responsive"
+              = image_tag @user.avatar.url(:medium)
 
             .banner_name= @user.name
             .banner_subtitle= @user.short_description
