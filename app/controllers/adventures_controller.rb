@@ -46,12 +46,17 @@ class AdventuresController < ApplicationController
     elsif user_signed_in? && current_user.is_guide?(current_user.id) && !UserAdventure.where(user_id: current_user.id).present?
       redirect_to '/adventures/info'
     else 
-      redirect_to '/adventures/create'
+      redirect_to '/adventures/new'
     end
 
   end
 
   def new
+    #add another check...before actually showing the form
+    if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
+      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
+    end
+
     @adventure = Adventure.new
   end
 
@@ -71,19 +76,11 @@ class AdventuresController < ApplicationController
       render :new
     end
   end
-  
+
   #------------------------HOST LOGIC END-----------------------------
 
   def update
-    @adventure = Adventure.find(session[:adventure])
-    @adventure.attributes = params[:adventure]
-
-    if @adventure.save
-      redirect_to @adventure, notice: "Adventure was successfully updated"
-    else
-      redirect_to @adventure, notice: "Something did not work!"
-    end
-
+    
   end
 
   private
@@ -91,7 +88,7 @@ class AdventuresController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location)
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :category, :other_notes)
   end
 end
 
