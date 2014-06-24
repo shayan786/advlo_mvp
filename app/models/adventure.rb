@@ -31,12 +31,10 @@ class Adventure < ActiveRecord::Base
   # def self.edit!(options = {})
   # end
 
-  end
-
   def set_slug
     if self.slug == nil || self.slug == ''
       self.slug = self.title.downcase.gsub(' ','').gsub('-','').gsub('.','').gsub("'",'').gsub(":",'')
     end
   end
-  
+
 end
