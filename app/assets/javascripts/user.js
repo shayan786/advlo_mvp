@@ -36,10 +36,18 @@ function photoInput(){
   $(":file").filestyle({input: false, icon: false, buttonText: "SET PHOTO"});
 }
 
+function create_tabs() {
+  $('#adv_pills a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+
+}
 
 function usersInit(){
   input_popover();
   input_datepicker();
   input_maxlength();
   photoInput();
+  create_tabs();
 }
