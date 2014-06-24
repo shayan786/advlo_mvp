@@ -8,7 +8,7 @@
 		color: $white;
 		border-color: $profile_overview_box_color;
 		@include border_radius(0px);
-		min-height: 260px;
+		min-height: 200px;
 
 		li {
 			list-style-type: none;

@@ -16,6 +16,7 @@ ActiveAdmin.register User do
       f.input :email
       f.input :name
       f.input :avatar_url
+      f.input :avatar, as: :file
       f.input :location
       f.input :skillset
       f.input :language
