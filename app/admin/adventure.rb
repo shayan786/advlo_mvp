@@ -8,6 +8,12 @@ ActiveAdmin.register Adventure do
     column :title
     column :slug
     column :subtitle
+    column 'Guide' do |adv|
+      adv.users.first.email if adv.users.first
+    end
+    column 'Guide pic' do |adv|
+      image_tag adv.users.first.avatar(:thumb) if adv.users.first
+    end
     column 'attachment' do |adv|
       image_tag(adv.attachment(:thumb))
     end

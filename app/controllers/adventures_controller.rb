@@ -51,6 +51,10 @@ class AdventuresController < ApplicationController
 
   end
 
+  def new
+    @adventure = Adventure.new
+  end
+
   #Show the create an Adventure Form and create a new entry for an adventure
   def create
     #add another check...before actually showing the form
@@ -58,13 +62,21 @@ class AdventuresController < ApplicationController
       redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
 
-    @adventure = Adventure.new
-  end
+    @adventure = Adventure.new(adventure_params)
 
+    if @adventure.save
+      session[:adventure_id] = @adventure.id
+      redirect_to adventure_steps_path
+    else
+      render :new
+    end
+  end
+  
   #------------------------HOST LOGIC END-----------------------------
 
   def update
-    @adventure = Adventure.update(params)
+    @adventure = Adventure.find(session[:adventure])
+    @adventure.attributes = params[:adventure]
 
     if @adventure.save
       redirect_to @adventure, notice: "Adventure was successfully updated"
@@ -79,7 +91,7 @@ class AdventuresController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment)
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :location)
   end
 end
 

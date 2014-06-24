@@ -19,6 +19,7 @@ gem 'omniauth'
 gem 'omniauth-facebook' 
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
+gem 'wicked'
 
 group :production do 
   gem 'rails_12factor'
