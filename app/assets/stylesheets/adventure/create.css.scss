@@ -15,6 +15,10 @@
 				}
 			}
 
+			.create_steps_header {
+				border: none;
+			}
+
 			.fa {
 				padding-top: 15px;
 				padding-left: 15px;
@@ -31,7 +35,6 @@
 					font-size: 2.2em;
 				}
 
-
 				.form_label {
 					padding-top: 5px;
 					font-size: 1.2em;
@@ -42,29 +45,24 @@
 					padding-top: 8px;
 				}
 
-				.panel-body {
-					padding-top: 25px;
-					padding-bottom: 25px;
+			}
 
-					.bootstrap-filestyle {
-						margin: 0px auto;
+			.bootstrap-filestyle {
+				margin: 0px auto;
 
-						.btn {
-							font-size: 1.2em;
-							padding: 10px 30px;
+				.btn {
+					font-size: 1.2em;
+					padding: 10px 30px;
 
-							&:hover {
+					&:hover {
 
-							}
-						}
 					}
-
-					.divider {
-						border: 1px solid $lighter_gray;
-						margin: 20px 0;
-					}
-
 				}
+			}
+
+			.divider {
+				border: 1px solid $lighter_gray;
+				margin: 20px 0;
 			}
 
 
