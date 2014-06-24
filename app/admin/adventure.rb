@@ -1,7 +1,12 @@
 ActiveAdmin.register Adventure do
 
+  before_filter :only => [:show, :edit, :update, :destroy] do
+    @adventure = Adventure.find_by_title(params[:id])
+  end
+
   index do
     column :title
+    column :slug
     column :subtitle
     column 'attachment' do |adv|
       image_tag(adv.attachment(:thumb))

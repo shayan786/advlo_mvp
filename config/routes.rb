@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'application#homepage'
   
   #profile show route
-  get 'users/:id'						=> 'users#show'
+  resources :users, :only => [:show]
 
   #adventure controller routes
   get '/adventures/info'              => 'adventures#hosting_info'

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def homepage
     @feat_adventures = Adventure.all
-    @feat_hosts = User.all.limit(3)
+    @feat_hosts = User.all
   end
 
   def host

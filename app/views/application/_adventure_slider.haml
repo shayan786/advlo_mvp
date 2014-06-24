@@ -4,14 +4,14 @@
     %a.small_text{href: "#"} VIEW ALL >>>
 
   .slider-wrapper
-    %i#next-slide.fa.fa-chevron-right
-    %i#prev-slide.fa.fa-chevron-left
+    %i.next.fa.fa-chevron-right#adv-next
+    %i.prev.fa.fa-chevron-left#adv-prev
 
     .swiper-container
       .swiper-wrapper
         - if @feat_adventures
           - @feat_adventures.each_with_index do |adv, i|
-            %a.swiper-slide{href: adventure_path(adv.slug)}
+            %a.swiper-slide.adventure-slide{href: adventure_path(adv.slug)}
               .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
                 .copy
                   - if adv.title.length > 38

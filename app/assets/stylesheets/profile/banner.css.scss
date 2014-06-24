@@ -14,8 +14,15 @@
 		color: $profile_banner_font_color;
 		border-color: $advlo_orange;
 
-		img {
-			margin: 0 auto 10px auto;
+		.panel-body {
+
+			.profile-image {
+				height: 200px;
+				width: 200px;
+				border-radius: 50%;
+				background-size: 150% !important;
+				margin: 0 auto;
+			}
 		}
 
 		.img_uploaded {
@@ -34,4 +41,7 @@
 			font-size: 1.2em;
 		}
 	} 
+}
+#p_banner .panel .panel-body .profile-image {
+
 }
