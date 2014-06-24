@@ -34,7 +34,7 @@
 
       .tab-content
         #adv_basics.tab-pane.fade.in.active
-          %form{"accept-charset" => "UTF-8", action: "/adventure/update", method: "post", id: "adventure_edit_form"}
+          %form{"accept-charset" => "UTF-8", action: "/adventures/", method: "post", id: "adventure_edit_form"}
             = tag(:input, :type => "hidden", :value => "put", :name => "_method")
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
             .panel.panel-default 
