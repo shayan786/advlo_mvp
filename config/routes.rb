@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
   ActiveAdmin.routes(self)
   
-  root to: 'application#homepage'
-  
   #profile show route
   resources :users, :only => [:show]
 
@@ -14,6 +12,7 @@ Rails.application.routes.draw do
   get '/adventures/create'            => 'adventures#create'
   get '/adventures/create_prefill'		=> 'adventures#create_prefill'
   resources :adventures
- 
+  resources :adventure_steps
 
+  root to: 'application#homepage'
 end	
