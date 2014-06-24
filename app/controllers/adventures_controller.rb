@@ -63,8 +63,21 @@ class AdventuresController < ApplicationController
 
   #------------------------HOST LOGIC END-----------------------------
 
-  def edit 
-    #@adventure = Adventure.find
+  # Temporary....have methods for 
+  def edit_basic
+    if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
+      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
+    end
+    
+    @adventure = Adventure.find(params[:id])
+  end
+
+  def edit_photos
+
+  end
+
+  def edit_schedule
+
   end
 
   def update
@@ -73,7 +86,7 @@ class AdventuresController < ApplicationController
     if @adventure.save
       redirect_to @adventure, notice: "Adventure was successfully updated"
     else
-      render :edit
+      redirect_to @adventure, notice: "Something did not work!"
     end
 
   end
