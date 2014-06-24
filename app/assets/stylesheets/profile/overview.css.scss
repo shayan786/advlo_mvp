@@ -22,7 +22,7 @@
 
 		.overview_item_header {
 			@extend .overview_item;
-			color: $advlo_green;
+			color: $orange;
 
 			.over_item_sub {
 				font-family: cabin_regular;
@@ -35,6 +35,12 @@
 			font-family: $profile_box_header_font;
 			color: $profile_box_header_font_color;
 			font-size: 2.2em;
+			margin-top: 5px;  
+			margin-bottom: 5px; 
+
+			span {
+				word-wrap: break-word;
+			}
 		}
 
 		.box_header_line {

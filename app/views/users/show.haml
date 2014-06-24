@@ -35,16 +35,23 @@
             .col-md-5
               %li.overview_item_header
                 LANGUAGES:
-                .over_item_sub= @user.language
+                - @user_languages.each do |l|
+                  .over_item_sub= l
+
               %li.overview_item_header
                 CERTIFICATIONS:
-                .over_item_sub= @user.skillset
+                - @user_skillsets.each do |sk|
+                  .over_item_sub= sk
+
             .col-md-1
       .col-md-3
         .panel.panel-default
           .panel-body
             .box_header.text-center 
-              CONTACT ME
+              CONTACT
+              
+              %span= @user.name.upcase
+
             .box_header_line
             .text-center
               %a.btn.btn-primary.msg_btn{href: "#"}
@@ -92,3 +99,6 @@
           .panel-body
             .review_header
               REVIEWS
+
+:javascript
+  // usersShowInit();

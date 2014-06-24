@@ -1,3 +1,13 @@
+function userWallpaperScroll(){
+  //setup a users picked background image
+      
+  //   var hero = $('#hero_image img');
+  //   $(window).scroll(function(){
+  //     var s = $(window).scrollTop()
+  //     hero.css('-webkit-transform','translateY(' + (s/1.5) + 'px')
+  //   })
+}
+
 function input_popover() {
 	$('[data-toggle="popover"]').popover({
     trigger: 'focus'
@@ -49,4 +59,8 @@ function usersInit(){
   input_datepicker();
   input_maxlength();
   photoInput();
+}
+
+function usersShowInit(){
+  // userWallpaperScroll();
 }

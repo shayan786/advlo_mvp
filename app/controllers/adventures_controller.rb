@@ -8,6 +8,7 @@ class AdventuresController < ApplicationController
 
   def show
     @adventure = Adventure.find_by_slug(params[:id])
+    @current_guide = @adventure.users.first
   end
 
   # info page for creating a new adventure
@@ -91,7 +92,7 @@ class AdventuresController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location)
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :slug, :location, :summary, :cap_max, :cap_min, :price, :price_type, :duration_num, :duration_type, :category, :other_notes)
   end
 end
 

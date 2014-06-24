@@ -2,13 +2,27 @@
   #main_image.img-responsive= image_tag @adventure.attachment.url(:large)
 
   .col-md-3.adventure-show-infographic
-    .guide-block
-      #guide-name
-        Gustavo
-      #guide-profile-image
-        = image_tag "#{current_user.avatar_url}?type=large" if current_user && current_user.avatar_url
-      #guide-title
-        climbing guru
+    -if @current_guide
+      .guide-block
+        #guide-name
+          = @current_guide.name
+        #guide-profile-image
+          -if @current_guide.avatar_url
+            = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
+          - else
+            = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
+        #guide-title
+          = @current_guide.short_description
+
+
+    - else
+      .guide-block
+        #guide-name
+          Want to guide?
+        #guide-profile-image
+          = link_to "Click here", '/adventures/create_prefill'
+
+      
 
     .adventure-block
       #adventure-title
@@ -19,9 +33,7 @@
         %span BOOK IT
 
   .adventure-copy-wrapper
-    / - @adventure.attributes.each do etc..
-    -text = 'Maecenas faucibus mollis interdum. Etiam porta sEtiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ulm. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. C Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ulm. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. C Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ulm. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. C Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ulm. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. C Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ulm. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. C Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ulm. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. C Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ulm. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultribulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.'
-    - attributes = {:overview => text, :itinerary => text, :reviews => text, :policy => text}
+    - attributes = {:overview => @adventure.summary, :itinerary => @adventure.inspect, :reviews => @adventure.inspect, :policy => @adventure.inspect}
 
     .row
       .col-md-3#mobile-adventure-infographic

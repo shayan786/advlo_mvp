@@ -11,6 +11,13 @@ function heroScroll(){
     heroFont.css('-webkit-transform','translateY(' + (s/2) + 'px')
   })
 }
+function adventureScroll(){
+  var hero = $('#main_image img');
+  $(window).scroll(function(){
+    var s = $(window).scrollTop()
+    hero.css('-webkit-transform','translateY(' + (s/1.3) + 'px')
+  })
+}
 
 function adventureHover(){
   $('.hover-block').hover(function(){
@@ -136,6 +143,7 @@ adventureShow = function() {
   sizeSidebar()
   navBarCatch(); 
   navigationBreadcrumbs();
+  adventureScroll();
 };
 
 adventureIndex = function() {
