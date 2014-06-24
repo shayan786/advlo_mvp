@@ -1,34 +1,41 @@
-#host_slider {
-	min-height: 475px;
-	padding-top: 50px;
-	padding-bottom: 30px;
-	margin: 0 auto;
-	background-color: $adv_slider_background_color;
+.host-slider {
+  .swiper-wrapper {
+    .swiper-slide {
+	    text-decoration: none;
+      .image-wrapper {
+				border-radius: 50%;
+				border: none;
+
+				.copy {
+					left: 0;
+					position: relative;
+					top: 60%;
+					width: 60%;
+					margin: 0 auto;
+					text-align: center;
+					height: 100px;
+					background-color: rgba(0, 0, 0, 0.45);
 
 
-	h1 {
-		color: $adv_slider_font_color;
-	}
-
-	.small_text {
-		text-decoration: none;
-		color: #FFF;
-	}
-
-
-	.host{
-		margin: 0 auto;
-		float: left;
-		color: #fff;
-		height: 300px;
-		width: 300px;
-		overflow: hidden;
-		text-align: center;
-		padding: 0px;
-		border-radius: 300px;
-		img {
-			width: auto;
-			height: 125%;
-		}
-	}
+					.name {
+						font-size: 25px;
+						text-transform: capitalize;
+						color: #E06B30;
+					}
+					.location {
+						color: #fff;
+						font-size: 15px;
+						font-weight: bold;
+					}
+					.desc {
+						color: #699967;
+						font-size: 14px;
+						font-style: italic;
+						font-weight: bold;
+					}
+				}
+      }            
+    }
+  }
 }
+

@@ -1,18 +1,34 @@
-.homepage-slider-container#host_slider
+.homepage-slider-container
   .container
     %h1 FEATURED HOSTS
     %a.small_text{href: "#"} VIEW ALL >>>
 
-  
-    .feat-hosts-container
-      .host-swiper-container
+  .slider-wrapper
+    %i.next.fa.fa-chevron-right#host-next
+    %i.prev.fa.fa-chevron-left#host-prev
+
+    .swiper-container.host-slider
+      .swiper-wrapper
         - if @feat_hosts
           - @feat_hosts.each_with_index do |user, i|
-            %a.swiper-slide{href: user_path(user)}
-              - if user.avatar_url
-                .col-lg-4.host= image_tag "#{user.avatar_url}?type=large"
-              - else
-                .col-lg-4.host= image_tag user.avatar.url(:large) 
-                            
-
+            - if user.avatar_url
+              %a.swiper-slide{href: user_path(user)}
+                .image-wrapper.host-image{style: "background: url(#{user.avatar_url}?type=large) no-repeat center center; background-size: 100%;"}
+                  .copy
+                    .name= user.name
+                    .location= user.location
+                    .desc= user.short_description
+            -else
+              %a.swiper-slide{href: user_path(user)}
+                .image-wrapper.host-image{style: "background: url(#{user.avatar.url(:large)}) no-repeat center center;"}
+                  .copy
+                    .name= user.name
+                    .location= user.location
+                    .desc= user.short_description
                   
+
+:javascript
+  $(window).resize(function(){
+    hostSliderInit();
+    adventureSliderInit();
+  })

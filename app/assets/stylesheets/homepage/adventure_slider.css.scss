@@ -23,23 +23,36 @@
     width: 100%;
     position: relative;
     float: left;
-    /* border: 1px solid black; */
 
-    #next-slide {
+    .next {
       color: #fff;
       font-size: 4em;
       position: absolute;
-      top: 150px;
-      right: 3%;
       cursor: pointer;
     }
-    #prev-slide {
+    .prev {
       color: #fff;
       font-size: 4em;
       position: absolute;
+      cursor: pointer;
+    }
+    #adv-next {
+      top: 150px;
+      right: 3%;
+    }
+    #adv-prev {
       top: 150px;
       left: 3%;
-      cursor: pointer;
+    }
+
+    #host-next {
+      top: 40%;
+      right: 3%;
+    }
+
+    #host-prev {
+      top: 40%;
+      left: 3%;
     }
   }
 
@@ -65,7 +78,6 @@
       position: relative;
       height: 375px;  
       width: 375px;
-      border: 1.5px solid #000;
       margin: 0 auto;
 
       .copy{

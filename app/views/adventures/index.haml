@@ -16,7 +16,7 @@
     .brick-wrapper.masonry.js-masonry
       - if @adventures
         - @adventures.each_with_index do |adv, i|
-          %a.adventure-brick{href: adventure_path(adv)}
+          %a.adventure-brick{href: adventure_path(adv.slug)}
             .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
               .copy
                 - if adv.title.length > 38
@@ -39,6 +39,8 @@
 
 :javascript
   adventureIndex();
+
+  
 
   $(window).resize(function(){
     positionLocationText()

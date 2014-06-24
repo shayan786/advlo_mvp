@@ -6,6 +6,7 @@ ActiveAdmin.register Adventure do
 
   index do
     column :title
+    column :slug
     column :subtitle
     column 'attachment' do |adv|
       image_tag(adv.attachment(:thumb))

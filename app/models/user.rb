@@ -69,7 +69,11 @@ class User < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{name.gsub(' ','')}"
+    if name
+      "#{id}-#{name.gsub(' ','')}"
+    else
+      "#{id}"
+    end
   end 
 
 end

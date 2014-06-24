@@ -1,6 +1,5 @@
 class Adventure < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :title, use: :slugged
+  before_save :set_slug
 
   has_many :user_adventures
   has_many :users, through: :user_adventures
@@ -11,10 +10,9 @@ class Adventure < ActiveRecord::Base
 
   validates_uniqueness_of :title
 
-
-  def should_generate_new_friendly_id?
-    new_record?
-  end
+  # def should_generate_new_friendly_id?
+  #   new_record?
+  # end
   
   #Create a new adventure
   #these methods should be handled in the controller
@@ -30,5 +28,11 @@ class Adventure < ActiveRecord::Base
   #Edit a new adventure
   def self.edit!(options = {})
 
+  end
+
+  def set_slug
+    if self.slug == nil || self.slug == ''
+      self.slug = self.title.downcase.gsub(' ','').gsub('-','').gsub('.','').gsub("'",'').gsub(":",'')
+    end
   end
 end
