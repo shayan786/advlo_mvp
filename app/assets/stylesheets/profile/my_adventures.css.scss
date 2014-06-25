@@ -24,10 +24,13 @@
 	#profile-next {
 		right: -7%;
 		top: 140px;
+		font-size: 2em;
 	}
 	#profile-prev {
 		left: -7% ;
 		top: 140px;
+		font-size: 2em;
+
 	}
 
 	.swiper-container {
@@ -47,7 +50,8 @@
 					    font-size: 20px;
 					  }
 
-					  #location {
+					  .location {
+					  	font-size: 14px;
 					    color: #C35B26;
 					    margin-left: 20px;
 					  }

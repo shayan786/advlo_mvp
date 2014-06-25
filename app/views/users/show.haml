@@ -101,9 +101,9 @@
 
                             .ping
                             - if adv.subtitle.length > 40
-                              #location= "#{adv.subtitle.upcase[0..40]}..."
+                              .location= "#{adv.subtitle.upcase[0..40]}..."
                             -else
-                              #location= adv.subtitle.upcase
+                              .location= adv.subtitle.upcase
 
                           .hover-block{id: i}
                             - if adv.users.first && !adv.users.first.avatar_url
