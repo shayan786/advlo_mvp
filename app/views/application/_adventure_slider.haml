@@ -1,4 +1,4 @@
-.adventure-slider-container
+.adventure-slider-container#adventure.adventure-slider-wrapper
   .container
     %h1 FEATURED ADVENTURES
     %a.small_text{href: "#"} VIEW ALL >>>
@@ -31,4 +31,3 @@
                   -elsif adv.users.first
                     #guide-image= image_tag "#{adv.users.first.avatar_url}?type=large"
                 .copy-container{class: "copy-#{i}"}
-
