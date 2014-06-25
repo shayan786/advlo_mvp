@@ -12,10 +12,71 @@
 		.panel {
 
 			h2 {
-				font-size: 2.4em;
+				font-size: 2.2em;
 				margin-bottom: 30px;
 				background-color: #FFF;
 				border: none;
+			}
+
+			.panel-body {
+				min-height: 500px;
+
+				.alert {
+					font-size: 2.0em;
+					margin-top: 20px;
+					margin-bottom: 35px;
+				}
+
+				.host_btn {
+					font-size: 1.4em;
+					background-color: $login_btn_color;
+					border-color: $login_btn_color;
+					padding: 10px 20px;
+
+					&:hover {
+						background-color: $login_btn_color_hover;
+						border-color: $login_btn_color_hover;
+					}
+				}
+
+				.user_adv {
+					border-bottom: 1px solid $lighter_gray;
+					padding-bottom: 10px;
+
+					.adv_img {
+						background-position: center !important;
+						background-repeat: no-repeat !important;
+						width: 275px;
+						height: 200px;
+					}
+
+					.adv_title {
+						padding-top: 25px;
+						font-size: 1.8em;
+						font-family: cabin_bold;
+					}
+
+					.adv_loc {
+						font-size: 1.4em;
+						padding-bottom: 5px;
+					}
+
+					.adv_price {
+						font-size: 1.4em;
+						padding-bottom: 5px;
+					}
+
+					.edit_btn {
+						font-size: 1.4em;
+						padding: 8px 15px;
+						margin-top: 10px;
+
+						.fa {
+							padding-right: 5px;
+						}
+					}
+
+				}
 			}
 		}
 	}

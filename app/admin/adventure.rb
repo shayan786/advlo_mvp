@@ -8,6 +8,9 @@ ActiveAdmin.register Adventure do
     column :title
     column :slug
     column :subtitle
+    column :location
+    column :price
+    column :price_type
     column 'Guide' do |adv|
       adv.users.first.email if adv.users.first
     end
@@ -25,6 +28,9 @@ ActiveAdmin.register Adventure do
       f.input :title
       f.input :slug, label: 'permalink'
       f.input :subtitle
+      f.input :location
+      f.input :price
+      f.input :price_type, as: :select, collection: ["per_person", "per_adv"]
       f.input :attachment, as: :file
 
       f.has_many :user_adventures do |app|

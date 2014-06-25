@@ -1,8 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  # This is the default 'my adventures' page
   def dashboard
-    @user = User.find(current_user.id)
-    
+
   end
 
   #Overide the devise update to not require the password to update user's profile
