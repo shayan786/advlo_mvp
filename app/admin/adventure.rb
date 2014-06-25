@@ -25,8 +25,8 @@ ActiveAdmin.register Adventure do
       f.input :title
       f.input :slug, label: 'permalink'
       f.input :subtitle
+      f.input :summary
       f.input :attachment, as: :file
-
       f.has_many :user_adventures do |app|
         app.input :user_id, as: :select, collection: User.all.map{|u| ["#{u.email}", u.id]}, label: 'Guide'
         app.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
