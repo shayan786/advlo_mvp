@@ -1,3 +1,37 @@
+function profileSlider() {
+  var totalSlideCount = $('#user-adventure-slider .swiper-slide').length - 3;
+  $(".prev").addClass('hide');
+
+  if(totalSlideCount <= 0){
+    $('.prev').hide()
+    $('.next').hide()
+  }
+
+  var profileSlider = new Swiper('.swiper-container',{
+    mode:'horizontal',
+    slidesPerView: 3,
+    onSlideChangeStart: function(){
+      console.log(profileSlider.activeIndex)
+      $(".prev, .next").removeClass('hide');
+      if(profileSlider.activeIndex == 0) {
+        $(".prev").addClass('hide');
+      }
+      if(profileSlider.activeIndex == totalSlideCount) {
+        $(".next").addClass('hide');
+      }
+    }
+  });  
+
+  $('#profile-next').click(function(){
+    profileSlider.swipeNext()
+  })
+  $('#profile-prev').click(function(){
+    profileSlider.swipePrev()
+  })
+}
+
+
+
 function input_popover() {
 	$('[data-toggle="popover"]').popover({
     trigger: 'focus'

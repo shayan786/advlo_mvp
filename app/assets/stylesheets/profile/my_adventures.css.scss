@@ -9,21 +9,28 @@
 
 		.header_sub {
 			font-family: cabin_regular;
-			font-size: 0.5em;
+			font-size: .75em;
 			color: $white;
 			margin-left: 10px;
 			top: -3px;
 			position: relative;
+		}
+
+		#user-adventure-slider{
+			padding-top: 20px;
 		}
 	}
 
 	#profile-next {
 		right: -7%;
 		top: 140px;
+		font-size: 2em;
 	}
 	#profile-prev {
 		left: -7% ;
 		top: 140px;
+		font-size: 2em;
+
 	}
 
 	.swiper-container {
@@ -43,7 +50,8 @@
 					    font-size: 20px;
 					  }
 
-					  #location {
+					  .location {
+					  	font-size: 14px;
 					    color: #C35B26;
 					    margin-left: 20px;
 					  }

@@ -41,7 +41,9 @@
 :javascript
   adventureIndex();
 
-  $('#location_text').css('top', ($('#hero_image').height() / 2))
+  $(window).load(function(){
+    $('#location_text').css('top', ($('#hero_image').height() / 2))
+  })  
 
   $(window).resize(function(){
     positionLocationText()

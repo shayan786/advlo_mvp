@@ -11,7 +11,7 @@
       .swiper-wrapper
         - if @feat_hosts
           - @feat_hosts.each_with_index do |user, i|
-            - if user.avatar_url
+            - if user.avatar_url && user.avatar_url != ''
               %a.swiper-slide{href: user_path(user)}
                 .image-wrapper.host-image{style: "background: url(#{user.avatar_url}?type=large) no-repeat center center; background-size: 100%;"}
                   .copy

@@ -84,17 +84,17 @@ function navBarCatch(){
 function widthOfBrowser(){
   var windowWidth = $(window).width()
   if( windowWidth > 1090 ){
-    return 290;
-  }else if( windowWidth > 1060){
-    return 280;
-  }else if( windowWidth > 1040){
-    return 270;
-  }else if( windowWidth > 1020){
-    return 263;
-  }else if( windowWidth > 1000){
     return 240;
+  }else if( windowWidth > 1060){
+    return 230;
+  }else if( windowWidth > 1040){
+    return 220;
+  }else if( windowWidth > 1020){
+    return 213;
+  }else if( windowWidth > 1000){
+    return 190;
   }else if( windowWidth > 900){
-    return 225;
+    return 175;
   }
 }
 
