@@ -6,23 +6,43 @@
         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
         .panel.panel-default
-          .panel-heading.text-center
+          .panel-heading.text-center.section_header
             PHOTOS
           .panel-body
-            .cover_img
+            .cover_img_display
 
             .form-group
               %input.filestyle{type: "file", name: "adventure[cover_img]", id: "adv_cover_img"}
 
-              .divider   
+              .divider
 
-              %form{"accept-charset" => "UTF-8", action: "#", method: "post", id: "adv_gallery_img_upload", enctype: "multipart/form-data"}
-                = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-                = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-                .form-group
-                  %input.filestyle{type: "file", name: "adventure[gallery_img]", id: "adv_gallery_img", multiple: true}
+
+
+
+              / = file_field_tag "images[]", type: :file, multiple: true
+
           .panel-footer.text-center
-            %input.btn.btn-primary.preview_btn{href: "#", name: "commit", type: "submit", value: "NEXT"}
+            %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT"}
+
+      %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adv_gallery_img_upload", enctype: "multipart/form-data"}
+        = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+        = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        / = tag(:input, :name => "adventure", :value => @adventure, :type => "hidden")
+        .form-group
+          %input.filestyle{type: "file", name: "images[]", id: "adv_gallery_img", multiple: "multiple", onchange: "javascript:document.getElementById('adv_gallery_img_upload').submit();"}
+
+= form_for @adventure, :url => wizard_path, :html => { :class => 'form-horizontal', multipart: true } do |f|
+  .control-group
+    .controls
+      / The magic is coming ...look at my eyes....shazammmm
+      /
+        Use HTML5 multiple attribute to enable multiple selection
+        and pass back to controller all files as an array, ready
+        for paperclip!!
+        file_field_tag, since images is not a gallery attribute
+      = file_field_tag "images[]", type: :file, multiple: true
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
                 
 :javascript
   adventureCreate();

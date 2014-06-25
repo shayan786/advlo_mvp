@@ -1,31 +1,61 @@
 .panel.panel-default
   .panel-heading.create_steps_header
-    %ul.nav.nav-pills#adv_pills
-      %li.active
-        %a{href: "#"}
-          BASICS
+    %ul.nav.nav-pills
+      - if params[:id] == "basic" || controller.action_name == "new"
+        %li.active 
+          %a{href: "/adventure_steps/basic"}
+            BASICS
+      - else
+        %li 
+          %a{href: "/adventure_steps/basic"}
+            BASICS
       %li
         %i.fa.fa-long-arrow-right
-      %li
-        %a{href: "#"}
-          PHOTOS
-      %li
-        %i.fa.fa-long-arrow-right
-      %li
-        %a{href: "#"}
-          SCHEDULE
-      %li
-        %i.fa.fa-long-arrow-right
-      %li
-        %a{href: "#"}
-          PROFILE
+      - if params[:id] == "photos"
+        %li.active 
+          %a{href: "/adventure_steps/photos"}
+            PHOTOS
+      - else
+        %li 
+          %a{href: "/adventure_steps/photos"}
+            PHOTOS
       %li
         %i.fa.fa-long-arrow-right
-      %li
-        %a{href: "#"}
-          PAYMENT
+      - if params[:id] == "schedule"
+        %li.active 
+          %a{href: "#"}
+            SCHEDULE
+      - else
+        %li 
+          %a{href: "#"}
+            SCHEDULE
       %li
         %i.fa.fa-long-arrow-right
+      - if params[:id] == "profile"
+        %li.active 
+          %a{href: "#"}
+            PROFILE
+      - else
+        %li 
+          %a{href: "#"}
+            PROFILE
       %li
-        %a{href: "#"}
-          PUBLISH
+        %i.fa.fa-long-arrow-right
+      - if params[:id] == "payment"
+        %li.active 
+          %a{href: "#"}
+            PAYMENT
+      - else
+        %li 
+          %a{href: "#"}
+            PAYMENT
+      %li
+        %i.fa.fa-long-arrow-right
+      - if params[:id] == "publish"
+        %li.active 
+          %a{href: "#"}
+            PUBLISH
+      - else
+        %li 
+          %a{href: "#"}
+            PUBLISH

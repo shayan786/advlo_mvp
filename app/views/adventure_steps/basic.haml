@@ -6,43 +6,48 @@
         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
         .panel.panel-default 
-          .panel-heading.text-center
+          .panel-heading.text-center.section_header
             BASICS
           .panel-body
             .form-group.row
               .col-md-4
                 .form_label.text-right Title *
               .col-md-6
-                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[title]", id: "adv_name", value: "", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Surfing in la punta"}}
+                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[title]", id: "adv_name", value: "#{@adventure.title}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Surfing in la punta"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Location *
               .col-md-6
-                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[location]", id: "adv_location", value: "", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Meeting Address, Ex: 123 Hiking St. Denver, CO 80219"}}
+                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[location]", id: "adv_location", value: "#{@adventure.location}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Meeting Address, Ex: 123 Hiking St. Denver, CO 80219"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Summary *
               .col-md-6
-                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", value: "", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This is the description for your adventure! Sell it with a detailed & informative summary!"}}
+                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This is the description for your adventure! Sell it with a detailed & informative summary!"}}
+                  - if !@adventure.other_notes.nil?
+                    #{@adventure.summary}
             .form-group.row
               .col-md-4
                 .form_label.text-right Capacity *
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[cap_min]", id: "adv_cap_min", value: ""}
+                %input.form-control{type: "text", required: "required", name: "adventure[cap_min]", id: "adv_cap_min", value: "#{@adventure.cap_min}"}
                 .text-center Min
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[cap_max]", id: "adv_cap_max", value: ""}
+                %input.form-control{type: "text", required: "required", name: "adventure[cap_max]", id: "adv_cap_max", value: "#{@adventure.cap_max}"}
                 .text-center Max
             .form-group.row
               .col-md-4
                 .form_label.text-right Duration *
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[duration_num]", id: "adv_duration_num", value: ""}
+                %input.form-control{type: "text", required: "required", name: "adventure[duration_num]", id: "adv_duration_num", value: "#{@adventure.duration_num}"}
               .col-md-2
-                %select.form-control{name: "user[duration_type]", id: "adv_duration_type"}
-                  %option Minutes
-                  %option Hours
-                  %option Days
+                %select.form-control{name: "adventure[duration_type]", id: "adv_duration_type"}
+                  - options_dur = ["Minutes", "Hours", "Days"]
+                  - options_dur.each do |o|
+                    - if @adventure.duration_type == o
+                      %option{selected: "true"}= o
+                    - else 
+                      %option= o 
             .form-group.row
               .col-md-4
                 .form_label.text-right Price *
@@ -50,7 +55,7 @@
                 .input-group
                   %span.input-group-addon
                     $
-                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: ""}
+                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: "#{@adventure.price}"}
                   %span.input-group-addon
                     USD
               .col-md-3
@@ -64,17 +69,20 @@
               .col-md-4
                 .form_label.text-right Category
               .col-md-2
-                %select.form-control{name: "user[category]", id: "adv_category"}
-                  %option 
-                  %option Hiking
-                  %option Climbing
-                  %option Skiing
-                  %option Surfing
+                %select.form-control{name: "adventure[category]", id: "adv_category"}
+                  - options_cat = ["Hiking", "Climbing", "Skiing", "Surfing"]
+                  - options_cat.each do |o|
+                    - if @adventure.category == o
+                      %option{selected: "true"}= o
+                    - else 
+                      %option= o  
             .form-group.row
               .col-md-4
                 .form_label.text-right Other Notes
               .col-md-6
-                %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", value: "", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
+                %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
+                  - if !@adventure.other_notes.nil?
+                    #{@adventure.other_notes}
           .panel-footer.text-center
             %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT"}
                 
