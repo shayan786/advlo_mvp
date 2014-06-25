@@ -78,6 +78,7 @@
     .my_adv_header 
       MY ADVENTURES
       %span.header_sub 
+        %span= "( #{@user.adventures.count} )"
         VIEW ALL >>>
 
         - if @user.adventures.count > 1
@@ -139,10 +140,12 @@
 
 :javascript
   // usersShowInit();
+
+  adventureHover()
+  
   window.onload = function() {
     var profileSlider = new Swiper('.swiper-container',{
       mode:'horizontal',
-      loop: true,
       slidesPerView: 3
     });  
 
