@@ -54,7 +54,7 @@
 
     .col-md-9.information-container
       #adventure-title= @adventure.title
-      #adventure-description future description ... goes here
+      #adventure-description= @adventure.subtitle
       - attributes.each_with_index do |(key, array), i|
         - case i
         - when 0
