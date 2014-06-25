@@ -20,10 +20,10 @@
                     #title= adv.title
 
                   .ping
-                  - if adv.subtitle.length > 40
+                  - if adv.location.length > 40
                     #location= "#{adv.subtitle.upcase[0..40]}..."
                   -else
-                    #location= adv.subtitle.upcase
+                    #location= adv.location.upcase
 
                 .hover-block{id: i}
                   #guide-image= image_tag "#{adv.users.first.avatar_url}?type=large" if adv.users.first && adv.users.first.avatar_url
