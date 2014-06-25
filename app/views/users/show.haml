@@ -79,7 +79,7 @@
       MY ADVENTURES
       %span.header_sub 
         %span= "( #{@user.adventures.count} )"
-        VIEW ALL >>>
+        
 
         - if @user.adventures.count >= 1
           .adventure-slider-container#user-adventure-slider
@@ -126,6 +126,8 @@
             .bio_header
               THE BIO
             .bio_body
+              %span= '"' + @user.bio.split('.').first() + '"'
+              %br
               = @user.bio
 
 
@@ -142,35 +144,3 @@
   adventureHover()
   profileSlider()
   
-  function profileSlider() {
-    var totalSlideCount = $('#user-adventure-slider .swiper-slide').length - 3;
-    $(".prev").addClass('hide');
-
-    if(totalSlideCount <= 0){
-      $('.prev').hide()
-      $('.next').hide()
-    }
-
-    var profileSlider = new Swiper('.swiper-container',{
-      mode:'horizontal',
-      slidesPerView: 3,
-      onSlideChangeStart: function(){
-        console.log(profileSlider.activeIndex)
-        $(".prev, .next").removeClass('hide');
-        if(profileSlider.activeIndex == 0) {
-          $(".prev").addClass('hide');
-        }
-        if(profileSlider.activeIndex == totalSlideCount) {
-          $(".next").addClass('hide');
-        }
-      }
-    });  
-
-    $('#profile-next').click(function(){
-      profileSlider.swipeNext()
-    })
-    $('#profile-prev').click(function(){
-      profileSlider.swipePrev()
-    })
-  }
-
