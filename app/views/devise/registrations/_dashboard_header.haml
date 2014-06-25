@@ -1,0 +1,16 @@
+%h2.panel-heading.text-center
+  %ul.nav.nav-tabs.nav-justified
+    - if controller.action_name == "dashboard"
+      %li.active
+        %a{href: "/users/dashboard"}
+          My Adventures
+      %li
+        %a{href: "/users/edit"} 
+          My Profile
+    - else 
+      %li
+        %a{href: "/users/dashboard"}
+          My Adventures
+      %li.active
+        %a{href: "/users/edit"} 
+          My Profile

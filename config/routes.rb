@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
   ActiveAdmin.routes(self)
   
+  #user dashboard route
+  devise_scope :user do
+    get '/users/dashboard'            => 'registrations#dashboard'
+  end
+
   #profile show route
   resources :users, :only => [:show]
 

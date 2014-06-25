@@ -1,5 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def dashboard
+    @user = User.find(current_user.id)
+    
+  end
+
   #Overide the devise update to not require the password to update user's profile
   def update
     @user = User.find(current_user.id)

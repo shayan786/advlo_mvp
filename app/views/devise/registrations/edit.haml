@@ -1,8 +1,8 @@
 #d_user_edit
   .container
     .d_error_msgs= devise_error_messages!
-    .panel.panel-default.container
-      %h2.panel-heading Edit My Profile
+    .panel.panel-default
+      = render partial: "dashboard_header"
       .text-center
         .update_notice
           = notice
@@ -81,11 +81,6 @@
                 .form_label.text-right LinkedIn Url
               .col-md-8
                 %input.form-control{placeholder: "www.linkedin.com/myname", type: "text", name: "user[li_url]", id: "user_li_url", value: "#{current_user.li_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Enter your linkedin user url, it will be displayed on the host profile page"}}
-            / .row
-            /   .col-md-4
-            /     .form_label.text-right Password
-            /   .col-md-8.forgot_pass_fix
-            /     %a.forgot_password{href: "/users/password/new"} Reset Password
           .col-md-6.text-center
             .row
               - if !current_user.avatar_file_name.nil?
@@ -124,13 +119,10 @@
                     .panel-heading.panel-title.be_host_title Your ready to host!
                     .panel-body.text-left
                       Your profile is complete and is ready to start offering adventures with your expertise!
+                  %a.btn.btn-primary.update_btn{href: "/adventures/new"}
+                    HOST AN ADVENTURE
         .panel-footer.text-center
           %input.btn.btn-primary.update_btn{name: "commit", type: "submit", value: "UPDATE"}
-
-
-/ = form_for :user, :url => user_registration_path, :html => { :multipart => true, :name => "_method", :value => "put"} do |form|
-/   = form.file_field :avatar
-/   = form.submit
 
 :javascript
   usersInit()
