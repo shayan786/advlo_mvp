@@ -2,3 +2,32 @@
   .container
     .panel.panel-default
       = render partial: "dashboard_header"
+      .panel-body
+        - if current_user.adventures.empty?
+          .text-center
+            .col-md-8.col-md-offset-2
+              .alert.alert-warning
+                You are not hosting any Adventures!
+              %a.btn.btn-primary.host_btn{href: "/adventures/new"}
+                HOST AN ADVENTURE
+        - else
+          - current_user.adventures.each_with_index do |adv, i|
+            .user_adv{id: "adventure-number-#{i}"}
+              .container
+                .col-md-4.col-md-offset-1
+                  .adv_img{style: "background: url('#{adv.attachment.url(:medium)}')"}
+                  / .adv_img= image_tag adv.attachment.url(:medium), :class => "img-thumbnail img-responsive adv_img_thumb"
+                .col-md-6
+                  .adv_title= adv.title
+                  .adv_loc= adv.location
+                  .adv_price= "$"+adv.price.to_s + " " + adv.price_type.gsub("_"," ")
+                  .row.container
+                    %a.btn.btn-default.edit_btn{href: "#"}
+                      %i.fa.fa-eye
+                      VIEW
+                    %a.btn.btn-primary.edit_btn{href: "#"}
+                      %i.fa.fa-pencil
+                      EDIT
+                    %a.btn.btn-danger.edit_btn{href: "#"}
+                      %i.fa.fa-times
+                      DELETE

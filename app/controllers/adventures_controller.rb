@@ -71,6 +71,7 @@ class AdventuresController < ApplicationController
     @adventure = Adventure.new(adventure_params)
 
     if @adventure.save
+      # @adventure.users.create(user_id: current_user.id)
       session[:adventure_id] = @adventure.id
       redirect_to adventure_steps_path
     else
