@@ -1,6 +1,6 @@
 .adventure-page-container.col-md-12
   / .jumbotron.jumbotron-adventure{style: "background: url(#{@hero_image.attachment.url(:hero)})"}
-  #hero_image=image_tag @hero_image.attachment.url(:hero) if @hero_image
+  #hero_image= image_tag @hero_image.attachment.url(:hero) if @hero_image
   #location_text COLORADO
   - filters = ['bike','swim','hike','camp','climb','jump','wildcard']
   .filter-container
@@ -25,22 +25,23 @@
                   .title= adv.title
 
                 .ping
-                - if adv.subtitle.length > 33
-                  .location= "#{adv.subtitle.upcase[0..33]}..."
-                -else
-                  .location= adv.subtitle.upcase
+                - if adv.subtitle
+                  - if adv.subtitle.length > 33
+                    .location= "#{adv.subtitle.upcase[0..33]}..."
+                  -else
+                    .location= adv.subtitle.upcase
 
-              .price $50
+              .price= adv.price
 
               .hover-block{id: i}
-                #guide-image= image_tag "#{current_user.avatar_url}?type=large" if current_user && current_user.avatar_url
+                #guide-image= image_tag "#{adv.users.first.avatar.url}" if adv.users.first
               .copy-container{class: "copy-#{i}"}
 
 
 :javascript
   adventureIndex();
 
-  
+  $('#location_text').css('top', ($('#hero_image').height() / 2))
 
   $(window).resize(function(){
     positionLocationText()

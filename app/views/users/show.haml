@@ -25,26 +25,37 @@
             .col-md-1
             .col-md-5
               %li.overview_item
-                = @user.sex
+                SEX
+                %br
+                %span= @user.sex
               %li.overview_item
-                = @user.get_age(@user.id)
-                YEARS OLD
+                AGE
+                %br
+                %span= @user.get_age(@user.id)
               %li.overview_item 
                 BASED IN 
-                = @user.location
+                %br
+                %span= @user.location
             .col-md-5
               %li.overview_item_header
                 LANGUAGES:
-                .over_item_sub= @user.language
+                - @user_languages.each do |l|
+                  .over_item_sub= l
+
               %li.overview_item_header
                 CERTIFICATIONS:
-                .over_item_sub= @user.skillset
+                - @user_skillsets.each do |sk|
+                  .over_item_sub= sk
+
             .col-md-1
       .col-md-3
         .panel.panel-default
           .panel-body
             .box_header.text-center 
-              CONTACT ME
+              CONTACT
+              
+              %span= @user.name.upcase
+
             .box_header_line
             .text-center
               %a.btn.btn-primary.msg_btn{href: "#"}
@@ -67,9 +78,43 @@
     .my_adv_header 
       MY ADVENTURES
       %span.header_sub 
+        %span= "( #{@user.adventures.count} )"
         VIEW ALL >>>
 
-- #ADD ADVENTURE FORMATTING DOWN BY CK 
+        - if @user.adventures.count > 1
+          .adventure-slider-container
+            .slider-wrapper
+              %i.next.fa.fa-chevron-right#profile-next
+              %i.prev.fa.fa-chevron-left#profile-prev
+
+              .swiper-container
+                .swiper-wrapper
+                  - if @user.adventures
+                    - @user.adventures.each_with_index do |adv, i|
+                      %a.swiper-slide.adventure-slide{href: adventure_path(adv.slug)}
+                        .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+                          .copy
+                            - if adv.title.length > 38
+                              #title= "#{adv.title[0..38]}..."
+                            -else
+                              #title= adv.title
+
+                            .ping
+                            - if adv.subtitle.length > 40
+                              #location= "#{adv.subtitle.upcase[0..40]}..."
+                            -else
+                              #location= adv.subtitle.upcase
+
+                          .hover-block{id: i}
+                            - if adv.users.first && !adv.users.first.avatar_url
+                              #guide-image= image_tag adv.users.first.avatar
+                            -else
+                              #guide-image= image_tag "#{adv.users.first.avatar_url}?type=large"
+                          .copy-container{class: "copy-#{i}"}
+
+        -else
+          No adventures posted 
+                
 
 
 #p_bio
@@ -92,3 +137,22 @@
           .panel-body
             .review_header
               REVIEWS
+
+:javascript
+  // usersShowInit();
+
+  adventureHover()
+  
+  window.onload = function() {
+    var profileSlider = new Swiper('.swiper-container',{
+      mode:'horizontal',
+      slidesPerView: 3
+    });  
+
+    $('#profile-next').click(function(){
+      profileSlider.swipeNext()
+    })
+    $('#profile-prev').click(function(){
+      profileSlider.swipePrev()
+    })
+  }

@@ -55,16 +55,12 @@ class User < ActiveRecord::Base
 
   def get_age(user_id)
     @user = User.find_by!(:id => user_id)
-
     now = Time.now.utc
     birthday = @user.dob
-
     if birthday.nil? 
       return nil
     end
-
     current_age = now.year - birthday.year - (birthday.to_time.change(:year => now.year) > now ? 1 : 0)
-
     return current_age
   end
 
@@ -75,5 +71,4 @@ class User < ActiveRecord::Base
       "#{id}"
     end
   end 
-
 end

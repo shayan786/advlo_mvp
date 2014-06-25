@@ -50,3 +50,7 @@ function usersInit(){
   input_maxlength();
   photoInput();
 }
+
+function usersShowInit(){
+  // userWallpaperScroll();
+}

@@ -32,13 +32,15 @@
 
 		.banner_name {
 			font-family: $profile_banner_name_font;
-			font-size: 1.5em;
+			font-size: 2em;
 			margin-bottom: 5px;
+			text-transform: uppercase;
 		}
 
 		.banner_subtitle {
 			font-family: $profile_banner_subtitle_font;
 			font-size: 1.2em;
+			font-style: italic;
 		}
 	} 
 }

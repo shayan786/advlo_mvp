@@ -8,7 +8,7 @@
 		color: $white;
 		border-color: $profile_overview_box_color;
 		@include border_radius(0px);
-		min-height: 260px;
+		min-height: 200px;
 
 		li {
 			list-style-type: none;
@@ -18,11 +18,15 @@
 		.overview_item {
 			font-family: $profile_over_item_font;
 			font-size: 1.8em;
+			color: $orange;
+			span {
+				color: #fff;
+			}
 		}
 
 		.overview_item_header {
 			@extend .overview_item;
-			color: $advlo_green;
+			color: $orange;
 
 			.over_item_sub {
 				font-family: cabin_regular;
@@ -35,6 +39,12 @@
 			font-family: $profile_box_header_font;
 			color: $profile_box_header_font_color;
 			font-size: 2.2em;
+			margin-top: 5px;  
+			margin-bottom: 5px; 
+
+			span {
+				word-wrap: break-word;
+			}
 		}
 
 		.box_header_line {

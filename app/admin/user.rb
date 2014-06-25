@@ -2,8 +2,8 @@ ActiveAdmin.register User do
 
   index do
     column :email
+    column :name
     column :is_guide
-
     column 'avatar' do |user|
       image_tag(user.avatar(:thumb))
     end
@@ -16,6 +16,7 @@ ActiveAdmin.register User do
       f.input :email
       f.input :name
       f.input :avatar_url
+      f.input :avatar, as: :file
       f.input :location
       f.input :skillset
       f.input :language
