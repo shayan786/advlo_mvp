@@ -167,6 +167,7 @@
       float: left;
       margin: 20px;
       height: 100%;
+      width: 100%;
       background: $shaded_gray;
 
       .ping {
@@ -194,6 +195,44 @@
       .brick-copy {
         color: #fff;
         font-size: 20px;
+        position: relative;
+        float: left;
+        width: 100%;
+
+        .itinerary-block {
+          position: relative;
+          width: 100%;
+          float: left;
+          margin-bottom: 12px;
+
+          .headline {
+            font-family: 'cabin_bolditalic';
+            color: $advlo_green;
+            font-size: 25px;
+            text-shadow: -1px -1px #000;
+          }
+          .description {
+            margin-left: 18px;
+          }
+        }
+
+        #gallery-masonry-container{
+          position: relative;
+          height: 100%;
+          width: 100%;
+          margin: 0 auto;
+          .gallery-image {
+            cursor: pointer;
+            margin: 10px;
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+          .gallery-image:hover {
+            opacity: 0.5;
+          }
+        }
       }
     }
     .navigation-brick {
@@ -228,6 +267,20 @@
       background: $light_gray;
     }
   }
+}
+
+.modal-body {
+  img {
+    width: 100%;
+    cursor: pointer;
+  }
+}
+.modal-content {
+  background-color: $dark_gray;
+}
+.modal-dialog {
+  width: 55%;
+  margin: 100px auto;
 }
 
 @media screen and (max-width: 991px){
