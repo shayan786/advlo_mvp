@@ -14,16 +14,12 @@
         #guide-title
           = @current_guide.short_description
 
-
     - else
       .guide-block
         #guide-name
           Want to guide?
         .guide-profile-image
           = link_to "Click here", '/adventures/create_prefill'
-
-      
-
     .adventure-block
       #adventure-title
 
@@ -53,12 +49,12 @@
     .col-md-9.information-container
       #adventure-title= @adventure.title
       #adventure-description= @adventure.subtitle
-      .copy-brick.container-fluid
+      .copy-brick.container-fluid#overview
         .ping
         .brick-title Overview
         .brick-copy= @adventure.inspect
 
-      .copy-brick.container-fluid
+      .copy-brick.container-fluid#itinerary
         .ping
         .brick-title Itinerary
         .brick-copy 
@@ -68,7 +64,7 @@
                 .headline= itin.headline
                 .description= itin.description
 
-      .copy-brick.container-fluid
+      .copy-brick.container-fluid#gallery
         .ping
         .brick-title Gallery
         .brick-copy 
@@ -85,12 +81,12 @@
                 / %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} X
                 
           
-      .copy-brick.container-fluid
+      .copy-brick.container-fluid#policy
         .ping
         .brick-title Policy
         .brick-copy overview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview text
 
-      .copy-brick.container-fluid
+      .copy-brick.container-fluid#reviews
         .ping
         .brick-title Reviews
         .brick-copy overview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview text
@@ -104,9 +100,9 @@
         %a{href: '#itinerary'}
           .item
             %span itinerary
-        %a{href: '#reviews'}
+        %a{href: '#gallery'}
           .item
-            %span reviews
+            %span gallery
         %a{href: '#policy'}
           .item
             %span policy
@@ -115,7 +111,6 @@
 
 :javascript
   adventureShow();
-
   $(window).resize(function(){
     sizeSidebar();
   })

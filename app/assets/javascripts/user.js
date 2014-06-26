@@ -21,7 +21,6 @@ function profileSlider() {
       }
     }
   });  
-
   $('#profile-next').click(function(){
     profileSlider.swipeNext()
   })
@@ -29,7 +28,6 @@ function profileSlider() {
     profileSlider.swipePrev()
   })
 }
-
 
 
 function input_popover() {
