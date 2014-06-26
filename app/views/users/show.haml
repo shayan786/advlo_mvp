@@ -106,9 +106,8 @@
                               .location= adv.subtitle.upcase
 
                           .hover-block{id: i}
-                            - if adv.users.first && !adv.users.first.avatar_url
-                              .guide-profile-image= image_tag adv.users.first.avatar
-                              
+                            - if adv.users.first && adv.users.first.avatar_url == '' && adv.users.first.avatar_url == nil
+                              .guide-profile-image= image_tag adv.users.first.avatar.url(:large)
                             -else
                               .guide-profile-image= image_tag "#{adv.users.first.avatar_url}?type=large"
                           .copy-container{class: "copy-#{i}"}
