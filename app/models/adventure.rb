@@ -12,7 +12,7 @@ class Adventure < ActiveRecord::Base
   validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
 
   validates_uniqueness_of :title
-  validates_presence_of :title, :subtitle
+  validates_presence_of :title
 
   def set_slug
     if self.slug == nil || self.slug == ''

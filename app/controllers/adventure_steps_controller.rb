@@ -3,26 +3,36 @@ class AdventureStepsController < ApplicationController
   steps :basic, :photos
 
   def show
-    @adventure = Adventure.find_by_id(session[:adventure_id])
+    if session[:adventure_id]
+      @adventure = Adventure.find_by_id(session[:adventure_id])
+    else
+      @adventure = Adventure.find_by_id(params[:adventure_id])
+    end
+
     render_wizard
   end
 
   def update
-    @adventure = Adventure.find_by_id(session[:adventure_id])
-    @adventure.attributes = adventure_params
+    if session[:adventure_id]
+      adv_id = session[:adventure_id]
+      @adventure = Adventure.find_by_id(session[:adventure_id])
+    else
+      adv_id = params[:adventure_id]
+      @adventure = Adventure.find_by_id(params[:adventure_id])
+    end
 
     # Hook for uploading pics and remaining on the same page
     if params[:images]
         params[:images].each do |image|
-          @adventure.adventure_gallery_images.create(image: image, adventure_id: params[:adventure_id])
+          @adventure.adventure_gallery_images.create(picture: image, adventure_id: adv_id)
         end
 
       redirect_to '/adventure_steps/photos', notice: "Photos have been uploaded!"
     else
-      redirect_to '/adventure_steps/photos', notice: "Something went wrong!"
+      @adventure.attributes = adventure_params
+      render_wizard @adventure
     end
 
-    render_wizard @adventure
   end
 
   private
