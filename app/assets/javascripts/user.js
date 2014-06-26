@@ -77,6 +77,24 @@ function create_tabs() {
   });
 }
 
+function adventureShowHover(){
+  $('.hover-block').hover(function(){
+    $('.copy-'+$(this).attr('id')).stop().animate({
+      opacity: 0
+    },500)
+    $(this).stop().animate({
+      opacity: 1
+    },140)
+  },function(){
+    $('.copy-'+$(this).attr('id')).stop().animate({
+      opacity: 1
+    },300)
+    $(this).stop().animate({
+      opacity: 0
+    })
+  })
+}
+
 
 
 function usersInit(){
@@ -87,7 +105,7 @@ function usersInit(){
 }
 
 function usersShowInit(){
-  adventureHover();
+  adventureShowHover()
   profileSlider();
-  
+  centerGuideImage();
 }

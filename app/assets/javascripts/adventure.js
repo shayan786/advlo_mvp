@@ -148,7 +148,7 @@ function centerProfileImage(){
 }
 
 function centerGuideImage(){
-  $(document).ready(function(){
+  $(window).load(function(){
     $('.guide-profile-image').each(function(){
       var imageWidth = $(this).find('img').width()
       if( imageWidth > 300){
@@ -214,7 +214,6 @@ adventureShow = function() {
   navigationBreadcrumbs();
   adventureScroll();
   centerGuideImage();
-
 };
 
 adventureIndex = function() {
