@@ -143,8 +143,7 @@ function galleryToggle(){
     $('.gallery-image').removeClass('active')
 
     $('.modal-body img').attr('src', $(this).data('image'))
-    $('.modal-body img').addClass($(this).attr('id'))
-
+    $('.modal-body img').attr('id', $(this).attr('id'))
     $(this).addClass('active')
   })
 }
@@ -152,19 +151,19 @@ function galleryToggle(){
 
 function galleryModalClick(){
   var totalSlides = $('.gallery-image').size()
-
   $('.modal-body img').click(function(i){
     $('.modal-body img').removeClass()
-    if(totalSlides > 1){
+    if($('.gallery-image').last().hasClass('active')){
+      $('.gallery-image').removeClass('active')
+      $('.gallery-image').first().addClass('active')
+      $(this).attr('src', $('.active').data('image'))
+    }else if(totalSlides > 1){
       $(this).attr('src', $('.active').next().data('image'))
       $('.active').next().addClass('active')
       $('.active').first().removeClass('active')
-
     }else{
-      
+
     }
-    // $('.modal-body img').attr('src', $(this).attr('id').spli )
-    // $('.modal-body img').attr('id', $(this).attr('id')+'-modal')
   })
 }
 

@@ -74,7 +74,7 @@
         .brick-copy 
           #gallery-masonry-container
             - @adventure.adventure_gallery_images.each_with_index do |gi, i|
-              .gallery-image{"data-target" => "#myModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), id: "image#{i}"}
+              .gallery-image{"data-target" => "#myModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), class: "image#{i}", id: i}
                 = image_tag gi.picture.url(:thumb)
 
       #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog"}
