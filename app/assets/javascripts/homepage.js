@@ -77,4 +77,5 @@ homepageInit = function() {
   adventureSliderInit();
   hostSliderInit()
   adventureHover();
+  centerGuideImage();
 }

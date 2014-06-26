@@ -6,7 +6,7 @@
       .guide-block
         #guide-name
           = @current_guide.name
-        #guide-profile-image
+        .guide-profile-image
           -if @current_guide.avatar_url
             = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
           - else
@@ -19,7 +19,7 @@
       .guide-block
         #guide-name
           Want to guide?
-        #guide-profile-image
+        .guide-profile-image
           = link_to "Click here", '/adventures/create_prefill'
 
       
@@ -40,7 +40,7 @@
             #guide-name
               = "Gustavo -"
               %span= "Climbing Guru"
-            #guide-profile-image
+            .guide-profile-image
               = image_tag "#{current_user.avatar_url}?type=large" if current_user && current_user.avatar_url
       
 
@@ -82,9 +82,7 @@
           .modal-content
             .modal-body
               %img{src: '', id: ''}
-            // .modal-footer
-            /   / %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} prev
-            /   / %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} next
+                / %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} X
                 
           
       .copy-brick.container-fluid
@@ -116,11 +114,6 @@
     
 
 :javascript
-
-  
-
-  
-
   adventureShow();
 
   $(window).resize(function(){

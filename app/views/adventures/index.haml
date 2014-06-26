@@ -34,15 +34,19 @@
               .price= adv.price
 
               .hover-block{id: i}
-                #guide-image= image_tag "#{adv.users.first.avatar.url}" if adv.users.first
+                - if adv.users.first.avatar_url
+                  .guide-image= image_tag "#{adv.users.first.avatar_url}?type=large" if adv.users.first
+                -else
+                  .guide-image= image_tag "#{adv.users.first.avatar.url(:large)}" if adv.users.first
               .copy-container{class: "copy-#{i}"}
 
 
 :javascript
-  adventureIndex();
 
   $(window).load(function(){
+    adventureIndex();
     $('#location_text').css('top', ($('#hero_image').height() / 2))
+
   })  
 
   $(window).resize(function(){

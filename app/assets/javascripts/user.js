@@ -75,8 +75,9 @@ function create_tabs() {
     e.preventDefault();
     $(this).tab('show');
   });
-
 }
+
+
 
 function usersInit(){
   input_popover();
@@ -86,5 +87,7 @@ function usersInit(){
 }
 
 function usersShowInit(){
-  // userWallpaperScroll();
+  adventureHover();
+  profileSlider();
+  
 }

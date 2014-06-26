@@ -133,6 +133,33 @@ function navigationBreadcrumbs(){
   }
 }
 
+function centerProfileImage(){
+  $('.guide-image').each(function(){
+    var imageWidth = $(this).find('img').width()
+    console.log(imageWidth)
+    if( imageWidth > 300){
+      $(this).find('img').css('margin-left','-40%')
+    }else if(imageWidth > 250){
+      $(this).find('img').css('margin-left','-20%')
+    }else if(imageWidth > 200){
+      $(this).find('img').css('margin-left','-10%')
+    }
+  })
+}
+
+function centerGuideImage(){
+  $('.guide-profile-image').each(function(){
+    var imageWidth = $(this).find('img').width()
+    if( imageWidth > 300){
+      $(this).find('img').css('margin-left','-30%')
+    }else if(imageWidth > 250){
+      $(this).find('img').css('margin-left','-20%')
+    }else if(imageWidth > 200){
+      $(this).find('img').css('margin-left','-10%')
+    }
+  })
+}
+
 function AdvPhotoInput(){
   $("#adv_cover_img").filestyle({input: false, icon: false, buttonText: "SET COVER IMAGE"});
   $("#adv_gallery_img").filestyle({input: false, icon: false, buttonText: "SELECT GALLERY IMAGES"});
@@ -162,7 +189,6 @@ function galleryModalClick(){
       $('.active').next().addClass('active')
       $('.active').first().removeClass('active')
     }else{
-
     }
   })
 }
@@ -185,6 +211,8 @@ adventureShow = function() {
   navBarCatch(); 
   navigationBreadcrumbs();
   adventureScroll();
+  centerGuideImage();
+
 };
 
 adventureIndex = function() {
@@ -193,6 +221,7 @@ adventureIndex = function() {
   filterCatch();
   heroScroll();
   adventureHover();
+  centerProfileImage();
 }
 
 adventureCreate = function() {
