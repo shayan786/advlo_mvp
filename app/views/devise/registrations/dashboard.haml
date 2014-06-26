@@ -28,6 +28,14 @@
                     %a.btn.btn-primary.edit_btn{href: "/adventure_steps/basic?adventure_id=#{adv.id}"} 
                       %i.fa.fa-pencil
                       EDIT
-                    %a.btn.btn-danger.edit_btn{href: "#"}
+                    = link_to adv, method: "delete",  data: {confirm: "Are you sure?"}, class: "btn btn-danger edit_btn" do
                       %i.fa.fa-times
-                      DELETE
+                        DELETE
+
+/ :javascript
+/   function verifyDelete() {
+/     var resp = confirm("Are you sure you want to delete this Adventure?");
+
+/     if (resp == true)
+/       window.location.replace("/users/dashboard");
+/   }
