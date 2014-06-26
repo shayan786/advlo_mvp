@@ -74,7 +74,6 @@ class AdventuresController < ApplicationController
 
     if @adventure.save
       #associate that adventure with that adventure
-      # @adventure.users.create(user_id: current_user.id)
       @useradventure = @adventure.user_adventures.build(user_id: current_user.id, adventure_id: @adventure.id)
       @useradventure.save
 
@@ -88,6 +87,13 @@ class AdventuresController < ApplicationController
 
   #------------------------HOST LOGIC END-----------------------------
 
+  def destroy 
+    @adventure = Adventure.find_by_id(params[:id])
+
+    @adventure.destroy
+
+    redirect_to '/users/dashboard', notice: "Adventure has been deleted!"
+  end
 
   private
   # Using a private method to encapsulate the permissible parameters is just a good pattern

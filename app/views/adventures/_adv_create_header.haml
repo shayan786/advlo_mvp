@@ -3,21 +3,21 @@
     %ul.nav.nav-pills
       - if params[:id] == "basic" || controller.action_name == "new"
         %li.active 
-          %a{href: "/adventure_steps/basic"}
+          %a{href: "/adventure_steps/basic?adventure_id=#{@adventure.id}"}
             BASICS
       - else
         %li 
-          %a{href: "/adventure_steps/basic"}
+          %a{href: "/adventure_steps/basic?adventure_id=#{@adventure.id}"}
             BASICS
       %li
         %i.fa.fa-long-arrow-right
       - if params[:id] == "photos"
         %li.active 
-          %a{href: "/adventure_steps/photos"}
+          %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
             PHOTOS
       - else
         %li 
-          %a{href: "/adventure_steps/photos"}
+          %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
             PHOTOS
       %li
         %i.fa.fa-long-arrow-right

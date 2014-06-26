@@ -17,9 +17,9 @@
               .divider
 
               - if !@adventure.adventure_gallery_images.empty?
-                - @adventure.adventure_gallery_images.each do |img|
+                - @adventure.adventure_gallery_images.each do |adv|
                   / .gallery_img{style: "background: url(#{img.picture.url}) center center no-repeat; width: 200px; height: 200px"}
-                  = image_tag img.picture.url(:medium), class: "img-response img-rounded"
+                  = image_tag adv.picture.url(:medium), class: "img-response img-rounded"
           .panel-footer.text-center
             %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT"}
 

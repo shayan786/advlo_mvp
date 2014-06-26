@@ -3,7 +3,8 @@ class AdventureStepsController < ApplicationController
   steps :basic, :photos
 
   def show
-    if session[:adventure_id]
+
+    if session[:adventure_id] && session[:dashboard == false]
       @adventure = Adventure.find_by_id(session[:adventure_id])
     else
       @adventure = Adventure.find_by_id(params[:adventure_id])
@@ -13,7 +14,7 @@ class AdventureStepsController < ApplicationController
   end
 
   def update
-    if session[:adventure_id]
+    if session[:adventure_id] && session[:dashboard == false]
       adv_id = session[:adventure_id]
       @adventure = Adventure.find_by_id(session[:adventure_id])
     else
