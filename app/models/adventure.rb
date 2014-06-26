@@ -3,7 +3,6 @@ class Adventure < ActiveRecord::Base
 
   has_many :user_adventures
   has_many :users, through: :user_adventures
-
   has_many :adventure_gallery_images
 
   accepts_nested_attributes_for :user_adventures, :adventure_gallery_images, :allow_destroy => true

@@ -20,6 +20,7 @@
 //= require bootstrap-maxlength
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
+//= require imagesloaded.pkgd.min.js
 //= require adventure.js
 //= require homepage.js
 //= require user.js

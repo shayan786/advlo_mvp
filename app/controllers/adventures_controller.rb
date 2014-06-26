@@ -9,6 +9,7 @@ class AdventuresController < ApplicationController
   def show
     @adventure = Adventure.find_by_slug(params[:id])
     @current_guide = @adventure.users.first
+    @itineraries = Itinerary.where(adventure_id: @adventure.id)
   end
 
   # info page for creating a new adventure

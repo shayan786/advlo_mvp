@@ -33,8 +33,6 @@
         %span BOOK IT
 
   .adventure-copy-wrapper
-    - attributes = {:overview => @adventure.summary, :itinerary => @adventure.inspect, :reviews => @adventure.inspect, :policy => @adventure.inspect}
-
     .row
       .col-md-3#mobile-adventure-infographic
         .navigation-brick
@@ -55,20 +53,49 @@
     .col-md-9.information-container
       #adventure-title= @adventure.title
       #adventure-description= @adventure.subtitle
-      - attributes.each_with_index do |(key, array), i|
-        - case i
-        - when 0
-          - id ='overview'
-        - when 1
-          - id ='itinerary'
-        - when 2
-          - id ='reviews'
-        - when 3
-          - id ='policy'
-        .copy-brick.container-fluid{id: id}
-          .ping
-          .brick-title= key
-          .brick-copy= array
+      .copy-brick.container-fluid
+        .ping
+        .brick-title Overview
+        .brick-copy= @adventure.inspect
+
+      .copy-brick.container-fluid
+        .ping
+        .brick-title Itinerary
+        .brick-copy 
+          - if @itineraries
+            - @itineraries.each do |itin|
+              .itinerary-block
+                .headline= itin.headline
+                .description= itin.description
+
+      .copy-brick.container-fluid
+        .ping
+        .brick-title Gallery
+        .brick-copy 
+          #gallery-masonry-container
+            - @adventure.adventure_gallery_images.each_with_index do |gi, i|
+              .gallery-image{"data-target" => "#myModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), id: "image#{i}"}
+                = image_tag gi.picture.url(:thumb)
+
+      #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog"}
+        .modal-dialog
+          .modal-content
+            .modal-body
+              %img{src: '', id: ''}
+            // .modal-footer
+            /   / %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} prev
+            /   / %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} next
+                
+          
+      .copy-brick.container-fluid
+        .ping
+        .brick-title Policy
+        .brick-copy overview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview text
+
+      .copy-brick.container-fluid
+        .ping
+        .brick-title Reviews
+        .brick-copy overview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview text
 
     .col-md-3#desktop-adventure-nav
       .navigation-brick
@@ -86,8 +113,14 @@
           .item
             %span policy
 
+    
 
 :javascript
+
+  
+
+  
+
   adventureShow();
 
   $(window).resize(function(){

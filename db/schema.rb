@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624014937) do
+ActiveRecord::Schema.define(version: 20140625224530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,21 @@ ActiveRecord::Schema.define(version: 20140624014937) do
     t.text     "other_notes"
   end
 
+  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "hero_images", force: true do |t|
     t.string   "location"
     t.string   "region"
@@ -90,6 +105,14 @@ ActiveRecord::Schema.define(version: 20140624014937) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+  end
+
+  create_table "itineraries", force: true do |t|
+    t.string   "headline"
+    t.text     "description"
+    t.integer  "adventure_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_adventures", force: true do |t|
