@@ -95,6 +95,21 @@ function adventureShowHover(){
   })
 }
 
+function profileCenterImage(){
+  $(window).load(function(){
+    $('.profile-image').each(function(){
+      var imageWidth = $(this).find('img').width()
+      console.log(imageWidth)
+      if( imageWidth > 300){
+        $(this).find('img').css('margin-left','-40%')
+      }else if(imageWidth > 250){
+        $(this).find('img').css('margin-left','-20%')
+      }else if(imageWidth > 200){
+        $(this).find('img').css('margin-left','-10%')
+      }
+    })
+  })
+}
 
 
 function usersInit(){
@@ -105,7 +120,8 @@ function usersInit(){
 }
 
 function usersShowInit(){
-  adventureShowHover()
+  adventureShowHover();
   profileSlider();
   centerGuideImage();
+  profileCenterImage();
 }

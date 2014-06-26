@@ -4,13 +4,10 @@
       .col-md-4.col-md-offset-4
         .panel.panel-default
           .panel-body.text-center
-            - if !@user.avatar_file_name.nil?
-              .profile-image{style: "background: url(#{@user.avatar.url(:medium)}) no-repeat center center;"}
-
-            - elsif !@user.avatar_url.nil?
-              .profile-image{style: "background: url(#{@user.avatar_url}?type=large) no-repeat center center;"}
-            - else 
-              = image_tag @user.avatar.url(:medium)
+            -if @user.avatar_url
+              .profile-image= image_tag "#{@user.avatar_url}?type=large"
+            - else
+              .profile-image= image_tag @user.avatar.url(:large), class: 'non-fb-img'
 
             .banner_name= @user.name
             .banner_subtitle= @user.short_description
@@ -106,11 +103,13 @@
                               .location= adv.subtitle.upcase
 
                           .hover-block{id: i}
-                            - if adv.users.first && adv.users.first.avatar_url == '' && adv.users.first.avatar_url == nil
+                            - if adv.users.first && !adv.users.first.avatar_url
                               .guide-profile-image= image_tag adv.users.first.avatar.url(:large)
-                            -else
+                            -elsif adv.users.first
                               .guide-profile-image= image_tag "#{adv.users.first.avatar_url}?type=large"
                           .copy-container{class: "copy-#{i}"}
+
+                          
 
         -else
           No adventures posted 
@@ -143,4 +142,6 @@
               REVIEWS
 
 :javascript
+
+  
   usersShowInit()
