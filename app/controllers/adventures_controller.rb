@@ -30,7 +30,7 @@ class AdventuresController < ApplicationController
   # 3) User is logged in and profile is setup to host but has never hosted before
   #     => redirect to create an adventure info. page
   # 4) User is logged in and profile is setup to host and has hosted before
-  #     => redirect to create an adventure form
+  #     => redirect to create a new adventure form
 
   def create_prefill
     #define recursive call back url
@@ -47,6 +47,7 @@ class AdventuresController < ApplicationController
     # 3
     elsif user_signed_in? && current_user.is_guide?(current_user.id) && !UserAdventure.where(user_id: current_user.id).present?
       redirect_to '/adventures/info'
+    # 4
     else 
       redirect_to '/adventures/new'
     end
@@ -69,12 +70,17 @@ class AdventuresController < ApplicationController
       redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
 
-    @adventure = Adventure.new(adventure_params)
+    @adventure = Adventure.create(adventure_params)
 
     if @adventure.save
+      #associate that adventure with that adventure
       # @adventure.users.create(user_id: current_user.id)
-      session[:adventure_id] = @adventure.id
-      redirect_to adventure_steps_path
+      @useradventure = @adventure.user_adventures.build(user_id: current_user.id, adventure_id: @adventure.id)
+      @useradventure.save
+
+      session[:adventure_id] =  @adventure.id
+
+      redirect_to "/adventure_steps/photos"
     else
       render :new
     end
@@ -82,9 +88,6 @@ class AdventuresController < ApplicationController
 
   #------------------------HOST LOGIC END-----------------------------
 
-  def update
-    
-  end
 
   private
   # Using a private method to encapsulate the permissible parameters is just a good pattern
@@ -93,5 +96,7 @@ class AdventuresController < ApplicationController
   def adventure_params
     params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :category, :other_notes, :adventure_gallery_images, :images)
   end
+
+
 end
 

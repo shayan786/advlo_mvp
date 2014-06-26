@@ -22,10 +22,10 @@
                   .adv_loc= adv.location
                   .adv_price= "$"+adv.price.to_s + " " + adv.price_type.gsub("_"," ")
                   .row.container
-                    %a.btn.btn-default.edit_btn{href: "#"}
+                    %a.btn.btn-default.edit_btn{href: "/adventures/#{adv.slug}"}
                       %i.fa.fa-eye
                       VIEW
-                    %a.btn.btn-primary.edit_btn{href: "#"}
+                    %a.btn.btn-primary.edit_btn{href: "/adventure_steps/basic?adventure_id=#{adv.id}"} 
                       %i.fa.fa-pencil
                       EDIT
                     %a.btn.btn-danger.edit_btn{href: "#"}
