@@ -126,9 +126,11 @@
             .bio_header
               THE BIO
             .bio_body
-              %span= '"' + @user.bio.split('.').first() + '"'
+              - split_bio = @user.bio.split('.').first()
+              - rest_of_bio = @user.bio.gsub(split_bio, '')
+              %span= '"' + split_bio + '."'
               %br
-              = @user.bio
+              = rest_of_bio[1..-1]
 
 
 #p_reviews
