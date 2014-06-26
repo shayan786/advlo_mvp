@@ -2,7 +2,7 @@ class AdventuresController < ApplicationController
 
   def index
     # @adventures = Adventure.where(region: params[:region])
-    @adventures = Adventure.all
+    @adventures = Adventure.all.order('created_at DESC')
     @hero_image = HeroImage.where(region: 'Colorado').last
   end
 
