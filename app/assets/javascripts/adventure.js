@@ -148,15 +148,17 @@ function centerProfileImage(){
 }
 
 function centerGuideImage(){
-  $('.guide-profile-image').each(function(){
-    var imageWidth = $(this).find('img').width()
-    if( imageWidth > 300){
-      $(this).find('img').css('margin-left','-30%')
-    }else if(imageWidth > 250){
-      $(this).find('img').css('margin-left','-20%')
-    }else if(imageWidth > 200){
-      $(this).find('img').css('margin-left','-10%')
-    }
+  $(document).ready(function(){
+    $('.guide-profile-image').each(function(){
+      var imageWidth = $(this).find('img').width()
+      if( imageWidth > 300){
+        $(this).find('img').css('margin-left','-30%')
+      }else if(imageWidth > 250){
+        $(this).find('img').css('margin-left','-20%')
+      }else if(imageWidth > 200){
+        $(this).find('img').css('margin-left','-10%')
+      }
+    })
   })
 }
 
