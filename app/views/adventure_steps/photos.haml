@@ -2,32 +2,51 @@
   .container
     = render partial: "/adventures/adv_create_header"
     #adv_photos
-      %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_edit_form"}
-        = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-        = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-        .panel.panel-default
-          .panel-heading.text-center.section_header
-            PHOTOS
-          .panel-body
-            .cover_img_display
+      .panel.panel-default
+        .panel-heading.text-center.section_header
+          PHOTOS
+        .panel-body
+          .cover_img_display
 
+          .text-center
+            - if !@adventure.adventure_gallery_images.empty?
+              - @adventure.adventure_gallery_images.each_with_index do |adv, i|
+                - if i%3 == 0  
+                  .row
+                .col-md-4.text-center{id: "img-#{adv.id}"}
+                  = image_tag adv.picture.url(:medium), class: "img-responsive img-rounded", id: "img-id-#{adv.id}"
+                  .btn.img_del_btn{id: "#{adv.id}"}
+                    %i.fa.fa-times
+                  
+          .row
+          %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adv_gallery_img_upload", enctype: "multipart/form-data"}
+            = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            = tag(:input, :type => "hidden", :name => "adventure_id", :value => @adventure.id)
             .form-group
-              %input.filestyle{type: "file", name: "adventure[cover_img]", id: "adv_cover_img"}
+              %input.filestyle{type: "file", name: "images[]", id: "adv_gallery_img", multiple: "multiple", onchange: "javascript:document.getElementById('adv_gallery_img_upload').submit();"}
 
-              .divider
-
-              - if !@adventure.adventure_gallery_images.empty?
-                - @adventure.adventure_gallery_images.each do |adv|
-                  / .gallery_img{style: "background: url(#{img.picture.url}) center center no-repeat; width: 200px; height: 200px"}
-                  = image_tag adv.picture.url(:medium), class: "img-response img-rounded"
-          .panel-footer.text-center
-            %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT"}
-
-      %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adv_gallery_img_upload", enctype: "multipart/form-data"}
-        = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-        = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-        .form-group
-          %input.filestyle{type: "file", name: "images[]", id: "adv_gallery_img", multiple: "multiple", onchange: "javascript:document.getElementById('adv_gallery_img_upload').submit();"}
+        .panel-footer.text-center
+          %a.btn.btn-primary.preview_btn{href: "#"}
+            NEXT
                 
 :javascript
   adventureCreate();
+
+  $('.img_del_btn').click(function(e) {
+    var img_id = this.id;
+
+    e.preventDefault();
+    $.ajax({
+      url: "#{wizard_path}",
+      dataType: "text json",
+      data: {delete_img: 1, delete_img_id: this.getAttribute('id'), adventure_id: #{@adventure.id}, #{request_forgery_protection_token.to_s}: "#{form_authenticity_token}"},
+      type: "POST",
+      method: "PUT",
+      beforeSend: function() {
+        $('#img-'+img_id).fadeOut(200, function() {
+          $(this).remove();
+        });
+      }
+    });
+  });

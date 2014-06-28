@@ -11,7 +11,7 @@
 
 
 				.nav {
-					padding-left: 70px;
+					padding-left: 40px;
 				}
 			}
 
@@ -42,25 +42,6 @@
 			}
 
 
-			.bootstrap-filestyle {
-				margin: 0px auto;
-
-				.btn {
-					font-size: 1.2em;
-					padding: 10px 30px;
-
-					&:hover {
-
-					}
-				}
-			}
-
-			.divider {
-				border: 1px solid $lighter_gray;
-				margin: 20px 0;
-			}
-
-
 			.panel-footer {
 				background-color: $white;
 
@@ -77,5 +58,58 @@
 				}
 			}
 		}
+	}
+
+	//PHOTOS
+	#adv_photos {
+
+		.panel {
+			.panel-body {
+				min-height: 500px;
+			}
+
+		}
+
+		.bootstrap-filestyle {
+			margin: 10px auto 0px auto;
+
+			.btn {
+				font-size: 1.2em;
+				padding: 10px 30px;
+
+				&:hover {
+
+				}
+			}
+		}
+
+		.divider {
+			border: 1px solid $lighter_gray;
+			margin: 20px 0;
+		}
+
+		img {
+			margin: 0px auto;
+		}
+
+		.img_del_btn {
+			margin-top: 5px;
+			margin-bottom: 15px;
+			padding: 5px 10px 5px 10px;
+			background-color: $login_btn_color;
+			border-color: $login_btn_color;
+
+			.fa {
+				padding: 0px;
+				color: $white;
+				font-size: 1.4em;
+			}
+
+			&:hover {
+				background-color: $login_btn_color_hover;
+				border-color: $login_btn_color_hover;;
+			}
+		}
+
 	}
 }

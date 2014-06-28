@@ -1,0 +1,21 @@
+#adventure_create
+  .container
+    = render partial: "/adventures/adv_create_header"
+    #adv_photos
+      / %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_edit_form"}
+      /   = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+      /   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      .panel.panel-default
+        .panel-heading.text-center.section_header
+          PHOTOS
+        .panel-body
+          .cover_img_display
+
+          
+
+        .panel-footer.text-center
+          %a.btn.btn-primary.preview_btn{href: "#"}
+            NEXT
+                
+:javascript
+  adventureCreate();
