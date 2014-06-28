@@ -98,8 +98,8 @@
                               #title= adv.title
 
                             .ping
-                            - if adv.subtitle.length > 40
-                              .location= "#{adv.subtitle.upcase[0..40]}..."
+                            - if adv.subtitle.length > 37
+                              .location= "#{adv.subtitle.upcase[0..37]}..."
                             -else
                               .location= adv.subtitle.upcase
 
