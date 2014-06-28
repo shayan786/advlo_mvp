@@ -37,7 +37,7 @@ function adventureSliderInit(){
 
 function hostSliderInit(){
   var hostCount;
-  if($(window).width() > 1500){
+  if($(window).width() > 1386){
     hostCount = 3;
   }else if($(window).width() > 1002){
     hostCount = 2;
@@ -73,8 +73,29 @@ function hostSliderInit(){
 }
 
   
+
+function hostSliderImageCenter(){
+  $(window).load(function(){
+    $('.image-wrapper').each(function(){
+      var imageWidth = $(this).find('img').width()
+      console.log(imageWidth)
+      if( imageWidth > 700){
+        $(this).find('img').css('margin-left','-40%')
+      }else if(imageWidth > 600){
+        $(this).find('img').css('margin-left','-20%')
+      }else if(imageWidth > 500){
+        $(this).find('img').css('margin-left','-10%')
+      }
+    })
+  })
+}
+
+
+  
 homepageInit = function() {
   adventureSliderInit();
   hostSliderInit()
   adventureHover();
+  centerGuideImage();
+  hostSliderImageCenter();
 }

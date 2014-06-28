@@ -14,8 +14,8 @@
             %a.swiper-slide.adventure-slide{href: adventure_path(adv.slug)}
               .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
                 .copy
-                  - if adv.title.length > 38
-                    #title= "#{adv.title[0..38]}..."
+                  - if adv.title.length > 32
+                    #title= "#{adv.title[0..32]}..."
                   -else
                     #title= adv.title
 
@@ -27,8 +27,9 @@
                       .location= adv.location.upcase
 
                 .hover-block{id: i}
-                  - if adv.users.first && !adv.users.first.avatar_url
-                    #guide-image= image_tag adv.users.first.avatar.url(:large)
-                  -elsif adv.users.first
-                    #guide-image= image_tag "#{adv.users.first.avatar_url}?type=large"
+                  - usr = adv.users.first
+                  - if usr && usr.avatar_url == '' || usr.avatar_url == nil
+                    .guide-profile-image= image_tag usr.avatar.url(:large)
+                  -elsif usr
+                    .guide-profile-image= image_tag "#{usr.avatar_url}?type=large"
                 .copy-container{class: "copy-#{i}"}

@@ -21,7 +21,6 @@ function profileSlider() {
       }
     }
   });  
-
   $('#profile-next').click(function(){
     profileSlider.swipeNext()
   })
@@ -29,7 +28,6 @@ function profileSlider() {
     profileSlider.swipePrev()
   })
 }
-
 
 
 function input_popover() {
@@ -75,8 +73,42 @@ function create_tabs() {
     e.preventDefault();
     $(this).tab('show');
   });
-
 }
+
+function adventureShowHover(){
+  $('.hover-block').hover(function(){
+    $('.copy-'+$(this).attr('id')).stop().animate({
+      opacity: 0
+    },500)
+    $(this).stop().animate({
+      opacity: 1
+    },140)
+  },function(){
+    $('.copy-'+$(this).attr('id')).stop().animate({
+      opacity: 1
+    },300)
+    $(this).stop().animate({
+      opacity: 0
+    })
+  })
+}
+
+function profileCenterImage(){
+  $(window).load(function(){
+    $('.profile-image').each(function(){
+      var imageWidth = $(this).find('img').width()
+      console.log(imageWidth)
+      if( imageWidth > 300){
+        $(this).find('img').css('margin-left','-40%')
+      }else if(imageWidth > 250){
+        $(this).find('img').css('margin-left','-20%')
+      }else if(imageWidth > 200){
+        $(this).find('img').css('margin-left','-10%')
+      }
+    })
+  })
+}
+
 
 function usersInit(){
   input_popover();
@@ -86,5 +118,8 @@ function usersInit(){
 }
 
 function usersShowInit(){
-  // userWallpaperScroll();
+  adventureShowHover();
+  profileSlider();
+  centerGuideImage();
+  profileCenterImage();
 }

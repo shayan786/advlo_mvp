@@ -12,7 +12,7 @@ ActiveAdmin.register Adventure do
     column :price
     column :price_type
     column 'Guide' do |adv|
-      adv.users.first.email if adv.users.first
+      adv.users.first.name if adv.users.first
     end
     column 'Guide pic' do |adv|
       image_tag adv.users.first.avatar(:thumb) if adv.users.first
@@ -35,6 +35,11 @@ ActiveAdmin.register Adventure do
       f.input :attachment, as: :file
       f.has_many :user_adventures do |app|
         app.input :user_id, as: :select, collection: User.all.map{|u| ["#{u.email}", u.id]}, label: 'Guide'
+        app.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
+      end
+      f.has_many :itineraries do |app|
+        app.input :headline
+        app.input :description
         app.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
       end
 
