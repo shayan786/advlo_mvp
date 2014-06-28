@@ -1,6 +1,6 @@
 class AdventureStepsController < ApplicationController
   include Wicked::Wizard
-  steps :basic, :photos
+  steps :basic, :photos, :itinerary
 
   def show
 
@@ -10,16 +10,20 @@ class AdventureStepsController < ApplicationController
       @adventure = Adventure.find_by_id(params[:adventure_id])
     end
 
-    render_wizard
+    respond_to do |format|
+      format.html {render_wizard}
+      format.js {}
+    end
+
   end
 
   def update
     if session[:adventure_id] && session[:dashboard == false]
       adv_id = session[:adventure_id]
-      @adventure = Adventure.find_by_id(session[:adventure_id])
+      @adventure = Adventure.find_by_id(adv_id)
     else
       adv_id = params[:adventure_id]
-      @adventure = Adventure.find_by_id(params[:adventure_id])
+      @adventure = Adventure.find_by_id(adv_id)
     end
 
     # Hook for uploading pics and remaining on the same page
@@ -28,7 +32,19 @@ class AdventureStepsController < ApplicationController
           @adventure.adventure_gallery_images.create(picture: image, adventure_id: adv_id)
         end
 
-      redirect_to '/adventure_steps/photos', notice: "Photos have been uploaded!"
+      redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "Photos have been uploaded!"
+
+    # Hook for deleting a pic and remain on the same page
+    elsif params[:delete_img] == "1"
+      img_id = params[:delete_img_id].to_i
+            
+      @adv_img_to_delete = @adventure.adventure_gallery_images.find(img_id)
+      @adv_img_to_delete.destroy
+
+      respond_to do |format|
+        format.js
+      end
+
     else
       @adventure.attributes = adventure_params
       render_wizard @adventure

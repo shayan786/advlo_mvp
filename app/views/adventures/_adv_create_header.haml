@@ -21,6 +21,16 @@
             PHOTOS
       %li
         %i.fa.fa-long-arrow-right
+      - if params[:id] == "itinerary"
+        %li.active 
+          %a{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
+            ITINERARY
+      - else
+        %li 
+          %a{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
+            ITINERARY
+      %li
+        %i.fa.fa-long-arrow-right
       - if params[:id] == "schedule"
         %li.active 
           %a{href: "#"}
@@ -29,16 +39,6 @@
         %li 
           %a{href: "#"}
             SCHEDULE
-      %li
-        %i.fa.fa-long-arrow-right
-      - if params[:id] == "profile"
-        %li.active 
-          %a{href: "#"}
-            PROFILE
-      - else
-        %li 
-          %a{href: "#"}
-            PROFILE
       %li
         %i.fa.fa-long-arrow-right
       - if params[:id] == "payment"
