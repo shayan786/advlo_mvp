@@ -66,12 +66,54 @@ function sizeSidebar(){
   $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 32);
 }
 
+function stopSidebarAtBottom(){
+  $(window).scroll(function(){
+    var scrollPosition = window.pageYOffset;
+    var windowSize     = window.innerHeight;
+    var bodyHeight     = document.body.offsetHeight;
+
+    var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
+    if(distanceFromBottom < 76){
+      $('.adventure-show-container #desktop-adventure-nav').css({
+        top: 'auto',
+        position: 'absolute',
+        right: '0px',
+        bottom: '45px'
+      })
+      $('.adventure-show-container .adventure-show-infographic').css({
+        position: 'absolute',
+        bottom: '246px',
+        top: 'auto'
+      })
+    }else{
+      $('.adventure-show-container #desktop-adventure-nav').css({
+        top: 'auto',
+        position: 'fixed',
+        bottom: '45px',
+        top: '481px',
+        right: '0px'
+      })
+      $('.adventure-show-container .adventure-show-infographic').css({
+        position: 'fixed',
+        bottom: 'auto',
+        top: '100px'
+      })
+    }
+  })
+}
+
 
 function navBarCatch(){
   $('#main_image img').load(function(){
     $(window).scroll(function(){
+      var scrollPosition = window.pageYOffset;
+      var windowSize     = window.innerHeight;
+      var bodyHeight     = document.body.offsetHeight;
+      var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
+      console.log(distanceFromBottom)
       var s = $(window).scrollTop();
-      if(s > widthOfBrowser()){
+      if(distanceFromBottom < 76){
+      }else if(s > widthOfBrowser()){
         fixSidebar();
       }else{
         resetSideBar();
@@ -108,7 +150,8 @@ function fixSidebar(){
 function resetSideBar(){
   $('#desktop-adventure-nav').css({
     position: 'relative',
-    top: '0px'
+    top: '0px',
+    right: '0px'
   })
 }
 
@@ -210,6 +253,7 @@ adventureShow = function() {
   navigationBreadcrumbs();
   adventureScroll();
   centerGuideImage();
+  stopSidebarAtBottom();
 };
 
 adventureIndex = function() {
