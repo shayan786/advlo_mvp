@@ -34,12 +34,12 @@
               .price= adv.price
 
               .hover-block{id: i}
-                - if adv.users.first.avatar_url
-                  .guide-image= image_tag "#{adv.users.first.avatar_url}?type=large" if adv.users.first
+                - usr = adv.users.first
+                - if usr && usr.avatar_url == '' || usr.avatar_url == nil
+                  .guide-image= image_tag "#{usr.avatar.url(:large)}"
                 -else
-                  .guide-image= image_tag "#{adv.users.first.avatar.url(:large)}" if adv.users.first
+                  .guide-image= image_tag "#{usr.avatar_url}?type=large"
               .copy-container{class: "copy-#{i}"}
-
 
 :javascript
 
