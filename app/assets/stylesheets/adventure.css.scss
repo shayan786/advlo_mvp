@@ -6,14 +6,15 @@
 
 
 
-
-
-
 @media screen and (max-width: 1335px){
   .adventure-container .brick-wrapper .adventure-brick .guide-image {
     position: relative;
     top: 10%;
     width: 120px;
     height: 120px;
+  }
+
+  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy-container {
+    height: 25%;
   }
 }
