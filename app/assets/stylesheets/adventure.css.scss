@@ -3,3 +3,17 @@
 @import "adventure/create";
 @import "adventure/hosting_info";
 @import "adventure/request_info";
+
+
+
+
+
+
+@media screen and (max-width: 1335px){
+  .adventure-container .brick-wrapper .adventure-brick .guide-image {
+    position: relative;
+    top: 10%;
+    width: 120px;
+    height: 120px;
+  }
+}
