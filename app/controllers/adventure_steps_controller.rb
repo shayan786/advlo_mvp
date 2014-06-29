@@ -45,6 +45,14 @@ class AdventureStepsController < ApplicationController
         format.js
       end
 
+    elsif params[:add_iten_item] == "1"
+      @adventure.itineraries.create(params[:itinerary])
+
+      respond_to do |format|
+        format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itenerary has been updated!"}
+        format.js {}
+      end
+
     else
       @adventure.attributes = adventure_params
       render_wizard @adventure
@@ -57,6 +65,6 @@ class AdventureStepsController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :category, :other_notes, :adventure_gallery_image, :images)
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :category, :other_notes, :adventure_gallery_image, :images, :itineraries, :itinerary)
   end
 end
