@@ -16,7 +16,6 @@ function adventureSliderInit(){
     slidesPerView: slideCount,
     keyboardControl: true,
     onSlideChangeStart: function(){
-      console.log(adventureSlider.activeIndex)
       $(".prev, .next").removeClass('hide');
       if(adventureSlider.activeIndex == 0) {
         $(".prev").addClass('hide');
@@ -52,7 +51,6 @@ function hostSliderInit(){
     mode:'horizontal',
     slidesPerView: hostCount,
     onSlideChangeStart: function(){
-      console.log(hostSwiper.activeIndex)
       $(".prev, .next").removeClass('hide');
       if(hostSwiper.activeIndex == 0) {
         $(".prev").addClass('hide');
@@ -64,11 +62,9 @@ function hostSliderInit(){
   });
   $('#host-next').click(function(){
     hostSwiper.swipeNext()
-    console.log(hostSwiper.activeSlide())
   })
   $('#host-prev').click(function(){
     hostSwiper.swipePrev()
-    console.log(hostSwiper.activeSlide())
   })
 }
 
@@ -78,7 +74,6 @@ function hostSliderImageCenter(){
   $(window).load(function(){
     $('.image-wrapper').each(function(){
       var imageWidth = $(this).find('img').width()
-      console.log(imageWidth)
       if( imageWidth > 700){
         $(this).find('img').css('margin-left','-40%')
       }else if(imageWidth > 600){
