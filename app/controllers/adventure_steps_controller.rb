@@ -44,7 +44,7 @@ class AdventureStepsController < ApplicationController
       respond_to do |format|
         format.js
       end
-
+    # Hook for adding a itenerary item and remain on the same page
     elsif params[:add_iten_item] == "1"
       @adventure.itineraries.create(params[:itinerary])
 

@@ -8,11 +8,11 @@
           ITINERARY
         .panel-body
           - if @adventure.itineraries.empty?
-            = render partial: "itinerary_form"
+            = render partial: "itinerary_form_new"
           - else
-            = render partial: "itinerary_form"
+            = render partial: "itinerary_form_update"
         .panel-footer.text-center
-          %a.btn.btn-primary.preview_btn{href: "#"}
+          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/schedule?adventure_id=3"}
             NEXT
          
 

@@ -1,0 +1,22 @@
+.iten_form_partial
+  - @adventure.itineraries.each_with_index do |iten, i|
+    %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_iten_no_#{i}", :data => {:remote => "true"}}
+      = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      = tag(:input, :type => "hidden", :name => "update_iten_item", :value => "1")
+      = tag(:input, :type => "hidden", :name => "adventure_id", :value => @adventure.id)
+      .form-group.row
+        .col-md-4
+          .form_label.text-right Event Title
+        .col-md-6
+          %input.form-control.show_ml{type: "text", required: "required", name: "itinerary[headline]", id: "iten_headline", value: "#{iten.headline}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Pick up surfboard at Seal Beach surfboard rental shop"}}
+      .form-group.row
+        .col-md-4
+          .form_label.text-right Description
+        .col-md-6
+          %textarea.form-control.show_ml{rows: "6", type: "text", required: "required", name: "itinerary[description]", id: "iten_description", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Description of the first event in the itinerary"}}
+            #{iten.description}
+      .text-center
+        %button.btn.btn-primary.add_event_btn{type: "submit"}
+          %i.fa.fa-plus-circle
+          DELETE EVENT
