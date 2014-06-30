@@ -123,6 +123,10 @@
 			}
 		}
 
+		.update_notice {
+			
+		}
+
 		.add_event_btn {
 			margin-top: 10px;
 			margin-bottom: 15px;
@@ -134,6 +138,11 @@
 				color: $white;
 			}
 
+		}
+
+		.divider {
+			border: 1px solid $lighter_gray;
+			margin: 15px 0;
 		}
 
 	}

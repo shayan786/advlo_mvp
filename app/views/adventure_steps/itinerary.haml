@@ -2,11 +2,14 @@
   .container
     = render partial: "/adventures/adv_create_header"
     #adv_itinerary
-      
       .panel.panel-default
         .panel-heading.text-center.section_header
           ITINERARY
         .panel-body
+          - if notice
+            .col-md-6.col-md-offset-3.text-center
+              .update_notice.alert.alert-warning
+                = notice
           - if @adventure.itineraries.empty?
             = render partial: "itinerary_form_new"
           - else
