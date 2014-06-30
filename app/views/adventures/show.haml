@@ -37,7 +37,10 @@
               = "Gustavo -"
               %span= "Climbing Guru"
             .guide-profile-image
-              = image_tag "#{current_user.avatar_url}?type=large" if current_user && current_user.avatar_url
+              -if @current_guide.avatar_url
+                = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
+              - else
+                = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
       
 
           .adventure-block.col-sm-6

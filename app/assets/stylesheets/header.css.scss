@@ -11,6 +11,10 @@
 		background-size: cover;
 		width: 194px !important; 
 	}
+
+	.header-dropdown {
+		margin-top: 15px;
+	}
 }
 
 .navbar .nav {
@@ -150,20 +154,23 @@
 
 	//uploaded profile image
 	.up_profile_img {
-		margin-right: 15px !important;
-		height: 50px;
+		margin-right: 15px;
+		width: auto;
+		height: 45px;
 		width: 45px;
+		margin-right: 10px;
 	}
 
 	//missing profile image
 	.miss_profile_img {
-		margin-right: 15px !important;
-		width: 50px !important;
-		height: auto;
+		margin-right: 15px;
+		height: 45px;
+		width: 45px;
+		margin-right: 10px;
+		width: auto;
 	}
 
 	.dropdown-menu {
-		margin-top: -5px !important;
 
 		li {
 			width: 100%;

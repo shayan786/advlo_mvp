@@ -38,25 +38,25 @@ function hostSliderInit(){
   var hostCount;
   if($(window).width() > 1386){
     hostCount = 3;
-  }else if($(window).width() > 1002){
+  }else if($(window).width() > 920){
     hostCount = 2;
   }else{
     hostCount = 1;
   }
 
   var totalSlideCount = $('#host-slider .swiper-slide').length - 3;
-  $(".prev").addClass('hide');
+  $("#host-prev").addClass('hide');
 
   var hostSwiper = $('.host-slider').swiper({
     mode:'horizontal',
     slidesPerView: hostCount,
     onSlideChangeStart: function(){
-      $(".prev, .next").removeClass('hide');
+      $("#host-prev, #host-next").removeClass('hide');
       if(hostSwiper.activeIndex == 0) {
-        $(".prev").addClass('hide');
+        $("#host-prev").addClass('hide');
       }
       if(hostSwiper.activeIndex == totalSlideCount) {
-        $(".next").addClass('hide');
+        $("#host-next").addClass('hide');
       }
     }
   });

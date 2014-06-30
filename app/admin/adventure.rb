@@ -10,7 +10,9 @@ ActiveAdmin.register Adventure do
     column :subtitle
     column :location
     column :price
-    column :price_type
+    column 'Email' do |adv|
+      adv.users.first.email if adv.users.first
+    end
     column 'Guide' do |adv|
       adv.users.first.name if adv.users.first
     end

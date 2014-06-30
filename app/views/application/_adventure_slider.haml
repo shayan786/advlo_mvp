@@ -33,3 +33,9 @@
                   -elsif usr
                     .guide-profile-image= image_tag "#{usr.avatar_url}?type=large"
                 .copy-container{class: "copy-#{i}"}
+
+
+:javascript
+  $(window).resize(function(){
+    adventureSliderInit()
+  })

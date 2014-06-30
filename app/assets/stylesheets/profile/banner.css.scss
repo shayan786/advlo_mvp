@@ -1,12 +1,19 @@
 #p_banner {
-	padding-top: 15vh;
-	height: 65vh;
-	min-height: 350px;
+	position: relative;
+	float: left;
+	height: 500px;
+	width: 100%;
+	margin-top: 50px;
+	margin-bottom: 20px;
 
 	//Change to let user change profile pic?
 	background-image: asset-url("background/advlo_forest.png",image);
 	background-repeat: no-repeat;
 	background-size: cover;
+
+	#profile-box {
+		margin-top: 8%;
+	}
 
 	.panel {
 		padding: 10px 0;
@@ -48,7 +55,4 @@
 			font-style: italic;
 		}
 	} 
-}
-#p_banner .panel .panel-body .profile-image {
-
 }
