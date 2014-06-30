@@ -1,0 +1,23 @@
+#adventure_create
+  .container
+    = render partial: "/adventures/adv_create_header"
+    #adv_schedule
+      .panel.panel-default
+        .panel-heading.text-center.section_header
+          SCHEDULE
+        .panel-body
+          - if notice
+            .col-md-6.col-md-offset-3.text-center
+              .update_notice.alert.alert-warning
+                = notice
+          
+          #calendar
+            
+        .panel-footer.text-center
+          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/schedule?adventure_id=3"}
+            NEXT
+         
+
+:javascript
+  adventureCreate();
+  adventureSchedule();

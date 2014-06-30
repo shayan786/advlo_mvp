@@ -24,5 +24,4 @@
 //= require adventure.js
 //= require homepage.js
 //= require user.js
-
-
+//= require fullcalendar

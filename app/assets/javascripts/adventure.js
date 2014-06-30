@@ -272,3 +272,16 @@ adventureCreate = function() {
   input_maxlength();
   create_tabs();
 }
+
+//----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
+FSInitialize = function() {
+  $('#calendar').fullCalendar({
+    defaultView: "agendaWeek",
+    height: 600
+  });
+}
+
+
+adventureSchedule = function() {
+  FSInitialize();
+}

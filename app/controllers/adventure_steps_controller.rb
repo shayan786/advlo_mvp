@@ -1,6 +1,6 @@
 class AdventureStepsController < ApplicationController
   include Wicked::Wizard
-  steps :basic, :photos, :itinerary
+  steps :basic, :photos, :itinerary, :schedule
 
   def show
 

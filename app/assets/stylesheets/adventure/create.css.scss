@@ -124,7 +124,7 @@
 		}
 
 		.update_notice {
-			
+
 		}
 
 		.add_event_btn {
@@ -143,6 +143,21 @@
 		.divider {
 			border: 1px solid $lighter_gray;
 			margin: 15px 0;
+		}
+
+	}
+
+	//SCHEDULE
+	#adv_schedule {
+
+		.panel {
+			.panel-body {
+				min-height: 500px;
+			}
+		}
+
+		.update_notice {
+			
 		}
 
 	}

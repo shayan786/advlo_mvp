@@ -33,11 +33,11 @@
         %i.fa.fa-long-arrow-right
       - if params[:id] == "schedule"
         %li.active 
-          %a{href: "#"}
+          %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
             SCHEDULE
       - else
         %li 
-          %a{href: "#"}
+          %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
             SCHEDULE
       %li
         %i.fa.fa-long-arrow-right

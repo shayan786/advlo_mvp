@@ -44,6 +44,8 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap-filestyle-rails'
 # font-awesome
 gem 'font-awesome-rails'
+#fullcalender for scheduling
+gem 'fullcalendar-rails'
 
 
 # Use ActiveModel has_secure_password
