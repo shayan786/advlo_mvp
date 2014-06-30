@@ -28,7 +28,7 @@
               %input.filestyle{type: "file", name: "images[]", id: "adv_gallery_img", multiple: "multiple", onchange: "javascript:document.getElementById('adv_gallery_img_upload').submit();"}
 
         .panel-footer.text-center
-          %a.btn.btn-primary.preview_btn{href: "#"}
+          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
             NEXT
                 
 :javascript
