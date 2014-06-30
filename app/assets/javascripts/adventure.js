@@ -277,7 +277,8 @@ adventureCreate = function() {
 FSInitialize = function() {
   $('#calendar').fullCalendar({
     defaultView: "agendaWeek",
-    height: 600
+    height: 600,
+    editable: true
   });
 }
 
