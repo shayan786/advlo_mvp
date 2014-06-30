@@ -38,21 +38,27 @@
     }
     #adv-next {
       top: 150px;
-      right: 3%;
+      right: 4.5%;
     }
     #adv-prev {
       top: 150px;
       left: 3%;
     }
-
     #host-next {
       top: 40%;
       right: 5.5%;
+      color: #fff;
+      font-size: 4em;
+      position: absolute;
+      cursor: pointer;
     }
-
     #host-prev {
       top: 40%;
       left: 3%;
+      color: #fff;
+      font-size: 4em;
+      position: absolute;
+      cursor: pointer;
     }
   }
 

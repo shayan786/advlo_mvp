@@ -4,8 +4,8 @@
     %a.small_text{href: "#"} VIEW ALL >>>
 
   .slider-wrapper
-    %i.next.fa.fa-chevron-right#host-next
-    %i.prev.fa.fa-chevron-left#host-prev
+    %i.fa.fa-chevron-right#host-next
+    %i.fa.fa-chevron-left#host-prev
 
     .swiper-container.host-slider
       .swiper-wrapper
@@ -32,5 +32,4 @@
 :javascript
   $(window).resize(function(){
     hostSliderInit();
-    adventureSliderInit();
   })
