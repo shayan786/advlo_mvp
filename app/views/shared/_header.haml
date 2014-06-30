@@ -15,16 +15,17 @@
         %ul.nav.navbar-nav.navbar-right.current_user_fix
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              - if !current_user.avatar_file_name.nil?
+              - if current_user.avatar.exists?
                 = image_tag "#{current_user.avatar.url(:thumb)}", :class => "img-circle up_profile_img"
-              - elsif !current_user.avatar_url.nil?
+              - elsif current_user.avatar_url
                 = image_tag "#{current_user.avatar_url}", :class => "img-circle fb_profile_img"
               - else 
-                = image_tag "#{current_user.avatar.url(:thumb)}", :class => "img-circle miss_profile_img"
+                = image_tag 'missing.png', :class => "img-circle miss_profile_img"
+
               - if current_user.name.nil? || current_user.name.empty?
-                #{current_user.email}
+                = current_user.email
               - else 
-                #{current_user.name}
+                = current_user.name
               %b.caret
             %ul.dropdown-menu
               %li

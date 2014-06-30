@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def homepage
-    @feat_adventures = Adventure.all
-    @feat_hosts = User.all
+    @feat_adventures = Adventure.order('created_at DESC').limit(5)
+    @feat_hosts = User.where(is_guide: true).limit(6)
   end
 
   def host

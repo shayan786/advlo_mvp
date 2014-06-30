@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   #Image Magick Config.
-  has_attached_file :avatar, :styles => { :large => "600x600>", :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "100x100>" }, :default_url => "/system/users/avatars/:style/missing.png"
+  has_attached_file :avatar, :styles => { :large => "600x600>", :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "100x100>" }
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   # validates_presence_of :name, :avatar_url, :location, :skillset, :language, :sex, :age, :bio, :if => :is_guide?
