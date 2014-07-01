@@ -46,14 +46,26 @@ class User < ActiveRecord::Base
     @user = User.find_by!(:id => user_id)
 
     #check to verify certain parmaters exist to make sure user is eligible to be guide
-    if @user.name.nil? || @user.name.empty? || @user.location.nil? || @user.location.empty? || @user.skillset.nil? || @user.skillset.empty? || @user.language.nil? || @user.language.empty? || @user.dob.nil? || @user.sex.nil? || @user.sex.empty? || @user.bio.nil? || @user.bio.empty? || @user.short_description.nil? || @user.short_description.empty?
-      if (@user.avatar_url == nil || @user.avatar_url) == '' && @user.avatar.url == "/avatars/original/missing.png"
-        false
-      elsif @user.avatar.url == "/avatars/original/missing.png" && (@user.avatar_url != nil || @user.avatar_url != '')
-        false
-      else
-        true
-      end
+    if @user.name.nil? || 
+       @user.name.empty? || 
+       @user.location.nil? || 
+       @user.location.empty? || 
+       @user.skillset.nil? || 
+       @user.skillset.empty? || 
+       @user.language.nil? || 
+       @user.language.empty? || 
+       @user.dob.nil? || 
+       @user.sex.nil? || 
+       @user.sex.empty? || 
+       @user.bio.nil? || 
+       @user.bio.empty? || 
+       @user.short_description.nil? || 
+       @user.short_description.empty? || 
+       (@user.avatar_url == nil || 
+       @user.avatar_url == '') || 
+       @user.avatar.url == "/avatars/original/missing.png" || 
+       @user.avatar.url == "/images/original/missing.png"
+      false
     else
       true
     end

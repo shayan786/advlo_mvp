@@ -7,7 +7,7 @@
 	border-color: $dark_gray;
 
 	.navbar-brand {
-		background: asset-url("logos/advlo_header_logo.png",image) no-repeat left center;
+		background: asset-url("logos/advlo_header_logo.png") no-repeat left center;
 		background-size: cover;
 		width: 194px !important; 
 	}

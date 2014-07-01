@@ -76,7 +76,7 @@
                 %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", value: "", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
 
             .form-group
-              %input.filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
+              %input.group-span-filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
 
           .panel-footer.text-center
             %input.btn.btn-primary.preview_btn{href: "#", name: "commit", type: "submit", value: "NEXT"}

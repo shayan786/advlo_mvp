@@ -98,7 +98,7 @@
                     .panel-heading.panel-title.be_host_title What to be a host?
                     .panel-body.text-left
                       %b Please fill in the following:
-                      - if current_user.avatar.url == "/avatars/original/missing.png" && current_user.avatar_url == nil 
+                      - if current_user.avatar.url == "/avatars/original/missing.png" && current_user.avatar_url == nil || current_user.avatar.url == "/images/original/missing.png"
                         %li Avatar
                       - if current_user.name.nil? || current_user.name.empty?
                         %li Name

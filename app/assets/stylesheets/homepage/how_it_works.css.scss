@@ -31,7 +31,7 @@
 			}
 
 			.find_icon {
-				background-image: asset-url($find_icon,image);
+				background-image: asset-url($find_icon);
 				background-repeat: no-repeat;
 				background-size: cover;
 				height: 222px;
@@ -41,7 +41,7 @@
 
 			.host_icon {
 				@extend .find_icon;
-				background-image: asset-url($host_icon,image);
+				background-image: asset-url($host_icon);
 			}
 
 		}
