@@ -274,7 +274,7 @@ adventureCreate = function() {
 }
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
-FSInitialize = function() {
+FSInitialize = function(adventure_id) {
   // Needs to change depending on mins, hours, days
   var eventDuration = '#{@adventure.duration_num}';
 
@@ -288,14 +288,46 @@ FSInitialize = function() {
       center: 'title',
       right: ''
     },
+
+    //RENDER EXISTING BOOKING TIMES
+    eventSources: [
+      {
+        url: '/events',
+        type: 'GET',
+        data: {
+          adventure_id: adventure_id
+        },
+        success: function(data){
+          console.log(data);
+        },
+        error: function(data) {
+          console.log(data);
+          alert('Something went wrong!');
+        }
+      }
+    ],
+
+    //CREATE NEW EVENT
     select: function(start, end) {
-      alert('Clicked on: ' + start);
+      $.ajax({
+        url: "/events",
+        dataType: "JSON",
+        data: {adventure_id: adventure_id, start_time: start, end_time: end},
+        type: "POST",
+        success: function(data){
+          
+        }
+      });
     }
+
+    //RENDER EXISTING RESERVATION TIMES (X/CAP_MAX)
+
+    //RENDER UNAVAILABLE TIMES
 
   });
 }
 
 
-adventureSchedule = function() {
-  FSInitialize();
+adventureSchedule = function(adventure_id) {
+  FSInitialize(adventure_id);
 }

@@ -76,9 +76,6 @@ class AdventureStepsController < ApplicationController
           format.js {}
         end
       end
-    # Hook for creating/updating/deleting schedule (event) items
-    elsif params[:update_sched_item] == "1"
-      
 
     else
       @adventure.attributes = adventure_params
