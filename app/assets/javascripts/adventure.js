@@ -275,10 +275,23 @@ adventureCreate = function() {
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
 FSInitialize = function() {
+  // Needs to change depending on mins, hours, days
+  var eventDuration = '#{@adventure.duration_num}';
+
   $('#calendar').fullCalendar({
     defaultView: "agendaWeek",
     height: 600,
-    editable: true
+    editable: true,
+    selectable: true, 
+    header: {
+      left: 'today prev,next',
+      center: 'title',
+      right: ''
+    },
+    select: function(start, end) {
+      alert('Clicked on: ' + start);
+    }
+
   });
 }
 

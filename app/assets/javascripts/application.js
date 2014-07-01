@@ -14,6 +14,8 @@
 //= require jquery
 //= require jquery_ujs
 // require jquery.ui.all
+//= require jquery.ui.draggable
+//= require jquery.ui.resizable
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-filestyle
