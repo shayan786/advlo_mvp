@@ -20,7 +20,8 @@
                 .col-md-6
                   .adv_title= adv.title
                   .adv_loc= adv.location
-                  .adv_price= "$"+adv.price.to_s + " " + adv.price_type.gsub("_"," ")
+                  - if adv.price_type && adv.price
+                    .adv_price= "$"+adv.price.to_s + " " + adv.price_type.gsub("_"," ") 
                   .row.container
                     %a.btn.btn-default.edit_btn{href: "/adventures/#{adv.slug}"}
                       %i.fa.fa-eye

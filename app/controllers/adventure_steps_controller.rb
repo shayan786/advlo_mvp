@@ -4,7 +4,7 @@ class AdventureStepsController < ApplicationController
 
   def show
 
-    if session[:adventure_id] && session[:dashboard == false]
+    if session[:adventure_id]
       @adventure = Adventure.find_by_id(session[:adventure_id])
     else
       @adventure = Adventure.find_by_id(params[:adventure_id])
@@ -18,7 +18,7 @@ class AdventureStepsController < ApplicationController
   end
 
   def update
-    if session[:adventure_id] && session[:dashboard == false]
+    if session[:adventure_id]
       adv_id = session[:adventure_id]
       @adventure = Adventure.find_by_id(adv_id)
     else
@@ -28,9 +28,10 @@ class AdventureStepsController < ApplicationController
 
     # Hook for uploading pics and remaining on the same page
     if params[:images]
-        params[:images].each do |image|
-          @adventure.adventure_gallery_images.create(picture: image, adventure_id: adv_id)
-        end
+
+      params[:images].each do |image|
+        @adventure.adventure_gallery_images.create(picture: image, adventure_id: adv_id)
+      end
 
       redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "Photos have been uploaded!"
 

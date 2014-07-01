@@ -2,8 +2,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   # This is the default 'my adventures' page
   def dashboard
-    session[:dashboard] = true
-
     if current_user.adventures.empty?
       redirect_to '/users/edit', notice: "You don't have any adventures yet!"
     end
