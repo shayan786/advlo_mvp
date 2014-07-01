@@ -31,6 +31,11 @@
                     = link_to adv, method: "delete",  data: {confirm: "Are you sure?"}, class: "btn btn-danger edit_btn" do
                       %i.fa.fa-times
                         DELETE
+          %br
+            .create-wrapper
+              %a.btn.btn-primary.host_btn{href: "/adventures/new"}
+                HOST AN ADVENTURE
+          %hr
 
 / :javascript
 /   function verifyDelete() {
