@@ -35,10 +35,13 @@
 
               .hover-block{id: i}
                 - usr = adv.users.first
-                - if usr && usr.avatar_url == '' || usr.avatar_url == nil
+                - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil
                   .guide-image= image_tag "#{usr.avatar.url(:large)}"
-                -else
+                - elsif usr
                   .guide-image= image_tag "#{usr.avatar_url}?type=large"
+                - else
+                  .guide-image= image_tag 'missing.png'
+
               .copy-container{class: "copy-#{i}"}
 
 :javascript
