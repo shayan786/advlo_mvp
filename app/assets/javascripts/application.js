@@ -27,3 +27,13 @@
 //= require homepage.js
 //= require user.js
 //= require fullcalendar
+
+
+
+
+$(document).ajaxStart(function(){
+  $('#loader-overlay').show()
+})
+$(document).ajaxStop(function(){
+  $('#loader-overlay').hide()
+})

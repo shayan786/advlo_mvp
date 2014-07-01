@@ -2,8 +2,7 @@
   .container
     = render partial: "adv_create_header"
     #adv_basics
-      %form{"accept-charset" => "UTF-8", action: "/adventures", method: "post", id: "adventure_edit_form"}
-        / = tag(:input, :type => "hidden", :value => "patch", :name => "_method")
+      %form{"accept-charset" => "UTF-8", action: "/adventures", method: "post", id: "adventure_edit_form", enctype: "multipart/form-data"}
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
         .panel.panel-default
           .panel-heading.text-center
@@ -75,6 +74,10 @@
                 .form_label.text-right Other Notes
               .col-md-6
                 %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", value: "", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
+
+            .form-group
+              %input.group-span-filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
+
           .panel-footer.text-center
             %input.btn.btn-primary.preview_btn{href: "#", name: "commit", type: "submit", value: "NEXT"}
                 

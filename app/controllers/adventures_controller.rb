@@ -70,7 +70,7 @@ class AdventuresController < ApplicationController
       redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
 
-    @adventure = Adventure.create(adventure_params)
+    @adventure = Adventure.create!(adventure_params)
 
     if @adventure.save
       #associate that adventure with that adventure

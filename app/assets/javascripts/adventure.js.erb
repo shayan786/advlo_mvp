@@ -85,7 +85,10 @@ function stopSidebarAtBottom(){
         bottom: '246px',
         top: 'auto'
       })
+      console.log(' 76')
     }else{
+      console.log('console else')
+
       $('.adventure-show-container #desktop-adventure-nav').css({
         top: 'auto',
         position: 'fixed',

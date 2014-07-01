@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   #Image Magick Config.
-  has_attached_file :avatar, :styles => { :large => "600x600>", :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "100x100>" }
+  has_attached_file :avatar, :styles => { :large => "600x600>", :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   # validates_presence_of :name, :avatar_url, :location, :skillset, :language, :sex, :age, :bio, :if => :is_guide?
@@ -46,14 +46,23 @@ class User < ActiveRecord::Base
     @user = User.find_by!(:id => user_id)
 
     #check to verify certain parmaters exist to make sure user is eligible to be guide
-    if @user.name.nil? || @user.name.empty? || @user.location.nil? || @user.location.empty? || @user.skillset.nil? || @user.skillset.empty? || @user.language.nil? || @user.language.empty? || @user.dob.nil? || @user.sex.nil? || @user.sex.empty? || @user.bio.nil? || @user.bio.empty? || @user.short_description.nil? || @user.short_description.empty?
-      if (@user.avatar_url == nil || @user.avatar_url) == '' && @user.avatar.url == "/avatars/original/missing.png"
-        false
-      elsif @user.avatar.url == "/avatars/original/missing.png" && (@user.avatar_url != nil || @user.avatar_url != '')
-        false
-      else
-        true
-      end
+    if @user.name.nil? || 
+       @user.name.empty? || 
+       @user.location.nil? || 
+       @user.location.empty? || 
+       @user.skillset.nil? || 
+       @user.skillset.empty? || 
+       @user.language.nil? || 
+       @user.language.empty? || 
+       @user.dob.nil? || 
+       @user.sex.nil? || 
+       @user.sex.empty? || 
+       @user.bio.nil? || 
+       @user.bio.empty? || 
+       @user.short_description.nil? || 
+       @user.short_description.empty? || 
+       (@user.avatar_url == nil || @user.avatar_url == '' ) && (@user.avatar.url == "/avatars/original/missing.png" || @user.avatar.url == "/images/original/missing.png")
+      false
     else
       true
     end

@@ -9,7 +9,7 @@ feature "user logic for adventure flow", :js => true do
   end
 
   scenario 'creates a user & logs them in && Lets a user update profile to host' do 
-    
+    #test email validation & signup
     visit '/'
     visit '/adventures/create_prefill'
     click_link ('Sign up')
@@ -24,14 +24,16 @@ feature "user logic for adventure flow", :js => true do
     fill_in 'Confirm Password',  with: 'password'
     click_button "Sign Up"
     expect(page).to have_content('Welcome! You have signed up successfully.')
-    #test email validation & signup
   
+    #Make sure user needs to fill out data to create adv.
     visit '/adventures/create_prefill' 
-    expect(page).to have_content('My Profile')
+    expect(page).to have_content('Information about hosting')
+
+    visit '/users/dashboard' 
+    expect(page).to have_content("You don't have any adventures yet!")
     fill_in 'Name', with: 'Topher'
     fill_in 'Short Description', with: 'Anthropologist programmer'
     fill_in 'Location', with: 'Denver'
-
     fill_in 'user[dob]', with: DateTime.parse('Mon, 05 Feb 1990')
     fill_in "What's your story?", with: 'I once put out a fire. But I actually had started it'
     fill_in 'Languages', with: 'Frenglish, ebonics, hebrew'
@@ -40,5 +42,9 @@ feature "user logic for adventure flow", :js => true do
     click_button 'UPDATE'
     expect(page).to have_content 'You updated your account successfully.'
     #updates to host capability
+
+    visit '/adventures/new'
+    current_url.should == '/adventures/new'
+    
   end
 end

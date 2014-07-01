@@ -19,3 +19,17 @@
       %button.btn.btn-primary.add_event_btn{type: "submit"}
         %i.fa.fa-plus-circle
         ADD EVENT
+
+
+:javascript
+  // $('.add_event_btn').click(function(e) {
+  //   e.preventDefault();
+  //   $.ajax({
+  //     url: "#{wizard_path}",
+  //     dataType: "text json",
+  //     data: { add_iten_item: 1, adventure_id: #{@adventure.id}, #{request_forgery_protection_token.to_s}: "#{form_authenticity_token}"},
+  //     type: "POST",
+  //     method: "PUT"
+  //   });
+  //   alert('wohoo')
+  // });
