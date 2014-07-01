@@ -61,10 +61,7 @@ class User < ActiveRecord::Base
        @user.bio.empty? || 
        @user.short_description.nil? || 
        @user.short_description.empty? || 
-       (@user.avatar_url == nil || 
-       @user.avatar_url == '') || 
-       @user.avatar.url == "/avatars/original/missing.png" || 
-       @user.avatar.url == "/images/original/missing.png"
+       (@user.avatar_url == nil || @user.avatar_url == '' ) && (@user.avatar.url == "/avatars/original/missing.png" || @user.avatar.url == "/images/original/missing.png")
       false
     else
       true

@@ -2,10 +2,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   # This is the default 'my adventures' page
   def dashboard
-    if current_user.adventures.empty?
+    if current_user && current_user.adventures.empty?
       redirect_to '/users/edit', notice: "You don't have any adventures yet!"
+    elsif !current_user
+      redirect_to '/users/sign_up', notice: "Lets get you started with an account"
     end
-
+    
   end
 
   #Overide the devise update to not require the password to update user's profile
