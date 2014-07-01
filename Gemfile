@@ -31,9 +31,11 @@ group :development, :test do
   gem 'spring'
   gem 'binding_of_caller'
   gem 'better_errors'
-  gem 'simplecov', :require => false, :group => :test
+  gem 'selenium-webdriver'
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
 
 #FRONT-END and JS

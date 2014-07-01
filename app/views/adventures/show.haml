@@ -7,10 +7,11 @@
         #guide-name
           = @current_guide.name
         .guide-profile-image
-          -if @current_guide.avatar_url
+          - if @current_guide.avatar_url
             = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
           - else
             = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
+
         #guide-title
           = @current_guide.short_description
 
@@ -20,6 +21,7 @@
           Want to guide?
         .guide-profile-image
           = link_to "Click here", '/adventures/create_prefill'
+          = image_tag 'missing.png'
     .adventure-block
       #adventure-title
 
@@ -37,9 +39,11 @@
               = "Gustavo -"
               %span= "Climbing Guru"
             .guide-profile-image
-              -if @current_guide.avatar_url
+              - if !@current_guide
+                = image_tag 'missing.png'
+              - elsif @current_guide.avatar_url
                 = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
-              - else
+              - elsif @current_guide
                 = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
       
 

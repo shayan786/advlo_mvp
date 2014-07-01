@@ -13,7 +13,6 @@ class RegistrationsController < Devise::RegistrationsController
   #Overide the devise update to not require the password to update user's profile
   def update
     @user = User.find(current_user.id)
-
     #successfully_updated = if needs_password?(@user, params)
     #  @user.update_with_password(devise_parameter_sanitizer.sanitize(:account_update))
     #else

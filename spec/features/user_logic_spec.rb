@@ -1,0 +1,44 @@
+require 'rails_helper'
+
+feature "user logic for adventure flow", :js => true do
+
+  scenario 'no user' do 
+    visit '/'
+    visit '/adventures/create_prefill'
+    expect(page).to have_content('Sign In')
+  end
+
+  scenario 'creates a user & logs them in && Lets a user update profile to host' do 
+    
+    visit '/'
+    visit '/adventures/create_prefill'
+    click_link ('Sign up')
+    expect(page).to have_content('Sign Up')
+    fill_in 'Email Address',  with: 'test@advlo.com'
+    fill_in 'Password',  with: 'nopass'
+    fill_in 'Confirm Password',  with: 'nopass'
+    click_button "Sign Up"
+    expect(page).to have_content('Password is too short (minimum is 8 characters)')
+    fill_in 'Email Address',  with: 'test@advlo.com'
+    fill_in 'Password',  with: 'password'
+    fill_in 'Confirm Password',  with: 'password'
+    click_button "Sign Up"
+    expect(page).to have_content('Welcome! You have signed up successfully.')
+    #test email validation & signup
+  
+    visit '/adventures/create_prefill' 
+    expect(page).to have_content('My Profile')
+    fill_in 'Name', with: 'Topher'
+    fill_in 'Short Description', with: 'Anthropologist programmer'
+    fill_in 'Location', with: 'Denver'
+
+    fill_in 'user[dob]', with: DateTime.parse('Mon, 05 Feb 1990')
+    fill_in "What's your story?", with: 'I once put out a fire. But I actually had started it'
+    fill_in 'Languages', with: 'Frenglish, ebonics, hebrew'
+    fill_in 'Have specialized training or skills?', with: 'Denver, Colorado'
+    attach_file('user_avatar', File.join(Rails.root, '/spec/support/example.jpg'))
+    click_button 'UPDATE'
+    expect(page).to have_content 'You updated your account successfully.'
+    #updates to host capability
+  end
+end
