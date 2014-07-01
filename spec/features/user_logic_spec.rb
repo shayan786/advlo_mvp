@@ -23,7 +23,7 @@ feature "user logic for adventure flow", :js => true do
     fill_in 'Password',  with: 'password'
     fill_in 'Confirm Password',  with: 'password'
     click_button "Sign Up"
-    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page).to have_content('My Profile')
   
     #Make sure user needs to fill out data to create adv.
     visit '/adventures/create_prefill'

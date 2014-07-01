@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
 
   def is_guide?(user_id)
     @user = User.find_by!(:id => user_id)
-
     #check to verify certain parmaters exist to make sure user is eligible to be guide
+
     if @user.name.nil? || 
        @user.name.empty? || 
        @user.location.nil? || 
@@ -57,18 +57,13 @@ class User < ActiveRecord::Base
        @user.bio.empty? || 
        @user.short_description.nil? || 
        @user.short_description.empty?
-      
-      if @user.avatar.url != "/avatars/:style/missing.png"
-        return true
-      elsif @user.avatar.url == "/avatars/:style/missing.png" && @user.avatar_url
-        return true
-      elsif @user.avatar_url == "/avatars/:style/missing.png" && !@user.avatar_url
-        return false
-      end
-
-      false
+      return false
+    elsif @user.avatar.url != "/images/original/missing.png"
+      return true
+    elsif @user.avatar_url != '' && @user.avatar_url != nil
+      return true
     else
-      true
+      return false
     end
   end
 
