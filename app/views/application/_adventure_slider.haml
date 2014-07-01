@@ -28,7 +28,7 @@
 
                 .hover-block{id: i}
                   - usr = adv.users.first
-                  - if usr && usr.avatar_url == '' || usr.avatar_url == nil
+                  - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil
                     .guide-profile-image= image_tag usr.avatar.url(:large)
                   -elsif usr
                     .guide-profile-image= image_tag "#{usr.avatar_url}?type=large"
