@@ -6,11 +6,10 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to '/users/edit', notice: "You don't have any adventures yet!"
     elsif !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
+      # puts request.referer ( for redirecting to reffering location)
     end
-    
   end
 
-  #Overide the devise update to not require the password to update user's profile
   def update
     @user = User.find(current_user.id)
     #successfully_updated = if needs_password?(@user, params)
@@ -24,13 +23,10 @@ class RegistrationsController < Devise::RegistrationsController
 
     #if successfully_updated
     set_flash_message :notice, :updated
-      # Sign in the user bypassing validation in case their password changed
+    # Sign in the user bypassing validation in case their password changed
+
     sign_in @user, :bypass => true
     redirect_to "/users/edit"
-    #render "edit"
-    #else
-    #  render "edit"
-    #end
   end
 
   private
@@ -45,11 +41,12 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :li_url)
   end
 
-  # check if we need password to update user data
-  # ie if password or email was changed
-  # extend this as needed
+  def after_sign_up_path_for(resource)
+    '/users/dashboard'
+  end
+
+  # devise override requireing password for update
   def needs_password?(user, params)
     user.email != params[:user][:email] || params[:user][:password].present?
   end
-
 end

@@ -14,6 +14,7 @@ class AdventuresController < ApplicationController
 
   # info page for creating a new adventure
   def hosting_info
+
   end
 
   # info page for requesting a certain adventure
@@ -33,21 +34,18 @@ class AdventuresController < ApplicationController
   #     => redirect to create a new adventure form
 
   def create_prefill
-    #define recursive call back url
-    #redirect_url = '/adventures/create_prefill'
-
-    #add option / params to redirect url after signing in and not redirect back to homepage to the first two ifs
-    
-    # 1
+    puts request.referer
     if !user_signed_in?
-      redirect_to new_user_session_path
-    # 2
+      if request.path == '/adventures/info'
+        redirect_to '/adventures/info'
+      else
+        redirect_to '/users/sign_in'
+      end
     elsif user_signed_in? && !current_user.is_guide?(current_user.id)
       redirect_to '/users/edit', notice: "Please complete your profile so travelers know more about their host!"
-    # 3
+
     elsif user_signed_in? && current_user.is_guide?(current_user.id) && !UserAdventure.where(user_id: current_user.id).present?
-      redirect_to '/adventures/info'
-    # 4
+
     else 
       redirect_to '/adventures/new'
     end

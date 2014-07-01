@@ -26,9 +26,10 @@ feature "user logic for adventure flow", :js => true do
     expect(page).to have_content('Welcome! You have signed up successfully.')
   
     #Make sure user needs to fill out data to create adv.
-    visit '/adventures/create_prefill' 
-    expect(page).to have_content('Information about hosting')
-
+    visit '/adventures/create_prefill'
+    sleep 1
+    expect(page).to have_content('Please complete your profile so travelers know more about their host!')
+    sleep 1
     visit '/users/dashboard' 
     expect(page).to have_content("You don't have any adventures yet!")
     fill_in 'Name', with: 'Topher'
@@ -45,6 +46,18 @@ feature "user logic for adventure flow", :js => true do
 
     visit '/adventures/new'
     current_url.should == '/adventures/new'
-    
+    fill_in 'adventure[title]', with: 'Underwater Basket-Weaving'
+    fill_in 'adventure[location]', with: 'Denver, Co'
+    fill_in 'adventure[summary]', with: 'EXTREME UNDERWATER BASKET WEAVING'
+    fill_in 'adventure[location]', with: 'Denver, Co'
+    fill_in 'adventure[cap_min]', with: 1
+    fill_in 'adventure[cap_max]', with: 10
+    fill_in 'adventure[duration_num]', with: 4
+    fill_in 'adventure[duration_type]', with: 'Hours'
+    fill_in 'adventure[category]', with: 'Skiing'
+    sleep 1
+    attach_file('adventure[attachment]', File.join(Rails.root, '/spec/support/example.jpg'))
+    sleep 1
+    click_button 'NEXT'
   end
 end
