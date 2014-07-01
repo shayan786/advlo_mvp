@@ -1,6 +1,6 @@
 class AdventureStepsController < ApplicationController
   include Wicked::Wizard
-  steps :basic, :photos, :itinerary, :schedule
+  steps :basic, :photos, :itinerary, :schedule, :payment
 
   def show
 
@@ -77,6 +77,7 @@ class AdventureStepsController < ApplicationController
           format.js {}
         end
       end
+
     else
       @adventure.attributes = adventure_params
       render_wizard @adventure

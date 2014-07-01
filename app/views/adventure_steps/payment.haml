@@ -1,10 +1,10 @@
 #adventure_create
   .container
     = render partial: "/adventures/adv_create_header"
-    #adv_schedule
+    #adv_payment
       .panel.panel-default
         .panel-heading.text-center.section_header
-          SCHEDULE
+          PAYMENT
         .panel-body
           - if notice
             .col-md-6.col-md-offset-3.text-center
@@ -14,10 +14,9 @@
           #calendar
             
         .panel-footer.text-center
-          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
+          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/publish?adventure_id=3"}
             NEXT
          
 
 :javascript
   adventureCreate();
-  adventureSchedule(#{@adventure.id});

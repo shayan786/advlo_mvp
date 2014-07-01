@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/adventures/create_prefill'		=> 'adventures#create_prefill'
   resources :adventures
   resources :adventure_steps
+  resources :events
 
   root to: 'application#homepage'
 end	
