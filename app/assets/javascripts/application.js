@@ -27,7 +27,11 @@
 //= require fullcalendar
 
 
-// $(document).ajaxStart ->
-//   $('#loader-overlay').show()
-// $(document).ajaxStop ->
-//   $('#loader-overlay').hide()
+
+
+$(document).ajaxStart(function(){
+  $('#loader-overlay').show()
+})
+$(document).ajaxStop(function(){
+  $('#loader-overlay').hide()
+})
