@@ -45,16 +45,16 @@ class AdventureStepsController < ApplicationController
       respond_to do |format|
         format.js {}
       end
-    # Hook for adding a itenerary item and remain on the same page
+    # Hook for adding a itinerary item and remain on the same page
     elsif params[:add_iten_item] == "1"
       @adventure.itineraries.create(headline: params[:headline], description: params[:description], adventure_id: @adventure.id)
 
       respond_to do |format|
-        format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itenerary event '#{params[:headline]}' has been created!"}
+        format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itinerary event '#{params[:headline]}' has been created!"}
         format.js {}
       end
 
-    # Hook for updating/deleting itenerary item and remain on the same page
+    # Hook for updating/deleting itinerary item and remain on the same page
     elsif params[:update_iten_item] == "1"
       iten_id = params[:iten_id].to_i
       @adv_iten_item = @adventure.itineraries.find(iten_id)
@@ -64,7 +64,7 @@ class AdventureStepsController < ApplicationController
         @adv_iten_item.destroy
 
         respond_to do |format|
-          format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itenerary event '#{@adv_iten_item.headline}' has been deleted!"}
+          format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itinerary event '#{@adv_iten_item.headline}' has been deleted!"}
           format.js {}
         end
       end
@@ -73,7 +73,7 @@ class AdventureStepsController < ApplicationController
         @adv_iten_item.update(headline: params[:headline], description: params[:description])
 
         respond_to do |format|
-          format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itenerary event '#{@adv_iten_item.headline}' has been updated!"}
+          format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itinerary event '#{@adv_iten_item.headline}' has been updated!"}
           format.js {}
         end
       end
