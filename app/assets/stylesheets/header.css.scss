@@ -61,9 +61,7 @@
 			padding: 15px 0px;
 			@include border_radius(3px);
 			background: rgba(0, 0, 0, 0.4);
-			position: relative;
-			top: 0px;
-			right: -21px;
+			margin-top: 12.5px;
 
 			a {
 				&:hover {
