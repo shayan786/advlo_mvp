@@ -299,7 +299,7 @@ function form_validator(){
       'adventure[price]': {
         validators: {
           notEmpty: {
-            message: 'The price is required and cannot be empty'
+            message: 'Cannot be empty'
           },
           integer: {
             message: 'Integer req.'
@@ -316,8 +316,8 @@ function form_validator(){
       'adventure[attachment]': {
         validators: {
           file: {
-            extension: 'jpeg,jpg,png,tif',
-            type: 'image/jpeg,image/jpg,image/png,image/tif',
+            extension: 'jpeg,jpg,png,tiff',
+            type: 'image/jpeg,image/jpg,image/png,image/tiff',
             maxSize: 1024*10*1024, //10 MB
             message: 'Must have an adventure banner image'
           }
