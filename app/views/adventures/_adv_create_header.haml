@@ -44,11 +44,11 @@
           %i.fa.fa-long-arrow-right
         - if params[:id] == "payment"
           %li.active 
-            %a{href: "#"}
+            %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
               PAYMENT
         - else
           %li 
-            %a{href: "#"}
+            %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
               PAYMENT
         %li
           %i.fa.fa-long-arrow-right
