@@ -300,12 +300,10 @@ FSInitialize = function(adventure_id) {
         data: {
           adventure_id: adventure_id
         },
-        success: function(data){
-          console.log(data);
-        },
         error: function(data) {
-          console.log(data);
           alert('Something went wrong!');
+        },
+        success: function() {
         }
       }
     ],
@@ -317,10 +315,28 @@ FSInitialize = function(adventure_id) {
         dataType: "JSON",
         data: {adventure_id: adventure_id, start_time: start, end_time: end},
         type: "POST",
-        success: function(data){
-          
+        success: function(data){   
+          $('#calendar').fullCalendar('renderEvent',data);
         }
       });
+    },
+
+    //DELETE AN EVENT
+    eventClick: function(event) {
+      var resp = confirm('Delete this event?');
+
+      if(resp == true) {
+        $.ajax({
+          url: "/events/"+event.id,
+          dataType: "JSON",
+          data: {},
+          type: "POST",
+          method: "DELETE",
+          success: function(data){   
+            $('#calendar').fullCalendar('removeEvents', event.id);
+          }
+        });
+      }
     }
 
     //RENDER EXISTING RESERVATION TIMES (X/CAP_MAX)
