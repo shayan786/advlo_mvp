@@ -3,14 +3,14 @@
   .container-fluid
     / Brand and toggle get grouped for better mobile display
     .navbar-header
-      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+      %button.navbar-toggle{"data-target" => "#header-navbar", "data-toggle" => "collapse", type: "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{href: "/"}
     / Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    #header-navbar.collapse.navbar-collapse
       - if current_user
         %ul.nav.navbar-nav.navbar-right.current_user_fix
           %li.dropdown
