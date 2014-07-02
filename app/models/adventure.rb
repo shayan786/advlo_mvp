@@ -21,4 +21,23 @@ class Adventure < ActiveRecord::Base
       self.slug = self.title.downcase.gsub(' ','-').gsub('.','').gsub("'",'').gsub(":",'')
     end
   end
+
+  def dur_to_sec
+    if self.duration_type == "Minutes"
+      sec_min = self.duration_num*60
+      return sec_min
+    end
+
+    if self.duration_type == "Hours"
+      min_hour = self.duration_num*60*60
+      return sec_hour
+    end
+
+    if self.duration_type == "Days"
+      min_days = self.duration_num*24*60*60
+      return sec_days
+    end
+
+  end
+
 end

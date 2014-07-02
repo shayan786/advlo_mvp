@@ -16,13 +16,16 @@ class EventsController < ApplicationController
 	end
 
 	def create
+		@adventure = Adventure.find(params[:adventure_id])
 		@event = Event.new
-		@event = Event.create(event_params)
+
+		end_time_min = params[:start_time].to_time.advance(seconds: @adventure.dur_to_sec)
+		@event = Event.create(start_time: params[:start_time], end_time: end_time_min, adventure_id: params[:adventure_id])
 
 		if @event.save
 			respond_to do |format|
 				format.js {render "create.js", layout: false}
-				format.json {render json: {"title"=>"IB", "allDay" => false, "start"=> @event.start_time.to_time.iso8601, "end"=> @event.end_time.to_time.iso8601}}
+				format.json {render json: {"title"=>"IB", "allDay" => false, "start"=> @event.start_time.to_time.iso8601, "end"=> end_time_min.to_time.iso8601}}
 			end
 		end
 	end
