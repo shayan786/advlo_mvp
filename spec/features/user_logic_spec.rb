@@ -23,14 +23,13 @@ feature "user logic for adventure flow", :js => true do
     fill_in 'Password',  with: 'password'
     fill_in 'Confirm Password',  with: 'password'
     click_button "Sign Up"
-    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page).to have_content('My Profile')
   
     #Make sure user needs to fill out data to create adv.
-    visit '/adventures/create_prefill' 
-    expect(page).to have_content('Information about hosting')
-
-    visit '/users/dashboard' 
-    expect(page).to have_content("You don't have any adventures yet!")
+    visit '/adventures/info'
+    expect(page).to have_content('Create an Adventure')
+    click_link 'Create an Adventure'
+    expect(page).to have_content("Please complete your profile so travelers know more about their host!")
     fill_in 'Name', with: 'Topher'
     fill_in 'Short Description', with: 'Anthropologist programmer'
     fill_in 'Location', with: 'Denver'
@@ -44,7 +43,24 @@ feature "user logic for adventure flow", :js => true do
     #updates to host capability
 
     visit '/adventures/new'
-    current_url.should == '/adventures/new'
-    
+    current_path.should == '/adventures/new'
+    fill_in 'adventure[title]', with: 'Underwater Basket-Weaving'
+    fill_in 'adventure[location]', with: 'Denver, Co'
+    fill_in 'adventure[summary]', with: 'EXTREME UNDERWATER BASKET WEAVING'
+    fill_in 'adventure[location]', with: 'Denver, Co'
+    fill_in 'adventure[cap_min]', with: 1
+    fill_in 'adventure[cap_max]', with: 10
+    fill_in 'adventure[duration_num]', with: 4
+    fill_in 'adventure[price]', with: 100
+    choose('Per Person')
+    select 'Hours', from: 'adventure[duration_type]'
+    select 'Skiing', from: 'adventure[category]'
+    attach_file('adventure[attachment]', File.join(Rails.root, '/spec/support/example.jpg'))
+    click_button 'NEXT'
+    expect(page).to have_content('SELECT GALLERY IMAGES')
+
+    attach_file('images[]', File.join(Rails.root, '/spec/support/example.jpg'))
+    visit "/adventure_steps/itinerary?adventure_id=1"
+    expect(page).to have_content('ITINERARY')
   end
 end

@@ -2,19 +2,15 @@ class User < ActiveRecord::Base
   has_many :user_adventures
   has_many :adventures, through: :user_adventures
   accepts_nested_attributes_for :user_adventures, :allow_destroy => true
-  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
-  after_create :send_welcome_email
-
   #Image Magick Config.
   has_attached_file :avatar, :styles => { :large => "600x600>", :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-
-  # validates_presence_of :name, :avatar_url, :location, :skillset, :language, :sex, :age, :bio, :if => :is_guide?
+  
+  after_create :send_welcome_email
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -44,8 +40,8 @@ class User < ActiveRecord::Base
 
   def is_guide?(user_id)
     @user = User.find_by!(:id => user_id)
-
     #check to verify certain parmaters exist to make sure user is eligible to be guide
+
     if @user.name.nil? || 
        @user.name.empty? || 
        @user.location.nil? || 
@@ -61,18 +57,13 @@ class User < ActiveRecord::Base
        @user.bio.empty? || 
        @user.short_description.nil? || 
        @user.short_description.empty?
-      
-      if @user.avatar.url != "/avatars/:style/missing.png"
-        return true
-      elsif @user.avatar.url == "/avatars/:style/missing.png" && @user.avatar_url
-        return true
-      elsif @user.avatar_url == "/avatars/:style/missing.png" && !@user.avatar_url
-        return false
-      end
-
-      false
+      return false
+    elsif @user.avatar.url != "/images/original/missing.png"
+      return true
+    elsif @user.avatar_url != '' && @user.avatar_url != nil
+      return true
     else
-      true
+      return false
     end
   end
 
