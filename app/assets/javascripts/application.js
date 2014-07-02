@@ -20,6 +20,7 @@
 //= require bootstrap-datepicker
 //= require bootstrap-filestyle
 //= require bootstrap-maxlength
+//= require bootstrapValidator.min
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
 //= require imagesloaded.pkgd.min.js

@@ -242,6 +242,91 @@ function galleryMasonry(){
   })
 }
 
+function form_validator(){
+  $('#adventure_edit_form').bootstrapValidator({
+    fields: {
+      'adventure[title]': {
+        validators: {
+          notEmpty: {
+            message: 'The title is required and cannot be empty'
+          }
+        }
+      },
+      'adventure[location]': {
+        validators: {
+          notEmpty: {
+            message: 'The location is required and cannot be empty'
+          }
+        }
+      },
+      'adventure[summary]': {
+        validators: {
+          notEmpty: {
+            message: 'The summary is required and cannot be empty'
+          }
+        }
+      },
+      'adventure[cap_min]': {
+        validators: {
+          notEmpty: {
+            message: 'Min. req.'
+          },
+          integer: {
+            message: 'Integer req.' 
+          }
+        }
+      },
+      'adventure[cap_max]': {
+        validators: {
+          notEmpty: {
+            message: 'Max. req.'
+          },
+          integer: {
+            message: 'Integer req.' 
+          }
+        }
+      },
+      'adventure[duration_num]': {
+        validators: {
+          notEmpty: {
+            message: 'Cannot be empty'
+          },
+          integer: {
+            message: 'Integer req.'
+          }
+        }
+      },
+      'adventure[price]': {
+        validators: {
+          notEmpty: {
+            message: 'The price is required and cannot be empty'
+          },
+          integer: {
+            message: 'Integer req.'
+          }
+        }
+      },
+      'adventure[price_type]': {
+        validators: {
+          notEmpty: {
+            message: 'Please select price type'
+          }
+        }
+      },
+      'adventure[attachment]': {
+        validators: {
+          file: {
+            extension: 'jpeg,jpg,png,tif',
+            type: 'image/jpeg,image/jpg,image/png,image/tif',
+            maxSize: 1024*10*1024, //10 MB
+            message: 'Must have an adventure banner image'
+          }
+        }
+      }
+    }
+  });
+}
+
 
 adventureShow = function() {
   galleryMasonry();
@@ -270,6 +355,7 @@ adventureCreate = function() {
   input_datepicker();
   input_maxlength();
   create_tabs();
+  form_validator();
 }
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------

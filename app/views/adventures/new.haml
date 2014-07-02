@@ -6,7 +6,7 @@
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
         
         .panel.panel-default
-          .panel-heading.text-center
+          .panel-heading.text-center.section_header
             BASICS
           .panel-body
             .form-group.row
@@ -77,7 +77,10 @@
                 %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", value: "", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
 
             .form-group
-              %input.group-span-filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
+              .col-md-4
+                .form_label.text-right Adventure Banner Image *
+              .col-md-6
+                %input.filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
 
           .panel-footer.text-center
             %input.btn.btn-primary.preview_btn{href: "#", name: "commit", type: "submit", value: "NEXT"}
