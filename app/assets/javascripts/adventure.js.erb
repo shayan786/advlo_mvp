@@ -284,7 +284,8 @@ FSInitialize = function(adventure_id) {
   $('#calendar').fullCalendar({
     defaultView: "agendaWeek",
     height: 600,
-    editable: true,
+    eventDurationEditable: false,
+    eventStartEditable: true,
     selectable: true, 
     header: {
       left: 'today prev,next',
@@ -337,12 +338,21 @@ FSInitialize = function(adventure_id) {
           }
         });
       }
+    },
+
+    //UPDATE AN EVENT
+    eventDrop: function(event, revertFunc) {
+      $.ajax({
+        url: "/events/"+event.id,
+        dataType: "JSON",
+        data: {start: event.start, end: event.end},
+        type: "POST",
+        method: "PUT",
+        error: function(){   
+          revertFunc();
+        }
+      });
     }
-
-    //RENDER EXISTING RESERVATION TIMES (X/CAP_MAX)
-
-    //RENDER UNAVAILABLE TIMES
-
   });
 }
 

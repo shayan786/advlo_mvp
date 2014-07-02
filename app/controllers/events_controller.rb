@@ -28,7 +28,13 @@ class EventsController < ApplicationController
 	end
 
 	def update
+		@event = Event.find(params[:id])
 
+		@event.update(start_time: params[:start], end_time: params[:end])
+
+		respond_to do |format|
+			format.json {render json: {updated: "true"}}
+		end
 	end
 
 	def destroy
