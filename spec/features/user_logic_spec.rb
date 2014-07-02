@@ -58,5 +58,9 @@ feature "user logic for adventure flow", :js => true do
     attach_file('adventure[attachment]', File.join(Rails.root, '/spec/support/example.jpg'))
     click_button 'NEXT'
     expect(page).to have_content('SELECT GALLERY IMAGES')
+
+    attach_file('images[]', File.join(Rails.root, '/spec/support/example.jpg'))
+    visit "/adventure_steps/itinerary?adventure_id=1"
+    expect(page).to have_content('ITINERARY')
   end
 end
