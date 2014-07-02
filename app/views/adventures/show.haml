@@ -156,7 +156,7 @@
 
     var handler = StripeCheckout.configure({
       key: 'pk_test_4KNIbgcUXuK1cAeGAoZgixpD',
-      image: "#{@current_host.avatar.url(:thumb)}",
+      image: "/assets/advlo_favicon.ico",
       token: function(token) {
         // Use the token to create the charge with a server-side script.
         // You can access the token ID with `token.id`

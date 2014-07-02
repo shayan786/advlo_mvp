@@ -98,10 +98,10 @@
                               #title= adv.title
 
                             .ping
-                            - if adv.subtitle.length > 37
-                              .location= "#{adv.subtitle.upcase[0..37]}..."
+                            - if adv.location.length > 37
+                              .location= "#{adv.location.upcase[0..37]}..."
                             -else
-                              .location= adv.subtitle.upcase
+                              .location= adv.location.upcase
 
                           .hover-block{id: i}
                             - if @user && @user.avatar_url == '' || @user.avatar_url == nil
