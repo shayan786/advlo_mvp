@@ -27,8 +27,9 @@
 
       #adventure-price
         %span $60
-      #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"}
-        %span BOOK IT
+      #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+        %span 
+          BOOK IT
 
   .adventure-copy-wrapper
     .row
@@ -50,8 +51,9 @@
           .adventure-block.col-sm-6
             #adventure-price
               %span $60
-            #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"}
-              %span BOOK IT
+            #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+              %span 
+                BOOK IT
 
     .col-md-9.information-container
       #adventure-title= @adventure.title
@@ -101,12 +103,15 @@
                   .container
                     - @limited_adventure_events.each do |event| 
                       .row
-                        .event.btn.btn-primary= event.start_time.strftime("%l:%M %p  - %A  - %m/%d/%y")
+                        .purchaseButton.event.btn.btn-primary= event.start_time.strftime("%l:%M %p  - %A  - %m/%d/%y")
                 .view-all.tab-pane 
                   .container
                     - @all_adventure_events.each do |event| 
                       .row
-                        .event.btn.btn-primary= event.start_time.strftime("%l:%M %p - %A  - %m/%d/%y")
+                        .purchaseButton.event.btn.btn-primary= event.start_time.strftime("%l:%M %p - %A  - %m/%d/%y")
+
+              %form{action: "", method: "POST"}
+                %script{src: "https://checkout.stripe.com/checkout.js"}
               
               
                 
@@ -144,4 +149,23 @@
     sizeSidebar();
   })
 
-  
+  $(window).load(function(){
+
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_4KNIbgcUXuK1cAeGAoZgixpD',
+      token: function(token) {
+        // Use the token to create the charge with a server-side script.
+        // You can access the token ID with `token.id`
+      }
+    });
+
+    $('.purchaseButton').click(function(e) {
+      // Open Checkout with further options
+      handler.open({
+        name: "#{@adventure.title}",
+        description: 'Advlo',
+        amount: "#{@adventure.price * 100}"
+      });
+      e.preventDefault();
+    });
+  })

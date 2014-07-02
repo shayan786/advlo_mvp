@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.0'
 gem 'pg'
 
@@ -20,6 +19,7 @@ gem 'omniauth-facebook'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
 gem 'wicked'
+gem 'stripe'
 
 group :production do 
   gem 'rails_12factor'
@@ -38,8 +38,7 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-#FRONT-END and JS
-# jQuery
+
 gem 'jquery-ui-rails'
 #bootstrap
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -48,17 +47,3 @@ gem 'bootstrap-filestyle-rails'
 gem 'font-awesome-rails'
 #fullcalender for scheduling
 gem 'fullcalendar-rails'
-
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-

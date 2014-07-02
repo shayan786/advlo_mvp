@@ -85,10 +85,7 @@ function stopSidebarAtBottom(){
         bottom: '246px',
         top: 'auto'
       })
-      console.log(' 76')
     }else{
-      console.log('console else')
-
       $('.adventure-show-container #desktop-adventure-nav').css({
         top: 'auto',
         position: 'fixed',
@@ -113,7 +110,6 @@ function navBarCatch(){
       var windowSize     = window.innerHeight;
       var bodyHeight     = document.body.offsetHeight;
       var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
-      console.log(distanceFromBottom)
       var s = $(window).scrollTop();
       if(distanceFromBottom < 76){
       }else if(s > widthOfBrowser()){

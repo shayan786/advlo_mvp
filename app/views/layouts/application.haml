@@ -6,6 +6,9 @@
     = favicon_link_tag 'advlo_favicon.ico'  
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag "https://js.stripe.com/v1/", "application"
+    = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
+    
     = csrf_meta_tags
 
   %body
@@ -23,7 +26,6 @@
   // we need a callback url for FB
   $(document).ready(function(e) {
     if (window.location.hash && window.location.hash == '#_=_') { 
-      console.log(window.location.hash)
       window.location.hash = ''
     }
   }); 

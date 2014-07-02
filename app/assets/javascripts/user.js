@@ -11,7 +11,6 @@ function profileSlider() {
     mode:'horizontal',
     slidesPerView: 3,
     onSlideChangeStart: function(){
-      console.log(profileSlider.activeIndex)
       $(".prev, .next").removeClass('hide');
       if(profileSlider.activeIndex == 0) {
         $(".prev").addClass('hide');
@@ -97,7 +96,6 @@ function profileCenterImage(){
   $(window).load(function(){
     $('.profile-image').each(function(){
       var imageWidth = $(this).find('img').width()
-      console.log(imageWidth)
       if( imageWidth > 300){
         $(this).find('img').css('margin-left','-40%')
       }else if(imageWidth > 250){
