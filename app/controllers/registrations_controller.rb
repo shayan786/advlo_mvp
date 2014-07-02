@@ -3,7 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   # This is the default 'my adventures' page
   def dashboard
     if current_user && current_user.adventures.empty?
-      redirect_to '/users/edit', notice: "You don't have any adventures yet!"
+      redirect_to '/adventures/new', notice: "Create your first adventure!"
     elsif !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
       # puts request.referer ( for redirecting to reffering location)

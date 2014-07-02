@@ -34,7 +34,6 @@ class AdventuresController < ApplicationController
   #     => redirect to create a new adventure form
 
   def create_prefill
-    puts request.referer
     if !user_signed_in?
       if request.path == '/adventures/info'
         redirect_to '/adventures/info'
@@ -43,9 +42,6 @@ class AdventuresController < ApplicationController
       end
     elsif user_signed_in? && !current_user.is_guide?(current_user.id)
       redirect_to '/users/edit', notice: "Please complete your profile so travelers know more about their host!"
-
-    elsif user_signed_in? && current_user.is_guide?(current_user.id) && !UserAdventure.where(user_id: current_user.id).present?
-
     else 
       redirect_to '/adventures/new'
     end
