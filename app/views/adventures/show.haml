@@ -153,6 +153,7 @@
 
     var handler = StripeCheckout.configure({
       key: 'pk_test_4KNIbgcUXuK1cAeGAoZgixpD',
+      image: "#{@adventure.attachment.url(:thumb)}",
       token: function(token) {
         // Use the token to create the charge with a server-side script.
         // You can access the token ID with `token.id`
@@ -163,7 +164,7 @@
       // Open Checkout with further options
       handler.open({
         name: "#{@adventure.title}",
-        description: 'Advlo',
+        description: "with #{@adventure.users.first.name}",
         amount: "#{@adventure.price * 100}"
       });
       e.preventDefault();
