@@ -29,15 +29,13 @@ class Adventure < ActiveRecord::Base
     end
 
     if self.duration_type == "Hours"
-      min_hour = self.duration_num*60*60
+      sec_hour = self.duration_num*60*60
       return sec_hour
     end
 
     if self.duration_type == "Days"
-      min_days = self.duration_num*24*60*60
+      sec_days = self.duration_num*24*60*60
       return sec_days
     end
-
   end
-
 end

@@ -27,7 +27,7 @@
 
       #adventure-price
         %span $60
-      #book-it-bro
+      #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"}
         %span BOOK IT
 
   .adventure-copy-wrapper
@@ -50,7 +50,7 @@
           .adventure-block.col-sm-6
             #adventure-price
               %span $60
-            #book-it-bro
+            #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"}
               %span BOOK IT
 
     .col-md-9.information-container
@@ -85,7 +85,30 @@
           .modal-content
             .modal-body
               %img{src: '', id: ''}
-                / %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} X
+
+      #event-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "event-modal", role: "dialog"}
+        .modal-dialog
+          .modal-content
+            .modal-body
+              %ul.nav.nav-tabs{role: "tablist"}
+                %li.active
+                  %a{"data-toggle" => "tab", href: ".upcoming", role: "tab"} UPCOMING
+                %li
+                  %a{"data-toggle" => "tab", href: ".view-all", role: "tab"} VIEW ALL
+
+              .tab-content
+                .upcoming.tab-pane.active 
+                  .container
+                    - @limited_adventure_events.each do |event| 
+                      .row
+                        .event.btn.btn-primary= event.start_time.strftime("%l:%M %p  - %A  - %m/%d/%y")
+                .view-all.tab-pane 
+                  .container
+                    - @all_adventure_events.each do |event| 
+                      .row
+                        .event.btn.btn-primary= event.start_time.strftime("%l:%M %p - %A  - %m/%d/%y")
+              
+              
                 
           
       .copy-brick.container-fluid#policy
@@ -102,8 +125,7 @@
       .navigation-brick
         %a{href: '#overview'}
           .item
-            %span 
-              overview
+            %span overview
         %a{href: '#itinerary'}
           .item
             %span itinerary

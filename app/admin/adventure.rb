@@ -44,7 +44,11 @@ ActiveAdmin.register Adventure do
         app.input :description
         app.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
       end
-
+      f.has_many :events do |app|
+        app.input :start_time
+        app.input :end_time
+        app.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
+      end
       f.has_many :adventure_gallery_images do |photo|
         photo.inputs do
           photo.input :picture, :as => :file 

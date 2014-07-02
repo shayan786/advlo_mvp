@@ -75,7 +75,8 @@
         font-size: 45px;
         color: $advlo_green;
       }
-      #book-it-bro {
+      #book-it {
+        cursor: pointer;
         width: 80%;
         margin: 0 auto;
         height: 41px;
@@ -145,7 +146,8 @@
             color: $advlo_green;
             text-align: center;
           }
-          #book-it-bro {
+          #book-it {
+            cursor: pointer;
             width: 100%;
             margin: 0 auto;
             height: 41px;
@@ -267,6 +269,13 @@
       cursor: pointer;
       background: $light_gray;
     }
+  }
+}
+
+
+#event-modal {
+  .event {
+    color: #fff;
   }
 }
 

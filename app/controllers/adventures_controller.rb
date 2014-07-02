@@ -10,6 +10,8 @@ class AdventuresController < ApplicationController
     @adventure = Adventure.find_by_slug(params[:id])
     @current_guide = @adventure.users.first
     @itineraries = Itinerary.where(adventure_id: @adventure.id)
+    @all_adventure_events = @adventure.events.sort_by{|a| a.start_time}
+    @limited_adventure_events = @adventure.events.sort_by{|a| a.start_time}.take(5)
   end
 
   # info page for creating a new adventure
