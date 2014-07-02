@@ -6,11 +6,29 @@
         .panel-heading.text-center.section_header
           SCHEDULE
         .panel-body
-          - if notice
-            .col-md-6.col-md-offset-3.text-center
-              .update_notice.alert.alert-warning
-                = notice
-          
+          .col-md-6.col-md-offset-3
+            .well.how_to
+              .container
+                .row
+                  .col-md-1
+                    %strong
+                      CREATE
+                  .col-md-4
+                    Click where you want to host your Adventure. Thats it!
+                .row
+                  .col-md-1
+                    %strong
+                      DELETE
+                  .col-md-4
+                    Click on the existing Adventure. Confirm OK!
+                .row
+                  .col-md-1
+                    %strong
+                      UPDATE
+                  .col-md-4
+                    Drag and drop the Adventure anywhere on the calendar
+
+
           #calendar
             
         .panel-footer.text-center
