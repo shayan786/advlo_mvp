@@ -99,7 +99,7 @@
                         %li Avatar
                       - if current_user.name.nil? || current_user.name.empty?
                         %li Name
-                      - if current_user.name.nil? || current_user.name.empty?
+                      - if current_user.short_description.nil? || current_user.short_description.empty?
                         %li Tagline
                       - if current_user.location.nil? || current_user.location.empty?
                         %li Location

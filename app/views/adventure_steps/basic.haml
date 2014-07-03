@@ -87,7 +87,10 @@
                     #{@adventure.other_notes}
 
             .form-group
-              %input.group-span-filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
+              .col-md-4
+                .form_label.text-right Adventure Banner Image *
+              .col-md-6
+                %input.filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
 
           .panel-footer.text-center
             %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT"}

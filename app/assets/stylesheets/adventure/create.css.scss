@@ -31,7 +31,6 @@
 				color: $light_gray;
 			}
 
-
 			.form_label {
 				padding-top: 5px;
 				font-size: 1.2em;
@@ -42,6 +41,9 @@
 				padding-top: 8px;
 			}
 
+			#adv_cap_min, #adv_cap_max {
+				text-align: center !important;
+			}
 
 			.panel-footer {
 				background-color: $white;
