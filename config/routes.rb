@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :adventures
   resources :adventure_steps
   resources :events
+  resources :reservations
 
   root to: 'application#homepage'
 end	
