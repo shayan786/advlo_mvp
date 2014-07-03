@@ -17,9 +17,14 @@
             %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
               PHOTOS
         - else
-          %li 
-            %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
-              PHOTOS
+          - if !@adventure.title.nil? || !@adventure.title.empty?
+            %li
+              %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
+                PHOTOS
+          - else 
+            %li.disabled
+              %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
+                PHOTOS
         %li
           %i.fa.fa-long-arrow-right
         - if params[:id] == "itinerary"
@@ -27,9 +32,14 @@
             %a{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
               ITINERARY
         - else
-          %li 
-            %a{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
-              ITINERARY
+          - if !@adventure.adventure_gallery_images.empty?
+            %li 
+              %a{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
+                ITINERARY
+          - else 
+            %li.disabled
+              %a{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
+                ITINERARY
         %li
           %i.fa.fa-long-arrow-right
         - if params[:id] == "schedule"
@@ -37,18 +47,23 @@
             %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
               SCHEDULE
         - else
-          %li 
-            %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
-              SCHEDULE
+          - if !@adventure.adventure_gallery_images.empty?
+            %li 
+              %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
+                SCHEDULE
+          - else
+            %li.disabled
+              %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
+                SCHEDULE
         %li
           %i.fa.fa-long-arrow-right
         - if params[:id] == "payment"
           %li.active 
-            %a{href: "#"}
+            %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
               PAYMENT
         - else
           %li 
-            %a{href: "#"}
+            %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
               PAYMENT
         %li
           %i.fa.fa-long-arrow-right

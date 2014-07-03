@@ -6,9 +6,6 @@
         .panel-heading.text-center.section_header
           PHOTOS
         .panel-body
-          / Placeholder for now
-          .cover_img_display
-
           .text-center
             - if !@adventure.adventure_gallery_images.empty?
               - @adventure.adventure_gallery_images.each_with_index do |adv, i|
@@ -51,3 +48,5 @@
       }
     });
   });
+
+

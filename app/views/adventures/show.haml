@@ -106,15 +106,20 @@
                   .container
                     - @limited_adventure_events.each do |event| 
                       .row
-                        .purchaseButton.event.btn.btn-primary= event.start_time.strftime("%l:%M %p  - %A  - %m/%d/%y")
+                        .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal"}= event.start_time.strftime("%l:%M %p  - %A  - %m/%d/%y")
                 .view-all.tab-pane 
                   .container
                     - @all_adventure_events.each do |event| 
                       .row
-                        .purchaseButton.event.btn.btn-primary= event.start_time.strftime("%l:%M %p - %A  - %m/%d/%y")
+                        .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal"}= event.start_time.strftime("%l:%M %p - %A  - %m/%d/%y")
+      #reservations-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-modal", role: "dialog"}
+        .modal-dialog
+          .modal-content
+            .modal-body
+              = render partial: "/reservations/new", locals: {reservation: @reservation}
 
-              %form{action: "", method: "POST"}
-                %script{src: "https://checkout.stripe.com/checkout.js"}
+              / %form{action: "", method: "POST"}
+              /   %script{src: "https://checkout.stripe.com/checkout.js"}
               
               
                 
@@ -152,24 +157,24 @@
     sizeSidebar();
   })
 
-  $(window).load(function(){
+  // $(window).load(function(){
 
-    var handler = StripeCheckout.configure({
-      key: 'pk_test_4KNIbgcUXuK1cAeGAoZgixpD',
-      image: "/assets/advlo_favicon.ico",
-      token: function(token) {
-        // Use the token to create the charge with a server-side script.
-        // You can access the token ID with `token.id`
-      }
-    });
+  //   var handler = StripeCheckout.configure({
+  //    key: 'pk_test_4KNIbgcUXuK1cAeGAoZgixpD',
+  //    image: "/assets/advlo_favicon.ico",
+  //    token: function(token) {
+  //      ///Use the token to create the charge with a server-side script.
+  //      ///You can access the token ID with `token.id`
+  //    }
+  //  });
 
-    $('.purchaseButton').click(function(e) {
-      // Open Checkout with further options
-      handler.open({
-        name: "#{@adventure.title}",
-        description: "with #{@adventure.users.first.name}",
-        amount: "#{@adventure.price * 100}"
-      });
-      e.preventDefault();
-    });
-  })
+  //  $('.purchaseButton').click(function(e) {
+  //    ///Open Checkout with further options
+  //    handler.open({
+  //      name: "#{@adventure.title}",
+  //      description: "with #{@adventure.users.first.name}",
+  //      amount: "#{@adventure.price * 100}"
+  //    });
+  //    e.preventDefault();
+  //  });
+  //})

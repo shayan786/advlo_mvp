@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701154430) do
+ActiveRecord::Schema.define(version: 20140703184715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20140701154430) do
     t.integer  "adventure_id"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer  "capacity"
   end
 
   create_table "hero_images", force: true do |t|
@@ -108,6 +109,19 @@ ActiveRecord::Schema.define(version: 20140701154430) do
     t.integer  "adventure_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "reservations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "host_id"
+    t.string   "stripe_recipient_id"
+    t.string   "stripe_customer_id"
+    t.string   "stripe_charge_id"
+    t.integer  "total_price"
+    t.integer  "head_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
   end
 
   create_table "user_adventures", force: true do |t|
@@ -150,6 +164,8 @@ ActiveRecord::Schema.define(version: 20140701154430) do
     t.string   "fb_url"
     t.string   "tw_url"
     t.string   "li_url"
+    t.string   "stripe_recipient_id"
+    t.string   "stripe_customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
