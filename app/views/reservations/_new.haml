@@ -1,19 +1,36 @@
 #reservation
-  = form_for reservation, url: reservations_path, method: "POST" do |f|
-    = f.hidden_field :event_id
-    = f.hidden_field :user_id
-    = f.hidden_field :host_id
+  #success
+  #stripe-error-message
+  = form_for reservation, url: reservations_path, method: "POST", remote: true, :html => {:multipart => true } do |f|
+    - if reservation.errors.any?
+      .alert-message.block-message.error
+        %p= "#{pluralize(reservation.errors.count, "problem")} with your registration:"
+        .errors
+          - reservation.errors.full_messages.each do |msg|
+            %p= msg
+    = f.hidden_field :event_id, id: 'hidden_event_id'
+    = f.hidden_field :head_count, value: 1
+    = f.hidden_field :total_price, value: @adventure.price
+    = hidden_field_tag :total_price, "#{@adventure.price}"
+    = hidden_field_tag :adventure_id, "#{@adventure.id}"
+    = hidden_field_tag :stripe_token
+
+    = hidden_field_tag :user_id, "#{current_user.id}"
+    = f.hidden_field :host_id, value: @current_guide.id
     / = f.hidden_field :recipient_id
+    %br
+    = label_tag "Name:"
+    = text_field_tag :credit_card_name
+    %br
+    = label_tag "Credit Card:"
+    = text_field_tag :credit_card_number
+    %br
+    = label_tag "CVV"
+    = text_field_tag :cvv
+    %br
+    = label_tag "Card Expiration"
+    = select_month nil, {add_month_numbers_true: true}, {name: nil, id: "expiry_month"}
 
-    .field
-      = label_tag "Credit Card:"
-      = text_field_tag :card_number
-    .field
-      = label_tag "CVV"
-      = text_field_tag :card_code
-    .field
-      = label_tag "Card Expiration"
-      = select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}
-      = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+7}, {name: nil, id: "card_year"}
+    = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+7}, {name: nil, id: "expiry_year"}
 
-    = f.submit "BOOK IT"
+    #book-button.button Book
