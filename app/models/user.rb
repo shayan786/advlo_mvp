@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :user_adventures
+  has_many :reservations
   has_many :adventures, through: :user_adventures
   accepts_nested_attributes_for :user_adventures, :allow_destroy => true
   # Include default devise modules. Others available are:
