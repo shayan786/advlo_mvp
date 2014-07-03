@@ -16,7 +16,6 @@
               .container
                 .col-md-4.col-md-offset-1
                   .adv_img{style: "background: url('#{adv.attachment.url(:medium)}')"}
-                  / .adv_img= image_tag adv.attachment.url(:medium), :class => "img-thumbnail img-responsive adv_img_thumb"
                 .col-md-6
                   .adv_title= adv.title
                   .adv_loc= adv.location
@@ -32,16 +31,12 @@
                     = link_to adv, method: "delete",  data: {confirm: "Are you sure?"}, class: "btn btn-danger edit_btn" do
                       %i.fa.fa-times
                         DELETE
+                  .row.container
+                    %a.btn.btn-info.edit_btn{href: "#"}
+                      %i.fa.fa-money
+                      RESERVATIONS
           %br
             .create-wrapper
               %a.btn.btn-primary.host_btn{href: "/adventures/new"}
                 HOST AN ADVENTURE
           %hr
-
-/ :javascript
-/   function verifyDelete() {
-/     var resp = confirm("Are you sure you want to delete this Adventure?");
-
-/     if (resp == true)
-/       window.location.replace("/users/dashboard");
-/   }
