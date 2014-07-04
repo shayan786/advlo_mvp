@@ -36,8 +36,7 @@ function getStripeToken(){
 
         console.log('error=> '+response.error.message)
         $("#stripe-error-message").text(response.error.message);
-        // $("#credit-card-errors").show();
-        
+        $("#credit-card-errors").show();
         // $("#user_submit").attr("disabled", false);
       }
     });

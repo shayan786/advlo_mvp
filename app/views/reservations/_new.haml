@@ -1,5 +1,7 @@
 #reservation
   #success
+  #success-detail
+  #advlo-logo
   #stripe-error-message
   = form_for reservation, url: reservations_path, method: "POST", remote: true, :html => {:multipart => true } do |f|
     - if reservation.errors.any?
