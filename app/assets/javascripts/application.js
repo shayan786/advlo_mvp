@@ -26,6 +26,7 @@
 //= require imagesloaded.pkgd.min.js
 //= require adventure.js
 //= require homepage.js
+//= require reservation.js
 //= require user.js
 //= require fullcalendar
 

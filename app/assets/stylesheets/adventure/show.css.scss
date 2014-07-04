@@ -274,8 +274,14 @@
 
 
 #event-modal {
-  .event {
-    color: #fff;
+
+  .modal-dialog {
+    width: 50%;
+    margin-left: 15%;
+    margin-top: 100px;
+    .event {
+      color: #fff;
+    }
   }
 }
 
