@@ -7,7 +7,7 @@
         #guide-name
           = @current_guide.name
         .guide-profile-image
-          - if @current_guide.avatar_url
+          - if @current_guide.avatar_url != '' || @current_guide.avatar_url != nil
             = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
           - elsif @current_guide.avatar.url
             = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)

@@ -158,4 +158,48 @@
 		}
 
 	}
+
+
+	.glyphicon {
+	  margin-bottom: 40px;
+	  margin-top: 20px;
+	  font-size: 35px;
+
+	  span {
+	  	font-size: 16px;
+	  }
+	}
+
+	#add-bank {
+	  cursor: pointer;
+		margin-top: 50px;
+		text-align: center;
+		text-align: center;
+	}
+	#add-card {
+		margin-top: 60px;
+	  cursor: pointer;
+	  text-align: center;
+	  text-align: center;
+	}
+
+	#add-card-form {
+		display: none;
+	}
+	#add-bank-form {
+		display: none;
+	}
+
+
+	.save {
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		.btn {
+			margin: 0 auto;
+			width: 200px;
+
+		}
+	}
 }
