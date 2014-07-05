@@ -1,10 +1,10 @@
 //NAVBAR CUSTOMIZATIONS
 .navbar {
-	font-family: $header_font;
-	background: $dark_gray;
-	padding: 10px 0px 10px 20px;
+	font-family: cabin_bold;
+	background: #fff;
+	padding: 1px 0 1px 10px;
 	z-index: 1000;
-	border-color: $dark_gray;
+	opacity: 0.95;
 
 	.navbar-brand {
 		background: asset-url("logos/advlo_header_logo.png") no-repeat left center;
@@ -23,7 +23,7 @@
 		float: none;
 		a {
 			line-height: 19px;
-		    color:  $header_text_color !important;
+		    color: #666666;
 		    padding-top: 18px;
 		    padding-bottom: 12px;
 	    	font-size: 1.3em;
