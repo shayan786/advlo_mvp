@@ -1,3 +1,25 @@
+function homepageTextScroll(){
+  $(window).scroll(function(){
+    var s = $(window).scrollTop();
+    $('#homepage-text').css('-webkit-transform','translateY(' + (s/3) + 'px');
+
+    if(s > 250 && !$('#homepage-text').hasClass('passed')){
+      $('#homepage-text').animate({
+        opacity: 0
+      },500)
+
+      $('#homepage-text').addClass('passed')
+    }
+    if(s < 250 && $('#homepage-text').hasClass('passed')){
+      $('#homepage-text').animate({
+        opacity: 1
+      },1000)
+
+      $('#homepage-text').removeClass('passed')
+    }  
+  })
+}
+
 function adventureSliderInit(){
   var slideCount;
   if($(window).width() > 1224){
@@ -93,4 +115,5 @@ homepageInit = function() {
   adventureHover();
   centerGuideImage();
   hostSliderImageCenter();
+  homepageTextScroll();
 }
