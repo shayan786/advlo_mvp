@@ -2,7 +2,12 @@ class AdventuresController < ApplicationController
 
   def index
     # @adventures = Adventure.where(region: params[:region])
-    @adventures = Adventure.all.order('created_at DESC')
+    # if params[:search].present?
+    # @adventures = Adventure.near(params[:search], 50, :order => :distance)
+    if params[:location].present?
+      @adventures =Adventure.near(params[:location], 100)
+    end
+    # end
     @hero_image = HeroImage.where(region: 'Colorado').last
   end
 
@@ -100,7 +105,6 @@ class AdventuresController < ApplicationController
   def adventure_params
     params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :category, :other_notes, :adventure_gallery_images, :images)
   end
-
 
 end
 

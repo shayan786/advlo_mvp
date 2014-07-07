@@ -111,7 +111,6 @@
 			}
 		}
 	}
-
 	//fix this box white color!
 }
 
@@ -184,4 +183,14 @@
   max-width: 25%;
   margin: 0 auto;
   text-align: center;
+}
+
+.adventure-dropdown {
+	position: absolute;
+	width: 225px;
+	height: 200px;
+	background: #fff;
+	top: 53px;
+	right: 360px;
+	display: none;
 }

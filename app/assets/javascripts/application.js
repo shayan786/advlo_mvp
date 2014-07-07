@@ -40,4 +40,3 @@ $(document).ajaxStop(function(){
   $('#loader-overlay').hide()
 })
 
-

@@ -130,7 +130,12 @@
       .copy-brick.container-fluid#policy
         .ping
         .brick-title Policy
-        .brick-copy overview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview text
+        .brick-copy
+          nearby
+          %ul
+            = for advs in @adventure.nearbys(50)
+              %li= link_to advs.location, advs
+              = "#{advs.distance.round(2)} miles"
 
       .copy-brick.container-fluid#reviews
         .ping
@@ -158,7 +163,7 @@
   adventureShow();
   getStripeToken();
   
-  
+
 
   $(window).resize(function(){
     sizeSidebar();
