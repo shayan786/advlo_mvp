@@ -1,7 +1,7 @@
 .adventure-page-container.col-md-12
   / .jumbotron.jumbotron-adventure{style: "background: url(#{@hero_image.attachment.url(:hero)})"}
   #hero_image= image_tag @hero_image.attachment.url(:hero) if @hero_image
-  #location_text COLORADO
+  #location_text= @location.upcase
   - filters = ['bike','swim','hike','camp','climb','jump','wildcard']
   .filter-container
     - filters.each do |f|
