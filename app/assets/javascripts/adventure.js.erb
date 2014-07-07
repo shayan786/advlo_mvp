@@ -63,7 +63,9 @@ function masonrySetup(){
 }
 
 function sizeSidebar(){
-  $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 32);
+  $(document).ready(function(){
+    $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 32);
+  })
 }
 
 function stopSidebarAtBottom(){

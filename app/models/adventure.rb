@@ -16,6 +16,10 @@ class Adventure < ActiveRecord::Base
   validates_presence_of :title, :location, :summary, :cap_min, :cap_max, :duration_num, :price, :category, :price_type, :category
   validates_numericality_of :price, :cap_min, :cap_max, :duration_num
 
+  geocoded_by :location
+  after_validation :geocode
+
+
   def set_slug
     if self.slug == nil || self.slug == ''
       self.slug = self.title.downcase.gsub(' ','-').gsub('.','').gsub("'",'').gsub(":",'')
