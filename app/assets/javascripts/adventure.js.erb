@@ -254,6 +254,13 @@ function form_validator(){
           }
         }
       },
+      'adventure[category]': {
+        validators: {
+          notEmpty: {
+            message: 'A category is required and cannot be empty'
+          }
+        }
+      },
       'adventure[location]': {
         validators: {
           notEmpty: {
@@ -362,6 +369,12 @@ function form_validator(){
   });
 }
 
+function multiSelect(){
+  $(document).ready(function() {
+    $('.multiselect').multiselect();
+  });
+}
+
 
 adventureShow = function() {
   galleryMasonry();
@@ -385,6 +398,7 @@ adventureIndex = function() {
 }
 
 adventureCreate = function() {
+  multiSelect();
   advPhotoInput();
   input_popover();
   input_datepicker();

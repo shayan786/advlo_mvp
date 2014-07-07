@@ -18,9 +18,12 @@
                   .adv_img{style: "background: url('#{adv.attachment.url(:medium)}')"}
                 .col-md-6
                   .adv_title= adv.title
-                  .adv_loc= adv.location
-                  - if adv.price_type && adv.price
+                  .adv_loc= "Location: #{adv.location}"
+                  .adv_loc= "category: #{adv.category}"
+                  - if adv.price_type && adv.price 
                     .adv_price= "$"+adv.price.to_s + " " + adv.price_type.gsub("_"," ") 
+                
+
                   .row.container
                     %a.btn.btn-default.edit_btn{href: "/adventures/#{adv.slug}"}
                       %i.fa.fa-eye

@@ -13,7 +13,7 @@ class Adventure < ActiveRecord::Base
   validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
 
   validates_uniqueness_of :title
-  validates_presence_of :title, :location, :summary, :cap_min, :cap_max, :duration_num, :price, :category, :price_type, :category
+  validates_presence_of :title, :location, :summary, :cap_min, :cap_max, :duration_num, :price, :price_type
   validates_numericality_of :price, :cap_min, :cap_max, :duration_num
 
   geocoded_by :location

@@ -74,9 +74,10 @@ class AdventuresController < ApplicationController
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
       redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
-
+  
     @adventure = Adventure.create!(adventure_params)
-
+    @adventure.category = params[:category].join(',')
+    
     if @adventure.save
       #associate that adventure with that adventure
       @useradventure = @adventure.user_adventures.build(user_id: current_user.id, adventure_id: @adventure.id)
@@ -105,7 +106,7 @@ class AdventuresController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :category, :other_notes, :adventure_gallery_images, :images)
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_images, :images, :category => [])
   end
 
 end

@@ -1,3 +1,5 @@
+%script{src: "js/bootstrap-multiselect.js", type: "text/javascript"}
+%link{href: "css/bootstrap-multiselect.css", rel: "stylesheet", type: "text/css"}
 #adventure_create
   .container
     = render partial: "/adventures/adv_create_header"
@@ -71,15 +73,13 @@
                     Flat Rate
             .form-group.row
               .col-md-4
-                .form_label.text-right Category
+                .form_label.text-right Categories *
               .col-md-2
-                %select.form-control{name: "adventure[category]", id: "adv_category"}
-                  - options_cat = ["Hiking", "Climbing", "Skiing", "Surfing"]
-                  - options_cat.each do |o|
-                    - if @adventure.category == o
-                      %option{selected: "true"}= o
-                    - else 
-                      %option= o  
+                - options = ["Hiking", "Climbing", "Skiing", "Surfing"]
+                %select.multiselect{multiple: true, :required => true, name: 'category[]'}
+                  = options.each do |o|
+                    %option{value: o}= o
+
 
             .form-group.row
               .col-md-4
