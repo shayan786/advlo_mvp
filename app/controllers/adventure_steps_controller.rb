@@ -54,7 +54,7 @@ class AdventureStepsController < ApplicationController
 
       respond_to do |format|
         format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itinerary event '#{params[:headline]}' has been created!"}
-        format.js {}
+        format.js { render action: 'create_itin.js', layout: false}
       end
 
     # Hook for updating/deleting itinerary item and remain on the same page

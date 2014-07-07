@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 		if @event.save
 			respond_to do |format|
 				format.js {render "create.js", layout: false}
-				format.json {render json: {"id"=> @event.id, "title"=>"Adventure Time", "allDay" => false, "start"=> @event.start_time.to_time.iso8601, "end"=> end_time_min.to_time.iso8601}}
+				format.json {render json: {"id"=> @event.id, "title"=>@adventure.title, "allDay" => false, "start"=> @event.start_time.to_time.iso8601, "end"=> end_time_min.to_time.iso8601}}
 			end
 		end
 	end

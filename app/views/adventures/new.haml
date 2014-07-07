@@ -64,7 +64,7 @@
               .col-md-4
                 .form_label.text-right Categories *
               .col-md-2
-                - options = ["Hiking", "Climbing", "Skiing", "Surfing"]
+                - options = ['CULTURE', 'BIKE', 'HIKE', 'CAMP', 'WATER', 'SNOW', 'ROCK', 'WILDCARD']
                 %select.multiselect{multiple: true, :required => true, name: 'category[]'}
                   = options.each do |o|
                     %option{value: o}= o
