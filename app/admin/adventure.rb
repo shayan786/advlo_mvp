@@ -44,6 +44,7 @@ ActiveAdmin.register Adventure do
       f.input :slug, label: 'permalink'
       f.input :subtitle
       f.input :location
+      f.input :category
       f.input :price
       f.input :price_type, as: :select, collection: ["per_person", "per_adv"]
       f.input :summary

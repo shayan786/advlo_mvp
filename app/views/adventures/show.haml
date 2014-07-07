@@ -15,24 +15,20 @@
         #guide-title
           = @current_guide.short_description
 
+      .adventure-block
+        #adventure-title
+
+        #adventure-price
+          %span $60
+        #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+          %span 
+            BOOK IT
     - else
       .guide-block
         #guide-name
-          = @current_guide.name
+          Want to guide this adventure?
         .guide-profile-image
-          - if @current_guide.avatar_url
-            = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
-          - elsif @current_guide.avatar.url
-            = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
-
-    .adventure-block
-      #adventure-title
-
-      #adventure-price
-        %span $60
-      #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
-        %span 
-          BOOK IT
+          = image_tag 'missing.png'
 
   .adventure-copy-wrapper
     .row
@@ -116,7 +112,7 @@
         .modal-dialog
           .modal-content
             .modal-body
-              - if current_user
+              - if current_user && @current_guide
                 = render partial: "/reservations/new", locals: {reservation: @reservation}
               - else 
                 = link_to 'Sign up', new_user_session_path
@@ -133,8 +129,8 @@
           %br
           nearby
           %ul
-            = for advs in @adventure.nearbys(50)
-              %li= link_to advs.location, advs
+            = @close_adventures.each do |advs|
+              %li= link_to advs.location, advs.slug
               = "#{advs.distance.round(2)} miles"
 
 

@@ -8,7 +8,7 @@ class AdventuresController < ApplicationController
       @adventures =Adventure.near(params[:location], 100)
 
       @hero_image = HeroImage.where(region: params[:location] ).last
-      @location = params[:location]
+      @location = params[:location].downcase
     end
     # end
   end
@@ -16,13 +16,32 @@ class AdventuresController < ApplicationController
   def show
     @adventure = Adventure.find_by_slug(params[:id])
     @current_guide = @adventure.users.first
+
     @itineraries = Itinerary.where(adventure_id: @adventure.id)
+
     @all_adventure_events = @adventure.events.sort_by{|a| a.start_time}
     @limited_adventure_events = @adventure.events.sort_by{|a| a.start_time}.take(5)
+
+    @close_adventures = @adventure.nearbys(50)
 
     @reservation = Reservation.new
   end
 
+
+  def filter_category
+    location = params[:location].capitalize
+    if params[:category] == 'all'
+      @adventures = Adventure.near(location, 100)
+    else
+      category = params[:category].gsub(',',' ').capitalize
+      puts category
+      @adventures = Adventure.near(location, 100).where("category LIKE ?", "%#{category}%")
+    end
+
+    respond_to do |format|
+      format.js {render :action => '/adventure_filter', :layout => false }
+    end
+  end
   # info page for creating a new adventure
   def hosting_info
 
@@ -77,7 +96,7 @@ class AdventuresController < ApplicationController
   
     @adventure = Adventure.create!(adventure_params)
     @adventure.category = params[:category].join(',')
-    
+
     if @adventure.save
       #associate that adventure with that adventure
       @useradventure = @adventure.user_adventures.build(user_id: current_user.id, adventure_id: @adventure.id)
