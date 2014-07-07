@@ -22,6 +22,7 @@
     color: #fff;
     font-family: 'nexa_light';
     letter-spacing: 35px;
+    text-shadow: -2px -2px 5px #000;
   }
 
 
@@ -88,6 +89,22 @@
       overflow: hidden;
       margin: 20px;
 
+      #no-adventures {
+        img {
+          width: 100%;
+          margin-top: -13%;
+        }
+      }
+
+      #no-adv-text {
+        position: relative;
+        margin-top: -126px;
+        text-align: center;
+        color: #000;
+        font-family: 'nexa_light';
+        font-size: 20px;
+      }
+      
       .guide-image {
         position: relative;
         top: 10%;
