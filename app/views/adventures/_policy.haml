@@ -1,11 +1,16 @@
+.title-brick.container-fluid
+  .reviews-icon
+  .brick-title 
+    Policy
+
 .copy-brick.container-fluid#policy
-  .ping
-  .brick-title Policy
+  
   .brick-copy
     
     %br
     nearby
     %ul
-      = @close_adventures.each do |advs|
-        %li= link_to advs.location, advs.slug
-        = "#{advs.distance.round(2)} miles"
+      - if @close_adventures
+        = @close_adventures.each do |advs|
+          %li= link_to advs.location, advs.slug
+          = "#{advs.distance.round(2)} miles"
