@@ -1,6 +1,6 @@
 -# Navigation Header
 %nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
-  .container-fluid
+  .container-fluid.homepage-wrapper
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %button.navbar-toggle{"data-target" => "#header-navbar", "data-toggle" => "collapse", type: "button"}
@@ -14,7 +14,7 @@
       - if current_user
         %ul.nav.navbar-nav.navbar-right.current_user_fix
           %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            %button#dropdownMenu1.btn.btn-default.dropdown-toggle.user-information{"data-toggle" => "dropdown", type: 'button'}
               - if current_user.avatar.exists?
                 = image_tag "#{current_user.avatar.url(:thumb)}", :class => "img-circle up_profile_img"
               - elsif current_user.avatar_url
@@ -27,7 +27,7 @@
               - else 
                 = current_user.name
               %b.caret
-            %ul.dropdown-menu
+            %ul.dropdown-menu.right-side
               %li
                 %a{href: "/users/dashboard"} 
                   %i.fa.fa-user 
@@ -60,8 +60,22 @@
                 = link_to "Not an adventurer? Sign up", new_user_registration_path
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a.adventure_margin{href: "/adventures"} ADVENTURES
+          .dropdown
+            %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+              Adventures
+              %span.caret
+
+            %ul.dropdown-menu.header-menu{"aria-labelledby" => "dropdownMenu1", role: "menu"}
+              %li.header-item
+                = link_to 'Colorado', '/adventures?location=Colorado'
+              %li.header-item
+                = link_to 'California', '/adventures?location=California'
+              %li.header-item
+                = link_to 'Washington', '/adventures?location=Washington'
+              
         %li
-          %a.host_margin{href: "/adventures/info"} HOST
+          %a{href: "/adventures/info"}
+            %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+              HOST
     / /.navbar-collapse
   / /.container-fluid

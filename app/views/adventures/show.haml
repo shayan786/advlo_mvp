@@ -15,24 +15,20 @@
         #guide-title
           = @current_guide.short_description
 
+      .adventure-block
+        #adventure-title
+
+        #adventure-price
+          %span $60
+        #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+          %span 
+            BOOK IT
     - else
       .guide-block
         #guide-name
-          = @current_guide.name
+          Want to guide this adventure?
         .guide-profile-image
-          - if @current_guide.avatar_url
-            = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
-          - elsif @current_guide.avatar.url
-            = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
-
-    .adventure-block
-      #adventure-title
-
-      #adventure-price
-        %span $60
-      #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
-        %span 
-          BOOK IT
+          = image_tag 'missing.png'
 
   .adventure-copy-wrapper
     .row
@@ -116,7 +112,7 @@
         .modal-dialog
           .modal-content
             .modal-body
-              - if current_user
+              - if current_user && @current_guide
                 = render partial: "/reservations/new", locals: {reservation: @reservation}
               - else 
                 = link_to 'Sign up', new_user_session_path
@@ -124,13 +120,19 @@
               / %form{action: "", method: "POST"}
               /   %script{src: "https://checkout.stripe.com/checkout.js"}
               
-              
                 
-          
       .copy-brick.container-fluid#policy
         .ping
         .brick-title Policy
-        .brick-copy overview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview text
+        .brick-copy
+          = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=13&markers=#{@adventure.latitude}%2C#{@adventure.longitude}" if @adventure.location
+          %br
+          nearby
+          %ul
+            = @close_adventures.each do |advs|
+              %li= link_to advs.location, advs.slug
+              = "#{advs.distance.round(2)} miles"
+
 
       .copy-brick.container-fluid#reviews
         .ping
@@ -157,6 +159,8 @@
 :javascript
   adventureShow();
   getStripeToken();
+  
+
 
   $(window).resize(function(){
     sizeSidebar();

@@ -19,6 +19,7 @@
  *= require datepicker
  *= require fullcalendar
  *= require bootstrapValidator.min
+ *= require bootstrap-multiselect.min
  *= require rails_bootstrap_forms
  */
 
@@ -31,20 +32,5 @@
   z-index: 9000;
   width: 100%;
   height: 100%;
-  background: #000;
-  opacity: 0.6;
-}
-#loader-spinner{
-  position: absolute;
-  z-index: 9001;
-  top:50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  background-image: asset-url("spinner-white.gif");
-  margin-left: -20px; /* -1 * image width / 2 */
-  margin-top:  -20px; /* -1 * image height / 2 */
-  animation: rotation 0.8s infinite linear;
-  -webkit-animation: rotation 0.8s infinite linear;
-  -moz-animation: rotation 0.8s infinite linear;
+  background: rgba(0, 0, 0, 0.6);
 }

@@ -19,6 +19,13 @@ function adventureScroll(){
   })
 }
 
+function highlightFilters(){
+  $('.filter').click(function(){
+    $('.filter').removeClass('active-filter');
+    $(this).addClass('active-filter');
+  })
+}
+
 function adventureHover(){
   $('.hover-block').hover(function(){
     $('.copy-'+$(this).attr('id')).stop().animate({
@@ -59,11 +66,13 @@ function masonrySetup(){
   $('.js-masonry').masonry({
     isFitWidth: true,
     itemSelector: '.adventure-brick'
-  });
+  })
 }
 
 function sizeSidebar(){
-  $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 32);
+  $(document).ready(function(){
+    $('.adventure-show-infographic').width($('.navigation-brick').last().width() - 32);
+  })
 }
 
 function stopSidebarAtBottom(){
@@ -252,6 +261,13 @@ function form_validator(){
           }
         }
       },
+      'adventure[category]': {
+        validators: {
+          notEmpty: {
+            message: 'A category is required and cannot be empty'
+          }
+        }
+      },
       'adventure[location]': {
         validators: {
           notEmpty: {
@@ -360,6 +376,12 @@ function form_validator(){
   });
 }
 
+function multiSelect(){
+  $(document).ready(function() {
+    $('.multiselect').multiselect();
+  });
+}
+
 
 adventureShow = function() {
   galleryMasonry();
@@ -380,9 +402,11 @@ adventureIndex = function() {
   heroScroll();
   adventureHover();
   centerProfileImage();
+  highlightFilters();
 }
 
 adventureCreate = function() {
+  multiSelect();
   advPhotoInput();
   input_popover();
   input_datepicker();

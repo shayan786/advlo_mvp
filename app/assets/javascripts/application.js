@@ -20,6 +20,7 @@
 //= require bootstrap-datepicker
 //= require bootstrap-filestyle
 //= require bootstrap-maxlength
+//= require bootstrap-multiselect
 //= require bootstrapValidator.min
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
@@ -32,12 +33,9 @@
 
 
 
-
 $(document).ajaxStart(function(){
   $('#loader-overlay').show()
 })
 $(document).ajaxStop(function(){
-  $('#loader-overlay').hide()
+  $('#loader-overlay').fadeOut()
 })
-
-

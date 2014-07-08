@@ -2,23 +2,48 @@ class AdventuresController < ApplicationController
 
   def index
     # @adventures = Adventure.where(region: params[:region])
-    @adventures = Adventure.all.order('created_at DESC')
-    @hero_image = HeroImage.where(region: 'Colorado').last
+    # if params[:search].present?
+    # @adventures = Adventure.near(params[:search], 50, :order => :distance)
+    if params[:location].present?
+      @adventures = Adventure.near(params[:location], 100)
+
+      @hero_image = HeroImage.where(region: params[:location] ).last
+      @location = params[:location].downcase
+    end
+    # end
   end
 
   def show
     @adventure = Adventure.find_by_slug(params[:id])
     @current_guide = @adventure.users.first
+
     @itineraries = Itinerary.where(adventure_id: @adventure.id)
+
     @all_adventure_events = @adventure.events.sort_by{|a| a.start_time}
     @limited_adventure_events = @adventure.events.sort_by{|a| a.start_time}.take(5)
+
+    @close_adventures = @adventure.nearbys(50)
 
     @reservation = Reservation.new
   end
 
+
+  def filter_category
+    location = params[:location].downcase
+    if params[:category] == 'all'
+      @adventures = Adventure.near(location, 100)
+    else
+      category = params[:category].gsub(',',' ').downcase
+      @adventures = Adventure.near(location, 100).where("category LIKE ?", "%#{category}%")
+    end
+
+    respond_to do |format|
+      format.js {render :action => '/adventure_filter', :layout => false }
+    end
+  end
+  
   # info page for creating a new adventure
   def hosting_info
-
   end
 
   # info page for requesting a certain adventure
@@ -67,8 +92,9 @@ class AdventuresController < ApplicationController
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
       redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
     end
-
+  
     @adventure = Adventure.create!(adventure_params)
+    @adventure.category = params[:category].join(',')
 
     if @adventure.save
       #associate that adventure with that adventure
@@ -98,9 +124,8 @@ class AdventuresController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :category, :other_notes, :adventure_gallery_images, :images)
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_images, :images, :category => [])
   end
-
 
 end
 

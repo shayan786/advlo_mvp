@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703184715) do
+ActiveRecord::Schema.define(version: 20140707183335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(version: 20140703184715) do
     t.string   "duration_type"
     t.string   "category"
     t.text     "other_notes"
+    t.float    "latitude"
+    t.float    "longitude"
   end
-
-  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
 
   create_table "events", force: true do |t|
     t.datetime "created_at"

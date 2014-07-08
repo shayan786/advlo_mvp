@@ -1,55 +1,35 @@
 .adventure-page-container.col-md-12
   / .jumbotron.jumbotron-adventure{style: "background: url(#{@hero_image.attachment.url(:hero)})"}
   #hero_image= image_tag @hero_image.attachment.url(:hero) if @hero_image
-  #location_text COLORADO
-  - filters = ['bike','swim','hike','camp','climb','jump','wildcard']
+  #location_text= @location.upcase
+  - filters = ['culture', 'bike', 'hike', 'camp', 'water','snow','rock', 'wildcard']
   .filter-container
+    %a.filter{href: "/adventures/#{@location}/all", 'data-remote' => true} 
+      %span RESET
     - filters.each do |f|
-      .filter
+      %a.filter{href: "/adventures/#{@location}/#{f}", 'data-remote' => true}
         %span= f
   .filter-static
     - filters.each do |f|
-      .filter
+      %a.filter{href: "/adventures/#{@location}/#{f}", 'data-remote' => true}
         %span= f
 
   .adventure-container
-    .brick-wrapper.masonry.js-masonry
-      - if @adventures
-        - @adventures.each_with_index do |adv, i|
-          %a.adventure-brick{href: adventure_path(adv.slug)}
-            .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
-              .copy
-                - if adv.title.length > 38
-                  .title= "#{adv.title[0..38]}..."
-                -else
-                  .title= adv.title
+    - if @adventures.first != nil
+      = render partial: "adventure_index", locals: {adventures: @adventures}
 
-                .ping
-                - if adv.subtitle
-                  - if adv.subtitle.length > 33
-                    .location= "#{adv.subtitle.upcase[0..33]}..."
-                  -else
-                    .location= adv.subtitle.upcase
 
-              .price= adv.price
+    - else 
+      .brick-wrapper.masonry.js-masonry
+        %a.adventure-brick{href: 'adventures/info', style: 'text-decoration:none;'}
+          .image-wrapper#no-adventures= image_tag 'missing.png'
+          #no-adv-text Add an adventure in this area
 
-              .hover-block{id: i}
-                - usr = adv.users.first
-                - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil
-                  .guide-image= image_tag "#{usr.avatar.url(:large)}"
-                - elsif usr
-                  .guide-image= image_tag "#{usr.avatar_url}?type=large"
-                - else
-                  .guide-image= image_tag 'missing.png'
-
-              .copy-container{class: "copy-#{i}"}
 
 :javascript
-
   $(window).load(function(){
     adventureIndex();
     $('#location_text').css('top', ($('#hero_image').height() / 2))
-
   })  
 
   $(window).resize(function(){

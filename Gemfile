@@ -20,6 +20,7 @@ gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
 gem 'wicked'
 gem 'stripe'
+gem 'geocoder'
 
 group :production do 
   gem 'rails_12factor'

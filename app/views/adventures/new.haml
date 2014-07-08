@@ -62,14 +62,16 @@
                     Flat Rate
             .form-group.row
               .col-md-4
-                .form_label.text-right Category
+                .form_label.text-right Categories *
               .col-md-2
-                %select.form-control{name: "adventure[category]", id: "adv_category"}
-                  %option 
-                  %option Hiking
-                  %option Climbing
-                  %option Skiing
-                  %option Surfing
+                - options = ['CULTURE', 'BIKE', 'HIKE', 'CAMP', 'WATER', 'SNOW', 'ROCK', 'WILDCARD']
+                %select.multiselect{multiple: true, :required => true, name: 'category[]'}
+                  = options.each do |o|
+                    %option{value: o.downcase}= o
+
+                    
+
+
             .form-group.row
               .col-md-4
                 .form_label.text-right Other Notes

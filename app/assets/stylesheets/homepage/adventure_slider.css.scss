@@ -7,7 +7,7 @@
 	padding-top: 50px;
 	padding-bottom: 60px;
 	margin: 0 auto;
-	background-color: $adv_slider_background_color;
+	background-color: #fff
 
 	h1 {
 		color: $adv_slider_font_color;
@@ -25,13 +25,13 @@
     float: left;
 
     .next {
-      color: #fff;
+      color: #000;
       font-size: 4em;
       position: absolute;
       cursor: pointer;
     }
     .prev {
-      color: #fff;
+      color: #000;
       font-size: 4em;
       position: absolute;
       cursor: pointer;
@@ -47,7 +47,7 @@
     #host-next {
       top: 40%;
       right: 5.5%;
-      color: #fff;
+      color: #000;
       font-size: 4em;
       position: absolute;
       cursor: pointer;
@@ -55,7 +55,7 @@
     #host-prev {
       top: 40%;
       left: 3%;
-      color: #fff;
+      color: #000;
       font-size: 4em;
       position: absolute;
       cursor: pointer;

@@ -54,7 +54,7 @@ class AdventureStepsController < ApplicationController
 
       respond_to do |format|
         format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itinerary event '#{params[:headline]}' has been created!"}
-        format.js {}
+        format.js { render action: 'create_itin.js', layout: false}
       end
 
     # Hook for updating/deleting itinerary item and remain on the same page
@@ -93,6 +93,6 @@ class AdventureStepsController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :category, :other_notes, :adventure_gallery_image, :images, :itineraries, :itinerary, :headline, :description)
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_image, :images, :itineraries, :itinerary, :headline, :description, :latitude, :longitude, :category => [])
   end
 end

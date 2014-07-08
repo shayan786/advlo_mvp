@@ -1,4 +1,17 @@
 ActiveAdmin.register Adventure do
+  action_item :only => :index do
+    link_to 'Upload CSV', :action => 'upload_csv'
+  end
+
+  collection_action :upload_csv do
+    render "admin/csv/upload_csv"
+  end
+
+  collection_action :import_csv, :method => :post do
+    CsvDb.convert_save("adventure", params[:dump][:file])
+    redirect_to :action => :index, :notice => "CSV imported successfully!"
+  end
+
 
   before_filter :only => [:show, :edit, :update, :destroy] do
     @adventure = Adventure.find_by_title(params[:id])
@@ -7,9 +20,8 @@ ActiveAdmin.register Adventure do
   index do
     column :title
     column :slug
-    column :subtitle
+    column :category
     column :location
-    column :price
     column 'Email' do |adv|
       adv.users.first.email if adv.users.first
     end
@@ -31,6 +43,7 @@ ActiveAdmin.register Adventure do
       f.input :slug, label: 'permalink'
       f.input :subtitle
       f.input :location
+      f.input :category
       f.input :price
       f.input :price_type, as: :select, collection: ["per_person", "per_adv"]
       f.input :summary
