@@ -341,11 +341,21 @@ function form_validator(){
       },
       'adventure[attachment]': {
         validators: {
+          notEmpty: {
+            message: 'Please select a banner image'
+          },
           file: {
             extension: 'jpeg,jpg,png,tiff',
             type: 'image/jpeg,image/jpg,image/png,image/tiff',
             maxSize: 1024*10*1024, //10 MB
             message: 'Must have an adventure banner image'
+          }
+        }
+      },
+      'category[]': {
+        validators: {
+          notEmpty: {
+            message: 'Please select a category'
           }
         }
       }
@@ -365,6 +375,63 @@ function form_validator(){
         validators: {
           notEmpty: {
             message: 'Event description cannot be empty'
+          }
+        }
+      }
+    }
+  });
+
+  $('#add_cc_form').bootstrapValidator({
+    fields: {
+      'recipient[cardholders_name]': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card full name'
+          }
+        }
+      },
+      'recipient[credit_card_number]': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card number'
+          },
+          creditCard: {
+            message: 'Credit card number is invalid'
+          }
+        }
+      },
+      'recipient[cvv]': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card CVV'
+          },
+          cvv: {
+            message: 'CVV number is invalid'
+          }
+        }
+      },
+      'recipient[cc_exp_month]': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          integer: {
+            message: 'Exp. month is invalid'
+          },
+          lessThan: {
+            value: 12,
+            inclusive: false,
+            message: 'Exp. month is invalid'
+          }
+        }
+      },
+      'recipient[cc_exp_year]': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          integer: {
+            message: 'Exp. year is invalid'
           }
         }
       }

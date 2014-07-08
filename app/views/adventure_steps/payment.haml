@@ -10,7 +10,7 @@
             .col-md-6.col-md-offset-3.text-center
               .update_notice.alert.alert-warning
                 = notice
-          %form
+          %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_cc_form", enctype: "multipart/form-data"}
             %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
 
             #add-card{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Card"}
@@ -24,19 +24,19 @@
                 .col-md-6
                   %input{type: 'hidden', name: 'recipient[type]', value: 'individual'}
                   %input{type: 'hidden', name: 'recipient[tax_id]', value: ''}
-                  %input.form-control.show_ml{type: "text", placeholder: "First Middle Last", required: "required", name: "recipient[cardholders_name]", id: "full_name"}
+                  %input.form-control{type: "text", placeholder: "First Middle Last", name: "recipient[cardholders_name]", id: "full_name"}
 
               .form-group.row
                 .col-md-4
                   .form_label.text-right Card Number
                 .col-md-6
-                  %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', required: "required", name: "recipient[credit_card_number]", id: "adv_location", maxlength: "16"}
+                  %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "recipient[credit_card_number]", id: "cc_number", maxlength: "16"}
 
               .form-group.row
                 .col-md-4
                   .form_label.text-right CVV
-                .col-md-6
-                  %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "recipient[cvv]", id: "adv_location", maxlength: "3"}
+                .col-md-1
+                  %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "recipient[cvv]", id: "cvv_number", maxlength: "3"}
 
               .form-group.row
                 .col-md-4
@@ -44,15 +44,11 @@
                 .col-md-2
                   .form-group
                     %label Exp Month
-                    %input.form-control{placeholder: "MM", type: "text", required: "required", maxlength: "2"}
+                    %input.form-control.show_ml{placeholder: "MM", type: "text", required: "required", maxlength: "2", name: "recipient[cc_exp_month]"}
                 .col-md-2
                   .form-group
                     %label Exp Year
-                    %input.form-control{placeholder: "YYYY", type: "text", required: "required", maxlength: "4"}
-                .col-md-2
-                  .form-group
-                    %label CVV
-                    %input.form-control{placeholder: "Ex. 331", type: "text", required: "required", maxlength: "3"}
+                    %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "recipient[cc_exp_year]"}
 
               .form-group.row.save
                 %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Card"}
@@ -90,14 +86,13 @@
             
             
         .panel-footer.text-center
-          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/publish?adventure_id=3"}
+          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/publish?adventure_id=#{@adventure.id}"}
             NEXT
 
          
 
 :javascript
   adventureCreate();
-
 
   $('[data-toggle="tooltip"]').tooltip({
     animated: 'fade'
