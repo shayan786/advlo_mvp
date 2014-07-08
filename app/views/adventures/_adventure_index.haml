@@ -1,5 +1,5 @@
-.brick-wrapper.masonry.js-masonry
-  #adventure-partial
+#adventure-partial
+  .brick-wrapper.masonry.js-masonry
     - adventures.each_with_index do |adv, i|
       %a.adventure-brick{href: adventure_path(adv.slug)}
         .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
@@ -28,3 +28,4 @@
               .guide-image= image_tag 'missing.png'
 
           .copy-container{class: "copy-#{i}"}
+

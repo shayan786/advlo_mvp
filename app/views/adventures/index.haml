@@ -19,9 +19,10 @@
 
 
     - else 
-      %a.adventure-brick{href: 'adventures/info', style: 'text-decoration:none;'}
-        .image-wrapper#no-adventures= image_tag 'missing.png'
-        #no-adv-text Add an adventure in this area
+      .brick-wrapper.masonry.js-masonry
+        %a.adventure-brick{href: 'adventures/info', style: 'text-decoration:none;'}
+          .image-wrapper#no-adventures= image_tag 'missing.png'
+          #no-adv-text Add an adventure in this area
 
 
 :javascript
