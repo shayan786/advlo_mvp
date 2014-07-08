@@ -304,6 +304,7 @@
     }
 
     .title-brick {
+      margin-top: 50px;
       position: relative;
       float: left;
       height: 100%;
@@ -454,10 +455,6 @@
     display: block;
   }
 
-  .adventure-show-container .adventure-copy-wrapper .copy-brick {
-    width: auto;
-  }
-
   .adventure-show-container .adventure-copy-wrapper .information-container #reviews .review .review-text {
     width: 100%;
     margin-left: 0px; 
@@ -465,5 +462,28 @@
   }
   .adventure-show-container .adventure-copy-wrapper .information-container #reviews .review {
     margin-left: 0px;
+  }
+
+  .adventure-show-container .adventure-copy-wrapper .copy-brick {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .adventure-show-container .adventure-copy-wrapper .information-container #overview .overview-item-wrapper .overview-item {
+    width: 90%;
+  }
+  .adventure-show-container .title-copy {
+    position: relative;
+    float: left;
+    margin-top: -226px;
+    background: rgba(0, 0, 0, 0.6);
+    margin-left: 0;
+
+    #adventure-title-large {
+      font-size: 12px;
+    }
+    #adventure-description-large {
+      font-size: 10px;
+    }
   }
 }
