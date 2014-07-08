@@ -1,6 +1,6 @@
 -# Navigation Header
 %nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
-  .container-fluid.homepage-wrapper
+  .container-fluid
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %button.navbar-toggle{"data-target" => "#header-navbar", "data-toggle" => "collapse", type: "button"}
@@ -11,10 +11,33 @@
       %a.navbar-brand{href: "/"}
     / Collect the nav links, forms, and other content for toggling
     #header-navbar.collapse.navbar-collapse
-      - if current_user
-        %ul.nav.navbar-nav.navbar-right.current_user_fix
+      %ul.nav.navbar-nav.navbar-right.login-right
+        %li.dropdown
+          %button.btn.btn-default.navbar-btn{"data-toggle" => "dropdown", href: "#"}
+            Adventures
+            %b.caret
+          %ul.dropdown-menu{role: "menu"}
+            %li
+              = link_to 'Colorado', '/adventures?location=Colorado'
+            %li
+              = link_to 'California', '/adventures?location=California'
+            %li
+              = link_to 'Washington', '/adventures?location=Washington'
+        %li.divider
+        %li.divider
+        %li.divider
+        %li.divider
+        %li
+          %form
+            %a.btn.btn-default.navbar-btn{href: "/adventures/info"}
+              HOST
+        %li.divider
+        %li.divider
+        %li.divider
+        %li.divider
+        - if current_user
           %li.dropdown
-            %button#dropdownMenu1.btn.btn-default.dropdown-toggle.user-information{"data-toggle" => "dropdown", type: 'button'}
+            %a.logged_in_dropdown_box{href: "#", "data-toggle" => "dropdown", type: 'button'}
               - if current_user.avatar.exists?
                 = image_tag "#{current_user.avatar.url(:thumb)}", :class => "img-circle up_profile_img"
               - elsif current_user.avatar_url
@@ -27,24 +50,31 @@
               - else 
                 = current_user.name
               %b.caret
-            %ul.dropdown-menu.right-side
+            %ul.dropdown-menu.right-side.logged_in_dropdown_menu{role: "menu"}
               %li
                 %a{href: "/users/dashboard"} 
-                  %i.fa.fa-user 
-                  My Dashboard
+                  .col-md-1{style: "margin-left: -15px; margin-right: 10px;"}
+                    %i.fa.fa-user
+                  .col-md-3 
+                    My Dashboard
+              %li
                 %a{href: "#"} 
-                  %i.fa.fa-envelope-o
-                  My Messages
+                  .col-md-1{style: "margin-left: -15px; margin-right: 10px;"}
+                    %i.fa.fa-envelope-o
+                  .col-md-3
+                    My Messages
+              %li
                 %a{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} 
-                  %i.fa.fa-sign-out
-                  Sign Out
-      - else
-        %ul.nav.navbar-nav.navbar-right
+                  .col-md-1{style: "margin-left: -15px; margin-right: 10px;"}
+                    %i.fa.fa-sign-out
+                  .col-md-3
+                    Sign Out
+        - else
           %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            %button.btn.btn-primary.navbar-btn{"data-toggle" => "dropdown", href: "#"}
               LOGIN
               %b.caret
-            %ul.dropdown-menu
+            %ul.dropdown-menu{role: "menu"}
               %li
                 %form.sign_in_form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form"}
                   =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -58,24 +88,7 @@
                     Connect with facebook
               %li.sign_up_link
                 = link_to "Not an adventurer? Sign up", new_user_registration_path
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          .dropdown
-            %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-              Adventures
-              %span.caret
-
-            %ul.dropdown-menu.header-menu{"aria-labelledby" => "dropdownMenu1", role: "menu"}
-              %li.header-item
-                = link_to 'Colorado', '/adventures?location=Colorado'
-              %li.header-item
-                = link_to 'California', '/adventures?location=California'
-              %li.header-item
-                = link_to 'Washington', '/adventures?location=Washington'
-              
-        %li
-          %a{href: "/adventures/info"}
-            %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-              HOST
-    / /.navbar-collapse
-  / /.container-fluid
+          %li.divider
+          %li.divider
+          %li.divider
+          %li.divider
