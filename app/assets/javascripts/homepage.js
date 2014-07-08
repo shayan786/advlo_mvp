@@ -3,14 +3,14 @@ function homepageTextScroll(){
     var s = $(window).scrollTop();
     $('#homepage-text').css('-webkit-transform','translateY(' + (s/3) + 'px');
 
-    if(s > 250 && !$('#homepage-text').hasClass('passed')){
+    if(s > 200 && !$('#homepage-text').hasClass('passed')){
       $('#homepage-text').animate({
         opacity: 0
       },500)
 
       $('#homepage-text').addClass('passed')
     }
-    if(s < 250 && $('#homepage-text').hasClass('passed')){
+    if(s < 200 && $('#homepage-text').hasClass('passed')){
       $('#homepage-text').animate({
         opacity: 1
       },1000)

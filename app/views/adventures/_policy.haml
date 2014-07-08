@@ -1,0 +1,11 @@
+.copy-brick.container-fluid#policy
+  .ping
+  .brick-title Policy
+  .brick-copy
+    = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=13&markers=#{@adventure.latitude}%2C#{@adventure.longitude}" if @adventure.location
+    %br
+    nearby
+    %ul
+      = @close_adventures.each do |advs|
+        %li= link_to advs.location, advs.slug
+        = "#{advs.distance.round(2)} miles"

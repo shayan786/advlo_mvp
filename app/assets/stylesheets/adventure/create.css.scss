@@ -1,6 +1,5 @@
 #adventure_create {
 	padding-top: 100px;
-
 	.container {
 
 		.panel {
@@ -162,12 +161,30 @@
 
 	.glyphicon {
 	  margin-bottom: 40px;
-	  margin-top: 20px;
+	  margin-top: 25px;
 	  font-size: 35px;
+	  margin-left: -55px;
 
 	  span {
 	  	font-size: 16px;
 	  }
+	}
+	.fa-credit-card {
+		color: #000 !important;
+		font-size: 32px !important;
+
+		padding-top: 30px !important;
+		padding-left: 20px !important;
+		padding-right: 15px !important;
+		position: absolute !important;
+	}
+	.fa-university{
+		color: #000 !important;
+		font-size: 32px !important;
+		padding-top: 30px !important;
+		padding-left: 20px !important;
+		padding-right: 15px !important;
+		position: absolute !important;
 	}
 
 	#add-bank {
@@ -177,7 +194,7 @@
 		text-align: center;
 	}
 	#add-card {
-		margin-top: 60px;
+		margin-top: 25px;
 	  cursor: pointer;
 	  text-align: center;
 	  text-align: center;

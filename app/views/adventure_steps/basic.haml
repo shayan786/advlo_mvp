@@ -32,6 +32,7 @@
                 %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "600", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This is the description for your adventure! Sell it with a detailed & informative summary!"}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.summary}
+                    
             .form-group.row
               .col-md-4
                 .form_label.text-right Capacity *
