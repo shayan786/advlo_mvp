@@ -4,7 +4,8 @@
   #location_text= @location.upcase
   - filters = ['culture', 'bike', 'hike', 'camp', 'water','snow','rock', 'wildcard']
   .filter-container
-    %a.filter{href: "/adventures/#{@location}/all", 'data-remote' => true} Reset
+    %a.filter{href: "/adventures/#{@location}/all", 'data-remote' => true} 
+      %span RESET
     - filters.each do |f|
       %a.filter{href: "/adventures/#{@location}/#{f}", 'data-remote' => true}
         %span= f
