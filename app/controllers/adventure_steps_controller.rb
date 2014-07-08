@@ -82,7 +82,6 @@ class AdventureStepsController < ApplicationController
       end
 
     else
-
       @adventure.attributes = adventure_params
       render_wizard @adventure
     end
