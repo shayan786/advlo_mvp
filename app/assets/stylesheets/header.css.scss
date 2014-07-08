@@ -9,11 +9,12 @@
 	.navbar-brand {
 		background: asset-url("logos/advlo_header_logo.png") no-repeat left center;
 		background-size: cover;
+		position: absolute;
+		top: 4px;
 		width: 194px !important; 
 	}
 
-	.header-dropdown {
-		margin-top: 15px;
+	#header-right-dropdown {
 	}
 }
 
@@ -55,15 +56,26 @@
 .navbar-right {
 	margin-left: 20px;
 
+	.header-item {
+		width: 100%;
+		a {
+			font-family: 'nexa_light' !important;
+			color: #fff !important;
+			font-size: 30px !important;
+		}	
+	}
 	li {
-		.dropdown-menu {
+		.dropdown-menu, .right-side {
 			min-width: 250px;
 			padding: 15px 0px;
 			@include border_radius(3px);
-			background: rgba(0, 0, 0, 0.4);
-			margin-top: 12.5px;
+			background: rgba(0, 0, 0, 0.65);
+			margin-top: 1.5px;
 
 			a {
+				font-family: 'nexa_light' !important;
+				color: #fff !important;
+				font-size: 20px !important;
 				&:hover {
 					background: rgba(0, 0, 0, 0);
 				}
@@ -118,13 +130,6 @@
 .dropdown-menu {
 	.sign_up_link {
 		a {
-			color: #FFFFFF !important;
-			text-decoration: none !important;
-			margin-bottom: 0 !important;
-			padding-bottom: 0 !important;
-			margin-top: 0 !important;
-			padding-top: 0 !important;
-
 			&:hover {
 				background: rgba(0, 0, 0, 0);
 			}
@@ -142,10 +147,7 @@
 
 //fix spacing when user logged in
 .current_user_fix {
-	height: 40px;
-	margin-top: -15px;
-
-	//fb profile image
+	top: .5px;
 	.fb_profile_img {
 		display: inline-block;
 		margin-right: 15px !important;
@@ -193,4 +195,23 @@
 	top: 53px;
 	right: 360px;
 	display: none;
+}
+
+.homepage-wrapper {
+	padding-right: 0px;
+	margin-top: -7px;
+
+	.right-side{
+		margin-top: 6.5px !important;
+	}
+	.left-side {
+		margin-top: 13.5px !important;
+	}
+}
+.user-information {
+	position: relative;
+	top: 6px;
+}
+.header-menu {
+	margin-top: 12.5px !important;
 }

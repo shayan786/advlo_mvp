@@ -12,7 +12,7 @@
         - if @feat_adventures
           - @feat_adventures.each_with_index do |adv, i|
             %a.swiper-slide.adventure-slide{href: adventure_path(adv.slug)}
-              .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+              .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center 0px;"}
                 .copy
                   - if adv.title.length > 32
                     #title= "#{adv.title[0..32]}..."
