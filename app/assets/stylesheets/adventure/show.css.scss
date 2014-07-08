@@ -176,6 +176,7 @@
           margin-bottom: 5px !important;
           margin-top: 5px !important;
           cursor: pointer;
+          width: 100%;
         }
         .fa {
           color: $advlo_orange;
@@ -193,7 +194,7 @@
           margin-top: 15px;
         }
         .description {
-          margin-left: 40px;
+          margin-left: 68px;
           margin-right: 40px;
           margin-top: 18px;
           margin-bottom: 20px;
@@ -202,6 +203,55 @@
           font-family: 'nexa_light';
           font-size: 14px;
           display: none;
+        }
+      }
+
+      #reviews {
+        .review {
+          position: relative;
+          float: left;
+          height: 100%;
+          margin: 20px;
+          margin-left: 185px;
+
+          .reviewer-image-wrapper {
+            width: 100px;
+            float: left;
+            border-radius: 50%;
+            overflow: hidden;
+            height: 100px;
+            border: 3px solid $advlo_orange;
+
+            img {
+              height: 100px;
+            }
+          }
+
+          .review-text {
+            position: relative;
+            float: left;
+            width: 80%;
+            margin-left: 50px;
+            margin-top: -7px;
+            color: #fff;
+            font-family: 'nexa_light';
+            font-size: 20px;
+            margin-bottom: 20px;
+
+            span {
+              font-size: 30px;
+              color: $advlo_orange;
+            }
+          }
+
+          .review-credit {
+            position: relative;
+            float: right;
+            margin-right: 15%;
+            color: $advlo_orange;
+            font-size: 20px;
+            font-family: 'nexa_bold';
+          }
         }
       }
     }
