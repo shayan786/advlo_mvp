@@ -1,0 +1,59 @@
+.copy-brick.container-fluid#overview
+  .overview-scroll-icon
+  .brick-title 
+    Overview
+  .overview-item-wrapper
+    .overview-item 
+      .fa.fa-chevron-circle-right
+        .default-description 
+          GROUP SIZE
+          - if @adventure.price_type == 'per_adv'
+            .fa.fa-angle-double-right
+            %span= "#{@adventure.cap_max} / group"          
+          - elsif @adventure.cap_min == @adventure.cap_max
+            .fa.fa-angle-double-right
+            %span= "#{@adventure.cap_max} people"
+          -else
+            .fa.fa-angle-double-right
+            %span= "#{@adventure.cap_max} - #{@adventure.cap_min} people"
+        
+
+    .overview-item 
+      .fa.fa-chevron-circle-right
+        .default-description 
+          TYPE :
+          .fa.fa-angle-double-right
+          %span= @adventure.category.gsub(',',' / ')
+
+    .overview-item 
+      .fa.fa-chevron-circle-right
+        .default-description 
+          PRICE :
+          .fa.fa-angle-double-right
+          %span= "$ #{@adventure.price}"
+
+
+    .overview-item 
+      .fa.fa-chevron-circle-right
+        .default-description 
+          DURATION :
+          .fa.fa-angle-double-right
+          %span= "#{@adventure.duration_num} #{@adventure.duration_type}"
+
+    .overview-item 
+      .fa.fa-chevron-circle-right
+        .default-description 
+          DESCRIPTION :
+          .fa.fa-angle-double-right
+          %span= @adventure.subtitle
+          
+    - if @adventure.other_notes
+      .overview-item 
+        .fa.fa-chevron-circle-right
+          .default-description 
+            NOTES :
+            .fa.fa-angle-double-right
+            %span= @adventure.other_notes
+
+          
+    #map= image_tag "http://maps.google.com/maps/api/staticmap?size=350x250&sensor=true&zoom=7&markers=#{@adventure.latitude}%2C#{@adventure.longitude}"

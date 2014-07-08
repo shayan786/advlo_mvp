@@ -1,6 +1,10 @@
 .adventure-show-container.col-md-12
   #main_image.img-responsive= image_tag @adventure.attachment.url(:hero)
 
+  .title-copy
+    #adventure-title-large= @adventure.title
+    #adventure-description-large= @adventure.location
+
   .col-md-3.adventure-show-infographic
     -if @current_guide
       .guide-block
@@ -36,8 +40,8 @@
         .navigation-brick
           .guide-block.col-sm-6
             #guide-name
-              = "Gustavo -"
-              %span= "Climbing Guru"
+              = @current_guide.name
+              %span= @current_guide.short_description
             .guide-profile-image
               - if !@current_guide
                 = image_tag 'missing.png'
@@ -55,89 +59,18 @@
                 BOOK IT
 
     .col-md-9.information-container
-      #adventure-title= @adventure.title
-      #adventure-description= @adventure.subtitle
-      .copy-brick.container-fluid#overview
-        .ping
-        .brick-title Overview
-        .brick-copy= @adventure.inspect
+      = render partial: 'overview'
 
-      .copy-brick.container-fluid#itinerary
-        .ping
-        .brick-title Itinerary
-        .brick-copy 
-          - if @itineraries
-            - @itineraries.each do |itin|
-              .itinerary-block
-                .headline= itin.headline
-                .description= itin.description
+      = render partial: 'itinerary'
 
-      .copy-brick.container-fluid#gallery
-        .ping
-        .brick-title Gallery
-        .brick-copy 
-          #gallery-masonry-container
-            - @adventure.adventure_gallery_images.each_with_index do |gi, i|
-              .gallery-image{"data-target" => "#myModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), class: "image#{i}", id: i}
-                = image_tag gi.picture.url(:thumb)
+      = render partial: 'gallery'
 
-      #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog"}
-        .modal-dialog
-          .modal-content
-            .modal-body
-              %img{src: '', id: ''}
-
-      #event-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "event-modal", role: "dialog"}
-        .modal-dialog
-          .modal-content
-            .modal-body
-              %ul.nav.nav-tabs.nav-justified{role: "tablist"}
-                %li.active
-                  %a{"data-toggle" => "tab", href: ".upcoming", role: "tab"} UPCOMING
-                %li
-                  %a{"data-toggle" => "tab", href: ".view-all", role: "tab"} VIEW ALL
-
-              .tab-content
-                .upcoming.tab-pane.active 
-                  .container
-                    - @limited_adventure_events.each do |event| 
-                      .row
-                        .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-id' => event.id }= event.start_time.strftime("%l:%M %p  - %A  - %m/%d/%y")
-                .view-all.tab-pane 
-                  .container
-                    - @all_adventure_events.each do |event| 
-                      .row
-                        .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal"}= event.start_time.strftime("%l:%M %p - %A  - %m/%d/%y")
-      #reservations-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-modal", role: "dialog"}
-        .modal-dialog
-          .modal-content
-            .modal-body
-              - if current_user && @current_guide
-                = render partial: "/reservations/new", locals: {reservation: @reservation}
-              - else 
-                = link_to 'Sign up', new_user_session_path
-
-              / %form{action: "", method: "POST"}
-              /   %script{src: "https://checkout.stripe.com/checkout.js"}
+      = render partial: 'payment_modal'
               
+      = render partial: 'reviews'
+
+      = render partial: 'policy'
                 
-      .copy-brick.container-fluid#policy
-        .ping
-        .brick-title Policy
-        .brick-copy
-          = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=13&markers=#{@adventure.latitude}%2C#{@adventure.longitude}" if @adventure.location
-          %br
-          nearby
-          %ul
-            = @close_adventures.each do |advs|
-              %li= link_to advs.location, advs.slug
-              = "#{advs.distance.round(2)} miles"
-
-
-      .copy-brick.container-fluid#reviews
-        .ping
-        .brick-title Reviews
-        .brick-copy overview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview text
 
     .col-md-3#desktop-adventure-nav
       .navigation-brick

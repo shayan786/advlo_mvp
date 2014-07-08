@@ -91,6 +91,28 @@
     }
   }
 
+  .title-copy {
+    position: relative;
+    float: left;
+    margin-top: -150px;
+    background: rgba(0, 0, 0, 0.6);
+    margin-left: 35px;
+    #adventure-title-large {
+      color: #fff;
+      font-family: 'nexa_bold';
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 30px;
+      margin: 20px;
+    }
+    #adventure-description-large {
+      margin: 20px;
+      color: #fff;
+      font-size: 28px;
+      text-transform: capitalize;
+    }
+  }
+
   .adventure-copy-wrapper {
     position: relative;
     width: 100%;
@@ -100,19 +122,53 @@
     padding-bottom: 25px;
 
     .information-container{
-      #adventure-title {
-        color: #fff;
-        font-family: 'nexa_bold';
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 30px;
-        margin: 20px;
-      }
-      #adventure-description {
-        margin: 20px;
-        color: #fff;
-        font-size: 20px;
-        text-transform: capitalize;
+
+      #overview {
+        background: none;
+        .overview-item-wrapper {
+          position: relative;
+          width: 100%;
+          float: left;
+          .overview-item {
+            width: 30%;
+            height: 60px;
+            float: left;
+            margin: 20px;
+
+            .default-description {
+              color: $light_gray;
+              font-family: 'nexa_bold';
+              font-size: 20px;
+              top: -26px;
+              position: relative;
+              float: left;
+              right: -36px;
+              opacity: 0.9;
+              .fa-angle-double-right { 
+                margin-left: 10px;
+                margin-right: 10px;
+              }
+
+              span {
+                color: $off_white;
+                font-family: 'nexa_light';
+                font-size: 20px;
+              }
+            }
+          }
+          #map {
+            margin-top: -178px;
+            float: right;
+            position: relative;
+            width: 359px;
+            border: 5px solid rgba(0, 0, 0, 0.7);
+            border-radius: 7px;
+          }
+        }
+        .fa-chevron-circle-right {
+          font-size: 30px;
+          color: $advlo_orange;
+        }
       }
     }
 
@@ -153,7 +209,7 @@
             height: 41px;
             background: #c35b26;
             text-align: center;
-
+          
             span {
               color: #fff;
               font-size: 25px;
@@ -189,10 +245,9 @@
         font-size: 43px;
         text-transform: uppercase;
         color: #C35B26;
-        font-family: 'nexa_bold';
+        font-family: 'nexa_light';
         float: left;
-        width: 95%;
-        text-shadow: 0px -1px #000;
+        width: 300px;
       }
 
       .brick-copy {

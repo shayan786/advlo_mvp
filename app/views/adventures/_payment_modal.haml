@@ -1,0 +1,29 @@
+#event-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "event-modal", role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %ul.nav.nav-tabs.nav-justified{role: "tablist"}
+          %li.active
+            %a{"data-toggle" => "tab", href: ".upcoming", role: "tab"} UPCOMING
+          %li
+            %a{"data-toggle" => "tab", href: ".view-all", role: "tab"} VIEW ALL
+
+        .tab-content
+          .upcoming.tab-pane.active 
+            .container
+              - @limited_adventure_events.each do |event| 
+                .row
+                  .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-id' => event.id }= event.start_time.strftime("%l:%M %p  - %A  - %m/%d/%y")
+          .view-all.tab-pane 
+            .container
+              - @all_adventure_events.each do |event| 
+                .row
+                  .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal"}= event.start_time.strftime("%l:%M %p - %A  - %m/%d/%y")
+#reservations-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-modal", role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-body
+        - if current_user && @current_guide
+          = render partial: "/reservations/new", locals: {reservation: @reservation}
+        - else 
+          = link_to 'Sign up', new_user_session_path
