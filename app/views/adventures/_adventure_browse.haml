@@ -1,0 +1,21 @@
+.title-brick.container-fluid
+  .reviews-icon
+  .brick-title 
+    Adventures
+
+.copy-brick.container-fluid#similar
+  .brick-copy
+    .similar-adventures-wrapper
+      #close-adventures
+        - if @close_adventures
+          - @close_adventures.each do |adv|
+            %a.similar-adventure{href: adventure_path(adv.slug)}
+              = image_tag adv.attachment.url(:medium)  
+          
+
+      #similar-adventures
+        - if @similar_adventures
+          - @similar_adventures.each do |adv|
+            %a.similar-adventure{href: adventure_path(adv.slug)}
+              = image_tag adv.attachment.url(:medium)  
+

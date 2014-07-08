@@ -214,24 +214,23 @@
           margin: 20px;
 
           .reviewer-image-wrapper {
-            width: 100px;
+            width: 150px;
+            height: 150px;  
             float: left;
             border-radius: 50%;
             overflow: hidden;
-            height: 100px;
             border: 3px solid $advlo_orange;
-
             img {
-              height: 100px;
+              height: 100%;
             }
           }
 
           .review-text {
             position: relative;
             float: left;
-            width: 80%;
-            margin-left: 50px;
-            margin-top: -7px;
+            width: 70%;
+            left: 60px;
+            margin-top: 14px;
             color: #fff;
             font-family: 'nexa_light';
             font-size: 20px;
@@ -251,6 +250,38 @@
             font-size: 20px;
             font-family: 'nexa_bold';
           }
+        }
+      }
+
+      #similar {
+        #close-adventures {
+
+        }
+
+        #similar-adventures {
+
+        }
+        .adventure {
+          width: 250px;
+          overflow: hidden;
+          float: left;
+          font-size: 20px;
+          font-family: 'nexa_light';
+          margin: 10px;
+        }
+      }
+      .similar-adventures-wrapper {
+        width: 90%; 
+        margin: 0 auto;
+        .similar-adventure {
+          width: 50%;
+          float: left;
+          text-align: center;
+          height: 200px;
+          overflow: hidden;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          cursor: pointer;
         }
       }
     }
@@ -457,7 +488,7 @@
 
   .adventure-show-container .adventure-copy-wrapper .information-container #reviews .review .review-text {
     width: 100%;
-    margin-left: 0px; 
+    left: 0px;
     margin-top: 10px;
   }
   .adventure-show-container .adventure-copy-wrapper .information-container #reviews .review {
@@ -485,5 +516,16 @@
     #adventure-description-large {
       font-size: 10px;
     }
+  }
+  .reviewer-image-wrapper {
+    display: none;
+  }
+
+
+}
+
+@media screen and (max-width: 1100px){
+  .adventure-show-container .adventure-copy-wrapper .information-container .similar-adventures-wrapper .similar-adventure {
+    width: 100%;
   }
 }
