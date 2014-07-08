@@ -10,7 +10,7 @@
               .title= adv.title
 
             .ping
-            - if adv.subtitle
+            - if adv.location
               - if adv.location.length > 33
                 .location= "#{adv.location.upcase[0..33]}..."
               -else
