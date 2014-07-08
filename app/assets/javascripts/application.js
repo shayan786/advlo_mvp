@@ -52,6 +52,11 @@ $(document).ready(function(){
         	marginTop: "4px",
         	"background-size": "87%"
         });
+        $('.logged_in_dropdown_box img').animate({
+          width: "45px",
+          height: "45px",
+          marginTop: "2px"
+        });
 
         flag = 1;
       }
@@ -62,6 +67,11 @@ $(document).ready(function(){
         $('nav.navbar .navbar-brand').animate({
         	marginTop: "0px",
         	"background-size": "99%"
+        });
+        $('.logged_in_dropdown_box img').animate({
+          width: "50px",
+          height: "50px",
+          marginTop: "0px"
         });
 
         flag = 0;
