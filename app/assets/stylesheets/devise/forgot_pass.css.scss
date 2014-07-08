@@ -10,14 +10,18 @@
 	.container {
 		min-height: 90vh;
 
+		.panel {
+			background: rgba(0,0,0,0.75);
+		}
+
 		h2 {
-			font-size: 2.6em;
-			margin-bottom: 30px;
+			font-size: 2.4em;
+			padding-bottom: 15px;
+			border-bottom: 1px solid $lighter_gray;
 		}
 
 		form {
 			margin: 10px auto;
-			width: 250px;
 
 			.sign_in_btn {
 				width: 100%; 

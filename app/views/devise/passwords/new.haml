@@ -1,9 +1,11 @@
 #d_forgot_pass
   .container
-    %h2.text-center Forgot your password?
-    .d_error_msgs= devise_error_messages!
-    %form{"accept-charset" => "UTF-8", action: "/users/password", method: "post", roll: "form"}
-      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-      .form-group
-        %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", autofocus: "autofocus"}
-      %input.btn.btn-primary.sign_in_btn{name: "sign_in", type: "submit", value: "Reset Password"}
+    .panel.panel-default.col-md-4.col-md-offset-4
+      %h2.text-center Forgot your password?
+      .panel-body
+        .d_error_msgs= devise_error_messages!
+        %form{"accept-charset" => "UTF-8", action: "/users/password", method: "post", roll: "form"}
+          = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          .form-group
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", autofocus: "autofocus"}
+          %input.btn.btn-primary.sign_in_btn{name: "sign_in", type: "submit", value: "Reset Password"}
