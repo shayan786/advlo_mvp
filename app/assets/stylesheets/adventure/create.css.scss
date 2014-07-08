@@ -158,65 +158,68 @@
 
 	}
 
+	//PAYMENT
+	#adv_payment {
 
-	.glyphicon {
-	  margin-bottom: 40px;
-	  margin-top: 25px;
-	  font-size: 35px;
-	  margin-left: -55px;
+		.glyphicon {
+		  margin-bottom: 40px;
+		  margin-top: 25px;
+		  font-size: 35px;
+		  margin-left: -55px;
 
-	  span {
-	  	font-size: 16px;
-	  }
-	}
-	.fa-credit-card {
-		color: #000 !important;
-		font-size: 32px !important;
+		  span {
+		  	font-size: 16px;
+		  }
+		}
+		.fa-credit-card {
+			color: #000 !important;
+			font-size: 32px !important;
 
-		padding-top: 30px !important;
-		padding-left: 20px !important;
-		padding-right: 15px !important;
-		position: absolute !important;
-	}
-	.fa-university{
-		color: #000 !important;
-		font-size: 32px !important;
-		padding-top: 30px !important;
-		padding-left: 20px !important;
-		padding-right: 15px !important;
-		position: absolute !important;
-	}
+			padding-top: 30px !important;
+			padding-left: 20px !important;
+			padding-right: 15px !important;
+			position: absolute !important;
+		}
+		.fa-university{
+			color: #000 !important;
+			font-size: 32px !important;
+			padding-top: 30px !important;
+			padding-left: 20px !important;
+			padding-right: 15px !important;
+			position: absolute !important;
+		}
 
-	#add-bank {
-	  cursor: pointer;
-		margin-top: 50px;
-		text-align: center;
-		text-align: center;
-	}
-	#add-card {
-		margin-top: 25px;
-	  cursor: pointer;
-	  text-align: center;
-	  text-align: center;
-	}
+		#add-bank {
+		  cursor: pointer;
+			margin-top: 50px;
+			text-align: center;
+			text-align: center;
+		}
+		#add-card {
+			margin-top: 25px;
+		  cursor: pointer;
+		  text-align: center;
+		  text-align: center;
+		}
 
-	#add-card-form {
-		display: none;
-	}
-	#add-bank-form {
-		display: none;
-	}
+		#add-card-form {
+			display: none;
+		}
+		#add-bank-form {
+			display: none;
+		}
 
 
-	.save {
-		margin: 0 auto;
-		text-align: center;
-		margin-top: 20px;
-		margin-bottom: 20px;
-		.btn {
+		.save {
 			margin: 0 auto;
-			width: 200px;
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			.btn {
+				margin: 0 auto;
+				width: 200px;
 
+			}
 		}
 	}
 }
