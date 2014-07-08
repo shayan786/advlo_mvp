@@ -21,6 +21,14 @@ function adventureScroll(){
   })
 }
 
+function toggleItineraryItems(){
+  $('.itinerary-brick').click(function(){
+    $(this).children().last().toggle();
+    $(this).children().first().toggle();
+    $(this).children().first().next().toggle();
+  })
+}
+
 function highlightFilters(){
   $('.filter').click(function(){
     $('.filter').removeClass('active-filter');
@@ -395,6 +403,7 @@ adventureShow = function() {
   adventureScroll();
   centerGuideImage();
   stopSidebarAtBottom();
+  toggleItineraryItems()
 };
 
 adventureIndex = function() {
