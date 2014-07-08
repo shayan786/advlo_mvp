@@ -1,9 +1,17 @@
-.copy-brick.container-fluid#itinerary
-  .ping
-  .brick-title Itinerary
-  .brick-copy 
-    - if @itineraries
-      - @itineraries.each do |itin|
-        .itinerary-block
-          .headline= itin.headline
-          .description= itin.description
+.copy-brick.container-fluid#overview
+  .itinerary-icon
+  .brick-title 
+    ITINERARY
+#itinerary
+  - if @itineraries
+    - @itineraries.each_with_index do |itin, i| 
+      .copy-brick.itinerary-brick
+        .fa.fa-plus
+        .fa.fa-minus
+        .headline
+          = itin.headline
+        .description
+          = itin.description
+
+
+  

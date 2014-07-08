@@ -1,4 +1,21 @@
 .copy-brick.container-fluid#reviews
-  .ping
-  .brick-title Reviews
-  .brick-copy overview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview textoverview text
+  .reviews-icon
+  .brick-title 
+    Reviews
+  .review
+    .reviewer-image-wrapper
+      = image_tag "#{@current_guide.avatar.url(:thumb)}"
+    .review-text 
+      %span "
+      Gustavo was an awesome guide because he was funny and very helpful with knowledge about the are. He's reall cool and made great fajitas for us. He also made my group feel special by taking us to a further peak once her realized our skill level was high.
+      %span "
+    .review-credit= "- #{@current_guide.name}"
+
+  .review
+    .reviewer-image-wrapper
+      = image_tag "#{@current_guide.avatar.url(:thumb)}"
+    .review-text 
+      %span "
+      Gustavo was an awesome guide because he was funny and very helpful with knowledge about the are. He's reall cool and made great fajitas for us. He also made my group feel special by taking us to a further peak once her realized our skill level was high.
+      %span "
+    .review-credit= "- #{@current_guide.name}"
