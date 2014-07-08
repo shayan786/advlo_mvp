@@ -11,10 +11,10 @@
 
             .ping
             - if adv.subtitle
-              - if adv.subtitle.length > 33
-                .location= "#{adv.subtitle.upcase[0..33]}..."
+              - if adv.location.length > 33
+                .location= "#{adv.location.upcase[0..33]}..."
               -else
-                .location= adv.subtitle.upcase
+                .location= adv.location.upcase
 
           .price= adv.price
 
