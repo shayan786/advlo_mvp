@@ -35,7 +35,36 @@
 
 $(document).ajaxStart(function(){
   $('#loader-overlay').show()
-})
+});
 $(document).ajaxStop(function(){
   $('#loader-overlay').fadeOut()
-})
+});
+
+//Header resize on scroll
+$(document).ready(function(){
+	var flag = 0;
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 50 && flag == 0) {
+        $('nav.navbar').animate({
+        	padding: "0px 0px 0px 10px"
+        });
+        $('nav.navbar .navbar-brand').animate({
+        	marginTop: "4px",
+        	"background-size": "87%"
+        });
+
+        flag = 1;
+      }
+      if ($(this).scrollTop() < 50 && flag == 1) {
+      	$('nav.navbar').animate({
+        	padding: "4px 0px 4px 10px"
+        });
+        $('nav.navbar .navbar-brand').animate({
+        	marginTop: "0px",
+        	"background-size": "99%"
+        });
+
+        flag = 0;
+      } 
+    });
+});

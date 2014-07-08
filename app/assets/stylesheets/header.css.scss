@@ -3,14 +3,13 @@
 	font-family: cabin_bold;
 	background: $header_background_color;
 	opacity: $header_opacity;
-	padding: 2px 0 4px 10px;
+	padding: 4px 0 4px 10px;
 	z-index: 1000;
 
 	.navbar-brand {
-		background: asset-url("logos/advlo_header_logo.png") no-repeat left center;
-		background-size: cover;
-		position: absolute;
-		top: 4px;
+		background: asset-url("logos/advlo_header_logo.png");
+		background-repeat: no-repeat;
+		background-size: 99%;
 		width: 194px !important; 
 	}
 }
