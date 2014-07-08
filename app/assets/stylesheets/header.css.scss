@@ -1,10 +1,10 @@
 //NAVBAR CUSTOMIZATIONS
 .navbar {
 	font-family: cabin_bold;
-	background: #fff;
-	padding: 1px 0 1px 10px;
+	background: $header_background_color;
+	opacity: $header_opacity;
+	padding: 2px 0 4px 10px;
 	z-index: 1000;
-	opacity: 0.95;
 
 	.navbar-brand {
 		background: asset-url("logos/advlo_header_logo.png") no-repeat left center;
@@ -13,63 +13,22 @@
 		top: 4px;
 		width: 194px !important; 
 	}
-
-	#header-right-dropdown {
-	}
 }
 
 .navbar .nav {
 	li {
 		display: inline-block;
 		float: none;
-		a {
-			line-height: 19px;
-		    color: #666666;
-		    padding-top: 18px;
-		    padding-bottom: 12px;
-	    	font-size: 1.3em;
-
-	    	&:hover {
-	    		color: $light_orange !important;
-	    	}
-
-	    	&:focus {
-	    		color: $header_text_color;
-	    	}
-		}
+		color: #333333;
 	}
 }
 
-.navbar-collapse {
-
-	.adventure_margin {
-		margin-right: 10px;
-	}
-
-	.host_margin {
-		margin-right: 20px;
-	}
-
-}
-
-
-.navbar-right {
-	margin-left: 20px;
-
-	.header-item {
-		width: 100%;
-		a {
-			font-family: 'nexa_light' !important;
-			color: #fff !important;
-			font-size: 30px !important;
-		}	
-	}
+.login-right {
 	li {
 		.dropdown-menu, .right-side {
-			min-width: 250px;
-			padding: 15px 0px;
+			padding: 12px 0px 10px 0px;
 			@include border_radius(3px);
-			background: rgba(0, 0, 0, 0.65);
+			background: rgba(0, 0, 0, 1);
 			margin-top: 1.5px;
 
 			a {
@@ -78,6 +37,7 @@
 				font-size: 20px !important;
 				&:hover {
 					background: rgba(0, 0, 0, 0);
+					color: $advlo_orange !important;
 				}
 			}
 
@@ -108,6 +68,8 @@
 					margin: 10px 0 15px 10px;
 					color: #FFFFFF !important;
 					font-size: 1.2em;
+					padding-top: 10px;
+					padding-bottom: 5px;
 
 					&:hover {
 						background-color: #3B5998 !important;
@@ -123,10 +85,21 @@
 			}
 		}
 	}
-	//fix this box white color!
 }
 
+//fix spacing when user logged in
+.logged_in_dropdown_box{
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	color: $dark_gray;
+	font-size: 1.1em;
 
+	img {
+		margin-right: 5px;
+	}
+}
+
+//SIGN UP LINK PROPERTIES
 .dropdown-menu {
 	.sign_up_link {
 		a {
@@ -135,48 +108,10 @@
 			}
 		}
 	}
-
-	.fa {
-		margin-right: 20px;
-	}
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 	background-color: transparent;
-}
-
-//fix spacing when user logged in
-.current_user_fix {
-	top: .5px;
-	.fb_profile_img {
-		display: inline-block;
-		margin-right: 15px !important;
-	}
-
-	//uploaded profile image
-	.up_profile_img {
-		margin-right: 15px;
-		width: auto;
-		height: 45px;
-		width: 45px;
-		margin-right: 10px;
-	}
-
-	//missing profile image
-	.miss_profile_img {
-		margin-right: 15px;
-		height: 45px;
-		width: 45px;
-		margin-right: 10px;
-		width: auto;
-	}
-
-	.dropdown-menu {
-
-		li {
-			width: 100%;
-		}
-	}
 }
 
 .alert-info {
@@ -185,33 +120,4 @@
   max-width: 25%;
   margin: 0 auto;
   text-align: center;
-}
-
-.adventure-dropdown {
-	position: absolute;
-	width: 225px;
-	height: 200px;
-	background: #fff;
-	top: 53px;
-	right: 360px;
-	display: none;
-}
-
-.homepage-wrapper {
-	padding-right: 0px;
-	margin-top: -7px;
-
-	.right-side{
-		margin-top: 6.5px !important;
-	}
-	.left-side {
-		margin-top: 13.5px !important;
-	}
-}
-.user-information {
-	position: relative;
-	top: 6px;
-}
-.header-menu {
-	margin-top: 12.5px !important;
 }
