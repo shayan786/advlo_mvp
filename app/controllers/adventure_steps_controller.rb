@@ -84,6 +84,8 @@ class AdventureStepsController < ApplicationController
     # For updating the 'basic' info
     else
       @adventure.attributes = adventure_params
+      @adventure.category = params[:category].join(",") 
+      
       render_wizard @adventure
     end
 
