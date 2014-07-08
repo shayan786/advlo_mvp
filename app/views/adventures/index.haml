@@ -14,16 +14,14 @@
         %span= f
 
   .adventure-container
-    .brick-wrapper.masonry.js-masonry
-      - if @adventures.first != nil
-        #adventure-partial
-          = render partial: "adventure_index", locals: {adventures: @adventures}
+    - if @adventures.first != nil
+      = render partial: "adventure_index", locals: {adventures: @adventures}
 
 
-      - else 
-        %a.adventure-brick{href: 'adventures/info', style: 'text-decoration:none;'}
-          .image-wrapper#no-adventures= image_tag 'missing.png'
-          #no-adv-text Add an adventure in this area
+    - else 
+      %a.adventure-brick{href: 'adventures/info', style: 'text-decoration:none;'}
+        .image-wrapper#no-adventures= image_tag 'missing.png'
+        #no-adv-text Add an adventure in this area
 
 
 :javascript

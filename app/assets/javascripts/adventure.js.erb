@@ -19,6 +19,13 @@ function adventureScroll(){
   })
 }
 
+function highlightFilters(){
+  $('.filter').click(function(){
+    $('.filter').removeClass('active-filter');
+    $(this).addClass('active-filter');
+  })
+}
+
 function adventureHover(){
   $('.hover-block').hover(function(){
     $('.copy-'+$(this).attr('id')).stop().animate({
@@ -395,6 +402,7 @@ adventureIndex = function() {
   heroScroll();
   adventureHover();
   centerProfileImage();
+  highlightFilters();
 }
 
 adventureCreate = function() {

@@ -20,9 +20,8 @@ ActiveAdmin.register Adventure do
   index do
     column :title
     column :slug
-    column :subtitle
+    column :category
     column :location
-    column :price
     column 'Email' do |adv|
       adv.users.first.email if adv.users.first
     end

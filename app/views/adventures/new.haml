@@ -67,7 +67,7 @@
                 - options = ['CULTURE', 'BIKE', 'HIKE', 'CAMP', 'WATER', 'SNOW', 'ROCK', 'WILDCARD']
                 %select.multiselect{multiple: true, :required => true, name: 'category[]'}
                   = options.each do |o|
-                    %option{value: o}= o
+                    %option{value: o.downcase}= o
 
                     
 

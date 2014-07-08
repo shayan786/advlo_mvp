@@ -29,12 +29,11 @@ class AdventuresController < ApplicationController
 
 
   def filter_category
-    location = params[:location].capitalize
+    location = params[:location].downcase
     if params[:category] == 'all'
       @adventures = Adventure.near(location, 100)
     else
-      category = params[:category].gsub(',',' ').capitalize
-      puts category
+      category = params[:category].gsub(',',' ').downcase
       @adventures = Adventure.near(location, 100).where("category LIKE ?", "%#{category}%")
     end
 
@@ -42,9 +41,9 @@ class AdventuresController < ApplicationController
       format.js {render :action => '/adventure_filter', :layout => false }
     end
   end
+  
   # info page for creating a new adventure
   def hosting_info
-
   end
 
   # info page for requesting a certain adventure
