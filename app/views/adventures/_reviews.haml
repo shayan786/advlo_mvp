@@ -4,20 +4,23 @@
     Reviews
 
 .copy-brick.container-fluid#reviews
-  .review
-    .reviewer-image-wrapper
-      = image_tag "#{@current_guide.avatar.url(:profile_circle)}"
-    .review-text 
-      %span "
-      Gustavo was an awesome guide because he was funny and very helpful with knowledge about the are. He's reall cool and made great fajitas for us. He also made my group feel special by taking us to a further peak once her realized our skill level was high.
-      %span "
-    .review-credit= "- #{@current_guide.name}"
+  - @adventure_reviews.each do |review|
+    = render partial: '/shared/review_brick', locals: {review: review}
 
-  .review
-    .reviewer-image-wrapper
-      = image_tag "#{@current_guide.avatar.url(:profile_circle)}"
-    .review-text 
-      %span "
-      Gustavo was an awesome guide because he was funny and very helpful with knowledge about the are. He's reall cool and made great fajitas for us. He also made my group feel special by taking us to a further peak once her realized our skill level was high.
-      %span "
-    .review-credit= "- #{@current_guide.name}"
+  #purchase-to-review go on this adventure to leave a review
+
+  - if current_user && current_user.reservations.each{|r| r.adventure_id == @adventure.id}
+    #review-form    
+      = form_for @review, remote: true do |f|
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :host_id, value: @adventure.users.first.id
+        = f.hidden_field :adventure_id, value: @adventure.id
+        = f.label "review"
+        = f.text_field :body
+        = f.submit
+
+
+:javascript
+  $('#purchase-to-review').click(function(){
+    $('#book-it').click()
+  })

@@ -1,0 +1,14 @@
+.review
+  .reviewer-image-wrapper
+    - if review.user.avatar.url(:profile_circle) != "/images/profile_circle/missing.png"
+      = image_tag "#{review.user.avatar.url(:profile_circle)}"
+    - else 
+      = image_tag 'missing.png'
+  .review-text 
+    %span "
+    .review-body= review.body
+    %span "
+    - if review.user.name
+      .review-credit= "- #{review.user.name}"
+    - else
+      .review-credit= "- anonymous"

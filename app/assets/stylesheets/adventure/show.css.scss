@@ -219,7 +219,17 @@
       }
 
       #reviews {
+        #purchase-to-review {
+          text-align: center;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          color: $advlo_orange;
+          font-size: 20px;
+          font-family: 'nexa_light';
+          cursor: pointer;
+        }
         .review {
+          width: 100%;
           position: relative;
           float: left;
           height: 100%;

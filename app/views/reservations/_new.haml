@@ -8,14 +8,20 @@
   %form#new_reservation.new_reservation{"accept-charset" => "UTF-8", action: "/reservations", "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
     %div{style: "display:none"}
       %input{name: "utf8", type: "hidden", value: "✓"}
+
+    // reservation object params 
     %input#hidden_event_id{name: "reservation[event_id]", type: "hidden"}
     %input#reservation_head_count{name: "reservation[head_count]", type: "hidden", value: "1"}
     %input#reservation_total_price{name: "reservation[total_price]", type: "hidden", value: @adventure.price }
+    %input#reservation_adventure_id{name: "reservation[adventure_id]", type: "hidden", value: @adventure.id }
+    %input#reservation_user_id{name: "reservation[user_id]", type: "hidden", value: current_user.id}
+    %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: "1"}
+    
+    // other rails controller params 
     %input#total_price{name: "total_price", type: "hidden", value: @adventure.price }
     %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id }
     %input#stripe_token{name: "stripe_token", type: "hidden"}
     %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
-    %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: "1"}
 
     .form-group.row
       .col-md-4

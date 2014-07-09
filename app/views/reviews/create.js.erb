@@ -1,0 +1,5 @@
+$("#reviews").prepend("<%= escape_javascript(render(:partial => 'shared/review_brick', :locals => {:review => @review})) %>");
+$('#review-form').hide()
+
+
+

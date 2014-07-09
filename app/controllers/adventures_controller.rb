@@ -16,6 +16,9 @@ class AdventuresController < ApplicationController
   def show
     @adventure = Adventure.find_by_slug(params[:id])
     @current_guide = @adventure.users.first
+    @review = Review.new
+
+    @adventure_reviews = Review.where(adventure_id: @adventure.id)
 
     @itineraries = Itinerary.where(adventure_id: @adventure.id)
 
@@ -129,6 +132,5 @@ class AdventuresController < ApplicationController
   def adventure_params
     params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_images, :images, :category => [])
   end
-
 end
 
