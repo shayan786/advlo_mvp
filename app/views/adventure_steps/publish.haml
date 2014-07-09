@@ -1,0 +1,18 @@
+#adventure_create
+  .container
+    = render partial: "/adventures/adv_create_header"
+    #adv_publish
+      .panel.panel-default
+        .panel-heading.text-center.section_header
+          PUBLISH
+        .panel-body
+
+        .panel-footer.text-center
+          .row
+            .col-md-2.col-md-offset-4
+              %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}"}
+                %i.fa.fa-eye
+                PREVIEW
+            .col-md-2
+              %a.btn.btn-primary.preview_btn{href: "#"}
+                SUBMIT

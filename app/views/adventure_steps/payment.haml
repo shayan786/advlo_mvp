@@ -10,84 +10,93 @@
             .col-md-6.col-md-offset-3.text-center
               .update_notice.alert.alert-warning
                 = notice
-          %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_cc_form", enctype: "multipart/form-data"}
-            %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
 
-            #add-card{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Card"}
-              .glyphicon.glyphicon-plus 
-              .fa.fa-credit-card
+          - if current_user.stripe_recipient?
+            - # Show existing bank / cc info with option to edit/delete etc.
+          - else 
+            - # Render new bank / cc form
+            %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_cc_form", enctype: "multipart/form-data"}
+              %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
 
-            #add-card-form
-              .form-group.row
-                .col-md-4
-                  .form_label.text-right Full Name
-                .col-md-6
-                  %input{type: 'hidden', name: 'recipient[type]', value: 'individual'}
-                  %input{type: 'hidden', name: 'recipient[tax_id]', value: ''}
-                  %input.form-control{type: "text", placeholder: "First Middle Last", name: "recipient[cardholders_name]", id: "full_name"}
+              #add-card{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Card"}
+                .glyphicon.glyphicon-plus 
+                .fa.fa-credit-card
 
-              .form-group.row
-                .col-md-4
-                  .form_label.text-right Card Number
-                .col-md-6
-                  %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "recipient[credit_card_number]", id: "cc_number", maxlength: "16"}
+              #add-card-form
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Full Name
+                  .col-md-6
+                    %input{type: 'hidden', name: 'recipient[type]', value: 'individual'}
+                    %input{type: 'hidden', name: 'recipient[tax_id]', value: ''}
+                    %input.form-control{type: "text", placeholder: "First Middle Last", name: "recipient[cardholders_name]", id: "full_name"}
 
-              .form-group.row
-                .col-md-4
-                  .form_label.text-right CVV
-                .col-md-1
-                  %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "recipient[cvv]", id: "cvv_number", maxlength: "3"}
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Card Number
+                  .col-md-6
+                    %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "recipient[credit_card_number]", id: "cc_number", maxlength: "16"}
 
-              .form-group.row
-                .col-md-4
-                  .form_label.text-right Card Expiration
-                .col-md-2
-                  .form-group
-                    %label Exp Month
-                    %input.form-control.show_ml{placeholder: "MM", type: "text", required: "required", maxlength: "2", name: "recipient[cc_exp_month]"}
-                .col-md-2
-                  .form-group
-                    %label Exp Year
-                    %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "recipient[cc_exp_year]"}
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right CVV
+                  .col-md-1
+                    %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "recipient[cvv]", id: "cvv_number", maxlength: "3"}
 
-              .form-group.row.save
-                %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Card"}
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Card Expiration
+                  .col-md-2
+                    .form-group
+                      %label Exp Month
+                      %input.form-control.show_ml{placeholder: "MM", type: "text", required: "required", maxlength: "2", name: "recipient[cc_exp_month]"}
+                  .col-md-2
+                    .form-group
+                      %label Exp Year
+                      %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "recipient[cc_exp_year]"}
+
+                .form-group.row.save
+                  %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Card"}
+              
+            %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", enctype: "multipart/form-data"}
+              %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
             
-          %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", enctype: "multipart/form-data"}
-            %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
-          
-            #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
-              .glyphicon.glyphicon-plus
-              .fa.fa-university
+              #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
+                .glyphicon.glyphicon-plus
+                .fa.fa-university
 
 
-            #add-bank-form
-              .form-group.row
-                .col-md-4
-                  .form_label.text-right Bank account name
-                .col-md-6
-                  %input.form-control{type: "text", placeholder: "John Doe", required: "required", name: "recipient[bank_account_name]", id: "full_name"}
+              #add-bank-form
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Bank account name
+                  .col-md-6
+                    %input.form-control{type: "text", placeholder: "John Doe", required: "required", name: "recipient[bank_account_name]", id: "full_name"}
 
-              .form-group.row
-                .col-md-4
-                  .form_label.text-right Routing Number
-                .col-md-6
-                  %input.form-control{type: "text", placeholder: "xxx xxx xxx", required: "required", name: "recipient[bank_routing_number]", id: "full_name"}
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Routing Number
+                  .col-md-6
+                    %input.form-control{type: "text", placeholder: "xxx xxx xxx", required: "required", name: "recipient[bank_routing_number]", id: "full_name"}
 
-              .form-group.row
-                .col-md-4
-                  .form_label.text-right Account Number
-                .col-md-6
-                  %input.form-control{type: "text", required: "required", name: "recipient[bank_account_number]", id: "full_name"}
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Account Number
+                  .col-md-6
+                    %input.form-control{type: "text", required: "required", name: "recipient[bank_account_number]", id: "full_name"}
 
-              .form-group.row.save
-                %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Bank account"}
+                .form-group.row.save
+                  %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Bank account"}
 
-            
-            
         .panel-footer.text-center
-          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/publish?adventure_id=#{@adventure.id}"}
-            NEXT
+          .row
+            .col-md-2.col-md-offset-4
+              %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}"}
+                %i.fa.fa-eye
+                PREVIEW
+            .col-md-2
+              %a.btn.btn-primary.preview_btn{href: "/adventure_steps/publish?adventure_id=#{@adventure.id}"}
+                NEXT
 
          
 

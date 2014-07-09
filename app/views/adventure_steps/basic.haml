@@ -107,7 +107,13 @@
                   %input.filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
 
           .panel-footer.text-center
-            %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT"}
+            .row
+              .col-md-2.col-md-offset-4
+                %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}"}
+                  %i.fa.fa-eye
+                  PREVIEW
+              .col-md-2
+                %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT"}
                 
 :javascript
   adventureCreate();

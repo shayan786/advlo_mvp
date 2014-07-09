@@ -50,7 +50,8 @@ class EventsController < ApplicationController
 		end
 	end
 
-	private
+  private
+  
   def event_params
     params.permit(:start_time, :end_time, :adventure_id)
   end

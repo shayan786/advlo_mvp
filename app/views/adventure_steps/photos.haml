@@ -6,6 +6,13 @@
         .panel-heading.text-center.section_header
           PHOTOS
         .panel-body
+          - if @adventure.adventure_gallery_images.empty?
+            .col-md-6.col-md-offset-3
+              .well.how_to
+                Upload your adventure's gallery images here! You know what they say, a photo is worth a thousand words!
+                You can upload upto 
+                %strong 10 images,
+                try to make them as best quality as you can!
           .text-center
             - if !@adventure.adventure_gallery_images.empty?
               - @adventure.adventure_gallery_images.each_with_index do |adv, i|
@@ -25,8 +32,15 @@
               %input.filestyle{type: "file", name: "images[]", id: "adv_gallery_img", multiple: "multiple", onchange: "javascript:document.getElementById('adv_gallery_img_upload').submit();"}
 
         .panel-footer.text-center
-          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
-            NEXT
+          .row
+            .col-md-2.col-md-offset-4
+              %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}"}
+                %i.fa.fa-eye
+                PREVIEW
+            .col-md-2
+              %a.btn.btn-primary.preview_btn{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
+                NEXT
+
                 
 :javascript
   adventureCreate();
