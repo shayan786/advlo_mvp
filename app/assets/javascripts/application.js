@@ -46,15 +46,15 @@ $(document).ready(function(){
       if ($(this).scrollTop() > 50 && flag == 0) {
         $('nav.navbar').animate({
         	padding: "0px 0px 0px 10px",
-          height: "48px"
+          height: "43px"
         });
         $('nav.navbar .navbar-brand').animate({
-        	marginTop: "3px",
-        	"background-size": "84%"
+        	marginTop: "4px",
+        	"background-size": "78%"
         });
         $('.logged_in_dropdown_box img').animate({
-          width: "42px",
-          height: "42px",
+          width: "40px",
+          height: "40px",
           marginTop: "2px"
         });
 

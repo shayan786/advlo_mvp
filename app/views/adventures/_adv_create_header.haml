@@ -17,9 +17,14 @@
             %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
               PHOTOS
         - else
-          %li
-            %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
-              PHOTOS
+          - if !@adventure.title.nil?
+            %li
+              %a{href: "/adventure_steps/photos?adventure_id=#{@adventure.id}"}
+                PHOTOS
+          - else 
+            %li.disabled
+              %a{href: "#"}
+                PHOTOS
         %li
           %i.fa.fa-long-arrow-right
         - if params[:id] == "itinerary"
