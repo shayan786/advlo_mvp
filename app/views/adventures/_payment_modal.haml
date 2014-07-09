@@ -10,17 +10,13 @@
 
         .tab-content
           .upcoming.tab-pane.active 
-            .container
-              - @limited_adventure_events.each do |event| 
-                .row
-                  .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-id' => event.id }= event.start_time.strftime("%l:%M %p  - %A  - %m/%d/%y")
+            - @limited_adventure_events.each do |event| 
+              .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-id' => event.id }= event.start_time.strftime("%A  - %B %d - %l:%M %p ")
           .view-all.tab-pane 
-            .container
-              - @all_adventure_events.each do |event| 
-                .row
-                  .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal"}= event.start_time.strftime("%l:%M %p - %A  - %m/%d/%y")
+            - @all_adventure_events.each do |event| 
+              .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal"}= event.start_time.strftime("%A  - %B %d - %l:%M %p ")
 #reservations-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-modal", role: "dialog"}
-  .modal-dialog
+  .modal-dialog.payment-modal-wrapper
     .modal-content
       .modal-body
         - if current_user && @current_guide

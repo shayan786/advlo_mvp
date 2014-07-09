@@ -3,36 +3,49 @@
   #success-detail
   #advlo-logo
   #stripe-error-message
-  = form_for reservation, url: reservations_path, method: "POST", remote: true, :html => {:multipart => true } do |f|
-    - if reservation.errors.any?
-      .alert-message.block-message.error
-        %p= "#{pluralize(reservation.errors.count, "problem")} with your registration:"
-        .errors
-          - reservation.errors.full_messages.each do |msg|
-            %p= msg
-    = f.hidden_field :event_id, id: 'hidden_event_id'
-    = f.hidden_field :head_count, value: 1
-    = f.hidden_field :total_price, value: @adventure.price
-    = hidden_field_tag :total_price, "#{@adventure.price}"
-    = hidden_field_tag :adventure_id, "#{@adventure.id}"
-    = hidden_field_tag :stripe_token
+  %form#new_reservation.new_reservation{"accept-charset" => "UTF-8", action: "/reservations", "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
+    %div{style: "display:none"}
+      %input{name: "utf8", type: "hidden", value: "✓"}
+    %input#hidden_event_id{name: "reservation[event_id]", type: "hidden"}
+    %input#reservation_head_count{name: "reservation[head_count]", type: "hidden", value: "1"}
+    %input#reservation_total_price{name: "reservation[total_price]", type: "hidden", value: @adventure.price }
+    %input#total_price{name: "total_price", type: "hidden", value: @adventure.price }
+    %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id }
+    %input#stripe_token{name: "stripe_token", type: "hidden"}
+    %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
+    %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: "1"}
+    .form-group.row
+      .col-md-4
+        .form_label.text-right Full Name
+      .col-md-6
+        %input#credit_card_name{type: "text", name: "credit_card_name", type: "text", placeholder: "First Last"}
+    
 
-    = hidden_field_tag :user_id, "#{current_user.id}"
-    = f.hidden_field :host_id, value: @current_guide.id
-    / = f.hidden_field :recipient_id
-    %br
-    = label_tag "Name:"
-    = text_field_tag :credit_card_name
-    %br
-    = label_tag "Credit Card:"
-    = text_field_tag :credit_card_number
-    %br
-    = label_tag "CVV"
-    = text_field_tag :cvv
-    %br
-    = label_tag "Card Expiration"
-    = select_month nil, {add_month_numbers_true: true}, {name: nil, id: "expiry_month"}
+    .form-group.row
+      .col-md-4
+        .form_label.text-right Card Number
+      .col-md-6
+        %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
 
-    = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+7}, {name: nil, id: "expiry_year"}
+    
+    .form-group.row
+      .col-md-4
+        .form_label.text-right CVV
+      .col-md-1
+        %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "cvv", id: "cvv", maxlength: "3"}
+    
+    .form-group.row
+      .col-md-4
+        .form_label.text-right Card Expiration
+      .col-md-2
+        .form-group
+          %label Exp Month
+          %input.form-control.show_ml{placeholder: "MM", type: "text", required: "required", maxlength: "2", name: "exp_month", id: 'exp_month'}
+      .col-md-2
+        .form-group
+          %label Exp Year
+          %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "exp_year", id: 'exp_year'}
 
-    #book-button.button Book
+    .btn.btn-success#book-button.button Book
+
+

@@ -6,7 +6,6 @@ function getStripeToken(){
   })
 
 
-
   $("#book-button").click(function() {
 
     // $("#user_submit").attr("disabled", true);
@@ -20,8 +19,8 @@ function getStripeToken(){
     
     var card = {
       number:   $("#credit_card_number").val(),
-      expMonth: $("#expiry_month").val(),
-      expYear:  $("#expiry_year").val(),
+      expMonth: $("#exp_month").val(),
+      expYear:  $("#exp_year").val(),
       cvc:      $("#cvv").val()
     };
 

@@ -34,14 +34,15 @@
     .guide-block {
       color: #fff;
       height: 240px;
-      #guide-name {
-        font-size: 25px;
-        margin: 15px;
+      .guide-name {
+        font-size: 23px;
+        margin-top: 15px;
+        font-family: 'Nexa_light';
       }
-      #guide-title {
+      .guide-title {
         position: relative;
-        margin-top: 10px;
-        letter-spacing: 3px;
+        margin-top: 2px;
+        letter-spacing: 1px;
         font-style: italic;
       }
 
@@ -74,18 +75,19 @@
       #adventure-price{
         font-size: 45px;
         color: $advlo_green;
+        margin-top: -10px;
+        font-family: 'nexa_light';
       }
       #book-it {
         cursor: pointer;
         width: 80%;
         margin: 0 auto;
         height: 41px;
-        background: $advlo_orange;
         span {
           color: #fff;
           font-size: 25px;
           position: relative;
-          top: 3px;
+          top: -1px;
         }
       }
     }
@@ -152,10 +154,12 @@
               }
 
               span {
-                color: $off_white;
+                color: #fff;
                 font-family: 'nexa_light';
                 font-size: 20px;
                 font-weight: bold;
+                position: relative;
+                top: -2px;
               }
             }
           }
@@ -207,7 +211,7 @@
           line-height: 25px;
           color: #fff;
           font-family: 'nexa_light';
-          font-size: 14px;
+          font-size: 20px;
           display: none;
         }
       }
@@ -277,9 +281,10 @@
         .guide-block {
       
 
-          #guide-name {
-            font-size: 25px;
-            margin-bottom: 10px; 
+          .guide-name {
+            font-size: 23px;
+            margin-top: 15px;
+            font-family: 'Nexa_light';
           }
           
         }
@@ -291,7 +296,8 @@
           #adventure-price{
             font-size: 45px;
             color: $advlo_green;
-            text-align: center;
+            font-family: 'nexa_light';
+            margin-top: -10px;
           }
           #book-it {
             cursor: pointer;
@@ -431,8 +437,17 @@
     margin-top: 100px;
     .event {
       color: #fff;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
   }
+}
+
+.payment-modal-wrapper {
+  width: 55%;
+  margin-left: 200px;
+  top: 55px;
 }
 
 .modal-body {
