@@ -1,4 +1,19 @@
 #reservation {
+
+  #adv-title {
+    text-align: center;
+    font-size: 30px;
+    color: $advlo_orange;
+    font-family: 'nexa_light';
+  }
+
+  #event-info {
+    text-align: center;
+    font-size: 20px;
+    color: $advlo_orange;
+    font-family: 'nexa_light';
+  }
+
   color: #fff;
 
   input {
@@ -17,6 +32,7 @@
   }
 
   #success-detail {
+    text-align: center;
     font-family: 'cabin_mediumitalic';
     font-size: 18px;
     width: 75%;
@@ -30,6 +46,13 @@
       height: 50px;
       width: auto;
       cursor: auto;
+    }
+  }
+
+  #book-it-wrapper{
+    text-align: center;
+    #book-button {
+      width: 32%;
     }
   }
 }

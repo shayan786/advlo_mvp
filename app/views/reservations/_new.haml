@@ -1,4 +1,6 @@
 #reservation
+  #adv-title= @adventure.title
+  #event-info
   #success
   #success-detail
   #advlo-logo
@@ -14,6 +16,7 @@
     %input#stripe_token{name: "stripe_token", type: "hidden"}
     %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
     %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: "1"}
+
     .form-group.row
       .col-md-4
         .form_label.text-right Full Name
@@ -46,6 +49,7 @@
           %label Exp Year
           %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "exp_year", id: 'exp_year'}
 
-    .btn.btn-success#book-button.button Book
+    #book-it-wrapper
+      .btn.btn-success#book-button.button Book
 
 
