@@ -53,7 +53,7 @@
               .form-group.row.save
                 %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Card"}
             
-          %form
+          %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", enctype: "multipart/form-data"}
             %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
           
             #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
@@ -66,22 +66,22 @@
                 .col-md-4
                   .form_label.text-right Bank account name
                 .col-md-6
-                  %input.form-control.show_ml{type: "text", placeholder: "John Doe", required: "required", name: "recipient[bank_account_name]", id: "full_name"}
+                  %input.form-control{type: "text", placeholder: "John Doe", required: "required", name: "recipient[bank_account_name]", id: "full_name"}
 
               .form-group.row
                 .col-md-4
                   .form_label.text-right Routing Number
                 .col-md-6
-                  %input.form-control.show_ml{type: "text", placeholder: "xxx xxx xxx", required: "required", name: "recipient[bank_routing_number]", id: "full_name"}
+                  %input.form-control{type: "text", placeholder: "xxx xxx xxx", required: "required", name: "recipient[bank_routing_number]", id: "full_name"}
 
               .form-group.row
                 .col-md-4
                   .form_label.text-right Account Number
                 .col-md-6
-                  %input.form-control.show_ml{type: "text", required: "required", name: "recipient[bank_routing_number]", id: "full_name"}
+                  %input.form-control{type: "text", required: "required", name: "recipient[bank_account_number]", id: "full_name"}
 
               .form-group.row.save
-                %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Bank account"}/
+                %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Bank account"}
 
             
             

@@ -379,19 +379,19 @@ function form_validator(){
           }
         }
       },
-      'adventure[attachment]': {
-        validators: {
-          notEmpty: {
-            message: 'Please select a banner image'
-          },
-          file: {
-            extension: 'jpeg,jpg,png,tiff',
-            type: 'image/jpeg,image/jpg,image/png,image/tiff',
-            maxSize: 1024*10*1024, //10 MB
-            message: 'Must have an adventure banner image'
-          }
-        }
-      },
+      // 'adventure[attachment]': {
+      //   validators: {
+      //     notEmpty: {
+      //       message: 'Please select a banner image'
+      //     },
+      //     file: {
+      //       extension: 'jpeg,png,JPG,jpg,JPEG,PNG',
+      //       type: 'image/jpeg,image/png',
+      //       maxSize: 2048 * 1024 * 1024,   // 10 MB
+      //       message: 'The selected file is not valid'
+      //     }
+      //   }
+      // },
       'category[]': {
         validators: {
           notEmpty: {
@@ -477,6 +477,37 @@ function form_validator(){
       }
     }
   });
+  $('#add_bank_form').bootstrapValidator({
+      fields: {
+        'recipient[bank_account_name]': {
+          validators: {
+            notEmpty: {
+              message: 'Please enter bank account holders full name'
+            }
+          }
+        },
+        'recipient[bank_routing_number]': {
+          validators: {
+            notEmpty: {
+              message: 'Please enter bank account routing number'
+            },
+            integer: {
+              message: 'Routing number is invalid'
+            }
+          }
+        },
+        'recipient[bank_account_number]': {
+          validators: {
+            notEmpty: {
+              message: 'Please enter bank acount number'
+            },
+            integer: {
+              message: 'Bank account number is invalid'
+            }
+          }
+        }
+      }
+    });
 }
 
 function multiSelect(){
