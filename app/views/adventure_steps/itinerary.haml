@@ -18,8 +18,14 @@
           - else
             = render partial: "itinerary_form_update"
         .panel-footer.text-center
-          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
-            NEXT
+          .row
+            .col-md-2.col-md-offset-4
+              %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}"}
+                %i.fa.fa-eye
+                PREVIEW
+            .col-md-2
+              %a.btn.btn-primary.preview_btn{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
+                NEXT
          
 
 :javascript
