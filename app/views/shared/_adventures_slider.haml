@@ -1,0 +1,23 @@
+.swiper-container
+  .swiper-wrapper
+    - slider_adventures.each_with_index do |adv, i|
+      %a.swiper-slide.adventure-slide{href: adventure_path(adv.slug)}
+        .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center 0;"}
+          .copy
+            - if adv.title.length > 32
+              #title= "#{adv.title[0..32]}..."
+            -else
+              #title= adv.title
+
+            .ping
+            - if adv.location.length > 37
+              .location= "#{adv.location.upcase[0..37]}..."
+            -else
+              .location= adv.location.upcase
+
+          .hover-block{id: i}
+            - if user && user.avatar_url == '' || user.avatar_url == nil
+              .guide-profile-image= image_tag user.avatar.url(:large)
+            - elsif user
+              .guide-profile-image= image_tag "#{user.avatar_url}?type=large"
+          .copy-container{class: "copy-#{i}"}

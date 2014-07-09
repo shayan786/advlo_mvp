@@ -92,11 +92,13 @@
   }
 
   .title-copy {
-    position: relative;
+    position: fixed;
     float: left;
-    margin-top: -150px;
     background: rgba(0, 0, 0, 0.6);
     margin-left: 35px;
+    border: 1px solid #C35B26;
+    top: 100px;
+    
     #adventure-title-large {
       color: #fff;
       font-family: 'nexa_bold';
@@ -131,15 +133,15 @@
           float: left;
           .overview-item {
             width: 40%;
-            height: 60px;
+            height: 100%;
             float: left;
             margin: 20px;
 
             .default-description {
               color: $light_gray;
-              font-family: 'nexa_bold';
-              font-size: 20px;
-              top: -26px;
+              font-family: 'cabin_bold';
+              font-size: 30px;
+              top: -30px;
               position: relative;
               float: left;
               right: -36px;
@@ -153,8 +155,12 @@
                 color: $off_white;
                 font-family: 'nexa_light';
                 font-size: 20px;
+                font-weight: bold;
               }
             }
+          }
+          .last-row {
+            width: 89%;
           }
           #map {
             margin-top: -178px;
@@ -254,35 +260,7 @@
       }
 
       #similar {
-        #close-adventures {
-
-        }
-
-        #similar-adventures {
-
-        }
-        .adventure {
-          width: 250px;
-          overflow: hidden;
-          float: left;
-          font-size: 20px;
-          font-family: 'nexa_light';
-          margin: 10px;
-        }
-      }
-      .similar-adventures-wrapper {
-        width: 90%; 
-        margin: 0 auto;
-        .similar-adventure {
-          width: 50%;
-          float: left;
-          text-align: center;
-          height: 200px;
-          overflow: hidden;
-          margin-top: 20px;
-          margin-bottom: 20px;
-          cursor: pointer;
-        }
+        
       }
     }
 
@@ -528,4 +506,20 @@
   .adventure-show-container .adventure-copy-wrapper .information-container .similar-adventures-wrapper .similar-adventure {
     width: 100%;
   }
+}
+
+.adventure-show-arrow-right {
+  color: #000;
+  font-size: 4em;
+  cursor: pointer;
+  display: block;
+  top: 122px;
+  right: 10px;
+}
+.adventure-show-arrow-left {
+  color: #000;
+  font-size: 4em;
+  cursor: pointer;
+  top: 122px;
+  float: left;
 }

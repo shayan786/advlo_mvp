@@ -5,17 +5,10 @@
 
 .copy-brick.container-fluid#similar
   .brick-copy
-    .similar-adventures-wrapper
-      #close-adventures
-        - if @close_adventures
-          - @close_adventures.each do |adv|
-            %a.similar-adventure{href: adventure_path(adv.slug)}
-              = image_tag adv.attachment.url(:medium)  
-          
+    .shared-slider-container#user-adventure-slider
+      .slider-wrapper
+        %i.next.fa.fa-chevron-right#profile-next
+        %i.prev.fa.fa-chevron-left#profile-prev
 
-      #similar-adventures
-        - if @similar_adventures
-          - @similar_adventures.each do |adv|
-            %a.similar-adventure{href: adventure_path(adv.slug)}
-              = image_tag adv.attachment.url(:medium)  
-
+        = render partial: '/shared/adventures_slider', locals: {slider_adventures: @related, user: @current_guide }
+        

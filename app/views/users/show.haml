@@ -12,7 +12,6 @@
             .banner_name= @user.name
             .banner_subtitle= @user.short_description
 
-
 #p_overview
   .container
     .row
@@ -77,45 +76,18 @@
       MY ADVENTURES
       %span.header_sub 
         %span= "( #{@user.adventures.count} )"
-        
 
         - if @user.adventures.count >= 1
-          .adventure-slider-container#user-adventure-slider
+          .shared-slider-container#user-adventure-slider
             .slider-wrapper
               %i.next.fa.fa-chevron-right#profile-next
               %i.prev.fa.fa-chevron-left#profile-prev
 
-              .swiper-container
-                .swiper-wrapper
-                  - if @user.adventures
-                    - @user.adventures.each_with_index do |adv, i|
-                      %a.swiper-slide.adventure-slide{href: adventure_path(adv.slug)}
-                        .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
-                          .copy
-                            - if adv.title.length > 32
-                              #title= "#{adv.title[0..32]}..."
-                            -else
-                              #title= adv.title
-
-                            .ping
-                            - if adv.location.length > 37
-                              .location= "#{adv.location.upcase[0..37]}..."
-                            -else
-                              .location= adv.location.upcase
-
-                          .hover-block{id: i}
-                            - if @user && @user.avatar_url == '' || @user.avatar_url == nil
-                              .guide-profile-image= image_tag @user.avatar.url(:large)
-                            - elsif @user
-                              .guide-profile-image= image_tag "#{@user.avatar_url}?type=large"
-                          .copy-container{class: "copy-#{i}"}
-
-                          
-
+              - if @user.adventures
+                = render partial: '/shared/adventures_slider', locals: {slider_adventures: @user.adventures, user: @user }
+              
         -else
           No adventures posted 
-                
-
 
 #p_bio
   .container
@@ -132,7 +104,6 @@
               %br
               = rest_of_bio[1..-1]
 
-
 #p_reviews
   .container
     .row
@@ -144,3 +115,6 @@
 
 :javascript
   usersShowInit()
+  $(window).resize(function(){
+    profileSlider()
+  })

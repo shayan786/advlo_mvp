@@ -2,7 +2,7 @@
   .brick-wrapper.masonry.js-masonry
     - adventures.each_with_index do |adv, i|
       %a.adventure-brick{href: adventure_path(adv.slug)}
-        .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+        .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center 0;"}
           .copy
             - if adv.title.length > 38
               .title= "#{adv.title[0..38]}..."

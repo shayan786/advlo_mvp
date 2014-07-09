@@ -17,7 +17,7 @@
             %span= "#{@adventure.cap_max} people"
           -else
             .fa.fa-angle-double-right
-            %span= "#{@adventure.cap_max} - #{@adventure.cap_min} people"
+            %span= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
         
 
     .overview-item 
@@ -42,20 +42,10 @@
           .fa.fa-angle-double-right
           %span= "#{@adventure.duration_num} #{@adventure.duration_type}"
 
-    .overview-item 
+    .overview-item.last-row
       .fa.fa-chevron-circle-right
         .default-description 
           DESCRIPTION :
           .fa.fa-angle-double-right
           %span= @adventure.subtitle
           
-    - if @adventure.other_notes
-      .overview-item 
-        .fa.fa-chevron-circle-right
-          .default-description 
-            NOTES :
-            .fa.fa-angle-double-right
-            %span= @adventure.other_notes
-
-          
-    

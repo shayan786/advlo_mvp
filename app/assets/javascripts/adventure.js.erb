@@ -1,3 +1,43 @@
+function similarAdventureSlider(){
+  var totalSlideCount = $('#user-adventure-slider .swiper-slide').length - 3;
+  $(".prev").addClass('hide');
+
+  if(totalSlideCount <= 0){
+    $('.prev').hide()
+    $('.next').hide()
+  }
+
+  var slideCount;
+  if($(window).width() > 800){
+    slideCount = 2;
+  }else if($(window).width() < 800){
+    $('#profile-next').hide()
+    $('#profile-prev').hide()
+    slideCount = 1;
+  }
+
+
+  var profileSlider = new Swiper('.swiper-container',{
+    mode:'horizontal',
+    slidesPerView: slideCount,
+    onSlideChangeStart: function(){
+      $(".prev, .next").removeClass('hide');
+      if(profileSlider.activeIndex == 0) {
+        $(".prev").addClass('hide');
+      }
+      if(profileSlider.activeIndex == totalSlideCount) {
+        $(".next").addClass('hide');
+      }
+    }
+  });  
+  $('#profile-next').click(function(){
+    profileSlider.swipeNext()
+  })
+  $('#profile-prev').click(function(){
+    profileSlider.swipePrev()
+  })
+}
+
 function positionLocationText(){
   $('#location_text').css('top', ($('#hero_image').height() / 2));
 }
@@ -17,7 +57,7 @@ function adventureScroll(){
   $(window).scroll(function(){
     var s = $(window).scrollTop();
     hero.css('-webkit-transform','translateY(' + (s/1.3) + 'px');
-    heroTitle.css('-webkit-transform','translateY(' + (s/1.3) + 'px');
+    
   })
 }
 
@@ -457,6 +497,8 @@ adventureShow = function() {
   centerGuideImage();
   stopSidebarAtBottom();
   toggleItineraryItems()
+  adventureShowHover();
+  similarAdventureSlider();
 };
 
 adventureIndex = function() {

@@ -7,9 +7,18 @@ function profileSlider() {
     $('.next').hide()
   }
 
+  var slideCount;
+  if($(window).width() > 1220){
+    slideCount = 3;
+  }else if($(window).width() > 800){
+    slideCount = 2;
+  } else {
+    slideCount = 1;
+  }
+
   var profileSlider = new Swiper('.swiper-container',{
     mode:'horizontal',
-    slidesPerView: 3,
+    slidesPerView: slideCount,
     onSlideChangeStart: function(){
       $(".prev, .next").removeClass('hide');
       if(profileSlider.activeIndex == 0) {
