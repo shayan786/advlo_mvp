@@ -45,15 +45,16 @@ $(document).ready(function(){
     $(window).scroll(function () {
       if ($(this).scrollTop() > 50 && flag == 0) {
         $('nav.navbar').animate({
-        	padding: "0px 0px 0px 10px"
+        	padding: "0px 0px 0px 10px",
+          height: "48px"
         });
         $('nav.navbar .navbar-brand').animate({
-        	marginTop: "4px",
-        	"background-size": "87%"
+        	marginTop: "3px",
+        	"background-size": "84%"
         });
         $('.logged_in_dropdown_box img').animate({
-          width: "45px",
-          height: "45px",
+          width: "42px",
+          height: "42px",
           marginTop: "2px"
         });
 
@@ -61,7 +62,8 @@ $(document).ready(function(){
       }
       if ($(this).scrollTop() < 50 && flag == 1) {
       	$('nav.navbar').animate({
-        	padding: "4px 0px 4px 10px"
+        	padding: "4px 0px 4px 10px",
+          height: "58px"
         });
         $('nav.navbar .navbar-brand').animate({
         	marginTop: "0px",

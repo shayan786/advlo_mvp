@@ -11,11 +11,14 @@
               .update_notice.alert.alert-warning
                 = notice
           - if @adventure.itineraries.empty?
+            .col-md-6.col-md-offset-3
+              .well.how_to
+                Although optional, highly recommended to add adventure event items to define the timeline or activities of your adventure! Every item will give more information to the adventure seekers.
             = render partial: "itinerary_form_new"
           - else
             = render partial: "itinerary_form_update"
         .panel-footer.text-center
-          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/schedule?adventure_id=3"}
+          %a.btn.btn-primary.preview_btn{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
             NEXT
          
 

@@ -58,6 +58,18 @@
 						border-color: $login_btn_color_hover;
 					}
 				}
+
+				.view_btn {
+					font-size: 1.8em;
+					padding: 10px 20px;
+
+					.fa {
+						padding-top: 0px;
+						padding-left: 0px;
+						padding-right: 10px;
+						color: #000;
+					}
+				}
 			}
 		}
 	}
@@ -113,6 +125,11 @@
 			}
 		}
 
+		.how_to {
+			padding: 7px 10px;
+			font-size: 1em;
+		}
+
 	}
 
 	//ITINERARY
@@ -144,6 +161,11 @@
 		.divider {
 			border: 1px solid $lighter_gray;
 			margin: 15px 0;
+		}
+
+		.how_to {
+			padding: 7px 10px;
+			font-size: 1em;
 		}
 
 	}

@@ -33,7 +33,7 @@
                 ITINERARY
           - else 
             %li.disabled
-              %a{href: "/adventure_steps/itinerary?adventure_id=#{@adventure.id}"}
+              %a.disabled{href: "#"}
                 ITINERARY
         %li
           %i.fa.fa-long-arrow-right
@@ -48,7 +48,7 @@
                 SCHEDULE
           - else
             %li.disabled
-              %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
+              %a{href: "#"}
                 SCHEDULE
         %li
           %i.fa.fa-long-arrow-right
@@ -57,9 +57,14 @@
             %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
               PAYMENT
         - else
-          %li 
-            %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
-              PAYMENT
+          - if !@adventure.adventure_gallery_images.empty? && !@adventure.itineraries.empty?
+            %li 
+              %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
+                PAYMENT
+          - else 
+            %li.disabled
+              %a{href: "#"}
+                PAYMENT
         %li
           %i.fa.fa-long-arrow-right
         - if params[:id] == "publish"
@@ -67,6 +72,11 @@
             %a{href: "#"}
               PUBLISH
         - else
-          %li 
-            %a{href: "#"}
-              PUBLISH
+          - if !@adventure.adventure_gallery_images.empty? && !@adventure.itineraries.empty?
+            %li 
+              %a{href: "#"}
+                PUBLISH
+          - else
+            %li.disabled
+              %a{href: "#"}
+                PUBLISH
