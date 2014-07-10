@@ -1,11 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  def create
-    super
-    Notifier.welcome_email(@user).deliver unless @user.invalid?
-  end
-
-
   # This is the default 'my adventures' page
   def dashboard
     if current_user && current_user.adventures.empty?

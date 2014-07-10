@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :large => "600x600>", :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -34,10 +34,10 @@ class User < ActiveRecord::Base
       end    
     end
   end
-  
-  # def send_welcome_email
-  #   Notifier.welcome_email(self).deliver
-  # end
+
+  def send_welcome_email
+    Notifier.welcome_email(self).deliver
+  end
 
   def is_guide?(user_id)
     @user = User.find_by!(:id => user_id)
@@ -86,21 +86,11 @@ class User < ActiveRecord::Base
     # Must be a host eligible
     if @user.is_guide?(@user.id)
       # Must have existing stripe recipient id
-      if !@user.stripe_recipient_id.nil? && !(@user.stripe_recipient_id == '')
+      if !@user.stripe_recipient_id.nil? && !@user.stripe_recipient_id == ''
         return true
       end
     else
       return false
-    end
-  end
-
-  def stripe_customer?
-    @user = User.find_by!(:id => self.id)
-
-    if @user.stripe_customer_id.nil? || (@user.stripe_customer_id == '')
-      return false
-    else
-      return true
     end
   end
 
