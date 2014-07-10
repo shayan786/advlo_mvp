@@ -18,7 +18,7 @@ class AdventuresController < ApplicationController
     @current_guide = @adventure.users.first
     @review = Review.new
 
-    @adventure_reviews = Review.where(adventure_id: @adventure.id)
+    @adventure_reviews = Review.where(adventure_id: @adventure.id).order('created_at DESC')
 
     @itineraries = Itinerary.where(adventure_id: @adventure.id)
 

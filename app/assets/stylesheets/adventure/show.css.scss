@@ -122,7 +122,7 @@
     width: 100%;
     float: left;
     height: 100%;
-    background: $dark_gray;
+    background-image:url(cartographer_small.png); background-repeat:repeat;
     padding-bottom: 25px;
 
     .information-container{
@@ -280,14 +280,29 @@
       color: #fff;
       font-size: 30px;
 
+      .brick-icons {
+        margin-left: -20px;
+        float: left;
+        img {
+          height: 50px;
+          position: relative;
+          margin-top: 8px;
+          margin-left: 33px;
+        }
+      }
+
       .brick-title {
         position: relative;
         float: left;
-        font-size: 25px;
+        font-size: 40px;
         font-family: 'nexa_light';
-        top: 25px;
-        color: $advlo_orange;
+        color: #c35b26;
         left: 20px;
+        margin-top: 20px;
+      }
+
+      .itinerary-title {
+        
       }
     }
 
@@ -295,8 +310,9 @@
       position: relative;
       float: left;
       margin: 20px;
+      margin-top: 0px;
       height: 100%;
-      width: 100%;
+      width: 99%;
       background: $shaded_gray;
 
       .ping {
@@ -491,6 +507,10 @@
 }
 
 #reviews {
+  #edit-review {
+    display: none;
+  }
+
   #purchase-to-review {
     text-align: center;
     margin-top: 20px;
