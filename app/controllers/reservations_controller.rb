@@ -11,7 +11,8 @@ class ReservationsController < ApplicationController
 
     # If the current user (customer) is an existing stripe customer with us
     # => Create a stripe charge (i.e. charge the customer)
-    if user.stripe_customer?
+
+    if user.stripe_recipient_id 
 
       Stripe::Charge.create(
         :amount => total_price_cents,
