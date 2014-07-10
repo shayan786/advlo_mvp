@@ -91,8 +91,6 @@ class AdventureStepsController < ApplicationController
         recipient.bank_account = params[:update_stripe_token]
 
         recipient.save
-
-        redirect_to "/adventure_steps/payment?adventure_id=#{@adventure.id}", notice: "Bank account has been updated"
       else
         # Create new recipient
         recipient = Stripe::Recipient.create(
