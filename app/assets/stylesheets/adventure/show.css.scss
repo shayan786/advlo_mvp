@@ -25,7 +25,7 @@
     top: 100px;
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
-    right: 0px;
+    right: 1px;
     margin-right: 15px;
     margin-left: 15px;
     height: 400px;
@@ -367,14 +367,13 @@
 
       .brick-title {
         position: relative;
-        top: 5px;
-        left: 42px;
-        font-size: 43px;
-        text-transform: uppercase;
-        color: #C35B26;
-        font-family: 'nexa_light';
         float: left;
-        width: 300px;
+        font-size: 42px;
+        font-family: 'nexa_light';
+        top: 46px;
+        color: #c35b26;
+        left: 20px;
+        letter-spacing: 2px;
       }
 
       .brick-copy {
