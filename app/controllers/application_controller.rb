@@ -10,5 +10,4 @@ class ApplicationController < ActionController::Base
 
   def host
   end
-
 end
