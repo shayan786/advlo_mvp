@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
 
   # STRIPE RELATED METHODS
   def stripe_recipient?
-    @user = User.find_by!(:id => self.id)
+    @user = User.find_by_id(self.id)
 
     # Must be a host eligible
     if @user.is_guide?(@user.id)
@@ -92,6 +92,30 @@ class User < ActiveRecord::Base
     else
       return false
     end
+  end
+
+  def get_avatar_url(size)
+    @user = User.find_by_id(self.id)
+
+    if @user.avatar
+      case size
+        when "thumb"
+          return @user.avatar.url(:thumb)
+        when "profile_circle"
+          return @user.avatar.url(:profile_circle)
+        when "medium"
+          return @user.avatar.url(:medium)
+        when "large"
+          return @user.avatar.url(:large)
+        when "profile"
+          return @user.avatar.url(:profile)
+      end
+    elsif @user.avatar_url
+      return @user.avatar_url
+    else
+      return 'missing.png'
+    end
+      
   end
 
   def to_param

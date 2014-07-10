@@ -56,6 +56,11 @@ class AdventuresController < ApplicationController
   def request_info
   end
 
+  # Show adventure's reservations
+  def reservations
+    @adventure = Adventure.find_by_id(params[:id])
+  end
+
   #------------------------HOST LOGIC START----------------------------
 
   # Method to handle hosting/creating an adventure logic as follows:
