@@ -1,6 +1,6 @@
 require 'rails_helper'
  
-describe Notifier do
+describe AdvloMailer do
   describe 'instructions' do
     before(:each) do 
       ActionMailer::Base.delivery_method = :test
@@ -8,7 +8,7 @@ describe Notifier do
       ActionMailer::Base.deliveries = []
 
       user = User.create!(email: 'lucas@email.com', password: 'password', password_confirmation: 'password')
-      Notifier.welcome_email(user).deliver
+      AdvloMailer.welcome_email(user).deliver
     end
  
     it 'sends the welcome email' do
