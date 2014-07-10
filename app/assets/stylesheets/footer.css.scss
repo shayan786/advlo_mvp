@@ -1,23 +1,22 @@
 #footer {
 	width: 100%;
-	position: relative;
-	min-height: 75px;
+	position: absolute;
+	bottom: 0;
+	height: 60px;
 	background-color: $footer_background_color;
 	overflow-y: hidden !important;
-	padding-bottom: 15px;
 
 	.container {
 		font-size: 1.2em;
 
 		.footer_text {
-			margin-top: 17px;
+			margin-top: 18px;
 
 			a {
 				text-decoration: none;
 				color: $gray;
 
 				.fa {
-					margin-top: 10px;
 					margin-right: 20px;
 					font-size: 1.6em;
 
