@@ -3,6 +3,7 @@ function getStripeToken(){
 
   $('.event').click(function(){
     $('#hidden_event_id').val( $(this).data('id') )
+    $('#event-info').html( $(this).data('event-info') )
   })
 
   $("#book-button").click(function() {
@@ -18,8 +19,8 @@ function getStripeToken(){
     
     var card = {
       number:   $("#credit_card_number").val(),
-      expMonth: $("#expiry_month").val(),
-      expYear:  $("#expiry_year").val(),
+      expMonth: $("#exp_month").val(),
+      expYear:  $("#exp_year").val(),
       cvc:      $("#cvv").val()
     };
 

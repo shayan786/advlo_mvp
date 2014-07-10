@@ -8,28 +8,28 @@
   .col-md-3.adventure-show-infographic
     -if @current_guide
       .guide-block
-        #guide-name
+        .guide-name
           = @current_guide.name
+        .guide-title
+          = @current_guide.short_description
         .guide-profile-image
           - if @current_guide.avatar_url != '' && @current_guide.avatar_url != nil
             = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
           - elsif @current_guide.avatar.url
             = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
 
-        #guide-title
-          = @current_guide.short_description
 
       .adventure-block
         #adventure-title
 
         #adventure-price
-          %span $60
+          %span= "$ #{@adventure.price}"
         #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
           %span 
             BOOK IT
     - else
       .guide-block
-        #guide-name
+        .guide-name
           Want to guide this adventure?
         .guide-profile-image
           = image_tag 'missing.png'
@@ -39,9 +39,11 @@
       .col-md-3#mobile-adventure-infographic
         .navigation-brick
           .guide-block.col-sm-6
-            #guide-name
+            .guide-name
               = @current_guide.name
               %span= @current_guide.short_description
+            .guide-title
+              = @current_guide.short_description
             .guide-profile-image
               - if !@current_guide
                 = image_tag 'missing.png'
@@ -53,7 +55,7 @@
 
           .adventure-block.col-sm-6
             #adventure-price
-              %span $60
+              %span= "$ #{@adventure.price}"
             #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
               %span 
                 BOOK IT

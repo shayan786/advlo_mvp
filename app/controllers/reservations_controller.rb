@@ -64,12 +64,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.permit(
-      :user_id,
-      :host_id,
-      :event_id,
-      :total_price,
-      :head_count
-    )
+    params.required(:reservation).permit(:user_id, :host_id, :event_id, :total_price, :head_count, :adventure_id)
   end
 end
