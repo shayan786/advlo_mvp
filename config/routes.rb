@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #user dashboard route
   devise_scope :user do
     get '/users/dashboard'            => 'registrations#dashboard'
+    get '/users/wallet'               => 'registrations#wallet'
   end
 
   #profile show route

@@ -3,14 +3,30 @@
     - if controller.action_name == "dashboard"
       %li.active
         %a{href: "/users/dashboard"}
-          My Adventures
+          Adventures
       %li
         %a{href: "/users/edit"} 
-          My Profile
+          Profile
+      %li
+        %a{href: "/users/wallet"} 
+          Wallet
+    - elsif controller.action_name == "wallet"
+      %li
+        %a{href: "/users/dashboard"}
+          Adventures
+      %li
+        %a{href: "/users/edit"} 
+          Profile
+      %li.active
+        %a{href: "/users/wallet"} 
+          Wallet
     - else 
       %li
         %a{href: "/users/dashboard"}
-          My Adventures
+          Adventures
       %li.active
         %a{href: "/users/edit"} 
-          My Profile
+          Profile
+      %li
+        %a{href: "/users/wallet"} 
+          Wallet
