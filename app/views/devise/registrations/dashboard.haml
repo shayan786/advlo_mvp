@@ -19,9 +19,15 @@
                 .col-md-6
                   .adv_title= adv.title
                   .adv_loc= "Location: #{adv.location}"
-                  .adv_loc= "category: #{adv.category}"
-                  - if adv.price_type && adv.price 
-                    .adv_price= "$"+adv.price.to_s + " " + adv.price_type.gsub("_"," ") 
+                  .adv_loc 
+                    Category:
+                    - adv.category.split(",").each_with_index do |cat, j|
+                      - if j != (adv.category.split(",").count-1)
+                        = cat.capitalize + ", "
+                      - else 
+                        = cat.capitalize
+                    - if adv.price_type && adv.price 
+                      .adv_price= "$"+adv.price.to_s + " " + adv.price_type.gsub("_"," ") 
 
                   .row.container
                     %a.btn.btn-default.edit_btn{href: "/adventures/#{adv.slug}"}
