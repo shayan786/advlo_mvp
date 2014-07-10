@@ -216,63 +216,6 @@
         }
       }
 
-      #reviews {
-        #purchase-to-review {
-          text-align: center;
-          margin-top: 20px;
-          margin-bottom: 20px;
-          color: $advlo_orange;
-          font-size: 20px;
-          font-family: 'nexa_light';
-          cursor: pointer;
-        }
-        .review {
-          width: 100%;
-          position: relative;
-          float: left;
-          height: 100%;
-          margin: 20px;
-
-          .reviewer-image-wrapper {
-            width: 150px;
-            height: 150px;  
-            float: left;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid $advlo_orange;
-            img {
-              height: 100%;
-            }
-          }
-
-          .review-text {
-            position: relative;
-            float: left;
-            width: 70%;
-            left: 60px;
-            margin-top: 14px;
-            color: #fff;
-            font-family: 'nexa_light';
-            font-size: 20px;
-            margin-bottom: 20px;
-
-            span {
-              font-size: 30px;
-              color: $advlo_orange;
-            }
-          }
-
-          .review-credit {
-            position: relative;
-            float: right;
-            margin-right: 15%;
-            color: $advlo_orange;
-            font-size: 20px;
-            font-family: 'nexa_bold';
-          }
-        }
-      }
-
       #similar {
         
       }
@@ -545,4 +488,61 @@
   cursor: pointer;
   top: 122px;
   float: left;
+}
+
+#reviews {
+  #purchase-to-review {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: $advlo_orange;
+    font-size: 20px;
+    font-family: 'nexa_light';
+    cursor: pointer;
+  }
+  .review {
+    width: 100%;
+    position: relative;
+    float: left;
+    height: 100%;
+    margin: 20px;
+
+    .reviewer-image-wrapper {
+      width: 150px;
+      height: 150px;  
+      float: left;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid $advlo_orange;
+      img {
+        height: 100%;
+      }
+    }
+
+    .review-text {
+      position: relative;
+      float: left;
+      width: 70%;
+      left: 60px;
+      margin-top: 14px;
+      color: #fff;
+      font-family: 'nexa_light';
+      font-size: 20px;
+      margin-bottom: 20px;
+
+      span {
+        font-size: 30px;
+        color: $advlo_orange;
+      }
+    }
+
+    .review-credit {
+      position: relative;
+      float: right;
+      margin-right: 15%;
+      color: $advlo_orange;
+      font-size: 20px;
+      font-family: 'nexa_bold';
+    }
+  }
 }

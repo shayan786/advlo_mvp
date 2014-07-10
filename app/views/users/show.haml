@@ -60,13 +60,13 @@
             .row.box_social.text-center
               .col-md-12
 
-                - if !@user.fb_url.nil? && !@user.fb_url.empty?
+                - if @user.fb_url
                   %a{href: "http://#{@user.fb_url}", target: "_blank", style: "padding-right: 25px;"}
                     %i.fa.fa-facebook-square
-                - if !@user.tw_url.nil? && !@user.tw_url.empty?
+                - if @user.tw_url
                   %a{href: "http://#{@user.tw_url}", target: "_blank", style: "padding-right: 25px;"}
                     %i.fa.fa-twitter-square
-                - if !@user.li_url.nil? && !@user.li_url.empty?
+                - if @user.li_url
                   %a{href: "http://#{@user.li_url}", target: "_blank"}
                     %i.fa.fa-linkedin-square
 
@@ -112,6 +112,10 @@
           .panel-body
             .review_header
               REVIEWS
+              .copy-brick.container-fluid#reviews
+                - @reviews.each do |review|
+                  = render partial: '/shared/review_brick', locals: {review: review}
+        
 
 :javascript
   usersShowInit()

@@ -5,9 +5,7 @@
     - else 
       = image_tag 'missing.png'
   .review-text 
-    %span "
     .review-body= review.body
-    %span "
     - if review.user.name
       .review-credit= "- #{review.user.name}"
     - else
