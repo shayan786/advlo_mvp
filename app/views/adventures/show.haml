@@ -1,9 +1,6 @@
 .adventure-show-container.col-md-12
-  #main_image.img-responsive= image_tag @adventure.attachment.url(:hero)
-
-  .title-copy
-    #adventure-title-large= @adventure.title
-    #adventure-description-large= @adventure.location
+  #adventure-title
+    #main_image.img-responsive= image_tag @adventure.attachment.url(:hero)
 
   .col-md-3.adventure-show-infographic
     -if @current_guide
@@ -20,7 +17,6 @@
 
 
       .adventure-block
-        #adventure-title
 
         #adventure-price
           %span= "$ #{@adventure.price}"
@@ -78,6 +74,12 @@
 
     .col-md-3#desktop-adventure-nav
       .navigation-brick
+        %a{href: '#adventure-title'}
+          .item.adventure-title
+            - if @adventure.title.length > 29
+              .text-long= @adventure.title
+            - else
+              .text= @adventure.title
         %a{href: '#overview'}
           .item
             %span overview
@@ -106,4 +108,6 @@
 
   $('#profile-next').addClass('adventure-show-arrow-right')
   $('#profile-prev').addClass('adventure-show-arrow-left')
+  
+
   
