@@ -10,6 +10,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def wallet
+    if !current_user
+      redirect_to '/users/sign_up', notice: "Lets get you started with an account"
+    end
+  end
+
   def update
     @user = User.find(current_user.id)
     #successfully_updated = if needs_password?(@user, params)
