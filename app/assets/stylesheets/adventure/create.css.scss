@@ -212,8 +212,8 @@
 		}
 
 		#add-bank {
-		  cursor: pointer;
-			margin-top: 50px;
+			margin-top: 20px;
+		  	cursor: pointer;
 			text-align: center;
 			text-align: center;
 		}
@@ -229,8 +229,16 @@
 		}
 		#add-bank-form {
 			display: none;
+
+			.bank_change_btn {
+				margin-top: 15px;
+				margin-bottom: 25px;
+			}
 		}
 
+		#change_bank_form {
+			display: none;
+		}
 
 		.save {
 			margin: 0 auto;
@@ -243,11 +251,16 @@
 
 			}
 		}
+
+		.prefill_label {
+			padding-top: 5px;
+			font-size: 1.2em;
+		}
 	}
 
 	//PUBLISH
 	#adv_publish {
-		
+
 	}
 }
 

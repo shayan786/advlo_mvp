@@ -13,80 +13,149 @@
 
           - if current_user.stripe_recipient?
             - # Show existing bank / cc info with option to edit/delete etc.
-          - else 
-            - # Render new bank / cc form
-            %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_cc_form", enctype: "multipart/form-data"}
-              %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
+            - recipient_info = Stripe::Recipient.retrieve(current_user.stripe_recipient_id)
 
-              #add-card{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Card"}
-                .glyphicon.glyphicon-plus 
-                .fa.fa-credit-card
+            #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
+              .glyphicon.glyphicon-plus
+              .fa.fa-university
 
-              #add-card-form
-                .form-group.row
-                  .col-md-4
-                    .form_label.text-right Full Name
-                  .col-md-6
-                    %input{type: 'hidden', name: 'recipient[type]', value: 'individual'}
-                    %input{type: 'hidden', name: 'recipient[tax_id]', value: ''}
-                    %input.form-control{type: "text", placeholder: "First Middle Last", name: "recipient[cardholders_name]", id: "full_name"}
+            #add-bank-form
+              - # Show existing bank account info for verification
+              .row
+                .form_label.col-md-4.col-md-offset-1.text-right
+                  Bank Account Name:
+                .prefill_label.col-md-6.text-left
+                  = recipient_info.active_account.bank_name
+              .row
+                .form_label.col-md-4.col-md-offset-1.text-right
+                  Bank Account Number:
+                .prefill_label.col-md-6.text-left
+                  ********
+                  = recipient_info.active_account.last4
+              .row
+                .form_label.col-md-4.col-md-offset-1.text-right
+                  Verified:
+                .prefill_label.col-md-6.text-left
+                  - if recipient_info.active_account.verified
+                    VERIFIED
+                  - else
+                    PENDING
+              .row.text-center
+                %button.btn.btn-primary.bank_change_btn
+                  CHANGE
 
-                .form-group.row
-                  .col-md-4
-                    .form_label.text-right Card Number
-                  .col-md-6
-                    %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "recipient[credit_card_number]", id: "cc_number", maxlength: "16"}
-
-                .form-group.row
-                  .col-md-4
-                    .form_label.text-right CVV
-                  .col-md-1
-                    %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "recipient[cvv]", id: "cvv_number", maxlength: "3"}
-
-                .form-group.row
-                  .col-md-4
-                    .form_label.text-right Card Expiration
-                  .col-md-2
-                    .form-group
-                      %label Exp Month
-                      %input.form-control.show_ml{placeholder: "MM", type: "text", required: "required", maxlength: "2", name: "recipient[cc_exp_month]"}
-                  .col-md-2
-                    .form-group
-                      %label Exp Year
-                      %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "recipient[cc_exp_year]"}
-
-                .form-group.row.save
-                  %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Card"}
-              
-            %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", enctype: "multipart/form-data"}
-              %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
+              %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "change_bank_form", "data-remote" => "true"}
+                = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+                = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
+                %input{type: 'hidden', id: 'update_stripe_token', name: 'update_stripe_token', value: ""}
+                %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
+                %input{type: 'hidden', name: 'bank_cc_add', value: "1"}
+                %input{type: 'hidden', name: 'bank_cc_update', value: "1"}
             
-              #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
-                .glyphicon.glyphicon-plus
-                .fa.fa-university
-
-
-              #add-bank-form
                 .form-group.row
                   .col-md-4
                     .form_label.text-right Bank account name
-                  .col-md-6
-                    %input.form-control{type: "text", placeholder: "John Doe", required: "required", name: "recipient[bank_account_name]", id: "full_name"}
+                  .prefill_label.col-md-6
+                    = recipient_info.name
 
                 .form-group.row
                   .col-md-4
                     .form_label.text-right Routing Number
                   .col-md-6
-                    %input.form-control{type: "text", placeholder: "xxx xxx xxx", required: "required", name: "recipient[bank_routing_number]", id: "full_name"}
+                    %input.form-control{type: "text", placeholder: "xxx xxx xxx", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
 
                 .form-group.row
                   .col-md-4
                     .form_label.text-right Account Number
                   .col-md-6
-                    %input.form-control{type: "text", required: "required", name: "recipient[bank_account_number]", id: "full_name"}
+                    %input.form-control{type: "text", name: "recipient[bank_account_number]", id: "bank_account_number"}
 
                 .form-group.row.save
-                  %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Bank account"}
+                  %button.btn.btn-primary{id: "update_bank_form_btn"}
+                    Change Bank
+
+          - else 
+            - # Render new bank / cc form
+            / %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_cc_form", enctype: "multipart/form-data"}
+            /   = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+            /   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            /   %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
+
+            /   #add-card{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Card"}
+            /     .glyphicon.glyphicon-plus 
+            /     .fa.fa-credit-card
+
+            /   #add-card-form
+            /     .form-group.row
+            /       .col-md-4
+            /         .form_label.text-right Full Name
+            /       .col-md-6
+            /         %input{type: 'hidden', name: 'recipient[type]', value: 'individual'}
+            /         %input{type: 'hidden', name: 'recipient[tax_id]', value: ''}
+            /         %input.form-control{type: "text", placeholder: "First Middle Last", name: "recipient[cardholders_name]", id: "full_name"}
+
+            /     .form-group.row
+            /       .col-md-4
+            /         .form_label.text-right Card Number
+            /       .col-md-6
+            /         %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "recipient[credit_card_number]", id: "cc_number", maxlength: "16"}
+
+            /     .form-group.row
+            /       .col-md-4
+            /         .form_label.text-right CVV
+            /       .col-md-1
+            /         %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "recipient[cvv]", id: "cvv_number", maxlength: "3"}
+
+            /     .form-group.row
+            /       .col-md-4
+            /         .form_label.text-right Card Expiration
+            /       .col-md-2
+            /         .form-group
+            /           %label Exp Month
+            /           %input.form-control.show_ml{placeholder: "MM", type: "text", required: "required", maxlength: "2", name: "recipient[cc_exp_month]"}
+            /       .col-md-2
+            /         .form-group
+            /           %label Exp Year
+            /           %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "recipient[cc_exp_year]"}
+
+            /     .form-group.row.save
+            /       %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Card"}
+              
+            %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", "data-remote" => "true"}
+              = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+              %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
+              %input{type: 'hidden', id: 'stripe_token', name: 'stripe_token', value: ""}
+              %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
+              %input{type: 'hidden', name: 'bank_cc_add', value: "1"}
+              %input{type: 'hidden', name: 'bank_cc_update', value: "0"}
+            
+              #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
+                .glyphicon.glyphicon-plus
+                .fa.fa-university
+              #add-bank-form
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Bank account name
+                  .col-md-6
+                    %input.form-control{type: "text", placeholder: "John Doe", name: "recipient[bank_account_name]", id: "bank_account_name"}
+
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Routing Number
+                  .col-md-6
+                    %input.form-control{type: "text", placeholder: "xxx xxx xxx", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
+
+                .form-group.row
+                  .col-md-4
+                    .form_label.text-right Account Number
+                  .col-md-6
+                    %input.form-control{type: "text", name: "recipient[bank_account_number]", id: "bank_account_number"}
+
+                .form-group.row.save
+                  %button.btn.btn-primary{id: "add_bank_form_btn"}
+                    Add Bank
 
         .panel-footer.text-center
           .row
@@ -102,6 +171,7 @@
 
 :javascript
   adventureCreate();
+  getStripeToken_bank();
 
   $('[data-toggle="tooltip"]').tooltip({
     animated: 'fade'

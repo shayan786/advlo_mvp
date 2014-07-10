@@ -81,6 +81,35 @@ class AdventureStepsController < ApplicationController
         end
       end
 
+    # Hook for bank / cc info + interaction with stripe (will only happen if recipient does not exist from view)
+    elsif params[:bank_cc_add] == "1"
+      user = User.find_by_id(params[:host_id])
+
+      # Hook if you want to change you current bank account (also implies you have a recipient id)
+      if params[:bank_cc_update] == "1"
+        recipient = Stripe::Recipient.retrieve(user.stripe_recipient_id)
+        recipient.bank_account = params[:update_stripe_token]
+
+        recipient.save
+
+        redirect_to "/adventure_steps/payment?adventure_id=#{@adventure.id}", notice: "Bank account has been updated"
+      else
+        # Create new recipient
+        recipient = Stripe::Recipient.create(
+          :name => params[:recipient][:bank_account_name],
+          :type => "individual",
+          :email => params[:recipient][:email],
+          :bank_account => params[:stripe_token]
+        )
+
+        # Add recipient id to the user
+        user.update(stripe_recipient_id: recipient.id)
+      end
+
+      respond_to do |format|
+        format.js {render "payment.js", layout: false}
+      end
+
     # For updating the 'basic' info
     else
       @adventure.attributes = adventure_params
