@@ -21,7 +21,7 @@
         .form-group
           .row
             .col-md-6.col-md-offset-3
-              %textarea.form-control{rows: '4', maxlength: "250", name: 'review[body]'}
+              %input.form-control{rows: '3', maxlength: "250", name: 'review[body]', type: 'text', placeholder: "Review text"}
           .row.text-center
             %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Update Your Review'}
 
@@ -47,7 +47,7 @@
         .form-group
           .row.review-textinput
             .col-md-6.col-md-offset-3
-              %textarea.form-control{rows: '4', maxlength: "250", name: 'review[body]'}
+              %input.form-control{rows: '3', maxlength: "250", name: 'review[body]', type: 'text', placeholder: "Review text"}
           .row.text-center
             %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Write a Review'}
 
