@@ -37,9 +37,9 @@
 
 
 body {
-  background-image:url(cartographer_small.png); background-repeat:repeat
+  background: asset_url('cartographer_small.png');
 }
 
 #adventure-partial {
-  background-image:url(cartographer_small.png); background-repeat:repeat
+  background: asset_url('cartographer_small.png');
 }
