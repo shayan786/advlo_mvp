@@ -1,4 +1,4 @@
-.review
+.review{id: review.id}
   .reviewer-image-wrapper
     - if review.user.avatar.url(:profile_circle) != "/images/profile_circle/missing.png"
       = image_tag "#{review.user.avatar.url(:profile_circle)}"

@@ -1,11 +1,11 @@
 #how_it_works {
 	min-height: 375px;
 	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 	position: relative;
 	width: 100%;
 	float: left;
-	background-color: $adv_slider_background_color;
+	background-color: #fff;
 
 	.row {
 		width: 75%;
@@ -20,8 +20,9 @@
 			}
 
 			.large_text {
-				color: #fff;
-				font-size: 4.3em;
+				color: #000;
+				font-size: 5em;
+				font-family: 'nexa_light';
 			}
 
 			.small_text {

@@ -1,11 +1,11 @@
-.title-brick.container-fluid
-  .itinerary-icon
-  .brick-title 
+.title-brick.container-fluid.itinerary-title
+  .brick-icons= image_tag 'map.png'
+  .brick-title
     ITINERARY
 
 #itinerary
   - if @itineraries
-    - @itineraries.each_with_index do |itin, i| 
+    - @itineraries.each do |itin| 
       .copy-brick.itinerary-brick
         .fa.fa-plus
         .fa.fa-minus
@@ -13,6 +13,3 @@
           = itin.headline
         .description
           = itin.description
-
-
-  

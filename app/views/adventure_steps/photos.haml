@@ -46,21 +46,26 @@
   adventureCreate();
 
   $('.img_del_btn').click(function(e) {
-    var img_id = this.id;
 
-    e.preventDefault();
-    $.ajax({
-      url: "#{wizard_path}",
-      dataType: "text json",
-      data: {delete_img: 1, delete_img_id: this.getAttribute('id'), adventure_id: #{@adventure.id}, #{request_forgery_protection_token.to_s}: "#{form_authenticity_token}"},
-      type: "POST",
-      method: "PUT",
-      beforeSend: function() {
-        $('#img-'+img_id).fadeOut(200, function() {
-          $(this).remove();
-        });
-      }
-    });
+    var response = confirm("Delete this image?");
+
+    if(response == true){
+      var img_id = this.id;
+
+      e.preventDefault();
+      $.ajax({
+        url: "#{wizard_path}",
+        dataType: "text json",
+        data: {delete_img: 1, delete_img_id: this.getAttribute('id'), adventure_id: #{@adventure.id}, #{request_forgery_protection_token.to_s}: "#{form_authenticity_token}"},
+        type: "POST",
+        method: "PUT",
+        beforeSend: function() {
+          $('#img-'+img_id).fadeOut(200, function() {
+            $(this).remove();
+          });
+        }
+      });
+    }
   });
 
 
