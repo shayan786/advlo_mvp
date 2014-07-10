@@ -301,6 +301,12 @@ function galleryMasonry(){
   })
 }
 
+function show_change_bank_form() {
+  $('.bank_change_btn').click(function() {
+    $('#change_bank_form').fadeIn();
+  });
+}
+
 function form_validator(){
   $('#adventure_edit_form').bootstrapValidator({
     fields: {
@@ -491,7 +497,7 @@ function form_validator(){
             notEmpty: {
               message: 'Please enter bank account routing number'
             },
-            integer: {
+            numeric: {
               message: 'Routing number is invalid'
             }
           }
@@ -501,7 +507,38 @@ function form_validator(){
             notEmpty: {
               message: 'Please enter bank acount number'
             },
-            integer: {
+            numeric: {
+              message: 'Bank account number is invalid'
+            }
+          }
+        }
+      }
+    });
+  $('#change_bank_form').bootstrapValidator({
+      fields: {
+        'recipient[bank_account_name]': {
+          validators: {
+            notEmpty: {
+              message: 'Please enter bank account holders full name'
+            }
+          }
+        },
+        'recipient[bank_routing_number]': {
+          validators: {
+            notEmpty: {
+              message: 'Please enter bank account routing number'
+            },
+            numeric: {
+              message: 'Routing number is invalid'
+            }
+          }
+        },
+        'recipient[bank_account_number]': {
+          validators: {
+            notEmpty: {
+              message: 'Please enter bank acount number'
+            },
+            numeric: {
               message: 'Bank account number is invalid'
             }
           }
@@ -509,13 +546,6 @@ function form_validator(){
       }
     });
 }
-
-function multiSelect(){
-  $(document).ready(function() {
-    $('.multiselect').multiselect();
-  });
-}
-
 
 adventureShow = function() {
   galleryMasonry();
@@ -543,13 +573,13 @@ adventureIndex = function() {
 }
 
 adventureCreate = function() {
-  multiSelect();
   advPhotoInput();
   input_popover();
   input_datepicker();
   input_maxlength();
   create_tabs();
   form_validator();
+  show_change_bank_form();
 }
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------

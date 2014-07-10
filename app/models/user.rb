@@ -86,11 +86,21 @@ class User < ActiveRecord::Base
     # Must be a host eligible
     if @user.is_guide?(@user.id)
       # Must have existing stripe recipient id
-      if !@user.stripe_recipient_id.nil? && !@user.stripe_recipient_id == ''
+      if !@user.stripe_recipient_id.nil? && !(@user.stripe_recipient_id == '')
         return true
       end
     else
       return false
+    end
+  end
+
+  def stripe_customer?
+    @user = User.find_by!(:id => self.id)
+
+    if @user.stripe_customer_id.nil? || (@user.stripe_customer_id == '')
+      return false
+    else
+      return true
     end
   end
 
