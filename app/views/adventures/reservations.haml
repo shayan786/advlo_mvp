@@ -1,0 +1,40 @@
+#adventure_reservations
+  .container
+    .panel.panel-default
+      .panel-heading.text-center
+        Reservations
+
+      .panel-body
+        - if @adventure.events.empty?
+          .col-md-6.col-md-offset-3
+            .alert.alert-warning.text-center
+              There are no reservations for this adventure!
+        .table-responsive
+          %table.table.table-hover
+            %thead
+              %tr
+                %th.text-center #
+                %th Name
+                %th.text-center People
+                %th Timeslot
+                %th $ Earned
+            %tbody
+            - current_user.reservations.where(adventure_id: @adventure.id).each_with_index do |res, i|
+              - customer = User.find_by_id(res.user_id)
+              - event = Event.find_by_id(res.event_id)
+              %tr
+                %td.text-center= i+1
+                %td
+                  = image_tag "#{customer.get_avatar_url("thumb")}", class: "img-circle customer_img"
+                  = customer.name
+                %td.text-center= res.head_count
+                %td= event.start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
+                %td= "$ "+res.total_price.to_s
+            %thead
+              %tr
+                %th
+                %th
+                %th.text-center= current_user.reservations.where(adventure_id: @adventure.id).sum(:head_count)
+                %th
+                %th= "$ "+current_user.reservations.where(adventure_id: @adventure.id).sum(:total_price).to_s
+
