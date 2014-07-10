@@ -12,12 +12,12 @@
               .col-md-4
                 .form_label.text-right Name
               .col-md-8
-                %input.form-control{placeholder: "Name", type: "text", required: "required", name: "user[name]", id: "user_name", value: "#{current_user.name}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Display Name"}}
+                %input.form-control{placeholder: "Name", type: "text", name: "user[name]", id: "user_name", value: "#{current_user.name}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Display Name"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Email
               .col-md-8
-                %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", value: "#{current_user.email}"}
+                %input.form-control{placeholder: "Email Address", type: "email", name: "user[email]", id: "user_email", value: "#{current_user.email}"}
             .form-group.row
               .col-md-4
                 .form_label.text-right Tagline
@@ -32,18 +32,20 @@
               .col-md-4
                 .form_label.text-right Sex
               .col-md-3
-                %select.form-control{name: "user[sex]", id: "user_sex"}
-                  - if current_user.sex == "Female"
-                    %option Male
-                    %option{selected: "true"} Female
-                  - else 
+                - if current_user.sex
+                  .prefill_input= current_user.sex
+                - else
+                  %select.form-control{name: "user[sex]", id: "user_sex"}
                     %option Male
                     %option Female
             .form-group.row
               .col-md-4
                 .form_label.text-right Date of Birth
               .col-md-4
-                %input.form-control{type: "text", name: "user[dob]", id: "user_dob", value: "#{current_user.dob}"}
+                - if current_user.dob
+                  .prefill_input= current_user.dob.strftime("%m/%d/%Y")
+                - else 
+                  %input.form-control{type: "text", name: "user[dob]", id: "user_dob"}
             .form-group.row
               .col-md-4
                 .form_label.text-right Biography

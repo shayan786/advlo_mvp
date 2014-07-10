@@ -45,9 +45,17 @@ function input_popover() {
 }
 
 function input_datepicker() {
+  var today = new Date();
+  var cur_day = today.getDate();
+  var cur_mon = today.getMonth()+1;
+  var cur_yr = today.getFullYear();
+
+  var yr_m_18 = cur_yr - 18;
+
   $('#user_dob').datepicker({
-    format: "mm/dd/yyyy",
-    startDate: "01/01/1940",
+    format: "yyyy/mm/dd",
+    startDate: "1940/01/01",
+    endDate: yr_m_18+"/01/01",
     startView: 2,
     orientation: "auto right",
     autoclose: true
@@ -116,12 +124,43 @@ function profileCenterImage(){
   })
 }
 
+function edit_user_form_validator(){
+  $('#user_edit_form').bootstrapValidator({
+    fields: {
+      'user[name]': {
+        validators: {
+          regexp: {
+            regexp: /^[a-z ,.'-]+$/i,
+            message: "Cannot include special characters, e.g. (! ~ @)",
+          },
+          notEmpty: {
+            message: "Name cannot be empty"
+          }
+        }
+      },
+      'user[email]': {
+        validators: {
+          notEmpty: {
+            mesage: "Email cannot be empty"
+          },
+          stringLength: {
+            message: "Name must include atleast 3 characters",
+            min: 3,
+            max: 40
+          }
+        }
+      }
+    }
+  });
+}
+
 
 function usersInit(){
   input_popover();
   input_datepicker();
   input_maxlength();
   photoInput();
+  edit_user_form_validator();
 }
 
 function usersShowInit(){
