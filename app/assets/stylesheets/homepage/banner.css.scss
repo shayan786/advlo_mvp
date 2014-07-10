@@ -34,15 +34,15 @@
 
 .header_btn_fix {
 	margin-top: 50px;
-	background-color: $header_btn_color;
-	border-color: $header_btn_color;
+	background-color: $header_btn_color_hover;
+	border-color: $header_btn_color_hover;
 	font-size: 1.0em;
 
 	padding: 12px 30px;
 
 	&:hover {
-		background-color: $header_btn_color_hover;
-		border-color: $header_btn_color_hover;
+		background-color: $header_btn_color;
+		border-color: $advlo_orange;
 	}
 
 	&:active {
