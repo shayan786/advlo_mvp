@@ -5,7 +5,7 @@ class AdventuresController < ApplicationController
     # if params[:search].present?
     # @adventures = Adventure.near(params[:search], 50, :order => :distance)
     if params[:location].present?
-      @adventures = Adventure.near(params[:location], 200)
+      @adventures = Adventure.near(params[:location], 200).where(approved: true)
 
       @hero_image = HeroImage.where(region: params[:location] ).last
       @location = params[:location].downcase
@@ -15,21 +15,29 @@ class AdventuresController < ApplicationController
 
   def show
     @adventure = Adventure.find_by_slug(params[:id])
+
+    if @adventure.published == true && @adventure.approved == true
+      adventure_show_variables
+
+    elsif @adventure.users.first == current_user
+      adventure_show_variables
+      flash[:error] = "This adventure is pending approval"
+    else  
+      render '/error_404'
+    end
+  end
+
+  def adventure_show_variables
     @current_guide = @adventure.users.first
     @review = Review.new
-
     @adventure_reviews = Review.where(adventure_id: @adventure.id).order('created_at DESC')
-
     @itineraries = Itinerary.where(adventure_id: @adventure.id)
-
     @all_adventure_events = @adventure.events.sort_by{|a| a.start_time}
     @limited_adventure_events = @adventure.events.sort_by{|a| a.start_time}.take(5)
-
     related = []
     related << Adventure.where('category LIKE ?',"%#{@adventure.category}%").limit(4) 
     related << @adventure.nearbys(20).limit(3) if @adventure.nearbys(20)
     @related = related.flatten
-
     @reservation = Reservation.new
   end
 
@@ -135,7 +143,7 @@ class AdventuresController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_images, :images, :category => [])
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_images, :images, :published, :category => [])
   end
 end
 

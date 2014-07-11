@@ -6,7 +6,6 @@
         .panel-heading.text-center.section_header
           PUBLISH
         .panel-body
-
         .panel-footer.text-center
           .row
             .col-md-2.col-md-offset-4
@@ -14,5 +13,9 @@
                 %i.fa.fa-eye
                 PREVIEW
             .col-md-2
-              %a.btn.btn-primary.preview_btn{href: "#"}
-                PUBLISH
+              %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_iten_form"}
+                = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+                = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                = tag(:input, :type => "hidden", :name => "published", :value => "1")
+                = tag(:input, :type => "hidden", :name => "adventure_id", :value => @adventure.id)
+                %input.btn.btn-primary.preview_btn{type: 'submit', value: 'PUBLISH'}
