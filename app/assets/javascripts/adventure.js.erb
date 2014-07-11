@@ -310,9 +310,21 @@ function show_change_bank_form() {
 }
 
 function input_geocomplete() {
-  $('#adventure_edit_form #adv_location').geocomplete({
-    map: "#adventure_edit_form .location_map"
-  });
+  var adv_location = $('#adventure_edit_form #adv_location').val();
+
+  if (adv_location) {
+    $('#adventure_edit_form #adv_location').geocomplete({
+      map: "#adventure_edit_form .location_map",
+      location: adv_location
+    });
+  }
+  else {
+    $('#adventure_edit_form #adv_location').geocomplete({
+      map: "#adventure_edit_form .location_map"
+    });
+  }
+
+  
 }
 
 function form_validator(){
