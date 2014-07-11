@@ -155,6 +155,7 @@ function edit_user_form_validator(){
 }
 
 function edit_user_input_geocomplete() {
+  $('#user_edit_form .location_map').hide();
   var user_location = $('#user_edit_form #user_location').val();
 
   if (user_location) {
@@ -162,6 +163,7 @@ function edit_user_input_geocomplete() {
       map: "#user_edit_form .location_map",
       location: user_location
     });
+    $('#user_edit_form .location_map').show();
   }
   else {
     $('#user_edit_form #user_location').geocomplete({

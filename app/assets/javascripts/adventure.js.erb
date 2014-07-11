@@ -329,6 +329,29 @@ function input_geocomplete() {
   }
 }
 
+function create_header_remove_arrow() {
+  if ($(window).width() > 768) {
+    $('.create_steps_header ul li i').addClass('fa fa-long-arrow-right');
+  }
+
+  $(window).resize(function() {
+    if ($(window).width() < 768) {
+      $('.create_steps_header ul li i').removeClass('fa fa-long-arrow-right');
+      $('.create_steps_header ul').addClass('nav-stacked');
+      $('.create_steps_header .nav').css({
+        paddingLeft: "0"
+      });
+    } 
+    if ($(window).width() > 768) {
+      $('.create_steps_header ul li i').addClass('fa fa-long-arrow-right');
+      $('.create_steps_header ul').removeClass('nav-stacked')
+      $('.create_steps_header .nav').css({
+        paddingLeft: "40px"
+      });
+    } 
+  });
+}
+
 function form_validator(){
   $('#adventure_edit_form').bootstrapValidator({
     fields: {
@@ -683,4 +706,5 @@ adventureCreate = function() {
   form_validator();
   show_change_bank_form();
   input_geocomplete();
+  create_header_remove_arrow();
 }
