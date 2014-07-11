@@ -32,7 +32,6 @@
 //= require jquery.geocomplete.min
 
 
-
 $(document).ajaxStart(function(){
   $('#loader-overlay').show()
 });
