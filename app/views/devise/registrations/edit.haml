@@ -28,6 +28,10 @@
                 .form_label.text-right Location
               .col-md-8
                 %input.form-control{placeholder: "Location", type: "text", name: "user[location]", id: "user_location", value: "#{current_user.location}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Current Location"}}
+            .row
+              .col-md-4
+              .col-md-8
+                .location_map
             .form-group.row
               .col-md-4
                 .form_label.text-right Sex

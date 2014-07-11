@@ -154,6 +154,22 @@ function edit_user_form_validator(){
   });
 }
 
+function edit_user_input_geocomplete() {
+  var user_location = $('#user_edit_form #user_location').val();
+
+  if (user_location) {
+    $('#user_edit_form #user_location').geocomplete({
+      map: "#user_edit_form .location_map",
+      location: user_location
+    });
+  }
+  else {
+    $('#user_edit_form #user_location').geocomplete({
+      map: "#user_edit_form .location_map"
+    });
+  }
+}
+
 
 function usersInit(){
   input_popover();
@@ -161,6 +177,7 @@ function usersInit(){
   input_maxlength();
   photoInput();
   edit_user_form_validator();
+  edit_user_input_geocomplete();
 }
 
 function usersShowInit(){
