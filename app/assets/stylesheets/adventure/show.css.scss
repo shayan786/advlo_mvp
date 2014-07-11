@@ -295,7 +295,7 @@
       background: $shaded_gray;
 
       .ping {
-        background: url(icons/orange-tag.png) no-repeat left center;
+        background: url(location.png) no-repeat left center;
         height: 40px;
         width: 30px;
         background-size: 100% 100%;
@@ -354,9 +354,10 @@
       }
 
       .item {
-        height: 50px;
+        height: 40px;
         text-align: center;
-        font-size: 30px;
+        font-size: 24px;
+        font-family: 'nexa_light';
         text-transform: uppercase;
         background-color: rgba(0, 0, 0, 0.7);
         color: #fff;
@@ -375,7 +376,7 @@
         background-color: rgba(0, 0, 0, 0.7);
         color: $advlo_orange;
         .text {
-          font-size: 26px;
+          font-size: 24px;
           width: 80%;
           margin: 0 auto;
           padding-top: 5%;

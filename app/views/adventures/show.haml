@@ -10,10 +10,7 @@
         .guide-title
           = @current_guide.short_description
         .guide-profile-image
-          - if @current_guide.avatar_url != '' && @current_guide.avatar_url != nil
-            = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
-          - elsif @current_guide.avatar.url
-            = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
+          = link_to (image_tag "#{@current_guide.get_avatar_url("medium")}", class: "img-circle customer_img"), user_path(@current_guide)
 
 
       .adventure-block
@@ -76,7 +73,7 @@
       .navigation-brick
         %a{href: '#adventure-title'}
           .item.adventure-title
-            - if @adventure.title.length > 29
+            - if @adventure.title.length > 25
               .text-long= @adventure.title
             - else
               .text= @adventure.title
@@ -98,8 +95,6 @@
 :javascript
   adventureShow();
   getStripeToken();
-  
-
 
   $(window).resize(function(){
     sizeSidebar();
@@ -110,4 +105,3 @@
   $('#profile-prev').addClass('adventure-show-arrow-left')
   
 
-  

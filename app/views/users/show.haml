@@ -4,10 +4,8 @@
       .col-md-4.col-md-offset-4#profile-box
         .panel.panel-default
           .panel-body.text-center
-            - if @user && @user.avatar_url == '' || @user.avatar_url == nil
-              .profile-image= image_tag @user.avatar.url(:large), class: 'non-fb-img'
-            - elsif @user
-              .profile-image= image_tag "#{@user.avatar_url}?type=large"
+            .profile-image= image_tag "#{@user.get_avatar_url("medium")}", class: "img-circle customer_img" 
+            
 
             .banner_name= @user.name
             .banner_subtitle= @user.short_description

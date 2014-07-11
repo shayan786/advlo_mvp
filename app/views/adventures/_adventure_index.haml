@@ -9,14 +9,13 @@
             -else
               .title= adv.title
 
-            .ping
             - if adv.location
               - if adv.location.length > 33
                 .location= "#{adv.location.upcase[0..33]}..."
               -else
                 .location= adv.location.upcase
 
-          .price= adv.price
+          .price= "$ #{adv.price}"
 
           .hover-block{id: i}
             - usr = adv.users.first
