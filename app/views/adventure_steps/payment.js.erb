@@ -1,1 +1,8 @@
+$('#add-bank-form').remove()
+$('#add-bank').append("<div id='updated-bank-form'></div>")
+$("#updated-bank-form").html("<%= escape_javascript(render(partial: 'updated_bank_form', locals: {recipient_info: @recipient})) %>")
+$('#add-bank').click()
 $('#adv_payment .update_notice').fadeIn();
+
+// $('#add-bank').show()
+// $('#add-bank-form').hide()

@@ -217,9 +217,12 @@
 			position: absolute !important;
 		}
 
+		#add-bank-form {
+			display: none;
+		}
 		#add-bank {
 			margin-top: 20px;
-		  	cursor: pointer;
+	  	cursor: pointer;
 			text-align: center;
 			text-align: center;
 		}
@@ -233,7 +236,7 @@
 		#add-card-form {
 			display: none;
 		}
-		#add-bank-form {
+		#updated-bank-form {
 			display: none;
 
 			.bank_change_btn {

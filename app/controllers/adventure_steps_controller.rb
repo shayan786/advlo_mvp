@@ -107,6 +107,8 @@ class AdventureStepsController < ApplicationController
         # Add recipient id to the user
         user.update(stripe_recipient_id: recipient.id)
 
+        @recipient = Stripe::Recipient.retrieve(recipient.id)
+
         respond_to do |format|
           format.js {render "payment.js", layout: false}
         end
