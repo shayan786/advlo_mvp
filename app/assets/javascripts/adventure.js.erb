@@ -62,7 +62,11 @@ function adventureScroll(){
   })
 }
 
-function toggleItineraryItems(){
+function toggleItineraryItemsAndArrows(){
+
+  $('#profile-next').addClass('adventure-show-arrow-right')
+  $('#profile-prev').addClass('adventure-show-arrow-left')
+
   $('.itinerary-brick').click(function(){
     $(this).children().last().toggle();
     $(this).children().first().toggle();
@@ -548,42 +552,6 @@ function form_validator(){
     });
 }
 
-adventureShow = function() {
-  galleryMasonry();
-  galleryModalClick();
-  galleryToggle();
-  sizeSidebar();
-  navBarCatch(); 
-  navigationBreadcrumbs();
-  adventureScroll();
-  centerGuideImage();
-  stopSidebarAtBottom();
-  toggleItineraryItems()
-  adventureShowHover();
-  similarAdventureSlider();
-};
-
-adventureIndex = function() {
-  positionLocationText();
-  masonrySetup();
-  filterCatch();
-  heroScroll();
-  adventureHover();
-  centerProfileImage();
-  highlightFilters();
-}
-
-adventureCreate = function() {
-  advPhotoInput();
-  input_popover();
-  input_datepicker();
-  input_maxlength();
-  create_tabs();
-  form_validator();
-  show_change_bank_form();
-  input_geocomplete();
-}
-
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
 FSInitialize = function(adventure_id) {
   // Needs to change depending on mins, hours, days
@@ -669,4 +637,40 @@ FSInitialize = function(adventure_id) {
 
 adventureSchedule = function(adventure_id) {
   FSInitialize(adventure_id);
+}
+
+adventureShow = function() {
+  galleryMasonry();
+  galleryModalClick();
+  galleryToggle();
+  sizeSidebar();
+  navBarCatch(); 
+  navigationBreadcrumbs();
+  adventureScroll();
+  centerGuideImage();
+  stopSidebarAtBottom();
+  toggleItineraryItemsAndArrows()
+  adventureShowHover();
+  similarAdventureSlider();
+};
+
+adventureIndex = function() {
+  positionLocationText();
+  masonrySetup();
+  filterCatch();
+  heroScroll();
+  adventureHover();
+  centerProfileImage();
+  highlightFilters();
+}
+
+adventureCreate = function() {
+  advPhotoInput();
+  input_popover();
+  input_datepicker();
+  input_maxlength();
+  create_tabs();
+  form_validator();
+  show_change_bank_form();
+  input_geocomplete();
 }
