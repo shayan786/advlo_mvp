@@ -48,7 +48,7 @@
                 %input.form-control{type: "text", required: "required", name: "adventure[duration_num]", id: "adv_duration_num", value: "#{@adventure.duration_num}"}
               .col-md-2
                 %select.form-control{name: "adventure[duration_type]", id: "adv_duration_type"}
-                  - options_dur = ["Hours", "Minutes", "Days"]
+                  - options_dur = ["Minutes", "Hours", "Days"]
                   - options_dur.each do |o|
                     - if @adventure.duration_type == o
                       %option{selected: "true"}= o
