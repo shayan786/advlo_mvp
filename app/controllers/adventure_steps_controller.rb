@@ -88,9 +88,12 @@ class AdventureStepsController < ApplicationController
       # Hook if you want to change you current bank account (also implies you have a recipient id)
       if params[:bank_cc_update] == "1"
         recipient = Stripe::Recipient.retrieve(user.stripe_recipient_id)
+
         recipient.bank_account = params[:update_stripe_token]
+        recipient.name = params[:recipient][:bank_account_name]
 
         recipient.save
+        @updated_recipient = recipient
 
         respond_to do |format|
           format.js {render "payment_update.js", layout: false}
