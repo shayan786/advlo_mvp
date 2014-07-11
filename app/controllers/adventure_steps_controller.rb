@@ -91,6 +91,10 @@ class AdventureStepsController < ApplicationController
         recipient.bank_account = params[:update_stripe_token]
 
         recipient.save
+
+        respond_to do |format|
+          format.js {render "payment_update.js", layout: false}
+        end
       else
         # Create new recipient
         recipient = Stripe::Recipient.create(
@@ -102,12 +106,11 @@ class AdventureStepsController < ApplicationController
 
         # Add recipient id to the user
         user.update(stripe_recipient_id: recipient.id)
-      end
 
-      respond_to do |format|
-        format.js {render "payment.js", layout: false}
+        respond_to do |format|
+          format.js {render "payment.js", layout: false}
+        end
       end
-
     # For updating the 'basic' info
     else
       @adventure.attributes = adventure_params

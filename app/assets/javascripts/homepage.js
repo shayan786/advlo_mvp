@@ -2,27 +2,27 @@ function homepageTextScroll(){
   $('#homepage-text').hide()
 
   $(window).load(function(){
-    $('#homepage-text').fadeIn(1200)
+    $('#homepage-text').fadeIn(1500)
   })
   $(window).scroll(function(){
     var s = $(window).scrollTop();
 
-    $('#homepage-text').css('-webkit-transform','translateY(' + (s/3) + 'px');
+    $('#homepage-text').css('-webkit-transform','translateY(' + (s/5) + 'px');
 
-    if(s > 200 && !$('#homepage-text').hasClass('passed')){
-      $('#homepage-text').animate({
-        opacity: 0
-      },500)
+    // if(s > 200 && !$('#homepage-text').hasClass('passed')){
+    //   $('#homepage-text').animate({
+    //     opacity: 0
+    //   },300)
 
-      $('#homepage-text').addClass('passed')
-    }
-    if(s < 200 && $('#homepage-text').hasClass('passed')){
-      $('#homepage-text').animate({
-        opacity: 1
-      },1000)
+    //   $('#homepage-text').addClass('passed')
+    // }
+    // if(s < 200 && $('#homepage-text').hasClass('passed')){
+    //   $('#homepage-text').animate({
+    //     opacity: 1
+    //   },1000)
 
-      $('#homepage-text').removeClass('passed')
-    }  
+    //   $('#homepage-text').removeClass('passed')
+    // }  
   })
 }
 

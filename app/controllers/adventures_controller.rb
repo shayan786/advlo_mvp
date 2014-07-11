@@ -5,7 +5,7 @@ class AdventuresController < ApplicationController
     # if params[:search].present?
     # @adventures = Adventure.near(params[:search], 50, :order => :distance)
     if params[:location].present?
-      @adventures = Adventure.near(params[:location], 100)
+      @adventures = Adventure.near(params[:location], 200)
 
       @hero_image = HeroImage.where(region: params[:location] ).last
       @location = params[:location].downcase

@@ -20,12 +20,6 @@
     color: #000;
   }
 
-  #stripe-error-message {
-    color: red;
-    text-align: center;
-    font-size: 20px;
-    margin: 20px;
-  }
   #success {
     padding-top: 20px;
     text-align: center;
@@ -56,4 +50,12 @@
       width: 32%;
     }
   }
+}
+
+#stripe-error-message {
+  font-family: 'nexa_light';
+  color: red;
+  text-align: center;
+  font-size: 20px;
+  margin: 20px;
 }
