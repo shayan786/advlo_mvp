@@ -1,6 +1,12 @@
 function homepageTextScroll(){
+  $('#homepage-text').hide()
+
+  $(window).load(function(){
+    $('#homepage-text').fadeIn(1200)
+  })
   $(window).scroll(function(){
     var s = $(window).scrollTop();
+
     $('#homepage-text').css('-webkit-transform','translateY(' + (s/3) + 'px');
 
     if(s > 200 && !$('#homepage-text').hasClass('passed')){
