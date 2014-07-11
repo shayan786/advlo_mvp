@@ -307,6 +307,12 @@ function show_change_bank_form() {
   });
 }
 
+function input_geocomplete() {
+  $('#adventure_edit_form #adv_location').geocomplete({
+    map: "#adventure_edit_form .location_map"
+  });
+}
+
 function form_validator(){
   $('#adventure_edit_form').bootstrapValidator({
     fields: {
@@ -573,6 +579,7 @@ adventureCreate = function() {
   create_tabs();
   form_validator();
   show_change_bank_form();
+  input_geocomplete();
 }
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------

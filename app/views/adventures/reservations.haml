@@ -20,6 +20,7 @@
                 %th $ Earned
             %tbody
             - current_user.reservations.where(adventure_id: @adventure.id).each_with_index do |res, i|
+              - # Add logic for sorting them by timeslot
               - customer = User.find_by_id(res.user_id)
               - event = Event.find_by_id(res.event_id)
               %tr

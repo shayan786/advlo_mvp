@@ -44,6 +44,12 @@
 				text-align: center !important;
 			}
 
+			.location_map {
+				height: 300px;
+				width: auto;
+				margin-bottom: 20px;
+			}
+
 			.panel-footer {
 				background-color: $white;
 
@@ -266,4 +272,8 @@
 
 #location-map {
 	margin: 35px;
+}
+
+.pac-container:after {
+	content: none !important;
 }

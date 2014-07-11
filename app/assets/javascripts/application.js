@@ -29,6 +29,7 @@
 //= require reservation.js
 //= require user.js
 //= require fullcalendar
+//= require jquery.geocomplete.min
 
 
 

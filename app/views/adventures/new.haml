@@ -13,31 +13,35 @@
               .col-md-4
                 .form_label.text-right Title *
               .col-md-6
-                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[title]", id: "adv_name", value: "", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Surfing in la punta"}}
+                %input.form-control.show_ml{type: "text", name: "adventure[title]", id: "adv_name", value: "", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Surfing in la punta"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Location *
               .col-md-6
-                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[location]", id: "adv_location", value: "", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Meeting Address, Ex: 123 Hiking St. Denver, CO 80219"}}
+                %input.form-control.show_ml{type: "text", name: "adventure[location]", id: "adv_location", value: "", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Meeting Address, Ex: 123 Hiking St. Denver, CO 80219"}}
+            .row
+              .col-md-4
+              .col-md-6
+                .location_map
             .form-group.row
               .col-md-4
                 .form_label.text-right Summary *
               .col-md-6
-                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", value: "", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This is the description for your adventure! Sell it with a detailed & informative summary!"}}
+                %textarea.form-control.show_ml{rows: "7", type: "text", name: "adventure[summary]", id: "adv_summary", value: "", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This is the description for your adventure! Sell it with a detailed & informative summary!"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Capacity *
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[cap_min]", id: "adv_cap_min", value: ""}
+                %input.form-control{type: "text", name: "adventure[cap_min]", id: "adv_cap_min", value: ""}
                 .text-center Min
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[cap_max]", id: "adv_cap_max", value: "", min: 1, max: 101}
+                %input.form-control{type: "text", name: "adventure[cap_max]", id: "adv_cap_max", value: "", min: 1, max: 101}
                 .text-center Max
             .form-group.row
               .col-md-4
                 .form_label.text-right Duration *
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[duration_num]", id: "adv_duration_num", value: ""}
+                %input.form-control{type: "text", name: "adventure[duration_num]", id: "adv_duration_num", value: ""}
               .col-md-2
                 %select.form-control{name: "adventure[duration_type]", id: "adv_duration_type"}
                   %option Minutes
@@ -50,7 +54,7 @@
                 .input-group
                   %span.input-group-addon
                     $
-                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: ""}
+                  %input.form-control{type: "text", name: "adventure[price]", id: "adv_price", value: ""}
                   %span.input-group-addon
                     USD
               .col-md-3
@@ -69,10 +73,6 @@
                   %label.checkbox-inline
                     %input{type: "checkbox", id: o.downcase, value: o.downcase, name: 'category[]'}
                     = o
-
-                / %select.multiselect{multiple: true, :required => true, name: 'category[]'}
-                /   = options.each do |o|
-                /     %option{value: o.downcase}= o
 
             .form-group.row
               .col-md-4
