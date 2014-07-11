@@ -278,3 +278,8 @@
 .pac-container:after {
 	content: none !important;
 }
+
+.pac-container {
+	z-index: 9999;
+	position: fixed;
+}

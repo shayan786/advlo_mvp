@@ -352,6 +352,54 @@ function create_header_remove_arrow() {
   });
 }
 
+function request_form_maxlength(){
+  $('#request_form input.show_ml').maxlength({
+    alwaysShow: true,
+    warningClass: "label label-success",
+  });
+
+  $('#request_form textarea.show_ml').maxlength({
+    alwaysShow: true,
+    warningClass: "label label-success",
+  });
+
+}
+
+function request_form_geocomplete() {
+  $('#request_form #request_location').geocomplete();
+}
+
+function request_form_validator() {
+  $('#request_form').bootstrapValidator({
+    fields: {
+      'request[email]': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'request[location]': {
+        validators: {
+          notEmpty: {
+            message: 'Location is required and cannot be empty'
+          }
+        }
+      },
+      'request[description]': {
+        validators: {
+          notEmpty: {
+            message: 'Description is required and cannot be empty'
+          }
+        }
+      }
+    }
+  });
+}
+
 function form_validator(){
   $('#adventure_edit_form').bootstrapValidator({
     fields: {
@@ -695,6 +743,10 @@ adventureIndex = function() {
   adventureHover();
   centerProfileImage();
   highlightFilters();
+  request_form_maxlength();
+  request_form_validator();
+  input_popover();
+  request_form_geocomplete();
 }
 
 adventureCreate = function() {

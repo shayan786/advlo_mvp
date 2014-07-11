@@ -8,7 +8,7 @@ class AdventuresController < ApplicationController
       @adventures = Adventure.near(params[:location], 200)
 
       @hero_image = HeroImage.where(region: params[:location] ).last
-      @location = params[:location].downcase
+      @location = params[:location].downcase      
     end
     # end
   end
@@ -59,6 +59,20 @@ class AdventuresController < ApplicationController
   # Show adventure's reservations
   def reservations
     @adventure = Adventure.find_by_id(params[:id])
+  end
+
+  def requests 
+    @request = Request.create!(request_params)
+    @request.category = params[:request_category].join(',')
+
+    if @request.save
+      # Mail the requester
+      AdvloMailer.request_email(params[:request][:email]).deliver
+
+      respond_to do |format|
+        format.js {render "request.js", layout: false}
+      end
+    end
   end
 
   #------------------------HOST LOGIC START----------------------------
@@ -137,5 +151,10 @@ class AdventuresController < ApplicationController
   def adventure_params
     params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_images, :images, :category => [])
   end
+
+  def request_params
+    params.required(:request).permit(:user_id, :description, :email, :location, :request_category => [])
+  end
+
 end
 

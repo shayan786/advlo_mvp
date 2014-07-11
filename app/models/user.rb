@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :reservations
   has_many :reviews
   has_many :adventures, through: :user_adventures
+  has_many :requests
+  
   accepts_nested_attributes_for :user_adventures, :allow_destroy => true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
