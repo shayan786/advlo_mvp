@@ -21,6 +21,7 @@ gem 'aws-sdk'
 gem 'wicked'
 gem 'stripe'
 gem 'geocoder'
+gem 'newrelic_rpm'
 
 group :production do 
   gem 'rails_12factor'

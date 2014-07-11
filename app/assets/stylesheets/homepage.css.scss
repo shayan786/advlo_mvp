@@ -3,3 +3,12 @@
 @import "homepage/find_host";
 @import "homepage/adventure_slider";
 @import "homepage/host_slider";
+
+
+h1 {
+  color: $advlo_orange !important;
+}
+
+.homepage-container {
+  width: 81%;
+}

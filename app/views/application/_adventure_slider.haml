@@ -1,5 +1,5 @@
 .shared-slider-container#adventure.adventure-slider-wrapper
-  .container
+  .container.homepage-container
     %h1 FEATURED ADVENTURES
     %a.small_text{href: "#"} VIEW ALL >>>
 
@@ -19,7 +19,6 @@
                   -else
                     #title= adv.title
 
-                  .ping
                   - if adv.location
                     - if adv.location.length > 40
                       .location= "#{adv.location.upcase[0..40]}..."
@@ -28,10 +27,8 @@
 
                 .hover-block{id: i}
                   - usr = adv.users.first
-                  - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil
-                    .guide-profile-image= image_tag usr.avatar.url(:large)
-                  -elsif usr
-                    .guide-profile-image= image_tag "#{usr.avatar_url}?type=large"
+                  .guide-profile-image= image_tag "#{usr.get_avatar_url('medium')}"
+
                 .copy-container{class: "copy-#{i}"}
 
 

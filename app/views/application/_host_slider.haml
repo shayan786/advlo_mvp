@@ -1,5 +1,5 @@
 .shared-slider-container#host-slider
-  .container
+  .container.homepage-container
     %h1 FEATURED HOSTS
     %a.small_text{href: "#"} VIEW ALL >>>
 
@@ -11,22 +11,13 @@
       .swiper-wrapper
         - if @feat_hosts
           - @feat_hosts.each_with_index do |user, i|
-            - if user.avatar_url && user.avatar_url != ''
-              %a.swiper-slide{href: user_path(user)}
-                .image-wrapper.host-image
-                  = image_tag "#{user.avatar_url}?type=large"
-                  .copy
-                    .name= user.name
-                    .location= user.location
-                    .desc= user.short_description
-            -else
-              %a.swiper-slide{href: user_path(user)}
-                .image-wrapper.host-image
-                  = image_tag user.avatar.url(:large)
-                  .copy
-                    .name= user.name
-                    .location= user.location
-                    .desc= user.short_description
+            %a.swiper-slide{href: user_path(user)}
+              .image-wrapper.host-image
+                = image_tag "#{user.get_avatar_url("medium")}"
+                .copy
+                  .name= user.name
+                  .location= user.location
+                  .desc= user.short_description
                   
 
 :javascript

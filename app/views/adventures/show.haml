@@ -1,9 +1,6 @@
 .adventure-show-container.col-md-12
-  #main_image.img-responsive= image_tag @adventure.attachment.url(:hero)
-
-  .title-copy
-    #adventure-title-large= @adventure.title
-    #adventure-description-large= @adventure.location
+  #adventure-title
+    #main_image.img-responsive= image_tag @adventure.attachment.url(:hero)
 
   .col-md-3.adventure-show-infographic
     -if @current_guide
@@ -13,14 +10,10 @@
         .guide-title
           = @current_guide.short_description
         .guide-profile-image
-          - if @current_guide.avatar_url != '' && @current_guide.avatar_url != nil
-            = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
-          - elsif @current_guide.avatar.url
-            = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
+          = link_to (image_tag "#{@current_guide.get_avatar_url("medium")}", class: "img-circle customer_img"), user_path(@current_guide)
 
 
       .adventure-block
-        #adventure-title
 
         #adventure-price
           %span= "$ #{@adventure.price}"
@@ -78,6 +71,12 @@
 
     .col-md-3#desktop-adventure-nav
       .navigation-brick
+        %a{href: '#adventure-title'}
+          .item.adventure-title
+            - if @adventure.title.length > 25
+              .text-long= @adventure.title
+            - else
+              .text= @adventure.title
         %a{href: '#overview'}
           .item
             %span overview
@@ -96,8 +95,6 @@
 :javascript
   adventureShow();
   getStripeToken();
-  
-
 
   $(window).resize(function(){
     sizeSidebar();
@@ -107,3 +104,4 @@
   $('#profile-next').addClass('adventure-show-arrow-right')
   $('#profile-prev').addClass('adventure-show-arrow-left')
   
+

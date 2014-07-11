@@ -9,7 +9,7 @@
 
   
   #edit-review
-    - if current_user.reviews.where(adventure_id: @adventure.id).size > 0
+    - if current_user.reviews.where(adventure_id: @adventure.id).size > 0 && current_user
       :javascript 
         $('#edit-review').show()
 

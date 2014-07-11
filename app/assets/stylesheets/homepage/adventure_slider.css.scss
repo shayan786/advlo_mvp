@@ -25,13 +25,13 @@
     float: left;
 
     .next {
-      color: #000;
+      color: #fff;
       font-size: 4em;
       position: absolute;
       cursor: pointer;
     }
     .prev {
-      color: #000;
+      color: #fff;
       font-size: 4em;
       position: absolute;
       cursor: pointer;
@@ -47,7 +47,7 @@
     #host-next {
       top: 40%;
       right: 5.5%;
-      color: #000;
+      color: #fff;
       font-size: 4em;
       position: absolute;
       cursor: pointer;
@@ -55,7 +55,7 @@
     #host-prev {
       top: 40%;
       left: 3%;
-      color: #000;
+      color: #fff;
       font-size: 4em;
       position: absolute;
       cursor: pointer;
@@ -104,11 +104,10 @@
 
         .location {
           color: #C35B26;
-          margin-left: 20px;
         }
 
         .ping {
-          background: asset-url("icons/orange-tag.png") no-repeat left center;
+          background: asset-url("location.png") no-repeat left center;
           height: 20px;
           width: 15px;
           background-size: 100% 100%;
@@ -134,5 +133,29 @@
         width: 100%;
       }
     }
+  }
+}
+
+
+.adventure-browse-copy {
+  color: #fff;
+  bottom: 10px;
+  position: absolute;
+  z-index: 100;
+  left: 15px;
+  #title {
+    font-size: 20px;
+  }
+
+  .location {
+    color: #C35B26;
+  }
+
+  .ping {
+    background: asset-url("location.png") no-repeat left center;
+    height: 20px;
+    width: 15px;
+    background-size: 100% 100%;
+    position: absolute;
   }
 }
