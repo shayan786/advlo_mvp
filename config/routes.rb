@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   resources :reviews
 
   root to: 'application#homepage'
+  
+  get '*not_found', to: 'application#render_error'
 end	

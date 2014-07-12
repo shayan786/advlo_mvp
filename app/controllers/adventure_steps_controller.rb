@@ -27,7 +27,13 @@ class AdventureStepsController < ApplicationController
     end
 
     # Hook for uploading pics and remaining on the same page
-    if params[:images]
+
+    if params[:published] == '1'
+
+      @adventure.published = true
+      render_wizard @adventure
+
+    elsif params[:images]
 
       params[:images].each do |image|
         @adventure.adventure_gallery_images.create(picture: image, adventure_id: adv_id)
@@ -88,9 +94,12 @@ class AdventureStepsController < ApplicationController
       # Hook if you want to change you current bank account (also implies you have a recipient id)
       if params[:bank_cc_update] == "1"
         recipient = Stripe::Recipient.retrieve(user.stripe_recipient_id)
+
         recipient.bank_account = params[:update_stripe_token]
+        recipient.name = params[:recipient][:bank_account_name]
 
         recipient.save
+        @updated_recipient = recipient
 
         respond_to do |format|
           format.js {render "payment_update.js", layout: false}
@@ -106,6 +115,8 @@ class AdventureStepsController < ApplicationController
 
         # Add recipient id to the user
         user.update(stripe_recipient_id: recipient.id)
+
+        @recipient = Stripe::Recipient.retrieve(recipient.id)
 
         respond_to do |format|
           format.js {render "payment.js", layout: false}
@@ -125,7 +136,12 @@ class AdventureStepsController < ApplicationController
   # Using a private method to encapsulate the permissible parameters is just a good pattern
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
+  
+  def redirect_to_finish_wizard(options = nil)
+    redirect_to "/adventures/#{@adventure.slug}", notice: 'Congratulations! We will notifiy you when your adventure is approved.'
+  end
+
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_image, :images, :itineraries, :itinerary, :headline, :description, :latitude, :longitude, :category => [])
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_image, :images, :itineraries, :itinerary, :headline, :description, :latitude, :longitude, :published, :category => [])
   end
 end

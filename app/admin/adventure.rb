@@ -19,7 +19,8 @@ ActiveAdmin.register Adventure do
 
   index do
     column :title
-    column :slug
+    column :published
+    column :approved
     column :category
     column :location
     column 'Email' do |adv|
@@ -40,6 +41,7 @@ ActiveAdmin.register Adventure do
   form multipart: true do |f|
     f.inputs do
       f.input :title
+      f.input :approved
       f.input :slug, label: 'permalink'
       f.input :subtitle
       f.input :location
