@@ -31,11 +31,19 @@
   }
 
   .adventure_info_body {
-  	background: $lighter_gray;
   	padding-bottom: 20px;
-  	padding-top: 20px;
+  	background: $lighter_gray;
+
+  	.gray_background {
+  		background: $lighter_gray !important;
+  	}
+
+  	.white_background {
+  		background: #FFF !important;
+  	}
 
   	h2 {
+  		margin-top: 30px;
   		font-family: cabin_bold !important;
   		font-size: 3.2em;
   	}
@@ -52,7 +60,7 @@
 	.matrix_header {
 		font-family: nexa_bold;
 		font-size: 0.8em;
-		margin-top: 10px;
+		margin-top: 15px;
 		margin-bottom: 5px;
 	}
 
