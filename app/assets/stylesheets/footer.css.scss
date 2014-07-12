@@ -4,6 +4,7 @@
 	height: 60px;
 	background-color: $footer_background_color;
 	overflow-y: hidden !important;
+	border-top: 1px solid $light_gray;
 
 	.container {
 		font-size: 1.2em;
