@@ -2,6 +2,8 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
+# ActionMailer::Base.register_template_extension('haml')
+
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {

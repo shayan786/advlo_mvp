@@ -26,13 +26,14 @@ class AdventureStepsController < ApplicationController
       @adventure = Adventure.find_by_id(adv_id)
     end
 
-    # Hook for uploading pics and remaining on the same page
-
     if params[:published] == '1'
+    # Published a Finished Adventure
 
       @adventure.published = true
       render_wizard @adventure
+      AdvloMailer.adventure_approval_email(@adventure).deliver
 
+    # Hook for uploading pics and remaining on the same page
     elsif params[:images]
 
       params[:images].each do |image|
@@ -54,6 +55,7 @@ class AdventureStepsController < ApplicationController
       respond_to do |format|
         format.js {}
       end
+
     # Hook for adding a itinerary item and remain on the same page
     elsif params[:add_iten_item] == "1"
       @adventure.itineraries.create(headline: params[:headline], description: params[:description], adventure_id: @adventure.id)
