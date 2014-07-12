@@ -32,7 +32,6 @@
 //= require jquery.geocomplete.min
 
 
-
 $(document).ajaxStart(function(){
   $('#loader-overlay').show()
 });
@@ -43,40 +42,45 @@ $(document).ajaxStop(function(){
 //Header resize on scroll
 $(document).ready(function(){
 	var flag = 0;
-    $(window).scroll(function () {
-      if ($(this).scrollTop() > 50 && flag == 0) {
-        $('nav.navbar').animate({
-        	padding: "0px 0px 0px 10px",
-          height: "43px"
-        });
-        $('nav.navbar .navbar-brand').animate({
-        	marginTop: "4px",
-        	"background-size": "78%"
-        });
-        $('.logged_in_dropdown_box img').animate({
-          width: "40px",
-          height: "40px",
-          marginTop: "2px"
-        });
 
-        flag = 1;
-      }
-      if ($(this).scrollTop() < 50 && flag == 1) {
-      	$('nav.navbar').animate({
-        	padding: "4px 0px 4px 10px",
-          height: "58px"
-        });
-        $('nav.navbar .navbar-brand').animate({
-        	marginTop: "0px",
-        	"background-size": "99%"
-        });
-        $('.logged_in_dropdown_box img').animate({
-          width: "50px",
-          height: "50px",
-          marginTop: "0px"
-        });
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 50 && flag == 0) {
+      $('nav.navbar').animate({
+      	padding: "0px 0px 0px 10px",
+        height: "43px"
+      });
+      $('nav.navbar .navbar-brand').animate({
+      	marginTop: "4px",
+      	"background-size": "78%"
+      });
+      $('.logged_in_dropdown_box img').animate({
+        width: "40px",
+        height: "40px",
+        marginTop: "2px"
+      });
 
-        flag = 0;
-      } 
-    });
+      flag = 1;
+    }
+    if ($(this).scrollTop() < 50 && flag == 1) {
+    	$('nav.navbar').animate({
+      	padding: "4px 0px 4px 10px",
+        height: "58px"
+      });
+      $('nav.navbar .navbar-brand').animate({
+      	marginTop: "0px",
+      	"background-size": "99%"
+      });
+      $('.logged_in_dropdown_box img').animate({
+        width: "50px",
+        height: "50px",
+        marginTop: "0px"
+      });
+
+      flag = 0;
+    } 
+  });
+
+  $('#wrapper').css({
+    minHeight: $(window).height()
+  })
 });

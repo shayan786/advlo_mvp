@@ -329,6 +329,77 @@ function input_geocomplete() {
   }
 }
 
+function create_header_remove_arrow() {
+  if ($(window).width() > 768) {
+    $('.create_steps_header ul li i').addClass('fa fa-long-arrow-right');
+  }
+
+  $(window).resize(function() {
+    if ($(window).width() < 768) {
+      $('.create_steps_header ul li i').removeClass('fa fa-long-arrow-right');
+      $('.create_steps_header ul').addClass('nav-stacked');
+      $('.create_steps_header .nav').css({
+        paddingLeft: "0"
+      });
+    } 
+    if ($(window).width() > 768) {
+      $('.create_steps_header ul li i').addClass('fa fa-long-arrow-right');
+      $('.create_steps_header ul').removeClass('nav-stacked')
+      $('.create_steps_header .nav').css({
+        paddingLeft: "40px"
+      });
+    } 
+  });
+}
+
+function request_form_maxlength(){
+  $('#request_form input.show_ml').maxlength({
+    alwaysShow: true,
+    warningClass: "label label-success",
+  });
+
+  $('#request_form textarea.show_ml').maxlength({
+    alwaysShow: true,
+    warningClass: "label label-success",
+  });
+
+}
+
+function request_form_geocomplete() {
+  $('#request_form #request_location').geocomplete();
+}
+
+function request_form_validator() {
+  $('#request_form').bootstrapValidator({
+    fields: {
+      'request[email]': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'request[location]': {
+        validators: {
+          notEmpty: {
+            message: 'Location is required and cannot be empty'
+          }
+        }
+      },
+      'request[description]': {
+        validators: {
+          notEmpty: {
+            message: 'Description is required and cannot be empty'
+          }
+        }
+      }
+    }
+  });
+}
+
 function form_validator(){
   $('#adventure_edit_form').bootstrapValidator({
     fields: {
@@ -672,6 +743,10 @@ adventureIndex = function() {
   adventureHover();
   centerProfileImage();
   highlightFilters();
+  request_form_maxlength();
+  request_form_validator();
+  input_popover();
+  request_form_geocomplete();
 }
 
 adventureCreate = function() {
@@ -683,4 +758,5 @@ adventureCreate = function() {
   form_validator();
   show_change_bank_form();
   input_geocomplete();
+  create_header_remove_arrow();
 }

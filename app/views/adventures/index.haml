@@ -1,6 +1,6 @@
-.adventure-page-container.col-md-12
-  / .jumbotron.jumbotron-adventure{style: "background: url(#{@hero_image.attachment.url(:hero)})"}
-  #hero_image= image_tag @hero_image.attachment.url(:hero) if @hero_image
+.adventure-page-container
+  - if @hero_image
+    #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
   #location_text= @location.upcase
   - filters = ['culture', 'bike', 'hike', 'camp', 'water','snow','rock', 'wildcard']
   .filter-container
@@ -18,20 +18,77 @@
     - if @adventures.first != nil
       = render partial: "adventure_index", locals: {adventures: @adventures}
 
-
     - else 
       .brick-wrapper.masonry.js-masonry
         %a.adventure-brick{href: 'adventures/info', style: 'text-decoration:none;'}
           .image-wrapper#no-adventures= image_tag 'missing.png'
           #no-adv-text Add an adventure in this area
 
+    .text-center
+      .btn.btn-primary.request_btn{'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
+        Request Adventure
+
+      #request_form_modal.modal.fade{role: "dialog"}
+        .modal-dialog
+          .modal-content
+            .modal-header
+              Can't Find It ... Request It!
+            .modal-body
+              %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_form", "data-remote" => "true"}
+                = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                - if current_user
+                  = tag(:input, :type => "hidden", :name => "request[user_id]", :value => current_user.id)
+                .form-group.row
+                  .col-md-4 
+                    .form_label.text-right Email *
+                  .col-md-6
+                    %input.form-control.show_ml{type: "text", name: "request[email]", id: "request_email", maxlength: "40"}
+                .form-group.row
+                  .col-md-4 
+                    .form_label.text-right Location *
+                  .col-md-6
+                    %input.form-control{type: "text", name: "request[location]", id: "request_location"}
+                .form-group.row
+                  .col-md-4 
+                    .form_label.text-right Category
+                  .col-md-6
+                    - options = ['CULTURE', 'BIKE', 'HIKE', 'CAMP', 'WATER', 'SNOW', 'ROCK', 'WILDCARD', 'CLIMB']
+                    - options.each do |o|
+                      %label.checkbox-inline
+                        %input{type: "checkbox", id: o.downcase, value: o.downcase, name: 'request_category[]'}
+                        = o
+                .form-group.row
+                  .col-md-4 
+                    .form_label.text-right Description / Details *
+                  .col-md-6
+                    %textarea.form-control.show_ml{rows: "5", type: "text", name: "request[description]", id: "request_description", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Tell us a bit more about what type of adventure you are looking for and we'll try to find a local to host it!"}}
+                .row.text-center
+                  .btn.btn-primary.request_btn
+                    REQUEST IT
+
+              #request_submitted
+                .row
+                  .col-md-10.col-md-offset-1
+                    %i.fa.fa-road
+                    %br
+                    Thanks for requesting an adventure.
+                    %br
+                    We will contact you once we find a suitable host!
+
 
 :javascript
   $(window).load(function(){
     adventureIndex();
+    $('#hero_image').css({
+      height: $(window).height()*0.70
+    });
     $('#location_text').css('top', ($('#hero_image').height() / 2))
   })  
 
   $(window).resize(function(){
     positionLocationText()
+  })
+
+  $('#request_form .request_btn').click(function() {
+    $('#request_form').submit();
   })

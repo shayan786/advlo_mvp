@@ -8,9 +8,10 @@
   #hero_image{
     margin-top: 71px;
     position: relative;
-    img{
-      width: 110%;
-    }
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 
   #location_text {
@@ -78,7 +79,6 @@
 .adventure-container {
   position: relative;
   width: 100%;
-  background-color: #333333;
   float: left;
 
   .brick-wrapper{
@@ -186,6 +186,71 @@
       /* border: 1px solid #C35B26; */
     }
   }
+
+  .request_btn {
+    margin-top: 20px;
+    font-size: 1.8em;
+    background-color: $login_btn_color;
+    border-color: $login_btn_color;
+    padding: 10px 20px;
+
+    &:hover {
+      background-color: $login_btn_color_hover;
+      border-color: $login_btn_color_hover;
+    }
+  }
+
+  #request_form_modal {
+    .modal-dialog {
+      margin: 75px auto 0 auto;
+    }
+
+    .modal-header {
+      font-family: cabin_bold;
+      color: $orange;
+      font-size: 1.6em;
+    }
+
+    .modal-body {
+
+      form {
+        .form_label {
+          padding-top: 5px;
+          font-size: 1.2em;
+          font-weight: bold;
+          color: #FFF;
+        }
+
+        .checkbox-inline {
+          color: #FFF;
+        }
+
+        .request_btn {
+          margin-top: 10px;
+          padding: 5px 15px;
+        }
+      }
+
+      #request_submitted {
+        display: none;
+        color: #FFF;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+
+        .fa {
+          font-size: 2.2em;
+          margin-bottom: 25px;
+          margin-top: 25px;
+        }
+      }
+
+    }
+  }
+}
+
+.popover {
+  z-index: 9999;
+  position: fixed;
 }
 
 

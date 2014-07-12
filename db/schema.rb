@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 20140711221117) do
     t.boolean  "approved"
   end
 
+  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
+
   create_table "events", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -109,6 +111,16 @@ ActiveRecord::Schema.define(version: 20140711221117) do
     t.string   "headline"
     t.text     "description"
     t.integer  "adventure_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "requests", force: true do |t|
+    t.integer  "user_id"
+    t.string   "email"
+    t.string   "location"
+    t.text     "description"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
