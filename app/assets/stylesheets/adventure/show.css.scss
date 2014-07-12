@@ -38,18 +38,22 @@
         margin-top: 15px;
         font-family: 'Nexa_light';
       }
-      .guide-title {
+      .adv-title {
         position: relative;
         margin-top: 2px;
-        letter-spacing: 1px;
+        font-size: 30px;
+        color: $advlo_orange;
         font-style: italic;
+      }
+      .shortened {
+        font-size: 20px;
       }
 
       .guide-profile-image {
         position: relative;
         top: 10px;
-        width: 175px;
-        height: 175px;
+        width: 160px;
+        height: 160px;
         text-align: center;
         border-radius: 50%;
         overflow: hidden;

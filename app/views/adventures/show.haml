@@ -7,10 +7,13 @@
       .guide-block
         .guide-name
           = @current_guide.name
-        .guide-title
-          = @current_guide.short_description
+        .adv-title
+          - if @adventure.title.length > 25
+            .shortened= @adventure.title
+          - else
+            = @adventure.title
         .guide-profile-image
-          = link_to (image_tag "#{@current_guide.get_avatar_url("medium")}", class: "img-circle customer_img"), user_path(@current_guide)
+          = link_to (image_tag "#{@current_guide.get_avatar_url("medium")}"), user_path(@current_guide)
 
 
       .adventure-block
@@ -71,12 +74,6 @@
 
     .col-md-3#desktop-adventure-nav
       .navigation-brick
-        %a{href: '#adventure-title'}
-          .item.adventure-title
-            - if @adventure.title.length > 25
-              .text-long= @adventure.title
-            - else
-              .text= @adventure.title
         %a{href: '#overview'}
           .item
             %span overview

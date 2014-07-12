@@ -3,33 +3,36 @@
     %h1 FEATURED ADVENTURES
     %a.small_text{href: "#"} VIEW ALL >>>
 
-  .slider-wrapper
-    %i.next.fa.fa-chevron-right#adv-next
-    %i.prev.fa.fa-chevron-left#adv-prev
+  .adventure-container 
+    #adventure-partial
+    .brick-wrapper.masonry.js-masonry
+      - @feat_adventures.each_with_index do |adv, i|
+        %a.adventure-brick{href: adventure_path(adv.slug)}
+          .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center 0;"}
+            .copy
+              - if adv.title.length > 38
+                .title= "#{adv.title[0..38]}..."
+              -else
+                .title= adv.title
 
-    .swiper-container
-      .swiper-wrapper
-        - if @feat_adventures
-          - @feat_adventures.each_with_index do |adv, i|
-            %a.swiper-slide.adventure-slide{href: adventure_path(adv.slug)}
-              .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center 0px;"}
-                .copy
-                  - if adv.title.length > 32
-                    #title= "#{adv.title[0..32]}..."
-                  -else
-                    #title= adv.title
+              - if adv.location
+                - if adv.location.length > 33
+                  .location= "#{adv.location.upcase[0..33]}..."
+                -else
+                  .location= adv.location.upcase
 
-                  - if adv.location
-                    - if adv.location.length > 40
-                      .location= "#{adv.location.upcase[0..40]}..."
-                    -else
-                      .location= adv.location.upcase
+            .price= "$ #{adv.price}"
 
-                .hover-block{id: i}
-                  - usr = adv.users.first
-                  .guide-profile-image= image_tag "#{usr.get_avatar_url('medium')}"
+            .hover-block{id: i}
+              - usr = adv.users.first
+              - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil
+                .guide-image= image_tag "#{usr.avatar.url(:large)}"
+              - elsif usr
+                .guide-image= image_tag "#{usr.avatar_url}?type=large"
+              - else
+                .guide-image= image_tag 'missing.png'
 
-                .copy-container{class: "copy-#{i}"}
+            .copy-container{class: "copy-#{i}"}
 
 
 :javascript
