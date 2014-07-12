@@ -85,8 +85,6 @@ ActiveRecord::Schema.define(version: 20140711221117) do
     t.boolean  "approved"
   end
 
-  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
-
   create_table "events", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
