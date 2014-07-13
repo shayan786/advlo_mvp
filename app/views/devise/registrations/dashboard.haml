@@ -18,25 +18,25 @@
                   .adv_img{style: "background: url('#{adv.attachment.url(:medium)}')"}
                   - if !adv.published
                     .col-md-offset-3
-                      .btn.btn-default.disabled
+                      .btn.btn-danger.disabled
                         Not Published
                   - elsif !adv.approved
                     .col-md-offset-3
-                      .btn.btn-default.disabled
+                      .btn.btn-warning.disabled
                         Pending Approval
                   - else
                     .col-md-offset-3
-                      .btn.btn-default.disabled
-                        Live
+                      .btn.btn-success.disabled
+                        Active Adventure
                 .col-md-6
                   .adv_title
                     = adv.title
-                    %span= adv.published ? 'published' : 'un-published'
+
                   .adv_loc= "Location: #{adv.location}"
                   .adv_loc 
                     Category:
-                    - adv.category.split(",").each_with_index do |cat, j|
-                      - if j != (adv.category.split(",").count-1)
+                    - adv.category.split(",").each_with_index do |cat, i|
+                      - if i != (adv.category.split(",").count-1)
                         = cat.capitalize + ", "
                       - else 
                         = cat.capitalize
