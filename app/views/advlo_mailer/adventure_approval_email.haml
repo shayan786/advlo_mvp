@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1 Adventure Approval Request
+    %p
+      = @adventure.users.first.name
+      %br
+      = @adventure.users.first.email
+      %br
+    %p= @adventure.location
+    %p= @adventure.summary
+    %br
+    %br
+    #adventure-image
+      = image_tag @advenuture.attachment.url(:medium)
+    

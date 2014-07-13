@@ -17,7 +17,6 @@
 
 
       .adventure-block
-
         #adventure-price
           %span= "$ #{@adventure.price}"
         #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
@@ -31,6 +30,9 @@
           = image_tag 'missing.png'
 
   .adventure-copy-wrapper
+    - flash.each do |key, value|
+      %div{class: flash_class(key)}
+        %li= value
     .row
       .col-md-3#mobile-adventure-infographic
         .navigation-brick
