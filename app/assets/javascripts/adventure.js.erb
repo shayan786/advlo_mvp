@@ -42,7 +42,12 @@ function similarAdventureSlider(){
 }
 
 function positionLocationText(){
-  $('#location_text').css('top', ($('#hero_image').height() / 2));
+  $(document).ready(function(){
+    $('#hero_image').css({
+      height: $(window).height()*0.70
+    });
+    $('#location_text').css('top', ($('#hero_image').height() / 2.5));
+  })
 }
 
 function heroScroll(){
@@ -106,10 +111,14 @@ function filterCatch(){
       var fixedHeight = $('.filter-container').position().top
       if(s > fixedHeight ){
         $('.filter-static').fadeIn();
-        $('.filter-container').css('opacity',0)
+        $('.filter-container').animate({
+          opacity: 0
+        }, 200)
       }else if( s < fixedHeight ){
         $('.filter-static').fadeOut('fast')
-        $('.filter-container').css('opacity',1)
+        $('.filter-container').animate({
+          opacity: 1
+        })
       }
     })
   }else{
@@ -132,6 +141,7 @@ function stopSidebarAtBottom(){
 
     var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
     if(distanceFromBottom < 76){
+      console.log(distanceFromBottom)
       $('.adventure-show-container #desktop-adventure-nav').css({
         top: 'auto',
         position: 'absolute',
@@ -162,7 +172,7 @@ function stopSidebarAtBottom(){
 
 
 function navBarCatch(){
-  $('#main_image img').load(function(){
+  $(window).load(function(){
     $(window).scroll(function(){
       var scrollPosition = window.pageYOffset;
       var windowSize     = window.innerHeight;
@@ -170,10 +180,13 @@ function navBarCatch(){
       var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
       var s = $(window).scrollTop();
       if(distanceFromBottom < 76){
-      }else if(s > (widthOfBrowser() - 20)){
+
+      }else if(s > (widthOfBrowser() + 14 )){
         fixSidebar();
+
       }else{
         resetSideBar();
+
       }
     })
   })

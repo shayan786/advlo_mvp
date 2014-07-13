@@ -34,14 +34,12 @@
       %div{class: flash_class(key)}
         %li= value
     .row
-      .col-md-3#mobile-adventure-infographic
+      .col-md-12#mobile-adventure-infographic.text-center
         .navigation-brick
-          .guide-block.col-sm-6
+          .guide-block
             .guide-name
               = @current_guide.name
-              %span= @current_guide.short_description
-            .guide-title
-              = @current_guide.short_description
+            
             .guide-profile-image
               - if !@current_guide
                 = image_tag 'missing.png'
@@ -51,12 +49,14 @@
                 = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
       
 
-          .adventure-block.col-sm-6
-            #adventure-price
-              %span= "$ #{@adventure.price}"
-            #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
-              %span 
-                BOOK IT
+            .adventure-block.col-sm-12.text-center
+              #adventure-title-mobile
+                = @adventure.title
+              #adventure-price
+                = "$ #{@adventure.price}"
+              #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+                %span
+                  BOOK IT
 
     .col-md-9.information-container
       = render partial: 'overview'
@@ -93,6 +93,7 @@
 
 :javascript
   adventureShow();
+  navBarCatch();
   getStripeToken();
 
   $(window).resize(function(){

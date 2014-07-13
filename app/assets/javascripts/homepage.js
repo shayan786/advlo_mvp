@@ -7,7 +7,9 @@ function homepageTextScroll(){
   $(window).scroll(function(){
     var s = $(window).scrollTop();
 
-    $('#homepage-text').css('-webkit-transform','translateY(' + (s/5) + 'px');
+    if($(window).width() > 800){
+      $('#homepage-text').css('-webkit-transform','translateY(' + (s/5) + 'px');
+    }
 
     // if(s > 200 && !$('#homepage-text').hasClass('passed')){
     //   $('#homepage-text').animate({

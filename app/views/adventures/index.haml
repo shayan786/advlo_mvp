@@ -1,7 +1,7 @@
 .adventure-page-container
   - if @hero_image
     #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
-  #location_text= @location.upcase
+  #location_text= @location ? @location.upcase : "Advlo" 
   - filters = ['culture', 'bike', 'hike', 'camp', 'water','snow','rock', 'wildcard']
   .filter-container
     %a.filter{href: "/adventures/#{@location}/all", 'data-remote' => true} 
@@ -79,10 +79,6 @@
 :javascript
   $(window).load(function(){
     adventureIndex();
-    $('#hero_image').css({
-      height: $(window).height()*0.70
-    });
-    $('#location_text').css('top', ($('#hero_image').height() / 2))
   })  
 
   $(window).resize(function(){

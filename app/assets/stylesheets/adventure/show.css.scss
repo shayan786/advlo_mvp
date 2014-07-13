@@ -66,6 +66,7 @@
         }
       }
     }
+
     .adventure-block {
       position: relative;
       width: 100%;
@@ -73,8 +74,9 @@
       top: 20px;
       #adventure-title {
         color: #fff;
-        font-size: 25px;
+        font-size: 30px;
       }
+
       #adventure-price{
         font-size: 45px;
         color: $advlo_green;
@@ -96,6 +98,11 @@
     }
   }
 
+  #adventure-title-mobile {
+    color: #fff;
+    margin: 20px;
+    font-size: 30px;
+  }
 
 
   .adventure-copy-wrapper {
@@ -223,8 +230,8 @@
       
 
           .guide-name {
-            font-size: 23px;
-            margin-top: 15px;
+            font-size: 30px;
+            margin-bottom: 20px;
             font-family: 'Nexa_light';
           }
           
