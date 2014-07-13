@@ -83,4 +83,29 @@ $(document).ready(function(){
   $('#wrapper').css({
     minHeight: $(window).height()
   })
+
+  
+  //Contact form validation
+  $('#contact_form').bootstrapValidator({
+    fields: {
+      'contact[email]': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'contact[comments]': {
+        validators: {
+          notEmpty: {
+            message: 'Comments/question is required and cannot be empty'
+          }
+        }
+      }
+    }
+  });
 });
+

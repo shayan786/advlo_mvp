@@ -15,4 +15,9 @@ class AdvloMailer < ActionMailer::Base
     mail(to: email, subject: 'Your Adventure Request')
   end
 
+  def contact_email(contact_user)
+    @contact_user = contact_user
+    mail(reply_to: @contact_user.email, to: 'info@advlo.com', subject: '[ATTENTION] Advlo Contact-us Submission')
+  end
+
 end

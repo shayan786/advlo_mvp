@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     get '/users/wallet'               => 'registrations#wallet'
   end
 
+  #contact
+  post '/contact'                     => 'application#contact'
+
   #profile show route
   resources :users, :only => [:show]
 

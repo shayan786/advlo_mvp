@@ -3,7 +3,7 @@
     .footer_text
       .row
         .col-md-4.col-md-offset-4
-          %a{href: "#"}
+          %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_form_modal'}
             CONTACT
           = " - " 
           %a{href: "#"}
@@ -28,3 +28,33 @@
           %a{href:"/"}
             Advlo Inc.
           All rights reserved
+
+  #contact_form_modal.modal.fade{role: "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-header.text-center
+          Contact Advlo
+        .modal-body
+          %form{"accept-charset" => "UTF-8", action: "/contact", method: "POST", id: "contact_form", "data-remote" => "true"}
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            - if current_user
+              = tag(:input, :type => "hidden", :name => "contact[user_id]", :value => current_user.id)
+            .form-group.row
+              .col-md-4 
+                .form_label.text-right Email *
+              .col-md-6
+                %input.form-control{type: "text", name: "contact[email]", id: "contact_email"}
+            .form-group.row
+              .col-md-4 
+                .form_label.text-right Comments / Question *
+              .col-md-6
+                %textarea.form-control{rows: "7", type: "text", name: "contact[comments]", id: "contact_comments"}
+            .row.text-center
+              .btn.btn-primary.contact_btn
+                SUBMIT
+
+:javascript
+  $('#contact_form .contact_btn').click(function() {
+    $('#contact_form').submit();
+  })
+              

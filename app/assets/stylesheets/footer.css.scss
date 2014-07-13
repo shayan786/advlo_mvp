@@ -28,4 +28,36 @@
 			}
 		}
 	}
+
+	#contact_form_modal {
+		.modal-dialog {
+			margin: 65px auto 0 auto;
+		}
+
+		.modal-header {
+			font-size: 1.6em;
+			color: $orange;
+		}
+
+		.form_label {
+			padding-top: 5px;
+          	font-size: 1.2em;
+          	font-weight: bold;
+          	color: #FFF;
+		}
+
+		.contact_btn {
+
+			margin-top: 20px;
+		    font-size: 1.6em;
+		    background-color: $login_btn_color;
+		    border-color: $login_btn_color;
+		    padding: 10px 20px;
+
+		    &:hover {
+		      background-color: $login_btn_color_hover;
+		      border-color: $login_btn_color_hover;
+		    }
+		}
+	}
 }
