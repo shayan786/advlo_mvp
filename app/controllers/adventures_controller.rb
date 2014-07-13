@@ -19,9 +19,14 @@ class AdventuresController < ApplicationController
     if @adventure.published == true && @adventure.approved == true
       adventure_show_variables
 
-    elsif @adventure.users.first == current_user
+    elsif @adventure.users.first == current_user && @adventure.published == true
       adventure_show_variables
-      flash[:notice] = "This adventure is pending approval"
+      flash[:notice] = "Your adventure is pending approval"
+
+    elsif @adventure.users.first == current_user && @adventure.published == false
+      adventure_show_variables
+      flash[:notice] = "Publish your adventure to start selling your skill!"
+
     else  
       render '/error_404'
     end
