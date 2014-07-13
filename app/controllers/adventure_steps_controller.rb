@@ -33,6 +33,12 @@ class AdventureStepsController < ApplicationController
       render_wizard @adventure
       AdvloMailer.adventure_approval_email(@adventure).deliver
 
+    elsif params[:published] == '2'
+    # Un-Publish an Adventure
+
+      @adventure.published = false
+      render_wizard @adventure
+
     # Hook for uploading pics and remaining on the same page
     elsif params[:images]
 

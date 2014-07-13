@@ -21,7 +21,7 @@ class AdventuresController < ApplicationController
 
     elsif @adventure.users.first == current_user
       adventure_show_variables
-      flash[:error] = "This adventure is pending approval"
+      flash[:notice] = "This adventure is pending approval"
     else  
       render '/error_404'
     end

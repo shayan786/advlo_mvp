@@ -1,5 +1,4 @@
 function getStripeToken(){
-  // $("#reservation input, #reservation select").attr("disabled", false);
 
   $('.event').click(function(){
     $('#hidden_event_id').val( $(this).data('id') )
@@ -32,8 +31,6 @@ function getStripeToken(){
         $("#stripe_token").val(response.id);
         $('#new_reservation').submit();
       } else {
-
-        console.log('error=> '+response.error.message)
         $("#stripe-error-message").text(response.error.message);
         $("#credit-card-errors").show();
         // $("#user_submit").attr("disabled", false);
