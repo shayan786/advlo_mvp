@@ -1,6 +1,6 @@
 .adventure-show-container.col-md-12
   #adventure-title
-    #main_image.img-responsive= image_tag @adventure.attachment.url(:hero)
+    #main_image{style: "background-image: url('#{@adventure.attachment.url(:hero)}')"}
 
   .col-md-3.adventure-show-infographic
     -if @current_guide
@@ -97,5 +97,9 @@
     sizeSidebar();
     similarAdventureSlider();
   })
+
+  $('#main_image').css({
+      height: $(window).height()*0.70
+    });
 
   

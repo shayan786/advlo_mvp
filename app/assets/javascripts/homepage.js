@@ -96,8 +96,6 @@ function hostSliderInit(){
   })
 }
 
-  
-
 function hostSliderImageCenter(){
   $(window).load(function(){
     $('.image-wrapper').each(function(){
@@ -112,8 +110,6 @@ function hostSliderImageCenter(){
     })
   })
 }
-
-
   
 homepageInit = function() {
   adventureSliderInit();

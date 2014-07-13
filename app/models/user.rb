@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :adventures, through: :user_adventures
   has_many :requests
+  has_many :contact_advlos
   
   accepts_nested_attributes_for :user_adventures, :allow_destroy => true
   # Include default devise modules. Others available are:

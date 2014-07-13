@@ -74,12 +74,12 @@
           %i.fa.fa-long-arrow-right
         - if params[:id] == "publish"
           %li.active 
-            %a{href: "#"}
+            %a{href: "/adventure_steps/publish?adventure_id=#{@adventure.id}"}
               PUBLISH
         - else
           - if !@adventure.adventure_gallery_images.empty? && !@adventure.itineraries.empty?
             %li 
-              %a{href: "#"}
+              %a{href: "/adventure_steps/publish?adventure_id=#{@adventure.id}"}
                 PUBLISH
           - else
             %li.disabled

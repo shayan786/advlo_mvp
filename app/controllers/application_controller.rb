@@ -13,6 +13,23 @@ class ApplicationController < ActionController::Base
     @feat_hosts = User.where(is_guide: true).limit(6)
   end
 
-  def host
+  def contact
+    @contact = ContactAdvlo.create!(contact_params)
+
+    # Mail the requester
+    AdvloMailer.contact_email(@contact).deliver
+
+    if @contact.save
+      respond_to do |format|
+        format.js {render "contact.js", layout: false}
+      end
+    end
   end
+
+  private
+
+  def contact_params
+    params.required(:contact).permit(:user_id, :email, :comments)
+  end
+
 end

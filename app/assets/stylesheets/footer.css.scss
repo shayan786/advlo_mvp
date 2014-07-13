@@ -1,16 +1,18 @@
 #footer {
 	width: 100%;
 	position: relative;
-	height: 60px;
 	background-color: $footer_background_color;
 	overflow-y: hidden !important;
+	border-top: 1px solid $light_gray;
+	padding: 20px 0 5px 0;
 
 	.container {
 		font-size: 1.2em;
 
 		.footer_text {
-			margin-top: 18px;
-
+			.row {
+				margin-bottom: 10px;
+			}
 			a {
 				text-decoration: none;
 				color: $gray;
@@ -25,5 +27,50 @@
 				}
 			}
 		}
+	}
+
+	#contact_form_modal {
+		.modal-dialog {
+			margin: 65px auto 0 auto;
+		}
+
+		.modal-header {
+			font-size: 1.6em;
+			color: $orange;
+		}
+
+		.form_label {
+			padding-top: 5px;
+          	font-size: 1.2em;
+          	font-weight: bold;
+          	color: #FFF;
+		}
+
+		.contact_btn {
+
+			margin-top: 20px;
+		    font-size: 1.6em;
+		    background-color: $login_btn_color;
+		    border-color: $login_btn_color;
+		    padding: 10px 20px;
+
+		    &:hover {
+		      background-color: $login_btn_color_hover;
+		      border-color: $login_btn_color_hover;
+		    }
+		}
+
+		#contact_submitted {
+	        display: none;
+	        color: #FFF;
+	        font-size: 1.8em;
+	        margin-bottom: 20px;
+
+	        .fa {
+	          font-size: 2.2em;
+	          margin-bottom: 25px;
+	          margin-top: 25px;
+	        }
+      	}
 	}
 }

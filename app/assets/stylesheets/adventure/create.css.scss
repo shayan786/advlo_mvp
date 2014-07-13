@@ -1,5 +1,5 @@
 #adventure_create {
-	padding-top: 100px;
+	padding-top: 80px;
 	.container {
 
 		.panel {
@@ -188,6 +188,9 @@
 
 	//PAYMENT
 	#adv_payment {
+		.panel-body {
+			min-height: 500px;
+		}
 
 		.glyphicon {
 		  margin-bottom: 40px;
