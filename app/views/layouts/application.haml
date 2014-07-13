@@ -17,8 +17,8 @@
       #loader-overlay
         #loader-spinner
       = render partial: 'shared/header'
-      - flash.each do |key, value|
-        = content_tag :div, value, :class => flash_class(key) unless value.blank?
+      / - flash.each do |key, value|
+      /   = content_tag :div, value, :class => flash_class(key) unless value.blank?
       = yield
 
     = render partial: 'shared/footer'
