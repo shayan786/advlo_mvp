@@ -16,8 +16,12 @@
                 = image_tag "#{user.get_avatar_url("medium")}"
                 .copy
                   .name= user.name
+                  - if user.short_description.size > 29
+                    .desc= user.short_description[0..25]
+                  - else
+                    .desc= user.short_description
+
                   .location= user.location
-                  .desc= user.short_description
                   
 
 :javascript

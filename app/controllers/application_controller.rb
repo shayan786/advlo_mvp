@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   def homepage
     @feat_adventures = Adventure.order('created_at DESC').limit(6)
     @feat_hosts = User.where(is_guide: true).limit(6)
+
+    # we should map the ip of each user ( logged in or not ) 
+    # offer local adventures for each person
+    # user.current_location = request.location.city
   end
 
   def contact

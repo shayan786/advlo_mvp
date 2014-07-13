@@ -3,7 +3,7 @@ class AdvloMailer < ActionMailer::Base
 
   def adventure_approval_email(adventure)
     @adventure = adventure
-    mail(to: 'ChrisKnight.mail@gmail.com', subject: 'Adventure Pending Approval')
+    mail(to: 'ChrisKnight.mail@gmail.com', subject: '[ATTENTION] Adventure Approval Request')
   end
 
   def welcome_email(user)

@@ -12,12 +12,15 @@
 		background-size: 99%;
 		width: 194px !important; 
 	}
+
+	.header-button{
+		margin-right: 20px;
+	}
 }
 
 .navbar .nav {
 	li {
-		display: inline-block;
-		float: none;
+		display: block;
 		color: #333333;
 	}
 }

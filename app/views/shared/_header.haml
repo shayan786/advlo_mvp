@@ -12,7 +12,7 @@
     / Collect the nav links, forms, and other content for toggling
     #header-navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right.login-right
-        %li.dropdown
+        %li.dropdown.header-button
           %button.btn.btn-default.navbar-btn{"data-toggle" => "dropdown", href: "#"}
             Adventures
             %b.caret
@@ -29,7 +29,7 @@
         %li.divider
         %li
           %form
-            %a.btn.btn-default.navbar-btn{href: "/adventures/info"}
+            %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
               HOST
         %li.divider
         %li.divider

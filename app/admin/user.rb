@@ -1,5 +1,4 @@
 ActiveAdmin.register User do
-
   
   action_item :only => :index do
     link_to 'Upload CSV', :action => 'upload_csv'
@@ -13,8 +12,6 @@ ActiveAdmin.register User do
     CsvDb.convert_save("adventure", params[:dump][:file])
     redirect_to :action => :index, :notice => "CSV imported successfully!"
   end
-
-
 
   index do
     column :email
