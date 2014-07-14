@@ -25,7 +25,7 @@ class AdventuresController < ApplicationController
       adventure_show_variables
       flash[:notice] = "Your adventure is pending approval"
 
-    elsif @adventure.users.first == current_user && @adventure.published == false
+    elsif @adventure.users.first == current_user && @adventure.published == nil
       adventure_show_variables
       flash[:notice] = "Publish your adventure to start selling your skill!"
 

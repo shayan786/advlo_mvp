@@ -139,6 +139,8 @@ class AdventureStepsController < ApplicationController
       render_wizard @adventure
     end
 
+  rescue Stripe::InvalidRequestError => e
+    flash[:notice] = e.message
   end
 
   private

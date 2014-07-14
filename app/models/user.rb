@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
   def get_avatar_url(size)
     @user = User.find_by_id(self.id)
 
-    if @user.avatar
+    if @user.avatar.url != "/images/original/missing.png"
       case size
         when "thumb"
           return @user.avatar.url(:thumb)
@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
           return @user.avatar.url(:profile)
       end
     elsif @user.avatar_url
-      return @user.avatar_url
+      return "#{@user.avatar_url}?type=large"
     else
       return 'missing.png'
     end

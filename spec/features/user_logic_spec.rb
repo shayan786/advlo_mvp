@@ -5,7 +5,7 @@ feature "user logic for adventure flow", :js => true do
   scenario 'no user' do 
     visit '/'
     visit '/adventures/create_prefill'
-    expect(page).to have_content('Sign In')
+    expect(page).to have_content('Connect With Email')
   end
 
   scenario 'creates user && update profile && adventure create flow' do 
@@ -27,9 +27,10 @@ feature "user logic for adventure flow", :js => true do
   
     #Make sure user needs to fill out data to create adv.
     visit '/adventures/info'
-    expect(page).to have_content('Create an Adventure')
-    click_link 'Create an Adventure'
-    expect(page).to have_content("Please complete your profile so travelers know more about their host!")
+    expect(page).to have_content('HOST AN ADVENTURE')
+
+    visit '/adventures/create_prefill'
+    expect(page).to have_content('Please complete your profile so travelers know more about their host!')
     fill_in 'Name', with: 'Topher'
     fill_in 'Short Description', with: 'Anthropologist programmer'
     fill_in 'Location', with: 'Denver, Co'
@@ -41,11 +42,11 @@ feature "user logic for adventure flow", :js => true do
     fill_in 'Have specialized training or skills?', with: 'Denver, Colorado'
     attach_file('user_avatar', File.join(Rails.root, '/spec/support/example.jpg'))
     click_button 'UPDATE'
-    expect(page).to have_content 'You updated your account successfully.'
+    expect(page).to have_content 'You updated your account successfully'
     #updates to host capability
 
     visit '/adventures/new'
-    current_path.should == '/adventures/new'
+    expect(current_path).to eq('/adventures/new')
     fill_in 'adventure[title]', with: 'Underwater Basket-Weaving'
     fill_in 'adventure[location]', with: 'Denver, Co'
     fill_in 'adventure[summary]', with: 'EXTREME UNDERWATER BASKET WEAVING'
@@ -77,13 +78,23 @@ feature "user logic for adventure flow", :js => true do
 
     expect(page).to have_content 'SCHEDULE'
     Event.create(id: 1, created_at: "2014-07-10 20:13:37", updated_at: "2014-07-10 20:13:37", adventure_id: 1, start_time: "2014-07-07 15:00:00", end_time: "2014-07-08 01:00:00", capacity: nil )
-    visit '/adventure_steps/schedule?adventure_id=1'
-    expect(page).to have_content 'PAYMENT'
 
-    click "#add-bank"
-    fill_in 'Bank account name', with: '111000025'
-    fill_in 'Bank account name', with: '000123456789'
-    
+    visit '/adventure_steps/payment?adventure_id=1'
 
+    expect(page).to have_content 'PAYMENT DETAILS'
+    find("#add-bank").click
+    fill_in 'recipient[bank_account_name]', with: 'Justin Bieber'
+    fill_in 'recipient[bank_routing_number]', with: '111000025'
+    fill_in 'recipient[bank_account_number]', with: '000123456789'
+    sleep 5
+    find("#add_bank_form_btn").click
+    sleep 5
+    visit '/adventure_steps/publish?adventure_id=1'
+    sleep 5    
+
+    expect(page).to have_content 'Publish your adventure after Previewing'    
+
+    click_button "PUBLISH"
+    expect(page).to have_content('Your adventure is pending approval')
   end
 end

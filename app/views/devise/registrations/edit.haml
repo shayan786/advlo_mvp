@@ -3,6 +3,10 @@
     .d_error_msgs= devise_error_messages!
     .panel.panel-default
       = render partial: "dashboard_header"
+      - if notice
+        .col-md-6.col-md-offset-3.text-center
+          .update_notice.alert.alert-warning
+            = notice
       %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_edit_form", enctype: "multipart/form-data"}
         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)

@@ -9,7 +9,6 @@ function getStripeToken(){
 
     // $("#user_submit").attr("disabled", true);
     // $("#reservation input, #reservation select").attr("name", "");
-    // $("#credit-card-errors").hide();
 
     // if (!$("#reservation").is(":visible")) {
     //   $("#reservation input, #reservation select").attr("disabled", true);
@@ -32,7 +31,6 @@ function getStripeToken(){
         $('#new_reservation').submit();
       } else {
         $("#stripe-error-message").text(response.error.message);
-        $("#credit-card-errors").show();
         // $("#user_submit").attr("disabled", false);
       }
     });
@@ -73,7 +71,6 @@ function getStripeToken_bank() {
         console.log('error=> '+response.error.message);
         $("#stripe-error-message").text(response.error.message);
         // $("#stripe-error-message").text(response.error.message);
-        // $("#credit-card-errors").show();
       }
     });
   });
@@ -101,7 +98,6 @@ function getStripeToken_bank() {
       else {
         console.log('error=> '+response.error.message);
         $("#stripe-error-message").text(response.error.message);
-        // $("#credit-card-errors").show();
       }
     });
   });
