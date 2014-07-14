@@ -10,7 +10,7 @@
               .title= adv.title
 
             - if adv.location
-              .location= "#{adv.city}, #{adv.state}"
+              .location= "#{adv.city}, #{adv.state}".upcase
 
           .price= "$ #{adv.price}"
 
