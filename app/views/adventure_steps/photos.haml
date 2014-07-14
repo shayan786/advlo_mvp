@@ -6,13 +6,12 @@
         .panel-heading.text-center.section_header
           PHOTOS
         .panel-body
-          - if @adventure.adventure_gallery_images.empty?
-            .col-md-6.col-md-offset-3
-              .well.how_to
-                Upload your adventure's gallery images here! You know what they say, a photo is worth a thousand words!
-                You can upload upto 
-                %strong 10 images,
-                try to make them as best quality as you can!
+          .col-md-6.col-md-offset-3
+            .well.how_to
+              Upload your adventure's gallery images here! You know what they say, a photo is worth a thousand words!
+              You can upload upto 
+              %strong 10 images,
+              try to make them as best quality as you can!
           .text-center
             - if !@adventure.adventure_gallery_images.empty?
               - @adventure.adventure_gallery_images.each_with_index do |adv, i|
@@ -29,7 +28,7 @@
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
             = tag(:input, :type => "hidden", :name => "adventure_id", :value => @adventure.id)
             .form-group
-              %input.filestyle{type: "file", name: "images[]", id: "adv_gallery_img", multiple: "multiple", onchange: "javascript:document.getElementById('adv_gallery_img_upload').submit();"}
+              %input{type: "file", name: "images[]", id: "adv_gallery_img", multiple: "multiple"}
 
         .panel-footer.text-center
           .row

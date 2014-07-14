@@ -75,7 +75,7 @@
               .col-md-4
                 .form_label.text-right Categories *
               .col-md-6
-                - options = ['CULTURE', 'BIKE', 'HIKE', 'CAMP', 'WATER', 'SNOW', 'ROCK', 'WILDCARD', 'CLIMB']
+                - options = adv_categories
                 - options.each do |o|
                   %label.checkbox-inline
                     - if @adventure.category.include?(o.downcase)
@@ -83,13 +83,6 @@
                     - else 
                       %input{type: "checkbox", id: o.downcase, value: o.downcase, name: 'category[]'}
                     = o
-
-                / - options = ['CULTURE', 'BIKE', 'HIKE', 'CAMP', 'WATER', 'SNOW', 'ROCK', 'WILDCARD']
-                / %select.multiselect{multiple: true, :required => true, name: 'category[]'}
-                /   = options.each do |o|
-                /     %option{value: o.downcase}= o
-
-
             .form-group.row
               .col-md-4
                 .form_label.text-right Other Notes

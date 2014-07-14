@@ -2,7 +2,7 @@
   - if @hero_image
     #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
   #location_text= @location ? @location.upcase : "Advlo" 
-  - filters = ['culture', 'bike', 'hike', 'camp', 'water','snow','rock', 'wildcard']
+  - filters = adv_categories
   .filter-container
     %a.filter{href: "/adventures/#{@location}/all", 'data-remote' => true} 
       %span RESET
@@ -52,7 +52,7 @@
                   .col-md-4 
                     .form_label.text-right Category
                   .col-md-6
-                    - options = ['CULTURE', 'BIKE', 'HIKE', 'CAMP', 'WATER', 'SNOW', 'ROCK', 'WILDCARD', 'CLIMB']
+                    - options = adv_categories
                     - options.each do |o|
                       %label.checkbox-inline
                         %input{type: "checkbox", id: o.downcase, value: o.downcase, name: 'request_category[]'}
