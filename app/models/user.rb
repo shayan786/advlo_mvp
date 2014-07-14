@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   # geocoded_by :ip_address,
   # :latitude => :lat, :longitude => :lon
   
-  after_validation :geocode
+  # after_validation :geocode
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
