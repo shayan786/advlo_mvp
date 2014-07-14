@@ -5,20 +5,6 @@
 
 .copy-brick.container-fluid#overview
   .overview-item-wrapper
-    .overview-item 
-      .fa.fa-chevron-circle-right
-        .default-description 
-          GROUP SIZE
-          - if @adventure.price_type == 'per_adv'
-            .fa.fa-angle-double-right
-            %span= "#{@adventure.cap_max} / group"          
-          - elsif @adventure.cap_min == @adventure.cap_max
-            .fa.fa-angle-double-right
-            %span= "#{@adventure.cap_max} people"
-          -else
-            .fa.fa-angle-double-right
-            %span= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
-        
 
     .overview-item 
       .fa.fa-chevron-circle-right
@@ -34,6 +20,19 @@
           .fa.fa-angle-double-right
           %span= "$ #{@adventure.price}"
 
+    .overview-item 
+      .fa.fa-chevron-circle-right
+        .default-description 
+          GROUP SIZE
+          - if @adventure.price_type == 'per_adv'
+            .fa.fa-angle-double-right
+            %span= "#{@adventure.cap_max} / group"          
+          - elsif @adventure.cap_min == @adventure.cap_max
+            .fa.fa-angle-double-right
+            %span= "#{@adventure.cap_max} people"
+          -else
+            .fa.fa-angle-double-right
+            %span= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
 
     .overview-item 
       .fa.fa-chevron-circle-right
@@ -42,10 +41,11 @@
           .fa.fa-angle-double-right
           %span= "#{@adventure.duration_num} #{@adventure.duration_type}"
 
-    .overview-item.last-row
+    .overview-item
       .fa.fa-chevron-circle-right
         .default-description 
-          DESCRIPTION :
+          LOCATION :
           .fa.fa-angle-double-right
-          %span= @adventure.summary
-          
+          %span= @adventure.location
+
+  

@@ -49,6 +49,10 @@
 					margin-right: 10px;
 				}
 			}
+			.fb_btn_singin {
+				margin: 5px 0 0px 10px !important;
+			}
+
 
 			.forgot_password {
 				color: $tan;
@@ -60,5 +64,26 @@
 		a {
 			color: $tan;
 		}
+	}
+}
+
+.fa-envelope-o {
+	float: left !important;
+}
+
+
+.email_btn {
+	background-color: $login_btn_color;
+	border-color: $login_btn_color;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	
+	font-size: 1.1em !important;
+	font-family: 'nexa_light' !important;
+	color: #fff !important;
+
+	&:hover {
+		background-color: $login_btn_color_hover;
+		border-color: $login_btn_color_hover;
 	}
 }

@@ -16,10 +16,8 @@
                 .title= adv.title
 
               - if adv.location
-                - if adv.location.length > 33
-                  .location= "#{adv.location.upcase[0..33]}..."
-                -else
-                  .location= adv.location.upcase
+                .location= "#{adv.city}, #{adv.state}".upcase
+                
 
             .price= "$ #{adv.price}"
 
