@@ -69,10 +69,12 @@ $(document).ready(function(){
       	marginTop: "4px",
       	"background-size": "78%"
       });
+      $('.logged_in_dropdown_box').animate({
+        marginTop: "6px"
+      });
       $('.logged_in_dropdown_box img').animate({
         width: "40px",
-        height: "40px",
-        marginTop: "2px"
+        height: "40px"
       });
 
       flag = 1;
@@ -86,10 +88,12 @@ $(document).ready(function(){
       	marginTop: "0px",
       	"background-size": "99%"
       });
+      $('.logged_in_dropdown_box').animate({
+        marginTop: "0px"
+      });
       $('.logged_in_dropdown_box img').animate({
         width: "50px",
-        height: "50px",
-        marginTop: "0px"
+        height: "50px"
       });
 
       flag = 0;

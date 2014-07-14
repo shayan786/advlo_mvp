@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 20140714162134) do
     t.string   "state"
   end
 
+  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
+
   create_table "contact_advlos", force: true do |t|
     t.integer  "user_id"
     t.string   "email"
