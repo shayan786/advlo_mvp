@@ -18,7 +18,14 @@ class Adventure < ActiveRecord::Base
 
   geocoded_by :location
   after_validation :geocode
+  after_validation :reverse_geocode
 
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.city    = geo.city
+      obj.state   = geo.state
+    end
+  end
 
   def set_slug
     if self.slug == nil || self.slug == ''
