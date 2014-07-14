@@ -414,6 +414,13 @@ function request_form_validator() {
   });
 }
 
+function upload_images() {
+  $('#adv_gallery_img').change(function() {
+    $('#loader-overlay').show();
+    $('#adv_gallery_img_upload').submit();
+  }); 
+} 
+
 function form_validator(){
   $('#adventure_edit_form').bootstrapValidator({
     fields: {
@@ -760,4 +767,5 @@ adventureCreate = function() {
   show_change_bank_form();
   input_geocomplete();
   create_header_remove_arrow();
+  upload_images();
 }

@@ -273,7 +273,9 @@
 
 	//PUBLISH
 	#adv_publish {
-
+		.panel-body {
+			min-height: 350px;
+		}
 	}
 }
 

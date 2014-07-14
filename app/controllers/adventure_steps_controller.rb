@@ -42,14 +42,19 @@ class AdventureStepsController < ApplicationController
 
     # Hook for uploading pics and remaining on the same page
     elsif params[:images]
+      # No more than 10 images allowed
+      if @adventure.adventure_gallery_images.count < 11
 
-      params[:images].each do |image|
-        @adventure.adventure_gallery_images.create(picture: image, adventure_id: adv_id)
-      end
+        params[:images].each do |image|
+          @adventure.adventure_gallery_images.create(picture: image, adventure_id: adv_id)
+        end
 
-      respond_to do |format|
-        format.html {redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "Photos have been uploaded!"}
-        format.json {}
+        respond_to do |format|
+          format.html {redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "Photos have been uploaded!"}
+          format.js {}
+        end
+      else
+        redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "You already have 10 images uploaded, please delete some before uploading any more"
       end
 
     # Hook for deleting a pic and remain on the same page
