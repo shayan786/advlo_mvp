@@ -78,17 +78,26 @@
               %li
                 %form.sign_in_form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form"}
                   =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                  %a.btn.btn-primary.fb_btn.fb_btn_singin{href: "/users/auth/facebook"}
+                    %i.fa.fa-facebook
+                    Connect with facebook
                   .form-group
                     %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
                   .form-group
                     %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]"}
-                  %input.btn.btn-primary.sign_in_btn{name: "sign_in", type: "submit", value: "Sign In"}
-                  %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
-                    %i.fa.fa-facebook
-                    Connect with facebook
+                  %input.btn.btn-primary.sign_in_btn#login-form-submit{name: "sign_in", type: "submit", value: "Sign In"}
+                  .sign_in_btn.btn.email_btn#login-toggle
+                    %i.fa.fa-envelope-o
+                    Connect with email
+
+
               %li.sign_up_link
                 = link_to "Not an adventurer? Sign up", new_user_registration_path
           %li.divider
           %li.divider
           %li.divider
           %li.divider
+
+
+:javascript
+  headerLoginToggle();
