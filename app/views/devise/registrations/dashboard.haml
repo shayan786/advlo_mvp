@@ -18,15 +18,15 @@
                   .adv_img{style: "background: url('#{adv.attachment.url(:medium)}')"}
                   - if !adv.published
                     .col-md-offset-3
-                      .btn.btn-danger.disabled
+                      .btn.btn-default.disabled
                         Not Published
                   - elsif !adv.approved
                     .col-md-offset-3
-                      .btn.btn-warning.disabled
+                      .btn.btn-default.disabled
                         Pending Approval
                   - else
                     .col-md-offset-3
-                      .btn.btn-success.disabled
+                      .btn.btn-default.disabled
                         Active Adventure
                 .col-md-6
                   .adv_title
