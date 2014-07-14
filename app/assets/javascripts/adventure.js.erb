@@ -141,7 +141,6 @@ function stopSidebarAtBottom(){
 
     var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
     if(distanceFromBottom < 76){
-      console.log(distanceFromBottom)
       $('.adventure-show-container #desktop-adventure-nav').css({
         top: 'auto',
         position: 'absolute',
@@ -179,14 +178,16 @@ function navBarCatch(){
       var bodyHeight     = document.body.offsetHeight;
       var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
       var s = $(window).scrollTop();
+
+      console.log(s)
+
       if(distanceFromBottom < 76){
 
-      }else if(s > (widthOfBrowser() + 14 )){
+      }else if(s > 107 ){
+        console.log("fixSidebar();")
         fixSidebar();
-
       }else{
         resetSideBar();
-
       }
     })
   })
