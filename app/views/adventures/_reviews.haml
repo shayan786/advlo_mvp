@@ -27,7 +27,7 @@
               %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Update Your Review'}
 
   #purchase-to-review 
-    go on this adventure to leave a review
+    Go on this adventure to leave a review
 
   - if current_user
     - if current_user.reviews.where(adventure_id: @adventure.id).size > 0

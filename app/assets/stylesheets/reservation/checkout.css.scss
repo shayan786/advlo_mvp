@@ -16,6 +16,8 @@
     font-size: 20px;
     color: $advlo_orange;
     font-family: 'nexa_light';
+    padding-bottom: 5px;
+    border-bottom: 1px solid #FFF;
   }
 
   color: #fff;
@@ -28,6 +30,7 @@
     padding-top: 20px;
     text-align: center;
     font-size: 30px;
+    display: none;
   }
 
   #success-detail {
@@ -37,6 +40,7 @@
     width: 75%;
     margin: 0 auto;
     margin-top: 40px;
+    display: none;
   }
   #advlo-logo{
     text-align: center;

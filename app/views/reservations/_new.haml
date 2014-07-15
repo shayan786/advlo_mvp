@@ -27,21 +27,21 @@
       .col-md-4
         .form_label.text-right Full Name
       .col-md-6
-        %input.form-control.show_ml#credit_card_name{type: "text", name: "credit_card_name", type: "text", placeholder: "First Last"}
+        %input.form-control#credit_card_name{type: "text", name: "credit_card_name", type: "text", placeholder: "First Last"}
     
 
     .form-group.row
       .col-md-4
         .form_label.text-right Card Number
       .col-md-6
-        %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
+        %input.form-control{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
 
     
     .form-group.row
       .col-md-4
         .form_label.cvv-box.text-right CVV
       .col-md-1
-        %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "cvv", id: "cvv", maxlength: "3"}
+        %input.form-control{type: "text", placeholder: 'XXX', name: "cvv", id: "cvv", maxlength: "3"}
     
     .form-group.row
       .col-md-4
@@ -49,11 +49,22 @@
       .col-md-2
         .form-group
           %label Exp Month
-          %input.form-control.show_ml{placeholder: "MM", type: "text", required: "required", maxlength: "2", name: "exp_month", id: 'exp_month'}
+          %input.form-control{placeholder: "MM", type: "text", maxlength: "2", name: "exp_month", id: 'exp_month'}
       .col-md-2
         .form-group
           %label Exp Year
-          %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "exp_year", id: 'exp_year'}
+          %input.form-control{placeholder: "YYYY", type: "text", maxlength: "4", name: "exp_year", id: 'exp_year'}
+    .form-group.row
+      .col-md-4
+        .form_label.text-right People
+      .col-md-6
+        - adv_cap_min = @adventure.cap_min
+        - adv_cap_max = @adventure.cap_max
+        - if @adventure.price_type == "per_person"
+          - adv_cap_remain = adv_cap_max - event.reservations.count
+          
+        %input.form-control{type: "text", name: "capacity", id: "capacity"}
+
 
     #book-it-wrapper
       .btn.btn-success#book-button.button Book

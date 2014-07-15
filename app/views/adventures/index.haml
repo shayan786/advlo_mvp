@@ -25,6 +25,9 @@
           #no-adv-text Add an adventure in this area
 
     .text-center
+      .btn.btn-default
+        Show More
+    .text-center
       .btn.btn-primary.request_btn{'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
         Request Adventure
 
@@ -32,7 +35,7 @@
         .modal-dialog
           .modal-content
             .modal-header
-              Can't Find It ... Request It!
+              Create an Adventure — We'll Find You a Host
             .modal-body
               %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_form", "data-remote" => "true"}
                 = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -40,14 +43,9 @@
                   = tag(:input, :type => "hidden", :name => "request[user_id]", :value => current_user.id)
                 .form-group.row
                   .col-md-4 
-                    .form_label.text-right Email *
+                    .form_label.text-right Destination *
                   .col-md-6
-                    %input.form-control.show_ml{type: "text", name: "request[email]", id: "request_email", maxlength: "40"}
-                .form-group.row
-                  .col-md-4 
-                    .form_label.text-right Location *
-                  .col-md-6
-                    %input.form-control{type: "text", name: "request[location]", id: "request_location"}
+                    %input.form-control{type: "text", name: "request[location]", id: "request_location", placeholder: "Enter a destination. Ex: Denver, CO or Colorado"}
                 .form-group.row
                   .col-md-4 
                     .form_label.text-right Category
@@ -59,21 +57,36 @@
                         = o
                 .form-group.row
                   .col-md-4 
+                    .form_label.text-right Dates *
+                  .col-md-6
+                    %textarea.form-control.show_ml{rows: "2", type: "text", name: "request[dates]", id: "request_dates", maxlength: "250", placeholder: "Ex: 7/4/14 or 7/4/14 - 7/10/14 or any Saturday"}
+                .form-group.row
+                  .col-md-4 
                     .form_label.text-right Description / Details *
                   .col-md-6
-                    %textarea.form-control.show_ml{rows: "5", type: "text", name: "request[description]", id: "request_description", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Tell us a bit more about what type of adventure you are looking for and we'll try to find a local to host it!"}}
+                    %textarea.form-control.show_ml{rows: "5", type: "text", name: "request[description]", id: "request_description", maxlength: "250"}
+                .form-group.row
+                  .col-md-4 
+                    .form_label.text-right Budget *
+                  .col-md-6
+                    %input.form-control{type: "text", name: "request[budget]", id: "request_budget", placeholder: "$50 - $100"}
+                .form-group.row
+                  .col-md-4 
+                    .form_label.text-right Email *
+                  .col-md-6
+                    %input.form-control.show_ml{type: "text", name: "request[email]", id: "request_email", maxlength: "40"}
                 .row.text-center
                   .btn.btn-primary.request_btn
-                    REQUEST IT
+                    Request Adventure
 
               #request_submitted
                 .row
                   .col-md-10.col-md-offset-1
                     %i.fa.fa-road
                     %br
-                    Thanks for requesting an adventure.
+                    Don’t worry — Advlo knows a guy. 
                     %br
-                    We will contact you once we find a suitable host!
+                    We’ll contact you once we find a qualified host for your adventure.
 
 
 :javascript
