@@ -24,12 +24,23 @@
 
           - else
             .col-md-6.col-md-offset-3
-              .well.how_to.text-center
-                %strong Publish
-                your adventure after 
-                %strong Previewing
-                and making sure everything looks amazing so adventure seekers book your adventure!
-
+              .well.how_to
+                .row
+                  .col-md-11.col-md-offset-1
+                    %strong
+                      1. Preview 
+                    your adventure page
+                .row
+                  .col-md-11.col-md-offset-1
+                    %strong
+                      2. Edit 
+                    any changes you'd like to make
+                .row
+                  .col-md-11.col-md-offset-1
+                    %strong
+                      3. Publish 
+                    your adventure and we'll notify you when it goes live
+               
         .panel-footer.text-center
           .row
             - if @adventure.published == true

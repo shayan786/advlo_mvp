@@ -27,7 +27,6 @@
             #updated-bank-form
               = render partial: 'updated_bank_form', locals: {recipient_info: recipient_info }
 
-
             %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "change_bank_form", "data-remote" => "true"}
               = tag(:input, :type => "hidden", :value => "put", :name => "_method")
               = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -48,7 +47,7 @@
                 .col-md-4
                   .form_label.text-right Routing Number
                 .col-md-6
-                  %input.form-control{type: "text", placeholder: "xxx xxx xxx", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
+                  %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
 
               .form-group.row
                 .col-md-4
@@ -59,53 +58,10 @@
               .form-group.row.save
                 .btn.btn-primary{id: "update_bank_form_btn"}
                   Update Account
+              .text-center
+                %em By adding your bank account, you agree to Advlo’s payment policies, terms, and privacy. 
 
           - else 
-            - # Render new bank / cc form
-            / %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_cc_form", enctype: "multipart/form-data"}
-            /   = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-            /   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            /   %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
-
-            /   #add-card{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Card"}
-            /     .glyphicon.glyphicon-plus 
-            /     .fa.fa-credit-card
-
-            /   #add-card-form
-            /     .form-group.row
-            /       .col-md-4
-            /         .form_label.text-right Full Name
-            /       .col-md-6
-            /         %input{type: 'hidden', name: 'recipient[type]', value: 'individual'}
-            /         %input{type: 'hidden', name: 'recipient[tax_id]', value: ''}
-            /         %input.form-control{type: "text", placeholder: "First Middle Last", name: "recipient[cardholders_name]", id: "full_name"}
-
-            /     .form-group.row
-            /       .col-md-4
-            /         .form_label.text-right Card Number
-            /       .col-md-6
-            /         %input.form-control.show_ml{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "recipient[credit_card_number]", id: "cc_number", maxlength: "16"}
-
-            /     .form-group.row
-            /       .col-md-4
-            /         .form_label.text-right CVV
-            /       .col-md-1
-            /         %input.form-control.show_ml{type: "text", placeholder: 'XXX', required: "required", name: "recipient[cvv]", id: "cvv_number", maxlength: "3"}
-
-            /     .form-group.row
-            /       .col-md-4
-            /         .form_label.text-right Card Expiration
-            /       .col-md-2
-            /         .form-group
-            /           %label Exp Month
-            /           %input.form-control.show_ml{placeholder: "MM", type: "text", required: "required", maxlength: "2", name: "recipient[cc_exp_month]"}
-            /       .col-md-2
-            /         .form-group
-            /           %label Exp Year
-            /           %input.form-control.show_ml{placeholder: "YYYY", type: "text", required: "required", maxlength: "4", name: "recipient[cc_exp_year]"}
-
-            /     .form-group.row.save
-            /       %input.btn.btn.btn-primary{name: "commit", type: "submit", value: "Save Card"}
               
             %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", "data-remote" => "true"}
               = tag(:input, :type => "hidden", :value => "put", :name => "_method")
@@ -131,19 +87,20 @@
                   .col-md-4
                     .form_label.text-right Routing Number
                   .col-md-6
-                    %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_routing_number]", id: "bank_routing_number", :data => {:container => "body", :toggle => "popover", :placement => "bottom", :content => "A 9-digit number at the lower left corner of a check. Contact your bank if you need help"}}
+                    %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
 
                 .form-group.row
                   .col-md-4
                     .form_label.text-right Account Number
                   .col-md-6
-                    %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_account_number]", id: "bank_account_number", :data => {:container => "body", :toggle => "popover", :placement => "bottom", :content => "A 3-17 digit number at the bottom of a check or on a bank statement. Contact your bank if you need help."}}
-
+                    %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_account_number]", id: "bank_account_number"}
 
 
                 .form-group.row.save
                   .btn.btn-primary{id: "add_bank_form_btn"}
                     Add Account
+                .text-center
+                  %em By adding your bank account, you agree to Advlo’s payment policies, terms, and privacy. 
 
         .panel-footer.text-center
           .row

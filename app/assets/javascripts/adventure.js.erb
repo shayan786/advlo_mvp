@@ -614,6 +614,13 @@ function form_validator(){
     });
   $('#change_bank_form').bootstrapValidator({
       fields: {
+        'recipient[bank_account_name]': {
+          validators: {
+            notEmpty: {
+              message: 'Please enter bank account holders full name'
+            }
+          }
+        },
         'recipient[bank_routing_number]': {
           validators: {
             notEmpty: {
