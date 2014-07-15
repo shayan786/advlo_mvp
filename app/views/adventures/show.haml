@@ -15,7 +15,6 @@
         .guide-profile-image
           = link_to (image_tag "#{@current_guide.get_avatar_url("medium")}"), user_path(@current_guide)
 
-
       .adventure-block
         #adventure-price
           %span= "$ #{@adventure.price}"
