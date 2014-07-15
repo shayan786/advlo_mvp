@@ -104,6 +104,29 @@ $(document).ready(function(){
     minHeight: $(window).height()
   })
 
+  //Login form validation
+  $('#sign_in_form').bootstrapValidator({
+    fields: {
+      'user[email]': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'user[password]': {
+        validators: {
+          notEmpty: {
+            message: 'Password cannot be empty'
+          }
+        }
+      }
+    }
+  });
+
   //Contact form validation
   $('#contact_form').bootstrapValidator({
     fields: {
