@@ -11,9 +11,58 @@ class AdventureStepsController < ApplicationController
     
     session[:adventure_id] =  @adventure.id
 
-    respond_to do |format|
-      format.html {render_wizard}
-      format.js {}
+
+    # Prevent URL injection
+    case params[:id]
+
+    when "photos"
+      if !@adventure.title.nil?
+        respond_to do |format|
+          format.html {render_wizard}
+          format.js {}
+        end
+      else
+        redirect_to "/adventure_steps/basic?adventure_id=#{@adventure.id}", notice: "Please complete the basic adventure information first"
+      end
+    when "itinerary"
+      if !@adventure.adventure_gallery_images.empty?
+        respond_to do |format|
+          format.html {render_wizard}
+          format.js {}
+        end
+      else
+        redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "Please upload atleast one photo of your adventure"
+      end
+
+    when "schedule"
+      if !@adventure.adventure_gallery_images.empty?
+        respond_to do |format|
+          format.html {render_wizard}
+          format.js {}
+        end
+      else
+        redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "Please upload atleast one photo of your adventure"
+      end
+
+    when "payment"
+      if !@adventure.events.empty?
+        respond_to do |format|
+          format.html {render_wizard}
+          format.js {}
+        end
+      else
+        redirect_to "/adventure_steps/schedule?adventure_id=#{@adventure.id}", notice: "Please upload one event for this adventure"
+      end
+
+    else
+      if @adventure.users.first.stripe_recipient_id
+        respond_to do |format|
+          format.html {render_wizard}
+          format.js {}
+        end
+      else
+        redirect_to "/adventure_steps/payment?adventure_id=#{@adventure.id}", notice: "Please add a payment bank account"
+      end
     end
 
   end

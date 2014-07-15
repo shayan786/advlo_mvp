@@ -47,7 +47,7 @@
             %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
               SCHEDULE
         - else
-          - if !@adventure.adventure_gallery_images.empty?
+          - if !@adventure.adventure_gallery_images.empty? && !@adventure.intineraries.empty?
             %li 
               %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
                 SCHEDULE
@@ -62,7 +62,7 @@
             %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
               PAYMENT
         - else
-          - if !@adventure.adventure_gallery_images.empty? && !@adventure.itineraries.empty? && !@adventure.events.empty?
+          - if !@adventure.adventure_gallery_images.empty? && !@adventure.events.empty?
             %li 
               %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
                 PAYMENT
@@ -77,7 +77,7 @@
             %a{href: "/adventure_steps/publish?adventure_id=#{@adventure.id}"}
               PUBLISH
         - else
-          - if !@adventure.adventure_gallery_images.empty? && !@adventure.itineraries.empty? && @adventure.users.first.stripe_recipient_id && !@adventure.events.empty?
+          - if !@adventure.adventure_gallery_images.empty? && @adventure.users.first.stripe_recipient_id && !@adventure.events.empty?
             %li 
               %a{href: "/adventure_steps/publish?adventure_id=#{@adventure.id}"}
                 PUBLISH
