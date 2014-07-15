@@ -64,22 +64,28 @@
                   BOOK IT
 
     .row.information-container
-      = render partial: 'overview'
+      #overview.title-brick
+        = render partial: 'overview'
 
       - if @adventure.itineraries.count > 0
-        = render partial: 'itinerary'
+        #itinerary.title-brick.dark_gray_background
+          = render partial: 'itinerary'
 
-      = render partial: 'gallery'
+      #gallery.title-brick
+        = render partial: 'gallery'
 
       = render partial: 'payment_modal'
               
       - if !@adventure.summary.empty?
-        = render partial: 'additional_info'
+        #additional_info.title-brick.dark_gray_background
+          = render partial: 'additional_info'
 
-      -if @adventure.approved
-        = render partial: 'reviews'
+      - if @adventure.approved
+        #reviews.title-brick
+          = render partial: 'reviews'
 
-      = render partial: 'adventure_browse'
+      #adventure_browse.title-brick.dark_gray_background
+        = render partial: 'adventure_browse'
                 
 
     .col-md-3#desktop-adventure-nav

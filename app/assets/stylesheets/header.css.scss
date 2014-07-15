@@ -15,6 +15,24 @@
 
 	.header-button{
 		margin-right: 20px;
+
+		button.btn-default {
+			border-color: $header_background_color;
+			background-color: $header_background_color;
+
+			&:hover {
+				border-color: $light_gray;
+			}
+		}
+	}
+
+	a.btn.btn-default {
+		border-color: $header_background_color;
+		background-color: $header_background_color;
+
+		&:hover {
+			border-color: $light_gray;
+		}
 	}
 }
 

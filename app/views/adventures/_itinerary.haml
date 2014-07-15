@@ -1,15 +1,14 @@
-#itinerary.title-brick.dark_gray_background
-  .container
-    //.brick-icons= image_tag 'map.png'
-    .brick-title
-      ITINERARY
-    .col-md-9
-      - if @itineraries
-        - @itineraries.each do |itin| 
-          .copy-brick.itinerary-brick
-            .fa.fa-plus
-            .fa.fa-minus
-            .headline
-              = itin.headline
-            .description
-              = itin.description
+.container
+  //.brick-icons= image_tag 'map.png'
+  .brick-title
+    ITINERARY
+  .col-md-9
+    - if @itineraries
+      - @itineraries.each do |itin| 
+        .copy-brick.itinerary-brick
+          .fa.fa-plus
+          .fa.fa-minus
+          .headline
+            = itin.headline
+          .description
+            = itin.description
