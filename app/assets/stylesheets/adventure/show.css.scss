@@ -127,15 +127,15 @@
         background: none;
 
         .default-body {
-          margin-bottom: 10px;
 
           .fa-chevron-circle-right {
             margin-right: 15px;
+            font-size: 0.6em;
           }
 
           .default-content {
             font-family: 'nexa_light';
-            font-size: 0.7em;
+            font-size: 0.6em;
             font-weight: bold;
             line-height: 1.0em !important;
           }
@@ -144,11 +144,11 @@
         .default-title {
           color: $light_gray;
           font-family: 'nexa_light';
-          font-size: 0.9em;
+          font-size: 0.6em;
         }
 
         .default-summary {
-          font-size: 0.7em;
+          font-size: 0.6em;
           line-height: 1.0em;
         }
 

@@ -6,6 +6,7 @@
         .panel-heading.text-center.section_header
           PUBLISH
         .panel-body
+          = render partial: "notice"
           - if @adventure.published == true && @adventure.approved == true
             .col-md-6.col-md-offset-3
               .well.how_to.text-center
