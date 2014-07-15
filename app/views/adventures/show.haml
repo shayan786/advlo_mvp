@@ -16,16 +16,20 @@
           = link_to (image_tag "#{@current_guide.get_avatar_url("medium")}"), user_path(@current_guide)
 
       .adventure-block
-        #adventure-price
-          %span= "$ #{@adventure.price}"
         -if !@adventure.approved
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "modal"} 
             %span 
-              BOOK IT
+              ="BOOK IT"
+            %span
+              = "$#{@adventure.price}"
+
         -else
           #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
             %span 
-              BOOK IT
+              ="BOOK IT"
+            %span
+              = "$#{@adventure.price}"
+
     - else
       .guide-block
         .guide-name
@@ -65,15 +69,18 @@
     .col-md-9.information-container
       = render partial: 'overview'
 
-      = render partial: 'itinerary'
+      - if @adventure.itineraries.count > 0
+        = render partial: 'itinerary'
 
       = render partial: 'gallery'
 
       = render partial: 'payment_modal'
               
-      = render partial: 'additional_info'
+      - if !@adventure.summary.empty?
+        = render partial: 'additional_info'
 
-      = render partial: 'reviews'
+      -if @adventure.approved
+        = render partial: 'reviews'
 
       = render partial: 'adventure_browse'
                 
