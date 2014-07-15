@@ -77,8 +77,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def get_age(user_id)
-    @user = User.find_by!(:id => user_id)
+  def get_age
+    @user = User.find_by_id!(self.id)
     now = Time.now.utc
     birthday = @user.dob
     if birthday.nil? 

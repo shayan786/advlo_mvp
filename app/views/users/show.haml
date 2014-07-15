@@ -5,8 +5,6 @@
         .panel.panel-default
           .panel-body.text-center
             .profile-image= image_tag "#{@user.get_avatar_url("medium")}"
-            
-
             .banner_name= @user.name
             .banner_subtitle= @user.short_description
 
@@ -25,7 +23,7 @@
               %li.overview_item
                 AGE
                 %br
-                %span= @user.get_age(@user.id)
+                %span= @user.get_age
               %li.overview_item 
                 BASED IN 
                 %br
@@ -47,7 +45,7 @@
           .panel-body
             .box_header.text-center 
               CONTACT
-              
+              %br
               %span= @user.name.upcase
 
             .box_header_line
