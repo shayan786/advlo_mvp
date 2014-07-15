@@ -33,12 +33,12 @@
       height: 240px;
       .guide-name {
         font-size: 23px;
-        margin-top: 15px;
+        margin-top: 5px;
         font-family: 'Nexa_light';
       }
       .adv-title {
         position: relative;
-        margin-top: 2px;
+        margin-top: 10px;
         font-size: 22px;
         color: $advlo_orange;
         font-style: italic;
@@ -149,7 +149,7 @@
 
         .default-summary {
           font-size: 0.6em;
-          line-height: 1.0em;
+          line-height: 1.3em;
         }
 
         #map {
@@ -168,21 +168,23 @@
           margin-top: 5px !important;
           cursor: pointer;
           width: 99%;
+          border: 1px solid #666;
         }
         .fa {
-          color: $advlo_orange;
-          font-size: 35px;
-          margin: 20px;
+          color: #666;
+          font-size: 25px;
+          margin: 5px;
           float: left;
         }
         .fa-minus {
           display: none;
         }
         .headline { 
-          font-family: 'nexa_bold';
-          font-size: 30px;
+          font-family: 'nexa_light';
+          font-size: 24px;
           color: #fff;
-          margin-top: 15px;
+          margin-top: 1px;
+          margin-left: 40px;
         }
         .description {
           margin-left: 68px;
@@ -211,6 +213,7 @@
       margin: 35px;
       display: none;
       .navigation-brick{
+        opacity: 0.0;
 
         .guide-block {
       
@@ -265,7 +268,7 @@
         margin-left: -20px;
         float: left;
         img {
-          height: 50px;
+          height: 30px;
           position: relative;
           margin-top: 8px;
           margin-left: 33px;
@@ -279,7 +282,7 @@
         font-family: 'nexa_light';
         color: #c35b26;
         left: 20px;
-        margin-top: 20px;
+        margin-top: 7px;
       }
 
       .itinerary-title {
@@ -294,7 +297,6 @@
       margin-top: 0px;
       height: 100%;
       width: 99%;
-      background: $shaded_gray;
 
       .ping {
         background: url(location.png) no-repeat left center;

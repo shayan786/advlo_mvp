@@ -5,16 +5,15 @@
   .col-md-3.adventure-show-infographic
     -if @current_guide
       .guide-block
-        .guide-name
-          = @current_guide.name
         .adv-title
           - if @adventure.title.length > 25
             .shortened= @adventure.title
           - else
             = @adventure.title
+        .guide-name
+          = @current_guide.name
         .guide-profile-image
           = link_to (image_tag "#{@current_guide.get_avatar_url("medium")}"), user_path(@current_guide)
-
 
       .adventure-block
         #adventure-price
@@ -72,7 +71,7 @@
 
       = render partial: 'payment_modal'
               
-      = render partial: 'policy'
+      = render partial: 'additional_info'
 
       = render partial: 'reviews'
 
@@ -90,9 +89,9 @@
         %a{href: '#gallery'}
           .item
             %span gallery
-        %a{href: '#policy'}
+        %a{href: '#additional_info'}
           .item
-            %span policy
+            %span additional info
 
     
 

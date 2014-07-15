@@ -29,7 +29,7 @@
               .col-md-4
                 .form_label.text-right Summary *
               .col-md-6
-                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "400", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Market your adventure with an informative and detailed summary of what you're offering"}}
+                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "500", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Market your adventure with an informative and detailed summary of what you're offering"}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.summary}
                     
