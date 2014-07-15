@@ -34,14 +34,14 @@
       .col-md-4
         .form_label.text-right Card Number
       .col-md-6
-        %input.form-control{type: "text", placeholder: 'xxxx-xxxx-xxxx-xxxx', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
+        %input.form-control{type: "text", placeholder: '1234567890123', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
 
     
     .form-group.row
       .col-md-4
         .form_label.cvv-box.text-right CVV
       .col-md-1
-        %input.form-control{type: "text", placeholder: 'XXX', name: "cvv", id: "cvv", maxlength: "3"}
+        %input.form-control{type: "text", placeholder: '123', name: "cvv", id: "cvv", maxlength: "3"}
     
     .form-group.row
       .col-md-4
@@ -57,16 +57,12 @@
     .form-group.row
       .col-md-4
         .form_label.text-right People
-      .col-md-6
+      .col-md-2
         - adv_cap_min = @adventure.cap_min
         - adv_cap_max = @adventure.cap_max
         - if @adventure.price_type == "per_person"
-          - adv_cap_remain = adv_cap_max - event.reservations.count
-          
-        %input.form-control{type: "text", name: "capacity", id: "capacity"}
-
+          %select.form-control.cap_selector
 
     #book-it-wrapper
       .btn.btn-success#book-button.button Book
-
 

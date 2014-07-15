@@ -3,6 +3,23 @@ function getStripeToken(){
   $('.event').click(function(){
     $('#hidden_event_id').val( $(this).data('id') )
     $('#event-info').html( $(this).data('event-info') )
+
+    var adv_cap_min = $(this).data('adv-cap-min');
+    var adv_cap_max = $(this).data('adv-cap-max');
+    var adv_reserved = $(this).data('adv-reserved');
+
+    var adv_cap_remain = adv_cap_max - adv_reserved;
+
+    var i = adv_cap_min;
+
+    for (; i <= adv_cap_remain; i++) {
+      if (adv_cap_remain < adv_cap_min){
+        break;
+      }
+
+      var option_string = "<option name='reservation_count' value='"+i+"'>"+i+"</option>";
+      $('.cap_selector').append(option_string);
+    }
   })
 
   $("#book-button").click(function() {

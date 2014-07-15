@@ -25,7 +25,7 @@ class AdventuresController < ApplicationController
       adventure_show_variables
       flash[:notice] = "PENDING APPROVAL: We’ll notify you when it goes live"
 
-    elsif @adventure.users.first == current_user && @adventure.published == nil
+    elsif @adventure.users.first == current_user && @adventure.published == nil || @adventure.published == false
       adventure_show_variables
       flash[:notice] = "PREVIEW MODE: Publish when ready"
 
