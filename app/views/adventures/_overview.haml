@@ -1,50 +1,47 @@
-.title-brick.container-fluid
-  .brick-icons.overview-scroll-icon= image_tag 'magnify.png'
-  .brick-title 
-    OVERVIEW
-
-.copy-brick.container-fluid#overview
-  .overview-item-wrapper
-
-    .overview-item 
-      .fa.fa-chevron-circle-right
-        .default-description 
-          CATEGORY
-          %span= @adventure.category.gsub(',',' / ')
-
-    .overview-item 
-      .fa.fa-chevron-circle-right
-        .default-description 
-          PRICE
-          %span= "$ #{@adventure.price}"
-
-    .overview-item 
-      .fa.fa-chevron-circle-right
-        .default-description 
-          GROUP SIZE
+#overview.title-brick.container
+  .row
+    .brick-icons.overview-scroll-icon= image_tag 'magnify.png'
+    .brick-title 
+      OVERVIEW
+  .col-md-6
+    .container
+      .row.default-body
+        .col-md-3
+          %i.fa.fa-chevron-circle-right 
+          %span.default-title CATEGORY:
+        .col-md-3
+          %span.default-content= @adventure.category.gsub(',',' / ')
+      .row.default-body
+        .col-md-3
+          %i.fa.fa-chevron-circle-right 
+          %span.default-title PRICE:
+        .col-md-3
+          %span.default-content= "$ #{@adventure.price} #{@adventure.price_type.gsub("_"," ")}"
+      .row.default-body
+        .col-md-3
+          %i.fa.fa-chevron-circle-right 
+          %span.default-title GROUP SIZE:
+        .col-md-2
           - if @adventure.price_type == 'per_adv'
-            %span= "#{@adventure.cap_max} / group"          
+            %span.default-content= "#{@adventure.cap_max} / group"
           - elsif @adventure.cap_min == @adventure.cap_max
-            %span= "#{@adventure.cap_max} people"
-          -else
-            %span= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
-
-    .overview-item 
-      .fa.fa-chevron-circle-right
-        .default-description 
-          DURATION
-          %span= "#{@adventure.duration_num} #{@adventure.duration_type}"
-
-    .overview-item
-      .fa.fa-chevron-circle-right
-        .default-description 
-          LOCATION
-          %span= @adventure.location
-
-    .overview-item
-      .fa.fa-chevron-circle-right
-        .default-description 
-          SUMMARY
-          %span= @adventure.summary
-
+            %span.default-content= "#{@adventure.cap_max} people"
+          - else
+            %span.default-content= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
+      .row.default-body
+        .col-md-3
+          %i.fa.fa-chevron-circle-right 
+          %span.default-title DURATION:
+        .col-md-2
+          %span.default-content= "#{@adventure.duration_num} #{@adventure.duration_type}"
+      .row.default-body
+        .col-md-3
+          %i.fa.fa-chevron-circle-right 
+          %span.default-title LOCATION:
+        .col-md-2
+          %span.default-content= @adventure.location
+  .col-md-1
+  .col-md-5
+    %span.default-title SUMMARY:
+    .default-summary= @adventure.summary
   
