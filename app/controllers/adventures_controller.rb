@@ -39,8 +39,10 @@ class AdventuresController < ApplicationController
     @review = Review.new
     @adventure_reviews = Review.where(adventure_id: @adventure.id).order('created_at DESC')
     @itineraries = Itinerary.where(adventure_id: @adventure.id)
-    @all_adventure_events = @adventure.events.sort_by{|a| a.start_time}
-    @limited_adventure_events = @adventure.events.sort_by{|a| a.start_time}.take(5)
+
+    @all_adventure_events = @adventure.events.where("capacity > 0").sort_by{|a| a.start_time}
+    @limited_adventure_events = @adventure.events.where("capacity > 0").sort_by{|a| a.start_time}.take(5)
+
     related = []
     related << Adventure.where('category LIKE ?',"%#{@adventure.category}%").limit(4) 
     related << @adventure.nearbys(20).limit(3) if @adventure.nearbys(20)

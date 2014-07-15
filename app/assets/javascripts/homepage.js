@@ -1,3 +1,21 @@
+function exploreDropdownToggle(){
+  $('.dropdown-toggle').hover(function(){
+    $('.dropdown-box').slideDown()
+    $('.header_btn_fix').animate({
+      borderBottomLeftRadius: 0, 
+      borderBottomRightRadius: 0
+    }, 400);
+  },function(){
+    $('.dropdown-box').slideUp()
+    $('.header_btn_fix').animate({
+      borderTopLeftRadius: 10, 
+      borderTopRightRadius: 10, 
+      borderBottomLeftRadius: 10, 
+      borderBottomRightRadius: 10
+    }, 400);
+  })
+}
+
 function homepageTextScroll(){
   $('#homepage-text').hide()
 
@@ -119,5 +137,6 @@ homepageInit = function() {
   adventureHover();
   centerGuideImage();
   hostSliderImageCenter();
+  exploreDropdownToggle();
   homepageTextScroll();
 }

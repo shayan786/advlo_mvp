@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 		@event = Event.new
 
 		end_time_min = params[:start_time].to_time.advance(seconds: @adventure.dur_to_sec)
-		@event = Event.create(start_time: params[:start_time], end_time: end_time_min, adventure_id: params[:adventure_id])
+		@event = Event.create!(start_time: params[:start_time], end_time: end_time_min, adventure_id: params[:adventure_id], capacity: @adventure.cap_max)
 
 		if @event.save
 			respond_to do |format|
@@ -53,6 +53,6 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.permit(:start_time, :end_time, :adventure_id)
+    params.permit(:start_time, :end_time, :adventure_id, :capacity)
   end
 end

@@ -1,7 +1,10 @@
 function getStripeToken(){
 
   $('.event').click(function(){
+    $('.cap_selector').empty()
+    
     $('#hidden_event_id').val( $(this).data('id') )
+    $('#event_id').val( $(this).data('id') )
     $('#event-info').html( $(this).data('event-info') )
 
     var adv_cap_min = $(this).data('adv-cap-min');
@@ -12,10 +15,7 @@ function getStripeToken(){
 
     var i = adv_cap_min;
 
-    console.log(adv_cap_min+' min')
-    console.log(adv_cap_max+' max')
-
-
+    
     for (; i <= adv_cap_remain; i++) {
       if (adv_cap_remain < adv_cap_min){
         break;

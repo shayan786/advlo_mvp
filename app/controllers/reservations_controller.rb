@@ -8,6 +8,10 @@ class ReservationsController < ApplicationController
     adventure = Adventure.find(params[:adventure_id])
     user = User.find_by_id(params[:user_id])
 
+    event = Event.find_by_id(params[:event_id])
+    new_capacity = event.capacity.to_i - params[:reservation][:head_count].to_i
+    event.update(capacity: new_capacity )
+
     AdvloMailer.booking_confirmation_email(user, adventure, @reservation).deliver
 
     # If the current user (customer) is an existing stripe customer with us

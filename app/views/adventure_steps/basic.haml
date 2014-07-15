@@ -28,7 +28,7 @@
               .col-md-4
                 .form_label.text-right Summary *
               .col-md-6
-                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "600", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Market your adventure with an informative and detailed summary of what you're offering"}}
+                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "400", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Market your adventure with an informative and detailed summary of what you're offering"}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.summary}
                     
@@ -61,7 +61,7 @@
                 .input-group
                   %span.input-group-addon
                     $
-                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: "#{@adventure.price}", max: 10000, :data => {:container => "body", :toggle => "popover", :placement => "top", :content => "Refer to our pricing guide for assistance"}}
+                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: "#{@adventure.price}", max: 10000}
                   %span.input-group-addon
                     USD
               .col-md-3
@@ -87,7 +87,7 @@
               .col-md-4
                 .form_label.text-right Additional Info
               .col-md-6
-                %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Things to bring, whats not included, detailed directions, etc."}}
+                %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", maxlength: "600", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Things to bring, whats not included, detailed directions, etc."}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.other_notes}
             .form-group
