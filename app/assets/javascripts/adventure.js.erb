@@ -559,7 +559,7 @@ function form_validator(){
           notEmpty: {
             message: 'Please enter exp. month'
           },
-          integer: {
+          digits: {
             message: 'Exp. month is invalid'
           },
           lessThan: {
@@ -645,9 +645,6 @@ function payment_modal_validator() {
         validators: {
           notEmpty: {
             message: 'The CC Full Name is required and cannot be empty'
-          },
-          creditCard: {
-            message: 'Invalid CC Number'
           }
         }
       },
@@ -673,7 +670,7 @@ function payment_modal_validator() {
           notEmpty: {
             message: 'Please enter exp. month'
           },
-          integer: {
+          digits: {
             message: 'Exp. month is invalid'
           },
           lessThan: {

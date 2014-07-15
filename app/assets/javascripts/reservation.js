@@ -22,6 +22,15 @@ function getStripeToken(){
     }
   })
 
+  $('.cap_selector').change(function() {
+    var count = $(this).val();
+    var price = $('#adv_price').val();
+    var cost = count*price;
+
+    $('.reservation_cost').empty();
+    $('.reservation_cost').append("$ "+cost);
+  });
+
   $("#book-button").click(function() {
 
     // $("#user_submit").attr("disabled", true);
@@ -45,6 +54,7 @@ function getStripeToken(){
       if (status === 200) {
         // $("#user_last_4_digits").val(response.card.last4);
         $("#stripe_token").val(response.id);
+        $("#reservation_head_count").val($('.cap_selector').val());
         $('#new_reservation').submit();
       } else {
         $("#stripe-error-message").text(response.error.message);

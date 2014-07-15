@@ -11,14 +11,13 @@
 
     // reservation object params 
     %input#hidden_event_id{name: "reservation[event_id]", type: "hidden"}
-    %input#reservation_head_count{name: "reservation[head_count]", type: "hidden", value: "1"}
-    %input#reservation_total_price{name: "reservation[total_price]", type: "hidden", value: @adventure.price }
+    %input#reservation_head_count{name: "reservation[head_count]", type: "hidden"}
     %input#reservation_adventure_id{name: "reservation[adventure_id]", type: "hidden", value: @adventure.id }
     %input#reservation_user_id{name: "reservation[user_id]", type: "hidden", value: current_user.id}
     %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: "1"}
     
     // other rails controller params 
-    %input#total_price{name: "total_price", type: "hidden", value: @adventure.price }
+    %input#adv_price{name: "adv_price", type: "hidden", value: @adventure.price }
     %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id }
     %input#stripe_token{name: "stripe_token", type: "hidden"}
     %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
@@ -58,10 +57,14 @@
       .col-md-4
         .form_label.text-right People
       .col-md-2
-        - adv_cap_min = @adventure.cap_min
-        - adv_cap_max = @adventure.cap_max
-        - if @adventure.price_type == "per_person"
-          %select.form-control.cap_selector
+        %select.form-control.cap_selector
+    .row
+      .col-md-4
+        .form_label.text-right Total Cost
+      .col-md-2
+        .reservation_cost
+          = "$ #{@adventure.price * @adventure.cap_min}"
+
 
     #book-it-wrapper
       .btn.btn-success#book-button.button Book

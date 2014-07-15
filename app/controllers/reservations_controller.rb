@@ -4,8 +4,10 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.create!(reservation_params)
 
     # Stripe only takes price as cents ... convert to cents
-    total_price_cents = @reservation.total_price*100
     adventure = Adventure.find(params[:adventure_id])
+
+    total_price_cents = adventure.price*@reservation.head_count*100
+
     user = User.find_by_id(params[:user_id])
 
     AdvloMailer.booking_confirmation_email(user, adventure, @reservation).deliver
