@@ -59,6 +59,12 @@ font-family: nexa_light;
 src: asset-url("Nexa-Light.otf");
 }
 
+@font-face
+{
+font-family: bebas_neue;
+src: asset-url("BebasNeue.otf");
+}
+
 $primary_font:   	cabin_regular;
 $secondary_font: 	cabin_regular;
 $tertiary_font:  	cabin_regular;
