@@ -9,14 +9,12 @@
     .overview-item 
       .fa.fa-chevron-circle-right
         .default-description 
-          CATEGORY :
-          .fa.fa-angle-double-right
+          CATEGORY
           %span= @adventure.category.gsub(',',' / ')
 
     .overview-item 
       .fa.fa-chevron-circle-right
         .default-description 
-          .fa.fa-angle-double-right
           PRICE
           %span= "$ #{@adventure.price}"
 
