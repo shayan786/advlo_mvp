@@ -4,7 +4,7 @@
     #adv_payment
       .panel.panel-default
         .panel-heading.text-center.section_header
-          PAYMENT
+          PAYMENT DETAILS
         .panel-body
           - if notice
             .col-md-6.col-md-offset-3.text-center
@@ -39,7 +39,7 @@
           
               .form-group.row
                 .col-md-4
-                  .form_label.text-right Bank account name
+                  .form_label.text-right Name on Bank Account
                 .col-md-6
                   %input.form-control{type: "text", placeholder: recipient_info.name, name: "recipient[bank_account_name]", id: "bank_account_name"}
                   
@@ -58,7 +58,7 @@
 
               .form-group.row.save
                 .btn.btn-primary{id: "update_bank_form_btn"}
-                  Update Bank Info
+                  Update Account
 
           - else 
             - # Render new bank / cc form
@@ -119,10 +119,11 @@
               #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
                 .glyphicon.glyphicon-plus
                 .fa.fa-university
-              #add-bank-form
+              #add-bank-form  
+                #stripe-error-message
                 .form-group.row
                   .col-md-4
-                    .form_label.text-right Bank account name
+                    .form_label.text-right Name on Bank Account
                   .col-md-6
                     %input.form-control{type: "text", placeholder: "John Doe", name: "recipient[bank_account_name]", id: "bank_account_name"}
 
@@ -130,22 +131,24 @@
                   .col-md-4
                     .form_label.text-right Routing Number
                   .col-md-6
-                    %input.form-control{type: "text", placeholder: "xxx xxx xxx", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
+                    %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_routing_number]", id: "bank_routing_number", :data => {:container => "body", :toggle => "popover", :placement => "bottom", :content => "A 9-digit number at the lower left corner of a check. Contact your bank if you need help"}}
 
                 .form-group.row
                   .col-md-4
                     .form_label.text-right Account Number
                   .col-md-6
-                    %input.form-control{type: "text", name: "recipient[bank_account_number]", id: "bank_account_number"}
+                    %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_account_number]", id: "bank_account_number", :data => {:container => "body", :toggle => "popover", :placement => "bottom", :content => "A 3-17 digit number at the bottom of a check or on a bank statement. Contact your bank if you need help."}}
+
+
 
                 .form-group.row.save
                   .btn.btn-primary{id: "add_bank_form_btn"}
-                    Add Bank
+                    Add Account
 
         .panel-footer.text-center
           .row
             .col-md-2.col-md-offset-4
-              %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}"}
+              %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}", target: '_blank'}
                 %i.fa.fa-eye
                 PREVIEW
             .col-md-2

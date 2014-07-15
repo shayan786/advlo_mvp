@@ -81,7 +81,7 @@ function input_maxlength() {
 }
 
 function photoInput(){
-  $(":file").filestyle({input: false, icon: false, buttonText: "SET PHOTO"});
+  $(":file").filestyle({input: false, icon: false, buttonText: "SET PROFILE IMAGE"});
 }
 
 function create_tabs() {

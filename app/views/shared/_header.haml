@@ -30,7 +30,7 @@
         %li
           %form
             %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
-              HOST
+              Host
         %li.divider
         %li.divider
         %li.divider
@@ -80,7 +80,7 @@
                   =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
                   %a.btn.btn-primary.fb_btn.fb_btn_singin{href: "/users/auth/facebook"}
                     %i.fa.fa-facebook
-                    Connect with facebook
+                    Connect with Facebook
                   .form-group
                     %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
                   .form-group
@@ -88,11 +88,11 @@
                   %input.btn.btn-primary.sign_in_btn#login-form-submit{name: "sign_in", type: "submit", value: "Sign In"}
                   .sign_in_btn.btn.email_btn#login-toggle
                     %i.fa.fa-envelope-o
-                    Connect with email
+                    Connect with Email
 
 
               %li.sign_up_link
-                = link_to "Not an adventurer? Sign up", new_user_registration_path
+                = link_to "New to Advlo? Sign Up", new_user_registration_path
           %li.divider
           %li.divider
           %li.divider

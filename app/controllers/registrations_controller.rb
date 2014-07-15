@@ -28,7 +28,8 @@ class RegistrationsController < Devise::RegistrationsController
     #end
 
     #if successfully_updated
-    set_flash_message :notice, :updated
+    
+    flash[:notice] = 'You updated your account successfully'
     # Sign in the user bypassing validation in case their password changed
 
     sign_in @user, :bypass => true

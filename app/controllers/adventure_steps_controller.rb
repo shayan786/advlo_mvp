@@ -144,6 +144,8 @@ class AdventureStepsController < ApplicationController
       render_wizard @adventure
     end
 
+  rescue Stripe::InvalidRequestError => e
+    flash[:notice] = e.message
   end
 
   private
@@ -152,7 +154,7 @@ class AdventureStepsController < ApplicationController
   # can specialize this method with per-user checking of permissible attributes.
   
   def redirect_to_finish_wizard(options = nil)
-    redirect_to "/adventures/#{@adventure.slug}", notice: 'Congratulations! We will notifiy you when your adventure is approved.'
+    redirect_to "/adventures/#{@adventure.slug}", notice: "PENDING APPROVAL: We’ll notify you when it goes live"
   end
 
   def adventure_params

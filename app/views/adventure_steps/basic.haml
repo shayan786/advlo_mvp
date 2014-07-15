@@ -14,12 +14,12 @@
               .col-md-4
                 .form_label.text-right Title *
               .col-md-6
-                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[title]", id: "adv_name", value: "#{@adventure.title}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Surfing in la punta"}}
+                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[title]", id: "adv_name", value: "#{@adventure.title}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Climbing in Eldorado Canyon"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Location *
               .col-md-6
-                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[location]", id: "adv_location", value: "#{@adventure.location}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Meeting Address, Ex: 123 Hiking St. Denver, CO 80219"}}
+                %input.form-control.show_ml{type: "text", required: "required", name: "adventure[location]", id: "adv_location", value: "#{@adventure.location}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Write the general adventure location. Ex: Vail, CO"}}
             .row
               .col-md-4
               .col-md-6
@@ -28,7 +28,7 @@
               .col-md-4
                 .form_label.text-right Summary *
               .col-md-6
-                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "600", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This is the description for your adventure! Sell it with a detailed & informative summary!"}}
+                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "600", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Market your adventure with an informative and detailed summary of what you're offering"}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.summary}
                     
@@ -36,10 +36,10 @@
               .col-md-4
                 .form_label.text-right Capacity *
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[cap_min]", id: "adv_cap_min", value: "#{@adventure.cap_min}"}
+                %input.form-control{type: "text", required: "required", name: "adventure[cap_min]", id: "adv_cap_min", value: "#{@adventure.cap_min}", min: 1}
                 .text-center Min
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[cap_max]", id: "adv_cap_max", value: "#{@adventure.cap_max}"}
+                %input.form-control{type: "text", required: "required", name: "adventure[cap_max]", id: "adv_cap_max", value: "#{@adventure.cap_max}", max: 101, :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "How many people can you reasonably host while offering a great experience?"}}
                 .text-center Max
             .form-group.row
               .col-md-4
@@ -61,7 +61,7 @@
                 .input-group
                   %span.input-group-addon
                     $
-                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: "#{@adventure.price}"}
+                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: "#{@adventure.price}", max: 10000, :data => {:container => "body", :toggle => "popover", :placement => "top", :content => "Refer to our pricing guide for assistance"}}
                   %span.input-group-addon
                     USD
               .col-md-3
@@ -70,7 +70,7 @@
                     Per Person
                 %label.radio-inline
                   %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_adventure"}
-                    Flat Rate
+                    Per Group
             .form-group.row
               .col-md-4
                 .form_label.text-right Categories *
@@ -85,14 +85,14 @@
                     = o
             .form-group.row
               .col-md-4
-                .form_label.text-right Other Notes
+                .form_label.text-right Additional Info
               .col-md-6
-                %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
+                %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Things to bring, detailed directions, optional transportation, etc."}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.other_notes}
             .form-group
               .col-md-4
-                .form_label.text-right Adventure Banner Image *
+                .form_label.text-right Main Adventure Image *
               .col-md-6
                 - if !@adventure.attachment.nil?
                   %input.filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
@@ -103,11 +103,11 @@
           .panel-footer.text-center
             .row
               .col-md-2.col-md-offset-4
-                %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}"}
+                %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}", target: '_blank'}
                   %i.fa.fa-eye
                   PREVIEW
               .col-md-2
-                %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT"}
+                %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT", target: '_blank'}
                 
 :javascript
   adventureCreate();
