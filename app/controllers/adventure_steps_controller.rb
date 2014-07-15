@@ -15,6 +15,12 @@ class AdventureStepsController < ApplicationController
     # Prevent URL injection
     case params[:id]
 
+    when "basic"
+      respond_to do |format|
+        format.html {render_wizard}
+        format.js {}
+      end
+
     when "photos"
       if !@adventure.title.nil?
         respond_to do |format|
@@ -55,13 +61,9 @@ class AdventureStepsController < ApplicationController
       end
 
     else
-      if @adventure.users.first.stripe_recipient_id
-        respond_to do |format|
-          format.html {render_wizard}
-          format.js {}
-        end
-      else
-        redirect_to "/adventure_steps/payment?adventure_id=#{@adventure.id}", notice: "Please add a payment bank account"
+      respond_to do |format|
+        format.html {render_wizard}
+        format.js {}
       end
     end
 

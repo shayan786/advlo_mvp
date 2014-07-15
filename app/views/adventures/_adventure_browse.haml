@@ -1,14 +1,16 @@
-.title-brick.container-fluid
-  //.brick-icons= image_tag "location.png"
-  .brick-title 
-    SIMILAR ADVENTURES
+#adventure_browse.title-brick.dark_gray_background
+  .container
+    //.brick-icons= image_tag "location.png"
+    .brick-title 
+      SIMILAR ADVENTURES
 
-.copy-brick.container-fluid#similar
-  .brick-copy
-    .shared-slider-container#user-adventure-slider
-      .slider-wrapper
-        %i.next.fa.fa-chevron-right#profile-next
-        %i.prev.fa.fa-chevron-left#profile-prev
+    .col-md-9
+      .copy-brick#similar
+        .brick-copy
+          .shared-slider-container#user-adventure-slider
+            .slider-wrapper
+              %i.next.fa.fa-chevron-right#profile-next
+              %i.prev.fa.fa-chevron-left#profile-prev
 
-        = render partial: '/shared/adventures_slider', locals: {slider_adventures: @related, user: @current_guide }
-        
+              = render partial: '/shared/adventures_slider', locals: {slider_adventures: @related, user: @current_guide }
+            

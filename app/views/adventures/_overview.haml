@@ -1,46 +1,47 @@
-#overview.title-brick.container
-  .row
-    //.brick-icons.overview-scroll-icon= image_tag 'magnify.png'
-    .brick-title 
-      OVERVIEW
-  .col-md-6
-    .container
-      .row.default-body
-        .col-md-2
-          %i.fa.fa-chevron-circle-right 
-          %span.default-title CATEGORY:
-        .col-md-3
-          %span.default-content= @adventure.category.gsub(',',' / ')
-      .row.default-body
-        .col-md-2
-          %i.fa.fa-chevron-circle-right 
-          %span.default-title PRICE:
-        .col-md-3
-          %span.default-content= "$ #{@adventure.price} #{@adventure.price_type.gsub("_"," ")}"
-      .row.default-body
-        .col-md-2
-          %i.fa.fa-chevron-circle-right 
-          %span.default-title GROUP SIZE:
-        .col-md-3
-          - if @adventure.price_type == 'per_adv'
-            %span.default-content= "#{@adventure.cap_max} / group"
-          - elsif @adventure.cap_min == @adventure.cap_max
-            %span.default-content= "#{@adventure.cap_max} people"
-          - else
-            %span.default-content= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
-      .row.default-body
-        .col-md-2
-          %i.fa.fa-chevron-circle-right 
-          %span.default-title DURATION:
-        .col-md-3
-          %span.default-content= "#{@adventure.duration_num} #{@adventure.duration_type}"
-      .row.default-body
-        .col-md-2
-          %i.fa.fa-chevron-circle-right 
-          %span.default-title LOCATION:
-        .col-md-3
-          %span.default-content= @adventure.location
-  .col-md-6
-    %span.default-title SUMMARY:
-    .default-summary= @adventure.summary
-  
+#overview.title-brick.shaded_gray_background
+  .container
+    .row
+      //.brick-icons.overview-scroll-icon= image_tag 'magnify.png'
+      .brick-title 
+        OVERVIEW
+    .col-md-5
+      .container
+        .row.default-body
+          .col-md-2
+            %i.fa.fa-chevron-circle-right 
+            %span.default-title CATEGORY:
+          .col-md-3
+            %span.default-content= @adventure.category.gsub(',',' / ')
+        .row.default-body
+          .col-md-2
+            %i.fa.fa-chevron-circle-right 
+            %span.default-title PRICE:
+          .col-md-3
+            %span.default-content= "$ #{@adventure.price} #{@adventure.price_type.gsub("_"," ")}"
+        .row.default-body
+          .col-md-2
+            %i.fa.fa-chevron-circle-right 
+            %span.default-title GROUP SIZE:
+          .col-md-3
+            - if @adventure.price_type == 'per_adv'
+              %span.default-content= "#{@adventure.cap_max} / group"
+            - elsif @adventure.cap_min == @adventure.cap_max
+              %span.default-content= "#{@adventure.cap_max} people"
+            - else
+              %span.default-content= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
+        .row.default-body
+          .col-md-2
+            %i.fa.fa-chevron-circle-right 
+            %span.default-title DURATION:
+          .col-md-3
+            %span.default-content= "#{@adventure.duration_num} #{@adventure.duration_type}"
+        .row.default-body
+          .col-md-2
+            %i.fa.fa-chevron-circle-right 
+            %span.default-title LOCATION:
+          .col-md-3
+            %span.default-content= @adventure.location
+    .col-md-4
+      %span.default-title SUMMARY:
+      .default-summary= @adventure.summary
+    
