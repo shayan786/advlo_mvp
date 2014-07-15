@@ -1,43 +1,45 @@
 #how_it_works {
 	min-height: 375px;
 	padding-top: 30px;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 	position: relative;
 	width: 100%;
 	float: left;
 	background-color: #fff;
 
 	.row {
-		width: 75%;
 		margin: 0 auto;
 
 		a {
 			text-decoration: none;
-			width: 255px !important;
 
 			&:hover {
-
+				.large_text {
+					font-weight: bold;	
+				}
 			}
+
 
 			.large_text {
 				color: #000;
-				font-size: 5em;
+				font-size: 3.6em;
 				font-family: 'nexa_light';
 			}
 
 			.small_text {
-				@extend .large_text;
-				font-size: 1.6em;
-				line-height: 0.3em;
+				color: #000;
+				font-family: 'cabin_regular';
+				font-size: 1.3em;
+				line-height: 1.3em;
 			}
 
 			.find_icon {
 				background-image: asset-url($find_icon);
 				background-repeat: no-repeat;
 				background-size: cover;
-				height: 222px;
-				width: 217px;
-				margin: 0 auto;
+				height: 140px;
+				width: 140px;
+				margin: 20px auto 30px auto;
 			}
 
 			.host_icon {
@@ -45,6 +47,74 @@
 				background-image: asset-url($host_icon);
 			}
 
+			.request_icon {
+				@extend .find_icon;
+				background-image: asset-url($request_icon);
+			}
+
 		}
 	}
+
+	#request_form_modal {
+		.request_btn {
+	      margin-top: 20px;
+	      font-size: 1.8em;
+	      background-color: $login_btn_color;
+	      border-color: $login_btn_color;
+	      padding: 10px 20px;
+
+	      &:hover {
+	        background-color: $login_btn_color_hover;
+	        border-color: $login_btn_color_hover;
+	      }
+	    }
+
+	    .modal-dialog {
+	      margin: 75px auto 0 auto;
+	    }
+
+	    .modal-header {
+	      font-family: cabin_bold;
+	      color: $orange;
+	      font-size: 1.6em;
+	    }
+
+	    .modal-body {
+
+	      form {
+	      	.form-group{
+	      		margin-bottom: 10px;
+	      	}
+
+	        .form_label {
+	          padding-top: 5px;
+	          font-size: 1.2em;
+	          font-weight: bold;
+	          color: #FFF;
+	        }
+
+	        .checkbox-inline {
+	          color: #FFF;
+	        }
+
+	        .request_btn {
+	          margin-top: 10px;
+	          padding: 5px 15px;
+	        }
+	      }
+
+	      #request_submitted {
+	        display: none;
+	        color: #FFF;
+	        font-size: 1.8em;
+	        margin-bottom: 20px;
+
+	        img {
+	          margin: 0px auto;
+	          width: 200px;
+	          height: auto;
+	        }
+	    }
+    }
+  }
 }
