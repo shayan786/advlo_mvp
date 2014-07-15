@@ -23,11 +23,11 @@ class AdventuresController < ApplicationController
 
     elsif @adventure.users.first == current_user && @adventure.published == true
       adventure_show_variables
-      flash[:notice] = "Your adventure is pending approval"
+      flash[:notice] = "PENDING APPROVAL: We’ll notify you when it goes live"
 
     elsif @adventure.users.first == current_user && @adventure.published == nil
       adventure_show_variables
-      flash[:notice] = "Publish your adventure to start selling your skill!"
+      flash[:notice] = "PREVIEW MODE: Publish when ready"
 
     else  
       render '/error_404'
@@ -110,7 +110,7 @@ class AdventuresController < ApplicationController
         redirect_to '/users/sign_in'
       end
     elsif user_signed_in? && !current_user.is_guide?(current_user.id)
-      redirect_to '/users/edit', notice: "Please complete your profile so travelers know more about their host!"
+      redirect_to '/users/edit', notice: "Please complete your profile so travelers know more about their host"
     else 
       redirect_to '/adventures/new'
     end
@@ -120,7 +120,7 @@ class AdventuresController < ApplicationController
   def new
     #add another check...before actually showing the form
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
-      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
+      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host"
     end
 
     @adventure = Adventure.new
@@ -130,7 +130,7 @@ class AdventuresController < ApplicationController
   def create
     #add another check...before actually showing the form
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
-      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host!"
+      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host"
     end
   
     @adventure = Adventure.create!(adventure_params)

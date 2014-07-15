@@ -39,7 +39,7 @@
       .adv-title {
         position: relative;
         margin-top: 2px;
-        font-size: 30px;
+        font-size: 22px;
         color: $advlo_orange;
         font-style: italic;
       }
@@ -136,8 +136,9 @@
 
             .default-description {
               color: $light_gray;
-              font-family: 'cabin_bold';
-              font-size: 30px;
+              font-family: 'nexa_light';
+              font-size: 25px;
+              margin-right: 6px;
               top: -30px;
               position: relative;
               float: left;
@@ -172,7 +173,7 @@
         }
         .fa-chevron-circle-right {
           font-size: 30px;
-          color: $advlo_orange;
+          color: #fff;
         }
       }
 
@@ -550,7 +551,7 @@
       left: 60px;
       margin-top: 14px;
       color: #fff;
-      font-family: 'nexa_light';
+      font-family: 'cabin_regular';
       font-size: 20px;
       margin-bottom: 20px;
 

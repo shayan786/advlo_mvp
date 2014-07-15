@@ -30,7 +30,7 @@ feature "user logic for adventure flow", :js => true do
     expect(page).to have_content('HOST AN ADVENTURE')
 
     visit '/adventures/create_prefill'
-    expect(page).to have_content('Please complete your profile so travelers know more about their host!')
+    expect(page).to have_content('Please complete your profile so travelers know more about their host')
     fill_in 'Name', with: 'Topher'
     fill_in 'Short Description', with: 'Anthropologist programmer'
     fill_in 'Location', with: 'Denver, Co'
@@ -39,7 +39,7 @@ feature "user logic for adventure flow", :js => true do
     sleep 1
     fill_in "What's your story?", with: 'I once put out a fire. But I actually had started it'
     fill_in 'Languages', with: 'Frenglish, ebonics, hebrew'
-    fill_in 'Have specialized training or skills?', with: 'Denver, Colorado'
+    fill_in 'Ex: Certified Scuba Diver, Wilderness First Responder', with: 'TOTES'
     attach_file('user_avatar', File.join(Rails.root, '/spec/support/example.jpg'))
     click_button 'UPDATE'
     expect(page).to have_content 'You updated your account successfully'
@@ -58,7 +58,7 @@ feature "user logic for adventure flow", :js => true do
     choose('Per Person')
     select 'Hours', from: 'adventure[duration_type]'
     
-    check('BIKE')
+    check('BIKING')
     check('WATER')
 
     attach_file('adventure[attachment]', File.join(Rails.root, '/spec/support/example.jpg'))
@@ -86,15 +86,9 @@ feature "user logic for adventure flow", :js => true do
     fill_in 'recipient[bank_account_name]', with: 'Justin Bieber'
     fill_in 'recipient[bank_routing_number]', with: '111000025'
     fill_in 'recipient[bank_account_number]', with: '000123456789'
-    sleep 5
     find("#add_bank_form_btn").click
-    sleep 5
     visit '/adventure_steps/publish?adventure_id=1'
-    sleep 5    
-
-    expect(page).to have_content 'Publish your adventure after Previewing'    
-
     click_button "PUBLISH"
-    expect(page).to have_content('Your adventure is pending approval')
+    expect(page).to have_content('PENDING APPROVAL: We’ll notify you when it goes live')
   end
 end

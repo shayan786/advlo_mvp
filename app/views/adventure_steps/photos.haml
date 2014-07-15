@@ -7,11 +7,11 @@
           PHOTOS
         .panel-body
           .col-md-6.col-md-offset-3
-            .well.how_to
-              Upload your adventure's gallery images here! You know what they say, a photo is worth a thousand words!
-              You can upload upto 
-              %strong 10 images,
-              try to make them as best quality as you can!
+            .well.how_to.text-center
+              Choose up to 
+              %strong 10 photos 
+              which best illustrate and market your adventure.
+
           .text-center
             - if !@adventure.adventure_gallery_images.empty?
               - @adventure.adventure_gallery_images.each_with_index do |adv, i|

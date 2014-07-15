@@ -179,12 +179,9 @@ function navBarCatch(){
       var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
       var s = $(window).scrollTop();
 
-      console.log(s)
-
       if(distanceFromBottom < 76){
 
       }else if(s > 107 ){
-        console.log("fixSidebar();")
         fixSidebar();
       }else{
         resetSideBar();

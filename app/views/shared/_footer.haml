@@ -6,11 +6,11 @@
           %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_form_modal'}
             CONTACT
           = " - " 
-          %a{href: "#"}
-            PRESS
+          %a{href: "http://blog.advlo.com/"}
+            BLOG
           = " - " 
           %a{href: "#"}
-            BLOG
+            PRESS
           = " - "
           %a{href: "#"}
             TERMS & PRIVACY
@@ -24,10 +24,10 @@
             %i.fa.fa-instagram
       .row
         .col-md-4.col-md-offset-4
-          © 2014
+          ="©#{Time.now.year}"
           %a{href:"/"}
             Advlo Inc.
-          All rights reserved
+          All rights reserved.
 
   #contact_form_modal.modal.fade{role: "dialog"}
     .modal-dialog

@@ -6,15 +6,22 @@
         .panel-heading.text-center.section_header
           PUBLISH
         .panel-body
-          - if @adventure.published == true
-
+          - if @adventure.published == true && @adventure.approved == true
             .col-md-6.col-md-offset-3
               .well.how_to.text-center
-                Your adventure has already been
-                %strong published.
-                %br
-                %br
-                You're all set. We'll take care of the rest!
+                Your adventure has been
+                %strong published
+                and is
+                %strong approved
+
+          - elsif @adventure.published == true
+            .col-md-6.col-md-offset-3
+              .well.how_to.text-center
+                Your adventure has been
+                %strong published
+                and is pending 
+                %strong approval
+
           - else
             .col-md-6.col-md-offset-3
               .well.how_to.text-center

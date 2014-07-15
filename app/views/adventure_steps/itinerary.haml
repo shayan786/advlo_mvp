@@ -12,8 +12,8 @@
                 = notice
           - if @adventure.itineraries.empty?
             .col-md-6.col-md-offset-3
-              .well.how_to
-                Although optional, highly recommended to add adventure event items to define the timeline or activities of your adventure! Every item will give more information to the adventure seekers.
+              .well.how_to.text-center
+                Add points of interest (specific locations or activities) within your adventure to create an itinerary. Don’t worry about including times.
             = render partial: "itinerary_form_new"
           - else
             = render partial: "itinerary_form_update"
