@@ -33,10 +33,11 @@
 }
 
 .dropdown-toggle {
-
+	position: absolute;
+	left: 42%;
+	right: 42%;
 	text-align: center;
 	width: 235px;
-	margin: 0 auto;
 	margin-top: 75px;
 
 	.header_btn_fix {
