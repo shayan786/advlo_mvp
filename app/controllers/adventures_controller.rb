@@ -5,7 +5,7 @@ class AdventuresController < ApplicationController
     # if params[:search].present?
     # @adventures = Adventure.near(params[:search], 50, :order => :distance)
     if params[:location].present?
-      @adventures = Adventure.near(params[:location], 200).where(approved: true).order('created_at DESC')
+      @adventures = Adventure.near(params[:location], 50).where(approved: true).order('created_at DESC')
       @hero_image = HeroImage.where(region: params[:location] ).last
       @location = params[:location].downcase      
     else
@@ -43,10 +43,11 @@ class AdventuresController < ApplicationController
     @all_adventure_events = @adventure.events.where("capacity > 0").sort_by{|a| a.start_time}
     @limited_adventure_events = @adventure.events.where("capacity > 0").sort_by{|a| a.start_time}.take(5)
 
-    related = []
-    related << Adventure.where('category LIKE ?',"%#{@adventure.category}%").limit(4) 
-    related << @adventure.nearbys(20).limit(3) if @adventure.nearbys(20)
-    @related = related.flatten
+    # related = []
+    # related << Adventure.where('category LIKE ?',"%#{@adventure.category}%").limit(2) 
+    # related << @adventure.nearbys(20).limit(2) if @adventure.nearbys(20)
+    # @related = related.flatten
+    @related = Adventure.all
     @reservation = Reservation.new
   end
 

@@ -4,13 +4,34 @@
     .brick-title 
       SIMILAR ADVENTURES
 
-    .col-md-9
-      .copy-brick#similar
-        .brick-copy
-          .shared-slider-container#user-adventure-slider
-            .slider-wrapper
-              %i.next.fa.fa-chevron-right#profile-next
-              %i.prev.fa.fa-chevron-left#profile-prev
+  .col-md-9
+    .copy-brick#similar
+      .brick-wrapper.masonry.js-masonry
+        - @related.each_with_index do |adv, i|
+          %a.adventure-brick{href: adventure_path(adv.slug)}
+            .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+              .copy
+                - if adv.title.length > 38
+                  .title= "#{adv.title[0..38]}..."
+                -else
+                  .title= adv.title
 
-              = render partial: '/shared/adventures_slider', locals: {slider_adventures: @related, user: @current_guide }
-            
+                - if adv.location
+                  .location= "#{adv.city}, #{adv.state}".upcase
+
+              .price= "$ #{adv.price}"
+
+              .hover-block{id: i}
+                - usr = adv.users.first
+                - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil
+                  .guide-image= image_tag "#{usr.avatar.url(:large)}"
+                - elsif usr
+                  .guide-image= image_tag "#{usr.avatar_url}?type=large"
+                - else
+                  .guide-image= image_tag 'missing.png'
+
+              .copy-container{class: "copy-#{i}"}
+
+
+:javascript
+  masonrySetup()

@@ -77,24 +77,27 @@
         color: #fff;
         font-size: 30px;
       }
-
       #adventure-price{
         font-size: 55px;
         color: $advlo_green;
         margin-top: -5px;
         font-family: bebas_neue;
       }
+
       #book-it {
         cursor: pointer;
         width: 80%;
         margin: 0 auto;
         padding-top: 10px;
         padding-bottom: 5px;
+        margin-top: 20px;
         span {
           color: #fff;
           font-size: 25px;
           position: relative;
           top: -1px;
+          margin-right: 10px;
+          margin-left: 10px;
         }
       }
     }

@@ -26,6 +26,7 @@
           #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
             %span 
               BOOK IT
+
     - else
       .guide-block
         .guide-name
@@ -65,15 +66,18 @@
     .row.information-container
       = render partial: 'overview'
 
-      = render partial: 'itinerary'
+      - if @adventure.itineraries.count > 0
+        = render partial: 'itinerary'
 
       = render partial: 'gallery'
 
       = render partial: 'payment_modal'
               
-      = render partial: 'additional_info'
+      - if !@adventure.summary.empty?
+        = render partial: 'additional_info'
 
-      = render partial: 'reviews'
+      -if @adventure.approved
+        = render partial: 'reviews'
 
       = render partial: 'adventure_browse'
                 
