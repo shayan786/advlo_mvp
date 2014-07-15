@@ -45,10 +45,6 @@
 				background-image: asset-url($host_icon);
 			}
 
-			.request_icon {
-				@extend .find_icon;
-				background-image: asset-url($request_icon);
-			}
 		}
 	}
 }
