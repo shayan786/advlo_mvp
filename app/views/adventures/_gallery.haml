@@ -1,18 +1,18 @@
-.title-brick.container-fluid
-  //.brick-icons= image_tag 'mountain.png'
-  .brick-title 
-    GALLERY
+#gallery.title-brick.shaded_gray_background
+  .container
+    //.brick-icons= image_tag 'mountain.png'
+    .brick-title 
+      GALLERY
+  .col-md-9
+    .copy-brick
+      .brick-copy 
+        #gallery-masonry-container
+          - @adventure.adventure_gallery_images.each_with_index do |gi, i|
+            .gallery-image{"data-target" => "#myModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), class: "image#{i}", id: i}
+              = image_tag gi.picture.url(:thumb)
 
-
-.copy-brick.container-fluid#gallery
-  .brick-copy 
-    #gallery-masonry-container
-      - @adventure.adventure_gallery_images.each_with_index do |gi, i|
-        .gallery-image{"data-target" => "#myModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), class: "image#{i}", id: i}
-          = image_tag gi.picture.url(:thumb)
-
-#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog"}
-  .modal-dialog
-    .modal-content
-      .modal-body
-        %img{src: '', id: ''}
+    #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog"}
+      .modal-dialog
+        .modal-content
+          .modal-body
+            %img{src: '', id: ''}

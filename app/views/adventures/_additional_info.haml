@@ -1,9 +1,8 @@
-.title-brick.container-fluid
-  //.brick-icons= image_tag 'simple_map.png'
-  .brick-title 
-    ADDITIONAL INFO
-
-.copy-brick.container-fluid#additional_info
-  .brick-copy
-    %ul
-      %li= @adventure.other_notes
+#additional_info.title-brick.dark_gray_background
+  .container
+    .brick-title 
+      ADDITIONAL INFO
+    .col-md-9
+      .copy-brick
+      .brick-copy
+        = @adventure.other_notes

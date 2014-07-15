@@ -119,16 +119,26 @@
     float: left;
     height: 100%;
     background: asset_url('cartographer_small.png');
-    padding-bottom: 25px;
 
     .information-container{
 
-      #overview {
-        background: none;
+      margin-top: -20px;
 
+      .shaded_gray_background {
+        background-color: $shaded_gray;
+      }
+
+      .dark_gray_background {
+        background-color: $dark_gray;
+      }
+
+      #overview {
+        padding-top: 15px;
+        padding-bottom: 25px;
         .default-body {
 
           .fa-chevron-circle-right {
+            color: $gray;
             margin-right: 15px;
             font-size: 0.6em;
           }
@@ -142,7 +152,7 @@
         }
 
         .default-title {
-          color: $light_gray;
+          color: $gray;
           font-family: 'nexa_light';
           font-size: 0.6em;
         }
@@ -163,6 +173,9 @@
       }
 
       #itinerary {
+        padding-top: 15px;
+        padding-bottom: 25px;
+
         .itinerary-brick {
           margin-bottom: 5px !important;
           margin-top: 5px !important;
@@ -197,6 +210,25 @@
           font-size: 20px;
           display: none;
         }
+      }
+
+      #gallery {
+        padding-bottom: 20px;
+        padding-top: 15px;
+      }
+
+      #additional_info {
+        min-height: 200px;
+        padding-bottom: 20px;
+        padding-top: 15px;
+      }
+
+      #reviews {
+        @extend #additional_info;
+      }
+
+      #adventure_browse {
+        @extend #addtional_info;
       }
 
       #similar {
@@ -256,7 +288,6 @@
     }
 
     .title-brick {
-      margin-top: 20px;
       position: relative;
       float: left;
       height: 100%;
@@ -277,7 +308,6 @@
 
       .brick-title {
         position: relative;
-        float: left;
         font-size: 40px;
         font-family: 'nexa_light';
         color: #c35b26;
@@ -504,8 +534,6 @@
   }
 
   #purchase-to-review {
-    text-align: center;
-    margin-top: 20px;
     margin-bottom: 20px;
     color: $advlo_orange;
     font-size: 20px;
