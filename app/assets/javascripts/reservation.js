@@ -55,6 +55,10 @@ function getStripeToken(){
         // $("#user_last_4_digits").val(response.card.last4);
         $("#stripe_token").val(response.id);
         $("#reservation_head_count").val($('.cap_selector').val());
+
+        var total_price = $('.cap_selector').val()*$('#adv_price').val()
+        $('#reservation_total_price').val(total_price)
+        
         $('#new_reservation').submit();
       } else {
         $("#stripe-error-message").text(response.error.message);

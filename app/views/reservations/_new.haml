@@ -15,9 +15,11 @@
     %input#reservation_adventure_id{name: "reservation[adventure_id]", type: "hidden", value: @adventure.id }
     %input#reservation_user_id{name: "reservation[user_id]", type: "hidden", value: current_user.id}
     %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: "1"}
+    %input#reservation_total_price{name: "reservation[total_price]", type: "hidden"}
+
     
     // other rails controller params 
-    %input#adv_price{name: "adv_price", type: "hidden", value: @adventure.price }
+    %input#adv_price{name: "adv_price", type: "hidden", value: @adventure.price}
     %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id }
     %input#stripe_token{name: "stripe_token", type: "hidden"}
     %input#user_id{name: "user_id", type: "hidden", value: current_user.id}

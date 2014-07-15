@@ -15,6 +15,7 @@
               %tr
                 %th.text-center #
                 %th Name
+                %th Email
                 %th.text-center People
                 %th Timeslot
                 %th $ Earned
@@ -28,11 +29,13 @@
                 %td
                   = image_tag "#{customer.get_avatar_url("thumb")}", class: "img-circle customer_img"
                   = customer.name
+                %td= customer.email
                 %td.text-center= res.head_count
                 %td= event.start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
                 %td= "$ "+res.total_price.to_s
             %thead
               %tr
+                %th
                 %th
                 %th
                 %th.text-center= current_user.reservations.where(adventure_id: @adventure.id).sum(:head_count)
