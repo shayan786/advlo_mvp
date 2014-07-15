@@ -47,7 +47,7 @@
             %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
               SCHEDULE
         - else
-          - if !@adventure.adventure_gallery_images.empty? && !@adventure.intineraries.empty?
+          - if !@adventure.adventure_gallery_images.empty?
             %li 
               %a{href: "/adventure_steps/schedule?adventure_id=#{@adventure.id}"}
                 SCHEDULE
