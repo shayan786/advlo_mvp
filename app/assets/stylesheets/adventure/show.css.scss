@@ -87,7 +87,8 @@
         cursor: pointer;
         width: 80%;
         margin: 0 auto;
-        height: 41px;
+        padding-top: 10px;
+        padding-bottom: 5px;
         span {
           color: #fff;
           font-size: 25px;
@@ -124,53 +125,40 @@
 
       #overview {
         background: none;
-        .overview-item-wrapper {
-          position: relative;
-          width: 100%;
-          float: left;
-          .overview-item {
-            width: 40%;
-            height: 100%;
-            float: left;
-            margin: 20px;
 
-            .default-description {
-              color: $light_gray;
-              font-family: 'nexa_light';
-              font-size: 25px;
-              margin-right: 6px;
-              top: -30px;
-              position: relative;
-              float: left;
-              right: -36px;
-              opacity: 0.9;
+        .default-body {
+          margin-bottom: 10px;
 
-              span {
-                color: #fff;
-                margin-left: 10px;
-                font-family: 'nexa_light';
-                font-size: 20px;
-                font-weight: bold;
-                position: relative;
-                top: -2px;
-              }
-            }
+          .fa-chevron-circle-right {
+            margin-right: 15px;
           }
-          .last-row {
-            width: 89%;
-          }
-          #map {
-            margin-top: -178px;
-            float: right;
-            position: relative;
-            width: 359px;
-            border: 5px solid rgba(0, 0, 0, 0.7);
-            border-radius: 7px;
+
+          .default-content {
+            font-family: 'nexa_light';
+            font-size: 0.7em;
+            font-weight: bold;
+            line-height: 1.0em !important;
           }
         }
-        .fa-chevron-circle-right {
-          font-size: 30px;
-          color: #fff;
+
+        .default-title {
+          color: $light_gray;
+          font-family: 'nexa_light';
+          font-size: 0.9em;
+        }
+
+        .default-summary {
+          font-size: 0.7em;
+          line-height: 1.0em;
+        }
+
+        #map {
+          margin-top: -178px;
+          float: right;
+          position: relative;
+          width: 359px;
+          border: 5px solid rgba(0, 0, 0, 0.7);
+          border-radius: 7px;
         }
       }
 
