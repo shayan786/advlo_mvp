@@ -1,14 +1,13 @@
 #how_it_works {
 	min-height: 375px;
 	padding-top: 30px;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 	position: relative;
 	width: 100%;
 	float: left;
 	background-color: #fff;
 
 	.row {
-		width: 75%;
 		margin: 0 auto;
 
 		a {
@@ -21,14 +20,16 @@
 
 			.large_text {
 				color: #000;
-				font-size: 5em;
+				font-size: 3.6em;
 				font-family: 'nexa_light';
+				margin-bottom: 0px !important;
 			}
 
 			.small_text {
 				@extend .large_text;
-				font-size: 1.6em;
-				line-height: 0.3em;
+				font-family: 'cabin_regular';
+				font-size: 1.4em;
+				line-height: 1.3em;
 			}
 
 			.find_icon {
@@ -43,6 +44,11 @@
 			.host_icon {
 				@extend .find_icon;
 				background-image: asset-url($host_icon);
+			}
+
+			.request_icon {
+				@extend .find_icon;
+				background-image: asset-url($request_icon);
 			}
 
 		}
