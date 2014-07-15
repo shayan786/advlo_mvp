@@ -12,6 +12,10 @@ function getStripeToken(){
 
     var i = adv_cap_min;
 
+    console.log(adv_cap_min+' min')
+    console.log(adv_cap_max+' max')
+
+
     for (; i <= adv_cap_remain; i++) {
       if (adv_cap_remain < adv_cap_min){
         break;

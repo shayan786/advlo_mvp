@@ -1,7 +1,7 @@
 $('#new_reservation').remove();
 $('#stripe-error-message').remove();
-$('.modal-backdrop').first().remove();
-$('#event-modal').toggle();
+// $('.modal-backdrop').first().remove();
+// $('#event-modal').toggle();
 
 $('#success').show();
 $('#success-detail').show();
