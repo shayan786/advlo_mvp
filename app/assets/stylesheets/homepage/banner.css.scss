@@ -32,7 +32,6 @@
 	}
 }
 
-
 .dropdown-toggle {
 	text-align: center;
 	width: 235px;
@@ -42,10 +41,8 @@
 	.header_btn_fix {
 		background-color: $header_btn_color_hover;
 		border-color: $header_btn_color_hover;
-		font-size: 1.2em;
-		font-family: 'nexa_light';
+		font-size: 1.5em;
 		width: 100%;
-
 		padding: 12px 30px;
 
 		&:hover {
@@ -58,7 +55,6 @@
 			border-color: $header_btn_color_hover;
 		}
 	}
-
 	
 	.dropdown-box {
 		width: 235px;
