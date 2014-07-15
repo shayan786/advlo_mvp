@@ -19,9 +19,14 @@
       .adventure-block
         #adventure-price
           %span= "$ #{@adventure.price}"
-        #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
-          %span 
-            BOOK IT
+        -if !@adventure.approved
+          #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+            %span 
+              BOOK IT
+        -else
+          #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+            %span 
+              BOOK IT
     - else
       .guide-block
         .guide-name

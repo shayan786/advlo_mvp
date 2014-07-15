@@ -9,48 +9,17 @@
             %a{"data-toggle" => "tab", href: ".view-all", role: "tab"} VIEW ALL
 
         .tab-content
+
+
           .upcoming.tab-pane.active
             - @limited_adventure_events.each do |event| 
-              - # if event is GROUP and IS NOT RESERVED (SHOW IT)
-              - if !event.reservations && @adventure.price_type == "per_adventure"
-                .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-event-info' => event.start_time.strftime("%A  - %B %d - %l:%M %p "), 'data-id' => event.id}
-                  .col-md-4.col-md-offset-1
-                    = event.start_time.strftime("%A  - %B %d - %l:%M %p ")
-                  .col-md-2
-                  .col-md-4
-                    %em
-                      = "Max. Group Size: "+@adventure.cap_max.to_s
+              = render partial: 'event_partial', locals: {event: event}
 
-              - # if event is PERSON and has capacity
-              - if @adventure.price_type == "per_person" && ((event.reservations.sum(:head_count)+@adventure.cap_min) <= @adventure.cap_max)
-                .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-event-info' => event.start_time.strftime("%A  - %B %d - %l:%M %p "), 'data-id' => event.id, 'data-adv-cap-min' => event.id, 'data-adv-cap-max' => @adventure.cap_max, 'data-adv-cap-min' => @adventure.cap_min, 'data-adv-reserved' => "#{event.reservations.sum(:head_count)}"}
-                  .col-md-4.col-md-offset-1
-                    = event.start_time.strftime("%A  - %B %d - %l:%M %p ")
-                  .col-md-2
-                  .col-md-4
-                    %em
-                      = "Cap. Remaining: "+(@adventure.cap_max - event.reservations.sum(:head_count)).to_s
           .view-all.tab-pane 
             - @all_adventure_events.each do |event| 
-              - # if event is GROUP and IS NOT RESERVED (SHOW IT)
-              - if !event.reservations && @adventure.price_type == "per_adventure"
-                .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-event-info' => event.start_time.strftime("%A  - %B %d - %l:%M %p "), 'data-id' => event.id, 'data-adv-cap-min' => event.id, 'data-adv-cap-max' => @adventure.cap_max, 'data-adv-cap-min' => @adventure.cap_min, 'data-adv-reserved' => "#{event.reservations.sum(:head_count)}"}
-                  .col-md-4.col-md-offset-1
-                    = event.start_time.strftime("%A  - %B %d - %l:%M %p ")
-                  .col-md-2
-                  .col-md-4
-                    %em
-                      = "Max. Group Size: "+@adventure.cap_max.to_s
+              = render partial: 'event_partial', locals: {event: event}
 
-              - # if event is PERSON and has capacity
-              - if @adventure.price_type == "per_person" && ((event.reservations.sum(:head_count)+@adventure.cap_min) < @adventure.cap_max)
-                .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-event-info' => event.start_time.strftime("%A  - %B %d - %l:%M %p "), 'data-id' => event.id, 'data-adv-cap-min' => event.id, 'data-adv-cap-max' => @adventure.cap_max, 'data-adv-cap-min' => @adventure.cap_min, 'data-adv-reserved' => "#{event.reservations.sum(:head_count)}"}
-                  .col-md-4.col-md-offset-1
-                    = event.start_time.strftime("%A  - %B %d - %l:%M %p ")
-                  .col-md-2
-                  .col-md-4
-                    %em
-                      = "Cap. Remaining: "+(@adventure.cap_max - event.reservations.sum(:head_count)).to_s
+
 #reservations-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-modal", role: "dialog"}
   .modal-dialog.payment-modal-wrapper
     .modal-content
