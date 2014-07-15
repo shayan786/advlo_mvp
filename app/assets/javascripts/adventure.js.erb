@@ -69,6 +69,8 @@ function adventureScroll(){
 
 function toggleItineraryItemsAndArrows(){
 
+
+
   $('#profile-next').addClass('adventure-show-arrow-right')
   $('#profile-prev').addClass('adventure-show-arrow-left')
 
@@ -77,6 +79,7 @@ function toggleItineraryItemsAndArrows(){
     $(this).children().first().toggle();
     $(this).children().first().next().toggle();
   })
+  $('.itinerary-brick').first().click()
 }
 
 function highlightFilters(){
