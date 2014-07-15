@@ -43,11 +43,10 @@ class AdventuresController < ApplicationController
     @all_adventure_events = @adventure.events.where("capacity > 0").sort_by{|a| a.start_time}
     @limited_adventure_events = @adventure.events.where("capacity > 0").sort_by{|a| a.start_time}.take(5)
 
-    # related = []
-    # related << Adventure.where('category LIKE ?',"%#{@adventure.category}%").limit(2) 
-    # related << @adventure.nearbys(20).limit(2) if @adventure.nearbys(20)
-    # @related = related.flatten
-    @related = Adventure.all
+    related = []
+    related << Adventure.where('category LIKE ?',"%#{@adventure.category}%").limit(2) 
+    related << @adventure.nearbys(20).limit(2) if @adventure.nearbys(20)
+    @related = related.flatten
     @reservation = Reservation.new
   end
 
