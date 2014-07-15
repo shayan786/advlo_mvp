@@ -16,19 +16,16 @@
           = link_to (image_tag "#{@current_guide.get_avatar_url("medium")}"), user_path(@current_guide)
 
       .adventure-block
+        #adventure-price
+          %span= "$ #{@adventure.price}"
         -if !@adventure.approved
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "modal"} 
             %span 
-              ="BOOK IT"
-            %span
-              = "$#{@adventure.price}"
-
+              BOOK IT
         -else
           #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
             %span 
-              ="BOOK IT"
-            %span
-              = "$#{@adventure.price}"
+              BOOK IT
 
     - else
       .guide-block
