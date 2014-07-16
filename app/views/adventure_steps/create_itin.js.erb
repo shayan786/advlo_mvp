@@ -1,2 +1,4 @@
 $('.updated_iten_placeholder').empty();
 $('.updated_iten_placeholder').append("<%= escape_javascript("#{render partial: 'itinerary_form_update'}").html_safe %>")
+$('#adventure_iten_form #iten_headline').val('');
+$('#adventure_iten_form #iten_description').val('');
