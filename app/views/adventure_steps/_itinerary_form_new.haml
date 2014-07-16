@@ -16,6 +16,11 @@
         %textarea.form-control.show_ml{rows: "6", type: "text", required: "required", name: "description", id: "iten_description", maxlength: "250"}
 
     .text-center
-      %button.btn.btn-primary.add_event_btn{type: "submit"}
+      %button.btn.btn-primary.add_event_btn
         %i.fa.fa-plus-circle
         ADD ITINERARY ITEM
+
+:javascript
+  $('#adventure_iten_form .add_event_btn').click(function() {
+    $('adventure_iten_form').submit();
+  })
