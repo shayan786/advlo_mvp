@@ -66,7 +66,10 @@ feature "user logic for adventure flow", :js => true do
     expect(page).to have_content('SELECT GALLERY IMAGES')
 
     attach_file('images[]', File.join(Rails.root, '/spec/support/example.jpg'))
-    visit "/adventure_steps/itinerary?adventure_id=1"
+    sleep 8
+    visit '/adventure_steps/itinerary?adventure_id=1'
+    
+    # visit "/adventure_steps/itinerary?adventure_id=1"
     expect(page).to have_content('ITINERARY')
 
     fill_in 'headline', with: 'Itin item 1'
