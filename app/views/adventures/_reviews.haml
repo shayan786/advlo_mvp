@@ -42,7 +42,7 @@
 
           #review-form
             %form#new_review.new_review{"accept-charset" => "UTF-8", action: "/reviews", "data-remote" => "true", method: "post"}
-              %input{name: "utf8", type: "hidden", value: "✓"}
+              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
               %input#review_user_id{name: "review[user_id]", type: "hidden", value: current_user.id}
               %input#review_host_id{name: "review[host_id]", type: "hidden", value: @current_guide.id}
               %input#review_adventure_id{name: "review[adventure_id]", type: "hidden", value: @adventure.id}
