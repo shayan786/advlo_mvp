@@ -2,7 +2,7 @@ class AdventuresController < ApplicationController
 
   def index
     if params[:location] == "SummitCounty"
-      @adventures = Adventure.near("Vail", 75).where(approved: true).order('created_at DESC')
+      @adventures = Adventure.near("Vail", 50).where(approved: true).order('created_at DESC')
       @hero_image = HeroImage.where(region: params[:location] ).last
       @location = params[:location].downcase
     elsif params[:location].present?
