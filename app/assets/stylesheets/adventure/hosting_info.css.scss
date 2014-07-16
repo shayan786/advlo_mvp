@@ -2,7 +2,7 @@
   padding-top: 80px;
 
   .jumbotron {
-  	background: url($info_banner_image);
+  	background: asset_url($info_banner_image);
   	background-repeat: no-repeat;
   	background-size: cover;
   	background-position: center center;
