@@ -1,29 +1,25 @@
 #p_bio {
 	min-height: 300px;
-	background-color: $profile_overview_background_color;
+	background-color: $dark_gray;
+	color: $white;
+	min-height: 260px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 25px;
 
-	.panel {
-		background-color: $profile_overview_box_color;
-		color: $white;
-		border-color: $profile_overview_box_color;
-		@include border_radius(0px);
-		min-height: 260px;
-		padding-left: 20px;
-		padding-right: 20px;
+	.bio_header {
+		font-family: nexa_bold !important;
+		color: $profile_box_header_font_color;
+		font-size: 2.8em;
+	}
 
-		.bio_header {
-			font-family: nexa_bold !important;
-			color: $profile_box_header_font_color;
-			font-size: 2.8em;
-		}
+	.bio_body {
+		font-size: 1.4em;
 
-		.bio_body {
-			font-size: 1.4em;
-
-			span {
-				font-family: 'nexa_light';
-				font-size: 35px;
-			}
+		span {
+			font-family: 'nexa_light';
+			font-size: 35px;
 		}
 	}
+
 }

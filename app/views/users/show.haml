@@ -88,28 +88,24 @@
   .container
     .row
       .col-md-12
-        .panel.panel-default
-          .panel-body
-            .bio_header
-              BIO
-            .bio_body
-              - split_bio = @user.bio.split('.').first()
-              - rest_of_bio = @user.bio.gsub(split_bio, '')
-              %span= '"' + split_bio + '."'
-              %br
-              = rest_of_bio[1..-1]
+        .bio_header
+          BIO
+        .bio_body
+          - split_bio = @user.bio.split('.').first()
+          - rest_of_bio = @user.bio.gsub(split_bio, '')
+          %span= '"' + split_bio + '."'
+          %br
+          = rest_of_bio[1..-1]
 
 #p_reviews
   .container
     .row
       .col-md-12
-        .panel.panel-default
-          .panel-body
-            .review_header
-              REVIEWS
-              .copy-brick.container-fluid#reviews
-                - @reviews.each do |review|
-                  = render partial: '/shared/review_brick', locals: {review: review}
+        .review_header
+          REVIEWS
+          .copy-brick.container-fluid#reviews
+            - @reviews.each do |review|
+              = render partial: '/shared/review_brick', locals: {review: review}
         
 
 :javascript
