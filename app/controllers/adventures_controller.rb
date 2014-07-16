@@ -46,7 +46,8 @@ class AdventuresController < ApplicationController
     related = []
     related << Adventure.where('category LIKE ?',"%#{@adventure.category}%").limit(2) 
     related << @adventure.nearbys(20).limit(2) if @adventure.nearbys(20)
-    @related = related.flatten
+    related = related.flatten
+    @related = related - [@adventure]
     @reservation = Reservation.new
   end
 

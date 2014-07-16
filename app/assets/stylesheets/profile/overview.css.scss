@@ -15,17 +15,20 @@
 		}
 
 		.overview_item {
-			font-family: $profile_over_item_font;
-			font-size: 1.8em;
+			font-family: 'nexa_light';
+			font-size: 1.5em;
 			color: $orange;
 			span {
 				color: #fff;
+				font-family: cabin_regular;
+
 			}
 		}
 
 		.overview_item_header {
 			@extend .overview_item;
 			color: $orange;
+			font-family: 'nexa_light';
 
 			.over_item_sub {
 				font-family: cabin_regular;
@@ -43,6 +46,7 @@
 
 			span {
 				word-wrap: break-word;
+				font-family: 'nexa_light';
 			}
 		}
 
