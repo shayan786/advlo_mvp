@@ -130,6 +130,21 @@ function hostSliderImageCenter(){
     })
   })
 }
+function headerLoginToggle(){
+  $('#user_email').hide()
+  $('#user_password').hide()
+  $('#login-form-submit').hide()
+
+
+  $('#login-toggle').click(function(e){
+    e.preventDefault()
+    $('.fb_btn').css('margin-bottom','15px')
+    $('#login-toggle').hide()
+    $('#user_email').fadeIn()
+    $('#user_password').fadeIn()
+    $('#login-form-submit').fadeIn()
+  })
+}
   
 homepageInit = function() {
   adventureSliderInit();
@@ -139,4 +154,5 @@ homepageInit = function() {
   hostSliderImageCenter();
   exploreDropdownToggle();
   homepageTextScroll();
+  headerLoginToggle();
 }

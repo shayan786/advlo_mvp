@@ -39,22 +39,6 @@ $(document).ajaxStop(function(){
   $('#loader-overlay').fadeOut()
 });
 
-function headerLoginToggle(){
-  $('#user_email').hide()
-  $('#user_password').hide()
-  $('#login-form-submit').hide()
-
-
-  $('#login-toggle').click(function(e){
-    e.preventDefault()
-    $('.fb_btn').css('margin-bottom','15px')
-    $('#login-toggle').hide()
-    $('#user_email').fadeIn()
-    $('#user_password').fadeIn()
-    $('#login-form-submit').fadeIn()
-  })
-}
-
 //Header resize on scroll
 $(document).ready(function(){
 	var flag = 0;
