@@ -1,13 +1,13 @@
 function exploreDropdownToggle(){
   $('.dropdown-toggle').hover(function(){
-    $('.dropdown-box').slideDown()
-    $('.header_btn_fix').animate({
+    $('.dropdown-box').dequeue().stop().slideDown()
+    $('.header_btn_fix').dequeue().stop().animate({
       borderBottomLeftRadius: 0, 
       borderBottomRightRadius: 0
     }, 400);
   },function(){
-    $('.dropdown-box').slideUp()
-    $('.header_btn_fix').animate({
+    $('.dropdown-box').dequeue().stop().slideUp()
+    $('.header_btn_fix').dequeue().stop().animate({
       borderTopLeftRadius: 10, 
       borderTopRightRadius: 10, 
       borderBottomLeftRadius: 10, 

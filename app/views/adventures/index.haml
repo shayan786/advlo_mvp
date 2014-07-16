@@ -9,7 +9,10 @@
     - filters.each do |f|
       %a.filter{href: "/adventures/#{@location}/#{f}", 'data-remote' => true}
         %span= f
+
   .filter-static
+    %a.filter{href: "/adventures/#{@location}/all", 'data-remote' => true} 
+      %span RESET
     - filters.each do |f|
       %a.filter{href: "/adventures/#{@location}/#{f}", 'data-remote' => true}
         %span= f

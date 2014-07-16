@@ -111,15 +111,9 @@ function filterCatch(){
       var s = ($(window).scrollTop() + parseInt($('.filter-container').css('height')));
       var fixedHeight = $('.filter-container').position().top
       if(s > fixedHeight ){
-        $('.filter-static').fadeIn();
-        $('.filter-container').animate({
-          opacity: 0
-        }, 200)
+        $('.filter-static').show();
       }else if( s < fixedHeight ){
-        $('.filter-static').fadeOut('fast')
-        $('.filter-container').animate({
-          opacity: 1
-        })
+        $('.filter-static').hide()
       }
     })
   }else{
