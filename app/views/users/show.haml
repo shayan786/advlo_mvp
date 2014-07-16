@@ -103,9 +103,13 @@
       .col-md-12
         .review_header
           REVIEWS
-          .copy-brick.container-fluid#reviews
-            - @reviews.each do |review|
-              = render partial: '/shared/review_brick', locals: {review: review}
+          - if !@reviews.empty?
+            .copy-brick.container-fluid#reviews
+              - @reviews.each do |review|
+                = render partial: '/shared/review_brick', locals: {review: review}
+          - else 
+            .no_reviews_text
+              There are no reviews for this host yet.
         
 
 :javascript
