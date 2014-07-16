@@ -130,8 +130,8 @@ class AdventureStepsController < ApplicationController
 
     # Hook for updating/deleting itinerary item and remain on the same page
     elsif params[:update_iten_item] == "1"
-      iten_id = params[:iten_id].to_i
-      @adv_iten_item = @adventure.itineraries.find(iten_id)
+      @iten_id = params[:iten_id].to_i
+      @adv_iten_item = @adventure.itineraries.find(@iten_id)
       
       # Delete the iten item
       if params[:delete] == "1"
@@ -139,7 +139,7 @@ class AdventureStepsController < ApplicationController
 
         respond_to do |format|
           format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itinerary event '#{@adv_iten_item.headline}' has been deleted!"}
-          format.js {}
+          format.js { render action: 'del_iten.js', layout: false}
         end
       end
       # Update the iten item
@@ -148,7 +148,7 @@ class AdventureStepsController < ApplicationController
 
         respond_to do |format|
           format.html {redirect_to "/adventure_steps/itinerary?adventure_id=#{@adventure.id}", notice: "Itinerary event '#{@adv_iten_item.headline}' has been updated!"}
-          format.js {}
+          format.js { render action: 'update_iten.js', layout: false}
         end
       end
 
