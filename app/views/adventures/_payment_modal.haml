@@ -10,7 +10,6 @@
 
         .tab-content
 
-
           .upcoming.tab-pane.active
             - @limited_adventure_events.each do |event| 
               = render partial: 'event_partial', locals: {event: event}
@@ -27,4 +26,5 @@
         - if current_user && @current_guide
           = render partial: "/reservations/new", locals: {reservation: @reservation}
         - else 
-          = link_to 'Sign up', new_user_session_path
+          = render file: 'users/sign_up', locals: {adventure: @adventure}
+          

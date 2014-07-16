@@ -25,7 +25,6 @@ class RegistrationsController < Devise::RegistrationsController
     #end
 
     #if successfully_updated
-    
     flash[:notice] = 'You updated your account successfully'
     # Sign in the user bypassing validation in case their password changed
 
@@ -46,7 +45,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    '/users/dashboard'
+    session[:previous_url] || '/users/dashboard'
   end
 
   # devise override requireing password for update
