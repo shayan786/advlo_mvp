@@ -18,6 +18,10 @@
             - @all_adventure_events.each do |event| 
               = render partial: 'event_partial', locals: {event: event}
 
+      .modal-footer
+        .btn.btn-default.request_time_btn
+          REQUEST TIME
+
 
 #reservations-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-modal", role: "dialog"}
   .modal-dialog.payment-modal-wrapper

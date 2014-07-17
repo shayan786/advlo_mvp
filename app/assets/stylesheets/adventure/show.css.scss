@@ -123,8 +123,6 @@
 
     .information-container{
 
-      margin-top: -20px;
-
       .shaded_gray_background {
         background-color: $shaded_gray;
       }
@@ -440,11 +438,37 @@
     width: 50%;
     margin-left: 15%;
     margin-top: 100px;
+
+    .modal-body {
+      padding-bottom: 0px;
+    }
+
+    .modal-footer {
+      text-align: center !important;
+
+      .request_time_btn {
+        background-color: $header_btn_color;
+        border-color: $header_btn_color;
+        color: #FFF;
+        padding: 10px 15px;
+        font-size: 1.2em;
+
+        &:hover {
+          background-color: $header_btn_color_hover;
+          border-color: $header_btn_color_hover;
+        }
+      }
+    }
+
+    .tab-content {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
     .event {
       color: #fff;
       width: 100%;
       margin-top: 10px;
-      margin-bottom: 10px;
     }
   }
 }
