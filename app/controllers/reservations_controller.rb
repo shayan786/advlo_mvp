@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
     new_capacity = event.capacity.to_i - params[:reservation][:head_count].to_i
     event.update(capacity: new_capacity )
 
+    # AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
     AdvloMailer.booking_confirmation_email(user, adventure, @reservation).deliver
 
     # If the current user (customer) is an existing stripe customer with us

@@ -154,5 +154,4 @@ homepageInit = function() {
   hostSliderImageCenter();
   exploreDropdownToggle();
   homepageTextScroll();
-  headerLoginToggle();
 }

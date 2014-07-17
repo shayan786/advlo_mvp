@@ -33,6 +33,11 @@
 //= require jquery.geocomplete.min
 
 
+$(document).ready(function(){
+  headerLoginToggle();
+})
+
+
 $(document).ajaxStart(function(){
   $('#loader-overlay').show()
 });
