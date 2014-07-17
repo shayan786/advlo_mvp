@@ -6,6 +6,7 @@ function getStripeToken(){
     $('#hidden_event_id').val( $(this).data('id') )
     $('#event_id').val( $(this).data('id') )
     $('#event-info').html( $(this).data('event-info') )
+    $("#reservation_start_time").val( $(this).data('event-start-time') )
 
     var adv_cap_min = $(this).data('adv-cap-min');
     var adv_cap_max = $(this).data('adv-cap-max');

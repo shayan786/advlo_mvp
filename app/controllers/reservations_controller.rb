@@ -3,6 +3,8 @@ class ReservationsController < ApplicationController
 	def create
     @reservation = Reservation.create!(reservation_params)
 
+
+    puts "RES!@$@#*#@ #{@reservation.inspect}"
     # Stripe only takes price as cents ... convert to cents
     total_price_cents = @reservation.total_price*100
     adventure = Adventure.find(params[:adventure_id])
@@ -70,6 +72,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.required(:reservation).permit(:user_id, :host_id, :event_id, :total_price, :head_count, :adventure_id)
+    params.required(:reservation).permit(:user_id, :host_id, :event_id, :total_price, :head_count, :adventure_id, :event_start_time)
   end
 end
