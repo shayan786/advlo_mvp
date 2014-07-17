@@ -5,13 +5,10 @@ class Payout < ActiveRecord::Base
 
   def calculate_amount_and_trigger_transfer(user_id)
     payout_user = User.find(user_id)
-    reservations = Reservation.where(host_id: payout_user.id).where(processed: false)
+    all_reservations = Reservation.where(host_id: payout_user.id).where(processed: false)
 
-    # need to query all ^ reservations.where 48 hours has passed the completeion date
-
-    # reservations.where("event_start_time <= ?", DateTime.now)
-    # .where("created_at >= ?", Time.zone.now.beginning_of_day)
-
+    # reservations.where 48 hours has passed the completeion date
+    reservations = all_reservations.where("event_start_time < ?", DateTime.now+2)
     payout_amount =  reservations.sum(:total_price)
     
     user_recip_id = payout_user.stripe_recipient_id
