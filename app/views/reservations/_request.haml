@@ -1,12 +1,11 @@
-#reservation
-  #adv-title= @adventure.title
+#request_reservation
   #event-info
   #success
   #success-detail
   #advlo-logo= image_tag 'logos/advlo_header_logo.png'
   #advlo-logo
   #stripe-error-message
-  %form#new_reservation.new_reservation{"accept-charset" => "UTF-8", action: "/reservations", "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
+  %form#request_reservation.new_reservation{"accept-charset" => "UTF-8", action: "/reservations/request", "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
     %div{style: "display:none"}
       %input{name: "utf8", type: "hidden", value: "✓"}
 
@@ -15,18 +14,11 @@
     %input#hidden_request_reservation_time{name: "reservation_request[time]", type: "hidden"}
     %input#hidden_request_reservation_head_count{name: "reservation_request[head_count]", type: "hidden"}
 
-    #request_reservation_info{style: "display: none"}
-      BLAH
-
-    // reservation object params 
-    %input#hidden_event_id{name: "reservation[event_id]", type: "hidden"}
-    %input#event_id{name: "event_id", type: "hidden"}
-    %input#reservation_head_count{name: "reservation[head_count]", type: "hidden"}
+    // reservation object params
     %input#reservation_adventure_id{name: "reservation[adventure_id]", type: "hidden", value: @adventure.id }
     %input#reservation_user_id{name: "reservation[user_id]", type: "hidden", value: current_user.id}
     %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: @current_guide.id}
     %input#reservation_total_price{name: "reservation[total_price]", type: "hidden"}
-    %input#reservation_start_time{name: "reservation[event_start_time]", type: "hidden"}
 
     
     // other rails controller params 
@@ -70,17 +62,19 @@
       .col-md-4
         .form_label.text-right People
       .col-md-2
-        %select.form-control.cap_selector
+        .prefill_request_people
+        
     .row
       .col-md-4
         .form_label.text-right Total Cost
       .col-md-2
-        .reservation_cost
-          = "$ #{@adventure.price * @adventure.cap_min}"
-
+        .prefill_request_cost
     #book-it-wrapper
       .btn.btn-success#book-button.button Book
 
+  .row.text-center.request_reservation_disclaimer
+    %em
+      Upon submission, you will ONLY be charged when the host accepts your reservation request!
 
 
 

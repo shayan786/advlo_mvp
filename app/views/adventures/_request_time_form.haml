@@ -1,11 +1,23 @@
-%form{"accept-charset" => "UTF-8", action: "/reservations/request", method: "POST", id: "request_time_form", "data-remote" => "true"}
-  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-  .form-group.row
-    .col-md-4 
-      .form_label.text-right People *
-    .col-md-6
-      %input.form-control{type: "text", name: "request_time[location]", id: "request_time_people"}
+#request_time_form
+  .row
+    .col-md-3.col-md-offset-2
+      .from-group
+        .form_label
+          Date
+        %input.form-control{type: "text", name: "request_reservation[date]", id: "request_reservation_date"}
+    .col-md-3
+      .from-group
+        .form_label
+          Time
+        %input.form-control{type: "text", name: "request_reservation[time]", id: "request_reservation_time"}
+    .col-md-2
+      .from-group
+        .form_label
+          People
+        %select.form-control{name: "request_reservation[head_count]", id: "request_reservation_head_count"}
+          - cap_array = (@adventure.cap_min..@adventure.cap_max).to_a
+          - cap_array.each do |option|
+            %option= option
   .row.text-center
-    .btn.btn-primary
-      Request Time
+    .btn.btn-primary.request_time_btn{"data-target" => "#reservations-request-modal", "data-toggle" => "modal"}
+      SUBMIT

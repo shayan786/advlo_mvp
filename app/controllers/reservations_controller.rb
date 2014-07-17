@@ -59,8 +59,10 @@ class ReservationsController < ApplicationController
     flash[:error] = e.message
 	end
 
-  def request_time 
+  def request_time
     
+   
+    @reservation = Reservation.create()
   end
 
 	def update
