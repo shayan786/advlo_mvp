@@ -7,7 +7,7 @@ class Payout < ActiveRecord::Base
     payout_user = User.find(user_id)
     all_reservations = Reservation.where(host_id: payout_user.id).where(processed: false)
 
-    # reservations.where 48 hours has passed the completeion date
+    # all_reservations.where 48 hours has passed the completion date
     reservations = all_reservations.where("event_start_time < ?", DateTime.now+2)
     payout_amount =  reservations.sum(:total_price)
     
