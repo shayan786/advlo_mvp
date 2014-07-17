@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     @contact = ContactAdvlo.create!(contact_params)
 
     # Mail the requester
-    AdvloMailer.contact_email(@contact).deliver
+    AdvloMailer.delay.contact_email(@contact)
 
     if @contact.save
       respond_to do |format|

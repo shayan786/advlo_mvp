@@ -85,7 +85,7 @@ class AdventuresController < ApplicationController
 
     if @request.save
       # Mail the requester
-      AdvloMailer.request_email(params[:request][:email]).deliver
+      AdvloMailer.delay.request_email(params[:request][:email])
 
       respond_to do |format|
         format.js {render "request.js", layout: false}

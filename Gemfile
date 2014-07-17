@@ -12,16 +12,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook' 
-gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
-gem 'aws-sdk'
-gem 'wicked'
-gem 'stripe'
-gem 'geocoder'
-gem 'newrelic_rpm'
+gem 'jquery-ui-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-filestyle-rails'
+gem 'bootstrap_form'
+gem 'font-awesome-rails'
+gem 'fullcalendar-rails'
 
 group :production do 
   gem 'rails_12factor'
@@ -40,13 +36,16 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-
-gem 'jquery-ui-rails'
-#bootstrap
-gem 'bootstrap-sass', '~> 3.1.1'
-gem 'bootstrap-filestyle-rails'
-gem 'bootstrap_form'
-# font-awesome
-gem 'font-awesome-rails'
-#fullcalender for scheduling
-gem 'fullcalendar-rails'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook' 
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
+gem 'wicked'
+gem 'stripe'
+gem 'geocoder'
+gem 'newrelic_rpm'
+gem 'delayed_job_active_record'
+gem 'delayed_paperclip'
+gem 'daemons'
