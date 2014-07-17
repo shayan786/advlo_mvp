@@ -13,7 +13,7 @@
           %table.table.table-hover
             %thead
               %tr
-                %th.text-center #
+                %th Host
                 %th Name
                 %th Email
                 %th.text-center People
@@ -23,7 +23,6 @@
             - current_user.reservations.where(adventure_id: @adventure.id).each_with_index do |res, i|
               - # Add logic for sorting them by timeslot
               - customer = User.find_by_id(res.user_id)
-              - event = Event.find_by_id(res.event_id)
               %tr
                 %td.text-center= i+1
                 %td
@@ -31,7 +30,7 @@
                   = customer.name
                 %td= customer.email
                 %td.text-center= res.head_count
-                %td= event.start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
+                %td= reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
                 %td= "$ "+res.total_price.to_s
             %thead
               %tr

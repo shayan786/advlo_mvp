@@ -3,7 +3,14 @@ class Payout < ActiveRecord::Base
   has_many :reservations
 
 
+  # def initialize(payout, user)
+  #   @payout = payout
+  #   @payout.calculate_amount_and_trigger_transfer(payout, user)
+  # end
+
   def calculate_amount_and_trigger_transfer(user_id)
+    # @payout = Payout.find(params[:payout])
+
     payout_user = User.find(user_id)
     all_reservations = Reservation.where(host_id: payout_user.id).where(processed: false)
 
@@ -39,4 +46,5 @@ class Payout < ActiveRecord::Base
   rescue Stripe::CardError => e
     flash[:error] = e.message
   end
+
 end

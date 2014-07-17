@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/dashboard'            => 'registrations#dashboard'
     get '/users/wallet'               => 'registrations#wallet'
+    get '/users/payouts'              => 'registrations#payouts'
+    get '/users/reservations'         => 'registrations#reservations'
   end
 
   #contact

@@ -1,0 +1,44 @@
+#d_user_dashboard
+  .container
+    .panel.panel-default
+      = render partial: "dashboard_header"
+      .panel-body
+        #wallet
+          %h2.text-center
+            %ul.nav.nav-tabs
+              %li
+                %a{href: "/users/wallet"}
+                  Bookings
+              %li.active
+                %a{href: "/users/reservations"}
+                  Reservations
+              - if !@payouts
+                %li
+                  %a{href: "/users/payouts"} 
+                    Payouts
+
+
+
+          .panel-heading.text-center
+            .panel-body
+              .table-responsive
+                %table.table.table-hover
+                  %thead
+                    %tr
+                      %th Adventure
+                      %th status
+                      %th Host
+                      %th Date
+                      %th Group
+                      %th $ cost
+                  %tbody
+                  - @host_reservations.each_with_index do |res, i|
+                    - host = res.adventure.users.first
+                    %tr
+                      %td.text-left= "#{res.adventure.title} with #{host.name}"
+                      %td.text-left= res.processed ? 'completed' : 'upcoming'
+                      %td.text-left= image_tag "#{host.get_avatar_url("profile")}", :class => "tiny_image"
+                      %td.text-left= res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
+                      %td.text-left= "#{res.head_count}"+ ' people at ' + "$ #{res.adventure.price}"
+                      %td.text-left= "$ "+res.total_price.to_s
+                  
