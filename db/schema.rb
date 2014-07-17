@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717164503) do
+ActiveRecord::Schema.define(version: 20140717221225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 20140717164503) do
     t.integer  "payout_id"
     t.boolean  "processed",           default: false
     t.datetime "event_start_time"
+    t.boolean  "requested",           default: false
   end
 
   create_table "reviews", force: true do |t|

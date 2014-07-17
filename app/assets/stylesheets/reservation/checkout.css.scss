@@ -59,6 +59,10 @@
       width: 32%;
       margin-top: 15px;
     }
+
+    #request-book-button {
+      @extend #book-button;
+    }
   }
 
   .request_reservation_disclaimer {

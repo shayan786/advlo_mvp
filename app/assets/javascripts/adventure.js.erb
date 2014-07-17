@@ -738,6 +738,59 @@ function payment_modal_validator() {
       }
     }
   });
+  $('form#request_reservation').bootstrapValidator({
+    fields: {
+      'credit_card_name': {
+        validators: {
+          notEmpty: {
+            message: 'The CC Full Name is required and cannot be empty'
+          }
+        }
+      },
+      'credit_card_number': {
+        validators: {
+          notEmpty: {
+            message: 'The credit card number is required and cannot be empty'
+          },
+          creditCard: {
+            message: 'Invalid CC Number'
+          }
+        }
+      },
+      'cvv': {
+        validators: {
+          cvv: {
+            message: 'Invalid CVV Number'
+          }
+        }
+      },
+      'exp_month': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          digits: {
+            message: 'Exp. month is invalid'
+          },
+          lessThan: {
+            value: 12,
+            inclusive: false,
+            message: 'Exp. month is invalid'
+          }
+        }
+      },
+      'exp_year': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          integer: {
+            message: 'Exp. year is invalid'
+          }
+        }
+      }
+    }
+  });
 }
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------

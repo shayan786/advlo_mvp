@@ -12,13 +12,14 @@
     // reservation time request params
     %input#hidden_request_reservation_date{name: "reservation_request[date]", type: "hidden"}
     %input#hidden_request_reservation_time{name: "reservation_request[time]", type: "hidden"}
-    %input#hidden_request_reservation_head_count{name: "reservation_request[head_count]", type: "hidden"}
 
     // reservation object params
     %input#reservation_adventure_id{name: "reservation[adventure_id]", type: "hidden", value: @adventure.id }
     %input#reservation_user_id{name: "reservation[user_id]", type: "hidden", value: current_user.id}
     %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: @current_guide.id}
     %input#reservation_total_price{name: "reservation[total_price]", type: "hidden"}
+    %input#reservation_head_count{name: "reservation[head_count]", type: "hidden"}
+    %input#reservation_requested{name: "reservation[requested]", type: "hidden", value: "true"}
 
     
     // other rails controller params 
@@ -70,7 +71,7 @@
       .col-md-2
         .prefill_request_cost
     #book-it-wrapper
-      .btn.btn-success#book-button.button Book
+      .btn.btn-success#request-book-button.button Book
 
   .row.text-center.request_reservation_disclaimer
     %em
