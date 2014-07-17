@@ -46,7 +46,8 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_email
-    AdvloMailer.delay.welcome_email(self)
+    # AdvloMailer.delay.welcome_email(self)
+    AdvloMailer.welcome_email(self).deliver
   end
 
   def is_guide?(user_id)
