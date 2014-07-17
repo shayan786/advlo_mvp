@@ -179,6 +179,20 @@
 	//SCHEDULE
 	#adv_schedule {
 
+		.btn_res {
+			background-color: $advlo_orange;
+			border-color: $advlo_orange;
+			color: white;
+			opacity: 1;
+		}
+
+		.btn_ib {
+			background-color: #3a87ad;
+			border-color: #3a87ad;
+			color: white;
+			opacity: 1;
+		}
+
 		.how_to {
 			padding: 5px 5px;
 			font-size: 1em;

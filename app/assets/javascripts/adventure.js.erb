@@ -698,9 +698,6 @@ function payment_modal_validator() {
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
 FSInitialize = function(adventure_id) {
-  // Needs to change depending on mins, hours, days
-  var eventDuration = '#{@adventure.duration_num}';
-
   $('#calendar').fullCalendar({
     defaultView: "agendaWeek",
     height: 600,
@@ -722,6 +719,19 @@ FSInitialize = function(adventure_id) {
         data: {
           adventure_id: adventure_id
         },
+        error: function(data) {
+          alert('Something went wrong!');
+        },
+        success: function() {
+        }
+      },
+      {
+        url: '/events/reserved',
+        type: 'GET',
+        data: {
+          adventure_id: adventure_id
+        },
+        color: '#C35B26',
         error: function(data) {
           alert('Something went wrong!');
         },

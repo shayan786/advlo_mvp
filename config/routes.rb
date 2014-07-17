@@ -26,8 +26,13 @@ Rails.application.routes.draw do
   get '/adventures/:location/:category', to: 'adventures#filter_category'
 
   resources :adventures
+
   resources :adventure_steps
+  
+  #events
+  get '/events/reserved'              => 'events#reserved'
   resources :events
+  
   resources :reservations
   resources :reviews
 
