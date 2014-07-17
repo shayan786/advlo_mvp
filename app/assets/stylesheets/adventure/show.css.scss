@@ -473,6 +473,19 @@
   }
 }
 
+#request-time-modal {
+  .modal-dialog {
+    width: 50%;
+    margin-left: 15%;
+    margin-top: 100px;
+
+    .modal-header {
+      font-size: 1.6em;
+      color: $orange;
+    }
+  }
+}
+
 .payment-modal-wrapper {
   width: 55%;
   margin-left: 200px;

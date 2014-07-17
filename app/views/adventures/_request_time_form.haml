@@ -1,0 +1,11 @@
+%form{"accept-charset" => "UTF-8", action: "/reservations/request", method: "POST", id: "request_time_form", "data-remote" => "true"}
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  .form-group.row
+    .col-md-4 
+      .form_label.text-right People *
+    .col-md-6
+      %input.form-control{type: "text", name: "request_time[location]", id: "request_time_people"}
+  .row.text-center
+    .btn.btn-primary
+      Request Time

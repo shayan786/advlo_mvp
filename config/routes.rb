@@ -33,7 +33,10 @@ Rails.application.routes.draw do
   get '/events/reserved'              => 'events#reserved'
   resources :events
   
+  #reservations
+  post '/reservations/request'        => 'reservations#request_time'
   resources :reservations
+
   resources :reviews
 
   root to: 'application#homepage'

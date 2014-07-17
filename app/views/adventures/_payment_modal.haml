@@ -19,7 +19,7 @@
               = render partial: 'event_partial', locals: {event: event}
 
       .modal-footer
-        .btn.btn-default.request_time_btn
+        .btn.btn-default.request_time_btn{"data-target" => "#request-time-modal", "data-toggle" => "modal"}
           REQUEST TIME
 
 
@@ -31,4 +31,16 @@
           = render partial: "/reservations/new", locals: {reservation: @reservation}
         - else 
           = render file: 'users/sign_up', locals: {adventure: @adventure}
+
+#request-time-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "request-time-modal", role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header.text-center
+        Request a time
+      .modal-body
+        - if current_user && @current_guide
+          = render partial: 'request_time_form', locals: {adventure: @adventure}
+        - else
+          = render file: 'users/sign_up', locals: {adventure: @adventure}
+
           
