@@ -77,60 +77,6 @@
                 %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", value: "", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
           .panel-footer.text-center
             %input.btn.btn-primary.preview_btn{href: "#", name: "commit", type: "submit", value: "NEXT"}
-        / #adv_photos.tab-pane.fade
-        /   .panel.panel-default
-        /     .panel-heading.text-center
-        /       PHOTOS
-        /     .panel-body
-        /       %form{"accept-charset" => "UTF-8", action: "", method: "post", id: "adv_cover_img_upload", enctype: "multipart/form-data"}
-        /         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-        /         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-        /         .form-group
-        /           %input.filestyle{type: "file", name: "adventure[cover_img]", id: "adv_cover_img"}
-
-        /       .divider   
-
-        /       %form{"accept-charset" => "UTF-8", action: "#", method: "post", id: "adv_gallery_img_upload", enctype: "multipart/form-data"}
-        /         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-        /         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-        /         .form-group
-        /           %input.filestyle{type: "file", name: "adventure[gallery_img]", id: "adv_gallery_img", multiple: true}
-
-        /       .panel-footer.text-center
-        /         %a.btn.btn-primary.preview_btn{href: "#"}
-        /           NEXT
-        / #adv_schedule.tab-pane.fade
-        /   .panel.panel-default
-        /     .panel-heading.text-center
-        /       SCHEDULE
-        /     .panel-body
-        /     .panel-footer.text-center
-        /       %a.btn.btn-primary.preview_btn{href: "#"}
-        /         NEXT
-        / #adv_profile.tab-pane.fade
-        /   .panel.panel-default
-        /     .panel-heading.text-center
-        /       PROFILE
-        /     .panel-body
-        /     .panel-footer.text-center
-        /       %a.btn.btn-primary.preview_btn{href: "#"}
-        /         NEXT
-        / #adv_payment.tab-pane.fade
-        /   .panel.panel-default
-        /     .panel-heading.text-center
-        /       PAYMENT
-        /     .panel-body
-        /     .panel-footer.text-center
-        /       %a.btn.btn-primary.preview_btn{href: "#"}
-        /         NEXT
-        / #adv_publish.tab-pane.fade
-        /   .panel.panel-default
-        /     .panel-heading.text-center
-        /       PUBLISH
-        /     .panel-body
-        /     .panel-footer.text-center
-        /       %a.btn.btn-primary.preview_btn{href: "#"}
-        /         PUBLISH
 
 
 :javascript

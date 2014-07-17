@@ -443,8 +443,14 @@
       padding-bottom: 0px;
     }
 
+    .tab_header {
+      color: $orange;
+      font-size: 1.4em;
+    }
+
     .modal-footer {
       text-align: center !important;
+      padding-top: 10px;
 
       .request_time_btn {
         background-color: $header_btn_color;
@@ -452,6 +458,7 @@
         color: #FFF;
         padding: 10px 15px;
         font-size: 1.2em;
+        margin-top: 25px;
 
         &:hover {
           background-color: $header_btn_color_hover;
@@ -469,6 +476,30 @@
       color: #fff;
       width: 100%;
       margin-top: 10px;
+    }
+
+    #request_time_form {
+      margin-top: 10px;
+
+      .form_label {
+        font-size: 1.0em;
+        font-weight: bold;
+        color: $white;
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
+
+#request-time-modal {
+  .modal-dialog {
+    width: 50%;
+    margin-left: 15%;
+    margin-top: 100px;
+
+    .modal-header {
+      font-size: 1.6em;
+      color: $orange;
     }
   }
 }
@@ -612,4 +643,14 @@
       font-family: 'nexa_bold';
     }
   }
+}
+
+.datepicker {
+  z-index: 9999 !important;
+}
+
+.ui-timepicker-wrapper{
+  z-index: 9999 !important;
+  position: fixed !important;
+  width: 9.7% !important;
 }

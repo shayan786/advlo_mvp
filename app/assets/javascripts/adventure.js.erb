@@ -375,6 +375,50 @@ function request_form_geocomplete() {
   $('#request_form #request_location').geocomplete();
 }
 
+function request_time_datepicker() {
+  var today = new Date();
+  var cur_day = today.getDate();
+  var cur_mon = today.getMonth()+1;
+  var cur_yr = today.getFullYear();
+
+  $('#request_reservation_date').datepicker({
+    format: "yyyy/mm/dd",
+    startDate: cur_yr+"/"+cur_mon+"/"+cur_day,
+    orientation: "auto right",
+    autoclose: true,
+    todayBtn: true,
+    todayHighlight: true
+  });
+}
+
+function request_time_timepicker() {
+  $('#request_reservation_time').timepicker({
+    'scrollDefault': 'now',
+    'timeFormat': 'h:i A',
+  });
+}
+
+function request_time_validator() {
+  $('#request_time_form').bootstrapValidator({
+    fields: {
+      'request_reservation[date]': {
+        validators: {
+          notEmpty: {
+            message: 'Date is required'
+          }
+        }
+      },
+      'request_reservation[time]': {
+        validators: {
+          notEmpty: {
+            message: 'Time is required'
+          }
+        }
+      }
+    }
+  });
+}
+
 function request_form_validator() {
   $('#request_form').bootstrapValidator({
     fields: {
@@ -806,6 +850,9 @@ adventureShow = function() {
   adventureShowHover();
   similarAdventureSlider();
   payment_modal_validator();
+  request_time_validator();
+  request_time_datepicker();
+  request_time_timepicker();
 };
 
 adventureIndex = function() {

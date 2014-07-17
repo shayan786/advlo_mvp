@@ -138,3 +138,31 @@ function getStripeToken_bank() {
     });
   });
 }
+
+function reservation_request_prefill() {
+
+  $('#request_time_form .request_time_btn').click(function() {
+    var request_date = $('#request_time_form #request_reservation_date').val();
+    var request_time = $('#request_time_form #request_reservation_time').val();
+    var request_head_count = $('#request_time_form #request_reservation_head_count').val();
+    var adv_price = $('#request_reservation #adv_price').val();
+
+    var total_price = request_head_count*adv_price;
+
+    $('#request_reservation #hidden_request_reservation_date').val(request_date);
+    $('#request_reservation #hidden_request_reservation_time').val(request_time);
+    $('#request_reservation #hidden_request_reservation_head_count').val(request_head_count);
+    $('#request_reservation #reservation_total_price').val(total_price);
+
+    //Modify display from user inputs
+    var reservation_info = "REQUEST:  "+request_date + " - " + request_time;
+    $('#request_reservation #event-info').empty();
+    $('#request_reservation #event-info').append(reservation_info);
+
+    $('#request_reservation .prefill_request_people').empty();
+    $('#request_reservation .prefill_request_people').append(request_head_count);
+
+    $('#request_reservation .prefill_request_cost').empty();
+    $('#request_reservation .prefill_request_cost').append("$ "+total_price);
+  });
+}

@@ -3,8 +3,6 @@ class ReservationsController < ApplicationController
 	def create
     @reservation = Reservation.create!(reservation_params)
 
-
-    puts "RES!@$@#*#@ #{@reservation.inspect}"
     # Stripe only takes price as cents ... convert to cents
     total_price_cents = @reservation.total_price*100
     adventure = Adventure.find(params[:adventure_id])
@@ -61,6 +59,12 @@ class ReservationsController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
 	end
+
+  def request_time
+    
+   
+    @reservation = Reservation.create()
+  end
 
 	def update
 

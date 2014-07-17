@@ -1,4 +1,4 @@
-#reservation {
+#reservation, #request_reservation {
   
   #cvv {
     width: 50px;
@@ -59,6 +59,11 @@
       width: 32%;
       margin-top: 15px;
     }
+  }
+
+  .request_reservation_disclaimer {
+    margin-top: 10px;
+    color: $orange;
   }
 }
 

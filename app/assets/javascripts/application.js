@@ -16,6 +16,7 @@
 // require jquery.ui.all
 //= require jquery.ui.draggable
 //= require jquery.ui.resizable
+//= require jquery.timepicker.min
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-filestyle
