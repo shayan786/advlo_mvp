@@ -8,10 +8,29 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def wallet
+    @payouts = Payout.where(user_id: current_user.id).order('creaetd_at ASC')
+    @reservations = Reservation.where(host_id: current_user.id)
+    @host_reservations = Reservation.where(host_id: current_user.id).order('event_start_time')
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
     end
   end
+
+  def payouts
+    @host_reservations = Reservation.where(host_id: current_user.id).order('event_start_time')
+    @payouts = Payout.where(user_id: current_user.id)
+    if !current_user
+      redirect_to '/users/sign_up', notice: "Lets get you started with an account"
+    end
+  end
+
+  def reservations
+    @host_reservations = Reservation.where(host_id: current_user.id).order('event_start_time')
+    if !current_user
+      redirect_to '/users/sign_up', notice: "Lets get you started with an account"
+    end
+  end
+
 
   def update
     @user = User.find(current_user.id)

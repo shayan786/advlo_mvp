@@ -131,7 +131,7 @@ function hostSliderImageCenter(){
   })
 }
 function headerLoginToggle(){
-  $('#user_email').hide()
+  $('#user_email_login').hide()
   $('#user_password').hide()
   $('#login-form-submit').hide()
 
@@ -140,7 +140,7 @@ function headerLoginToggle(){
     e.preventDefault()
     $('.fb_btn').css('margin-bottom','15px')
     $('#login-toggle').hide()
-    $('#user_email').fadeIn()
+    $('#user_email_login').fadeIn()
     $('#user_password').fadeIn()
     $('#login-form-submit').fadeIn()
   })
