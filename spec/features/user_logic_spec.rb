@@ -76,7 +76,7 @@ feature "user logic for adventure flow", :js => true do
     fill_in 'description', with: 'Itin item 1 description goes here WOOOFOOOOHOOOO'
     click_button 'ADD ITINERARY ITEM'
 
-    expect(page).to have_content 'has been created!'
+    expect(page).to have_content 'WOOOFOOOOHOOOO'
     visit '/adventure_steps/schedule?adventure_id=1'
 
     expect(page).to have_content 'SCHEDULE'
