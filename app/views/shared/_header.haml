@@ -78,7 +78,7 @@
               %li
                 %form.sign_in_form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form", id: "sign_in_form"}
                   =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-                  %a.btn.btn-primary.fb_btn.fb_btn_singin{href: "/users/auth/facebook"}
+                  %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
                     %i.fa.fa-facebook
                     Connect with Facebook
                   .form-group
@@ -86,7 +86,7 @@
                   .form-group
                     %input.form-control{placeholder: "Password", type: "password", autocomplete: "off", id: "user_password", name: "user[password]"}
                   %input.btn.btn-primary.sign_in_btn#login-form-submit{name: "sign_in", type: "submit", value: "Sign In"}
-                  .sign_in_btn.btn.email_btn#login-toggle
+                  .connect_btn.btn.email_btn#login-toggle
                     %i.fa.fa-envelope-o
                     Connect with Email
 
