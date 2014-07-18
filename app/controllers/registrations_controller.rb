@@ -9,7 +9,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def wallet
     wallet_variables
-
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
     end
@@ -17,7 +16,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def payouts
     wallet_variables
-    
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
     end
@@ -25,7 +23,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def reservations
     wallet_variables
-
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
     end
