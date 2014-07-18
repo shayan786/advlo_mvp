@@ -145,7 +145,6 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       format.js {render "update.js", layout: false}
     end
-
 	end
 
 	def delete

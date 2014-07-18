@@ -1,0 +1,33 @@
+.table-responsive
+  %h3.text-left= reservation_type
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Guide
+        %th Adventure
+        %th Start Date / Time
+        %th People
+        %th $ Total Paid
+    %tbody
+    / NEED TO REDO LOOK AT RESERVATIONS
+
+    - reservations.each_with_index do |res, i|
+      - # Add logic for sorting them by timeslot
+      %tr
+        %td.text-left= link_to res.adventure.users.first.name, "/users/#{res.adventure.users.first.to_param}", target: '_blank'
+        %td.text-left= link_to res.adventure.title, "/adventures/#{res.adventure.slug}", target: '_blank'
+        %td.text-left= res.event_start_time.strftime("%m/%d/%Y - %l:%M %P")
+        //%td.text-center= "#{res.head_count} @ (#{res.total_price.to_s / res.head_count}) / person"
+        %td.text-left= res.head_count
+        %td.text-left= "$ "+res.total_price.to_s
+    %thead
+      %tr
+        %th
+        %th
+        %th
+        %th
+        %th= "$ "+current_user.reservations.sum(:total_price).to_s
+
+
+
+
