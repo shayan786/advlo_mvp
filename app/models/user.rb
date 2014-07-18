@@ -124,6 +124,19 @@ class User < ActiveRecord::Base
       
   end
 
+  def get_name_and_email
+    @user = User.find_by_id(self.id)
+
+    if !@user.name.nil? && !(@user.name == '') && !@user.email.nil? && !(@user.email == '')
+      return "#{@user.name} - #{@user.email}"
+    elsif !@user.name.nil? && !(@user.name == '') && (@user.email.nil? || @user.email == '')
+      return "#{@user.name}"
+    else
+      return "#{@user.email}"
+    end
+      
+  end
+
   def to_param
     if name
       "#{id}-#{name.gsub(' ','')}"

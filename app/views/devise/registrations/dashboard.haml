@@ -53,10 +53,6 @@
                     = link_to adv, method: "delete",  data: {confirm: "Are you sure?"}, class: "btn btn-danger edit_btn" do
                       %i.fa.fa-times
                         DELETE
-                  .row.container
-                    %a.btn.btn-success.edit_btn{href: "/adventures/reservations/#{adv.id}"}
-                      %i.fa.fa-money
-                      RESERVATIONS
           %br
             .create-wrapper
               %a.btn.btn-primary.host_btn{href: "/adventures/new"}
