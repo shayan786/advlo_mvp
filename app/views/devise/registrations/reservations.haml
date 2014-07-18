@@ -12,7 +12,7 @@
               %li.active
                 %a{href: "/users/reservations"}
                   Reservations
-              - if !@payouts
+              - if !@payouts.empty?
                 %li
                   %a{href: "/users/payouts"} 
                     Payouts

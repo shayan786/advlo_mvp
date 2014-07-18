@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   #contact
   post '/contact'                     => 'application#contact'
 
+  #terms/conditions/privacy
+  get '/terms'                        => 'application#terms'
+
   #profile show route
   resources :users, :only => [:show]
 
