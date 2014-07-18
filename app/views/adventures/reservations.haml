@@ -52,10 +52,10 @@
                 %th
                 %th
                 %th
-                %th.text-center= user_reservations.where(requested: false).sum(:head_count)
+                %th.text-center= user_reservations.where(requested: false).sum(:head_count)+user_reservations.where(requested: true).where("stripe_charge_id IS NOT NULL AND stripe_charge_id <> ''").sum(:head_count)
                 %th
                 %th
-                %th= "$ "+user_reservations.where(requested: false).sum(:total_price).to_s
+                %th= "$ "+(user_reservations.where(requested: false).sum(:total_price)+user_reservations.where(requested: true).where("stripe_charge_id IS NOT NULL AND stripe_charge_id <> ''").sum(:total_price)).to_s
 
 :javascript
   $('.request_approve_btn').click(function(e) {
