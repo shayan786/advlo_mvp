@@ -18,45 +18,11 @@
                     Payouts
 
 
-
           .panel-body
-            .table-responsive
-              %table.table.table-hover
-                %thead
-                  %tr
-                    %th Adventure
-                    %th Status
-                    %th Name / Email
-                    %th Date & Time
-                    %th.text-center Group Size
-                    %th.text-center Reserved
-                    %th $ Earned
-                %tbody
-                - @host_reservations.each_with_index do |res, i|
-                  - host = res.adventure.users.first
-                  - customer = User.find_by_id(res.user_id)
-                  %tr
-                    %td.text-left= "#{res.adventure.title}"
-                    %td.text-left= res.processed ? 'completed' : 'upcoming'
-                    %td.text-left
-                      = image_tag "#{customer.get_avatar_url("thumb")}", class: "img-circle customer_img"
-                      = customer.get_name_and_email
-                    %td.text-left= res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
-                    %td.text-center= res.head_count
-                    %td.text-center
-                      - # If reservation is requested show button to approve or not
-                      - if res.requested == true && !res.stripe_charge_id
-                        .btn.btn-success.request_approve_btn{id: "#{res.id}"}
-                          APPROVE
-                        .btn.btn-danger.request_reject_btn{id: "#{res.id}"}
-                          REJECT
-                        .requested_approved_msg{style: "display: none;"} Request - Approved
-                        .requested_rejected_msg{style: "display: none;"} Request - Rejected
-                      - elsif res.requested == true && res.stripe_charge_id
-                        Request - Approved
-                      - else
-                        Instant Reservation
-                    %td.text-left= "$ "+res.total_price.to_s
+            %h4 Upcoming Reservations
+            = render partial: 'upcoming_past_reservations', locals: {scope: "upcoming"}
+            %h4 Past Reservations
+            = render partial: 'upcoming_past_reservations', locals: {scope: "past"}
 
 
 :javascript
