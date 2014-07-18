@@ -27,7 +27,7 @@
               
               - else
                 - if !@upcoming_reservations.empty?
-                  = render partial: 'reservations_table', :locals => {reservations: @upcoming_reservations, reservation_type: 'Upcoming'}
+                  = render partial: 'bookings_table', :locals => {reservations: @upcoming_reservations, reservation_type: 'Upcoming'}
                   
                 - if !@past_reservations.empty?
-                  = render partial: 'reservations_table', :locals => {reservations: @past_reservations, reservation_type: 'Past'}
+                  = render partial: 'bookings_table', :locals => {reservations: @past_reservations, reservation_type: 'Past'}
