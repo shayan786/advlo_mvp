@@ -14,8 +14,13 @@ function getStripeToken(){
 
     var adv_cap_remain = adv_cap_max - adv_reserved;
 
-    var i = adv_cap_min;
+    if(adv_reserved >= adv_cap_min){
+      adv_cap_min = 1;
+    }else if(adv_reserved != 0) {
+      adv_cap_min = (adv_cap_min - adv_reserved);
+    }
 
+    var i = adv_cap_min;
     
     for (; i <= adv_cap_remain; i++) {
       if (adv_cap_remain < adv_cap_min){
