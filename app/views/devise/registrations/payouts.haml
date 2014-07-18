@@ -9,49 +9,51 @@
               %li
                 %a{href: "/users/wallet"}
                   Bookings
-
-              - if @host_reservations
-                %li
-                  %a{href: "/users/reservations"}
-                    Reservations
-                    
+              %li
+                %a{href: "/users/reservations"}
+                  Reservations
               %li.active
                 %a{href: "/users/payouts"} 
                   Payouts
 
+          - if @payouts.empty?
+            .col-md-6.col-md-offset-3.text-center
+              .alert.alert-warning
+                Host an adventure and start getting paid
+              %span= link_to 'Create an adventure', "/adventures/info"
 
-
-          .panel-heading.text-center
-            .panel-body
-              .table-responsive
-                - @payouts.each_with_index do |payout, i|
-                  %table.table.table-hover
-                    %thead
+          -else 
+            .panel-heading.text-center
+              .panel-body
+                .table-responsive
+                  - @payouts.each_with_index do |payout, i|
+                    %table.table.table-hover
+                      %thead
+                        %tr
+                          %th Payout date
+                          %th Status
+                          %th Reservations on payout
+                          %th Revenue per Adventure
+                          %th Payout Amount
+                      %tbody
                       %tr
-                        %th Payout date
-                        %th Status
-                        %th Reservations on payout
-                        %th Revenue per Adventure
-                        %th Payout Amount
-                    %tbody
-                    %tr
-                      %td.text-left= payout.created_at.strftime("%A - %D - %l:%M %P")
-                      %td.text-left= payout.status
-                      %td.text-left
-                        - payout.reservations.each do |r|
-                          %span= r.adventure.title
-                          %br
-                      %td.text-left
-                        - payout.reservations.each do |r|
-                          %span= "#{r.head_count} people / "+ " $ "+"#{r.total_price}".to_s
-                          %br
-                      %td
+                        %td.text-left= payout.created_at.strftime("%A - %D - %l:%M %P")
+                        %td.text-left= payout.status
+                        %td.text-left
+                          - payout.reservations.each do |r|
+                            %span= r.adventure.title
+                            %br
+                        %td.text-left
+                          - payout.reservations.each do |r|
+                            %span= "#{r.head_count} people / "+ " $ "+"#{r.total_price}".to_s
+                            %br
+                        %td
 
-                    %thead
-                      %tr
-                        %th
-                        %th
-                        %th
-                        %th
-                        %th= "$ "+"#{payout.amount / 100}".to_s
-                
+                      %thead
+                        %tr
+                          %th
+                          %th
+                          %th
+                          %th
+                          %th= "$ "+"#{payout.amount / 100}".to_s
+                  
