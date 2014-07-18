@@ -107,6 +107,44 @@ class ReservationsController < ApplicationController
   end
 
 	def update
+    @reservation = Reservation.find_by_id(params[:id])
+    user = User.find_by_id(@reservation.user_id)
+    adventure = Adventure.find_by_id(@reservation.adventure_id)
+
+    # Convert to cents for Stripe
+    total_price_cents = @reservation.total_price*100;
+
+    if params[:approve] == "true"
+      @reservation.update(requested: true)
+
+      # Charge the user
+      stripe_charge = Stripe::Charge.create(
+        :amount => total_price_cents,
+        :currency => "usd",
+        :customer => user.stripe_customer_id,
+        :description => adventure.title
+      )
+
+      @reservation.stripe_charge_id = stripe_charge.id
+      @reservation.stripe_customer_id = user.stripe_customer_id
+
+      @reservation.save
+
+
+      # Email the user that request has been approved
+      # AdvloMailer.
+
+    else
+      @reservation.destroy
+
+      # Email the user that request has been rejected
+      # AdvloMailer.
+
+    end
+
+    respond_to do |format|
+      format.js {render "update.js", layout: false}
+    end
 
 	end
 

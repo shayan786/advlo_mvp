@@ -16,10 +16,9 @@
             .col-md-4.col-md-offset-4.update_notice.alert.alert-warning.text-center{style: "display: none;"}
               Your bank account information has been updated
 
-          - if current_user.stripe_recipient_id
+          - if current_user.stripe_recipient_id && Stripe::Recipient.retrieve(current_user.stripe_recipient_id).deleted == false
             // Show existing bank / cc info with option to edit/delete etc.
-            - recipient_info = Stripe::Recipient.retrieve(current_user.stripe_recipient_id)
-
+            - recipient_info = Stripe::Recipient.retrieve(current_user.stripe_recipient_id)   
 
             #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
               .glyphicon.glyphicon-plus

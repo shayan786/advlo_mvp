@@ -417,6 +417,39 @@ function request_time_validator() {
       }
     }
   });
+
+  $('#request_time_form #request_reservation_date').change(function() {
+    var l1 = $.trim($(this).val());
+
+    $('#request_time_form #request_reservation_time').change(function() {
+      var l2 = $.trim($(this).val());
+
+      if (l1.length > 6 && l2.length > 5) {
+        $('#request_time_form .request_time_btn').removeClass('disabled');
+      }
+      else {
+        $('#request_time_form .request_time_btn').addClass('disabled');
+      }
+
+    });
+  });
+
+  $('#request_time_form #request_reservation_time').change(function() {
+    var l1 = $.trim($(this).val());
+
+    $('#request_time_form #request_reservation_date').change(function() {
+      var l2 = $.trim($(this).val());
+
+      if (l1.length > 5 && l2.length > 6) {
+        $('#request_time_form .request_time_btn').removeClass('disabled');
+      }
+      else {
+        $('#request_time_form .request_time_btn').addClass('disabled');
+      }
+
+    });
+  });
+
 }
 
 function request_form_validator() {
