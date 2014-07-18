@@ -36,7 +36,7 @@ function getStripeToken(){
     $('.reservation_cost').append("$ "+cost);
   });
 
-  $("#book-button").click(function() {
+  $("#reservations-modal #reservation #book-button").click(function() {
 
     // $("#user_submit").attr("disabled", true);
     // $("#reservation input, #reservation select").attr("name", "");
@@ -139,6 +139,43 @@ function getStripeToken_bank() {
   });
 }
 
+function getStripeToken_request(){
+
+  $("#request-book-button").click(function() {
+
+    // $("#user_submit").attr("disabled", true);
+    // $("#reservation input, #reservation select").attr("name", "");
+
+    // if (!$("#reservation").is(":visible")) {
+    //   $("#reservation input, #reservation select").attr("disabled", true);
+    //   return true;
+    // }
+    
+    var card = {
+      number:   $("#request_reservation #credit_card_number").val(),
+      expMonth: $("#request_reservation #exp_month").val(),
+      expYear:  $("#request_reservation #exp_year").val(),
+      cvc:      $("#request_reservation #cvv").val()
+    };
+
+    Stripe.setPublishableKey('pk_test_4KNIbgcUXuK1cAeGAoZgixpD');
+    Stripe.card.createToken(card, function(status, response) {
+
+      if (status === 200) {
+        // $("#user_last_4_digits").val(response.card.last4);
+        $("#request_reservation #stripe_token").val(response.id);
+
+        $('#request_reservation form#request_reservation').submit();
+      } else {
+        $("#request_reservation #stripe-error-message").text(response.error.message);
+        // $("#user_submit").attr("disabled", false);
+      }
+    });
+
+    return false;
+  });
+};
+
 function reservation_request_prefill() {
 
   $('#request_time_form .request_time_btn').click(function() {
@@ -151,7 +188,7 @@ function reservation_request_prefill() {
 
     $('#request_reservation #hidden_request_reservation_date').val(request_date);
     $('#request_reservation #hidden_request_reservation_time').val(request_time);
-    $('#request_reservation #hidden_request_reservation_head_count').val(request_head_count);
+    $('#request_reservation #reservation_head_count').val(request_head_count);
     $('#request_reservation #reservation_total_price').val(total_price);
 
     //Modify display from user inputs

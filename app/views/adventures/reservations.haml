@@ -13,14 +13,16 @@
           %table.table.table-hover
             %thead
               %tr
-                %th Host
+                %th #
                 %th Name
                 %th Email
                 %th.text-center People
                 %th Timeslot
+                %th.text-center Reserved
                 %th $ Earned
             %tbody
-            - current_user.reservations.where(adventure_id: @adventure.id).each_with_index do |res, i|
+            - user_reservations = Reservation.where(adventure_id: @adventure.id).where(host_id: current_user.id)
+            - user_reservations.each_with_index do |res, i|
               - # Add logic for sorting them by timeslot
               - customer = User.find_by_id(res.user_id)
               %tr
@@ -30,14 +32,80 @@
                   = customer.name
                 %td= customer.email
                 %td.text-center= res.head_count
-                %td= reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
+                %td= res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
+                %td.text-center
+                  - # If reservation is requested show button to approve or not
+                  - if res.requested == true && !res.stripe_charge_id
+                    .btn.btn-success.request_approve_btn{id: "#{res.id}"}
+                      APPROVE
+                    .btn.btn-danger.request_reject_btn{id: "#{res.id}"}
+                      REJECT
+                    .requested_approved_msg{style: "display: none;"} Request - Approved
+                    .requested_rejected_msg{style: "display: none;"} Request - Rejected
+                  - elsif res.requested == true && res.stripe_charge_id
+                    Request - Approved
+                  - else
+                    Instant Reservation
                 %td= "$ "+res.total_price.to_s
             %thead
               %tr
                 %th
                 %th
                 %th
-                %th.text-center= current_user.reservations.where(adventure_id: @adventure.id).sum(:head_count)
+                %th.text-center= user_reservations.where(requested: false).sum(:head_count)+user_reservations.where(requested: true).where("stripe_charge_id IS NOT NULL AND stripe_charge_id <> ''").sum(:head_count)
                 %th
-                %th= "$ "+current_user.reservations.where(adventure_id: @adventure.id).sum(:total_price).to_s
+                %th
+                %th= "$ "+(user_reservations.where(requested: false).sum(:total_price)+user_reservations.where(requested: true).where("stripe_charge_id IS NOT NULL AND stripe_charge_id <> ''").sum(:total_price)).to_s
 
+:javascript
+  $('.request_approve_btn').click(function(e) {
+    var response = confirm("Approve this adventure request?");
+
+    if(response == true){
+      var res_id = this.getAttribute('id')
+
+      e.preventDefault();
+      $.ajax({
+        url: "/reservations/" + res_id,
+        dataType: "script",
+        data: {approve: "true", #{request_forgery_protection_token.to_s}: "#{form_authenticity_token}"},
+        type: "POST",
+        method: "PUT",
+        beforeSend: function() {
+          $('#'+res_id+'.request_approve_btn').fadeOut(200, function() {
+            $(this).remove();
+          });
+          $('#'+res_id+'.request_reject_btn').fadeOut(200, function() {
+            $(this).remove();
+          });
+          $('.requested_approved_msg').fadeIn();
+        }
+      });
+    }
+  });
+
+  $('.request_reject_btn').click(function(e) {
+    var response = confirm("Reject this adventure request?");
+
+    if(response == true){
+      var res_id = this.getAttribute('id')
+
+      e.preventDefault();
+      $.ajax({
+        url: "/reservations/" + res_id,
+        dataType: "script",
+        data: {approve: "false", #{request_forgery_protection_token.to_s}: "#{form_authenticity_token}"},
+        type: "POST",
+        method: "PUT",
+        beforeSend: function() {
+          $('#'+res_id+'.request_approve_btn').fadeOut(200, function() {
+            $(this).remove();
+          });
+          $('#'+res_id+'.request_reject_btn').fadeOut(200, function() {
+            $(this).remove();
+          });
+          $('.requested_rejected_msg').fadeIn();
+        }
+      });
+    }
+  });

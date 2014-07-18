@@ -1,0 +1,27 @@
+#terms
+  .container
+    .panel.panel-default
+      %h3.panel-heading.text-center
+        %ul.nav.nav-tabs{role: "tablist", id: "terms_nav"}
+          %li.active
+            %a{href: '#terms_of_service', role: "tab", "data-toggle"=>"tab"}
+              Terms of Service
+          %li
+            %a{href: '#privacy_policy', role: "tab", "data-toggle"=>"tab"} 
+              Privacy Policy
+          %li
+            %a{href: '#', role: "tab", "data-toggle"=>"tab"} 
+              Refund Policy
+          %li
+            %a{href: '#', role: "tab", "data-toggle"=>"tab"} 
+              Copyright Policy
+      .panel-body
+        .tab-content
+          = render partial: "terms_of_service"
+          = render partial: "privacy_policy"
+
+:javascript
+  $('#terms_nav a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  })

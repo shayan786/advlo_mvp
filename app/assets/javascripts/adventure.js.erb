@@ -417,6 +417,39 @@ function request_time_validator() {
       }
     }
   });
+
+  $('#request_time_form #request_reservation_date').change(function() {
+    var l1 = $.trim($(this).val());
+
+    $('#request_time_form #request_reservation_time').change(function() {
+      var l2 = $.trim($(this).val());
+
+      if (l1.length > 6 && l2.length > 5) {
+        $('#request_time_form .request_time_btn').removeClass('disabled');
+      }
+      else {
+        $('#request_time_form .request_time_btn').addClass('disabled');
+      }
+
+    });
+  });
+
+  $('#request_time_form #request_reservation_time').change(function() {
+    var l1 = $.trim($(this).val());
+
+    $('#request_time_form #request_reservation_date').change(function() {
+      var l2 = $.trim($(this).val());
+
+      if (l1.length > 5 && l2.length > 6) {
+        $('#request_time_form .request_time_btn').removeClass('disabled');
+      }
+      else {
+        $('#request_time_form .request_time_btn').addClass('disabled');
+      }
+
+    });
+  });
+
 }
 
 function request_form_validator() {
@@ -686,6 +719,59 @@ function form_validator(){
 
 function payment_modal_validator() {
   $('#new_reservation').bootstrapValidator({
+    fields: {
+      'credit_card_name': {
+        validators: {
+          notEmpty: {
+            message: 'The CC Full Name is required and cannot be empty'
+          }
+        }
+      },
+      'credit_card_number': {
+        validators: {
+          notEmpty: {
+            message: 'The credit card number is required and cannot be empty'
+          },
+          creditCard: {
+            message: 'Invalid CC Number'
+          }
+        }
+      },
+      'cvv': {
+        validators: {
+          cvv: {
+            message: 'Invalid CVV Number'
+          }
+        }
+      },
+      'exp_month': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          digits: {
+            message: 'Exp. month is invalid'
+          },
+          lessThan: {
+            value: 12,
+            inclusive: false,
+            message: 'Exp. month is invalid'
+          }
+        }
+      },
+      'exp_year': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          integer: {
+            message: 'Exp. year is invalid'
+          }
+        }
+      }
+    }
+  });
+  $('form#request_reservation').bootstrapValidator({
     fields: {
       'credit_card_name': {
         validators: {

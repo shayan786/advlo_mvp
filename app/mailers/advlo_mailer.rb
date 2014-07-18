@@ -27,6 +27,25 @@ class AdvloMailer < ActionMailer::Base
     mail(to: email, subject: 'Your Adventure Request')
   end
 
+  # -- REQUEST A BOOKING EMAILS -- 
+
+  def booking_request_email_user()
+
+  end
+
+  def booking_request_email_host()
+
+  end
+
+  def booking_request_email_approve_user()
+
+  end
+
+  def booking_request_email_reject_user()
+
+  end
+  
+
   def contact_email(contact_user)
     @contact_user = contact_user
     mail(reply_to: @contact_user.email, to: 'info@advlo.com', subject: '[ATTENTION] Advlo Contact-us Submission')
