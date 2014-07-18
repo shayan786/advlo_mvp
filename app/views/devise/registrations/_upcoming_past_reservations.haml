@@ -30,13 +30,15 @@
               .btn.btn-success.request_approve_btn{id: "#{res.id}"}
                 APPROVE
               .btn.btn-danger.request_reject_btn{id: "#{res.id}"}
-                REJECT
+                DECLINE
               .requested_approved_msg{style: "display: none;"} Request - Approved
-              .requested_rejected_msg{style: "display: none;"} Request - Rejected
+              .requested_rejected_msg{style: "display: none;"} Request - Declined
             - elsif res.requested == true && res.stripe_charge_id
-              Request - Approved
+              .btn.btn-info.disabled
+                Request - Approved
             - else
-              Instant Reservation
+              .btn.btn-success.disabled
+                Instant Reservation
           %td.text-left= "$ "+res.total_price.to_s
       %thead
         %tr
