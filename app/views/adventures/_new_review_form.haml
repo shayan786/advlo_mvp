@@ -1,0 +1,33 @@
+#review-form
+  %form#new_review.new_review{"accept-charset" => "UTF-8", action: "/reviews", "data-remote" => "true", method: "post"}
+    = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+    %input#review_user_id{name: "review[user_id]", type: "hidden", value: current_user.id}
+    %input#review_host_id{name: "review[host_id]", type: "hidden", value: @current_guide.id}
+    %input#review_adventure_id{name: "review[adventure_id]", type: "hidden", value: @adventure.id}
+
+    .form-group.row
+      .col-md-3.text-right
+        Adventure:
+      .col-md-4
+        %input#adv_rating_input{type: "text", name: "review[adv_rating]"}
+    .from-group.row
+      .col-md-3.text-right
+        Host:
+      .col-md-4
+        %input#host_rating_input{type: "text", name: "review[host_rating]"}
+    .from-group.row.review_comments
+      .col-md-3.text-right
+        Comments:
+      .col-md-8
+        %textarea.form-control{rows: '5', maxlength: "250", name: "review[body]"}
+    .row.text-center
+      %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Submit Review'}
+
+
+
+
+      / .row.review-textinput
+      /   .col-md-6.col-md-offset-3
+      /     %input.form-control{rows: '3', maxlength: "250", name: 'review[body]', type: 'text', placeholder: "Review text"}
+      / .row.text-center
+      /   %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Write a Review'}

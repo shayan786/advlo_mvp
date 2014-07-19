@@ -18,14 +18,48 @@
 		font-size: 0.6em;
 	}
 }
-.review-button {
-	margin-top: 20px;
+
+#reviews_list {
+	padding-top: 5px;
+	padding-bottom: 15px;
 }
 
-.review-body {
-	word-wrap: break-word;
+
+#review-form {
+	font-size: 0.7em;
+	padding-bottom: 10px;
+
+	.star-rating {
+		cursor: pointer;
+
+		.caption {
+			margin-left: 5px;
+			font-size: 0.7em;
+		}
+	}
+
+	.review_comments {
+		margin-top: 10px;
+
+		textarea {
+			margin-top: 10px;
+		}
+	}
+
+	.rating-xs {
+		font-size: 1em;
+	}
+
+	.review-button {
+		margin-top: 20px;
+	}
+
+	.review-body {
+		word-wrap: break-word;
+	}
+
+	.review-textinput {
+		margin-top: 20px;
+	}
 }
 
-.review-textinput {
-	margin-top: 20px;
-}

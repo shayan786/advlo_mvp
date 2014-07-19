@@ -4,55 +4,45 @@
     REVIEWS
 
   .col-md-9
-    .copy-brick.container-fluid#reviews
+    .copy-brick.container-fluid#reviews_list
       - @adventure_reviews.each do |review|
         = render partial: '/shared/review_brick', locals: {review: review}
 
-      
-      #edit-review
-        - if current_user
-          - if current_user.reviews.where(adventure_id: @adventure.id).size > 0
-            :javascript 
-              $('#edit-review').show()
+      / #edit-review
+      /   - if current_user
+      /     - if current_user.reviews.where(adventure_id: @adventure.id).size > 0
+      /       :javascript 
+      /         $('#edit-review').show()
 
-            - review_id = current_user.reviews.where(adventure_id: @adventure.id).first.id
-            %form{"accept-charset" => "UTF-8", action: "/reviews/#{review_id}", method: "POST", 'data-remote' => true}
-              = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      /       - review_id = current_user.reviews.where(adventure_id: @adventure.id).first.id
+      /       %form{"accept-charset" => "UTF-8", action: "/reviews/#{review_id}", method: "POST", 'data-remote' => true}
+      /         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+      /         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
 
-              .form-group
-                .row
-                  .col-md-6.col-md-offset-3
-                    %input.form-control{rows: '3', maxlength: "250", name: 'review[body]', type: 'text', placeholder: "Review text"}
-                .row.text-center
-                  %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Update Your Review'}
+      /         .form-group
+      /           .row
+      /             .col-md-6.col-md-offset-3
+      /               %input.form-control{rows: '3', maxlength: "250", name: 'review[body]', type: 'text', placeholder: "Review text"}
+      /           .row.text-center
+      /             %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Update Your Review'}
 
-      #purchase-to-review 
-        Go on this adventure to leave a review
+    #purchase-to-review 
+      Go on this adventure to leave a review
 
-      - if current_user
-        - if current_user.reviews.where(adventure_id: @adventure.id).size > 0
-          :javascript 
-            $('#purchase-to-review').remove()
+    - if current_user
+      - if current_user.reviews.where(adventure_id: @adventure.id).size > 0
+        :javascript 
+          $('#purchase-to-review').remove()
 
-        - if current_user.reservations.map(&:adventure_id).include?(@adventure.id) && current_user.reviews.where(adventure_id: @adventure.id).count == 0
-          :javascript 
-            $('#edit-review').hide()
-            $('#purchase-to-review').hide()
+      - if current_user.reservations.map(&:adventure_id).include?(@adventure.id) && current_user.reviews.where(adventure_id: @adventure.id).count == 0
+        :javascript 
+          //$('#edit-review').hide()
+          $('#purchase-to-review').hide()
+          $('#reviews_list').css({
+            borderBottom: "1px solid #E6E6E6"
+          });
 
-          #review-form
-            %form#new_review.new_review{"accept-charset" => "UTF-8", action: "/reviews", "data-remote" => "true", method: "post"}
-              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-              %input#review_user_id{name: "review[user_id]", type: "hidden", value: current_user.id}
-              %input#review_host_id{name: "review[host_id]", type: "hidden", value: @current_guide.id}
-              %input#review_adventure_id{name: "review[adventure_id]", type: "hidden", value: @adventure.id}
-
-              .form-group
-                .row.review-textinput
-                  .col-md-6.col-md-offset-3
-                    %input.form-control{rows: '3', maxlength: "250", name: 'review[body]', type: 'text', placeholder: "Review text"}
-                .row.text-center
-                  %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Write a Review'}
+        = render partial: 'new_review_form'  
 
 
 
@@ -61,4 +51,5 @@
     $('#book-it').click()
   })
   input_maxlength();
+  review_ratings_init();
   
