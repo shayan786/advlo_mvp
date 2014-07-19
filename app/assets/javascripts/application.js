@@ -31,6 +31,7 @@
 //= require user.js
 //= require fullcalendar
 //= require jquery.geocomplete.min
+//= require star-rating.min
 
 
 $(document).ready(function(){

@@ -57,13 +57,17 @@ class AdventureStepsController < ApplicationController
           format.js {}
         end
       else
-        redirect_to "/adventure_steps/schedule?adventure_id=#{@adventure.id}", notice: "Please upload one event for this adventure"
+        redirect_to "/adventure_steps/schedule?adventure_id=#{@adventure.id}", notice: "Please add atleast one instant reservation for this adventure"
       end
 
     else
-      respond_to do |format|
-        format.html {render_wizard}
-        format.js {}
+      if current_user.stripe_recipient_id 
+        respond_to do |format|
+          format.html {render_wizard}
+          format.js {}
+        end
+      else
+        redirect_to "/adventure_steps/payment?adventure_id=#{@adventure.id}", notice: "Please add a bank account for this adventure"
       end
     end
 

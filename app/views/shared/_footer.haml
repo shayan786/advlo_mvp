@@ -63,6 +63,11 @@
 
 :javascript
   $('#contact_form .contact_btn').click(function() {
-    $('#contact_form').submit();
+    var email_l = $.trim($(#contact_form #contact_email).val());
+    var comm_l = $.trim($(#contact_form #contact_comments).val());
+    
+    if (email_l.length > 5 && comm_l.length > 5) {
+      $('#contact_form').submit();
+    }
   })
               

@@ -22,5 +22,10 @@
 
 :javascript
   $('#adventure_iten_form .add_event_btn').click(function() {
-    $('adventure_iten_form').submit();
+    var headline_l = $.trim($(#adventure_iten_form #iten_headline).val());
+    var desc_l = $.trim($(#adventure_iten_form #iten_description).val());
+
+    if(headline_l.length > 5 && desc_l.length > 5) {
+      $('adventure_iten_form').submit();
+    }
   })
