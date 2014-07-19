@@ -25,10 +25,9 @@ Rails.application.routes.draw do
   get '/adventures/request'           => 'adventures#request_info'
   get '/adventures/create'            => 'adventures#create'
   get '/adventures/create_prefill'		=> 'adventures#create_prefill'
-  get '/adventures/reservations/:id'  => 'adventures#reservations'
-  post '/adventures/requests'          => 'adventures#requests'
+  post '/adventures/requests'         => 'adventures#requests'
 
-  get '/adventures/:location/:category', to: 'adventures#filter_category'
+  get '/adventures/:region/:category', to: 'adventures#filter_category'
 
   resources :adventures
 

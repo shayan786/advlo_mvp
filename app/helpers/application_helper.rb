@@ -13,5 +13,10 @@ module ApplicationHelper
   def adv_categories
     return ['BIKING', 'CAMPING', 'MOTOR', 'CLIMBING', 'HIKING', 'SNOW', 'WATER', 'OTHER']
   end
+
+  # Return array to be used for MVP - Colorado Regions for scoping adventures by region
+  def adv_regions
+    return ['Boulder', 'Colorado Springs', 'Denver', 'Fort Collins', 'High Rockies', 'Southern Colorado']
+  end
   
 end

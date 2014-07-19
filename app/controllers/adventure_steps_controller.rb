@@ -211,6 +211,6 @@ class AdventureStepsController < ApplicationController
   end
 
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_image, :images, :itineraries, :itinerary, :headline, :description, :latitude, :longitude, :published, :category => [])
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :region, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_image, :images, :itineraries, :itinerary, :headline, :description, :latitude, :longitude, :published, :category => [])
   end
 end

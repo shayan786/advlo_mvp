@@ -16,9 +16,22 @@
                 %input.form-control.show_ml{type: "text", name: "adventure[title]", id: "adv_name", value: "", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Climbing in Eldorado Canyon"}}
             .form-group.row
               .col-md-4
+                .form_label.text-right Region *
+              .col-md-3
+                %select.form-control{name: "adventure[region]", id: "adv_region"}
+                  - adv_regions.each do |r|
+                    %option= r
+            .row
+              .col-md-4
+              .col-md-6        
+                %a{href: "#"}
+                  %em Don't see your region? tell us where you would like to see Advlo next!
+            %br
+            .form-group.row
+              .col-md-4
                 .form_label.text-right Location *
               .col-md-6
-                %input.form-control.show_ml{type: "text", name: "adventure[location]", placeholder: "", id: "adv_location", value: "", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Write the general adventure location. Ex: Vail, CO"}}
+                %input.form-control.show_ml{type: "text", name: "adventure[location]", placeholder: "", id: "adv_location", value: "", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Write the specific adventure location. Ex: Vail, CO"}}
             .row
               .col-md-4
               .col-md-6
