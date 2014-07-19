@@ -1,14 +1,12 @@
 class AdventuresController < ApplicationController
 
   def index
-    if params[:location] == "SummitCounty"
-      @adventures = Adventure.near("Vail", 50).where(approved: true).order('created_at DESC')
-      @hero_image = HeroImage.where(region: params[:location] ).last
-      @location = params[:location].downcase
-    elsif params[:location].present?
-      @adventures = Adventure.near(params[:location], 20).where(approved: true).order('created_at DESC')
-      @hero_image = HeroImage.where(region: params[:location] ).last
-      @location = params[:location].downcase      
+    if params[:region].present?
+      region = params[:region].gsub('-',' ')
+
+      @adventures = Adventure.where(region: region).where(approved: true).order('created_at DESC')
+      @hero_image = HeroImage.where(region: region).last
+      @location = region.downcase
     else
       @adventures = Adventure.all.where(approved: true)
       @hero_image = HeroImage.where(region: "all")
@@ -54,12 +52,13 @@ class AdventuresController < ApplicationController
 
 
   def filter_category
-    location = params[:location].downcase
+    region = params[:region].gsub('-',' ')
+
     if params[:category] == 'all'
-      @adventures = Adventure.near(location, 100)
+      @adventures = Adventure.where(region: region)
     else
       category = params[:category].gsub(',',' ').downcase
-      @adventures = Adventure.near(location, 100).where("category LIKE ?", "%#{category}%")
+      @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%")
     end
 
     respond_to do |format|
@@ -169,7 +168,7 @@ class AdventuresController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def adventure_params
-    params.required(:adventure).permit(:title, :subtitle, :attachment, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_images, :images, :published, :category => [])
+    params.required(:adventure).permit(:title, :subtitle, :attachment, :region, :location, :summary, :cap_min, :cap_max, :price, :price_type, :duration_num, :duration_type, :other_notes, :adventure_gallery_images, :images, :published, :category => [])
   end
 
   def request_params

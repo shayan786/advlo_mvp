@@ -14,7 +14,7 @@ ActiveAdmin.register HeroImage do
   form multipart: true do |f|
     f.inputs do
       f.input :location
-      f.input :region, as: :select, collection: ['Denver', 'Boulder', 'SummitCounty', "all"]
+      f.input :region, as: :select, collection: adv_regions
       f.input :attachment, :as => :file, :label => 'Upload Image'
     end
     f.actions
