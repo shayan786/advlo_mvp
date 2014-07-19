@@ -1,4 +1,6 @@
 class AdvloMailer < ActionMailer::Base
+  include Roadie::Rails::Automatic
+  
   default from: "info@advlo.com"
   layout 'advlo_mail'
 

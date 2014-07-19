@@ -18,5 +18,4 @@ module ApplicationHelper
   def adv_regions
     return ['Boulder', 'Colorado Springs', 'Denver', 'Fort Collins', 'High Rockies', 'Southern Colorado']
   end
-  
 end

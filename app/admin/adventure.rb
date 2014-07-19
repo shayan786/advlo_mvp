@@ -22,7 +22,7 @@ ActiveAdmin.register Adventure do
     column :published
     column :approved
     column :category
-    column :location
+    column :region
     column 'Email' do |adv|
       adv.users.first.email if adv.users.first
     end
@@ -46,6 +46,7 @@ ActiveAdmin.register Adventure do
       f.input :slug, label: 'permalink'
       f.input :subtitle
       f.input :location
+      f.input :region, collection: adv_regions
       f.input :category
       f.input :price
       f.input :price_type, as: :select, collection: ["per_person", "per_adv"]
