@@ -167,6 +167,8 @@ function stopSidebarAtBottom(){
 
 function navBarCatch(){
   $(window).load(function(){
+    fixSidebar();
+    
     $(window).scroll(function(){
       var scrollPosition = window.pageYOffset;
       var windowSize     = window.innerHeight;
@@ -174,13 +176,13 @@ function navBarCatch(){
       var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
       var s = $(window).scrollTop();
 
-      if(distanceFromBottom < 76){
+      // if(distanceFromBottom < 76){
 
-      }else if(s > 107 ){
-        fixSidebar();
-      }else{
-        resetSideBar();
-      }
+      // }else if(s > 107 ){
+      //   fixSidebar();
+      // }else{
+      //   resetSideBar();
+      // }
     })
   })
 }
@@ -931,7 +933,7 @@ adventureShow = function() {
   navigationBreadcrumbs();
   adventureScroll();
   centerGuideImage();
-  stopSidebarAtBottom();
+  // stopSidebarAtBottom();
   toggleItineraryItemsAndArrows()
   adventureShowHover();
   similarAdventureSlider();

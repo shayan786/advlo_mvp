@@ -1,5 +1,6 @@
 class AdvloMailer < ActionMailer::Base
   default from: "info@advlo.com"
+  layout 'advlo_mail'
 
   # USER EMAILS:
   def welcome_email(user)

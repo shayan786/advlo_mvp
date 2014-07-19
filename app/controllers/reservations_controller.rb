@@ -25,9 +25,11 @@ class ReservationsController < ApplicationController
         :currency => "usd",
         :customer => user.stripe_customer_id
       )
+      create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
       
     # Otherwise create a new stripe customer and get stripe information
     else
+      
       customer = Stripe::Customer.create(
         :card => params[:stripe_token],
         :email => user.email,
@@ -38,12 +40,7 @@ class ReservationsController < ApplicationController
       user.update(stripe_customer_id: customer.id)
 
       # Now charge that customer
-      Stripe::Charge.create(
-        :amount => total_price_cents,
-        :currency => "usd",
-        :customer => user.stripe_customer_id,
-        :description => adventure.title
-      )
+      create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
 
     end
 
@@ -59,6 +56,16 @@ class ReservationsController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
 	end
+
+
+  def create_stripe_charge(amount, customer_id, description)
+    Stripe::Charge.create(
+      :amount => amount,
+      :currency => "usd",
+      :customer => customer_id,
+      :description => description
+    )
+  end
 
   def request_time
     @reservation = Reservation.create!(request_reservation_params)

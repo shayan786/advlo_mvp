@@ -34,6 +34,7 @@ class AdventuresController < ApplicationController
     end
   end
 
+
   def adventure_show_variables
     @current_guide = @adventure.users.first
     @review = Review.new
