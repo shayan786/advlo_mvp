@@ -470,7 +470,7 @@ function request_form_validator() {
       'request[location]': {
         validators: {
           notEmpty: {
-            message: 'Location is required and cannot be empty'
+            message: 'Destination is required and cannot be empty'
           }
         }
       },
@@ -480,10 +480,61 @@ function request_form_validator() {
             message: 'Description is required and cannot be empty'
           }
         }
+      },
+      'request[dates]': {
+        validators: {
+          notEmpty: {
+            message: 'Date is required and cannot be empty'
+          }
+        }
+      },
+      'request[budget]': {
+        validators: {
+          notEmpty: {
+            message: 'Budget is required and cannot be empty'
+          }
+        }
       }
     }
   });
 }
+
+function request_location_validator() {
+  $('#request_location_form').bootstrapValidator({
+    fields: {
+      'request_location[email]': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'request_location[location]': {
+        validators: {
+          notEmpty: {
+            message: 'Destination is required and cannot be empty'
+          }
+        }
+      },
+      'request_location[comments]': {
+        validators: {
+          notEmpty: {
+            message: 'Comments is required and cannot be empty'
+          }
+        }
+      }
+    }
+  });
+}
+
+function request_location_geocomplete() {
+  $('#request_location_form #request_location').geocomplete();
+}
+
+
 
 function upload_images() {
   $('#adv_gallery_img').change(function() {
@@ -1014,4 +1065,6 @@ adventureCreate = function() {
   input_geocomplete();
   create_header_remove_arrow();
   upload_images();
+  request_location_validator();
+  request_location_geocomplete();
 }

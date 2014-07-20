@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720034513) do
+ActiveRecord::Schema.define(version: 20140720222617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,15 @@ ActiveRecord::Schema.define(version: 20140720034513) do
     t.datetime "updated_at"
   end
 
+  create_table "request_locations", force: true do |t|
+    t.string   "location"
+    t.string   "email"
+    t.integer  "user_id"
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "requests", force: true do |t|
     t.integer  "user_id"
     t.string   "email"
@@ -161,6 +170,8 @@ ActiveRecord::Schema.define(version: 20140720034513) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "budget"
+    t.string   "dates"
   end
 
   create_table "reservations", force: true do |t|

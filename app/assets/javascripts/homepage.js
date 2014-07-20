@@ -184,4 +184,7 @@ homepageInit = function() {
   exploreDropdownToggle();
   homepageTextScroll();
   overall_rating_show();
+  request_form_validator();
+  request_form_geocomplete();
+  request_form_maxlength();
 }

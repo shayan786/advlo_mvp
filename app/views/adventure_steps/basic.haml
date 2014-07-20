@@ -29,8 +29,8 @@
             .row
               .col-md-4
               .col-md-6        
-                %a{href: "#"}
-                  %em Don't see your region? tell us where you would like to see Advlo next!
+                %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#request_location_modal'}
+                  %em Don't see your region? Tell us where you would like to see Advlo next!
             %br
             .form-group.row
               .col-md-4
@@ -127,6 +127,8 @@
                   PREVIEW
               .col-md-2
                 %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT", target: '_blank'}
+
+  = render partial: "request_location_modal"
                 
 :javascript
   adventureCreate();

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :adventures, through: :user_adventures
   has_many :requests
+  has_many :request_locations
   has_many :contact_advlos
   has_many :payouts
   
