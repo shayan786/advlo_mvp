@@ -13,7 +13,13 @@
 	background-position: center center;
 
 	#profile-box {
-		margin-top: 8%;
+		margin-top: 6%;
+
+		.caption {
+			font-size: 0.65em;
+			margin-bottom: 4px;
+			margin-left: 5px;
+		}
 	}
 
 	.panel {

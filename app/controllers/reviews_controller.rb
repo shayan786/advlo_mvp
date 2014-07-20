@@ -10,8 +10,10 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.create!(review_params)
     adventure = Adventure.find_by_id(@review.adventure_id)
+    host = User.find_by_id(@review.host_id)
 
     adventure.calculate_rating
+    host.calculate_rating
 
     if @review.save
       respond_to do |format|

@@ -7,6 +7,10 @@
             .profile-image= image_tag "#{@user.get_avatar_url("medium")}"
             .banner_name= @user.name
             .banner_subtitle= @user.short_description
+            
+            - if !@user.rating.nil? || !(@user.rating == '')
+              %input{id: "user_rating_value", type: "hidden", "data-host-rating"=>@user.rating}
+              %input{id: "user_rating_show"}
 
 #p_overview
   .container

@@ -137,6 +137,23 @@ class User < ActiveRecord::Base
       
   end
 
+  def calculate_rating 
+    reviews = Review.where(host_id: self.id)
+    @user = User.find_by_id(self.id)
+
+    total_reviews = reviews.count
+    sum_rating = 0
+
+    reviews.each do |rev|
+      sum_rating = sum_rating + rev.host_rating.to_f
+    end
+
+    avg_rating = sum_rating / total_reviews
+
+    @user.rating = avg_rating.round(1)
+    @user.save
+  end
+
   def to_param
     if name
       "#{id}-#{name.gsub(' ','')}"
