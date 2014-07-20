@@ -33,6 +33,23 @@ class Adventure < ActiveRecord::Base
     end
   end
 
+  def calculate_rating 
+    reviews = Review.where(adventure_id: self.id)
+    @adventure = Adventure.find_by_id(self.id)
+
+    total_reviews = reviews.count
+    sum_rating = 0
+
+    reviews.each do |rev|
+      sum_rating = sum_rating + rev.get_weighted_rating
+    end
+
+    avg_rating = sum_rating / total_reviews
+
+    @adventure.rating = avg_rating
+    @adventure.save
+  end
+
   def dur_to_sec
     if self.duration_type == "Minutes"
       sec_min = self.duration_num*60

@@ -145,6 +145,35 @@ function headerLoginToggle(){
     $('#login-form-submit').fadeIn()
   })
 }
+
+function overall_rating_show() {
+  var feat_adv_id;
+  var rating;
+  var num_of_adv = $('.adventure-container input').length / 2;
+
+  var i = 0;
+
+  for(; i < num_of_adv; i++) {
+    adv_rating_show_id = ".adventure-container input#adv_rating_show_"+i;
+    adv_rating_value_id = ".adventure-container input#adv_rating_value_"+i;
+
+    //initialize
+    $(adv_rating_show_id).rating({
+      'min': 0,
+      'max': 5,
+      'step': 0.1,
+      'size': 'xs',
+      'readonly': true,
+      'showCaption': false,
+      'showClear': false
+    });
+
+    //update rating
+    rating = $(adv_rating_value_id).data('rating');
+    $(adv_rating_show_id).rating('update', rating);
+  }
+
+}
   
 homepageInit = function() {
   adventureSliderInit();
@@ -154,4 +183,5 @@ homepageInit = function() {
   hostSliderImageCenter();
   exploreDropdownToggle();
   homepageTextScroll();
+  overall_rating_show();
 }
