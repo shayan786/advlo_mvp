@@ -17,13 +17,11 @@
 
               - if adv.location
                 .location= "#{adv.city}, #{adv.state}".upcase
-                
+              
+              %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>adv.rating}
+              %input{id: "adv_rating_show_#{i}"}  
 
             .price= "$ #{adv.price}"
-
-            %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>adv.rating}
-            %input{id: "adv_rating_show_#{i}"}
-            /%input{id: "overall_rating_#{i}", type: "text", "data-rating"=>adv.rating}
 
             .hover-block{id: i}
               - usr = adv.users.first

@@ -134,12 +134,17 @@
 
       .copy{
         color: #fff;
-        bottom: 10px;
+        bottom: 5px;
         position: absolute;
         z-index: 100;
         left: 15px;
         .title {
           font-size: 20px;
+        }
+
+        .rating-xs {
+          font-size: 0.9em;
+          padding: 0px !important;
         }
 
         .location {
@@ -176,7 +181,7 @@
       .copy-container {
         position: absolute;
         bottom: 0px;
-        height: 65px;
+        height: 75px;
         background: rgba(0, 0, 0, 0.75);
         width: 100%;
       }
@@ -261,7 +266,7 @@
   }
 
   .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy {
-    bottom: 10px;
+    bottom: 3px;
   }
 
   .adventure-container .brick-wrapper .adventure-brick .guide-image {
@@ -274,7 +279,7 @@
     font-size: 11px;
   }
   .adventure-container .brick-wrapper .adventure-brick .image-wrapper .price {
-    bottom: -4px;
+    bottom: 0px;
   }
 
 }
