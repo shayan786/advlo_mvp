@@ -220,6 +220,11 @@
       #gallery {
         padding-bottom: 20px;
         padding-top: 15px;
+
+        #galleryModal .modal-dialog {
+          width: 38%
+        }
+
       }
 
       #additional_info {

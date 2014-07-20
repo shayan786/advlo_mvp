@@ -138,17 +138,18 @@
         position: absolute;
         z-index: 100;
         left: 15px;
+
         .title {
           font-size: 20px;
+        }
+
+        .location {
+          color: #C35B26;
         }
 
         .rating-xs {
           font-size: 0.9em;
           padding: 0px !important;
-        }
-
-        .location {
-          color: #C35B26;
         }
 
         .ping {
