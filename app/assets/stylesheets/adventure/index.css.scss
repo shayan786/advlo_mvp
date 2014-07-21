@@ -152,6 +152,10 @@
           padding: 0px !important;
         }
 
+        .rating-disabled {
+          cursor: pointer !important;
+        }
+
         .ping {
           background: asset-url("location.png") no-repeat left center;
           height: 20px;

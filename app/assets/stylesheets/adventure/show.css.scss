@@ -71,11 +71,17 @@
       position: relative;
       width: 100%;
       float: left;
-      top: 20px;
+      top: 5px;
       #adventure-title {
         color: #fff;
         font-size: 30px;
       }
+
+      #adventure-reviews-count {
+        color: $white;
+        font-size: 1.2em;
+      }
+
       #adventure-price {
         font-size: 30px;
         color: $advlo_green;
@@ -87,7 +93,7 @@
         margin: 0 auto;
         padding-top: 10px;
         padding-bottom: 5px;
-        margin-top: 20px;
+        margin-top: 5px;
         span {
           color: #fff;
           font-size: 25px;
