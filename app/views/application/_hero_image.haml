@@ -12,13 +12,11 @@
           .dropdown-box
             - adv_regions.each do |r|
               - r_sub_url = r.gsub(' ','-') 
-              = link_to r, "/adventures?region=#{r_sub_url}", class: "option"
+              = link_to r, "/adventures?region=#{r_sub_url}", class: "option" 
 
-              / %a.option{href: '/adventures?location=Denver'} Denver
-              / %a.option{href: '/adventures?location=Boulder'} Boulder
-              / %a.option{href: '/adventures?location=SummitCounty'} Summit County
-
-    
+            / %a.option{href: '/adventures?location=Denver'} Denver
+            / %a.option{href: '/adventures?location=Boulder'} Boulder
+            / %a.option{href: '/adventures?location=SummitCounty'} Summit County
 
     //$('.dropdown-box').width(parseInt($('.header_btn_fix').css('width')) - 4)
     

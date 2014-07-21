@@ -154,6 +154,30 @@ function edit_user_form_validator(){
   });
 }
 
+function host_contact_validator() {
+  $('#contact_host_form').bootstrapValidator({
+    fields: {
+      'contact_host[email]': {
+        validators: {
+          notEmpty: {
+            message: "Email cannot be empty"
+          },
+          emailAddress: {
+            message: "Not a valid email address"
+          }
+        }
+      },
+      'contact_host[message]': {
+        validators: {
+          notEmpty: {
+            message: "Message cannot be empty"
+          }
+        }
+      }
+    }
+  });
+}
+
 function edit_user_input_geocomplete() {
   $('#user_edit_form .location_map').hide();
   var user_location = $('#user_edit_form #user_location').val();
@@ -245,6 +269,36 @@ function user_rating_show() {
   $(user_rating_show_id).rating('update', rating);
 }
 
+function user_adv_rating_show() {
+  var adv_id;
+  var rating;
+  var adv_rating_show_id;
+  var adv_rating_value_id;
+  var num_of_adv = $('#p_my_adventures #user-adventure-slider input').length / 2;
+
+  var i = 0;
+
+  for(; i < num_of_adv; i++) {
+    adv_rating_show_id = "#p_my_adventures #user-adventure-slider input#adv_rating_show_"+i;
+    adv_rating_value_id = "#p_my_adventures #user-adventure-slider input#adv_rating_value_"+i;
+
+    //initialize
+    $(adv_rating_show_id).rating({
+      'min': 0,
+      'max': 5,
+      'step': 0.1,
+      'size': 'xs',
+      'readonly': true,
+      'showCaption': false,
+      'showClear': false
+    });
+
+    //update rating
+    rating = $(adv_rating_value_id).data('rating');
+    $(adv_rating_show_id).rating('update', rating);
+  }
+}
+
 
 function usersInit(){
   input_popover();
@@ -261,4 +315,6 @@ function usersShowInit(){
   centerGuideImage();
   profileCenterImage();
   user_rating_show();
+  user_adv_rating_show();
+  host_contact_validator();
 }

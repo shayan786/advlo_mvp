@@ -74,11 +74,8 @@ class AdventuresController < ApplicationController
   def request_info
   end
 
-  # Show adventure's reservations
-  def reservations
-    @adventure = Adventure.find_by_id(params[:id])
-  end
 
+  # Request Adventure
   def requests 
     @request = Request.create!(request_params)
     @request.category = params[:request_category].join(',')
@@ -90,6 +87,21 @@ class AdventuresController < ApplicationController
 
       respond_to do |format|
         format.js {render "request.js", layout: false}
+      end
+    end
+  end
+
+  # Request Location / Destination not covered yet
+  def request_location
+    @request_location = RequestLocation.create!(request_location_params)
+    
+    if @request.save
+      # Mail the requester
+      # AdvloMailer.delay.request_email(params[:request_location][:email])
+      AdvloMailer.request_location_email(params[:request_location][:email]).deliver
+
+      respond_to do |format|
+        format.js {render "request_location.js", layout: false}
       end
     end
   end
@@ -172,7 +184,11 @@ class AdventuresController < ApplicationController
   end
 
   def request_params
-    params.required(:request).permit(:user_id, :description, :email, :location, :request_category => [])
+    params.required(:request).permit(:user_id, :description, :email, :location, :dates, :budget)
+  end
+
+  def request_location_params
+    params.required(:request_location).permit(:user_id, :comments, :email, :location)
   end
 
 end

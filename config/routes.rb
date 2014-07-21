@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   #user dashboard route
   devise_scope :user do
+    post '/users/contact_host'        => 'users#contact_host'
     get '/users/dashboard'            => 'registrations#dashboard'
     get '/users/wallet'               => 'registrations#wallet'
     get '/users/payouts'              => 'registrations#payouts'
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get '/adventures/create'            => 'adventures#create'
   get '/adventures/create_prefill'		=> 'adventures#create_prefill'
   post '/adventures/requests'         => 'adventures#requests'
+  post '/adventures/request_location' => 'adventures#request_location'
 
   get '/adventures/:region/:category', to: 'adventures#filter_category'
 

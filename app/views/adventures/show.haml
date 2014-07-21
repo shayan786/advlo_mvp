@@ -18,8 +18,17 @@
 
 
       .adventure-block
+        #adventure-reviews-count
+          - review_count = Review.where(adventure_id: @adventure.id).count
+          - case review_count
+          - when 0
+            %em= "No Reviews"
+          - when 1
+            %em= "#{review_count} Review"
+          - else
+            %em= "#{review_count} Reviews"
         #adventure-price
-          %span= "$#{@adventure.price}"
+          %span= "$ #{@adventure.price}"
         -if !@adventure.approved || @current_guide == current_user
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "modal"} 
             %span 

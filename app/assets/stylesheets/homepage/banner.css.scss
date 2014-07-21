@@ -4,7 +4,7 @@
 .jumbotron_fix {
 	margin-top: -80px;
 	padding-top: 30vh;
-	min-height: 85vh; //add js fix for style height on older browsers
+	min-height: 93vh; //add js fix for style height on older browsers
 	background-image: asset-url($banner_image);
 	background-repeat: no-repeat;
 	background-size: cover; 
@@ -93,10 +93,4 @@
 			}
 		}
 	}
-}
-
-
-
-.profile_img {
-
 }

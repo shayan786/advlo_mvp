@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :adventures, through: :user_adventures
   has_many :requests
+  has_many :request_locations
   has_many :contact_advlos
   has_many :payouts
   
@@ -47,8 +48,8 @@ class User < ActiveRecord::Base
 
   def is_guide?(user_id)
     @user = User.find_by!(:id => user_id)
+    
     #check to verify certain parmaters exist to make sure user is eligible to be guide
-
     if @user.name.nil? || 
        @user.name.empty? || 
        @user.location.nil? || 
