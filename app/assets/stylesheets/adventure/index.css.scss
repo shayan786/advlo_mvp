@@ -168,8 +168,8 @@
       .price {
         position: absolute;
         bottom: 0px;
-        right: 4px;
-        font-size: 25px;
+        right: 10px;
+        font-size: 35px;
         z-index: 10;
         color: #fff;
       }
@@ -333,6 +333,7 @@
   }
   .adventure-container .brick-wrapper .adventure-brick .image-wrapper .price {
     bottom: 0px;
+    font-size: 27px;
   }
 
 }
