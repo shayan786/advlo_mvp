@@ -154,6 +154,30 @@ function edit_user_form_validator(){
   });
 }
 
+function host_contact_validator() {
+  $('#contact_host_form').bootstrapValidator({
+    fields: {
+      'contact_host[email]': {
+        validators: {
+          notEmpty: {
+            message: "Email cannot be empty"
+          },
+          emailAddress: {
+            message: "Not a valid email address"
+          }
+        }
+      },
+      'contact_host[message]': {
+        validators: {
+          notEmpty: {
+            message: "Message cannot be empty"
+          }
+        }
+      }
+    }
+  });
+}
+
 function edit_user_input_geocomplete() {
   $('#user_edit_form .location_map').hide();
   var user_location = $('#user_edit_form #user_location').val();
@@ -292,4 +316,5 @@ function usersShowInit(){
   profileCenterImage();
   user_rating_show();
   user_adv_rating_show();
+  host_contact_validator();
 }
