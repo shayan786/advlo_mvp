@@ -39,4 +39,12 @@ class Payout < ActiveRecord::Base
     flash[:error] = e.message
   end
 
+  def get_payout_fees
+    @payout = Payout.find_by_id(self.id)
+
+    fee = @payout.amount * 0.15
+
+    return fee.round(2)
+  end
+
 end
