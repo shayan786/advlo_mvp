@@ -12,6 +12,9 @@
             - if adv.location
               .location= "#{adv.city}, #{adv.state}".upcase
 
+            %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>adv.rating}
+            %input{id: "adv_rating_show_#{i}"}
+
           .price= "$ #{adv.price}"
 
           .hover-block{id: i}
