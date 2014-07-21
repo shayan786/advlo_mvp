@@ -4,7 +4,7 @@
       .col-md-4.col-md-offset-4#profile-box
         .panel.panel-default
           .panel-body.text-center
-            .profile-image= image_tag "#{@user.get_avatar_url("medium")}"
+            .profile-image{style: "background: url(#{@user.get_avatar_url("medium")}) no-repeat center center;"}
             .banner_name= @user.name
             .banner_subtitle= @user.short_description
             

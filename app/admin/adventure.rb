@@ -41,6 +41,7 @@ ActiveAdmin.register Adventure do
   form multipart: true do |f|
     f.inputs do
       f.input :title
+      f.input :rating, collection: ['1','2','3','4','5']
       f.input :published
       f.input :approved
       f.input :slug, label: 'permalink'

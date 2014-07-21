@@ -28,6 +28,7 @@ ActiveAdmin.register User do
       f.input :is_guide
       f.input :email
       f.input :name
+      f.input :rating, collection: ['1','2','3','4','5']
       f.input :avatar_url
       f.input :avatar, as: :file
       f.input :location
