@@ -54,10 +54,10 @@
 			.swiper-slide {
 			  border: 10px transparent;
 			  
-		    .image-wrapper {
+		    	.image-wrapper {
 					.copy{
 					  color: #fff;
-					  bottom: 10px;
+					  bottom: 2px;
 					  position: absolute;
 					  z-index: 100;
 					  left: 15px;
@@ -80,7 +80,15 @@
 					    position: absolute;
 					  }
 					}
-		    }
+
+					.rating-xs {
+						font-size: 0.6em;
+					}
+
+					.rating-disabled {
+						cursor: pointer;
+					}
+		    	}
 			}
 		}
 	}

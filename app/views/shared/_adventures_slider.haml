@@ -14,9 +14,9 @@
             -else
               .location= adv.location.upcase
 
+            %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>adv.rating}
+            %input{id: "adv_rating_show_#{i}"}  
+
           .hover-block{id: i}
-            - if user && user.avatar_url == '' || user.avatar_url == nil
-              .guide-profile-image= image_tag user.avatar.url(:large)
-            - elsif user
-              .guide-profile-image= image_tag "#{user.avatar_url}?type=large"
+            .guide-profile-image= image_tag user.get_avatar_url('large')
           .copy-container{class: "copy-#{i}"}
