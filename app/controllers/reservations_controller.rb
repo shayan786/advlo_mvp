@@ -8,12 +8,15 @@ class ReservationsController < ApplicationController
     adventure = Adventure.find(params[:adventure_id])
     user = User.find_by_id(params[:user_id])
 
+    # Caculate fee associated with that reservation
+    # Currently fee = 15% (Add tier stuff here for future)
+    fee = @reservation.total_price * 0.15
+    @reservation.update(fee: fee.round(2))
+
     event = Event.find_by_id(params[:event_id])
     new_capacity = event.capacity.to_i - params[:reservation][:head_count].to_i
     event.update(capacity: new_capacity)
 
-    # AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
-    AdvloMailer.booking_confirmation_email(user, adventure, @reservation).deliver
 
     # If the current user (customer) is an existing stripe customer with us
     # => Create a stripe charge (i.e. charge the customer)
@@ -45,6 +48,9 @@ class ReservationsController < ApplicationController
     end
 
     if @reservation.save
+      # AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
+      # AdvloMailer.booking_confirmation_email(user, adventure, @reservation).deliver
+
       respond_to do |format|
         format.js {render action: 'create.js', layout: false}
       end

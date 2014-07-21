@@ -21,8 +21,8 @@
               - if @upcoming_reservations.empty?
                 .col-md-6.col-md-offset-3
                   .alert.alert-warning.text-center
-                    You have no reservations
-                  %span= link_to 'Get out there', "/adventures?location=denver#{current_user.location}"
+                    You have no bookings
+                  %span= link_to 'Get out there', "/adventures"
 
               
               - else
