@@ -6,6 +6,7 @@
       .modal-body
         %form{"accept-charset" => "UTF-8", action: "/users/contact_host", method: "POST", id: "contact_host_form", "data-remote" => "true"}
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          = tag(:input, :type => "hidden", :name => "contact_host[host_id]", :value => user.id)
           - if current_user
             = tag(:input, :type => "hidden", :name => "contact_host[user_id]", :value => current_user.id)
           .form-group.row

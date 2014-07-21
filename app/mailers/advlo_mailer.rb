@@ -30,6 +30,20 @@ class AdvloMailer < ActionMailer::Base
     mail(to: email, subject: 'Your Adventure Request')
   end
 
+  def request_location_email_user()
+
+  end
+
+  def request_location_email_advlo()
+
+  end
+
+
+  # MESSAGING THE HOST FROM ANY USER
+  def contact_host_email()
+
+  end
+
   # -- REQUEST A BOOKING EMAILS -- 
 
   def booking_request_email_user()
