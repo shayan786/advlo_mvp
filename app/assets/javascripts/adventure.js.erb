@@ -303,7 +303,21 @@ function galleryModalClick(){
       $('.active').next().addClass('active');
       $('.active').first().removeClass('active');
     }
-  })
+  });
+
+
+  // Right / Left Arrow browse
+  $('body').keydown(function(e) {
+    // LEFT KEY
+    if(e.keyCode == 37) {
+      
+    }
+    // RIGHT KEY
+    else if (e.keyCode == 39) {
+
+    }
+
+  });
 }
 
 function galleryMasonry(){
