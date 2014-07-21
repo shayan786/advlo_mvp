@@ -82,8 +82,7 @@ class AdventuresController < ApplicationController
 
     if @request.save
       # Mail the requester
-      # AdvloMailer.delay.request_email(params[:request][:email])
-      AdvloMailer.request_email(params[:request][:email]).deliver
+      AdvloMailer.request_adventure_email(@request).deliver
 
       respond_to do |format|
         format.js {render "request.js", layout: false}
@@ -95,10 +94,10 @@ class AdventuresController < ApplicationController
   def request_location
     @request_location = RequestLocation.create!(request_location_params)
     
-    if @request.save
+    if @request_location.save
       # Mail the requester
       # AdvloMailer.delay.request_email(params[:request_location][:email])
-      AdvloMailer.request_location_email(params[:request_location][:email]).deliver
+      AdvloMailer.request_location_email(@request).deliver
 
       respond_to do |format|
         format.js {render "request_location.js", layout: false}

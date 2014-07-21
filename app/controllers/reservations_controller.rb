@@ -101,6 +101,10 @@ class ReservationsController < ApplicationController
     end
 
     if @reservation.save
+
+      AdvloMailer.booking_request_email_user(@reservation).deliver
+      AdvloMailer.booking_request_email_host(@reservation).deliver
+
       respond_to do |format|
         format.js {render "request.js", layout: false}
       end
@@ -141,6 +145,10 @@ class ReservationsController < ApplicationController
       # Email the user that request has been approved
       # AdvloMailer.
 
+      AdvloMailer.booking_request_email_approve_user(@reservation)
+      AdvloMailer.booking_request_email_approve_host(@reservation)
+
+      AdvloMailer.booking_request_email_reject_user(@reservation)
     else
       @reservation.destroy
 

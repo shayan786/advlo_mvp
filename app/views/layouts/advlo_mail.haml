@@ -5,19 +5,36 @@
     %title Adventure Local
     :css
 
-      body {
+      #header {
+        height: 65px;
+        padding: 30px;
         background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png)
+
+      }
+
+      #footer {
+        height: 65px;
+        padding: 30px;
+        background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png)
+      }
+
+      html {
+
       }
 
       body, td {
         color: #000000;
         font-size: 14px;
-        font-family: Verdana, Helvetica, Arial;
+        font-family: Verdana,Helvetica,Arial;
       }
+      #main {
+        background: #fff;
+      }
+
       .divider {
-        background-color: #555555;
         height: 2px;
       }
+
       h1 {
         font-family: nexa_bold;
         color: #fff;
@@ -37,43 +54,45 @@
       }
       .adventure .duration {
         font-size: 11px;
-        color: #555555;
+        color: #fff;
       }
       #footer {
         font-size: 11px;
-        color: #555555;
+        color: #fff;
       }
       #footer a {
-        color: #555555;
+        color: #fff;
       }
       .logo {
+        text-align: center;
         position: relative;
-        float: left;
         height: 60px;
       }
       .logo img {
         height: 100%;
         width: auto;
       }
+
+
   %body
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
         %td{align: "center", valign: "top"}
-          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
+          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "700"}
+
+            // header
             %tr
               %td#header{colspan: "2"}
                 %a{href: "http://beta.advlo.com/"}
                   .logo= image_tag "http://beta.advlo.com/assets/logos/advlo_header_logo-439f03315b58ba7b980fd7aab2234985.png"
-            %tr
-              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
-                = yield
 
+              // content      
+              %tr
+                %td
+                  = yield
 
-            %tr
-              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
+            // footer
             %tr
               %td#footer{align: "center", colspan: "2"}
-                %p
-                  / %a{href: "#"} Unsubscribe
-                  / if you do not wish to receive these emails in the future.
                 %p= "©#{Time.now.year} Advlo inc."
+

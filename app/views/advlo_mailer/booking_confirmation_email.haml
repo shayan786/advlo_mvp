@@ -3,7 +3,7 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
-    %h1 Adventure Local confirmation
+    %h2 Adventure Local confirmation
     %strong You are about to go on an adventure
     %br
     %i= @adventure.title
@@ -11,4 +11,4 @@
     %i= @adventure.users.first.name
     %br= "Contact your guide at: #{@adventure.users.first.email}"
     %p
-      = @reservation.inspect
+      = @reservation
