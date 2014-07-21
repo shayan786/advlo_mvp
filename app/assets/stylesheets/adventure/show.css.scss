@@ -57,10 +57,9 @@
         overflow: hidden;
         margin: 0 auto;
 
-        img{
-          width: auto;
-          min-width: 100%;
+        .image-wrapper{
           height: 100%;
+          width: auto;
         }:hover{
           opacity: 0.9;
         }
