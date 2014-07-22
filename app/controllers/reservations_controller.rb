@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
 
     # Caculate fee associated with that reservation
     # Currently fee = 15% (Add tier stuff here for future)
-    fee = ( @reservation.total_price * 0.15).round(2) )
+    fee = (@reservation.total_price * 0.15).round(2)
     @reservation.update(fee: fee)
 
     event = Event.find_by_id(params[:event_id])
