@@ -208,3 +208,15 @@ function reservation_request_prefill() {
     $('#request_reservation .prefill_request_cost').append("$ "+total_price);
   });
 }
+
+function reservation_modals_show_hide() {
+  // Hide the event modal when the reservation (payment) modal is shown
+  $('#reservations-modal').on('shown.bs.modal', function(e){
+    $('#event-modal').modal('hide');
+  })
+
+   $('#reservations-request-modal').on('shown.bs.modal', function(e){
+    $('#event-modal').modal('hide');
+  })
+
+}

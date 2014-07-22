@@ -14,7 +14,7 @@
           = @current_guide.name
         .guide-profile-image
           %a{href: user_path(@current_guide)}
-            .image-wrapper{style: "background: url(#{@current_guide.get_avatar_url("medium")}) no-repeat center center;"}
+            .image-wrapper{style: "background: url(#{@current_guide.get_avatar_url("profile_circle")}) no-repeat center center;"}
 
 
       .adventure-block
@@ -122,6 +122,7 @@
   getStripeToken();
   getStripeToken_request();
   reservation_request_prefill();
+  reservation_modals_show_hide();
 
   $(window).resize(function(){
     sizeSidebar();

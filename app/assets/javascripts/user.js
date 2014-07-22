@@ -124,6 +124,13 @@ function profileCenterImage(){
   })
 }
 
+function upload_profile_photo() {
+  $('#user_edit_form input[type="file"]').change(function(){
+    $('#loader-overlay').show();
+    $('#user_edit_form input[type="submit"]').click();
+  })
+}
+
 function edit_user_form_validator(){
   $('#user_edit_form').bootstrapValidator({
     fields: {
@@ -307,6 +314,7 @@ function usersInit(){
   photoInput();
   edit_user_form_validator();
   edit_user_input_geocomplete();
+  upload_profile_photo();
 }
 
 function usersShowInit(){

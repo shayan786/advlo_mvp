@@ -9,7 +9,7 @@
       - @related.each_with_index do |adv, i|
         %a.adventure-brick{href: adventure_path(adv.slug)}
           .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
-            .copy
+            .copy{id: "#{i}"}
               - if adv.title.length > 38
                 .title= "#{adv.title[0..38]}..."
               -else
@@ -18,7 +18,7 @@
               - if adv.location
                 .location= "#{adv.city}, #{adv.state}".upcase
 
-              %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>adv.rating}
+              %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
               %input{id: "adv_rating_show_#{i}"}
 
             .price= "$ #{adv.price}"

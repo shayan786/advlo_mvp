@@ -3,7 +3,7 @@
     - slider_adventures.each_with_index do |adv, i|
       %a.swiper-slide.adventure-slide{href: adventure_path(adv.slug)}
         .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center 0;"}
-          .copy
+          .copy{id: "#{i}"}
             - if adv.title.length > 32
               #title= "#{adv.title[0..32]}..."
             -else
@@ -14,7 +14,7 @@
             -else
               .location= adv.location.upcase
 
-            %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>adv.rating}
+            %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
             %input{id: "adv_rating_show_#{i}"}  
 
           .hover-block{id: i}

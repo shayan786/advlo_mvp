@@ -170,7 +170,16 @@ function overall_rating_show() {
 
     //update rating
     rating = $(adv_rating_value_id).data('rating');
-    $(adv_rating_show_id).rating('update', rating);
+
+    if(rating) {
+      $('.copy#'+i+" .star-rating").removeClass('no_ratings');
+      $(adv_rating_show_id).rating('update', rating);
+    }
+    else {
+      //Make it opaque if there are no ratings
+      $('.copy#'+i+" .star-rating").addClass('no_ratings');
+      $('.no_ratings').css('opacity','0.35');
+    }
   }
 
 }
