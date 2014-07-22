@@ -175,7 +175,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.required(:reservation).permit(:user_id, :host_id, :event_id, :total_price, :head_count, :adventure_id, :event_start_time)
+    params.required(:reservation).permit(:user_id, :host_id, :event_id, :total_price, :head_count, :adventure_id, :event_start_time, :fee)
   end
 
   def request_reservation_params
