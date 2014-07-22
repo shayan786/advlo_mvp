@@ -538,9 +538,11 @@ function request_location_geocomplete() {
 
 function upload_images() {
   $('#adv_gallery_img').change(function() {
-    $('#loader-overlay').show();
-    $('#adv_gallery_img_upload').submit();
-  }); 
+    $('#loader-overlay').show(function() {
+      $('#adv_gallery_img_upload').submit();
+    });
+    
+  });
 } 
 
 function review_ratings_init() {

@@ -126,8 +126,9 @@ function profileCenterImage(){
 
 function upload_profile_photo() {
   $('#user_edit_form input[type="file"]').change(function(){
-    $('#loader-overlay').show();
-    $('#user_edit_form input[type="submit"]').click();
+    $('#loader-overlay').show(function() {
+      $('#user_edit_form input[type="submit"]').click();
+    });
   })
 }
 
