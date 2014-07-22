@@ -1,6 +1,6 @@
 .review{id: review.id}
   .reviewer-image-wrapper
-    - if review.user.get_avatar_url(:profile_circle)
+    - if review.user.get_avatar_url(:profile_circle) != "missing.png"
       .image-wrapper{style: "background: url(#{review.user.get_avatar_url("medium")}) no-repeat center center;"}
     - else 
       = image_tag 'missing.png'
