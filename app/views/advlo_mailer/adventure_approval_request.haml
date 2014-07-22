@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %tr.adventure
+      %td
+        %a{href: "#"}
+          = image_tag "http://beta.advlo.com/#{@adventure.attachment.url(:large)}"
+
+      %td{valign: "top"}
+        %h2 Adventure Approval Request
+        %h5 
+          GUIDE: 
+          %p= link_to "#{@adventure.users.first.name}", user_path(@adventure.users.first.to_param)
+        %h5 
+          EMAIL: 
+          %p= mail_to "#{@adventure.users.first.email}", @adventure.users.first.email
+        %p
+          %a{href: adventures_path(@adventure.slug) }
+          %p
+            = "ADVENTURE: #{@adventure.title}"
+            %h4
+              = "SUMMARY: #{@adventure.summary}"
+            
+          %span.duration= "$ #{@adventure.price} / #{@adventure.price_type}"
