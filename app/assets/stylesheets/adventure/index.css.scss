@@ -5,13 +5,21 @@
   left: 0;
   padding: 0px;
 
-  #hero_image{
-    margin-top: 71px;
+
+  #hero_image_wrapper {
     position: relative;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    width: 100%; 
+    float: left;
+    height: 600px;
+
+    #hero_image{
+      margin-top: 71px;
+      position: relative;
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
   }
 
   #location_text {

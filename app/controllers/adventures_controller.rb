@@ -9,7 +9,7 @@ class AdventuresController < ApplicationController
       @location = region.downcase
     else
       @adventures = Adventure.all.where(approved: true)
-      @hero_image = HeroImage.where(region: "all")
+      @hero_image = HeroImage.where(region: "all").first
     end
   end
 

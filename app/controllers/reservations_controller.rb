@@ -10,8 +10,8 @@ class ReservationsController < ApplicationController
 
     # Caculate fee associated with that reservation
     # Currently fee = 15% (Add tier stuff here for future)
-    fee = @reservation.total_price * 0.15
-    @reservation.update(fee: fee.round(2))
+    fee = (@reservation.total_price * 0.15).round(2)
+    @reservation.update(fee: fee)
 
     event = Event.find_by_id(params[:event_id])
     new_capacity = event.capacity.to_i - params[:reservation][:head_count].to_i
@@ -175,7 +175,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.required(:reservation).permit(:user_id, :host_id, :event_id, :total_price, :head_count, :adventure_id, :event_start_time)
+    params.required(:reservation).permit(:user_id, :host_id, :event_id, :total_price, :head_count, :adventure_id, :event_start_time, :fee)
   end
 
   def request_reservation_params

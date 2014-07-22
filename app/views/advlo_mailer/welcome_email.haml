@@ -3,21 +3,28 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
-    %h1 Welcome to Adventure Local
-    %h3   
+    %h1.center Welcome to Adventure Local
+
+    %h3.center   
       = "Your account email is: #{@user.email}"
-    %br
+    .indented
+      %br
 
-    You can now 
-    %a{href: 'http://beta.advlo.com/users/edit'}
-      %strong book awesome local adventures or
+      You can now 
+      %a{href: 'http://beta.advlo.com/users/edit'}
+        book
+      awesome local adventures or become a certified Advlo guide by completing 
 
-    %a{href: 'http://beta.advlo.com/users/edit'}
-      %strong become a guide
+      %a{href: 'http://beta.advlo.com/users/edit'}
+        your profile
 
-    by completing your profile and 
+      and 
 
-    %a{href: 'http://beta.advlo.com/adventures/info'}
-      %strong creating an adventure
+      %a{href: 'http://beta.advlo.com/adventures/info'}
+        creating
 
-    %h3
+      an adventure.
+
+      %br
+        %h4.center
+          Excited to have you on board!

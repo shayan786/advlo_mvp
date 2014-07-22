@@ -1,6 +1,7 @@
 .adventure-page-container
-  - if @hero_image
-    #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
+  #hero_image_wrapper
+    - if @hero_image
+      #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
   #location_text= @location ? @location.upcase : "Advlo" 
   
   .filter-container

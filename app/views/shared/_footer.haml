@@ -16,12 +16,13 @@
             TERMS & PRIVACY
       .row
         .col-md-4.col-md-offset-4
-          %a{href:"http://www.facebook.com/advlo", target: "_blank"}
-            %i.fa.fa-facebook
-          %a{href:"http://www.twitter.com/advlo_", target: "_blank"}
-            %i.fa.fa-twitter
-          %a{href:"http://www.instagram.com/advlo", target: "_blank"}
-            %i.fa.fa-instagram
+          %a.footer-social{href:"http://www.facebook.com/advlo", target: "_blank"}
+            = image_tag 'icons/facebook.png'
+          %a.footer-social{href:"http://www.twitter.com/advlo_", target: "_blank"}
+            = image_tag 'icons/twitter.png'
+          %a.footer-social{href:"http://www.instagram.com/advlo", target: "_blank"}
+            = image_tag 'icons/instagram.png'
+            
       / .row
       /   .col-md-4.col-md-offset-4
       /     ="©#{Time.now.year}"
