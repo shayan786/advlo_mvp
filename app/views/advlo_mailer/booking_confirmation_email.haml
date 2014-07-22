@@ -3,12 +3,21 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
-    %h2 Adventure Local confirmation
-    %strong You are about to go on an adventure
-    %br
-    %i= @adventure.title
-    with
-    %i= @adventure.users.first.name
-    %br= "Contact your guide at: #{@adventure.users.first.email}"
-    %p
-      = @reservation
+    .indented
+      %h2 Booking Confirmation
+
+      %strong.centered You are about to go on an adventure
+      %br
+      %p
+        = link_to @adventure.title, "http://beta.advlo.com/adventures/#{@adventure.slug}"  
+        with
+        = link_to @adventure.users.first.name, user_path(@adventure.users.first)
+      %p
+        Contact your guide at: 
+        = mail_to "#{@adventure.users.first.email}"
+      %p
+        = image_tag @reservation.adventure.attachment.url(:large)
+
+
+    .indented
+      = @reservation.inspect
