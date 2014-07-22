@@ -1,13 +1,11 @@
 class AdventuresController < ApplicationController
 
   def index
-    if params[:region].present? && params[:region] != 'all'
+    if params[:region].present?
       region = params[:region].gsub('-',' ')
-
       @adventures = Adventure.where(region: region).where(approved: true).order('created_at DESC')
       @hero_image = HeroImage.where(region: region).last
       @location = region.downcase
-      -fail
     else
       @adventures = Adventure.all.where(approved: true)
       @hero_image = HeroImage.where(region: "all").first
@@ -53,15 +51,13 @@ class AdventuresController < ApplicationController
 
 
   def filter_category
-    region = params[:region].gsub('-',' ')
-
+    region = params[:region].gsub('-',' ').capitalize
     if params[:category] == 'all'
       @adventures = Adventure.where(region: region)
     else
       category = params[:category].gsub(',',' ').downcase
       @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%")
     end
-
     respond_to do |format|
       format.js {render :action => '/adventure_filter', :layout => false }
     end
