@@ -19,7 +19,7 @@
                 - if i%3 == 0  
                   .row
                 .col-md-4.text-center{id: "img-#{adv.id}"}
-                  = image_tag adv.picture.url(:medium), class: "img-responsive img-rounded", id: "img-id-#{adv.id}"
+                  = image_tag adv.picture.url(:thumb), class: "img-responsive img-rounded", id: "img-id-#{adv.id}"
                   .btn.img_del_btn{id: "#{adv.id}"}
                     %i.fa.fa-times
                   

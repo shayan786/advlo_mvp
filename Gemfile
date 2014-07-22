@@ -50,3 +50,5 @@ gem 'delayed_job_active_record'
 gem 'delayed_paperclip'
 gem 'daemons'
 gem 'roadie-rails'
+gem 'hirefire-resource'
+
