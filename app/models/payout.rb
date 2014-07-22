@@ -8,7 +8,7 @@ class Payout < ActiveRecord::Base
 
     # unprocessed_reservations.where 48 hours has passed the completion date
     reservations = unprocessed_reservations.where("event_start_time < ?", DateTime.now+2)
-    payout_amount = reservations.sum(:total_price)
+    payout_amount = (reservations.sum(:total_price) - reservations.sum(:fee)).round(2)
     
     user_recip_id = payout_user.stripe_recipient_id
 
