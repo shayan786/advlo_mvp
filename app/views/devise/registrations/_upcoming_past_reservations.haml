@@ -79,9 +79,11 @@
           %td.text-center= res.head_count
           %td.text-center
             - if res.requested == true && res.stripe_charge_id
-              Request - Approved
+              .btn.btn-info.disabled
+                Request - Approved
             - else
-              Instant Reservation
+              .btn.btn-success.disabled
+                Instant Reservation
           %td= "$ #{sprintf('%.2f',res.fee)}"
           %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.fee)}"
       %thead
@@ -93,6 +95,6 @@
           %th.text-center= @host_reservations.where(processed: true).sum(:head_count)
           - total_fee = @host_reservations.where(processed: true).sum(:fee)
           %th= "$ #{sprintf('%.2f', total_fee)}"
-          - total_amount_earned = @host_reservations.where(processed: true).sum(:total_price)
+          - total_amount_earned = @host_reservations.where(processed: true).sum(:total_price) - total_fee
           %th= "$ #{sprintf('%.2f', total_amount_earned)}"
 
