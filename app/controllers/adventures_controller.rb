@@ -1,7 +1,6 @@
 class AdventuresController < ApplicationController
 
   def index
-      -fial
     if params[:region].present?
       region = params[:region].gsub('-',' ')
 

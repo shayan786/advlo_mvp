@@ -3,16 +3,16 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
-    %h1 Welcome to Adventure Local
+    %h1.center Welcome to Adventure Local
 
-    %h3   
+    %h3.center   
       = "Your account email is: #{@user.email}"
     .indented
       %br
 
       You can now 
       %a{href: 'http://beta.advlo.com/users/edit'}
-        %strong book
+        book
       awesome local adventures or become a guide by completing 
 
       %a{href: 'http://beta.advlo.com/users/edit'}
@@ -21,8 +21,8 @@
       and 
 
       %a{href: 'http://beta.advlo.com/adventures/info'}
-        %strong creating
+        creating
 
-      an adventure. We are ecited to have you on board. 
+      an adventure. We are excited to have you on board. 
 
       %h3
