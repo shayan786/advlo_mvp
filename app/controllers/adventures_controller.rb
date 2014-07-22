@@ -1,12 +1,13 @@
 class AdventuresController < ApplicationController
 
   def index
-    if params[:region].present?
+    if params[:region].present? && params[:region] != 'all'
       region = params[:region].gsub('-',' ')
 
       @adventures = Adventure.where(region: region).where(approved: true).order('created_at DESC')
       @hero_image = HeroImage.where(region: region).last
       @location = region.downcase
+      -fail
     else
       @adventures = Adventure.all.where(approved: true)
       @hero_image = HeroImage.where(region: "all").first
