@@ -631,6 +631,38 @@ function adv_index_rating_show() {
   }
 }
 
+function adv_browse_rating_show() {
+  var adv_id;
+  var rating;
+  var adv_rating_show_id;
+  var adv_rating_value_id;
+  var num_of_adv = $('#adventure_browse input').length / 2;
+
+  var i = 0;
+
+  for(; i < num_of_adv; i++) {
+    adv_rating_show_id = "#adventure_browse input#adv_rating_show_"+i;
+    adv_rating_value_id = "#adventure_browse input#adv_rating_value_"+i;
+
+    //initialize
+    $(adv_rating_show_id).rating({
+      'min': 0,
+      'max': 5,
+      'step': 0.1,
+      'size': 'xs',
+      'readonly': true,
+      'showCaption': false,
+      'showClear': false
+    });
+
+    //update rating
+    rating = $(adv_rating_value_id).data('rating');
+    $(adv_rating_show_id).rating('update', rating);
+
+    $('.rating-xs').css('font-size','12px')
+  }
+}
+
 //------------------FORM VALIDATORS------------------
 
 function form_validator(){
