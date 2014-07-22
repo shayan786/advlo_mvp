@@ -227,7 +227,9 @@
         padding-top: 15px;
 
         #galleryModal .modal-dialog {
-          height: 100%;
+          height: 80% !important;
+          margin-top: 30px;
+          width: 60%;
         }
 
       }
@@ -449,6 +451,7 @@
     margin-left: 15%;
     margin-top: 100px;
 
+
     .modal-body {
       padding-bottom: 0px;
     }
@@ -530,8 +533,8 @@
   background-color: $dark_gray;
 }
 .modal-dialog {
-  width: 65%;
-  margin: 45px;
+  height: 100%;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 991px){
