@@ -1,0 +1,22 @@
+#filter_nav
+  .col-md-2
+    .panel.panel-default
+      .panel-heading
+        Sort by:
+      .panel-body
+        .radio
+          %label
+            %input{type: "radio", name: "sort_by", id: "sort_price", value: "price", checked: "checked"}
+              Price
+        .radio
+          %label
+            %input{type: "radio", name: "sort_by", id: "sort_rating", value: "rating"}
+              Rating
+      .panel-heading
+        Category:
+      .panel-body
+        - adv_categories.each do |cat|
+          .checkbox
+            %label
+              %input{type: "checkbox"}
+                = cat.downcase.capitalize

@@ -3,42 +3,30 @@
     - if @hero_image
       #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
   #location_text= @location ? @location.upcase : "Advlo" 
+
+  = render partial: 'filter_nav'
   
-  .filter-container
-    %ul.nav.nav-pills.nav-justified
-      %li{id: "cat-0"}
-        %a{href: "/adventures/#{@location}/all", 'data-remote' => true} 
-          RESET
-      - adv_categories.each_with_index do |cat, i|
-        %li{id: "cat-#{i+1}"}
-          %a{href: "/adventures/#{@location}/#{cat}", 'data-remote' => true}
-            = cat
-
-  .filter-static
-    %ul.nav.nav-pills.nav-justified
-      %li
-        %a{href: "/adventures/#{@location}/all", 'data-remote' => true} 
-          RESET
-      - adv_categories.each do |cat|
-        %li
-          %a{href: "/adventures/#{@location}/#{cat}", 'data-remote' => true}
-            = cat
-
-
-  / - filters = adv_categories
   / .filter-container
-  /   %a.filter{href: "/adventures/#{@location}/all", 'data-remote' => true} 
-  /     %span RESET
-  /   - filters.each do |f|
-  /     %a.filter{href: "/adventures/#{@location}/#{f}", 'data-remote' => true}
-  /       %span= f
+  /   %ul.nav.nav-pills.nav-justified
+  /     %li{id: "cat-0"}
+  /       %a{href: "/adventures/#{@location}/all", 'data-remote' => true} 
+  /         RESET
+  /     - adv_categories.each_with_index do |cat, i|
+  /       %li{id: "cat-#{i+1}"}
+  /         %a{href: "/adventures/#{@location}/#{cat}", 'data-remote' => true}
+  /           = cat
 
   / .filter-static
-  /   %a.filter{href: "/adventures/#{@location}/all", 'data-remote' => true} 
-  /     %span RESET
-  /   - filters.each do |f|
-  /     %a.filter{href: "/adventures/#{@location}/#{f}", 'data-remote' => true}
-  /       %span= f
+  /   %ul.nav.nav-pills.nav-justified
+  /     %li
+  /       %a{href: "/adventures/#{@location}/all", 'data-remote' => true} 
+  /         RESET
+  /     - adv_categories.each do |cat|
+  /       %li
+  /         %a{href: "/adventures/#{@location}/#{cat}", 'data-remote' => true}
+  /           = cat
+
+
 
   .adventure-container
     - if @adventures.first != nil
@@ -50,9 +38,9 @@
           .image-wrapper#no-adventures= image_tag 'missing.png'
           #no-adv-text Add an adventure in this area
 
-    .text-center
-      .btn.btn-default
-        Show More
+    / .text-center
+    /   .btn.btn-default
+    /     Show More
     .text-center
       .btn.btn-primary.request_btn{'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
         Request Adventure
