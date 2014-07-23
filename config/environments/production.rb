@@ -23,6 +23,9 @@ Rails.application.configure do
   config.assets.precompile += %w( .svg .eot .woff .ttf )
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   
+
+  config.action_mailer.asset_host = 'beta.advlo.com'
+
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { host: 'beta.advlo.com' }
