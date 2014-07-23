@@ -13,12 +13,6 @@
 
       }
 
-      #footer {
-        height: 65px;
-        padding: 30px;
-        background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png)
-      }
-
       html {
 
       }
@@ -65,6 +59,18 @@
       #footer a {
         color: #fff;
       }
+
+      #footer {
+        height: 65px;
+        padding: 30px;
+        background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png)
+      }
+
+      #footer p {
+        font-family: Verdana;
+        font-size: 13px;
+      }
+
       .logo {
         text-align: center;
         position: relative;
@@ -74,16 +80,7 @@
         height: 100%;
         width: auto;
       }
-      .facebook {
-        background: url(/icons/facebook.jpg)
-      }
-      .twitter {
-        background: url(/icons/twitter.jpg)
-      }
-      .instagram {
-        background: url(/icons/instagram.jpg)
-      }
-
+  
 
 
   %body
@@ -106,13 +103,9 @@
             // footer
             %tr
               %td#footer{align: "center", colspan: "2"}
-                %p= "©#{Time.now.year} Advlo inc."
-
-                %a{href:"http://www.facebook.com/advlo"} 
-                  = image_tag "http://beta.advlo.com/assets/icons/facebook-930f59e94691ff59a0c7e9a4b3241252.png"
-                %a{href:"http://www.twitter.com/advlo_"} 
-                  = image_tag "http://beta.advlo.com/assets/icons/twitter-f4dd0ef72ec39fe2ce6ea745a53931c3.png"
-                %a{href:"http://www.instagram.com/advlo"} 
-                  = image_tag "http://beta.advlo.com/assets/icons/instagram-f221afc2f9a26fe59b3161b71b9eafce.png"
+                %p= "©#{Time.now.year} Advlo inc."              
+                = link_to (image_tag "http://beta.advlo.com/assets/icons/facebook-a86fadd25f4c8740a8f04d3e3f16165f.png"), "http://www.facebook.com/advlo"
+                = link_to (image_tag "http://beta.advlo.com/assets/icons/twitter-f6d1be7d910ca451e4bcd6af6a8768a1.png"), "http://www.twitter.com/advlo_"
+                = link_to (image_tag "http://beta.advlo.com/assets/icons/instagram-a68ff616afe63c1079707d70593186d5.png"), "http://www.instagram.com/advlo"
 
 
