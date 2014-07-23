@@ -81,11 +81,6 @@
         width: auto;
       }
 
-      #social-icons {
-        width: 135px;
-        text-align: center;
-      }
-
 
   %body
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
@@ -112,12 +107,9 @@
               %td#footer{align: "center", colspan: "2"}
                 %p
                   = "©#{Time.now.year} Advlo inc."              
-
-                %table#social-icons
-                  %tr
-                    %td= link_to (image_tag "http://beta.advlo.com/assets/icons/facebook-a86fadd25f4c8740a8f04d3e3f16165f.png"), "http://www.facebook.com/advlo"
-                    %td
-                      = link_to (image_tag "http://beta.advlo.com/assets/icons/instagram-a68ff616afe63c1079707d70593186d5.png"), "http://www.instagram.com/advlo"
-                    %td
-                      = link_to (image_tag "http://beta.advlo.com/assets/icons/twitter-f6d1be7d910ca451e4bcd6af6a8768a1.png"), "http://www.twitter.com/advlo_"
-      
+                  %br
+                  %br
+                  = link_to (image_tag "http://beta.advlo.com/assets/icons/facebook-a86fadd25f4c8740a8f04d3e3f16165f.png"), "http://www.facebook.com/advlo"
+                  = link_to (image_tag "http://beta.advlo.com/assets/icons/instagram-a68ff616afe63c1079707d70593186d5.png"), "http://www.instagram.com/advlo"
+                  = link_to (image_tag "http://beta.advlo.com/assets/icons/twitter-f6d1be7d910ca451e4bcd6af6a8768a1.png"), "http://www.twitter.com/advlo_"
+    
