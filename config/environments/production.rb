@@ -25,7 +25,7 @@ Rails.application.configure do
   
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'http://adventure-local.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'beta.advlo.com' }
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
