@@ -84,22 +84,40 @@
       }
 
       .panel-body {
-        padding-top: 0px;
-        padding-bottom: 0px;
-        background-color: $lighter_gray;
+        padding: 0;
+
+        ul {
+          margin: 0;
+          li {
+            margin: 0;
+            padding: 0;
+            a {
+              border-radius: 0px;
+              font-size: 1.0em;
+              padding-top: 6px;
+              padding-bottom: 6px;
+              padding-left: 25px;
+            }
+          }
+        }
       }
+    }
+  }
+
+  .adventure-container {
+    width: 83%;
+    
+    #adventure-partial {
+      margin-top: -20px;
     }
   }
 }
 
 
-#adventure-partial {
-  margin-top: -20px;
-}
 
 .adventure-container {
   position: relative;
-  width: 83%;
+  width: 100%;
   float: left;
 }
 .brick-wrapper{

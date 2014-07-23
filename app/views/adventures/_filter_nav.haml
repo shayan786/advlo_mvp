@@ -1,22 +1,39 @@
 #filter_nav
-  .col-md-2
+  .col-sm-2
     .panel.panel-default
       .panel-heading
         Sort by:
       .panel-body
-        .radio
-          %label
-            %input{type: "radio", name: "sort_by", id: "sort_price", value: "price", checked: "checked"}
+        %ul.nav.nav-pills.nav-stacked
+          %li.price
+            %a{href: "/adventures/#{@location}/all/price", 'data-remote' => true}
               Price
-        .radio
-          %label
-            %input{type: "radio", name: "sort_by", id: "sort_rating", value: "rating"}
+          %li.rating
+            %a{href: "/adventures/#{@location}/all/rating", 'data-remote' => true}
               Rating
+
+
+        / .radio
+        /   %label
+        /     %input{type: "radio", name: "sort_by", id: "sort_price", value: "price", checked: "checked"}
+        /       Price
+        / .radio
+        /   %label
+        /     %input{type: "radio", name: "sort_by", id: "sort_rating", value: "rating"}
+        /       Rating
       .panel-heading
         Category:
       .panel-body
-        - adv_categories.each do |cat|
-          .checkbox
-            %label
-              %input{type: "checkbox"}
+        %ul.nav.nav-pills.nav-stacked
+          - adv_categories.each do |cat|
+            %li
+              %a{href: "/adventures/#{@location}/#{cat}/none", 'data-remote' => true}
                 = cat.downcase.capitalize
+
+          / .checkbox
+          /   %label
+          /     %input{type: "checkbox"}
+          /       = cat.downcase.capitalize
+
+:javascript
+  

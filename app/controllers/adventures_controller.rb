@@ -52,15 +52,62 @@ class AdventuresController < ApplicationController
 
   def filter_category
     region = params[:region].gsub('-',' ').capitalize
-    if params[:category] == 'all'
-      @adventures = Adventure.where(region: region)
+    category = params[:category].gsub(',',' ').downcase
+    sort_by = params[:sort_by]
+    
+    case sort_by
+    when 'none'
+      # Apply category logic
+      if category == 'all'
+        @adventures = Adventure.where(region: region)
+      else
+        @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%")
+      end
+      respond_to do |format|
+        format.js {render :action => '/adventure_filter', :layout => false }
+      end
+    when 'price'
+      # Apply sorting and  category logic
+      if category == 'all'
+        @adventures = Adventure.where(region: region).order("#{sort_by} ASC")
+      else
+        @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%").order("#{sort_by} DESC")
+      end
+      respond_to do |format|
+        format.js {render :action => '/adventure_filter', :layout => false }
+      end
     else
-      category = params[:category].gsub(',',' ').downcase
-      @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%")
+      # Apply sorting and  category logic
+      if category == 'all'
+        @adventures = Adventure.where(region: region).order("#{sort_by} DESC")
+      else
+        @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%").order("#{sort_by} DESC")
+      end
+      respond_to do |format|
+        format.js {render :action => '/adventure_filter', :layout => false }
+      end
     end
-    respond_to do |format|
-      format.js {render :action => '/adventure_filter', :layout => false }
-    end
+
+
+
+    # case params[:category]
+    # when 'price'
+    #   @adventures = Adventure.where(region: region).order('price DESC')
+    # when 'rating'
+    #   @adventures = Adventure.where(region: region).order('rating DESC')
+    # else 
+    #   @adventures = Adventure.where(region: region)
+    # end
+
+    # if params[:category] == 'all'
+    #   @adventures = Adventure.where(region: region)
+    # else
+    #   category = params[:category].gsub(',',' ').downcase
+    #   @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%")
+    # end
+    # respond_to do |format|
+    #   format.js {render :action => '/adventure_filter', :layout => false }
+    # end
   end
   
   # info page for creating a new adventure
