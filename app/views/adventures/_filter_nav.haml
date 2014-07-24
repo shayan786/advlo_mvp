@@ -57,6 +57,12 @@
     $('#filter_nav ul.sort_by_ul li').removeClass('active');
     $(this).addClass('active');
 
+    // remove and add icons
+    var check_icon = "<i class='fa fa-check' style='margin-right: 10px;'></i>";
+    
+    $('#filter_nav ul.sort_by_ul li').find("i").remove();
+    $(this).prepend(check_icon);
+
     e.preventDefault();
     $.ajax({
       url: "/adventures/filter",
@@ -80,13 +86,27 @@
     if($(this).attr('id')=="cat_all") {
       //Clear all actives
       $('#filter_nav ul.cat_ul li').removeClass('active');
+      //Clear all check icons
+      $('#filter_nav ul.cat_ul li').find("i").remove();
     }
     else {
       $('#filter_nav ul.cat_ul li#cat_all').removeClass('active');
+      //remove check from all
+      $('#filter_nav ul.cat_ul li#cat_all').find("i").remove();
     }
 
     //Toggle the active state (multiple allowed)
     $(this).toggleClass('active');
+
+    // remove and add icons
+    var check_icon = "<i class='fa fa-check' style='margin-right: 10px;'></i>";
+    
+    if($(this).find("i").length != 0) {
+      $(this).find("i").remove();
+    }
+    else {
+      $(this).prepend(check_icon);
+    }
 
     var region = "#{@location}";
     var categories = '';
