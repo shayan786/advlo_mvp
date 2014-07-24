@@ -20,7 +20,10 @@
 
                 .host-copy
                   .host-name
-                    = guide.name
+                    -if guide.name.length > 19
+                      = "#{guide.name[0..18]}..."
+                    - else
+                      = guide.name
                   .host-description
                     = guide.short_description
                   .host-location
