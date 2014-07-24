@@ -1,6 +1,6 @@
 class AddDefaultRatingToAdventureAndUsers < ActiveRecord::Migration
   def change
-    change_column :adventures, :rating, :default => ''
-    change_column :users, :rating, :default => ''
+    change_column_default :adventures, :rating, ''
+    change_column_default :users, :rating, ''
   end
 end

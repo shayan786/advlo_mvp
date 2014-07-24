@@ -4,36 +4,144 @@
       .panel-heading
         Sort by:
       .panel-body
-        %ul.nav.nav-pills.nav-stacked
-          %li.price
-            %a{href: "/adventures/#{@location}/all/price", 'data-remote' => true}
-              Price
-          %li.rating
-            %a{href: "/adventures/#{@location}/all/rating", 'data-remote' => true}
-              Rating
-
-
-        / .radio
-        /   %label
-        /     %input{type: "radio", name: "sort_by", id: "sort_price", value: "price", checked: "checked"}
-        /       Price
-        / .radio
-        /   %label
-        /     %input{type: "radio", name: "sort_by", id: "sort_rating", value: "rating"}
-        /       Rating
+        %ul.nav.nav-pills.nav-stacked.sort_by_ul
+          %li{id: "price", "data-sort_by"=>"price"}
+            Price
+          %li{id: "rating", "data-sort_by"=>"rating"}
+            Rating
       .panel-heading
         Category:
       .panel-body
-        %ul.nav.nav-pills.nav-stacked
+        %ul.nav.nav-pills.nav-stacked.cat_ul
+          %li{id: "cat_all", "data-category"=>"all"}
+            ALL
           - adv_categories.each do |cat|
-            %li
-              %a{href: "/adventures/#{@location}/#{cat}/none", 'data-remote' => true}
-                = cat.downcase.capitalize
-
-          / .checkbox
-          /   %label
-          /     %input{type: "checkbox"}
-          /       = cat.downcase.capitalize
+            %li{id: "cat_#{cat.downcase}", "data-category"=>cat}
+              = cat.downcase.capitalize
 
 :javascript
-  
+  // SORT BY
+  $('#filter_nav ul.sort_by_ul li').click(function(e) {
+    var region = "#{@location}";
+    var sort_by = $(this).data('sort_by');
+    var categories = '';
+
+    //Get all active categories
+    var cat_array = $('#filter_nav ul.cat_ul li').map(function(i,e){
+      if ($(this).hasClass('active')){
+        return $(e).data('category');
+      }
+    });
+
+    // Conver to js array
+    cat_array = $.makeArray(cat_array);
+
+    // Check to see if there are no categories selected
+    if (cat_array.length > 0) {
+      //Loop through the array and get each href attr
+      for (var i in cat_array){
+        // 4th element of the array is always the category
+        if (i==0) {
+          categories = cat_array[i];
+        }
+        else if (i > 0){
+          categories = categories + '-' + cat_array[i];
+        }
+      }
+    }
+    else {
+      categories = "all";
+    }
+
+    //Toggle the active state
+    $('#filter_nav ul.sort_by_ul li').removeClass('active');
+    $(this).addClass('active');
+
+    e.preventDefault();
+    $.ajax({
+      url: "/adventures/filter",
+      dataType: "script",
+      data: {
+        region: region,
+        category: categories,
+        sort_by: sort_by
+      },
+      type: "GET",
+      beforeSend: function() {
+      }
+    });
+
+  });
+
+  // CATEGORIES
+  // SORT BY
+  $('#filter_nav ul.cat_ul li').click(function(e) {
+    //First check if all is clicked
+    if($(this).attr('id')=="cat_all") {
+      //Clear all actives
+      $('#filter_nav ul.cat_ul li').removeClass('active');
+    }
+    else {
+      $('#filter_nav ul.cat_ul li#cat_all').removeClass('active');
+    }
+
+    //Toggle the active state (multiple allowed)
+    $(this).toggleClass('active');
+
+    var region = "#{@location}";
+    var categories = '';
+    var sort_by = 'none'
+
+    // Find sort_by
+    if ($('#filter_nav ul.sort_by_ul li#rating').hasClass('active')){
+      sort_by = 'rating';
+    }
+    if ($('#filter_nav ul.sort_by_ul li#price').hasClass('active')){
+      sort_by = 'price';
+    }
+
+    //Get all active categories
+    var cat_array = $('#filter_nav ul.cat_ul li').map(function(i,e){
+      if ($(this).hasClass('active')){
+        return $(e).data('category');
+      }
+    });
+
+    // Conver to js array
+    cat_array = $.makeArray(cat_array);
+
+    // Check to see if there are no categories selected
+    if (cat_array.length > 0) {
+      //Loop through the array and get each href attr
+      for (var i in cat_array){
+        // 4th element of the array is always the category
+        if (i==0) {
+          categories = cat_array[i];
+        }
+        else if (i > 0){
+          categories = categories + '-' + cat_array[i];
+        }
+      }
+    }
+    else {
+      categories = "all";
+    }
+
+
+    e.preventDefault();
+    $.ajax({
+      url: "/adventures/filter",
+      dataType: "script",
+      data: {
+        region: region,
+        category: categories,
+        sort_by: sort_by
+      },
+      type: "GET",
+      beforeSend: function() {
+      }
+    });
+
+  });
+
+

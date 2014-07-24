@@ -58,7 +58,7 @@ $(document).ready(function(){
       });
       $('nav.navbar .navbar-brand').animate({
       	marginTop: "4px",
-      	"background-size": "78%"
+      	"background-size": "83%"
       });
       $('.logged_in_dropdown_box').animate({
         marginTop: "6px"

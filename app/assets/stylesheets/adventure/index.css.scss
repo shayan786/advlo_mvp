@@ -89,15 +89,18 @@
         ul {
           margin: 0;
           li {
-            margin: 0;
-            padding: 0;
-            a {
-              border-radius: 0px;
-              font-size: 1.0em;
-              padding-top: 6px;
-              padding-bottom: 6px;
-              padding-left: 25px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 20px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $lighter_gray;
             }
+          }
+
+          li.active {
+            background-color: $lighter_gray;
           }
         }
       }
@@ -106,7 +109,7 @@
 
   .adventure-container {
     width: 83%;
-    
+
     #adventure-partial {
       margin-top: -20px;
     }

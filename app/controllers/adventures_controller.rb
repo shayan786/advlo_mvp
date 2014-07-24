@@ -52,62 +52,53 @@ class AdventuresController < ApplicationController
 
   def filter_category
     region = params[:region].gsub('-',' ').capitalize
-    category = params[:category].gsub(',',' ').downcase
+    category_param = params[:category].gsub(',',' ').downcase
+    category_array = category_param.split('-')
     sort_by = params[:sort_by]
+    adventures_region = Adventure.where(region: region)
+
+    category_sql_string = ''
+
+    category_array.each_with_index do |cat,i|
+      if (i==0)
+        category_sql_string = "category LIKE '%#{cat}%'"
+      elsif (i > 0)
+        category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
+      end
+    end
     
     case sort_by
     when 'none'
       # Apply category logic
-      if category == 'all'
-        @adventures = Adventure.where(region: region)
+      if category_param == 'all'
+        @adventures = adventures_region
       else
-        @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%")
+        @adventures = adventures_region.where(category_sql_string)
       end
       respond_to do |format|
         format.js {render :action => '/adventure_filter', :layout => false }
       end
     when 'price'
       # Apply sorting and  category logic
-      if category == 'all'
-        @adventures = Adventure.where(region: region).order("#{sort_by} ASC")
+      if category_param == 'all'
+        @adventures = adventures_region.order("#{sort_by} ASC")
       else
-        @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%").order("#{sort_by} DESC")
+        @adventures = adventures_region.where(category_sql_string).order("#{sort_by} ASC")
       end
       respond_to do |format|
         format.js {render :action => '/adventure_filter', :layout => false }
       end
     else
       # Apply sorting and  category logic
-      if category == 'all'
-        @adventures = Adventure.where(region: region).order("#{sort_by} DESC")
+      if category_param == 'all'
+        @adventures = adventures_region.order("#{sort_by} DESC")
       else
-        @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%").order("#{sort_by} DESC")
+        @adventures = adventures_region.where(category_sql_string).order("#{sort_by} DESC")
       end
       respond_to do |format|
         format.js {render :action => '/adventure_filter', :layout => false }
       end
     end
-
-
-
-    # case params[:category]
-    # when 'price'
-    #   @adventures = Adventure.where(region: region).order('price DESC')
-    # when 'rating'
-    #   @adventures = Adventure.where(region: region).order('rating DESC')
-    # else 
-    #   @adventures = Adventure.where(region: region)
-    # end
-
-    # if params[:category] == 'all'
-    #   @adventures = Adventure.where(region: region)
-    # else
-    #   category = params[:category].gsub(',',' ').downcase
-    #   @adventures = Adventure.where(region: region).where("category LIKE ?", "%#{category}%")
-    # end
-    # respond_to do |format|
-    #   format.js {render :action => '/adventure_filter', :layout => false }
-    # end
   end
   
   # info page for creating a new adventure

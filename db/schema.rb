@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721222415) do
+ActiveRecord::Schema.define(version: 20140723173103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140721222415) do
     t.string   "city"
     t.string   "state"
     t.string   "region"
-    t.string   "rating"
+    t.string   "rating",                  default: ""
   end
 
   add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
@@ -255,7 +255,7 @@ ActiveRecord::Schema.define(version: 20140721222415) do
     t.string   "li_url"
     t.string   "stripe_recipient_id"
     t.string   "stripe_customer_id"
-    t.string   "rating"
+    t.string   "rating",                 default: ""
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
