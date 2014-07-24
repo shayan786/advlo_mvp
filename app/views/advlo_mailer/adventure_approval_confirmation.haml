@@ -5,7 +5,12 @@
   %body
     .indented
       %h1 Booking Confirmation
-      %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
+      %h4 
+        Book it Now times
+        %ul
+          - @adventure.events.each do |event|
+            %li
+              = "#{event.start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} for #{@adventure.duration_num} #{@adventure.duration_type}"
       %h4
         = link_to @adventure.title, "http://beta.advlo.com/adventures/#{@adventure.slug}"  
         %span with
@@ -24,16 +29,12 @@
             %tr
               %td
                 %a{href: "/adventures/#{@adventure.slug}"}
-                  %img{alt: @adventure.title, height: "125", src: @adventure.attachment.url(:thumb), width: "200"}
+                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:thumb), width: "300"}
 
               %td{valign: "top"}
                 %h2= @adventure.title
                 %h4= @adventure.summary
-                %h4
-                  - if @reservation.head_count == 1
-                    .price= "1 person / $ #{@adventure.price}"
-                  - else
-                    .price= "#{@reservation.head_count} people / $ #{@adventure.price} a person"
-                %h3= "Total Price: $ #{@reservation.total_price}"
+                %h4= @adventure.other_notes
+                %h4= "$ #{@adventure.price}"
             %tr
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}

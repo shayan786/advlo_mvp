@@ -10,7 +10,7 @@
             = tag(:input, :type => "hidden", :name => "request[user_id]", :value => current_user.id)
           .form-group.row
             .col-md-4 
-              .form_label.text-right Destination *
+              .form_label.text-right Location *
             .col-md-6
               %input.form-control{type: "text", name: "request[location]", id: "request_location", placeholder: "Enter a destination. Ex: Denver, CO or Colorado"}
           .form-group.row
@@ -34,7 +34,7 @@
               %textarea.form-control{rows: "5", type: "text", name: "request[description]", id: "request_description", maxlength: "250"}
           .form-group.row
             .col-md-4 
-              .form_label.text-right Budget *
+              .form_label.text-right Budget / person *
             .col-md-6
               %input.form-control{type: "text", name: "request[budget]", id: "request_budget", placeholder: "$50 - $100"}
           .form-group.row

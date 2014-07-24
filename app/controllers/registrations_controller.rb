@@ -4,28 +4,32 @@ class RegistrationsController < Devise::RegistrationsController
   def dashboard
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
+      return
     end
   end
 
   def wallet
-    wallet_variables
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
+      return
     end
+    wallet_variables
   end
 
   def payouts
-    wallet_variables
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
+      return
     end
+    wallet_variables
   end
 
   def reservations
-    wallet_variables
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"
+      return
     end
+    wallet_variables
   end
 
   def wallet_variables

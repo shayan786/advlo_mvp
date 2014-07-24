@@ -13,11 +13,13 @@
               .form_label.text-right Destination *
             .col-md-6
               %input.form-control{type: "text", name: "request_location[location]", id: "request_location", placeholder: ""}
+
           .form-group.row
             .col-md-4 
               .form_label.text-right Email *
             .col-md-6
-              %input.form-control{type: "text", name: "request_location[email]", id: "request_email", maxlength: "40"}
+              %input.form-control{type: "text", name: "request_location[email]", id: "request_email", maxlength: "40", value: current_user ? current_user.email : ''}
+              
           .form-group.row
             .col-md-4 
               .form_label.text-right Comments

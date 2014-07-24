@@ -4,15 +4,20 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented
-      %h1 Booking Confirmation
+      %h1 You requested an adventure on:
+      
       %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
       %h4
         = link_to @adventure.title, "http://beta.advlo.com/adventures/#{@adventure.slug}"  
         %span with
         = link_to @adventure.users.first.name, user_path(@adventure.users.first)
-      %h4
-        Contact your guide at: 
-        = mail_to "#{@adventure.users.first.email}"
+      %p
+        %i
+          ="* Please allow 24 - 48 hours for #{@host.name} to respond."
+          %br
+          %br
+        %i
+          You have not been billed at this time. If the host accepts the booking, your card will be charged and you will be notified with a confirmation email.
 
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
@@ -35,5 +40,7 @@
                   - else
                     .price= "#{@reservation.head_count} people / $ #{@adventure.price} a person"
                 %h3= "Total Price: $ #{@reservation.total_price}"
+
+
             %tr
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
