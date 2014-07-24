@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   get '/adventures/filter',           to: 'adventures#filter_category'
 
   resources :adventures
-
   resources :adventure_steps
   
   #events

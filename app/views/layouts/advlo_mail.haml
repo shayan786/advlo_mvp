@@ -9,18 +9,12 @@
       #header {
         height: 65px;
         padding: 30px;
-        background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png)
-
-      }
-
-      #footer {
-        height: 65px;
-        padding: 30px;
-        background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png)
+        background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png);
       }
 
       html {
-
+        background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png);
+        // background: #151515;
       }
 
       body, td {
@@ -45,11 +39,13 @@
       h1 {
         font-family: Verdana;
         color: #000;
-        font-size: 2.5em;
+        font-size: 1.5em;
+      }
+      span {
+        font-size: 13px;
       }
 
       h3 {
-        text-align: center;
         position: relative;
         top: 7px;
       }
@@ -65,14 +61,32 @@
       #footer a {
         color: #fff;
       }
+
+      #footer {
+        height: 65px;
+        padding: 30px;
+        background: url(http://beta.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png)
+      }
+
+      #footer p {
+        font-family: Verdana;
+        font-size: 13px;
+      }
+
       .logo {
         text-align: center;
         position: relative;
-        height: 60px;
       }
       .logo img {
-        height: 100%;
+        max-height: 60px;
         width: auto;
+      }
+
+      .text-left {
+        text-align: left;
+      }
+      .text-center {
+        text-align: center;
       }
 
 
@@ -88,6 +102,7 @@
                 %a{href: "http://beta.advlo.com/"}
                   .logo= image_tag "http://beta.advlo.com/assets/logos/advlo_header_logo-439f03315b58ba7b980fd7aab2234985.png"
 
+
               // content      
               %tr
                 %td
@@ -96,15 +111,13 @@
             // footer
             %tr
               %td#footer{align: "center", colspan: "2"}
-                %p= "©#{Time.now.year} Advlo inc."
-
-                %a{href:"http://www.facebook.com/advlo"} 
-                  Facebook
-                  //= image_tag 'icons/facebook.png'
-                %a{href:"http://www.twitter.com/advlo_"} 
-                  Twitter
-                  //= image_tag 'icons/twitter.png'
-                %a{href:"http://www.instagram.com/advlo"} 
-                  Instagram
-                  //= image_tag 'icons/instagram.png'
-
+                %p
+                  = "©#{Time.now.year} Advlo inc."              
+                  %br
+                  %br
+                  %a{href: "http://www.facebook.com/advlo"}
+                    %img{src: "http://beta.advlo.com/assets/icons/facebook-a86fadd25f4c8740a8f04d3e3f16165f.png", style: 'width="50" height="50"'}
+                  %a{href: "http://www.twitter.com/advlo_"}
+                    %img{src: "http://beta.advlo.com/assets/icons/twitter-f6d1be7d910ca451e4bcd6af6a8768a1.png", style: 'width="50" height="50"'}
+                  %a{href: "http://www.instagram.com/advlo"}
+                    %img{src: "http://beta.advlo.com/assets/icons/instagram-a68ff616afe63c1079707d70593186d5.png", style: 'width="50" height="50"'}

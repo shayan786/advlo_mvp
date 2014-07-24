@@ -3,24 +3,43 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
-    %tr.adventure
-      %td
-        %a{href: "#"}
-          = image_tag "http://beta.advlo.com/#{@adventure.attachment.url(:large)}"
+    .indented
+      %h1 Adventure Approval request
+      %h4
+        = link_to @adventure.title, "http://beta.advlo.com/adventures/#{@adventure.slug}"  
 
-      %td{valign: "top"}
-        %h2 Adventure Approval Request
-        %h5 
-          GUIDE: 
-          %p= link_to "#{@adventure.users.first.name}", user_path(@adventure.users.first.to_param)
-        %h5 
-          EMAIL: 
-          %p= mail_to "#{@adventure.users.first.email}", @adventure.users.first.email
-        %p
-          %a{href: adventures_path(@adventure.slug) }
-          %p
-            = "ADVENTURE: #{@adventure.title}"
-            %h4
-              = "SUMMARY: #{@adventure.summary}"
+      %h1 Guide
+      %h4 
+        = link_to @adventure.users.first.name, user_path(@adventure.users.first)
+
+    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
+      %tr
+        %td{align: "center", valign: "top"}
+          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
             
-          %span.duration= "$ #{@adventure.price} / #{@adventure.price_type}"
+            %tr
+              %td
+                %a{href: "/adventures/#{@adventure.slug}"}
+                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:thumb), width: "300"}
+
+              %td{valign: "top"}
+                = @adventure.title
+                %br
+                = @adventure.location
+                %br
+                = @adventure.summary
+                %br
+                = "$ #{@adventure.price}"
+                %br
+                = @adventure.category
+                %br
+                = @adventure.region
+                %br
+                %br
+                %h1= link_to "approve / deny", "http://beta.advlo.com/admin/adventures/#{@adventure.id}/edit"
+
+                
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}

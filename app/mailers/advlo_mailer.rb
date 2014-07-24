@@ -16,8 +16,8 @@ class AdvloMailer < ActionMailer::Base
     @reservation = reservation
     @host = User.find(@reservation.host_id)
 
-    mail(to: @user.email, subject: 'Advlo: booking confirmation')
-    mail(to: @host.email, subject: 'Advlo: booking confirmation')
+    mail(to: @user.email, subject: 'Advlo: booking confirmed')
+    mail(to: @host.email, subject: 'Advlo: booking confirmed')
   end
 
 
@@ -34,39 +34,62 @@ class AdvloMailer < ActionMailer::Base
 
   # INFORMATIONAL & REQUESTS:
   def request_adventure_email(request)
-    mail(to: email, subject: 'Your Adventure Request')
+    @request = request
+    locations = @request.category.gsub(',',' & ')
+
+    mail(to: @request.email, subject: "Advlo Request : #{locations}")
+    mail(to: "info@advlo.com", subject: "Adventure Request")
   end
 
-  def request_location_email(request)
+  def request_location_email(location_request)
+    @location_request = location_request
 
+    puts @location_request.inspect
+
+    mail(to: @location_request.email, subject: "Region Request: #{@location_request.location}")
+    mail(to: "info@advlo.com", subject: "Region Request #{@location_request.location}")
   end
 
   # MESSAGING THE HOST FROM ANY USER // 
   # BCC ON initial mail.. figure out internal messaging
-  def contact_host_email()
+  def contact_host_email(contact)
+    @contact = contact
+    @host = User.find(@contact.host_id)
+    @user = User.find(@contact.user_id)
 
+    mail(to: @host.email, subject: "Private message from: #{@user.name}")
+    mail(to: "info@advlo.com", subject: "Private Message to #{@host.name}")
   end
 
   # -- REQUEST A BOOKING EMAILS -- 
 
   def booking_request_email_user(reservation)
+    @reservation = reservation
+    @user = User.find(reservation.user_id)
+    @host = User.find(reservation.host_id)
+    @adventure = Adventure.find(reservation.adventure_id)
 
+    mail(to: @user.email, subject: "Booking request: #{@adventure.title}")
+    mail(to: 'info@advlo.com', subject: "Booking request: #{@adventure.title}")
   end
 
   def booking_request_email_host(reservation)
+    @user = User.find(reservation.user_id)
+    @reservation = reservation
+    @host = User.find(reservation.host_id)
+    @adventure = Adventure.find(reservation.adventure_id)
 
+    mail(to: @host.email, subject: "Booking request for: #{@adventure.title}")
   end
 
-  def booking_request_email_approve_user(reservation)
 
-  end
+  def booking_request_email_rejection(reservation)
+    @user = User.find(reservation.user_id)
+    @reservation = reservation
+    @host = User.find(reservation.host_id)
+    @adventure = Adventure.find(reservation.adventure_id)
 
-  def booking_request_email_approve_host(reservation)
-
-  end
-
-  def booking_request_email_reject_user(reservation)
-
+    mail(to: @user.email, subject: "Booking request for: #{@adventure.title}")
   end
   
 

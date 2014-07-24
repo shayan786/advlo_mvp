@@ -4,15 +4,20 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented
-      %h1 Booking Confirmation
-      %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
-      %h4
-        = link_to @adventure.title, "http://beta.advlo.com/adventures/#{@adventure.slug}"  
-        %span with
-        = link_to @adventure.users.first.name, user_path(@adventure.users.first)
-      %h4
-        Contact your guide at: 
-        = mail_to "#{@adventure.users.first.email}"
+      %h2= "#{@user.name} requested a reservation for:"
+      %h4= "#{@adventure.title}"
+      %span on
+      %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}" 
+      %p
+        %h2
+          = link_to 'accept / reject', 'http://beta.advlo.com/users/reservations'
+
+        %i
+          ="* Please respond within 24 - 48 hours."
+          %br
+          %br
+        %i
+          The traveler has not been billed at this time. If you accepts this booking, their card will be charged and you will both be notified with a confirmation email.
 
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
@@ -34,6 +39,8 @@
                     .price= "1 person / $ #{@adventure.price}"
                   - else
                     .price= "#{@reservation.head_count} people / $ #{@adventure.price} a person"
-                %h3= "Total Price: $ #{@reservation.total_price}"
+                %h3= "Booking Price: $ #{@reservation.total_price}"
+
+
             %tr
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}

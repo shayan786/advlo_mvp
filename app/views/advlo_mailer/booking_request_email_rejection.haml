@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %h1 Booking Rejection
+      %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
+
+      %h3= "Sorry #{@adventure.users.first.name} has declined your adventure request"

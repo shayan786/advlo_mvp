@@ -148,14 +148,12 @@ class ReservationsController < ApplicationController
       @reservation.save
 
 
-      # Email the user that request has been approved
+      # Email both the user that request has been approved
       # AdvloMailer.
+      AdvloMailer.booking_confirmation_email(@reservation)
 
-      AdvloMailer.booking_request_email_approve_user(@reservation)
-      AdvloMailer.booking_request_email_approve_host(@reservation)
-
-      AdvloMailer.booking_request_email_reject_user(@reservation)
     else
+      AdvloMailer.booking_request_email_rejection(@reservation)
       @reservation.destroy
 
       # Email the user that request has been rejected

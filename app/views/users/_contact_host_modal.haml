@@ -7,13 +7,14 @@
         %form{"accept-charset" => "UTF-8", action: "/users/contact_host", method: "POST", id: "contact_host_form", "data-remote" => "true"}
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           = tag(:input, :type => "hidden", :name => "contact_host[host_id]", :value => user.id)
-          - if current_user
-            = tag(:input, :type => "hidden", :name => "contact_host[user_id]", :value => current_user.id)
+          = tag(:input, :type => "hidden", :name => "contact_host[user_id]", :value => current_user ? current_user.id : nil)
+
           .form-group.row
             .col-md-4 
               .form_label.text-right Email *
             .col-md-6
-              %input.form-control{type: "text", name: "contact_host[email]", id: "contact_email"}
+              %input.form-control{type: "text", name: "contact_host[email]", id: "contact_email", value: current_user ? current_user.email : ''}
+
           .form-group.row
             .col-md-4 
               .form_label.text-right Message *
