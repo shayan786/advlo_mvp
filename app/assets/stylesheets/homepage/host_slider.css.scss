@@ -17,7 +17,35 @@
 		    	margin: 0 auto;
 		    	margin-top: 25px;
 	    	}
+
+	    	.host-copy {
+          position: relative;
+          width: 80%;
+          margin: 0 auto;
+          text-align: center;
+          margin-top: 15px;
+          line-height: 25px;
+          font-size: 20px;
+
+          .host-name {
+            font-size: 25px;
+            text-transform: uppercase;
+            color: gray
+          }
+          .host-description {
+            color: $advlo_orange;
+          }
+          .host-location {
+            color: $advlo_green;
+          }	    		
+	    	}
     	}
+      .slide-content:hover{
+        color: #fff;
+        text-transform: none;
+        text-decoration: none;
+        opacity: 0.9;
+      }
     }
   }
 }

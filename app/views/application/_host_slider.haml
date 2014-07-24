@@ -13,7 +13,20 @@
           - @feat_hosts.each_with_index do |guide, i|
             .swiper-slide
               %a.slide-content{href: user_path(guide)}
-                .host-circle-image{style: "background: url(#{guide.get_avatar_url("medium")}) no-repeat center center;"}
+                - if guide.avatar.height(:medium) <= 225
+                  .host-circle-image{style: "background: url(#{guide.get_avatar_url("large")}) no-repeat center center;"}
+                - else
+                  .host-circle-image{style: "background: url(#{guide.get_avatar_url("medium")}) no-repeat center center;"}
+
+                .host-copy
+                  .host-name
+                    = guide.name
+                  .host-description
+                    = guide.short_description
+                  .host-location
+                    = guide.location
+                
+
 
               
                   

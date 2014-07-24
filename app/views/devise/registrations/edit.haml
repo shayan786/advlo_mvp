@@ -24,7 +24,7 @@
                 %input.form-control{placeholder: "Email Address", type: "email", name: "user[email]", id: "user_email", value: "#{current_user.email}"}
             .form-group.row
               .col-md-4
-                .form_label.text-right Tagline
+                .form_label.text-right Short Description
               .col-md-8
                 %input.form-control.show_ml{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", maxlength: "26", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! Ex: Climber, Hiker"}}
             .form-group.row
@@ -110,7 +110,7 @@
                       - if current_user.name.nil? || current_user.name.empty?
                         %li Name
                       - if current_user.short_description.nil? || current_user.short_description.empty?
-                        %li Tagline
+                        %li Short Description
                       - if current_user.location.nil? || current_user.location.empty?
                         %li Location
                       - if current_user.dob.nil?
