@@ -10,12 +10,18 @@
 		font-size: 1.2em;
 
 		.footer_text {
+
+			.dash {
+				display: inline;
+				color: #fff;
+			}
+
 			.row {
 				margin-bottom: 10px;
 			}
 			a {
 				text-decoration: none;
-				color: $gray;
+				color: #fff;
 
 				.fa {
 					margin-right: 20px;
