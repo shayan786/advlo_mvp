@@ -16,8 +16,8 @@ class AdvloMailer < ActionMailer::Base
     @reservation = reservation
     @host = User.find(@reservation.host_id)
 
-    mail(to: @user.email, subject: 'Advlo: booking confirmation')
-    mail(to: @host.email, subject: 'Advlo: booking confirmation')
+    mail(to: @user.email, subject: 'Advlo: booking confirmed')
+    mail(to: @host.email, subject: 'Advlo: booking confirmed')
   end
 
 
@@ -82,16 +82,14 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @host.email, subject: "Booking request for: #{@adventure.title}")
   end
 
-  def booking_request_email_approve_user(reservation)
 
-  end
+  def booking_request_email_rejection(reservation)
+    @user = User.find(reservation.user_id)
+    @reservation = reservation
+    @host = User.find(reservation.host_id)
+    @adventure = Adventure.find(reservation.adventure_id)
 
-  def booking_request_email_approve_host(reservation)
-
-  end
-
-  def booking_request_email_reject_user(reservation)
-
+    mail(to: @user.email, subject: "Booking request for: #{@adventure.title}")
   end
   
 
