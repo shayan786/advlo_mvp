@@ -29,7 +29,7 @@ class AdvloMailer < ActionMailer::Base
 
   def adventure_approval_confirmation(adventure)
     @adventure = adventure
-    mail(to: @adventure.users.first.email, subject: 'Your Adventure is sumbitted for Approval')
+    mail(to: @adventure.users.first.email, subject: 'Your Adventure is submitted for Approval')
   end
 
   # INFORMATIONAL & REQUESTS:

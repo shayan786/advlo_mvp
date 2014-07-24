@@ -24,7 +24,7 @@
             %tr
               %td
                 %a{href: "/adventures/#{@adventure.slug}"}
-                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:thumb), width: "300"}
+                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}
                 %h2= @adventure.title

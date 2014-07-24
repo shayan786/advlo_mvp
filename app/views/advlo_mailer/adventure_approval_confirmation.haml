@@ -6,7 +6,7 @@
     .indented
       %h1 Booking Confirmation
       %h4 
-        Book it Now times
+        Your Book it Now times
         %ul
           - @adventure.events.each do |event|
             %li
@@ -16,8 +16,8 @@
         %span with
         = link_to @adventure.users.first.name, user_path(@adventure.users.first)
       %h4
-        Contact your guide at: 
-        = mail_to "#{@adventure.users.first.email}"
+        Your email:
+        = @adventure.users.first.email
 
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
@@ -29,7 +29,7 @@
             %tr
               %td
                 %a{href: "/adventures/#{@adventure.slug}"}
-                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:thumb), width: "300"}
+                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}
                 %h2= @adventure.title

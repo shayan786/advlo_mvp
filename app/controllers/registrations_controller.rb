@@ -71,6 +71,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
+    puts "session ----------> #{session[:previous_url]}"
+    puts "************************ SIGNING UP "
     session[:previous_url] || '/users/dashboard'
   end
 

@@ -660,6 +660,9 @@
       font-family: 'nexa_bold';
     }
   }
+
+
+
 }
 
 .datepicker {
@@ -670,4 +673,51 @@
   z-index: 9999 !important;
   position: fixed !important;
   width: 9.7% !important;
+}
+
+  
+.mid-purchase {
+  display: none;
+
+}
+
+.sign-in-toggle {
+  height: 40px;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 25%;
+  border-radius: 5px;
+  float: left;
+
+}
+
+.adventure-login-title {
+  text-align: center;
+  font-size: 35px;
+  color: $advlo_orange !important;
+  font-family: 'nexa_light';
+}
+
+.button-style {
+  font-size: 26px;
+  color: #fff;
+  text-align: center;
+  font-family: 'nexa_light';
+  cursor: pointer;
+}
+
+.sign-up-toggle {
+  height: 40px;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 25%;
+  border-radius: 5px;
+  float: right;
+}
+
+.sign-copy {
+  color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
