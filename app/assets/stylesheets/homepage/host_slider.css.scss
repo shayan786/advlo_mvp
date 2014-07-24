@@ -24,8 +24,8 @@
           margin: 0 auto;
           text-align: center;
           margin-top: 15px;
-          line-height: 25px;
-          font-size: 20px;
+          line-height: 30px;
+          color: #fff;
 
           .host-name {
             font-size: 25px;
@@ -33,10 +33,14 @@
             color: gray
           }
           .host-description {
-            color: $advlo_orange;
+            font-size: 18px;
+            text-transform: capitalize;
+            font-style: italic;
           }
           .host-location {
-            color: $advlo_green;
+            color: #fff;
+            font-size: 22px;
+            text-transform: capitalize;
           }	    		
 	    	}
     	}
