@@ -1,8 +1,5 @@
 = link_to '/' do
   .error-wrapper
     .error-404
-      = image_tag 'lost.jpg'
-      .sorry-charlie.theano-oldstyle
-        the page you're looking for could not be found.
-      .go-home-your-lost.archivo-bold
-        = link_to 'back to home', root_path
+      = link_to (image_tag 'lost.jpg'), root_path
+      
