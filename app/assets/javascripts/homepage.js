@@ -84,9 +84,9 @@ function adventureSliderInit(){
 
 function hostSliderInit(){
   var hostCount;
-  if($(window).width() > 1386){
+  if($(window).width() > 1200){
     hostCount = 3;
-  }else if($(window).width() > 920){
+  }else if($(window).width() > 750){
     hostCount = 2;
   }else{
     hostCount = 1;

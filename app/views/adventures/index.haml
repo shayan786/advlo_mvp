@@ -4,26 +4,28 @@
       #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
   #location_text= @location ? @location.upcase : "Advlo" 
 
-  = render partial: 'filter_nav'
-  
-  .adventure-container
-    - if @adventures.first != nil
-      = render partial: "adventure_index", locals: {adventures: @adventures}
 
-    - else 
-      .brick-wrapper.masonry.js-masonry
-        %a.adventure-brick{href: 'adventures/info', style: 'text-decoration:none;'}
-          .image-wrapper#no-adventures= image_tag 'missing.png'
-          #no-adv-text Add an adventure in this area
+  #adventures-content-container
+    = render partial: 'filter_nav'
+    
+    .adventure-container
+      - if @adventures.first != nil
+        = render partial: "adventure_index", locals: {adventures: @adventures}
 
-    / .text-center
-    /   .btn.btn-default
-    /     Show More
-    .text-center
-      .btn.btn-primary.request_btn{'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
-        Request Adventure
+      - else 
+        .brick-wrapper.masonry.js-masonry
+          %a.adventure-brick{href: 'adventures/info', style: 'text-decoration:none;'}
+            .image-wrapper#no-adventures= image_tag 'missing.png'
+            #no-adv-text Add an adventure in this area
 
-      = render partial: "request_modal"
+      / .text-center
+      /   .btn.btn-default
+      /     Show More
+      .text-center
+        .btn.btn-primary.request_btn{'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
+          Request Adventure
+
+        = render partial: "request_modal"
 
 
 :javascript
