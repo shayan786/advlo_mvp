@@ -41,6 +41,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook' 
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'paperclip-meta'
 gem 'aws-sdk'
 gem 'wicked'
 gem 'stripe'
@@ -51,4 +52,3 @@ gem 'delayed_paperclip'
 gem 'daemons'
 gem 'roadie-rails'
 gem 'hirefire-resource'
-

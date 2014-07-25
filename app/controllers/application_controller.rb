@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_filter :store_location
-
   def render_error
     render '/error_404'
   end
@@ -24,6 +23,17 @@ class ApplicationController < ActionController::Base
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath 
     end
+  end
+
+  def after_sign_in_path_for(resource)
+    puts "session ----------> #{session[:previous_url]}"
+    puts "SIGNING IN ************************  "
+    session[:previous_url]
+  end
+
+  def after_sign_out_path_for(resource)
+    puts "************ SIGNING out ************"
+    session[:previous_url] || root_path
   end
 
   def homepage

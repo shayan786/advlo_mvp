@@ -2,7 +2,6 @@ class Review < ActiveRecord::Base
   belongs_to :adventure
   belongs_to :user
 
-
   def get_weighted_rating 
     @review = Review.find_by_id(self.id)
 

@@ -23,6 +23,9 @@
 :javascript
   // SORT BY
   $('#filter_nav ul.sort_by_ul li').click(function(e) {
+
+    var tempScrollTop = $(window).scrollTop();
+
     var region = "#{@location}";
     var sort_by = $(this).data('sort_by');
     var categories = '';
@@ -162,7 +165,8 @@
       beforeSend: function() {
       }
     });
-
+    
+    $(window).scrollTop(tempScrollTop);
   });
 
 

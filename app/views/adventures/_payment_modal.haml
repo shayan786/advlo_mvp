@@ -2,27 +2,28 @@
   .modal-dialog
     .modal-content
       .modal-body
-        %ul.nav.nav-tabs.nav-justified{role: "tablist"}
-          %li.active
-            %a{"data-toggle" => "tab", href: ".upcoming", role: "tab"} UPCOMING
-          %li
-            %a{"data-toggle" => "tab", href: ".view-all", role: "tab"} VIEW ALL
+        - unless @all_adventure_events.empty?
+          %ul.nav.nav-tabs.nav-justified{role: "tablist"}
+            %li.active
+              %a{"data-toggle" => "tab", href: ".upcoming", role: "tab"} UPCOMING
+            %li
+              %a{"data-toggle" => "tab", href: ".view-all", role: "tab"} VIEW ALL
 
-        .tab-content
+          .tab-content
 
-          .upcoming.tab-pane.active
-            .row.text-center
-              %em.tab_header
-                Instant Reservations
-            - @limited_adventure_events.each do |event| 
-              = render partial: 'event_partial', locals: {event: event}
+            .upcoming.tab-pane.active
+              .row.text-center
+                %em.tab_header
+                  Instant Reservations
+              - @limited_adventure_events.each do |event| 
+                = render partial: 'event_partial', locals: {event: event}
 
-          .view-all.tab-pane
-            .row.text-center
-              %em.tab_header
-                Instant Reservations
-            - @all_adventure_events.each do |event| 
-              = render partial: 'event_partial', locals: {event: event}
+            .view-all.tab-pane
+              .row.text-center
+                %em.tab_header
+                  Instant Reservations
+              - @all_adventure_events.each do |event| 
+                = render partial: 'event_partial', locals: {event: event}
 
       .modal-footer
         .row.text-center
@@ -38,7 +39,17 @@
         - if current_user && @current_guide
           = render partial: "/reservations/new", locals: {reservation: @reservation}
         - else 
-          = render file: 'users/sign_up', locals: {adventure: @adventure}
+          .row
+            .adventure-login-title= @adventure.title
+            .sign-in-toggle.btn-success.button-style
+              Sign In
+            .sign-in.mid-purchase.sign-in-form
+              = render file: 'users/sign_in', locals: {adventure: @adventure}
+
+            .sign-up-toggle.btn-success.button-style
+              Sign Up
+            .sign-up.mid-purchase.sign-up-form
+              = render file: 'users/sign_up', locals: {adventure: @adventure}
 
 #reservations-request-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-request-modal", role: "dialog"}
   .modal-dialog.payment-modal-wrapper
@@ -47,6 +58,29 @@
         - if current_user && @current_guide
           = render partial: "/reservations/request", locals: {reservation: @reservation}
         - else 
-          = render file: 'users/sign_up', locals: {adventure: @adventure}
+          .row
+            .adventure-login-title= @adventure.title
+            .sign-in-toggle.btn-success.button-style
+              SIGN IN
+            .sign-in.mid-purchase.sign-in-form
+              = render file: 'users/sign_in', locals: {adventure: @adventure}
 
-          
+            .sign-up-toggle.btn-success.button-style
+              SIGN UP
+            .sign-up.mid-purchase.sign-up-form
+              = render file: 'users/sign_up', locals: {adventure: @adventure}
+
+:javascript
+
+  $('.sign-in-toggle').click(function(){
+    $(this).hide()
+    $('.sign-in-form').fadeIn()
+  })
+  $('.sign-up-toggle').click(function(){
+    $(this).hide()
+    $('.sign-up-form').fadeIn()
+  })
+
+  $('.sign-in-form')
+
+

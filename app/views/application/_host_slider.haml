@@ -10,18 +10,28 @@
     .swiper-container.host-slider
       .swiper-wrapper
         - if @feat_hosts
-          - @feat_hosts.each_with_index do |user, i|
-            %a.swiper-slide{href: user_path(user)}
-              .image-wrapper.host-image
-                = image_tag "#{user.get_avatar_url("medium")}"
-                .copy
-                  .name= user.name
-                  - if user.short_description.size > 29
-                    .desc= user.short_description[0..25]
-                  - else
-                    .desc= user.short_description
+          - @feat_hosts.each_with_index do |guide, i|
+            .swiper-slide
+              %a.slide-content{href: user_path(guide)}
+                - if guide.avatar.height(:medium) <= 225
+                  .host-circle-image{style: "background: url(#{guide.get_avatar_url("large")}) no-repeat center center;"}
+                - else
+                  .host-circle-image{style: "background: url(#{guide.get_avatar_url("medium")}) no-repeat center center;"}
 
-                  .location= user.location
+                .host-copy
+                  .host-name
+                    -if guide.name.length > 19
+                      = "#{guide.name[0..18]}..."
+                    - else
+                      = guide.name
+                  .host-description
+                    = guide.short_description
+                  .host-location
+                    = guide.location
+                
+
+
+              
                   
 
 :javascript
