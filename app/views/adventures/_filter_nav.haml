@@ -13,7 +13,8 @@
         Category:
       .panel-body
         %ul.nav.nav-pills.nav-stacked.cat_ul
-          %li{id: "cat_all", "data-category"=>"all"}
+          %li.active{id: "cat_all", "data-category"=>"all"}
+            %i.fa.fa-check{style: "margin-right: 10px;"}
             ALL
           - adv_categories.each do |cat|
             %li{id: "cat_#{cat.downcase}", "data-category"=>cat}
