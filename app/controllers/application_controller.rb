@@ -42,6 +42,11 @@ class ApplicationController < ActionController::Base
     @feat_adventures = Adventure.where(approved: true).order('created_at DESC').limit(6)
     @feat_hosts = User.where(is_guide: true).limit(6)
 
+    @region_images = []
+    ['Boulder', 'Colorado Springs', 'Denver', 'Fort Collins', 'High Rockies', 'Southern Colorado'].each do |r|
+      @region_images << HeroImage.find_by_region(r)
+    end
+
     # we should map the ip of each user ( logged in or not ) 
     # offer local adventures for each person
     # user.current_location = request.location.city
