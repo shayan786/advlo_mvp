@@ -80,3 +80,40 @@ body {
   width: 50px;
   border-radius: 50%;
 }
+
+
+
+@media screen and (max-width: 700px){
+
+  .jumbotron_fix {
+    margin-top: -80px;
+    padding-top: 30vh;
+    min-height: 0;
+    max-height: 400px;
+
+  }
+
+  .jumbotron_fix span.large_text {
+    font-size: 2em !important;
+  }
+  .jumbotron_fix .medium_text {
+    font-size: 1.5em !important;
+  }
+
+  #homepage-text {
+    margin-top: 25px;
+  }
+
+  .navbar-collapse {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .navbar-nav {
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    top: 50px;
+  }
+}
+

@@ -5,7 +5,6 @@
 	margin-top: -80px;
 	padding-top: 30vh;
 	min-height: 93vh; //add js fix for style height on older browsers
-	background-image: asset-url($info_banner_image);
 	background-repeat: no-repeat;
 	background-size: cover; 
 
@@ -62,7 +61,7 @@
 		
 
 		.dropdown-box {
-
+			z-index: 100;
 			position: absolute;
 			width: 235px;
 			padding-top: 10px;
