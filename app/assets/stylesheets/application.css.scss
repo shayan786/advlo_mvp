@@ -88,20 +88,23 @@ body {
   .jumbotron_fix {
     margin-top: -80px;
     padding-top: 30vh;
-    min-height: 0;
+    min-height: 400px !important;
     max-height: 400px;
 
   }
 
   .jumbotron_fix span.large_text {
-    font-size: 2em !important;
+    font-size: 1.6em !important;
   }
   .jumbotron_fix .medium_text {
     font-size: 1.5em !important;
   }
 
   #homepage-text {
-    margin-top: 25px;
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    left: 0px;
   }
 
   .navbar-collapse {
