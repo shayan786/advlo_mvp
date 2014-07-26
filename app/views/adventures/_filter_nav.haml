@@ -1,3 +1,4 @@
+#fiter_nav_mobile_toggle.btn.btn-default.btn-lg Filters
 #filter_nav
   .col-sm-2
     .panel.panel-default
@@ -22,6 +23,12 @@
 
 :javascript
   // SORT BY
+
+  $('#fiter_nav_mobile_toggle').click(function(){
+    $('#filter_nav').slideToggle()
+  })
+  
+
   $('#filter_nav ul.sort_by_ul li').click(function(e) {
 
     var tempScrollTop = $(window).scrollTop();

@@ -5,7 +5,6 @@
 	margin-top: -80px;
 	padding-top: 30vh;
 	min-height: 93vh; //add js fix for style height on older browsers
-	background-image: asset-url($banner_image);
 	background-repeat: no-repeat;
 	background-size: cover; 
 
@@ -44,14 +43,13 @@
 
 		.header_btn_fix {
 			background-color: $header_btn_color_hover;
-			border-color: #fff;
 			font-size: 1.5em;
 			width: 100%;
 			padding: 12px 30px;
+			border: transparent;
 
 			&:hover {
 				background-color: $header_btn_color;
-				border-color: #fff;
 				border-bottom: none;
 			}
 
@@ -63,9 +61,7 @@
 		
 
 		.dropdown-box {
-			border-left: 1px solid #fff;
-			border-bottom: 1px solid #fff;
-			border-right: 1px solid #fff;
+			z-index: 100;
 			position: absolute;
 			width: 235px;
 			padding-top: 10px;
@@ -97,4 +93,46 @@
 			}
 		}
 	}
+}
+
+
+
+@media screen and (max-width: 700px){
+
+  .jumbotron_fix {
+    margin-top: -80px !important;
+    padding-top: 0px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+
+  }
+
+  .jumbotron_fix span.large_text {
+    font-size: 1.6em !important;
+  }
+  .jumbotron_fix .medium_text {
+    font-size: 1.5em !important;
+  }
+
+  #homepage-text {
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    left: 0px;
+  }
+
+  .navbar-collapse {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .navbar-nav {
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    top: 50px;
+  }
+  .dropdown-container {
+    margin-top: 30px !important;
+  }
 }

@@ -419,18 +419,36 @@
 
 }
 
-@media screen and (max-width: 950px){
-  .adventure-page-container .filter {
-    margin-left: 1%;
-    margin-right: 1%;
-  }
+#fiter_nav_mobile_toggle {
+  display: none;
 }
 
-/*@media screen and (max-width: 675px){
-  .adventure-page-container .filter-container {
-    height: 90px;    
+@media screen and (max-width: 767px){
+  .adventure-page-container .adventure-container {
+    width: 100%;
   }
-  .adventure-page-container .filter-static {
-    height: 90px;    
+
+  #filter_nav {
+    display: none;
   }
-}*/
+  #fiter_nav_mobile_toggle {
+    margin-bottom: 30px !important;
+    display: block;
+    width: 300px !important;
+    margin: 0 auto;
+  }
+
+  .adventure-page-container #location_text {
+    font-size: 3em !important;
+    top: 45% !important;
+    font-family: 'cabin_bold';
+    word-wrap: break-word;
+  }
+
+  .adventure-page-container #hero_image_wrapper #hero_image {
+    height: 400px !important;
+  }
+  .adventure-page-container #hero_image_wrapper {
+    height: 400px;
+  }
+}
