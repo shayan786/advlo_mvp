@@ -419,14 +419,28 @@
 
 }
 
+#fiter_nav_mobile_toggle {
+  display: none;
+}
+
 @media screen and (max-width: 767px){
   .adventure-page-container .adventure-container {
     width: 100%;
   }
 
+  #filter_nav {
+    display: none;
+  }
+  #fiter_nav_mobile_toggle {
+    margin-bottom: 15px !important;
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+  }
+
   .adventure-page-container #location_text {
-    font-size: 2.2em;
-    top: 50% !important;
+    font-size: 4em !important; 
+    top: 45% !important;
   }
 
   .adventure-page-container #hero_image_wrapper #hero_image {
