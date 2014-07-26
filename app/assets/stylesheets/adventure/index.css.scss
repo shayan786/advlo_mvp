@@ -78,8 +78,16 @@
   }
 
   #filter_nav {
+
+    .filter-wrapper {
+      width: 12%;
+      float: left;
+    }
+
+    margin-bottom: 40px;
     .panel {
       border: none;
+
 
       .panel-heading{
         padding-top: 5px;
@@ -114,7 +122,7 @@
   }
 
   .adventure-container {
-    width: 83%;
+    width: 86%;
 
     #adventure-partial {
       margin-top: -20px;
@@ -139,7 +147,9 @@
     width: 400px;
     float: left;
     overflow: hidden;
-    margin: 20px;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
 
     #no-adventures {
       text-align: center;

@@ -1,6 +1,6 @@
 #fiter_nav_mobile_toggle.btn.btn-default.btn-lg Filters
 #filter_nav
-  .col-sm-2
+  .filter-wrapper
     .panel.panel-default
       .panel-heading
         Sort by:
@@ -19,7 +19,7 @@
           - adv_categories.each do |cat|
             %li{id: "cat_#{cat.downcase}", "data-category"=>cat}
               = cat.downcase.capitalize
-
+  
 :javascript
   // SORT BY
 
