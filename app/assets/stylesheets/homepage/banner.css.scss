@@ -5,7 +5,7 @@
 	margin-top: -80px;
 	padding-top: 30vh;
 	min-height: 93vh; //add js fix for style height on older browsers
-	background-image: asset-url($banner_image);
+	background-image: asset-url($info_banner_image);
 	background-repeat: no-repeat;
 	background-size: cover; 
 
@@ -44,14 +44,13 @@
 
 		.header_btn_fix {
 			background-color: $header_btn_color_hover;
-			border-color: #fff;
 			font-size: 1.5em;
 			width: 100%;
 			padding: 12px 30px;
+			border: transparent;
 
 			&:hover {
 				background-color: $header_btn_color;
-				border-color: #fff;
 				border-bottom: none;
 			}
 
@@ -63,9 +62,7 @@
 		
 
 		.dropdown-box {
-			border-left: 1px solid #fff;
-			border-bottom: 1px solid #fff;
-			border-right: 1px solid #fff;
+
 			position: absolute;
 			width: 235px;
 			padding-top: 10px;
