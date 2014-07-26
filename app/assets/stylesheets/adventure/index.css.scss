@@ -432,15 +432,17 @@
     display: none;
   }
   #fiter_nav_mobile_toggle {
-    margin-bottom: 15px !important;
+    margin-bottom: 30px !important;
     display: block;
-    width: 75%;
+    width: 300px !important;
     margin: 0 auto;
   }
 
   .adventure-page-container #location_text {
-    font-size: 4em !important; 
+    font-size: 3em !important;
     top: 45% !important;
+    font-family: 'cabin_bold';
+    word-wrap: break-word;
   }
 
   .adventure-page-container #hero_image_wrapper #hero_image {
