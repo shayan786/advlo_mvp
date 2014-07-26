@@ -86,10 +86,10 @@ body {
 @media screen and (max-width: 700px){
 
   .jumbotron_fix {
-    margin-top: -80px;
-    padding-top: 30vh;
+    margin-top: -80px !important;
+    padding-top: 0px !important;
     min-height: 400px !important;
-    max-height: 400px;
+    max-height: 400px !important;
 
   }
 
