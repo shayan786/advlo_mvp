@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_filter :store_location
+
   def render_error
     render '/error_404'
   end
@@ -19,20 +20,20 @@ class ApplicationController < ActionController::Base
     if (request.path != "/users/sign_in" &&
         request.path != "/users/sign_up" &&
         request.path != "/users/password/new" &&
-        request.path != "/users/sign_out" &&
+        request.path != "/users/sign_out"
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath 
     end
   end
 
   def after_sign_in_path_for(resource)
-    puts "session ----------> #{session[:previous_url]}"
-    puts "SIGNING IN ************************  "
+    if request.path == '/admin/login' 
+      return
+    end
     session[:previous_url]
   end
 
   def after_sign_out_path_for(resource)
-    puts "************ SIGNING out ************"
     session[:previous_url] || root_path
   end
 
@@ -40,6 +41,11 @@ class ApplicationController < ActionController::Base
     @hero_image = HeroImage.where(region: 'Homepage').first
     @feat_adventures = Adventure.where(approved: true).order('created_at DESC').limit(6)
     @feat_hosts = User.where(is_guide: true).limit(6)
+
+    @region_images = []
+    ['Boulder', 'Colorado Springs', 'Denver', 'Fort Collins', 'High Rockies', 'Southern Colorado'].each do |r|
+      @region_images << HeroImage.find_by_region(r)
+    end
 
     # we should map the ip of each user ( logged in or not ) 
     # offer local adventures for each person
