@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
     return unless request.get? 
     if request.fullpath == '/images?type=large'
       session[:previous_url] = '/users/edit'
+      puts "request.fullpath == '/images?type=large' ====>  #{session[:previous_url]}"
+      
+
     elsif (request.path != '/users/sign_in' &&
         request.path != '/users/password/new' &&
         request.path != '/users/sign_out' &&
