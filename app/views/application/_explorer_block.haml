@@ -1,12 +1,12 @@
 #how_it_works
   #advlo-location
-    Advlo Locations
+    Destinations
 
   .row.text-center
     .container
       .col-md-12
-        .region-wrapper
-          - if @region_images.first != nil
+        .region-container
+          .region-wrapper
             - @region_images.each do |r|
               %a{href: "/adventures?location=#{r}"}
                 .region
@@ -18,3 +18,9 @@
 
 
     = render partial: "/adventures/request_modal"
+
+:javascript
+  $('.region-wrapper').masonry({
+    isFitWidth: true,
+    itemSelector: '.region'
+  })
