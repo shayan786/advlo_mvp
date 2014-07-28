@@ -19,7 +19,7 @@
 
           .hover-block{id: i}
             - usr = adv.users.first
-            .guide-image= get_avatar_url('large')
+            .guide-image= usr.get_avatar_url('large')
 
 
             / - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil
