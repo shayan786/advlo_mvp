@@ -18,8 +18,7 @@
           .price= "$ #{adv.price}"
 
           .hover-block{id: i}
-            - usr = adv.users.first
-            .guide-image= usr.get_avatar_url('large')
+            .guide-image= image_tag adv.users.first.get_avatar_url('large')
 
 
             / - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil

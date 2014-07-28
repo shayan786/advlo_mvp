@@ -39,7 +39,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     puts "session[:previous_url] => #{session[:previous_url]}"
-
     session[:previous_url] || '/users/edit'
   end
 
