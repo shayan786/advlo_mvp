@@ -70,12 +70,6 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :li_url)
   end
 
-  def after_sign_up_path_for(resource)
-    puts "session ----------> #{session[:previous_url]}"
-    puts "************************ SIGNING UP "
-    session[:previous_url] || '/users/dashboard'
-  end
-
   # devise override requireing password for update
   def needs_password?(user, params)
     user.email != params[:user][:email] || params[:user][:password].present?
