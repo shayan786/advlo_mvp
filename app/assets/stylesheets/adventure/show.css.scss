@@ -538,6 +538,17 @@
 }
 
 @media screen and (max-width: 991px){
+  
+  .adventure-show-container .adventure-copy-wrapper #mobile-adventure-infographic .navigation-brick {
+    opacity: 1.0;
+  }
+
+  #event-modal .modal-dialog {
+    width: 100%;
+    margin-top: 100px;
+    margin-left: 0%;
+  }
+
   #desktop-adventure-nav {
     display: none;
   }

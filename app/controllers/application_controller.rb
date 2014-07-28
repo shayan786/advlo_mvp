@@ -17,33 +17,33 @@ class ApplicationController < ActionController::Base
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get? 
-    if request.fullpath == '/images?type=large'
-      session[:previous_url] = '/users/edit'
-    elsif (request.path != '/users/sign_in' &&
+    if (request.path != '/users/sign_in' &&
         request.path != '/users/password/new' &&
         request.path != '/users/sign_out' &&
         request.path != '/users/sign_up' &&
         !request.path.include?('/users/auth/facebook') &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath 
-    else
+    else 
       session[:previous_url] = '/users/edit'
     end
-
-    puts "store location session[:previous_url] ====>  #{session[:previous_url]}"
   end
 
   def after_sign_in_path_for(resource)
-    puts " after_sign_in_path_for session[:previous_url] ====>  #{session[:previous_url]}"
-
     if request.path == '/admin/login' 
       return
     end
-    session[:previous_url] || root_path
+    puts "session[:previous_url] => #{session[:previous_url]}"
+    session[:previous_url] || '/users/edit'
   end
 
   def after_sign_out_path_for(resource)
-    session[:previous_url] || root_path
+    puts "session[:previous_url] => #{session[:previous_url]}"
+    if session[:previous_url] == '/users/edit'
+      root_url
+    else
+      session[:previous_url]
+    end
   end
 
   def homepage

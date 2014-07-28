@@ -56,23 +56,22 @@
             .guide-name
               = @current_guide.name
             
-            .guide-profile-image
-              - if !@current_guide
-                = image_tag 'missing.png'
-              - elsif @current_guide.avatar_url
-                = link_to (image_tag "#{@current_guide.avatar_url}?type=large"), user_path(@current_guide)
-              - elsif @current_guide.avatar.url
-                = link_to (image_tag @current_guide.avatar.url(:large)), user_path(@current_guide)
-      
+            .guide-profile-image= image_tag @current_guide.get_avatar_url('large')
+              
 
             .adventure-block.col-sm-12.text-center
               #adventure-title-mobile
                 = @adventure.title
               #adventure-price
                 = "$ #{@adventure.price}"
-              #book-it{"data-target" => "#event-modal", "data-toggle" => "modal"} 
-                %span
-                  BOOK IT
+              -if !@adventure.approved || @current_guide == current_user
+                #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+                  %span 
+                    BOOK IT
+              -else
+                #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+                  %span 
+                    BOOK IT
 
     .row.information-container
       #overview.title-brick

@@ -123,6 +123,7 @@
 
   .adventure-container {
     width: 86%;
+    
 
     #adventure-partial {
       margin-top: -50px;
@@ -135,7 +136,8 @@
 .adventure-container {
   position: relative;
   width: 100%;
-  float: left;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 .brick-wrapper{
   position: relative;
