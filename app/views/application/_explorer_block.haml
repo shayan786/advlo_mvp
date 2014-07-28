@@ -4,14 +4,13 @@
 
   .row.text-center
     .container
-      .col-md-12
-        .region-container
-          .region-wrapper
-            - @region_images.each do |r|
-              %a{href: "/adventures?location=#{r}"}
-                .region
-                  = link_to (image_tag r.attachment.url(:hero)), "/adventures?region=#{r.region.gsub(' ','-')}"
-                  .region-text= r.region
+      .region-container
+        .region-wrapper
+          - @region_images.each do |r|
+            %a{href: "/adventures?location=#{r}"}
+              .region
+                = link_to (image_tag r.attachment.url(:hero)), "/adventures?region=#{r.region.gsub(' ','-')}"
+                .region-text= r.region
               
 
 
