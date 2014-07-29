@@ -197,6 +197,7 @@
       margin: 0 auto;
 
       .copy{
+      
         color: #fff;
         bottom: 5px;
         position: absolute;
@@ -404,30 +405,30 @@
 
 
 @media screen and (max-width: 1335px){
-  .adventure-container .brick-wrapper .adventure-brick {
+  .brick-wrapper .adventure-brick {
     height: 200px;
     width: 300px;
   }
 
-  .adventure-container .brick-wrapper .adventure-brick .image-wrapper {
+  .brick-wrapper .adventure-brick .image-wrapper {
     height: 200px;
     width: 300px;
   }
 
-  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy {
+  .brick-wrapper .adventure-brick .image-wrapper .copy {
     bottom: 3px;
   }
 
-  .adventure-container .brick-wrapper .adventure-brick .guide-image {
+  .brick-wrapper .adventure-brick .guide-image {
     top: 10px;
   }
-  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy .title {
+  .brick-wrapper .adventure-brick .image-wrapper .copy .title {
     font-size: 16px;
   }
-  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy .location {
+  .brick-wrapper .adventure-brick .image-wrapper .copy .location {
     font-size: 11px;
   }
-  .adventure-container .brick-wrapper .adventure-brick .image-wrapper .price {
+  .brick-wrapper .adventure-brick .image-wrapper .price {
     bottom: 0px;
     font-size: 27px;
   }
