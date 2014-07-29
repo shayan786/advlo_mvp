@@ -24,11 +24,13 @@
 				color: #fff;
 
 				.fa {
-					margin-right: 20px;
+					margin-right: 40px;
 					font-size: 1.6em;
+					opacity: 0.5;
 
 					&:hover {
-						color: $orange;
+						color: #FFF;
+						opacity: 1;
 					}
 				}
 			}
@@ -78,15 +80,5 @@
 	          margin-top: 25px;
 	        }
       	}
-	}
-
-
-	.footer-social {
-		margin-right: 10px;
-		margin-left: 10px;
-		opacity: 0.5;
-	}
-	.footer-social:hover {
-		opacity: 1.0;
 	}
 }
