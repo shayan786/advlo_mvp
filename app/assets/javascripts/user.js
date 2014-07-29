@@ -92,20 +92,10 @@ function create_tabs() {
 }
 
 function adventureShowHover(){
-  $('.hover-block').hover(function(){
-    $('.copy-'+$(this).attr('id')).stop().animate({
-      opacity: 0
-    },500)
-    $(this).stop().animate({
-      opacity: 1
-    },140)
-  },function(){
-    $('.copy-'+$(this).attr('id')).stop().animate({
-      opacity: 1
-    },300)
-    $(this).stop().animate({
-      opacity: 0
-    })
+  $('.adventure-brick').hover(function(){
+    $(this).find($('.hover-block')).fadeIn()
+  }, function(){
+    $(this).find($('.hover-block')).fadeOut()
   })
 }
 

@@ -87,38 +87,12 @@ function highlightFilters(){
 }
 
 function adventureHover(){
-  $('.hover-block').hover(function(){
-    $('.copy-'+$(this).attr('id')).stop().animate({
-      opacity: 0
-    })
-    $(this).stop().animate({
-      opacity: 1
-    })
-  },function(){
-    $('.copy-'+$(this).attr('id')).stop().animate({
-      opacity: 1
-    })
-    $(this).stop().animate({
-      opacity: 0
-    })
+  $('.adventure-brick').hover(function(){
+    $(this).find($('.hover-block')).fadeIn()
+  }, function(){
+    $(this).find($('.hover-block')).fadeOut()
   })
 }
-
-function filterCatch(){
-  // if(location.pathname == '/adventures'){
-  //   $(window).scroll(function(){
-  //     var s = ($(window).scrollTop() + parseInt($('.filter-container').css('height')));
-  //     var fixedHeight = $('.filter-container').position().top
-  //     if(s > fixedHeight ){
-  //       $('.filter-static').show();
-  //     }else if( s < fixedHeight ){
-  //       $('.filter-static').hide()
-  //     }
-  //   })
-  // }else{
-  //   $(window).unbind('scroll');
-  // }
-} 
 
 function masonrySetup(){
   $('.js-masonry').masonry({
@@ -1116,7 +1090,6 @@ adventureShow = function() {
 adventureIndex = function() {
   positionLocationText();
   masonrySetup();
-  filterCatch();
   heroScroll();
   adventureHover();
   centerProfileImage();

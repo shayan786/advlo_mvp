@@ -17,6 +17,6 @@
             %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
             %input{id: "adv_rating_show_#{i}"}  
 
-          .hover-block{id: i}
-            .guide-profile-image= image_tag user.get_avatar_url('large')
-          .copy-container{class: "copy-#{i}"}
+        .hover-block{id: i}
+          .guide-profile-image= image_tag user.get_avatar_url('large')
+        .copy-container{class: "copy-#{i}"}
