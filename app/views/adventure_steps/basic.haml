@@ -5,6 +5,7 @@
       %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_edit_form", enctype: "multipart/form-data"}
         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        = tag(:input, :type => "hidden", :name => "adventure[region]", id: "adv_region", "data-geo" => "country_short")
           
         .panel.panel-default 
           .panel-heading.text-center.section_header
@@ -16,22 +17,6 @@
                 .form_label.text-right Title *
               .col-md-6
                 %input.form-control.show_ml{type: "text", required: "required", name: "adventure[title]", id: "adv_name", value: "#{@adventure.title}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Climbing in Eldorado Canyon"}}
-            .form-group.row
-              .col-md-4
-                .form_label.text-right Region *
-              .col-md-3
-                %select.form-control{name: "adventure[region]", id: "adv_region"}
-                  - adv_regions.each do |r|
-                    - if r == @adventure.region
-                      %option{selected: "true"}= r
-                    - else
-                      %option= r
-            .row
-              .col-md-4
-              .col-md-6        
-                %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#request_location_modal'}
-                  %em Don't see your region? Tell us where you would like to see Advlo next!
-            %br
             .form-group.row
               .col-md-4
                 .form_label.text-right Location *
