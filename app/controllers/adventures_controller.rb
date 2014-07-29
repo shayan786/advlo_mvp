@@ -103,6 +103,7 @@ class AdventuresController < ApplicationController
   
   # info page for creating a new adventure
   def hosting_info
+    @hero_image = HeroImage.where(region: 'info').first
   end
 
   # info page for requesting a certain adventure

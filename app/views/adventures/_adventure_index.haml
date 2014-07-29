@@ -19,15 +19,6 @@
 
           .hover-block{id: i}
             .guide-image= image_tag adv.users.first.get_avatar_url('large')
-
-
-            / - if usr && usr.avatar_url == '' || usr && usr.avatar_url == nil
-            /   .guide-image= image_tag "#{usr.avatar.url(:large)}"
-            / - elsif usr
-            /   .guide-image= image_tag "#{usr.avatar_url}?type=large"
-            / - else
-            /   .guide-image= image_tag 'missing.png'
-
           .copy-container{class: "copy-#{i}"}
 
 

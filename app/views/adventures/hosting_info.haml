@@ -1,5 +1,6 @@
 #adventure_info
-  .jumbotron
+  - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/biklo_darken.jpg"
+  .jumbotron{:style => "background-image: url(#{image_path image})"}
     .container
       .row.text-center
         .col-md-8.host_info_text.col-md-offset-2
