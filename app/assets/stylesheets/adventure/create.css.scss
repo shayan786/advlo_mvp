@@ -240,15 +240,41 @@
 		
 		#add-bank {
 			margin-top: 20px;
-	  	cursor: pointer;
-			text-align: center;
+	  		cursor: pointer;
 			text-align: center;
 		}
 		#add-card {
 			margin-top: 25px;
 		  cursor: pointer;
 		  text-align: center;
-		  text-align: center;
+		}
+
+		#add-paypal {
+			margin-top: 30px;
+			cursor: pointer;
+
+			.glyphicon {
+				padding-left: 35px;
+			}
+
+			img {
+				width: 200px;
+				height: auto;
+				padding-bottom: 20px;
+				padding-left: 20px;
+			}
+		}
+
+		#existing-paypal {
+			display: none;
+		}
+
+		#add_paypal_form {
+			display: none;
+		}
+
+		#update_paypal_form {
+			display: none;
 		}
 
 		#add-card-form {
@@ -275,7 +301,7 @@
 			margin-bottom: 20px;
 			.btn {
 				margin: 0 auto;
-				width: 200px;
+				width: 175px;
 
 			}
 		}
