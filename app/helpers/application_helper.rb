@@ -13,8 +13,9 @@ module ApplicationHelper
     all_cities.uniq.each do |elem|
       city_count[elem] += 1
     end
-    @city_locations = []
-    city_count.each {|l| @city_locations << l if l[1] > 5}
+    city_locations = []
+    city_count.each {|l| city_locations << l if l[1] > 5 }
+    return city_locations
   end
 
   def get_countries(region)
@@ -26,9 +27,9 @@ module ApplicationHelper
     all_countries.uniq.each do |elem|
       country_count[elem] += 1
     end
-    @country_locations = []
-    country_count.each {|l| @country_locations << l if l[1] > 5}
-
+    country_locations = []
+    country_count.each {|l| country_locations << l if l[1] > 5}
+    return country_locations
   end
 
   def flash_class(level)
