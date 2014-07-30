@@ -55,7 +55,7 @@ class AdventuresController < ApplicationController
     category_param = params[:category].gsub(',',' ').downcase
     category_array = category_param.split('-')
     sort_by = params[:sort_by]
-    adventures_region = Adventure.where(region: region)
+    adventures_region = Adventure.where(approved: true).where(region: region)
 
     category_sql_string = ''
 

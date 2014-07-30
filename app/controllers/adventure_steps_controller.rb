@@ -12,7 +12,6 @@ class AdventureStepsController < ApplicationController
     
     session[:adventure_id] =  @adventure.id
 
-
     # Prevent URL injection
     case params[:id]
 
