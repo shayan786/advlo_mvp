@@ -259,12 +259,16 @@ function input_geocomplete() {
   if (adv_location) {
     $('#adventure_edit_form #adv_location').geocomplete({
       map: "#adventure_edit_form .location_map",
-      location: adv_location
-    });
+      location: adv_location,
+      details: "#adventure_edit_form",
+      detailsAttribute: "data-geo"
+    })
   }
   else {
     $('#adventure_edit_form #adv_location').geocomplete({
-      map: "#adventure_edit_form .location_map"
+      map: "#adventure_edit_form .location_map",
+      details: "#adventure_edit_form",
+      detailsAttribute: "data-geo"
     });
   }
 }
@@ -945,7 +949,7 @@ FSInitialize = function(adventure_id) {
       right: ''
     },
 
-    //RENDER EXISTING BOOKING TIMES
+    //RENDER EXISTING BOOKING TIMES (blue: unreserved, oragne: reserved)
     eventSources: [
       {
         url: '/events',

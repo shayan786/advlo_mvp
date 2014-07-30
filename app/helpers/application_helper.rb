@@ -22,4 +22,6 @@ module ApplicationHelper
   def active_admin_adv_regions
     return ['all', 'Boulder', 'Colorado Springs', 'Denver', 'Fort Collins', 'High Rockies', 'Southern Colorado']
   end
+
+
 end
