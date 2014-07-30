@@ -37,15 +37,18 @@
 	}
 
 	#profile-next {
+		position: absolute;
 		right: -7%;
 		top: 140px;
 		font-size: 2em;
+		cursor: pointer;
 	}
 	#profile-prev {
+		position: absolute;
 		left: -7% ;
 		top: 140px;
 		font-size: 2em;
-
+		cursor: pointer;
 	}	
 }
 
