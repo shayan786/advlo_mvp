@@ -6,6 +6,15 @@
         .panel-heading.text-center.section_header
           PAYMENT DETAILS
         .panel-body
+          .col-md-6.col-md-offset-3
+            .well.how_to.text-center
+              .row
+                Add a
+                %strong Bank Account
+                or
+                %strong Paypal email
+                to receive your payments
+
           = render partial: "notice"
 
           = render partial: "stripe_payout"
