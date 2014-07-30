@@ -3,6 +3,7 @@ function profileSlider(){
   
   $('#mobile-user-adventures').hide()
   $('#user-adventure-slider').show()
+
   if($(window).width() > 1000){
     slideCount = 3;
   }else if($(window).width() > 800){
@@ -14,6 +15,10 @@ function profileSlider(){
   
   var totalSlideCount = $('.swiper-slide').length - 3;
   $(".prev").addClass('hide');
+
+  if($('.swiper-slide').length <= 3){
+    $(".prev, .next").hide();
+  }
 
   var adventureSlider = $('.swiper-container').swiper({
     mode:'horizontal',

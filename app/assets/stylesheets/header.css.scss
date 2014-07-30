@@ -167,6 +167,21 @@
 	}
 }
 
+#locations-menu {
+	width: 600px;
+
+	li {
+		float: left;
+		width: 25%;
+		a {
+			font-size: 2em !important;
+		}
+	}
+
+	.wide {
+	}
+}
+
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 	background-color: transparent;
 }
