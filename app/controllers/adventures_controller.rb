@@ -3,34 +3,50 @@ class AdventuresController < ApplicationController
   def index
     if params[:region].present?
       region = params[:region].gsub('-',' ')
-      @adventures = Adventure.where(region: region).where(approved: true).order('created_at DESC')
-      @hero_image = HeroImage.where(region: region).last
+      get_adventures('region'.to_sym,region)
+      get_hero(region)
       @location = region.downcase
+
+    elsif params[:country]
+      country = params[:country].gsub('-',' ')
+      get_adventures('country'.to_sym,country)
+      get_hero(country)
+      @location = country.downcase
+
+    elsif params[:city]
+      city = params[:city].gsub('-',' ')
+      get_adventures('city'.to_sym,city)
+      get_hero(city)
+      @location = city.downcase
+      
     else
       @adventures = Adventure.all.where(approved: true)
       @hero_image = HeroImage.where(region: "all").first
     end
   end
 
+  def get_adventures(type, location)
+    @adventures = Adventure.where(type => location).where(approved: true).order('created_at DESC')
+  end
+
+  def get_hero(location)
+    @hero_image = HeroImage.where(region: location).last || HeroImage.where(region: 'all').last
+  end
+
   def show
     @adventure = Adventure.find_by_slug(params[:id])
-
     if @adventure.published == true && @adventure.approved == true
       adventure_show_variables
-
     elsif @adventure.users.first == current_user && @adventure.published == true
       adventure_show_variables
       flash[:notice] = "PENDING APPROVAL: We’ll notify you when it goes live"
-
     elsif @adventure.users.first == current_user && @adventure.published == nil || @adventure.published == false
       adventure_show_variables
       flash[:notice] = "PREVIEW MODE: Publish when ready"
-
     else  
       render '/error_404'
     end
   end
-
 
   def adventure_show_variables
     @current_guide = @adventure.users.first
@@ -48,7 +64,6 @@ class AdventuresController < ApplicationController
     @related = related - [@adventure]
     @reservation = Reservation.new
   end
-
 
   def filter_category
     region = params[:region].gsub('-',' ').capitalize
@@ -109,7 +124,6 @@ class AdventuresController < ApplicationController
   # info page for requesting a certain adventure
   def request_info
   end
-
 
   # Request Adventure
   def requests 

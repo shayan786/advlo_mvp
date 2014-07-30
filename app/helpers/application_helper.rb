@@ -1,5 +1,37 @@
 module ApplicationHelper
 
+  def adv_count(r)
+    Adventure.where(region: r).count
+  end
+
+  def get_cities(region)
+    all_cities = []
+    Adventure.where(region: region).each do |a|
+      all_cities << a.city
+    end
+    city_count = Hash.new 0
+    all_cities.uniq.each do |elem|
+      city_count[elem] += 1
+    end
+    city_locations = []
+    city_count.each {|l| city_locations << l if l[1] > 5 }
+    return city_locations
+  end
+
+  def get_countries(region)
+    all_countries = []
+    Adventure.where(region: region).each do |a|
+      all_countries << a.country
+    end
+    country_count = Hash.new 0
+    all_countries.uniq.each do |elem|
+      country_count[elem] += 1
+    end
+    country_locations = []
+    country_count.each {|l| country_locations << l if l[1] > 5}
+    return country_locations
+  end
+
   def flash_class(level)
     case level
       when 'notice' then "alert alert-info alert-block"
@@ -14,14 +46,7 @@ module ApplicationHelper
     return ['BIKING', 'CAMPING', 'MOTOR', 'CLIMBING', 'HIKING', 'SNOW', 'WATER', 'OTHER']
   end
 
-  # Return array to be used for MVP - Colorado Regions for scoping adventures by region
   def adv_regions
-    return ['Boulder', 'Colorado Springs', 'Denver', 'Fort Collins', 'High Rockies', 'Southern Colorado']
+    return ["North America", "Europe", "South America", "Asia", "Africa", "Central America", "Oceania"]
   end
-
-  def active_admin_adv_regions
-    return ['all', 'Boulder', 'Colorado Springs', 'Denver', 'Fort Collins', 'High Rockies', 'Southern Colorado']
-  end
-
-
 end

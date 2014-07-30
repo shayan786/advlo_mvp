@@ -16,11 +16,16 @@
           %button.btn.btn-default.navbar-btn{"data-toggle" => "dropdown", href: "#"}
             Adventures
             %b.caret
-          %ul.dropdown-menu{role: "menu"}
-            - adv_regions.each do |r|
-              - r_sub_url = r.gsub(' ','-') 
-              %li
-                = link_to r, "/adventures?region=#{r_sub_url}"
+          %ul.dropdown-menu#locations-menu{role: "menu"}
+            - ["North America", "Europe", "South America", "Asia", "Africa", "Central America", "Oceania"].each_with_index do |r, i|
+              .main-location
+                = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
+                - get_countries(r).each do |l|
+                  .sub-location=link_to l[0], "/adventures?country=#{l[0]}"
+
+                - get_cities(r).each do |l|
+                  .sub-location=link_to l[0], "/adventures?city=#{l[0]}"
+
         %li.divider
         %li.divider
         %li.divider

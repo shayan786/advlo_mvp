@@ -71,6 +71,10 @@ $(document).ready(function(){
         height: "40px"
       });
 
+      $('#locations-menu').animate({
+        top: '50px'
+      })
+
       flag = 1;
     }
     if ($(this).scrollTop() < 50 && flag == 1) {
@@ -89,6 +93,10 @@ $(document).ready(function(){
         width: "50px",
         height: "50px"
       });
+
+      $('#locations-menu').animate({
+        top: '55px'
+      })
 
       flag = 0;
     } 
