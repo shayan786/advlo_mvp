@@ -165,6 +165,15 @@
   }
 }
 
+.destination-block {
+	background: asset_url('cartographer_small.png');
+
+	.small_text {
+		text-decoration: none;
+		color: #fff;
+	}
+}
+
 @media screen and (max-width: 1335px){
 	#how_it_works .region-container .region-wrapper .region {
 		margin: 25px;

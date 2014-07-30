@@ -6,6 +6,7 @@
 	border-top: 1px solid $light_gray;
 	padding: 10px 0 5px 0;
 
+
 	.container {
 		font-size: 1.2em;
 
@@ -13,7 +14,7 @@
 
 			.dash {
 				display: inline;
-				color: #fff;
+				color: #000;
 			}
 
 			.row {
@@ -21,7 +22,7 @@
 			}
 			a {
 				text-decoration: none;
-				color: #fff;
+				color: $dark_gray;
 
 				.fa {
 					margin-right: 20px;
@@ -67,17 +68,17 @@
 		}
 
 		#contact_submitted {
-	        display: none;
-	        color: #FFF;
-	        font-size: 1.8em;
-	        margin-bottom: 20px;
+      display: none;
+      color: #FFF;
+      font-size: 1.8em;
+      margin-bottom: 20px;
 
-	        .fa {
-	          font-size: 2.2em;
-	          margin-bottom: 25px;
-	          margin-top: 25px;
-	        }
-      	}
+      .fa {
+        font-size: 2.2em;
+        margin-bottom: 25px;
+        margin-top: 25px;
+      }
+  	}
 	}
 
 

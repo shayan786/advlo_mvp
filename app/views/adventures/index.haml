@@ -11,6 +11,8 @@
     .adventure-container.index-page
       - if @adventures.first != nil
         = render partial: "adventure_index", locals: {adventures: @adventures}
+        
+
 
       - else 
         .brick-wrapper.masonry.js-masonry
@@ -21,6 +23,7 @@
       / .text-center
       /   .btn.btn-default
       /     Show More
+    #request-button
       .text-center
         .btn.btn-primary.request_btn{'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
           Request Adventure

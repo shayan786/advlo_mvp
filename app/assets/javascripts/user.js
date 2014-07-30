@@ -1,39 +1,48 @@
-function profileSlider() {
-  var totalSlideCount = $('#user-adventure-slider .swiper-slide').length - 3;
-  $(".prev").addClass('hide');
-
-  if(totalSlideCount <= 0){
-    $('.prev').hide()
-    $('.next').hide()
-  }
-
+function profileSlider(){
   var slideCount;
-  if($(window).width() > 1220){
+  
+  $('#mobile-user-adventures').hide()
+  $('#user-adventure-slider').show()
+  if($(window).width() > 1000){
     slideCount = 3;
   }else if($(window).width() > 800){
     slideCount = 2;
-  } else {
-    slideCount = 1;
+  }else{
+    $('#user-adventure-slider').hide()
+    $('#mobile-user-adventures').show()
   }
+  
+  var totalSlideCount = $('.swiper-slide').length - 3;
+  $(".prev").addClass('hide');
 
-  var profileSlider = new Swiper('.swiper-container',{
+  var adventureSlider = $('.swiper-container').swiper({
     mode:'horizontal',
     slidesPerView: slideCount,
+    keyboardControl: true,
     onSlideChangeStart: function(){
       $(".prev, .next").removeClass('hide');
-      if(profileSlider.activeIndex == 0) {
+
+      if(adventureSlider.activeIndex == 0) {
         $(".prev").addClass('hide');
       }
-      if(profileSlider.activeIndex == totalSlideCount) {
+
+      if(slideCount == 3){
+        newCount = totalSlideCount
+      }else if(slideCount == 2){
+        newCount = (totalSlideCount + 1)
+      }
+
+      if(adventureSlider.activeIndex == newCount ) {
         $(".next").addClass('hide');
       }
     }
-  });  
+  });
+
   $('#profile-next').click(function(){
-    profileSlider.swipeNext()
+    adventureSlider.swipeNext()
   })
   $('#profile-prev').click(function(){
-    profileSlider.swipePrev()
+    adventureSlider.swipePrev()
   })
 }
 
@@ -272,13 +281,13 @@ function user_adv_rating_show() {
   var rating;
   var adv_rating_show_id;
   var adv_rating_value_id;
-  var num_of_adv = $('#p_my_adventures #user-adventure-slider input').length / 2;
+  var num_of_adv = $('#p_my_adventures input').length / 2;
 
   var i = 0;
 
   for(; i < num_of_adv; i++) {
-    adv_rating_show_id = "#p_my_adventures #user-adventure-slider input#adv_rating_show_"+i;
-    adv_rating_value_id = "#p_my_adventures #user-adventure-slider input#adv_rating_value_"+i;
+    adv_rating_show_id = "#p_my_adventures input#adv_rating_show_"+i;
+    adv_rating_value_id = "#p_my_adventures input#adv_rating_value_"+i;
 
     //initialize
     $(adv_rating_show_id).rating({

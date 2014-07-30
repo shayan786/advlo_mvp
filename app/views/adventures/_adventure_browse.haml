@@ -4,29 +4,9 @@
     SIMILAR ADVENTURES
 
 .col-md-9
-  .copy-brick#similar
-    .brick-wrapper.masonry.js-masonry
-      - @related.each_with_index do |adv, i|
-        %a.adventure-brick{href: adventure_path(adv.slug)}
-          .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
-            .copy{id: "#{i}"}
-              - if adv.title.length > 38
-                .title= "#{adv.title[0..38]}..."
-              -else
-                .title= adv.title
-
-              - if adv.location
-                .location= "#{adv.city}, #{adv.state}".upcase
-
-              %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
-              %input{id: "adv_rating_show_#{i}"}
-
-            .price= "$ #{adv.price}"
-
-            .hover-block{id: i}
-              .guide-image= image_tag adv.users.first.get_avatar_url('large')
-
-            .copy-container{class: "copy-#{i}"}
+  .shared-slider-container#adventure.adventure-slider-wrapper
+    = render partial: '/adventures/adventure_slider_slides', locals: {adventures: @related}
+      
 
 
 :javascript

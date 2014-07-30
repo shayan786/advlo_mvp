@@ -46,50 +46,12 @@
 		top: 140px;
 		font-size: 2em;
 
-	}
-
-	.swiper-container {
-		width: 100%;
-		.swiper-wrapper {
-			.swiper-slide {
-			  border: 10px transparent;
-			  
-		    	.image-wrapper {
-					.copy{
-					  color: #fff;
-					  bottom: 2px;
-					  position: absolute;
-					  z-index: 100;
-					  left: 15px;
+	}	
+}
 
 
-					  #title {
-					    font-size: 20px;
-					  }
-
-					  .location {
-					  	font-size: 14px;
-					    color: #C35B26;
-					  }
-
-					  .ping {
-					    background: asset-url("location.png") no-repeat left center;
-					    height: 20px;
-					    width: 15px;
-					    background-size: 100% 100%;
-					    position: absolute;
-					  }
-					}
-
-					.rating-xs {
-						font-size: 0.6em;
-					}
-
-					.rating-disabled {
-						cursor: pointer;
-					}
-		    	}
-			}
-		}
+@media screen and (max-width: 500px){
+	#p_my_adventures .my_adv_header {
+		font-size: 2em;
 	}
 }

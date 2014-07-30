@@ -25,6 +25,7 @@ class Adventure < ActiveRecord::Base
     if geo = results.first
       obj.city    = geo.city
       obj.state   = geo.state
+      obj.country = geo.country
     end
   end
 
