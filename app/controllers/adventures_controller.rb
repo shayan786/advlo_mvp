@@ -6,6 +6,13 @@ class AdventuresController < ApplicationController
       @adventures = Adventure.where(region: region).where(approved: true).order('created_at DESC')
       @hero_image = HeroImage.where(region: region).last
       @location = region.downcase
+
+    elsif params[:city]
+      city = params[:city].gsub('-',' ')
+      @adventures = Adventure.where(city: city).where(approved: true).order('created_at DESC')
+      @hero_image = HeroImage.where(region: region).last || HeroImage.where(region: 'all').last
+      @location = city.downcase
+
     else
       @adventures = Adventure.all.where(approved: true)
       @hero_image = HeroImage.where(region: "all").first

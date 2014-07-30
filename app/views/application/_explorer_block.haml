@@ -11,7 +11,8 @@
             %a{href: "/adventures?location=#{r}"}
               .region
                 = link_to (image_tag r.attachment.url(:hero)), "/adventures?region=#{r.region.gsub(' ','-')}"
-                .region-text= r.region
+                - adv_count = Adventure.where(region: r.region).count
+                .region-text= "#{r.region} (#{adv_count})"
               
 
 

@@ -168,17 +168,47 @@
 }
 
 #locations-menu {
+	background: #000;
+	min-height: 150px;
+	font-family: 'nexa_light';
+	z-index: 1000;
 	width: 600px;
+	top: 52px;
+	font-size: 15px;
 
-	li {
+
+	.main-location {
 		float: left;
+		text-align: center;
 		width: 25%;
+		height: 40%;
+		margin-top: 2.5%;
+
 		a {
-			font-size: 2em !important;
+			border-bottom: 1px solid #fff;
+			margin-top: 10px;
+			color: #fff;
+			font-size: 1.5em;
+		}
+		a:hover {
+			text-decoration: none;
+			opacity: 0.6;
+		}
+
+		.sub-location {
+			margin-top: 5px;
+			font-size: 12px;
+
+			a {
+				border-bottom: none;
+				font-size: 1em;
+				text-decoration: none;
+			}
 		}
 	}
 
 	.wide {
+		height: 93%;
 	}
 }
 
