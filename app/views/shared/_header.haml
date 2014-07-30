@@ -19,7 +19,7 @@
           %ul.dropdown-menu#locations-menu{role: "menu"}
             - ["North America", "Europe", "South America", "Asia", "Africa", "Central America", "Oceania"].each_with_index do |r, i|
               .main-location
-                = link_to r, "/adventures?region=#{r.gsub(' ','-')}"
+                = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
                 - get_countries(r).each do |l|
                   .sub-location=link_to l[0], "/adventures?country=#{l[0]}"
 

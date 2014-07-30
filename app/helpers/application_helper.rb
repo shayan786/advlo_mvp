@@ -14,7 +14,7 @@ module ApplicationHelper
       city_count[elem] += 1
     end
     @city_locations = []
-    city_count.each {|l| @city_locations << l if l[1] > 0}
+    city_count.each {|l| @city_locations << l if l[1] > 5}
   end
 
   def get_countries(region)
@@ -27,7 +27,7 @@ module ApplicationHelper
       country_count[elem] += 1
     end
     @country_locations = []
-    country_count.each {|l| @country_locations << l if l[1] > 0}
+    country_count.each {|l| @country_locations << l if l[1] > 5}
 
   end
 
