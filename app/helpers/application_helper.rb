@@ -23,6 +23,7 @@ module ApplicationHelper
     Adventure.where(region: region).each do |a|
       all_countries << a.country
     end
+    
     country_count = Hash.new 0
     all_countries.uniq.each do |elem|
       country_count[elem] += 1
