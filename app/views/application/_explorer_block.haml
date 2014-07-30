@@ -10,8 +10,8 @@
           - @region_images.each do |r|
             %a{href: "/adventures?location=#{r}"}
               .region
-                = link_to (image_tag r.attachment.url(:hero)), "/adventures?region=#{r.region.gsub(' ','-')}"
-                - adv_count = Adventure.where(region: r.region).count
+                = link_to (image_tag r.attachment.url(:hero)), "/adventures?city=#{r.region.gsub(' ','-')}"
+                - adv_count = Adventure.where(city: r.region).count
                 .region-text= "#{r.region} (#{adv_count})"
               
 

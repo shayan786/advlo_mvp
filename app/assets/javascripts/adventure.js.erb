@@ -107,13 +107,6 @@ function navBarCatch(){
       var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
       var s = $(window).scrollTop();
 
-      // if(distanceFromBottom < 76){
-
-      // }else if(s > 107 ){
-      //   fixSidebar();
-      // }else{
-      //   resetSideBar();
-      // }
     })
   })
 }
@@ -133,22 +126,6 @@ function widthOfBrowser(){
   }else if( windowWidth > 900){
     return 175;
   }
-}
-
-function fixSidebar(){
-  $('#desktop-adventure-nav').css({
-    position: 'fixed',
-    right: '0px',
-    top: '481px'
-  })
-}
-
-function resetSideBar(){
-  $('#desktop-adventure-nav').css({
-    position: 'relative',
-    top: '0px',
-    right: '0px'
-  })
 }
 
 function sizeSidebar(){
