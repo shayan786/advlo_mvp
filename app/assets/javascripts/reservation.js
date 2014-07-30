@@ -220,3 +220,23 @@ function reservation_modals_show_hide() {
   })
 
 }
+
+function paypal_forms_control() {
+  $('#add-paypal').click(function(){
+    $('#existing-paypal').fadeToggle();
+    $('#add_paypal_form').fadeToggle();
+  });
+
+  $('#change_paypal_btn').click(function() {
+    $('#update_paypal_form').fadeToggle();
+  })
+
+  $('#update_paypal_btn').click(function() {
+    //Verify email field is not empty
+    $('#update_paypal_form').submit();
+  })
+
+  $('#add_paypal_btn').click(function() {
+    $('#add_paypal_form').submit();
+  })
+}

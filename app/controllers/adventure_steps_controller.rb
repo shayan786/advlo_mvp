@@ -158,7 +158,7 @@ class AdventureStepsController < ApplicationController
         end
       end
 
-    # Hook for bank / cc info + interaction with stripe (will only happen if recipient does not exist from view)
+    # Hook for bank + interaction with stripe (will only happen if recipient does not exist from view)
     elsif params[:bank_cc_add] == "1"
       user = User.find_by_id(params[:host_id])
 
@@ -193,6 +193,19 @@ class AdventureStepsController < ApplicationController
           format.js {render "payment.js", layout: false}
         end
       end
+    # Hook for paypal email address addition
+    elsif params[:paypal] == "1"
+      user = User.find_by_id(params[:host_id])
+      user.update(paypal_email: params[:paypal_email])
+
+      respond_to do |format|
+        if params[:paypal_update] == "1"
+          format.js {render "paypal_update.js", layout: false}
+        else
+          format.js {render "paypal.js", layout: false}
+        end
+      end
+
     # For updating the 'basic' info
     else
       @adventure.attributes = adventure_params

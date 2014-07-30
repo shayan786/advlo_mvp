@@ -800,6 +800,28 @@ function form_validator(){
         }
       }
     });
+  $('#update_paypal_form').bootstrapValidator({
+    fields: {
+      'paypal_email': {
+        validators: {
+          emailAddress: {
+            message: 'Please enter a valid email address'
+          }
+        }
+      }
+    }
+  });
+  $('#add_paypal_form').bootstrapValidator({
+    fields: {
+      'paypal_email': {
+        validators: {
+          emailAddress: {
+            message: 'Please enter a valid email address'
+          }
+        }
+      }
+    }
+  });
 }
 
 function payment_modal_validator() {
@@ -909,6 +931,25 @@ function payment_modal_validator() {
       }
     }
   });
+
+  // $('#update_paypal_form input#paypal_email').change(function() {
+  //   var email = $.trim($(this).val());
+
+  //   if (email.length > 5) {
+  //     $('#update_paypal_form #update_paypal_btn').removeClass('disabled');
+  //   }
+
+  // });
+
+  // $('#add_paypal_form input#paypal_email').change(function() {
+  //   var email = $.trim($(this).val());
+
+
+  //   if (email.length > 5) {
+  //     $('#add_paypal_form #add_paypal_btn').removeClass('disabled');
+  //   }
+
+  // });
 }
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
