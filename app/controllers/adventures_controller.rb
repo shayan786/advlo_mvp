@@ -6,27 +6,30 @@ class AdventuresController < ApplicationController
       get_adventures('region'.to_sym,region)
       get_hero(region)
       @location = region.downcase
+      @filter_location = params[:region]
 
     elsif params[:country]
       country = params[:country].gsub('-',' ')
       get_adventures('country'.to_sym,country)
       get_hero(country)
       @location = country.downcase
+      @filter_location = params[:country]
 
     elsif params[:city]
       city = params[:city].gsub('-',' ')
       get_adventures('city'.to_sym,city)
       get_hero(city)
       @location = city.downcase
+      @filter_location = params[:city]
       
     else
-      @adventures = Adventure.all.where(approved: true)
+      @adventures = Adventure.all.where(approved: true).order("rating DESC")
       @hero_image = HeroImage.where(region: "all").first
     end
   end
 
   def get_adventures(type, location)
-    @adventures = Adventure.where(type => location).where(approved: true).order('created_at DESC')
+    @adventures = Adventure.where(type => location).where(approved: true).order("created_at DESC")
   end
 
   def get_hero(location)
@@ -65,15 +68,54 @@ class AdventuresController < ApplicationController
     @reservation = Reservation.new
   end
 
-  def filter_category
-    region = params[:region].gsub('-',' ').capitalize
+  def filter
+    region_type = params[:region_type]
+    location_array = params[:region].gsub('-',' ').split(',')
+    region_one_up = params[:region_one_up].gsub('-',' ')
     category_param = params[:category].gsub(',',' ').downcase
     category_array = category_param.split('-')
     sort_by = params[:sort_by]
-    adventures_region = Adventure.where(approved: true).where(region: region)
+
+    case region_type
+    when "continent"
+      adventures_region = Adventure.where(approved: true)
+
+      location_sql_string = ''
+      location_array.each_with_index do |loc,i|
+        if (i==0)
+          location_sql_string = "region LIKE '%#{loc}%'"
+        elsif (i > 0)
+          location_sql_string = location_sql_string + " OR region LIKE '%#{loc}%'"
+        end
+      end
+
+    when "country"
+      adventures_region = Adventure.where(region: region_one_up).where(approved: true)
+
+      location_sql_string = ''
+      location_array.each_with_index do |loc,i|
+        if (i==0)
+          location_sql_string = "country LIKE '%#{loc}%'"
+        elsif (i > 0)
+          location_sql_string = location_sql_string + " OR country LIKE '%#{loc}%'"
+        end
+      end
+
+    else "city"
+      adventures_region = Adventure.where(country: region_one_up).where(approved: true)
+
+      location_sql_string = ''
+      location_array.each_with_index do |loc,i|
+        if (i==0)
+          location_sql_string = "city LIKE '%#{loc}%'"
+        elsif (i > 0)
+          location_sql_string = location_sql_string + " OR city LIKE '%#{loc}%'"
+        end
+      end
+    end
+
 
     category_sql_string = ''
-
     category_array.each_with_index do |cat,i|
       if (i==0)
         category_sql_string = "category LIKE '%#{cat}%'"
@@ -84,31 +126,43 @@ class AdventuresController < ApplicationController
     
     case sort_by
     when 'none'
-      # Apply category logic
-      if category_param == 'all'
-        @adventures = adventures_region
-      else
+      # Apply category and location logic
+      if category_param == 'all' && location_array[0] == "all"
+        @adventures = adventures_region.order("rating DESC")
+      elsif category_param == 'all' && location_array[0] != "all"
+        @adventures = adventures_region.where(location_sql_string)
+      elsif category_param != 'all' && location_array[0] == "all"
         @adventures = adventures_region.where(category_sql_string)
+      else
+        @adventures = adventures_region.where(category_sql_string).where(location_sql_string)
       end
       respond_to do |format|
         format.js {render :action => '/adventure_filter', :layout => false }
       end
     when 'price'
-      # Apply sorting and  category logic
-      if category_param == 'all'
+      # Apply sorting and category and location logic
+      if category_param == 'all' && location_array[0] == "all"
         @adventures = adventures_region.order("#{sort_by} ASC")
-      else
+      elsif category_param == 'all' && location_array[0] != "all"
+        @adventures = adventures_region.where(location_sql_string).order("#{sort_by} ASC")
+      elsif category_param != 'all' && location_array[0] == "all"
         @adventures = adventures_region.where(category_sql_string).order("#{sort_by} ASC")
+      else
+        @adventures = adventures_region.where(category_sql_string).where(location_sql_string).order("#{sort_by} ASC")
       end
       respond_to do |format|
         format.js {render :action => '/adventure_filter', :layout => false }
       end
     else
-      # Apply sorting and  category logic
-      if category_param == 'all'
+      # Apply sorting and  category and location logic
+      if category_param == 'all' && location_array[0] == "all"
         @adventures = adventures_region.order("#{sort_by} DESC")
-      else
+      elsif category_param == 'all' && location_array[0] != "all"
+        @adventures = adventures_region.where(location_sql_string).order("#{sort_by} DESC")
+      elsif category_param != 'all' && location_array[0] == "all"
         @adventures = adventures_region.where(category_sql_string).order("#{sort_by} DESC")
+      else  
+        @adventures = adventures_region.where(category_sql_string).where(location_sql_string).order("#{sort_by} DESC")
       end
       respond_to do |format|
         format.js {render :action => '/adventure_filter', :layout => false }

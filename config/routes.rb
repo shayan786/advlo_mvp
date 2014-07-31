@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   post '/adventures/requests'         => 'adventures#requests'
   post '/adventures/request_location' => 'adventures#request_location'
 
-  get '/adventures/filter',           to: 'adventures#filter_category'
+  get '/adventures/filter',           to: 'adventures#filter'
 
   resources :adventures
   resources :adventure_steps
