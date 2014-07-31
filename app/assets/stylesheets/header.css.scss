@@ -291,6 +291,7 @@
 
 	.mobile-item {
 		width: 100%;
+		float: left;
 		border: 1px solid gray;
 		border-radius: 5px;
 		text-align: center;
@@ -301,7 +302,11 @@
 		text-transform: uppercase;
 		cursor: pointer;
 	}
-	.mobile-item:hover {
+	.text {
+		margin-top: 5px;
+		position: relative;
+	}
+	.text:hover {
 		opacity: 0.4;
 	}
 
@@ -343,23 +348,31 @@
 		opacity: 0.5;
 	}
 
-	#login-div {
+	#mobile-login-form {
 		display: none;
-		#mobile-login-form {
-			text-align: center;
+		float: left;
+		position: relative;
+		width: 100%;
+		margin-top: 15px;
+		text-align: center;
 
-			#login-toggle {
-				margin-left: 0px;
-				font-family: 'cabin_bold' !important;
-				color: #000 !important;
-			}
+		.form-control{
+			margin: 0 auto;
+			width: 200px;
 		}
+
+		#login-toggle {
+			margin-left: 0px;
+			font-family: 'cabin_bold' !important;
+		}
+
 		.sign_up_link {
 			text-align: center;
 			margin: 10px;
 		}
 
 		.btn {
+			color: #fff;
 			width: 200px;
 		}
 	}
@@ -373,6 +386,6 @@
 
 @media only screen and (min-width: 767px) {
 	#mobile-navbar {
-		display: none !important;
+		display: none;
 	}
 }
