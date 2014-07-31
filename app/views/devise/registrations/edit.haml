@@ -7,11 +7,11 @@
         .col-md-6.col-md-offset-3.text-center
           .update_notice.alert.alert-warning
             = notice
-      %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_edit_form", enctype: "multipart/form-data"}
-        = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-        = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-        .panel-body
-          .col-md-6
+      .panel-body
+        .col-md-6
+          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_edit_form", enctype: "multipart/form-data"}
+            = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
             .form-group.row
               .col-md-4
                 .form_label.text-right Name
@@ -88,16 +88,25 @@
                 .form_label.text-right LinkedIn URL
               .col-md-8
                 %input.form-control{placeholder: "www.linkedin.com/in/myname", type: "text", name: "user[li_url]", id: "user_li_url", value: "#{current_user.li_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of booking"}}
-          .col-md-6.text-center
-            .row
-              - if !current_user.avatar_file_name.nil?
-                = image_tag "#{current_user.avatar.url(:profile)}", :class => "img-thumbnail img-responsive"
-              - elsif !current_user.avatar_url.nil?
-                = image_tag "#{current_user.avatar_url}?type=square&height=150&width=150", :class => "img-thumbnail img-responsive"
-              - else 
-                = image_tag 'missing.png', :class => "img-thumbnail img-responsive"
+            .text-center
+              %input.btn.btn-primary.update_btn{name: "commit", type: "submit", value: "UPDATE"}
+
+
+        .col-md-6.text-center
+          .row
+            - if !current_user.avatar_file_name.nil?
+              = image_tag "#{current_user.avatar.url(:profile)}", :class => "img-thumbnail img-responsive"
+            - elsif !current_user.avatar_url.nil?
+              = image_tag "#{current_user.avatar_url}?type=square&height=150&width=150", :class => "img-thumbnail img-responsive"
+            - else 
+              = image_tag 'missing.png', :class => "img-thumbnail img-responsive"
+          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_img_edit_form", enctype: "multipart/form-data"}
+            = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
             .row.form-group
               %input{type: "file", name: "user[avatar]", id: "user_avatar"}
+            %input{type: "submit", style: "display: none"}
+
             - if !current_user.is_guide?(current_user.id)
               .row
                 .col-md-6.col-md-offset-3
@@ -130,8 +139,6 @@
                       Your profile is complete
                   %a.btn.btn-primary.update_btn{href: "/adventures/new"}
                     HOST AN ADVENTURE
-        .panel-footer.text-center
-          %input.btn.btn-primary.update_btn{name: "commit", type: "submit", value: "UPDATE"}
 
 :javascript
   usersInit()

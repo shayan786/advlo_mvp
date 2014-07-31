@@ -1,7 +1,6 @@
 #adventure.adventure-slider-wrapper
   .container.homepage-container.text-center.headline-margin
     %h1 FEATURED ADVENTURES
-    %a.small_text{href: "/adventures"} VIEW ALL >>>
+    %a.small_text{href: "/adventures"} VIEW ALL
 
   = render partial: '/adventures/adventure_slider_slides', locals: {adventures: @feat_adventures}
-  
