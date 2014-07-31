@@ -1,6 +1,8 @@
 class Adventure < ActiveRecord::Base
   before_save :set_slug
 
+  scope :approved, -> { where(approved: true) }
+
   has_many :user_adventures
   has_many :itineraries
   has_many :events

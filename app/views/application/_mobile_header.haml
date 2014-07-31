@@ -1,0 +1,48 @@
+= link_to '/adventures/info' do
+  .mobile-item#host-mobile 
+    .text Host
+
+.mobile-item#adventures-mobile 
+  .text Adventures
+  #adventures-div
+    - ["North America", "Asia", "Latin America", "Europe", "Africa", "Oceania"].each_with_index do |r, i|
+      %a.mobile-location{href:"/adventures?region=#{r.gsub(' ','-')}"}
+        = "#{r} (#{adv_count(r)})"
+
+- if current_user
+  .mobile-item
+    %a#login-mobile{href: '/users/dashboard'} My Dashboard
+  %a#mobile-signout{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} SIGN OUT
+
+  
+- else
+  .mobile-item#login-mobile 
+    .text Login
+    
+  #login-div
+    #mobile-login-form
+      %form.sign_in_form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form", id: "sign_in_form"}
+        =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
+          Connect with Facebook
+        .form-group
+          %input.form-control{placeholder: "Email Address", type: "email", name: "user[email]", id: "user_email_login"}
+
+        .form-group
+          %input.form-control{placeholder: "Password", type: "password", autocomplete: "off", id: "user_password", name: "user[password]"}
+        %input.btn.btn-primary.sign_in_btn#login-form-submit{name: "sign_in", type: "submit", value: "Sign In"}
+        .connect_btn.btn.email_btn#login-toggle
+          Connect with Email
+    #sign_up_link
+      = link_to "SIGN UP", new_user_registration_path    
+
+
+:javascript
+  $('#adventures-mobile').click(function(){
+    $('#adventures-div').slideToggle('down');
+  })
+
+  $('#login-mobile').click(function(){
+    $('#login-div').slideToggle('down');
+  })
+
