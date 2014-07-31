@@ -61,7 +61,7 @@ class AdventureStepsController < ApplicationController
       end
 
     else
-      if current_user.stripe_recipient_id 
+      if current_user.stripe_recipient_id || current_user.paypal_email
         respond_to do |format|
           format.html {render_wizard}
           format.js {}

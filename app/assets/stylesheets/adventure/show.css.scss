@@ -451,9 +451,15 @@
     margin-left: 15%;
     margin-top: 100px;
 
-
     .modal-body {
       padding-bottom: 0px;
+    }
+
+    .no_ib_text {
+      font-size: 1.2em;
+      color: $white;
+      margin-top: 30px;
+      margin-bottom: 35px;
     }
 
     .tab_header {

@@ -38,8 +38,8 @@
             - else
               .btn.btn-success.disabled
                 Instant Reservation
-          %td= "$ #{sprintf('%.2f',res.fee)}"
-          %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.fee)}"
+          %td= "$ #{sprintf('%.2f',res.host_fee)}"
+          %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.host_fee)}"
       %thead
         %tr
           %th
@@ -48,7 +48,7 @@
           - total_head_count = @host_reservations.where(requested: false).where(processed: false).sum(:head_count)+@host_reservations.where(requested: true).where(processed: false).where("stripe_charge_id IS NOT NULL AND stripe_charge_id <> ''").sum(:head_count)
           %th.text-center= total_head_count
           %th
-          - total_fee = @host_reservations.where(requested: false).where(processed: false).sum(:fee)+@host_reservations.where(requested: true).where(processed: false).where("stripe_charge_id IS NOT NULL AND stripe_charge_id <> ''").sum(:fee)
+          - total_fee = @host_reservations.where(requested: false).where(processed: false).sum(:host_fee)+@host_reservations.where(requested: true).where(processed: false).where("stripe_charge_id IS NOT NULL AND stripe_charge_id <> ''").sum(:host_fee)
           %th= "$ #{sprintf('%.2f', total_fee)}"
           - total_amount_earned = @host_reservations.where(requested: false).where(processed: false).sum(:total_price)+@host_reservations.where(requested: true).where(processed: false).where("stripe_charge_id IS NOT NULL AND stripe_charge_id <> ''").sum(:total_price) - total_fee
           %th= "$ #{sprintf('%.2f', total_amount_earned)}"
@@ -84,16 +84,16 @@
             - else
               .btn.btn-success.disabled
                 Instant Reservation
-          %td= "$ #{sprintf('%.2f',res.fee)}"
-          %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.fee)}"
+          %td= "$ #{sprintf('%.2f',res.host_fee)}"
+          %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.host_fee)}"
       %thead
         %tr
           %th
           %th
           %th
-          %th
           %th.text-center= @host_reservations.where(processed: true).sum(:head_count)
-          - total_fee = @host_reservations.where(processed: true).sum(:fee)
+          %th
+          - total_fee = @host_reservations.where(processed: true).sum(:host_fee)
           %th= "$ #{sprintf('%.2f', total_fee)}"
           - total_amount_earned = @host_reservations.where(processed: true).sum(:total_price) - total_fee
           %th= "$ #{sprintf('%.2f', total_amount_earned)}"

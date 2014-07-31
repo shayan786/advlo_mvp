@@ -74,9 +74,16 @@
     .row
       .col-md-4
         .form_label.text-right Total Cost
-      .col-md-2
-        .reservation_cost
-          = "$ #{@adventure.price * @adventure.cap_min}"
+      .col-md-6
+        .col-md-4
+          .reservation_cost
+            - adventure_cost = @adventure.price * @adventure.cap_min
+            - adventure_user_fee = (adventure_cost * 0.04).round(2)
+            
+            = "$ #{sprintf('%.2f', adventure_cost + adventure_user_fee)}"
+        .col-md-8
+          .reservation_breakdown
+            = "($ #{sprintf('%.2f',adventure_cost)} + $ #{sprintf('%.2f', adventure_user_fee)} fees)"
 
     #book-it-wrapper
       .btn.btn-success#book-button.button Book

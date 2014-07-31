@@ -35,10 +35,15 @@ function getStripeToken(){
   $('.cap_selector').change(function() {
     var count = $(this).val();
     var price = $('#adv_price').val();
-    var cost = count*price;
+    var cost = Math.round(count*price*100/100)
+    var fees = Math.round(cost*0.04*100/100)
+    var total_cost = cost+fees;
 
     $('.reservation_cost').empty();
-    $('.reservation_cost').append("$ "+cost);
+    $('.reservation_cost').append("$ "+total_cost.toFixed(2));
+
+    $('.reservation_breakdown').empty();
+    $('.reservation_breakdown').append("($ "+cost.toFixed(2)+" + $ "+fees.toFixed(2)+" fees)");
   });
 
   $("#reservations-modal #reservation #book-button").click(function() {

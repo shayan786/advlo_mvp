@@ -155,6 +155,27 @@ class User < ActiveRecord::Base
     @user.save
   end
 
+  def payout_via_stripe?
+    user = User.find_by_id(self.id)
+
+    if user.stripe_recipient_id
+      return true
+    else
+      return false
+    end
+
+  end
+
+  def payout_via_paypal?
+    user = User.find_by_id(self.id)
+    
+    if user.paypal_email
+      return true
+    else
+      return false
+    end
+  end
+
   def to_param
     if name
       "#{id}-#{name.gsub(' ','')}"
