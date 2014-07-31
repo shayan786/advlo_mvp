@@ -46,7 +46,7 @@
                         %td.text-left= "$ #{sprintf('%.2f', payout.get_payout_fees / 100 )}"
                         %td.text-left
                           - payout.reservations.each do |r|
-                            - revenue = r.total_price - r.fee
+                            - revenue = r.total_price - r.host_fee
                             %span= "#{r.head_count} people / "+ "$ #{sprintf('%.2f',revenue)}"
                             %br
 

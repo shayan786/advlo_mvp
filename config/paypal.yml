@@ -1,4 +1,4 @@
-test: &default
+development: &default
 
   # Credentials for REST APIs
   client_id: Ae4bVRC8PlR2wdsjYgNCUGDPeV94y7CRTmar6oHUPM_-XkPsxaOsQgJ-dq_r
@@ -21,7 +21,7 @@ test: &default
   # # HTTP Proxy
   # http_proxy: http://proxy-ipaddress:3129/
 
-development:
+test:
   <<: *default
 
 production:
