@@ -91,8 +91,8 @@
           %th
           %th
           %th
-          %th
           %th.text-center= @host_reservations.where(processed: true).sum(:head_count)
+          %th
           - total_fee = @host_reservations.where(processed: true).sum(:host_fee)
           %th= "$ #{sprintf('%.2f', total_fee)}"
           - total_amount_earned = @host_reservations.where(processed: true).sum(:total_price) - total_fee
