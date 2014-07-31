@@ -16,10 +16,10 @@
   %ul.dropdown-menu.right-side.logged_in_dropdown_menu{role: "menu"}
     %li
       %a{href: "/users/dashboard"} 
-        %i.fa.fa-user
+        %i.fa.fa-user{style: 'float: left; margin-right: 10px;'}
         .text My Dashboard
     
     %li
       %a{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} 
-        %i.fa.fa-sign-out
+        %i.fa.fa-sign-out{style: 'float: left; margin-right: 10px;'}
         Sign Out

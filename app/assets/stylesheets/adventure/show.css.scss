@@ -86,28 +86,29 @@
         color: $advlo_green;
       }
 
-      #book-it {
-        cursor: pointer;
-        width: 80%;
-        margin: 0 auto;
-        padding-top: 10px;
-        padding-bottom: 5px;
-        margin-top: 5px;
-        span {
-          color: #fff;
-          font-size: 25px;
-          position: relative;
-          top: -1px;
-          margin-right: 10px;
-          margin-left: 10px;
-        }
-      }
+    }
+  }
+
+  #book-it {
+    cursor: pointer;
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    span {
+      color: #fff;
+      font-size: 25px;
+      position: relative;
+      top: -1px;
+      margin-right: 10px;
+      margin-left: 10px;
     }
   }
 
   #adventure-title-mobile {
-    color: #fff;
-    margin: 20px;
+    color: $advlo_orange;
     font-size: 30px;
   }
 
@@ -271,30 +272,26 @@
           
         }
 
+        .guide-profile-image {
+          width: 300px;
+          height: 300px;
+          margin: 0 auto;
+          overflow: hidden;
+          border-radius: 50%;
+        }
+
         .adventure-block {
-          padding-left: 0px;
-          padding-right: 0px;
+          position: relative;
+          float: left;
+          width: 100%;
+          margin-top: 25px;
+          margin-bottom: 20px;
 
           #adventure-price{
             font-size: 45px;
             color: $advlo_green;
             font-family: 'nexa_light';
             margin-top: -10px;
-          }
-          #book-it {
-            cursor: pointer;
-            width: 100%;
-            margin: 0 auto;
-            height: 41px;
-            background: #c35b26;
-            text-align: center;
-          
-            span {
-              color: #fff;
-              font-size: 25px;
-              position: relative;
-              top: 3px;
-            }
           }
         }
       }
@@ -543,7 +540,17 @@
   margin: 0 auto;
 }
 
+#desktop-adventure-nav {
+  position: fixed;
+  right: 0px;
+  top: 481px;
+}
+
 @media screen and (max-width: 991px){
+
+  .adventure-show-container .adventure-copy-wrapper .title-brick .brick-title {
+    text-align: center;
+  }
   
   .adventure-show-container .adventure-copy-wrapper #mobile-adventure-infographic .navigation-brick {
     opacity: 1.0;
