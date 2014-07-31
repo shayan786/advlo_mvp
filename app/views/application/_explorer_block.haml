@@ -7,12 +7,13 @@
     .container
       .region-container
         .region-wrapper
-          - @region_images.each do |r|
-            %a{href: "/adventures?location=#{r}"}
+          - @regions.each do |r|
+            %a{href: "/adventures?location=#{r[0]}"}
               .region
-                = link_to (image_tag r.attachment.url(:hero)), "/adventures?city=#{r.region.gsub(' ','-')}"
-                - adv_count = Adventure.where(city: r.region).count
-                .region-text= "#{r.region} (#{adv_count})"
+                - hero_image = HeroImage.find_by_region(r[0]) ? HeroImage.find_by_region(r[0]).attachment.url(:hero) : HeroImage.last.attachment.url(:hero)
+                = link_to (image_tag hero_image), "/adventures?city=#{r[0].gsub(' ','-')}"
+                - adv_count = Adventure.where(city: r[0]).count
+                .region-text= "#{r[0]} (#{adv_count})"
               
 
 

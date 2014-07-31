@@ -51,21 +51,22 @@ class ApplicationController < ActionController::Base
     @feat_adventures = Adventure.where(approved: true).order('created_at DESC').limit(6)
     @feat_hosts = User.where(is_guide: true).limit(6)
 
-    @region_images = []
-    ['Boulder', 'Colorado Springs', 'Denver', 'Fort Collins', 'High Rockies', 'Southern Colorado'].each do |r|
-      @region_images << HeroImage.find_by_region(r)
+    all_cities = []
+  
+    region_count = Hash.new 0
+    Adventure.all.each do |a|
+      all_cities << a.city
     end
-
-    # we should map the ip of each user ( logged in or not ) 
-    # offer local adventures for each person
-    # user.current_location = request.location.city
+    all_cities.each do |elem|    
+      region_count[elem] += 1
+    end
+    
+    @regions = region_count.sort_by {|key, value| key}.take(6)
   end
 
   def contact
     @contact = ContactAdvlo.create!(contact_params)
 
-    # Mail the requester
-    # AdvloMailer.delay.contact_email(@contact)
     AdvloMailer.contact_email(@contact).deliver
 
     if @contact.save
