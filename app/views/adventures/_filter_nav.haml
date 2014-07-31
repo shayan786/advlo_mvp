@@ -72,6 +72,12 @@
               = cat.downcase.capitalize
   
 :javascript
+  var current_location_scope = "#{params[:city]}"
+  //Condition to not show the location filter choice if its on the lowest location filter (i.e. city)
+  if (current_location_scope) {
+    $('#filter_nav #location_heading').hide();
+    $('#filter_nav #location_body').hide();
+  }
 
   // TOGGLES
   $('#filter_nav_mobile_toggle').click(function(){
