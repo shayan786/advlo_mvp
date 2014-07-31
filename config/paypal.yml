@@ -9,9 +9,9 @@ test: &default
 
   # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
-  username: paypal@advlo.com
-  password: jiminy_Cricket
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+  username: paypal-facilitator_api1.advlo.com
+  password: 1406696201
+  signature: Ajq945eIQKTFUi-1GcDAbFM3-JWsAqgpz7pcOoeTpCsskTsvcckjmzPS
   # # With Certificate
   # cert_path: "config/cert_key.pem"
   sandbox_email_address: paypal-facilitator@advlo.com

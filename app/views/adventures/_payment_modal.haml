@@ -2,7 +2,16 @@
   .modal-dialog
     .modal-content
       .modal-body
-        - unless @all_adventure_events.empty?
+        - if @all_adventure_events.empty?
+          .text-center
+            %em.tab_header
+              Instant Reservations
+            .no_ib_text
+              There are no instant reservations for this adventure. 
+              %br
+              Try requesting one!
+
+        - else
           %ul.nav.nav-tabs.nav-justified{role: "tablist"}
             %li.active
               %a{"data-toggle" => "tab", href: ".upcoming", role: "tab"} UPCOMING
@@ -25,6 +34,7 @@
               - @all_adventure_events.each do |event| 
                 = render partial: 'event_partial', locals: {event: event}
 
+                
       .modal-footer
         .row.text-center
           %em.tab_header

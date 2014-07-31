@@ -3,15 +3,20 @@ class ReservationsController < ApplicationController
 	def create
     @reservation = Reservation.create!(reservation_params)
 
-    # Stripe only takes price as cents ... convert to cents
-    total_price_cents = @reservation.total_price*100
     adventure = Adventure.find(params[:adventure_id])
     user = User.find_by_id(params[:user_id])
 
-    # Caculate fee associated with that reservation
-    # Currently fee = 15% (Add tier stuff here for future)
-    fee = (@reservation.total_price * 0.15).round(2)
-    @reservation.update(fee: fee)
+    # Calculate fee associated with that reservation
+    # Currently fee structure
+    # From Host = 15%
+    # From Traveler = 4%
+
+    host_fee = (@reservation.total_price * 0.15).round(2)
+    user_fee = (@reservation.total_price * 0.04).round(2)
+    @reservation.update(host_fee: host_fee, user_fee: user_fee)
+
+    # Stripe only takes price as cents ... convert to cents
+    total_price_cents = ((@reservation.total_price+@reservation.user_fee)*100).round(0)
 
     event = Event.find_by_id(params[:event_id])
     new_capacity = event.capacity.to_i - params[:reservation][:head_count].to_i
@@ -23,11 +28,6 @@ class ReservationsController < ApplicationController
 
     if user.stripe_customer_id 
 
-      Stripe::Charge.create(
-        :amount => total_price_cents,
-        :currency => "usd",
-        :customer => user.stripe_customer_id
-      )
       create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
       
     # Otherwise create a new stripe customer and get stripe information
@@ -55,22 +55,9 @@ class ReservationsController < ApplicationController
         format.js {render action: 'create.js', layout: false}
       end
     else
-      flash[:notice] = "NOOOOO"
+      flash[:notice] = "Something went wrong!"
     end
 
-  # Stripe processing errors
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-	end
-
-
-  def create_stripe_charge(amount, customer_id, description)
-    Stripe::Charge.create(
-      :amount => amount,
-      :currency => "usd",
-      :customer => customer_id,
-      :description => description
-    )
   end
 
   def request_time
@@ -128,19 +115,23 @@ class ReservationsController < ApplicationController
     user = User.find_by_id(@reservation.user_id)
     adventure = Adventure.find_by_id(@reservation.adventure_id)
 
-    # Convert to cents for Stripe
-    total_price_cents = @reservation.total_price*100;
+    # Calculate fee associated with that reservation
+    # Currently fee structure
+    # From Host = 15%
+    # From Traveler = 4%
+
+    host_fee = (@reservation.total_price * 0.15).round(2)
+    user_fee = (@reservation.total_price * 0.04).round(2)
+    @reservation.update(host_fee: host_fee, user_fee: user_fee)
+
+    # Stripe only takes price as cents ... convert to cents
+    total_price_cents = ((@reservation.total_price+@reservation.user_fee)*100).round(0)
 
     if params[:approve] == "true"
       @reservation.update(requested: true)
 
       # Charge the user
-      stripe_charge = Stripe::Charge.create(
-        :amount => total_price_cents,
-        :currency => "usd",
-        :customer => user.stripe_customer_id,
-        :description => adventure.title
-      )
+      create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
 
       @reservation.stripe_charge_id = stripe_charge.id
       @reservation.stripe_customer_id = user.stripe_customer_id
@@ -166,9 +157,19 @@ class ReservationsController < ApplicationController
     end
 	end
 
-	def delete
+  def create_stripe_charge(amount, customer_id, description)
+    Stripe::Charge.create(
+      :amount => amount,
+      :currency => "usd",
+      :customer => customer_id,
+      :description => description
+    )
 
-	end
+  # Stripe processing errors
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+  end
+
 
   private
 
