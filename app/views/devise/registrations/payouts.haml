@@ -32,7 +32,7 @@
                         %tr
                           %th Payout date
                           %th Status
-                          %th Reservations on payout
+                          %th Adventures on payout
                           %th Payout Fees
                           %th Revenue per Adventure
                       %tbody
@@ -43,7 +43,10 @@
                           - payout.reservations.each do |r|
                             %span= r.adventure.title
                             %br
-                        %td.text-left= "$ #{sprintf('%.2f', payout.get_payout_fees / 100 )}"
+                        %td.text-left
+                          - payout.reservations.each do |r|
+                            %span= "$ #{sprintf('%.2f',r.host_fee)}"
+                            %br
                         %td.text-left
                           - payout.reservations.each do |r|
                             - revenue = r.total_price - r.host_fee
@@ -55,7 +58,6 @@
                           %th
                           %th
                           %th
-                          %th
-                          - payout_amount = payout.amount - payout.get_payout_fees
-                          %th= "$ #{sprintf('%.2f',payout_amount/100)}"
+                          %th= "$ #{sprintf('%.2f', payout.reservations.sum(:host_fee))}"
+                          %th= "$ #{sprintf('%.2f',payout.amount)}"
                   

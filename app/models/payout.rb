@@ -10,7 +10,6 @@ class Payout < ActiveRecord::Base
     # unprocessed_reservations.where 48 hours has passed the completion date
     reservations = unprocessed_reservations.where("event_start_time < ?", DateTime.now+2)
     payout_amount = (reservations.sum(:total_price) - reservations.sum(:host_fee)).round(2)
-    
 
     begin 
       # ---------------------- STRIPE PAYOUTS ------------------------
@@ -44,14 +43,7 @@ class Payout < ActiveRecord::Base
     
       # -------------------- PAYPAL PAYOUTS --------------------------
       elsif payout_user.payout_via_paypal?
-        @api = Paypal::SDK::Merchant::API.new
-
-        @payout = Payout.create!(
-          payout_via: 'paypal',
-          status: 'initiated',
-          user_id: payout_user.id,
-          amount: payout_amount
-        )
+        @api = PayPal::SDK::Merchant::API.new
 
         # Build mass payout object and call paypal merchant api
         @mass_pay = @api.build_mass_pay({
@@ -60,15 +52,30 @@ class Payout < ActiveRecord::Base
             :ReceiverEmail => payout_user.paypal_email,
             :Amount => {
               :currencyID => "USD",
-              :value => payout_amount
+              :value => "#{sprintf('%.2f',payout_amount)}"
             }
           }]
         })
 
         @mass_pay_response = @api.mass_pay(@mass_pay)
 
-        if !@mass_pay_response.success?
-          flash[:error] = @mass_pay_response.Errors
+        if @mass_pay_response.success?
+          @payout = Payout.create!(
+            payout_via: 'paypal',
+            user_id: payout_user.id,
+            amount: payout_amount
+          )
+
+          @payout.status = @mass_pay_response.Ack
+          @payout.save
+
+          reservations.each do |reservation|
+            reservation.processed = true
+            reservation.payout_id = @payout.id
+            reservation.save
+          end
+        else
+          puts @mass_pay_response.Errors[0].LongMessage
         end
 
       end
@@ -76,14 +83,6 @@ class Payout < ActiveRecord::Base
     rescue Stripe::CardError => e
       flash[:error] = e.message
     end
-  end
-
-  def get_payout_fees
-    @payout = Payout.find_by_id(self.id)
-
-    fee = @payout.amount * 0.15
-
-    return fee.round(2)
   end
 
 end
