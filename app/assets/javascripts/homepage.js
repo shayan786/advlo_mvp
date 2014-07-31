@@ -49,16 +49,28 @@ function homepageTextScroll(){
 function headerLoginToggle(){
   $('#user_email_login').hide()
   $('#user_password').hide()
-  $('#login-form-submit').hide()
-
-
+  $('.login-form-submit').hide()
   $('#login-toggle').click(function(e){
     e.preventDefault()
     $('.fb_btn').css('margin-bottom','15px')
     $('#login-toggle').hide()
     $('#user_email_login').fadeIn()
     $('#user_password').fadeIn()
-    $('#login-form-submit').fadeIn()
+    $('.login-form-submit').fadeIn()
+  })
+}
+
+function mobileHeaderLoginToggle(){
+  $('#mobile_user_email_login').hide()
+  $('#mobile_user_password').hide()
+  $('#mobile-login-form-submit').hide()
+  $('#mobile-login-toggle').click(function(e){
+    e.preventDefault()
+    $('.fb_btn').css('margin-bottom','15px')
+    $('#mobile-login-toggle').hide()
+    $('#mobile_user_email_login').fadeIn()
+    $('#mobile_user_password').fadeIn()
+    $('#mobile-login-form-submit').fadeIn()
   })
 }
 

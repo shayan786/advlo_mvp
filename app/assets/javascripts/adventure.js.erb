@@ -1,3 +1,22 @@
+function resizeAdventureShowImage(){
+  if($(window).width() > 991){
+    $('#main_image').css({
+      height: $(window).height()*0.83
+    });
+  }else if ($(window).width() > 700){
+    $('#main_image').css({
+      height: 500
+    });
+  } else if ($(window).width() > 600){
+    $('#main_image').css({
+      height: 400
+    });
+  } else {
+    $('#main_image').css({
+      height: 300
+    });
+  }
+}
 
 function positionLocationText(){
   $(document).ready(function(){
@@ -15,8 +34,22 @@ function heroScroll(){
     var s = $(window).scrollTop();
     hero.css('-webkit-transform','translateY(' + (s/2) + 'px');
     heroFont.css('-webkit-transform','translateY(' + (s/2) + 'px');
+
+    if(s > 300 && !heroFont.hasClass('passed')){
+      heroFont.animate({
+        opacity: 0
+      },300)
+      heroFont.addClass('passed')
+    }
+    if(s < 200 && heroFont.hasClass('passed')){
+      heroFont.animate({
+        opacity: 1
+      },1000)
+      heroFont.removeClass('passed')
+    }  
   })
 }
+
 function adventureScroll(){
   var hero = $('#main_image');
   $(window).scroll(function(){
@@ -58,43 +91,6 @@ function masonrySetup(){
     itemSelector: '.adventure-brick'
   })
 }
-
-function stopSidebarAtBottom(){
-  $(window).scroll(function(){
-    var scrollPosition = window.pageYOffset;
-    var windowSize     = window.innerHeight;
-    var bodyHeight     = document.body.offsetHeight;
-
-    var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
-    if(distanceFromBottom < 76){
-      $('.adventure-show-container #desktop-adventure-nav').css({
-        top: 'auto',
-        position: 'absolute',
-        right: '0px',
-        bottom: '45px'
-      })
-      $('.adventure-show-container .adventure-show-infographic').css({
-        position: 'absolute',
-        bottom: '205px',
-        top: 'auto'
-      })
-    }else{
-      $('.adventure-show-container #desktop-adventure-nav').css({
-        top: 'auto',
-        position: 'fixed',
-        bottom: '45px',
-        top: '481px',
-        right: '0px'
-      })
-      $('.adventure-show-container .adventure-show-infographic').css({
-        position: 'fixed',
-        bottom: 'auto',
-        top: '101px'
-      })
-    }
-  })
-}
-
 
 function navBarCatch(){
   $(window).load(function(){
@@ -1042,7 +1038,6 @@ FSInitialize = function(adventure_id) {
   });
 }
 
-
 adventureSchedule = function(adventure_id) {
   FSInitialize(adventure_id);
 }
@@ -1056,7 +1051,6 @@ adventureShow = function() {
   navigationBreadcrumbs();
   adventureScroll();
   centerGuideImage();
-  // stopSidebarAtBottom();
   toggleItineraryItemsAndArrows()
   adventureShowHover();
   payment_modal_validator();

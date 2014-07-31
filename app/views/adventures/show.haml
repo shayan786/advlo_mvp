@@ -53,15 +53,15 @@
       .col-md-12#mobile-adventure-infographic.text-center
         .navigation-brick
           .guide-block
+            #adventure-title-mobile
+              = @adventure.title
             .guide-name
               = @current_guide.name
             
-            .guide-profile-image= image_tag @current_guide.get_avatar_url('large')
+            .guide-profile-image= link_to (image_tag @current_guide.get_avatar_url('large')), user_path(@current_guide)
               
 
             .adventure-block.col-sm-12.text-center
-              #adventure-title-mobile
-                = @adventure.title
               #adventure-price
                 = "$ #{@adventure.price}"
               -if !@adventure.approved || @current_guide == current_user
@@ -122,13 +122,9 @@
   getStripeToken_request();
   reservation_request_prefill();
   reservation_modals_show_hide();
+  resizeAdventureShowImage();
 
   $(window).resize(function(){
     sizeSidebar();
+    resizeAdventureShowImage();
   })
-
-  $('#main_image').css({
-    height: $(window).height()*0.83
-  });
-
-  

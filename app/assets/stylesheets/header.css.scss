@@ -361,7 +361,7 @@
 			width: 200px;
 		}
 
-		#login-toggle {
+		#mobile-login-toggle {
 			margin-left: 0px;
 			font-family: 'cabin_bold' !important;
 		}
@@ -386,6 +386,6 @@
 
 @media only screen and (min-width: 767px) {
 	#mobile-navbar {
-		display: none;
+		display: none !important;
 	}
 }
