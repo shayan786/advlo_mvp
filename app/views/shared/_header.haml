@@ -3,12 +3,16 @@
   .container-fluid
     / Brand and toggle get grouped for better mobile display
     .navbar-header
-      %button.navbar-toggle{"data-target" => "#header-navbar", "data-toggle" => "collapse", type: "button"}
+      %button.navbar-toggle#mobile-toggle-button{type: "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{href: "/"}
+
+    #mobile-navbar
+      = render partial: 'mobile_header'
+
     / Collect the nav links, forms, and other content for toggling
     #header-navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right.login-right
@@ -17,7 +21,7 @@
             Adventures
             %b.caret
           %ul.dropdown-menu#locations-menu{role: "menu"}
-            - ["North America", "Europe", "South America", "Asia", "Africa", "Central America", "Oceania"].each_with_index do |r, i|
+            - ["North America", "Asia", "Latin America", "Europe", "Africa", "Oceania"].each_with_index do |r, i|
               .main-location
                 = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
                 - get_countries(r).each do |l|
@@ -26,77 +30,29 @@
                 - get_cities(r).each do |l|
                   .sub-location=link_to l[0], "/adventures?city=#{l[0]}"
 
-        %li.divider
-        %li.divider
-        %li.divider
-        %li.divider
+        
         %li
           %form
             %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
               Host
-        %li.divider
-        %li.divider
-        %li.divider
-        %li.divider
+        
         - if current_user
-          %li.dropdown
-            %a.logged_in_dropdown_box{href: "#", "data-toggle" => "dropdown", type: 'button'}
-              - if current_user.avatar.exists?
-                = image_tag "#{current_user.avatar.url(:thumb)}", :class => "img-circle up_profile_img"
-              - elsif current_user.avatar_url
-                = image_tag "#{current_user.avatar_url}", :class => "img-circle fb_profile_img"
-              - else 
-                = image_tag 'missing.png', :class => "img-circle miss_profile_img"
+          = render partial: 'logged_in_dropdown'
 
-              - if current_user.name.nil? || current_user.name.empty?
-                = current_user.email
-              - else 
-                = current_user.name
-              %b.caret
-            %ul.dropdown-menu.right-side.logged_in_dropdown_menu{role: "menu"}
-              %li
-                %a{href: "/users/dashboard"} 
-                  .col-md-1{style: "margin-left: -15px; margin-right: 10px;"}
-                    %i.fa.fa-user
-                  .col-md-3 
-                    My Dashboard
-              / %li
-              /   %a{href: "#"} 
-              /     .col-md-1{style: "margin-left: -15px; margin-right: 10px;"}
-              /       %i.fa.fa-envelope-o
-              /     .col-md-3
-              /       My Messages
-              %li
-                %a{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} 
-                  .col-md-1{style: "margin-left: -15px; margin-right: 10px;"}
-                    %i.fa.fa-sign-out
-                  .col-md-3
-                    Sign Out
         - else
-          %li.dropdown
-            %button.btn.btn-primary.navbar-btn{"data-toggle" => "dropdown", href: "#", style: "margin-right: 10px;"}
-              LOGIN
-              %b.caret
-            %ul.dropdown-menu{role: "menu"}
-              %li
-                %form.sign_in_form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form", id: "sign_in_form"}
-                  =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-                  %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
-                    %i.fa.fa-facebook
-                    Connect with Facebook
-                  .form-group
-                    %input.form-control{placeholder: "Email Address", type: "email", name: "user[email]", id: "user_email_login"}
-                  .form-group
-                    %input.form-control{placeholder: "Password", type: "password", autocomplete: "off", id: "user_password", name: "user[password]"}
-                  %input.btn.btn-primary.sign_in_btn#login-form-submit{name: "sign_in", type: "submit", value: "Sign In"}
-                  .connect_btn.btn.email_btn#login-toggle
-                    %i.fa.fa-envelope-o
-                    Connect with Email
+          = render partial: 'logged_out_dropdown'
 
 
-              %li.sign_up_link
-                = link_to "New to Advlo? Sign Up", new_user_registration_path
-          %li.divider
-          %li.divider
-          %li.divider
-          %li.divider
+:javascript
+  $('#mobile-toggle-button').click(function(){
+    $('#mobile-navbar').slideToggle('down')
+  })
+
+  $('#adventures-mobile').click(function(){
+    $('#adventures-div').slideToggle('down');
+  })
+
+  $('#login-mobile').click(function(){
+    $('#mobile-login-form').slideToggle('slow');
+  })
+

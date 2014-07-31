@@ -15,7 +15,7 @@ module ApplicationHelper
       city_count[elem] += 1
     end
     city_locations = []
-    city_count.each {|l| city_locations << l if l[1] > 5 }
+    city_count.each {|l| city_locations << l if l[1] >  1}
     return city_locations
   end
 
@@ -30,7 +30,7 @@ module ApplicationHelper
       country_count[elem] += 1
     end
     country_locations = []
-    country_count.each {|l| country_locations << l if l[1] >55}
+    country_count.each {|l| country_locations << l if l[1] > 1}
     return country_locations
   end
 
@@ -49,6 +49,6 @@ module ApplicationHelper
   end
 
   def adv_regions
-    return ["North America", "Europe", "South America", "Asia", "Africa", "Central America", "Oceania"]
+    return ["North America", "Europe", "Latin America", "Asia", "Africa", "Oceania"]
   end
 end

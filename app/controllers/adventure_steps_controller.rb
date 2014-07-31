@@ -406,7 +406,7 @@ class AdventureStepsController < ApplicationController
         "UA",
         "GB"
       ],
-      "Central America" => [
+      "Latin America" => [
         "MX",
         "BB",
         "BZ",
@@ -449,7 +449,7 @@ class AdventureStepsController < ApplicationController
         "CA",
         "GL"
       ],
-      "South America" => [
+      "Latin America" => [
         "AR",
         "BO",
         "BR",

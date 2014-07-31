@@ -23,13 +23,13 @@ class AdventuresController < ApplicationController
       @filter_location = params[:city]
       
     else
-      @adventures = Adventure.all.where(approved: true).order("rating DESC")
+      @adventures = Adventure.all.approved
       @hero_image = HeroImage.where(region: "all").first
     end
   end
 
   def get_adventures(type, location)
-    @adventures = Adventure.where(type => location).where(approved: true).order("created_at DESC")
+    @adventures = Adventure.where(type => location).approved.order('created_at DESC')
   end
 
   def get_hero(location)
@@ -61,9 +61,9 @@ class AdventuresController < ApplicationController
     @limited_adventure_events = @adventure.events.where("capacity > 0 AND start_time > ?", Time.now.advance(days: +1)).sort_by{|a| a.start_time}.take(5)
 
     related = []
-    related << Adventure.where('category LIKE ?',"%#{@adventure.category}%").limit(1) 
+    related << Adventure.approved.where('category LIKE ?',"%#{@adventure.category}%").limit(1) 
     related << @adventure.nearbys(20).limit(2) if @adventure.nearbys(20)
-    related = related.flatten
+    related = related.flatten.uniq
     @related = related - [@adventure]
     @reservation = Reservation.new
   end
