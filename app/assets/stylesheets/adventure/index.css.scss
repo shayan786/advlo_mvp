@@ -452,8 +452,14 @@
 
 }
 
-#fiter_nav_mobile_toggle {
+#filter_nav_mobile_toggle {
   display: none;
+}
+
+@media screen and (min-width: 768px){ 
+  #filter_nav {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 767px){
@@ -473,7 +479,8 @@
   #filter_nav {
     display: none;
   }
-  #fiter_nav_mobile_toggle {
+
+  #filter_nav_mobile_toggle {
     margin-bottom: 30px !important;
     display: block;
     width: 300px !important;
