@@ -9,9 +9,9 @@ module ApplicationHelper
     Adventure.where(region: region).each do |a|
       all_cities << a.city
     end
-    
+
     city_count = Hash.new 0
-    all_cities.uniq.each do |elem|
+    all_cities.each do |elem|
       city_count[elem] += 1
     end
     city_locations = []
@@ -26,11 +26,11 @@ module ApplicationHelper
     end
     
     country_count = Hash.new 0
-    all_countries.uniq.each do |elem|
+    all_countries.each do |elem|
       country_count[elem] += 1
     end
     country_locations = []
-    country_count.each {|l| country_locations << l if l[1] > 5}
+    country_count.each {|l| country_locations << l if l[1] >55}
     return country_locations
   end
 
