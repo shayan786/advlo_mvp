@@ -33,12 +33,12 @@ class ApplicationController < ActionController::Base
     if request.path == '/admin/login' 
       return
     end
-    puts "session[:previous_url] => #{session[:previous_url]}"
+    # puts "session[:previous_url] => #{session[:previous_url]}"
     session[:previous_url] || '/users/edit'
   end
 
   def after_sign_out_path_for(resource)
-    puts "session[:previous_url] => #{session[:previous_url]}"
+    # puts "session[:previous_url] => #{session[:previous_url]}"
     if session[:previous_url] == '/users/edit'
       root_url
     else
@@ -52,7 +52,6 @@ class ApplicationController < ActionController::Base
     @feat_hosts = User.where(is_guide: true).limit(6)
 
     all_cities = []
-  
     region_count = Hash.new 0
     Adventure.all.each do |a|
       all_cities << a.city
@@ -60,7 +59,6 @@ class ApplicationController < ActionController::Base
     all_cities.each do |elem|    
       region_count[elem] += 1
     end
-    
     @regions = region_count.sort_by {|key, value| key}.take(6)
   end
 

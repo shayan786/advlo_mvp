@@ -9,6 +9,7 @@ module ApplicationHelper
     Adventure.where(region: region).each do |a|
       all_cities << a.city
     end
+    
     city_count = Hash.new 0
     all_cities.uniq.each do |elem|
       city_count[elem] += 1
