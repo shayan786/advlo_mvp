@@ -10,32 +10,240 @@
             Price
           %li{id: "rating", "data-sort_by"=>"rating"}
             Rating
-      .panel-heading
+
+      - # SHOW LOCATION FILTER BASED ON INDEX VIEW
+      .panel-heading{id: "location_heading"}
+        Location:
+      .panel-body{id: "location_body", style: "display: none"}
+        %ul.nav.nav-pills.nav-stacked.location_ul
+          - if params[:region].present?
+            %li.active{id: "location_all", "data-location"=>"", "data-location-type"=>"country"}
+              %i.fa.fa-check{style: "margin-right: 10px;"}
+              ALL
+
+            - countries = []
+            - @adventures.each do |adv|
+              - countries << adv.country
+
+            - countries.uniq.each do |c|
+              - c = c.gsub(' ','-')
+              %li{id: "location_#{c.downcase}", "data-location"=>"#{c}"}
+                = c.gsub('-',' ')
+
+          - elsif params[:country].present?
+            %li.active{id: "location_all", "data-location"=>"", "data-location-type"=>"city"}
+              %i.fa.fa-check{style: "margin-right: 10px;"}
+              ALL
+
+            - cities = []
+            - @adventures.each do |adv|
+              - cities << adv.city
+
+            - cities.uniq.each do |c|
+              - c = c.gsub(' ','-')
+              %li{id: "location_#{c.downcase}", "data-location"=>"#{c}"}
+                = c.gsub('-',' ')
+
+          - else  
+            %li.active{id: "location_all", "data-location"=>"", "data-location-type"=>"continent"}
+              %i.fa.fa-check{style: "margin-right: 10px;"}
+              ALL
+            - adv_regions.each do |r|
+              - if @adventures.where(region: r).count > 0
+                %li{id: "location_all", "data-location"=>"#{r}"}
+                  = r
+
+
+      .panel-heading{id: "cat_heading"}
         Category:
-      .panel-body
+      .panel-body{id: "cat_body", style: "display: none"}
         %ul.nav.nav-pills.nav-stacked.cat_ul
           %li.active{id: "cat_all", "data-category"=>"all"}
             %i.fa.fa-check{style: "margin-right: 10px;"}
             ALL
-          - adv_categories.each do |cat|
+
+          - categories = []
+          - @adventures.each do |adv|
+            - ind_adv_categories = adv.category.split(',')  
+            - categories += ind_adv_categories
+
+          - categories.uniq.each do |cat|
             %li{id: "cat_#{cat.downcase}", "data-category"=>cat}
               = cat.downcase.capitalize
   
 :javascript
-  // SORT BY
 
+  // TOGGLES
   $('#fiter_nav_mobile_toggle').click(function(){
     $('#filter_nav').slideToggle()
   })
-  
 
+  $('#filter_nav #location_heading').click(function() {
+    $('#filter_nav #location_body').slideToggle();
+  })
+
+  $('#filter_nav #cat_heading').click(function() {
+    $('#filter_nav #cat_body').slideToggle();
+  })
+  
+  // SORT BY
   $('#filter_nav ul.sort_by_ul li').click(function(e) {
 
-    var tempScrollTop = $(window).scrollTop();
-
-    var region = "#{@location}";
+    var region_type = $('#filter_nav ul.location_ul li#location_all').data('location-type');
+    var region = "all";
+    var region_one_up = "#{@filter_location}";
     var sort_by = $(this).data('sort_by');
     var categories = '';
+
+    //Get all active categories
+    var cat_array = $('#filter_nav ul.cat_ul li').map(function(i,e){
+      if ($(this).hasClass('active')){
+        return $(e).data('category');
+      }
+    });
+
+    // Convert to js array
+    cat_array = $.makeArray(cat_array);
+
+    // Check to see if there are no categories selected
+    if (cat_array.length > 0) {
+      //Loop through the array and get each href attr
+      for (var i in cat_array){
+        if (i==0) {
+          categories = cat_array[i];
+        }
+        else if (i > 0){
+          categories = categories + '-' + cat_array[i];
+        }
+      }
+    }
+    else {
+      categories = "all";
+    }
+
+    //Get all active locations
+    var location_array = $('#filter_nav ul.location_ul li').map(function(i,e){
+      if ($(this).hasClass('active')){
+        return $(e).data('location');
+      }
+    });
+
+    // Convert to js array
+    location_array = $.makeArray(location_array);
+
+    // Check to see if there are no categories selected
+    if (location_array.length > 0) {
+      //Loop through the array and convert to string for request
+      for (var i in location_array){
+        if (i==0) {
+          region = location_array[i];
+        }
+        else if (i > 0){
+          region = region + ',' + location_array[i];
+        }
+      }
+    }
+    else {
+      region = "all";
+    }
+
+    //Toggle the active state
+    $('#filter_nav ul.sort_by_ul li').removeClass('active');
+    $(this).addClass('active');
+
+    // remove and add icons
+    var check_icon = "<i class='fa fa-check' style='margin-right: 10px;'></i>";
+    
+    $('#filter_nav ul.sort_by_ul li').find("i").remove();
+    $(this).prepend(check_icon);
+
+    e.preventDefault();
+    $.ajax({
+      url: "/adventures/filter",
+      dataType: "script",
+      data: {
+        region_one_up: region_one_up,
+        region_type: region_type,
+        region: region,
+        category: categories,
+        sort_by: sort_by
+      },
+      type: "GET",
+      beforeSend: function() {
+      }
+    });
+
+  });
+
+  // CATEGORIES
+  $('#filter_nav ul.cat_ul li').click(function(e) {
+    var tempScrollTop = $(window).scrollTop();
+
+    //First check if all is clicked
+    if($(this).attr('id')=="cat_all") {
+      //Clear all actives
+      $('#filter_nav ul.cat_ul li').removeClass('active');
+      //Clear all check icons
+      $('#filter_nav ul.cat_ul li').find("i").remove();
+    }
+    else {
+      $('#filter_nav ul.cat_ul li#cat_all').removeClass('active');
+      //remove check from all
+      $('#filter_nav ul.cat_ul li#cat_all').find("i").remove();
+    }
+
+    //Toggle the active state (multiple allowed)
+    $(this).toggleClass('active');
+
+    // remove and add icons
+    var check_icon = "<i class='fa fa-check' style='margin-right: 10px;'></i>";
+    
+    if($(this).find("i").length != 0) {
+      $(this).find("i").remove();
+    }
+    else {
+      $(this).prepend(check_icon);
+    }
+
+    var region_type = $('#filter_nav ul.location_ul li#location_all').data('location-type');
+    var region = "all";
+    var region_one_up = "#{@filter_location}";
+    var categories = '';
+    var sort_by = 'none'
+
+    // Find sort_by
+    if ($('#filter_nav ul.sort_by_ul li#rating').hasClass('active')){
+      sort_by = 'rating';
+    }
+    if ($('#filter_nav ul.sort_by_ul li#price').hasClass('active')){
+      sort_by = 'price';
+    }
+
+    //Get all active locations
+    var location_array = $('#filter_nav ul.location_ul li').map(function(i,e){
+      if ($(this).hasClass('active')){
+        return $(e).data('location');
+      }
+    });
+
+    // Convert to js array
+    location_array = $.makeArray(location_array);
+
+    // Check to see if there are no categories selected
+    if (location_array.length > 0) {
+      //Loop through the array and convert to string for request
+      for (var i in location_array){
+        if (i==0) {
+          region = location_array[i];
+        }
+        else if (i > 0){
+          region = region + ',' + location_array[i];
+        }
+      }
+    }
+    else {
+      region = "all";
+    }
 
     //Get all active categories
     var cat_array = $('#filter_nav ul.cat_ul li').map(function(i,e){
@@ -64,21 +272,14 @@
       categories = "all";
     }
 
-    //Toggle the active state
-    $('#filter_nav ul.sort_by_ul li').removeClass('active');
-    $(this).addClass('active');
-
-    // remove and add icons
-    var check_icon = "<i class='fa fa-check' style='margin-right: 10px;'></i>";
-    
-    $('#filter_nav ul.sort_by_ul li').find("i").remove();
-    $(this).prepend(check_icon);
 
     e.preventDefault();
     $.ajax({
       url: "/adventures/filter",
       dataType: "script",
       data: {
+        region_one_up: region_one_up,
+        region_type: region_type,
         region: region,
         category: categories,
         sort_by: sort_by
@@ -87,23 +288,24 @@
       beforeSend: function() {
       }
     });
-
+    
+    $(window).scrollTop(tempScrollTop);
   });
 
-  // CATEGORIES
-  // SORT BY
-  $('#filter_nav ul.cat_ul li').click(function(e) {
+
+  // LOCATIONS
+  $('#filter_nav ul.location_ul li').click(function(e) {
     //First check if all is clicked
-    if($(this).attr('id')=="cat_all") {
+    if($(this).attr('id')=="location_all") {
       //Clear all actives
-      $('#filter_nav ul.cat_ul li').removeClass('active');
+      $('#filter_nav ul.location_ul li').removeClass('active');
       //Clear all check icons
-      $('#filter_nav ul.cat_ul li').find("i").remove();
+      $('#filter_nav ul.location_ul li').find("i").remove();
     }
     else {
-      $('#filter_nav ul.cat_ul li#cat_all').removeClass('active');
+      $('#filter_nav ul.location_ul li#location_all').removeClass('active');
       //remove check from all
-      $('#filter_nav ul.cat_ul li#cat_all').find("i").remove();
+      $('#filter_nav ul.location_ul li#location_all').find("i").remove();
     }
 
     //Toggle the active state (multiple allowed)
@@ -119,9 +321,11 @@
       $(this).prepend(check_icon);
     }
 
-    var region = "#{@location}";
+    var region_type = $('#filter_nav ul.location_ul li#location_all').data('location-type');
+    var region = "all";
+    var region_one_up = "#{@filter_location}";
     var categories = '';
-    var sort_by = 'none'
+    var sort_by = 'none';
 
     // Find sort_by
     if ($('#filter_nav ul.sort_by_ul li#rating').hasClass('active')){
@@ -159,11 +363,40 @@
     }
 
 
+    //Get all active locations
+    var location_array = $('#filter_nav ul.location_ul li').map(function(i,e){
+      if ($(this).hasClass('active')){
+        return $(e).data('location');
+      }
+    });
+
+    // Convert to js array
+    location_array = $.makeArray(location_array);
+
+    // Check to see if there are no categories selected
+    if (location_array.length > 0) {
+      //Loop through the array and convert to string for request
+      for (var i in location_array){
+        if (i==0) {
+          region = location_array[i];
+        }
+        else if (i > 0){
+          region = region + ',' + location_array[i];
+        }
+      }
+    }
+    else {
+      region = "all";
+    }
+
+
     e.preventDefault();
     $.ajax({
       url: "/adventures/filter",
       dataType: "script",
       data: {
+        region_one_up: region_one_up,
+        region_type: region_type,
         region: region,
         category: categories,
         sort_by: sort_by
@@ -172,8 +405,6 @@
       beforeSend: function() {
       }
     });
-    
-    $(window).scrollTop(tempScrollTop);
   });
 
 

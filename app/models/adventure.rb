@@ -16,7 +16,7 @@ class Adventure < ActiveRecord::Base
   process_in_background :attachment
 
   validates_uniqueness_of :title
-  validates_presence_of :title, :location, :summary, :cap_min, :cap_max, :duration_num, :price, :price_type, :attachment
+  validates_presence_of :title, :location, :summary, :cap_min, :cap_max, :duration_num, :price, :price_type, :attachment, :region, :city, :country
   validates_numericality_of :price, :cap_min, :cap_max, :duration_num
 
   geocoded_by :location
