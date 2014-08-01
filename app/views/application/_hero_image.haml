@@ -5,19 +5,41 @@
       %span.large_text ADVENTURE
       %span.small_text WITH
       %span.large_text LOCALS
-      %p.medium_text NOT TOUR GUIDES
-    
-    %p.text-center
-      .dropdown-container
-        .dropdown-toggle
-          %a.btn.btn-primary.btn-lg.header_btn_fix Start Exploring
-          .dropdown-box
-            - adv_regions.each do |r|
-              - r_sub_url = r.gsub(' ','-') 
-              = link_to r, "/adventures?region=#{r_sub_url}", class: "option" 
+      %p.medium_text NOT TOUR GUIDES       
 
-            / %a.option{href: '/adventures?location=Denver'} Denver
-            / %a.option{href: '/adventures?location=Boulder'} Boulder
-            / %a.option{href: '/adventures?location=SummitCounty'} Summit County
+  #how_it_works_panels
+    .row.text-center
+      .col-md-4
+        %a{href: "/adventures"}
+          .panel.panel-default
+            .panel-heading
+              FIND
+            .panel-body
+              .find_icon
+              .col-md-10.col-md-offset-1
+                Search for and connect with locals to set up unique, customizable adventures
+      .col-md-4
+        %a{href: "/adventures/info"}
+          .panel.panel-default
+            .panel-heading
+              HOST
+            .panel-body
+              .host_icon
+              .small_text
+              .col-md-10.col-md-offset-1
+                Sell your expertise by leading like-minded travelers on the adventures you create
+      .col-md-4        
+        %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
+          .panel.panel-default
+            .panel-heading
+              REQUEST
+            .panel-body
+              .request_icon
+              .col-md-10.col-md-offset-1
+                Tell us about the adventure you're seeking and we'll find someone awesome to host it
 
-    //$('.dropdown-box').width(parseInt($('.header_btn_fix').css('width')) - 4)
+    = render partial: "/adventures/request_modal"
+  
+
+
+

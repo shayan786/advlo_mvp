@@ -50,17 +50,6 @@ class AdventureStepsController < ApplicationController
       else
         redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "Please upload atleast one photo of your adventure"
       end
-
-    when "payment"
-      if !@adventure.events.empty?
-        respond_to do |format|
-          format.html {render_wizard}
-          format.js {}
-        end
-      else
-        redirect_to "/adventure_steps/schedule?adventure_id=#{@adventure.id}", notice: "Please add atleast one instant reservation for this adventure"
-      end
-
     else
       if current_user.stripe_recipient_id || current_user.paypal_email
         respond_to do |format|

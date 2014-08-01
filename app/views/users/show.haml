@@ -57,17 +57,22 @@
               %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal'}
                 %i.fa.fa-envelope-o
                 SEND MESSAGE
-            .row.box_social.text-center
-              .col-md-12
-                - if @user.fb_url && !(@user.fb_url == '')
-                  / %a{href: "http://#{@user.fb_url}", target: "_blank", style: "padding-right: 25px;"}
-                  %i.fa.fa-facebook-square{style: "padding-right: 25px;"}
-                - if @user.tw_url && !(@user.fb_url == '')
-                  / %a{href: "http://#{@user.tw_url}", target: "_blank", style: "padding-right: 25px;"}
-                  %i.fa.fa-twitter-square{style: "padding-right: 25px;"}
-                - if @user.li_url && !(@user.fb_url == '')
-                  / %a{href: "http://#{@user.li_url}", target: "_blank"}
-                  %i.fa.fa-linkedin-square
+            .box_social.text-center
+              - if @user.fb_url && !(@user.fb_url == '')
+                .row
+                  .btn.btn-info.disabled
+                    %i.fa.fa-check
+                    Facebook
+              - if @user.tw_url && !(@user.fb_url == '')
+                .row
+                  .btn.btn-info.disabled
+                    %i.fa.fa-check
+                    Twitter
+              - if @user.li_url && !(@user.fb_url == '')
+                .row
+                  .btn.btn-info.disabled
+                    %i.fa.fa-check
+                    Linked In
 
 #p_my_adventures
   .container

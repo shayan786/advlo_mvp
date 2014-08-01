@@ -17,17 +17,19 @@ function exploreDropdownToggle(){
 }
 
 function homepageTextScroll(){
-  $('#homepage-text').hide()
-
-  $(window).load(function(){
-    $('#homepage-text').fadeIn(1500)
-  })
-  $(window).scroll(function(){
-    var s = $(window).scrollTop();
-
-    if($(window).width() > 800){
-      $('#homepage-text').css('-webkit-transform','translateY(' + (s/5) + 'px');
+  if($(window).width() < 700) {
+    $('.jumbotron').after($('#how_it_works_panels'));
+  }
+  $(window).resize(function() {
+    if ($(this).width() < 700){
+      $('.jumbotron').after($('#how_it_works_panels'));
     }
+    else if ($(this).width() > 700) {
+      $('.jumbotron').append($('#how_it_works_panels'));
+    }   
+  })
+
+  $(window).scroll(function(){
 
     // if(s > 200 && !$('#homepage-text').hasClass('passed')){
     //   $('#homepage-text').animate({

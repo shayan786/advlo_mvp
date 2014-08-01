@@ -3,8 +3,8 @@
 }
 .jumbotron_fix {
 	margin-top: -80px;
-	padding-top: 30vh;
-	min-height: 93vh; //add js fix for style height on older browsers
+	padding-top: 28vh;
+	min-height: 93vh;
 	background-repeat: no-repeat;
 	background-size: cover; 
 
@@ -58,43 +58,140 @@
 				border-color: #fff;
 			}
 		}
-		
-    .dropdown-box:hover {
-      z-index: 2000;   
-    }
+	}
+}
 
-		.dropdown-box {
-			z-index: 100;
-			position: absolute;
-			width: 235px;
-			padding-top: 10px;
-			padding-bottom: 10px;
-			line-height: 25px;
-			margin: 0 auto;
-			font-size: 20px;
-			text-align: center;
-			border-radius: 0 0 10px 10px;
-			background: #000;
-			opacity: 0.8;
-			font-family: 'nexa_light';
-			color: #fff;
-			height: 170px;
-			display: none;
-			margin-top: -1px;
+#how_it_works_panels {
+	position: relative;
+	width: 100%;
+	margin-top: 40px;
 
-			a {
-				width: 100%;
-				color: #fff;
-				text-decoration: none;
-			}
-			.option {
-				cursor: pointer;
-				float: left;
-			}
-			.option:hover{
-				opacity: 0.6;
+	.row {
+		margin: 0 auto;
+		margin-bottom: 0;
+
+		a {
+			text-decoration: none;
+
+			&:hover {
+				.panel {
+					border: 2px solid $orange;
+					-webkit-transition: border 0.4s ease;  /* For Safari 3.1 to 6.0 */
+    				transition: border 0.4s ease;
+				}
 			}
 		}
+
+		.panel {
+			background: rgba(0,0,0,0.65);
+			border: none;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			margin-bottom: 0;
+
+			.panel-heading{
+				background: transparent;
+				border-bottom: none;
+				color: #FFF;
+				font-size: 3.6em;
+				font-family: 'nexa_light';
+				margin-bottom: 0;
+				padding-bottom: 0;
+			}
+
+			.panel-body {
+				background: transparent;
+
+				color: #FFF;
+				font-family: 'cabin_regular';
+				font-size: 1.3em;
+				line-height: 1.3em;
+
+				.find_icon {
+					background-image: asset-url($find_icon);
+					background-repeat: no-repeat;
+					background-size: cover;
+					height: 140px;
+					width: 140px;
+					margin: 0px auto 20px auto;
+				}
+
+				.host_icon {
+					@extend .find_icon;
+					background-image: asset-url($host_icon);
+				}
+
+				.request_icon {
+					@extend .find_icon;
+					background-image: asset-url($request_icon);
+				}
+			}
+
+		}
+
+	}
+
+	#request_form_modal {
+		.request_btn {
+	      margin-top: 20px;
+	      font-size: 1.8em;
+	      background-color: $login_btn_color;
+	      border-color: $login_btn_color;
+	      padding: 10px 20px;
+
+	      &:hover {
+	        background-color: $login_btn_color_hover;
+	        border-color: $login_btn_color_hover;
+	      }
+	    }
+
+	    .modal-dialog {
+	      margin: 75px auto 0 auto;
+	    }
+
+	    .modal-header {
+	      font-family: cabin_bold;
+	      color: $orange;
+	      font-size: 1.6em;
+	    }
+
+	    .modal-body {
+
+	      form {
+	      	.form-group{
+	      		margin-bottom: 10px;
+	      	}
+
+	        .form_label {
+	          padding-top: 5px;
+	          font-size: 1.2em;
+	          font-weight: bold;
+	          color: #FFF;
+	        }
+
+	        .checkbox-inline {
+	          color: #FFF;
+	        }
+
+	        .request_btn {
+	          margin-top: 10px;
+	          padding: 5px 15px;
+	        }
+	      }
+
+	      #request_submitted {
+	        display: none;
+	        color: #FFF;
+	        font-size: 1.8em;
+	        margin-bottom: 20px;
+
+	        img {
+	          margin: 0px auto;
+	          width: 200px;
+	          height: auto;
+	        }
+	      }
+    	}
 	}
 }
 
@@ -111,16 +208,20 @@
   }
 
   .jumbotron_fix span.large_text {
-    font-size: 1.6em !important;
+    font-size: 2.4em !important;
   }
-  .jumbotron_fix .medium_text {
-    font-size: 1.5em !important;
+  .jumbotron_fix span.medium_text {
+    font-size: 2.0em !important;
+  }
+
+  .jumbotron_fix span.small_text {
+    font-size: 1.4em !important;
   }
 
   #homepage-text {
     position: absolute;
     width: 100%;
-    top: 100px;
+    top: 150px;
     left: 0px;
   }
 
@@ -137,5 +238,9 @@
   }
   .dropdown-container {
     margin-top: 30px !important;
+  }
+
+  #how_it_works_panels {
+  	margin-top: 15px;
   }
 }

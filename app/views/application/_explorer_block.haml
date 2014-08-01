@@ -13,7 +13,10 @@
                 - hero_image = HeroImage.find_by_region(r[0]) ? HeroImage.find_by_region(r[0]).attachment.url(:hero) : HeroImage.last.attachment.url(:hero)
                 = link_to (image_tag hero_image), "/adventures?city=#{r[0].gsub(' ','-')}"
                 - adv_count = Adventure.where(city: r[0]).count
-                .region-text= "#{r[0]} (#{adv_count})"
+                - if r[0].length > 14
+                  .region-text= "#{r[0][0..14]}... (#{adv_count})"  
+                - else 
+                  .region-text= "#{r[0]} (#{adv_count})"
               
 
 

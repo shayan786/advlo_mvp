@@ -30,7 +30,7 @@ class AdventuresController < ApplicationController
   end
 
   def get_adventures(type, location)
-    @adventures = Adventure.where(type => location).approved.order('created_at DESC')
+    @adventures = Adventure.where(type => location).approved.order('created_at DESC').limit(9)
   end
 
   def get_hero(location)
