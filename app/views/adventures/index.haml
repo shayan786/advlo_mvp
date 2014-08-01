@@ -1,9 +1,11 @@
+- @hero_image = hero_image if !@hero_image
+- @location = location if !@location
+
 .adventure-page-container
   #hero_image_wrapper
     - if @hero_image
       #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
     #location_text= @location ? @location.upcase : "Advlo" 
-
 
   #adventures-content-container
     = render partial: 'filter_nav'
@@ -11,8 +13,6 @@
     .adventure-container.index-page
       - if @adventures.first != nil
         = render partial: "adventure_index", locals: {adventures: @adventures}
-        
-
 
       - else 
         .brick-wrapper.masonry.js-masonry
