@@ -5,10 +5,77 @@
       %span.large_text ADVENTURE
       %span.small_text WITH
       %span.large_text LOCALS
-      %p.medium_text NOT TOUR GUIDES
-    
-    %p.text-center
-      .dropdown-container
-        .dropdown-toggle
-          %a.btn.btn-primary.btn-lg.header_btn_fix{href: "/adventures"}
-            Start Exploring          
+      %p.medium_text NOT TOUR GUIDES       
+
+  #how_it_works_panels
+    .row.text-center
+      .col-md-4
+        %a{href: "/adventures"}
+          .panel.panel-default
+            .panel-heading
+              FIND
+            .panel-body
+              .find_icon
+              .col-md-10.col-md-offset-1
+                Search for and connect with locals to set up unique, customizable adventures
+      .col-md-4
+        %a{href: "/adventures/info"}
+          .panel.panel-default
+            .panel-heading
+              HOST
+            .panel-body
+              .host_icon
+              .small_text
+              .col-md-10.col-md-offset-1
+                Sell your expertise by leading like-minded travelers on the adventures you create
+      .col-md-4        
+        %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
+          .panel.panel-default
+            .panel-heading
+              REQUEST
+            .panel-body
+              .request_icon
+              .col-md-10.col-md-offset-1
+                Tell us about the adventure you're seeking and we'll find someone awesome to host it
+
+
+
+        / .col-md-4
+        /   %a{href: "/adventures?location=Colorado"}
+        /     .large_text FIND
+        /     .find_icon
+        /     .col-md-10.col-md-offset-1
+        /       .small_text
+        /         Search for and connect with locals to set up unique, customizable adventures
+        / .col-md-4
+        /   %a{href: "/adventures/info"}
+        /     .large_text HOST
+        /     .host_icon
+        /     .col-md-10.col-md-offset-1
+        /       .small_text
+        /         Sell your expertise by leading like-minded travelers on the adventures you create
+        / .col-md-4
+        /   %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
+        /     .large_text REQUEST
+        /     .request_icon
+        /     .col-md-10.col-md-offset-1
+        /       .small_text
+        /         Tell us about the adventure you're seeking and we'll find someone awesome to host it
+
+    = render partial: "/adventures/request_modal"
+
+:javascript
+  if($(window).width() < 700) {
+    $('.jumbotron').after($('#how_it_works_panels'));
+  }
+  $(window).resize(function() {
+    if ($(this).width() < 700){
+      $('.jumbotron').after($('#how_it_works_panels'));
+    }
+    else if ($(this).width() > 700) {
+      $('.jumbotron').append($('#how_it_works_panels'));
+    }   
+  })
+
+
+

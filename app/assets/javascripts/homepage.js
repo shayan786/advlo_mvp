@@ -17,17 +17,12 @@ function exploreDropdownToggle(){
 }
 
 function homepageTextScroll(){
-  $('#homepage-text').hide()
+  // $(window).load(function(){
+  //   $('#homepage-text').fadeIn(1500);
+  //   $('#how_it_works .panel').fadeIn(1500);
+  // })
 
-  $(window).load(function(){
-    $('#homepage-text').fadeIn(1500)
-  })
   $(window).scroll(function(){
-    var s = $(window).scrollTop();
-
-    if($(window).width() > 800){
-      $('#homepage-text').css('-webkit-transform','translateY(' + (s/5) + 'px');
-    }
 
     // if(s > 200 && !$('#homepage-text').hasClass('passed')){
     //   $('#homepage-text').animate({
