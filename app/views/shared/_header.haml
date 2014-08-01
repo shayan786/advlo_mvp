@@ -21,7 +21,7 @@
             Adventures
             %b.caret
           %ul.dropdown-menu#locations-menu{role: "menu"}
-            - ["North America", "Asia", "Latin America", "Europe", "Africa", "Oceania"].each_with_index do |r, i|
+            - adv_regions.each_with_index do |r, i|
               .main-location
                 = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
                 - get_countries(r).each do |l|
