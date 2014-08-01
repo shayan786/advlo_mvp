@@ -63,6 +63,11 @@ class ReservationsController < ApplicationController
   def request_time
     @reservation = Reservation.create!(request_reservation_params)
     user = User.find_by_id(params[:user_id])
+
+    host_fee = (@reservation.total_price * 0.15).round(2)
+    user_fee = (@reservation.total_price * 0.04).round(2)
+    @reservation.update(host_fee: host_fee, user_fee: user_fee)
+
     adventure = Adventure.find(params[:adventure_id])
 
     request_date = params[:reservation_request][:date]
@@ -120,10 +125,6 @@ class ReservationsController < ApplicationController
     # From Host = 15%
     # From Traveler = 4%
 
-    host_fee = (@reservation.total_price * 0.15).round(2)
-    user_fee = (@reservation.total_price * 0.04).round(2)
-    @reservation.update(host_fee: host_fee, user_fee: user_fee)
-
     # Stripe only takes price as cents ... convert to cents
     total_price_cents = ((@reservation.total_price+@reservation.user_fee)*100).round(0)
 
@@ -132,6 +133,10 @@ class ReservationsController < ApplicationController
 
       # Charge the user
       create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
+
+
+      puts "stripe id  ======>>#{@reservation.stripe_charge_id}"
+      puts "cust id  ======>>#{@reservation.stripe_customer_id}"
 
       @reservation.stripe_charge_id = stripe_charge.id
       @reservation.stripe_customer_id = user.stripe_customer_id
