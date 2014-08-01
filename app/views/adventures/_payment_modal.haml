@@ -25,7 +25,9 @@
                 %em.tab_header
                   Instant Reservations
               - @limited_adventure_events.each do |event| 
+                
                 = render partial: 'event_partial', locals: {event: event}
+
 
             .view-all.tab-pane
               .row.text-center

@@ -134,15 +134,10 @@ class ReservationsController < ApplicationController
       # Charge the user
       create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
 
-
-      puts "stripe id  ======>>#{@reservation.stripe_charge_id}"
-      puts "cust id  ======>>#{@reservation.stripe_customer_id}"
-
       @reservation.stripe_charge_id = stripe_charge.id
       @reservation.stripe_customer_id = user.stripe_customer_id
 
       @reservation.save
-
 
       # Email both the user that request has been approved
       # AdvloMailer.
