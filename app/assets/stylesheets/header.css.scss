@@ -186,14 +186,13 @@
 	right: 0px;
 }
 
-.dropdown-menu {
-	.sign_up_link {
-		a {
-			text-align: center;
-			padding-top: 10px;
-			&:hover {
-				background: rgba(0, 0, 0, 0);
-			}
+
+.sign_up_link {
+	margin-top: 10px;
+	a {
+		text-decoration: none;
+		&:hover {
+			background: rgba(0, 0, 0, 0);
 		}
 	}
 }
@@ -201,16 +200,13 @@
 #locations-menu {
 	background: #000;
 	min-height: 150px;
+	width: 650px;
 	font-family: 'nexa_light';
 	text-transform: capitalize;
-	width: 650px;
 	top: 57px;
+	right: 305px;
 	font-size: 13.5px;
 	position: fixed;
-	top: 57px;
-	width: 600px;
-	height: 200px;
-	right: 305px;
 
 	.main-location {
 		float: left;
@@ -220,15 +216,18 @@
 		font-size: 14px;
 		margin-left: 20px;
 		margin-right: 25px;
+		font-weight: bold;
 
 		a {
 			border-bottom: 1px solid #fff;
 			margin-top: 10px;
 			color: #fff;
-		}
-		a:hover {
-			text-decoration: none;
-			opacity: 0.6;
+
+			&:hover {
+				color: $orange;
+				border-bottom: 1px solid $orange;
+				text-decoration: none;
+			}
 		}
 
 		.sub-location {
