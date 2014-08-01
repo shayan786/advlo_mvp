@@ -67,7 +67,7 @@
             - ind_adv_categories = adv.category.split(',')  
             - categories += ind_adv_categories
 
-          - categories.uniq.each do |cat|
+          - categories.sort.uniq.each do |cat|
             %li{id: "cat_#{cat.downcase}", "data-category"=>cat}
               = cat.downcase.capitalize
   

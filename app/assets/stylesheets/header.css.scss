@@ -185,14 +185,13 @@
 	right: 0px;
 }
 
-.dropdown-menu {
-	.sign_up_link {
-		a {
-			text-align: center;
-			padding-top: 10px;
-			&:hover {
-				background: rgba(0, 0, 0, 0);
-			}
+
+.sign_up_link {
+	margin-top: 10px;
+	a {
+		text-decoration: none;
+		&:hover {
+			background: rgba(0, 0, 0, 0);
 		}
 	}
 }
