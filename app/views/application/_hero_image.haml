@@ -10,14 +10,5 @@
     %p.text-center
       .dropdown-container
         .dropdown-toggle
-          %a.btn.btn-primary.btn-lg.header_btn_fix Start Exploring
-          .dropdown-box
-            - adv_regions.each do |r|
-              - r_sub_url = r.gsub(' ','-') 
-              = link_to r, "/adventures?region=#{r_sub_url}", class: "option" 
-
-            / %a.option{href: '/adventures?location=Denver'} Denver
-            / %a.option{href: '/adventures?location=Boulder'} Boulder
-            / %a.option{href: '/adventures?location=SummitCounty'} Summit County
-
-    //$('.dropdown-box').width(parseInt($('.header_btn_fix').css('width')) - 4)
+          %a.btn.btn-primary.btn-lg.header_btn_fix{href: "/adventures"}
+            Start Exploring          

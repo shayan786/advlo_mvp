@@ -72,16 +72,16 @@
 			.sign_in_form {
 
 				input {
-					width: 92%;
+					width: 94%;
 					margin-left: 10px;
 				}
 
 				.sign_in_btn {
-					width: 92%; 
+					width: 96%; 
 					font-size: 1.2em;
 					background-color: $login_btn_color;
 					border-color: $login_btn_color;
-					margin-left: 10px;
+					margin-left: 5px;
 					margin-bottom: 5px;
 
 					&:hover {
@@ -91,11 +91,11 @@
 				}
 
 				.connect_btn {
-					width: 92%; 
+					width: 96%; 
 					font-size: 1.2em;
 					background-color: $login_btn_color;
 					border-color: $login_btn_color;
-					margin-left: 10px;
+					margin-left: 5px;
 					margin-bottom: 5px;
 					padding-top: 8px;
 					padding-bottom: 5px;
@@ -107,8 +107,8 @@
 				}
 
 				.fb_btn {
-					width: 92%;
-					margin: 5px 0 0px 10px;
+					width: 96%;
+					margin: 5px 0 0px 5px;
 					color: #FFFFFF !important;
 					font-size: 1.2em;
 					padding-top: 10px;

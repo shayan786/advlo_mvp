@@ -4,7 +4,7 @@
 .jumbotron_fix {
 	margin-top: -80px;
 	padding-top: 30vh;
-	min-height: 93vh; //add js fix for style height on older browsers
+	min-height: 93vh;
 	background-repeat: no-repeat;
 	background-size: cover; 
 
@@ -56,43 +56,6 @@
 			&:active {
 				background-color: $header_btn_color_hover;
 				border-color: #fff;
-			}
-		}
-		
-    .dropdown-box:hover {
-      z-index: 2000;   
-    }
-
-		.dropdown-box {
-			z-index: 100;
-			position: absolute;
-			width: 235px;
-			padding-top: 10px;
-			padding-bottom: 10px;
-			line-height: 25px;
-			margin: 0 auto;
-			font-size: 20px;
-			text-align: center;
-			border-radius: 0 0 10px 10px;
-			background: #000;
-			opacity: 0.8;
-			font-family: 'nexa_light';
-			color: #fff;
-			height: 170px;
-			display: none;
-			margin-top: -1px;
-
-			a {
-				width: 100%;
-				color: #fff;
-				text-decoration: none;
-			}
-			.option {
-				cursor: pointer;
-				float: left;
-			}
-			.option:hover{
-				opacity: 0.6;
 			}
 		}
 	}
