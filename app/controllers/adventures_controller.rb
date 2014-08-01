@@ -1,4 +1,5 @@
 class AdventuresController < ApplicationController
+  include ApplicationHelper
 
   def index
     if params[:region].present?
@@ -78,7 +79,7 @@ class AdventuresController < ApplicationController
 
     case region_type
     when "continent"
-      adventures_region = Adventure.where(approved: true)
+      adventures_region = Adventure.approved
 
       location_sql_string = ''
       location_array.each_with_index do |loc,i|
@@ -90,7 +91,7 @@ class AdventuresController < ApplicationController
       end
 
     when "country"
-      adventures_region = Adventure.where(region: region_one_up).where(approved: true)
+      adventures_region = Adventure.approved.where(region: region_one_up)
 
       location_sql_string = ''
       location_array.each_with_index do |loc,i|
@@ -102,7 +103,7 @@ class AdventuresController < ApplicationController
       end
 
     else "city"
-      adventures_region = Adventure.where(country: region_one_up).where(approved: true)
+      adventures_region = Adventure.approved.where(country: region_one_up)
 
       location_sql_string = ''
       location_array.each_with_index do |loc,i|
@@ -261,6 +262,10 @@ class AdventuresController < ApplicationController
       @useradventure.save
 
       session[:adventure_id] =  @adventure.id
+
+      # For updating the region
+      continent = get_continent(params[:adventure][:region]);
+      @adventure.update(region: continent)
 
       redirect_to "/adventure_steps/photos"
     else
