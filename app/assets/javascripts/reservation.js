@@ -194,12 +194,14 @@ function reservation_request_prefill() {
     var request_head_count = $('#request_time_form #request_reservation_head_count').val();
     var adv_price = $('#request_reservation #adv_price').val();
 
-    var total_price = request_head_count*adv_price;
+    var cost = Math.round(request_head_count*adv_price*100/100)
+    var fees = Math.round(cost*0.04*100/100)
+    var total_cost = cost+fees;
 
     $('#request_reservation #hidden_request_reservation_date').val(request_date);
     $('#request_reservation #hidden_request_reservation_time').val(request_time);
     $('#request_reservation #reservation_head_count').val(request_head_count);
-    $('#request_reservation #reservation_total_price').val(total_price);
+    $('#request_reservation #reservation_total_price').val(total_cost);
 
     //Modify display from user inputs
     var reservation_info = "REQUEST:  "+request_date + " - " + request_time;
@@ -210,7 +212,10 @@ function reservation_request_prefill() {
     $('#request_reservation .prefill_request_people').append(request_head_count);
 
     $('#request_reservation .prefill_request_cost').empty();
-    $('#request_reservation .prefill_request_cost').append("$ "+total_price);
+    $('#request_reservation .prefill_request_cost').append("$ "+total_cost.toFixed(2));
+
+    $('#request_reservation .prefill_request_breakdown').empty();
+    $('#request_reservation .prefill_request_breakdown').append("($ "+cost.toFixed(2)+" + $ "+fees.toFixed(2)+" fees)");
   });
 }
 
