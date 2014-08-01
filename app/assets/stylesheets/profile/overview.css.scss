@@ -79,17 +79,20 @@
 		.box_social {
 			font-size: 1.4em;
 
-			a {
-				color: $white;
-				text-decoration: none;
+			.disabled {
+				opacity: 1;
+			}
 
-				&:hover {
-					color: $orange;
-				}
+			.btn {
+				width: 80%;
+				text-align: left !important;
+				margin-bottom: 5px;
 			}
 
 			.fa {
-				font-size: 2.2em;
+				width: 40px;
+				margin-left: 20px;
+				//font-size: 2.2em;
 			}
 		}
 	}
