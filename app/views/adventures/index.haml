@@ -17,10 +17,10 @@
             .image-wrapper#no-adventures= image_tag 'missing.png'
             #no-adv-text Host an adventure in this area
 
-      - if @adventures.count > 6
-        .text-center
-          .btn.btn-default
-            Show More
+      / - if @adventures.count > 6
+      /   .text-center
+      /     .btn.btn-default
+      /       Show More
     #request-button
       .text-center
         .btn.btn-primary.request_btn{'data-toggle' => "modal", 'data-target' => '#request_form_modal'}
