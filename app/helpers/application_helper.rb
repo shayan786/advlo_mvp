@@ -66,7 +66,6 @@ module ApplicationHelper
 
   end
 
-
   def flash_class(level)
     case level
       when 'notice' then "alert alert-info alert-block"
@@ -83,5 +82,13 @@ module ApplicationHelper
 
   def adv_regions
     return ["North America", "Europe", "Latin America", "Asia", "Africa", "Oceania"]
+  end
+
+  def host_cancellation_reasons 
+    return ["Emergency", "Personal", "Travel Issues", "Weather", "Over-booked", "Other"]
+  end
+
+  def user_cancellation_reasons 
+    return ["Emergency", "Personal", "Travel Issues", "Weather", "Other"]
   end
 end

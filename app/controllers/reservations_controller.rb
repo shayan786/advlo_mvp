@@ -168,6 +168,39 @@ class ReservationsController < ApplicationController
     end
 	end
 
+
+  def host_cancel 
+    @reservation = Reservation.find_by_id(params[:host_cancel][:reservation_id])
+
+    #Update reservation status to host-cancellation
+    @reservation.cancelled = true
+
+    cancel_reason = "HOST - #{params[:host_cancel][:reason]} - #{params[:host_cancel][:details]}"
+    @reservation.cancel_reason = cancel_reason
+
+    if @reservation.save
+      # Process Refunds from stripe
+
+
+      # Send emails
+
+
+      respond_to do |format|
+        format.js {render "host_cancel.js", layout: false}
+      end
+    else
+      flash[:notice] = "Something went wrong!"
+    end
+  end
+
+  def user_cancel 
+
+
+    respond_to do |format|
+      format.js {render "user_cancel.js", layout: false}
+    end
+  end
+
   def create_stripe_charge(amount, customer_id, description)
     stripe_charge =  Stripe::Charge.create(
       :amount => amount,

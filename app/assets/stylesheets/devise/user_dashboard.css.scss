@@ -84,7 +84,22 @@
 				}
 
 				.table-responsive {
+					.cancellation_btn {
+						display: block;
+						width: 90px;
+						margin: 5px auto 0 auto;
+
+						.fa {
+							margin-right: 5px;
+						}
+					}
+
+					th {
+						font-size: 0.9em;
+					}
+
 					td {
+						font-size: 0.9em;
 						vertical-align: middle;
 					}
 
@@ -104,5 +119,59 @@
 
 	.create-wrapper {
 		text-align: center;
+	}
+
+	.modal {
+		.modal-dialog {
+			margin: 65px auto 0 auto;
+		}
+
+		.modal-header {
+			font-size: 1.6em;
+			color: $orange;
+		}
+
+		.form_label {
+			padding-top: 5px;
+          	font-size: 1.2em;
+          	font-weight: bold;
+          	color: #FFF;
+		}
+
+		.cancel_btn {
+
+			margin-top: 20px;
+		    font-size: 1.2em;
+		    background-color: $login_btn_color;
+		    border-color: $login_btn_color;
+		    padding: 10px 20px;
+
+		    &:hover {
+		      background-color: $login_btn_color_hover;
+		      border-color: $login_btn_color_hover;
+		    }
+		}
+
+		.adv_title {
+			font-size: 1.2em;
+			font-family: nexa_light;
+			color: $advlo_orange;
+		}
+
+		.adv_time {
+			@extend .adv_title;
+			margin-bottom: 15px;
+		}
+
+		em {
+			color: $white;
+		}
+
+		#cancel_host_submitted {
+	      display: none;
+	      color: #FFF;
+	      font-size: 1.6em;
+	      margin-bottom: 15px;
+	  	}
 	}
 }

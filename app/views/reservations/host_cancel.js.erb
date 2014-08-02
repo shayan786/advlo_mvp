@@ -1,0 +1,8 @@
+$('#host_cancel_reservation_modal #host_cancel_form').remove();
+
+$('#host_cancel_reservation_modal #cancel_host_submitted').show();
+
+// If user clicks out of the thankyou modal refresh the page
+$('#host_cancel_reservation_modal').on('hide.bs.modal', function(e){
+	window.location.reload(true);
+})

@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   
   #reservations
   post '/reservations/request'        => 'reservations#request_time'
+  post '/reservations/host_cancel'    => 'reservations#host_cancel'
+  post '/reservations/user_cancel'    => 'reservations#user_cancel'
   resources :reservations
 
   resources :reviews

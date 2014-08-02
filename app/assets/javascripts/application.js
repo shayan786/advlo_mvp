@@ -29,6 +29,7 @@
 //= require homepage.js
 //= require reservation.js
 //= require user.js
+//= require wallet.js
 //= require fullcalendar
 //= require jquery.geocomplete.min
 //= require star-rating.min

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731044950) do
+ActiveRecord::Schema.define(version: 20140802223553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 20140731044950) do
     t.string   "rating",                  default: ""
     t.string   "country"
   end
+
+  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
 
   create_table "contact_advlos", force: true do |t|
     t.integer  "user_id"
@@ -201,6 +203,8 @@ ActiveRecord::Schema.define(version: 20140731044950) do
     t.boolean  "requested",           default: false
     t.float    "host_fee"
     t.float    "user_fee"
+    t.boolean  "cancelled",           default: false
+    t.text     "cancel_reason"
   end
 
   create_table "reviews", force: true do |t|

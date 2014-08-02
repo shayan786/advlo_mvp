@@ -1,0 +1,39 @@
+#host_cancel_reservation_modal.modal.fade{role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header.text-center
+        Cancel Resevation
+      .modal-body
+        %form{"accept-charset" => "UTF-8", action: "/reservations/host_cancel", method: "POST", id: "host_cancel_form", "data-remote" => "true"}
+          = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          = tag(:input, :type => "hidden", :name => "host_cancel[reservation_id]", :id => "reservation_id")
+          .form-group.row
+            .col-md-4 
+              .form_label.text-right Reason *
+            .col-md-6
+              %select.form-control{name: 'host_cancel[reason]'}
+                - options = host_cancellation_reasons
+                - options.each do |o|
+                  %option{value: o.downcase}
+                    = o
+          .form-group.row
+            .col-md-4 
+              .form_label.text-right Details *
+            .col-md-6
+              %textarea.form-control{rows: "5", type: "text", name: "host_cancel[details]", id: "host_cancel_details", maxlength: "250"}
+
+          .text-center
+            %em
+              Details will be sent to all the users that currently have a reservation for this time slot. 
+
+            .row.text-center
+              %input.btn.btn-primary.cancel_btn.disabled{type: "submit", value: "Cancel Adventure Reservation"}
+
+        #cancel_host_submitted.text-center
+          .row
+            .col-md-10.col-md-offset-1
+              .adv_title.text-center
+              .adv_time.text-center
+              You have cancelled this reservation
+              %br
+              All reservations for this time slot will also be cancelled. 
