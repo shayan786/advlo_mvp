@@ -28,8 +28,14 @@ class ReservationsController < ApplicationController
 
     if user.stripe_customer_id 
 
-      create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
-      
+      stripe_charge = create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
+
+      # Update reservation with charge id
+      if stripe_charge
+        @reservation.update(stripe_charge_id: stripe_charge.id)
+        @reservation.update(stripe_customer_id: user.stripe_customer_id)
+      end 
+
     # Otherwise create a new stripe customer and get stripe information
     else
       
@@ -43,7 +49,13 @@ class ReservationsController < ApplicationController
       user.update(stripe_customer_id: customer.id)
 
       # Now charge that customer
-      create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
+      stripe_charge = create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
+
+      # Update reservation with charge id
+      if stripe_charge
+        @reservation.update(stripe_charge_id: stripe_charge.id)
+        @reservation.update(stripe_customer_id: user.stripe_customer_id)
+      end 
 
     end
 
@@ -132,7 +144,7 @@ class ReservationsController < ApplicationController
       @reservation.update(requested: true)
 
       # Charge the user
-      create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
+      stripe_charge = create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
 
       @reservation.stripe_charge_id = stripe_charge.id
       @reservation.stripe_customer_id = user.stripe_customer_id
@@ -140,16 +152,15 @@ class ReservationsController < ApplicationController
       @reservation.save
 
       # Email both the user that request has been approved
-      # AdvloMailer.
-      AdvloMailer.booking_confirmation_email(@reservation)
+      # AdvloMailer
+      adventure_approve = Adventure.find_by_id(@reservation.adventure_id)
+      user_approve = User.find_by_id(@reservation.user_id)
+
+      AdvloMailer.booking_confirmation_email(user_approve, adventure_approve, @reservation)
 
     else
       AdvloMailer.booking_request_email_rejection(@reservation)
       @reservation.destroy
-
-      # Email the user that request has been rejected
-      # AdvloMailer.
-
     end
 
     respond_to do |format|
@@ -158,12 +169,14 @@ class ReservationsController < ApplicationController
 	end
 
   def create_stripe_charge(amount, customer_id, description)
-    Stripe::Charge.create(
+    stripe_charge =  Stripe::Charge.create(
       :amount => amount,
       :currency => "usd",
       :customer => customer_id,
       :description => description
     )
+
+    return stripe_charge if stripe_charge
 
   # Stripe processing errors
   rescue Stripe::CardError => e
