@@ -6,6 +6,7 @@
         %th Guide
         %th Adventure
         %th Start Date / Time
+        %th.text-center Type
         %th People
         %th $ Total Paid
     %tbody
@@ -17,16 +18,26 @@
         %td.text-left= link_to res.adventure.users.first.name, "/users/#{res.adventure.users.first.to_param}", target: '_blank'
         %td.text-left= link_to res.adventure.title, "/adventures/#{res.adventure.slug}", target: '_blank'
         %td.text-left= res.event_start_time.strftime("%m/%d/%Y - %l:%M %P")
-        //%td.text-center= "#{res.head_count} @ (#{res.total_price.to_s / res.head_count}) / person"
+        %td.text-center
+          - if res.requested == true && !res.stripe_charge_id
+            .btn.btn-warning.disabled
+              Request - Pending
+          - elsif res.requested == true && res.stripe_charge_id
+            .btn.btn-info.disabled
+              Request - Approved
+          - else
+            .btn.btn-success.disabled
+              Instant Reservation
         %td.text-left= res.head_count
-        %td.text-left= "$ "+res.total_price.to_s
+        %td.text-left= "$ #{sprintf('%.2f', res.total_price)}"
     %thead
       %tr
         %th
         %th
         %th
         %th
-        %th= "$ "+current_user.reservations.sum(:total_price).to_s
+        %th
+        %th= "$ #{sprintf('%.2f',current_user.reservations.sum(:total_price))}"
 
 
 
