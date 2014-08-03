@@ -17,10 +17,20 @@
                   Payouts
 
           .panel-body
-            %h4 Upcoming Reservations
-            = render partial: 'upcoming_past_reservations', locals: {scope: "upcoming"}
-            %h4 Past Reservations
-            = render partial: 'upcoming_past_reservations', locals: {scope: "past"}
+            - if @host_upcoming_reservations.empty? && @host_past_reservations.empty?
+              .col-md-6.col-md-offset-3
+                .alert.alert-warning.text-center
+                  You have no reservations
+                .text-center
+                  %span= link_to 'Get out there', "/adventures/create_prefill"
+
+            - else
+              - if !@host_upcoming_reservations.empty?
+                = render partial: 'reservations_table', :locals => {reservations: @host_upcoming_reservations, reservation_type: 'Upcoming'}
+                
+              - if !@host_past_reservations.empty?
+                = render partial: 'reservations_table', :locals => {reservations: @host_past_reservations, reservation_type: 'Past'}
+
 
 
 :javascript

@@ -1,0 +1,72 @@
+.table-responsive
+  %h3.text-left= reservation_type
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Adventure
+        %th Name / Email
+        %th Date & Time
+        %th.text-center Group Size
+        %th.text-center Type / Actions
+        %th Fee
+        %th $ Earned
+    %tbody
+    - reservations.each_with_index do |res, i|
+      - host = res.adventure.users.first
+      - customer = User.find_by_id(res.user_id)
+      %tr
+        %td.text-left
+          %a{href: "/adventures/#{res.adventure.slug}"}
+            = res.adventure.title[0..12] + "..."
+        %td.text-left
+          = image_tag "#{customer.get_avatar_url("thumb")}", class: "img-circle customer_img"
+          = customer.get_name_and_email
+        %td.text-left= res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
+        %td.text-center= res.head_count
+        %td.text-center
+          - # If reservation is cancelled or requested show button to approve or not
+          - if res.requested == true && !res.stripe_charge_id
+            .btn.btn-success.request_approve_btn{id: "#{res.id}"}
+              APPROVE
+            .btn.btn-danger.request_reject_btn{id: "#{res.id}"}
+              DECLINE
+            .requested_approved_msg{style: "display: none;"} Request - Approved
+            .requested_rejected_msg{style: "display: none;"} Request - Declined
+          - elsif res.requested == true && res.stripe_charge_id
+            .btn.btn-info.disabled
+              Request - Approved
+            .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#host_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}"}
+              %i.fa.fa-times
+              Cancel
+          - else
+            .btn.btn-success.disabled
+              Instant Reservation
+            .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#host_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}"}
+              %i.fa.fa-times
+              Cancel
+        %td= "$ #{sprintf('%.2f',res.host_fee)}"
+        %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.host_fee)}"
+    %thead
+      %tr
+        %th
+        %th
+        %th
+        - if reservation_type == "Upcoming"
+          - total_head_count = reservations.where(requested: false).sum(:head_count)+reservations.where(requested: true).sum(:head_count)
+        - else
+          - total_head_count = reservations.sum(:head_count)
+
+        %th.text-center= total_head_count
+        %th
+        - if reservation_type == "Upcoming"
+          - total_fee = reservations.where(requested: false).sum(:host_fee)+reservations.where(requested: true).sum(:host_fee)
+        - else
+          - total_fee = reservations.sum(:host_fee)
+        %th= "$ #{sprintf('%.2f', total_fee)}"
+        - if reservation_type == "Upcoming"
+          - total_amount_earned = reservations.where(requested: false).sum(:total_price)+reservations.where(requested: true).sum(:total_price) - total_fee
+        - else
+          - total_amount_earned = reservations.sum(:total_price) - total_fee
+        %th= "$ #{sprintf('%.2f', total_amount_earned)}"
+
+  = render partial: "host_cancel_reservation_modal"

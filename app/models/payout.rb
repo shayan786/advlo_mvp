@@ -5,7 +5,7 @@ class Payout < ActiveRecord::Base
   def self.calculate_amount_and_trigger_transfer(user_id)
 
     payout_user = User.find(user_id)
-    unprocessed_reservations = Reservation.where(host_id: payout_user.id).where(processed: false)
+    unprocessed_reservations = Reservation.where(host_id: payout_user.id).where(processed: false).where(cancelled: false)
 
     # unprocessed_reservations.where 48 hours has passed the completion date
     reservations = unprocessed_reservations.where("event_start_time < ?", DateTime.now+2)

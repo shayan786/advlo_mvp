@@ -36,8 +36,9 @@ class RegistrationsController < Devise::RegistrationsController
     @payouts = Payout.where(user_id: current_user.id).order('created_at ASC')
     @upcoming_reservations = Reservation.where(user_id: current_user.id).where(processed: false).where(cancelled: false)
     @past_reservations = Reservation.where(user_id: current_user.id).where(processed: true).where(cancelled: false)
-    @host_reservations = Reservation.where(host_id: current_user.id).order('event_start_time')
-    @cancelled_reservations = Reservation.where(cancelled: true).order('event_start_time')
+    @host_past_reservations = Reservation.where(host_id: current_user.id).where(processed: true).where(cancelled: false).order('event_start_time')
+    @host_upcoming_reservations = Reservation.where(host_id: current_user.id).where(processed: false).where(cancelled: false).order('event_start_time')
+    @cancelled_reservations = Reservation.where(user_id: current_user.id).where(cancelled: true).order('event_start_time')
   end
 
   def update
