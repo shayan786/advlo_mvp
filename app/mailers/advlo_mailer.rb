@@ -91,6 +91,25 @@ class AdvloMailer < ActionMailer::Base
 
     mail(to: @user.email, subject: "Booking request for: #{@adventure.title}")
   end
+
+  # ------ CANCELLATION EMAILS ------
+  def host_cancel_email_to_users(reservation)
+    @user = User.find(reservation.user_id)
+    @reservation = reservation
+    @host = User.find(reservation.host_id)
+    @adventure = Adventure.find(reservation.adventure_id)
+
+    mail(to: @user.email, bcc: "info@advlo.com", subject: "Booking request for: #{@adventure.title}")
+  end
+
+  def host_cancel_email_to_self(reservation)
+    @user = User.find(reservation.user_id)
+    @reservation = reservation
+    @host = User.find(reservation.host_id)
+    @adventure = Adventure.find(reservation.adventure_id)
+
+    mail(to: @user.email, subject: "Booking request for: #{@adventure.title}")
+  end
   
 
   def contact_email(contact_user)

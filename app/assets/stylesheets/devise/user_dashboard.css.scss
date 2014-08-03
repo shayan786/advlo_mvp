@@ -163,11 +163,24 @@
 			margin-bottom: 15px;
 		}
 
+		.res_refund_amount {
+			font-size: 1.0em;
+			margin-bottom: 15px;
+			font-weight: bold;
+		}
+
 		em {
 			color: $white;
 		}
 
 		#cancel_host_submitted {
+	      display: none;
+	      color: #FFF;
+	      font-size: 1.6em;
+	      margin-bottom: 15px;
+	  	}
+
+	  	#cancel_user_submitted {
 	      display: none;
 	      color: #FFF;
 	      font-size: 1.6em;

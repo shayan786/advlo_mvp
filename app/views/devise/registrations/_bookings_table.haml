@@ -10,7 +10,6 @@
         %th People
         %th $ Total Paid
     %tbody
-    / NEED TO REDO LOOK AT RESERVATIONS
 
     - reservations.each_with_index do |res, i|
       - # Add logic for sorting them by timeslot
@@ -19,15 +18,24 @@
         %td.text-left= link_to res.adventure.title, "/adventures/#{res.adventure.slug}", target: '_blank'
         %td.text-left= res.event_start_time.strftime("%m/%d/%Y - %l:%M %P")
         %td.text-center
-          - if res.requested == true && !res.stripe_charge_id
+          - if res.cancelled == true
+            .btn.btn-danger.disabled
+              Cancelled
+          - elsif res.requested == true && !res.stripe_charge_id
             .btn.btn-warning.disabled
               Request - Pending
           - elsif res.requested == true && res.stripe_charge_id
             .btn.btn-info.disabled
               Request - Approved
+            .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#user_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}", "data-refund-amount" => res.get_refund_amount}
+              %i.fa.fa-times
+              Cancel
           - else
             .btn.btn-success.disabled
               Instant Reservation
+            .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#user_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}", "data-refund-amount" => res.get_refund_amount}
+              %i.fa.fa-times
+              Cancel
         %td.text-left= res.head_count
         %td.text-left= "$ #{sprintf('%.2f', res.total_price)}"
     %thead
@@ -36,8 +44,9 @@
         %th
         %th
         %th
-        %th
-        %th= "$ #{sprintf('%.2f',current_user.reservations.sum(:total_price))}"
+        %th= reservations.sum(:head_count)
+        %th= "$ #{sprintf('%.2f', reservations.sum(:total_price))}"
+
 
 
 

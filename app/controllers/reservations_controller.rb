@@ -169,36 +169,64 @@ class ReservationsController < ApplicationController
 	end
 
 
-  def host_cancel 
-    @reservation = Reservation.find_by_id(params[:host_cancel][:reservation_id])
+  def host_cancel
+    reservation = Reservation.find_by_id(params[:host_cancel][:reservation_id])
+    cancel_reason = "HOST: #{params[:host_cancel][:reason]} - #{params[:host_cancel][:details]}"
 
-    #Update reservation status to host-cancellation
-    @reservation.cancelled = true
+    # Need to cancel all reservations associated with that event time
+    reservations_to_cancel = Reservation.where(event_id: reservation.event_id)
 
-    cancel_reason = "HOST - #{params[:host_cancel][:reason]} - #{params[:host_cancel][:details]}"
-    @reservation.cancel_reason = cancel_reason
+    reservations_to_cancel.each do |res|
+      res.cancelled = true
+      res.cancel_reason = cancel_reason
 
-    if @reservation.save
-      # Process Refunds from stripe
+      if res.save 
+        # Process refunds from stripe to all users
+        charge = Stripe::Charge.retrieve(res.stripe_charge_id)
+        refund = charge.refunds.create
 
+        # Send emails
+
+
+      end
+    end
+
+    respond_to do |format|
+      format.js {render "host_cancel.js", layout: false}
+    end
+
+  end
+
+  def user_cancel 
+    reservation = Reservation.find_by_id(params[:user_cancel][:reservation_id])
+    event = Event.find_by_id(reservation.event_id)
+    cancel_reason = "USER: #{params[:user_cancel][:reason]} - #{params[:user_cancel][:details]}"
+
+    reservation.cancelled = true
+    reservation.cancel_reason = cancel_reason
+
+
+    if reservation.save
+      refund_amount = reservation.get_refund_amount
+      # User loses 4% no matter the cancellation
+      # Determine whether cancellation is within 48 hours or not and calculate refund amount
+      if refund_amount != 0
+        # Process refunds from stripe to that user based on the advlo's cancellation policy
+        charge = Stripe::Charge.retrieve(reservation.stripe_charge_id)
+      
+        refund = charge.refunds.create(
+          :amount => refund_amount*100
+        )
+      end 
 
       # Send emails
 
 
       respond_to do |format|
-        format.js {render "host_cancel.js", layout: false}
+        format.js {render "user_cancel.js", layout: false}
       end
-    else
-      flash[:notice] = "Something went wrong!"
     end
-  end
 
-  def user_cancel 
-
-
-    respond_to do |format|
-      format.js {render "user_cancel.js", layout: false}
-    end
   end
 
   def create_stripe_charge(amount, customer_id, description)

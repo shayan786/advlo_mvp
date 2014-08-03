@@ -18,7 +18,7 @@
                   
           .panel-heading.text-center
             .panel-body
-              - if @upcoming_reservations.empty?
+              - if @upcoming_reservations.empty? && @cancelled_reservations.empty?
                 .col-md-6.col-md-offset-3
                   .alert.alert-warning.text-center
                     You have no bookings
@@ -31,3 +31,11 @@
                   
                 - if !@past_reservations.empty?
                   = render partial: 'bookings_table', :locals => {reservations: @past_reservations, reservation_type: 'Past'}
+
+                - if !@cancelled_reservations.empty?
+                  = render partial: 'bookings_table', :locals => {reservations: @cancelled_reservations, reservation_type: 'Cancelled'}
+
+  = render partial: "user_cancel_reservation_modal"
+
+:javascript
+  bookings_init();
