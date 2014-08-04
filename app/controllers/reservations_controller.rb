@@ -156,10 +156,10 @@ class ReservationsController < ApplicationController
       adventure_approve = Adventure.find_by_id(@reservation.adventure_id)
       user_approve = User.find_by_id(@reservation.user_id)
 
-      AdvloMailer.booking_confirmation_email(user_approve, adventure_approve, @reservation)
+      AdvloMailer.booking_confirmation_email(user_approve, adventure_approve, @reservation).deliver
 
     else
-      AdvloMailer.booking_request_email_rejection(@reservation)
+      AdvloMailer.booking_request_email_rejection(@reservation).deliver
       @reservation.destroy
     end
 
@@ -186,11 +186,11 @@ class ReservationsController < ApplicationController
         refund = charge.refunds.create
 
         # Send email to users
-        AdvloMailer.host_cancel_email_to_users(res)
+        AdvloMailer.host_cancel_email_to_users(res).deliver
       end
     end
 
-    AdvloMailer.host_cancel_email_to_self(reservation)
+    AdvloMailer.host_cancel_email_to_self(reservation).deliver
 
     respond_to do |format|
       format.js {render "host_cancel.js", layout: false}
@@ -221,8 +221,8 @@ class ReservationsController < ApplicationController
       end 
 
       # Send emails
-      AdvloMailer.user_cancel_email_to_host(reservation)
-      AdvloMailer.user_cancel_email_to_self(reservation)
+      AdvloMailer.user_cancel_email_to_host(reservation).deliver
+      AdvloMailer.user_cancel_email_to_self(reservation).deliver
 
       respond_to do |format|
         format.js {render "user_cancel.js", layout: false}
