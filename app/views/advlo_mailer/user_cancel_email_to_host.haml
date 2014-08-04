@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %h1 A reservation for your adventure has been cancelled:
+      
+      %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
+      %h4
+        = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"
+        %span with
+        = link_to @adventure.users.first.name, user_path(@adventure.users.first)
+      
+
+      - reason = @reservation.cancel_reason[6..(@reservation.cancel_reason.index('-')-1)].capitalize
+      - reason_details = @reservation.cancel_reason[(@reservation.cancel_reason.index('-')+2)..@reservation.cancel_reason.length].capitalize
+
+      %p
+        %b User:
+        %span= @user.get_name_and_email
+
+      %p
+        %b Cancellation Reason:
+        %span= reason
+
+      %p
+        %b Message from the user:
+        %br
+        = reason_details
+
+      - if @reservation.get_refund_amount != 0
+        %p 
+          %i
+            This reservation was cancelled prior to the 48 hour cancellation policy, hence a refund will be issued to the user.
+            You can find additional information about Advlo's cancellation policy and how it affects your reservations
+            = link_to "here", "#{root_url}terms"
+            .
+      - else
+        %p
+          %i
+            This reservation was cancelled after the 48 hour cancellation policy, hence you will receive the adventure cost minus Advlo's fee.
+            You can find additional information about Advlo's cancellation policy and how it affects your reservations
+            = link_to "here", "#{root_url}terms"
+            .
+
+
+    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
+      %tr
+        %td{align: "center", valign: "top"}
+          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
+            
+            %tr
+              %td
+                %a{href: "#{root_url}/adventures/#{@adventure.slug}"}
+                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
+
+              %td{valign: "top"}
+                %h2= @adventure.title
+                %h4= @adventure.summary
+                %h4
+                  - if @reservation.head_count == 1
+                    .price= "1 person / $ #{@adventure.price}"
+                  - else
+                    .price= "#{@reservation.head_count} people / $ #{@adventure.price} a person"
+                %h3= "Total Price: $ #{@reservation.total_price}"
+
+
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
