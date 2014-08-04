@@ -11,8 +11,8 @@
             = image_tag gi.picture.url(:thumb)
 
   #galleryModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "gallery_modal", role: "dialog"}
-    .modal-dialog
-      .modal-content
+    .modal-dialog.image-modal-dialog
+      .modal-content.image-modal-content
         .modal-body
           %img{src: '', id: ''}
 

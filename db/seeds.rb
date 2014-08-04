@@ -78,6 +78,13 @@ h.save!
   # end
 end
 
+Adventure.all.each do |adv|
+  h = AdventureGalleryImage.new(adventure_id: adv.id)
+  h.picture = File.open(File.join(Rails.root, 'db', 'fixtures', "test#{rand(1..4)}.jpg"))
+  h.save!
+  puts "... Creating gallery images"
+end
+
 Reservation.create(id: 1, user_id: 2, host_id: 1, stripe_recipient_id: nil, stripe_customer_id: nil, stripe_charge_id: nil, total_price: 125, head_count: 3, created_at: "2014-08-04 20:52:16", updated_at: "2014-08-04 20:52:16", event_id: nil, adventure_id: 42, payout_id: nil, processed: false, event_start_time: "2014-08-15 15:30:00", requested: true, host_fee: 18.75, user_fee: 5.0, cancelled: false, cancel_reason: nil)
 Reservation.create(id: 2, user_id: 2, host_id: 1, stripe_recipient_id: nil, stripe_customer_id: nil, stripe_charge_id: nil, total_price: 1040, head_count: 4, created_at: "2014-08-04 20:52:40", updated_at: "2014-08-04 20:52:40", event_id: nil, adventure_id: 28, payout_id: nil, processed: false, event_start_time: "2014-08-14 16:30:00", requested: true, host_fee: 156.0, user_fee: 41.6, cancelled: false, cancel_reason: nil)
 Reservation.create(id: 3, user_id: 2, host_id: 1, stripe_recipient_id: nil, stripe_customer_id: nil, stripe_charge_id: nil, total_price: 1560, head_count: 5, created_at: "2014-08-04 20:53:11", updated_at: "2014-08-04 20:53:11", event_id: nil, adventure_id: 75, payout_id: nil, processed: false, event_start_time: "2014-08-13 16:00:00", requested: true, host_fee: 234.0, user_fee: 62.4, cancelled: false, cancel_reason: nil)
