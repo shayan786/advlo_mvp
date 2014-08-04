@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %h1 Your hosted adventure event has been cancelled:
+      
+      %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
+      %h4
+        = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"
+        %span with
+        = link_to @adventure.users.first.name, user_path(@adventure.users.first)
+      
+
+      - reason = @reservation.cancel_reason[6..(@reservation.cancel_reason.index('-')-1)].capitalize
+      - reason_details = @reservation.cancel_reason[(@reservation.cancel_reason.index('-')+2)..@reservation.cancel_reason.length].capitalize
+
+      %p
+        %b Cancellation Reason:
+        %span= reason
+
+      %p
+        %b Message from the host:
+        %br
+        = reason_details
+
+      %p
+        %b Following people will be notified of the cancellation:
+        %br
+        - @event.reservations.each do |res|
+          - user = User.find_by_id(res.user_id)
+          = user.get_name_and_email
+          %br
+
+      %p
+        %i
+          * All users whom have a reservation for this time slot will be issued full refunds.
+          %br
+          You can find additional information about Advlo's cancellation policy and how it affects your reservations
+          = link_to "here", "#{root_url}terms"
+          .
+
+
+    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
+      %tr
+        %td{align: "center", valign: "top"}
+          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
+            
+            %tr
+              %td
+                %a{href: "#{root_url}/adventures/#{@adventure.slug}"}
+                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
+
+              %td{valign: "top"}
+                %h2= @adventure.title
+                %h4= @adventure.summary
+
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}

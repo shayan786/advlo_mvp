@@ -185,11 +185,12 @@ class ReservationsController < ApplicationController
         charge = Stripe::Charge.retrieve(res.stripe_charge_id)
         refund = charge.refunds.create
 
-        # Send emails
-
-
+        # Send email to users
+        AdvloMailer.host_cancel_email_to_users(res)
       end
     end
+
+    AdvloMailer.host_cancel_email_to_self(reservation)
 
     respond_to do |format|
       format.js {render "host_cancel.js", layout: false}
@@ -220,7 +221,8 @@ class ReservationsController < ApplicationController
       end 
 
       # Send emails
-
+      AdvloMailer.user_cancel_email_to_host(reservation)
+      AdvloMailer.user_cancel_email_to_self(reservation)
 
       respond_to do |format|
         format.js {render "user_cancel.js", layout: false}
