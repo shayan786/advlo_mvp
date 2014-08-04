@@ -31,10 +31,12 @@ class Payout < ActiveRecord::Base
           recipient: user_recip_id
         )
         
+        #update the payout
         @payout.stripe_transfer_id = stripe_transfer.id
         @payout.status = stripe_transfer.status
         @payout.save
 
+        #update the reservations associated with the payout
         reservations.each do |reservation|
           reservation.processed = true
           reservation.payout_id = @payout.id
@@ -66,15 +68,21 @@ class Payout < ActiveRecord::Base
             amount: payout_amount
           )
 
+          #update the payout
           @payout.status = @mass_pay_response.Ack
+          @payout.paypal_masspay_correlation_id = @mass_pay_response.CorrelationID
           @payout.save
 
+          #update the reservations associated with the payout
           reservations.each do |reservation|
             reservation.processed = true
             reservation.payout_id = @payout.id
             reservation.save
           end
         else
+          @payout.status = 'failed'
+          @payout.save
+
           puts @mass_pay_response.Errors[0].LongMessage
         end
 
