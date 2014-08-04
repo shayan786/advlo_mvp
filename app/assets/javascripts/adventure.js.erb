@@ -186,11 +186,15 @@ function advPhotoInput(){
 
 function galleryToggle(){
   $('.gallery-image').click(function(){
-    $('.modal-dialog').height($('.modal-body').last().css('height'))
     $('.gallery-image').removeClass('active');
     $('.modal-body img').attr('src', $(this).data('image'));
     $('.modal-body img').attr('id', $(this).attr('id'));
     $(this).addClass('active');
+
+    $(document).ready(function() {
+      console.log($('.image-modal-dialog').height())
+      console.log($('.image-modal-content').css('height'))
+    });
   })
 }
 

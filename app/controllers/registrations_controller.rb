@@ -37,6 +37,7 @@ class RegistrationsController < Devise::RegistrationsController
     past_sql = "processed = 'true' OR event_start_time < '#{Time.now}'"
 
     @payouts = Payout.where(user_id: current_user.id).order('created_at ASC')
+    
     @upcoming_reservations = Reservation.where(user_id: current_user.id).where(upcoming_sql).where(cancelled: false)
     @past_reservations = Reservation.where(user_id: current_user.id).where(past_sql).where(cancelled: false)
     @host_past_reservations = Reservation.where(host_id: current_user.id).where(past_sql).where(cancelled: false).order('event_start_time')
