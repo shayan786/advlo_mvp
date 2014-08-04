@@ -45,7 +45,6 @@
     }
   }
 
-
   .filter-container {
     position: relative;
   }
@@ -420,6 +419,24 @@
 
 }
 
+.request_block {
+    
+  .image-wrapper {
+    img {
+      margin-top: 30px;
+    }
+  }
+
+  #request-adv-text {
+    color: #fff;
+    position: absolute;
+    bottom: 31px;
+    text-align: center;
+    font-family: 'nexa_light';
+    font-size: 24px;
+    width: 100%;
+  }
+}
 
 @media screen and (max-width: 1335px){
   .brick-wrapper .adventure-brick {
