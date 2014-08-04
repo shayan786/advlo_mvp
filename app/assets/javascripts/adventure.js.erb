@@ -186,6 +186,7 @@ function advPhotoInput(){
 
 function galleryToggle(){
   $('.gallery-image').click(function(){
+    $('.modal-dialog').height($('.modal-body').last().css('height'))
     $('.gallery-image').removeClass('active');
     $('.modal-body img').attr('src', $(this).data('image'));
     $('.modal-body img').attr('id', $(this).attr('id'));
