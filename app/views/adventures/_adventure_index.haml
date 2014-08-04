@@ -30,3 +30,12 @@
           .hover-block{id: i}
             .guide-image= image_tag adv.users.first.get_avatar_url('large')
           .copy-container{class: "copy-#{i}"}
+
+    %a.adventure-brick.request_block.text-center{'data-toggle' => "modal", 'data-target' => '#request_form_modal', href: '#', style: 'text-decoration:none;'}
+      .image-wrapper= image_tag 'icons/request_icon.png'
+      #request-adv-text request an adventure
+
+:javascript
+  $('.request_block').click(function() {
+    $('#request_form').submit();
+  })
