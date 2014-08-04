@@ -50,7 +50,7 @@
               ALL
             - adv_regions.each do |r|
               - if @adventures.where(region: r).count > 0
-                %li{id: "location_all", "data-location"=>"#{r}"}
+                %li{id: "location_#{r.downcase}", "data-location"=>"#{r}"}
                   = r
 
 
@@ -100,6 +100,11 @@
     var region_one_up = "#{@filter_location}";
     var sort_by = $(this).data('sort_by');
     var categories = '';
+
+    //Put in a check for lowest level
+    if (region_type == "continent" && region_one_up.length > 0) {
+      region_type = "lowest";
+    }
 
     //Get all active categories
     var cat_array = $('#filter_nav ul.cat_ul li').map(function(i,e){
@@ -215,7 +220,12 @@
     var region = "all";
     var region_one_up = "#{@filter_location}";
     var categories = '';
-    var sort_by = 'none'
+    var sort_by = 'none';
+
+    //Put in a check for lowest level
+    if (region_type == "continent" && region_one_up.length > 0) {
+      region_type = "lowest";
+    }
 
     // Find sort_by
     if ($('#filter_nav ul.sort_by_ul li#rating').hasClass('active')){
@@ -303,14 +313,16 @@
   $('#filter_nav ul.location_ul li').click(function(e) {
     //First check if all is clicked
     if($(this).attr('id')=="location_all") {
+      console.log($(this).attr('id'))
       //Clear all actives
       $('#filter_nav ul.location_ul li').removeClass('active');
       //Clear all check icons
       $('#filter_nav ul.location_ul li').find("i").remove();
     }
     else {
-      $('#filter_nav ul.location_ul li#location_all').removeClass('active');
       //remove check from all
+      $('#filter_nav ul.location_ul li#location_all').removeClass('active');
+      
       $('#filter_nav ul.location_ul li#location_all').find("i").remove();
     }
 
@@ -332,6 +344,11 @@
     var region_one_up = "#{@filter_location}";
     var categories = '';
     var sort_by = 'none';
+
+    //Put in a check for lowest level
+    if (region_type == "continent" && region_one_up.length > 0) {
+      region_type = "lowest";
+    }
 
     // Find sort_by
     if ($('#filter_nav ul.sort_by_ul li#rating').hasClass('active')){

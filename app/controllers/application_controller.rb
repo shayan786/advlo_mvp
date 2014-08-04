@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
 
     all_cities = []
     region_count = Hash.new 0
-    Adventure.all.each do |a|
+    Adventure.approved.each do |a|
       all_cities << a.city
     end
     all_cities.each do |elem|    

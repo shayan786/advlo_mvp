@@ -101,8 +101,7 @@ class AdventuresController < ApplicationController
           location_sql_string = location_sql_string + " OR country LIKE '%#{loc}%'"
         end
       end
-
-    else "city"
+    when "city"
       adventures_region = Adventure.approved.where(country: region_one_up)
 
       location_sql_string = ''
@@ -113,6 +112,8 @@ class AdventuresController < ApplicationController
           location_sql_string = location_sql_string + " OR city LIKE '%#{loc}%'"
         end
       end
+    else
+      adventures_region = Adventure.approved.where(city: region_one_up)
     end
 
 
