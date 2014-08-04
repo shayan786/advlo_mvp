@@ -30,7 +30,7 @@ module ApplicationHelper
       country_count[elem] += 1
     end
     country_locations = []
-    country_count.each {|l| country_locations << l if l[1] >= 5}
+    country_count.each {|l| country_locations << l if l[1] >= 6}
     return country_locations
   end
 
