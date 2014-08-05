@@ -178,13 +178,15 @@
 	      color: #FFF;
 	      font-size: 1.6em;
 	      margin-bottom: 15px;
+
+	      img {
+	      	width: 200px;
+	      	margin: 20px auto 0 auto;
+	      }
 	  	}
 
 	  	#cancel_user_submitted {
-	      display: none;
-	      color: #FFF;
-	      font-size: 1.6em;
-	      margin-bottom: 15px;
+	      @extend #cancel_host_submitted;
 	  	}
 	}
 }
