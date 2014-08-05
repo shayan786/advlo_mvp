@@ -26,7 +26,7 @@
               .col-md-4
                 .form_label.text-right Short Description
               .col-md-8
-                %input.form-control.show_ml{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", maxlength: "26", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! Ex: Climber, Hiker"}}
+                %input.form-control.show_ml{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", maxlength: "35", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! Ex: Climber, Hiker"}}
             .form-group.row
               .col-md-4
                 .form_label.text-right Location
