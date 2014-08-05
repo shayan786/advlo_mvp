@@ -5,5 +5,9 @@ $('#reviews_list').css({
 $('#review-form').hide();
 
 
+$('.adventure_review_form').hide();
+$('.adventure_review_submitted').fadeIn();
 
-
+$('.modal').on('hide.bs.modal', function(e){
+	window.location.reload(true);
+})

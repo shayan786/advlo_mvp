@@ -19,6 +19,8 @@
 
       .adventure-block
         #adventure-reviews-count
+          - if @adventure.title.length > 25
+            .add_space
           - review_count = Review.where(adventure_id: @adventure.id).count
           - case review_count
           - when 0

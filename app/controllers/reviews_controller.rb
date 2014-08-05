@@ -8,6 +8,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
+
+    puts "---------------------------"
+    puts params[:review][:adv_rating]
+    puts params[:review][:host_rating]
+
+    puts review_params
+
     @review = Review.create!(review_params)
     adventure = Adventure.find_by_id(@review.adventure_id)
     host = User.find_by_id(@review.host_id)

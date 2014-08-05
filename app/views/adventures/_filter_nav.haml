@@ -25,7 +25,7 @@
             - @adventures.each do |adv|
               - countries << adv.country
 
-            - countries.uniq.each do |c|
+            - countries.sort.uniq.each do |c|
               - c = c.gsub(' ','-')
               %li{id: "location_#{c.downcase}", "data-location"=>"#{c}"}
                 = c.gsub('-',' ')
@@ -39,7 +39,7 @@
             - @adventures.each do |adv|
               - cities << adv.city
 
-            - cities.uniq.each do |c|
+            - cities.sort.uniq.each do |c|
               - c = c.gsub(' ','-')
               %li{id: "location_#{c.downcase}", "data-location"=>"#{c}"}
                 = c.gsub('-',' ')
@@ -48,7 +48,7 @@
             %li.active{id: "location_all", "data-location"=>"", "data-location-type"=>"continent"}
               %i.fa.fa-check{style: "margin-right: 10px;"}
               ALL
-            - adv_regions.each do |r|
+            - adv_regions.sort.each do |r|
               - if @adventures.where(region: r).count > 0
                 %li{id: "location_#{r.downcase}", "data-location"=>"#{r}"}
                   = r

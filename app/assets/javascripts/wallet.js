@@ -51,9 +51,73 @@ function user_cancellation() {
 	})
 }
 
+function actions_button_popover() {
+  $('.actions_btn').popover({
+    html: true,
+    trigger: 'focus'
+  })
+}
+
+function adv_review_ratings_init() {
+  $(".adventure_review_form #adv_rating_input").rating({
+    'min': 0,
+    'max': 5,
+    'step': 0.5,
+    'size': 'xs',
+    'showCaption': true,
+    'showClear': false,
+    'starCaptions': {
+      0.5: '0.5',
+      1: '1.0',
+      1.5: '1.5',
+      2: '2.0',
+      2.5: '2.5',
+      3: '3.0',
+      3.5: '3.5',
+      4: '4.0',
+      4.5: '4.5',
+      5: '5.0'
+    }
+  });
+
+  $(".adventure_review_form #host_rating_input").rating({
+    'min': 0,
+    'max': 5,
+    'step': 0.5,
+    'size': 'xs',
+    'showCaption': true,
+    'showClear': false,
+    'starCaptions': {
+      0.5: '0.5',
+      1: '1.0',
+      1.5: '1.5',
+      2: '2.0',
+      2.5: '2.5',
+      3: '3.0',
+      3.5: '3.5',
+      4: '4.0',
+      4.5: '4.5',
+      5: '5.0'
+    }
+  });
+
+  $('.adventure_review_form #adv_rating_input').on('rating.change', function(event, value, caption) {
+    $('.adventure_review_form #adv_rating').val(value);
+  });
+
+  $('.adventure_review_form #host_rating_input').on('rating.change', function(event, value, caption) {
+    $('.adventure_review_form #host_rating').val(value);
+  });  
+
+  $('.adventure_review_form #adv_rating').val($('.adventure_review_form #adv_rating_input').val());
+  $('.adventure_review_form #host_rating').val($('.adventure_review_form #host_rating_input').val());
+
+}
 
 function bookings_init() {
 	user_cancellation();
+	actions_button_popover();
+	adv_review_ratings_init();
 }
 
 function reservations_init(){
