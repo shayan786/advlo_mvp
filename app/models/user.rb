@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
     sum_rating = 0
 
     reviews.each do |rev|
-      sum_rating = sum_rating + rev.host_rating.to_f
+      sum_rating += rev.host_rating.to_f
     end
 
     avg_rating = sum_rating / total_reviews
