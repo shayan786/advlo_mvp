@@ -38,6 +38,7 @@
 
       - host = User.find_by_id(res.host_id)
       = render partial: "users/contact_host_modal", locals: {user: host}
+      
       - review = Review.find_by_user_id(res.user_id)
       - if review
         = render partial: "adventure_review_modal", locals: {host: host, type: "update", res: res, review: review}
