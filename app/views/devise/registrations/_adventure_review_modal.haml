@@ -29,12 +29,18 @@
               .form_label.col-md-4.text-right
                 Adventure:
               .col-md-5.text-left
-                %input#adv_rating_input{type: "text", value: "#{review.adv_rating if review}"}
+                - if review
+                  %input#adv_rating_input{type: "text", value: "#{review.adv_rating}"}
+                - else
+                  %input#adv_rating_input{type: "text"}
             .from-group.row
               .form_label.col-md-4.text-right
                 Host:
               .col-md-5.text-left
-                %input#host_rating_input{type: "text", value: "#{review.host_rating if review}"}
+                - if review
+                  %input#host_rating_input{type: "text", value: "#{review.host_rating}"}
+                - else
+                  %input#host_rating_input{type: "text"}
             .from-group.row.review_comments
               .form_label.col-md-4.text-right
                 Comments:
