@@ -5,8 +5,8 @@ module ApplicationHelper
   end
 
   def get_regions
-    region_count = Hash.new 0
     all_cities = []
+    region_count = Hash.new 0
     Adventure.approved.each do |a|
       all_cities << a.city
     end
@@ -14,6 +14,20 @@ module ApplicationHelper
       region_count[elem] += 1
     end
     @regions = region_count.sort_by {|key, value| key}.take(6)
+  end
+
+  def get_explorer_regions
+    all_cities = []
+    region_count = Hash.new 0
+    Adventure.approved.each do |a|
+      all_cities << a.city
+    end
+    all_cities.each do |elem|    
+      region_count[elem] += 1
+    end
+    hero_regions = []
+    regions = region_count.each{|r| hero_regions << r[0]}
+    hero_regions
   end
 
   def get_cities(region)
