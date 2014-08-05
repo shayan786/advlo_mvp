@@ -45,6 +45,12 @@ class Payout < ActiveRecord::Base
     
       # -------------------- PAYPAL PAYOUTS --------------------------
       elsif payout_user.payout_via_paypal?
+        @payout = Payout.create!(
+          payout_via: 'paypal',
+          user_id: payout_user.id,
+          amount: payout_amount
+        )
+
         @api = PayPal::SDK::Merchant::API.new
 
         # Build mass payout object and call paypal merchant api
@@ -62,12 +68,6 @@ class Payout < ActiveRecord::Base
         @mass_pay_response = @api.mass_pay(@mass_pay)
 
         if @mass_pay_response.success?
-          @payout = Payout.create!(
-            payout_via: 'paypal',
-            user_id: payout_user.id,
-            amount: payout_amount
-          )
-
           #update the payout
           @payout.status = @mass_pay_response.Ack
           @payout.paypal_masspay_correlation_id = @mass_pay_response.CorrelationID
