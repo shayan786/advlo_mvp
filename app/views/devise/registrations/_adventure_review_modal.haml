@@ -49,7 +49,8 @@
           .row
             .col-md-10.col-md-offset-1.text-center
               = image_tag "icons/request_icon.png", class: "img-responsive"
-              %em= "Thanks for updating your review!"
+              %em= "Thanks for updating your review!" if review
+              %em= "Thanks for submitting a review" if !review
               %br
               %em We really appreciate your feedback as a way to consitently provide the best adventures around the world!
 
