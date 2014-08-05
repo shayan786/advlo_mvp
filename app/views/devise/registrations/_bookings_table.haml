@@ -7,8 +7,9 @@
         %th Adventure
         %th Start Date / Time
         %th.text-center Type
-        %th People
+        %th.text-center People
         %th $ Total Paid
+        %th.text-center Actions
     %tbody
 
     - reservations.each_with_index do |res, i|
@@ -27,27 +28,28 @@
           - elsif res.requested == true && res.stripe_charge_id
             .btn.btn-info.disabled
               Request - Approved
-            .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#user_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}", "data-refund-amount" => res.get_refund_amount}
-              %i.fa.fa-times
-              Cancel
           - else
             .btn.btn-success.disabled
               Instant Reservation
-            .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#user_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}", "data-refund-amount" => res.get_refund_amount}
-              %i.fa.fa-times
-              Cancel
-        %td.text-left= res.head_count
+        %td.text-center= res.head_count
         %td.text-left= "$ #{sprintf('%.2f', res.total_price)}"
+
+        = render partial: "bookings_actions", locals: {res: res, reservation_type: reservation_type}
+
+      - host = User.find_by_id(res.host_id)
+      = render partial: "users/contact_host_modal", locals: {user: host}
+      - review = Review.find_by_user_id(res.user_id)
+      - if review
+        = render partial: "adventure_review_modal", locals: {host: host, type: "update", res: res, review: review}
+      - else
+        = render partial: "adventure_review_modal", locals: {host: host, type: "new",  res: res}
+   
     %thead
       %tr
         %th
         %th
         %th
         %th
-        %th= reservations.sum(:head_count)
+        %th.text-center= reservations.sum(:head_count)
         %th= "$ #{sprintf('%.2f', reservations.sum(:total_price))}"
-
-
-
-
-
+        %th

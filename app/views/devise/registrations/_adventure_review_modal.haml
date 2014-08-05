@@ -1,0 +1,57 @@
+- if type == "new"
+  - controller_action = ""
+- else
+  - controller_action = "/#{review.id}"
+
+#adventure_review_modal.modal.fade{role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header.text-center
+        = res.adventure.title
+        %br
+        by
+        %br
+        %em
+          = host.name
+      .modal-body
+        .adventure_review_form
+          %form{"accept-charset" => "UTF-8", action: "/reviews#{controller_action}", method: "POST", id: "adventure_review_form", "data-remote" => "true"}
+            - if type == "update"
+              = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            = tag(:input, :type => "hidden", :name => "review[host_id]", :value => res.host_id)
+            = tag(:input, :type => "hidden", :name => "review[user_id]", :value => res.user_id)
+            = tag(:input, :type => "hidden", :name => "review[adventure_id]", :value => res.adventure_id)
+            = tag(:input, :type => "hidden", :name => "review[adv_rating]", id: "adv_rating")
+            = tag(:input, :type => "hidden", :name => "review[host_rating]", id: "host_rating")
+
+            .form-group.row
+              .form_label.col-md-4.text-right
+                Adventure:
+              .col-md-5.text-left
+                %input#adv_rating_input{type: "text", value: "#{review.adv_rating if review}"}
+            .from-group.row
+              .form_label.col-md-4.text-right
+                Host:
+              .col-md-5.text-left
+                %input#host_rating_input{type: "text", value: "#{review.host_rating if review}"}
+            .from-group.row.review_comments
+              .form_label.col-md-4.text-right
+                Comments:
+              .col-md-7
+                %textarea.form-control{rows: '5', maxlength: "250", name: "review[body]"}
+                  - if type == "update"
+                    = review.body
+            .row.text-center
+              %input.btn.btn-primary.preview_btn.review-button{type: 'submit', value: 'Submit Review'}
+
+        #adventure_review_submitted.adventure_review_submitted
+          .row
+            .col-md-10.col-md-offset-1.text-center
+              = image_tag "icons/request_icon.png", class: "img-responsive"
+              %em= "Thanks for updating your review!"
+              %br
+              %em We really appreciate your feedback as a way to consitently provide the best adventures around the world!
+
+
+
