@@ -207,6 +207,7 @@
 	right: 305px;
 	font-size: 13.5px;
 	position: fixed;
+	padding-left: 15px;
 
 	.main-location {
 		float: left;
@@ -237,6 +238,10 @@
 				border-bottom: none;
 				font-size: 1em;
 				text-decoration: none;
+
+				&:hover {
+					color: $orange;
+				}
 			}
 		}
 	}
@@ -266,6 +271,7 @@
 		width: 200px;
 		height: 310px;
 		right: 300px;
+		padding-left: 0px;
 	}
 
 	.sub-location {
@@ -275,7 +281,7 @@
 		float: left;
 		text-align: left;
 		height: 43px;
-		padding-left: 15px;
+		padding-left: 10px;
 		width: 100%;
 	}
 }
