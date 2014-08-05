@@ -35,18 +35,18 @@ function heroScroll(){
     hero.css('-webkit-transform','translateY(' + (s/2) + 'px');
     heroFont.css('-webkit-transform','translateY(' + (s/2) + 'px');
 
-    if(s > 300 && !heroFont.hasClass('passed')){
-      heroFont.animate({
-        opacity: 0
-      },300)
-      heroFont.addClass('passed')
-    }
-    if(s < 200 && heroFont.hasClass('passed')){
-      heroFont.animate({
-        opacity: 1
-      },1000)
-      heroFont.removeClass('passed')
-    }  
+    // if(s > 300 && !heroFont.hasClass('passed')){
+    //   heroFont.animate({
+    //     opacity: 0
+    //   },300)
+    //   heroFont.addClass('passed')
+    // }
+    // if(s < 200 && heroFont.hasClass('passed')){
+    //   heroFont.animate({
+    //     opacity: 1
+    //   },1000)
+    //   heroFont.removeClass('passed')
+    // }  
   })
 }
 
@@ -199,6 +199,15 @@ function galleryToggle(){
 }
 
 function galleryModalClick(){
+  // $(document).keydown(function(e){
+  //   if (e.keyCode == 37) { 
+  //      return false;
+  //   }else if (e.keyCode == 39) { 
+  //      $('.modal-body img').click()
+  //      return false;
+  //   }
+  // });
+
   var totalSlides = $('.gallery-image').size()
   $('.modal-body img').click(function(i){
     $('.modal-body img').removeClass()

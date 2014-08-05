@@ -4,9 +4,21 @@ module ApplicationHelper
     Adventure.where(region: r).count
   end
 
+  def get_regions
+    region_count = Hash.new 0
+    all_cities = []
+    Adventure.approved.each do |a|
+      all_cities << a.city
+    end
+    all_cities.each do |elem|    
+      region_count[elem] += 1
+    end
+    @regions = region_count.sort_by {|key, value| key}.take(6)
+  end
+
   def get_cities(region)
     all_cities = []
-    Adventure.where(region: region).each do |a|
+    Adventure.approved.where(region: region).each do |a|
       all_cities << a.city
     end
 
@@ -21,7 +33,7 @@ module ApplicationHelper
 
   def get_countries(region)
     all_countries = []
-    Adventure.where(region: region).each do |a|
+    Adventure.approved.where(region: region).each do |a|
       all_countries << a.country
     end
     

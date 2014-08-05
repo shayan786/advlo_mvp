@@ -12,6 +12,8 @@ Event.delete_all
 Reservation.delete_all
 HeroImage.delete_all
 
+AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
+
 host = User.create!(email: 'h@gmail.com', password: 'password', password_confirmation: 'password', name: 'Test Host', avatar_url: "http://graph.facebook.com/1480650951/picture", location: "Seattle, WA, United States", skillset: "Wilderness First Responder (WFR), PSIA Lvl. 1 Snow...", language: "English", sex: "Male", age: 25, is_guide: true, bio: "I'm a gentle giant with a knack for cooking delici...", dob: "1989-08-18", short_description: "Certified Badass", fb_url: "f", tw_url: "t", li_url: "l", stripe_recipient_id: 'rp_14Kgan4xV9NblOcwyCspCOmf', stripe_customer_id: 'cus_4PXlIYJUUZOgR0', rating: "", paypal_email: "chrisknight.mail@gmail.com" )
 traveler = User.create!(email: 't@gmail.com', password: 'password', password_confirmation: 'password', name: "Test Traveller", avatar_url: "http://graph.facebook.com/1480650951/picture", location: "Seattle, WA, United States", skillset: "Wilderness First Responder (WFR), PSIA Lvl. 1 Snow...", language: "English", sex: "Male", age: 25, is_guide: true, bio: "I'm a gentle giant with a knack for cooking delici...", dob: "1989-08-18", short_description: "Certified Badass", fb_url: "f", tw_url: "t", li_url: "l", stripe_recipient_id: 'rp_14Kgam4xV9NblOcwAKZyv61R', stripe_customer_id: 'cus_4So1gVCc7J9wYM', rating: "", paypal_email: "chrisknight.mail@gmail.com" )
 
@@ -76,13 +78,15 @@ h.save!
   #   res.user_fee = (res.total_price * 0.04).round(2)
   #   res.save!
   # end
-end
 
-Adventure.all.each do |adv|
-  h = AdventureGalleryImage.new(adventure_id: adv.id)
-  h.picture = File.open(File.join(Rails.root, 'db', 'fixtures', "test#{rand(1..4)}.jpg"))
-  h.save!
-  puts "... Creating gallery images"
+  if i >= 74
+    Adventure.all.each do |adv|
+      h = AdventureGalleryImage.new(adventure_id: adv.id)
+      h.picture = File.open(File.join(Rails.root, 'db', 'fixtures', "test#{rand(1..4)}.jpg"))
+      h.save!
+      puts "... Creating gallery images"
+    end
+  end
 end
 
 Reservation.create(id: 1, user_id: 2, host_id: 1, stripe_recipient_id: nil, stripe_customer_id: nil, stripe_charge_id: nil, total_price: 125, head_count: 3, created_at: "2014-08-04 20:52:16", updated_at: "2014-08-04 20:52:16", event_id: nil, adventure_id: 42, payout_id: nil, processed: false, event_start_time: "2014-08-15 15:30:00", requested: true, host_fee: 18.75, user_fee: 5.0, cancelled: false, cancel_reason: nil)

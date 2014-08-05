@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   rescue_from ActionController::RoutingError, with: :render_error
@@ -50,17 +51,9 @@ class ApplicationController < ActionController::Base
     @hero_image = HeroImage.where(region: 'Homepage').first
     @feat_adventures = Adventure.approved.order('created_at DESC').limit(6)
     @feat_hosts = User.where(is_guide: true).limit(6)
-
-    all_cities = []
-    region_count = Hash.new 0
-    Adventure.approved.each do |a|
-      all_cities << a.city
-    end
-    all_cities.each do |elem|    
-      region_count[elem] += 1
-    end
-    @regions = region_count.sort_by {|key, value| key}.take(6)
+    get_regions
   end
+
 
   def contact
     @contact = ContactAdvlo.create!(contact_params)
