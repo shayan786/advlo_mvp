@@ -13,14 +13,20 @@
               - max_city_length = 16
               - max_state_length = 13
 
-              - if adv.city.length > max_city_length && adv.state.length > max_state_length
-                .location= "#{adv.city[0..max_city_length]}..., #{adv.state[0..max_state_length]}...".upcase
-              - elsif adv.city.length > max_city_length && adv.state.length < max_state_length
-                .location= "#{adv.city[0..max_city_length]}, #{adv.state}".upcase
-              - elsif adv.city.length < max_city_length && adv.state.length > max_state_length
-                .location= "#{adv.city}, #{adv.state[0..max_state_length]}".upcase
+              - if adv.state
+                - if adv.city.length > max_city_length && adv.state.length > max_state_length
+                  .location= "#{adv.city[0..max_city_length]}..., #{adv.state[0..max_state_length]}...".upcase
+                - elsif adv.city.length > max_city_length && adv.state.length < max_state_length
+                  .location= "#{adv.city[0..max_city_length]}, #{adv.state}".upcase
+                - elsif adv.city.length < max_city_length && adv.state.length > max_state_length
+                  .location= "#{adv.city}, #{adv.state[0..max_state_length]}".upcase
+                - else
+                  .location= "#{adv.city}, #{adv.state}".upcase
               - else
-                .location= "#{adv.city}, #{adv.state}".upcase
+                - if adv.city.length > max_city_length
+                  .location= "#{adv.city[0..max_city_length]}...".upcase
+                - else
+                  .location= "#{adv.city}".upcase
 
             %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
             %input{id: "adv_rating_show_#{i}"}
