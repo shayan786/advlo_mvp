@@ -420,11 +420,13 @@
 }
 
 .request_block {
+  cursor: pointer;
     
   .image-wrapper {
     img {
-      margin-top: 10%;
-      max-height: 50%;
+      margin-top: 5%;
+      width: 50%;
+      height: auto;
     }
   }
 

@@ -45,7 +45,7 @@ ActiveAdmin.register Adventure do
       f.input :published
       f.input :approved
       f.input :slug, label: 'permalink'
-      f.input :subtitle
+      f.input :summary
       f.input :location
       f.input :region, collection: adv_regions
       f.input :category

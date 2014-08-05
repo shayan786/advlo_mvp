@@ -4,6 +4,10 @@ class AdventureStepsController < ApplicationController
   steps :basic, :photos, :itinerary, :schedule, :payment, :publish
 
   def show
+    if !current_user
+      redirect_to '/'
+      return
+    end
 
     if session[:adventure_id]
       @adventure = Adventure.find_by_id(session[:adventure_id])
