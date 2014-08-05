@@ -45,7 +45,7 @@ class Adventure < ActiveRecord::Base
     sum_rating = 0
 
     reviews.each do |rev|
-      sum_rating += rev.get_weighted_rating
+      sum_rating = sum_rating + rev.get_weighted_rating
     end
 
     avg_rating = sum_rating / total_reviews

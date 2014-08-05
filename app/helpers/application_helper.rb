@@ -13,7 +13,7 @@ module ApplicationHelper
     all_cities.each do |elem|    
       region_count[elem] += 1
     end
-    @regions = region_count.sort_by {|key, value| key}.take(6)
+    @regions = region_count.sort_by {|key, value| key}.sort_by{|key, v| v }.reverse.take(6)
   end
 
   def get_explorer_regions
