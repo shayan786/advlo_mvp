@@ -49,10 +49,6 @@ $(document).ajaxStart(function(){
 $(document).ajaxStop(function(){
   $('#loader-overlay').fadeOut()
 });
-$(document).ajaxSend(function(){
-  $('#loader-overlay').show()
-});
-
 
 
 //Header resize on scroll
