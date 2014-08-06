@@ -216,13 +216,13 @@ class ReservationsController < ApplicationController
         charge = Stripe::Charge.retrieve(reservation.stripe_charge_id)
       
         refund = charge.refunds.create(
-          :amount => refund_amount*100
+          :amount => (refund_amount*100).to_i
         )
-      end 
 
-      # Send emails
-      AdvloMailer.user_cancel_email_to_host(reservation).deliver
-      AdvloMailer.user_cancel_email_to_self(reservation).deliver
+        # Send emails
+        AdvloMailer.user_cancel_email_to_host(reservation).deliver
+        AdvloMailer.user_cancel_email_to_self(reservation).deliver
+      end 
 
       respond_to do |format|
         format.js {render "user_cancel.js", layout: false}

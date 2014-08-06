@@ -582,6 +582,14 @@ function adv_browse_rating_show() {
   }
 }
 
+function loader_overlay_show(){
+  $('#adventure_edit_form').submit(function(){
+    //e.preventDefault();
+
+    $('#loader-overlay').show();
+  })
+}
+
 //------------------FORM VALIDATORS------------------
 
 function form_validator(){
@@ -976,7 +984,7 @@ FSInitialize = function(adventure_id) {
       right: ''
     },
 
-    //RENDER EXISTING BOOKING TIMES (blue: unreserved, oragne: reserved)
+    //RENDER EXISTING BOOKING TIMES (blue: unreserved, orange: reserved)
     eventSources: [
       {
         url: '/events',
@@ -1100,4 +1108,5 @@ adventureCreate = function() {
   upload_images();
   request_location_validator();
   request_location_geocomplete();
+  loader_overlay_show();
 }
