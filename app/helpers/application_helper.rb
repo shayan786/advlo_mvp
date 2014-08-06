@@ -27,7 +27,7 @@ module ApplicationHelper
     end
     hero_regions = []
     regions = region_count.each{|r| hero_regions << r[0]}
-    hero_regions
+    return hero_regions
   end
 
   def get_cities(region)
@@ -42,7 +42,6 @@ module ApplicationHelper
     end
     city_locations = []
     city_count.each {|l| city_locations << l if l[1] >= 5}
-    return city_locations
   end
 
   def get_countries(region)
@@ -57,7 +56,6 @@ module ApplicationHelper
     end
     country_locations = []
     country_count.each {|l| country_locations << l if l[1] >= 6}
-    return country_locations
   end
 
   def get_continent(country_code)
