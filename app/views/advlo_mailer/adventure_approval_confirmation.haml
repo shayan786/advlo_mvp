@@ -12,7 +12,7 @@
             %li
               = "#{event.start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} for #{@adventure.duration_num} #{@adventure.duration_type}"
       %h4
-        = link_to @adventure.title, "http://beta.advlo.com/adventures/#{@adventure.slug}"  
+        = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
         %span with
         = link_to @adventure.users.first.name, user_path(@adventure.users.first)
       %h4
@@ -28,7 +28,7 @@
             
             %tr
               %td
-                %a{href: "/adventures/#{@adventure.slug}"}
+                %a{href: "#{root_url}adventures/#{@adventure.slug}"}
                   %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}

@@ -6,7 +6,7 @@
     .indented
       %h1 Adventure Approval request
       %h4
-        = link_to @adventure.title, "http://beta.advlo.com/adventures/#{@adventure.slug}"  
+        = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
 
       %h1 Guide
       %h4 
@@ -21,7 +21,7 @@
             
             %tr
               %td
-                %a{href: "http://beta.advlo.com/admin/adventures/#{@adventure.id}/edit"}
+                %a{href: "#{root_url}admin/adventures/#{@adventure.id}/edit"}
                   %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}
@@ -38,7 +38,7 @@
                 = @adventure.region
                 %br
                 %br
-                %h1= link_to "approve / deny", "http://beta.advlo.com/admin/adventures/#{@adventure.id}/edit"
+                %h1= link_to "approve / deny", "#{root_url}admin/adventures/#{@adventure.id}/edit"
 
                 
             %tr
