@@ -30,7 +30,7 @@
                 - get_cities(r).each do |l|
                   .sub-location=link_to l[0], "/adventures?city=#{l[0]}"
 
-        
+      
         %li
           %form
             %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
@@ -55,4 +55,3 @@
   $('#login-mobile').click(function(){
     $('#mobile-login-form').slideToggle('slow');
   })
-

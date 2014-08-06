@@ -14,19 +14,20 @@ class Payout < ActiveRecord::Base
     begin 
       # ---------------------- STRIPE PAYOUTS ------------------------
       if payout_user.payout_via_stripe?
-
+        
         user_recip_id = payout_user.stripe_recipient_id
+        amount = payout_amount*100.to_i
 
         @payout = Payout.create!(
           payout_via: 'stripe',
           status: 'initiated',
           stripe_recipient_id: user_recip_id,
           user_id: payout_user.id,
-          amount: payout_amount*100
+          amount: amount
         )
 
         stripe_transfer = Stripe::Transfer.create(
-          amount: @payout.amount,
+          amount: @payout.amount.to_i,
           currency: 'usd',
           recipient: user_recip_id
         )
