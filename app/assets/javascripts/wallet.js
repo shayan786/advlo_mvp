@@ -35,7 +35,7 @@ function user_cancellation() {
 	    }
 	})
 
-	$('.cancellation_btn').click(function() {
+	$('.actions_btn').click(function() {
 		var res_id = $(this).data('res-id');
 		var adv_title = $(this).data('adventure-title');
 		var res_time = $(this).data('event-time');
@@ -49,6 +49,21 @@ function user_cancellation() {
 		$('#user_cancel_reservation_modal #cancel_user_submitted .res_refund_amount').empty();
 		$('#user_cancel_reservation_modal #cancel_user_submitted .res_refund_amount').append("Refund Amount: $ "+refund_amount);
 	})
+}
+
+function host_contact_validation() {
+  $('#contact_host_modal .contact_host_form .contact_btn').addClass('disabled');
+
+  $('#contact_host_modal .contact_host_form #contact_message').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 8) {
+          $('#contact_host_modal .contact_host_form .contact_btn').removeClass('disabled');
+      }
+      else if (details.length <= 8) {
+        $('#contact_host_modal .contact_host_form .contact_btn').addClass('disabled');
+      }
+  })
 }
 
 function actions_button_popover() {
@@ -118,6 +133,7 @@ function bookings_init() {
 	user_cancellation();
 	actions_button_popover();
 	adv_review_ratings_init();
+  host_contact_validation();
 }
 
 function reservations_init(){
