@@ -4,18 +4,19 @@ class AdventureStepsController < ApplicationController
   steps :basic, :photos, :itinerary, :schedule, :payment, :publish
 
   def show
-    if !current_user
-      redirect_to '/'
-      return
+
+    if params[:adventure_id]
+      @adventure = Adventure.find_by_id(params[:adventure_id])
+    else
+      @adventure = Adventure.find_by_id(session[:adventure_id])
     end
 
-    if session[:adventure_id]
-      @adventure = Adventure.find_by_id(session[:adventure_id])
-    else
-      @adventure = Adventure.find_by_id(params[:adventure_id])
+    if !current_user || @adventure.users.first != current_user
+      redirect_to '/', notice: "Looks like you wandered where you dont belong"
+      return
     end
     
-    session[:adventure_id] =  @adventure.id
+    @adventure ? session[:adventure_id] = @adventure.id : nil
 
     # Prevent URL injection
     case params[:id]

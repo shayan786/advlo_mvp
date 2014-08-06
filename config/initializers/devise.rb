@@ -11,9 +11,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'info@advlo.com'
-
-  # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  Devise::Mailer.layout 'advlo_mail'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -24,6 +22,8 @@ Devise.setup do |config|
   require 'omniauth-facebook'
 
   config.omniauth :facebook, "210802829129036", "9944a416dfe20e7a2416d6e3d95d7278"
+
+
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
