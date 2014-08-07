@@ -41,7 +41,7 @@ module ApplicationHelper
       city_count[elem] += 1
     end
     city_locations = []
-    city_count.each {|l| city_locations << l if l[1] >= 5}
+    city_count.each {|l| city_locations << l if l[1] >= 2}
     
     return city_locations
   end
@@ -57,7 +57,7 @@ module ApplicationHelper
       country_count[elem] += 1
     end
     country_locations = []
-    country_count.each {|l| country_locations << l if l[1] >= 6}
+    country_count.each {|l| country_locations << l if l[1] >= 2}
     
     return country_locations
   end

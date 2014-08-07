@@ -2,6 +2,7 @@
   .container
     = render partial: "/adventures/adv_create_header"
     #adv_basics
+
       %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_edit_form", enctype: "multipart/form-data"}
         = tag(:input, :type => "hidden", :value => "put", :name => "_method")
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -12,6 +13,11 @@
             BASICS
           .panel-body
             = render partial: "notice"
+            - if @adventure && @adventure.errors.any?
+              - @adventure.errors.full_messages.each do |msg|
+                .alert.alert-warning.text-center= msg
+
+
             .form-group.row
               .col-md-4
                 .form_label.text-right Title *
