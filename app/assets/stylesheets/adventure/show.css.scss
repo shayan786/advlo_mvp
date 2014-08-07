@@ -474,6 +474,12 @@
       font-size: 1.4em;
     }
 
+    .upcoming {
+      max-height: 235px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
     .modal-footer {
       text-align: center !important;
       padding-top: 10px;

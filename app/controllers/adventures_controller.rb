@@ -59,7 +59,7 @@ class AdventuresController < ApplicationController
     @itineraries = Itinerary.where(adventure_id: @adventure.id)
 
     @all_adventure_events = @adventure.events.where("capacity > 0 AND start_time > ?", Time.now.advance(days: +1)).sort_by{|a| a.start_time}
-    @limited_adventure_events = @adventure.events.where("capacity > 0 AND start_time > ?", Time.now.advance(days: +1)).sort_by{|a| a.start_time}.take(5)
+    # @limited_adventure_events = @adventure.events.where("capacity > 0 AND start_time > ?", Time.now.advance(days: +1)).sort_by{|a| a.start_time}.take(5)
 
     related = []
     related << Adventure.approved.where('category LIKE ?',"%#{@adventure.category}%").limit(1) 
