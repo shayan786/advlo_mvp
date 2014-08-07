@@ -143,11 +143,8 @@
         .bio_header
           BIO
         .bio_body
-          - split_bio = @user.bio.split('.').first()
-          - rest_of_bio = @user.bio.gsub(split_bio, '')
-          %span= '"' + split_bio + '."'
           %br
-          = rest_of_bio[1..-1]
+          = @user.bio
 
 #p_reviews
   .container
