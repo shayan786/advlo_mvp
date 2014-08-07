@@ -92,6 +92,13 @@
                 %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", maxlength: "600", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Things to bring, whats not included, detailed directions, etc."}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.other_notes}
+
+            .form-group.row
+              .col-md-4
+                .form_label.text-right Video
+              .col-md-6
+                %input.form-control.show_ml{type: "text", name: "adventure[video_url]", placeholder: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',id: "adv_video_url", value: "#{@adventure.video_url}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Input a Youtube or Vimeo video URL that highlights your adventure"}}
+
             .form-group
               .col-md-4
                 .form_label.text-right Main Adventure Image *
