@@ -12,29 +12,13 @@
               Try requesting one!
 
         - else
-          %ul.nav.nav-tabs.nav-justified{role: "tablist"}
-            %li.active
-              %a{"data-toggle" => "tab", href: ".upcoming", role: "tab"} UPCOMING
-            %li
-              %a{"data-toggle" => "tab", href: ".view-all", role: "tab"} VIEW ALL
-
-          .tab-content
-
-            .upcoming.tab-pane.active
-              .row.text-center
-                %em.tab_header
-                  Instant Reservations
-              - @limited_adventure_events.each do |event| 
-                
-                = render partial: 'event_partial', locals: {event: event}
-
-
-            .view-all.tab-pane
-              .row.text-center
-                %em.tab_header
-                  Instant Reservations
-              - @all_adventure_events.each do |event| 
-                = render partial: 'event_partial', locals: {event: event}
+          .upcoming
+            .row.text-center
+              %em.tab_header
+                Instant Reservations
+            - @all_adventure_events.each do |event| 
+              
+              = render partial: 'event_partial', locals: {event: event}
 
                 
       .modal-footer

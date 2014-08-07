@@ -4,7 +4,7 @@
     ITINERARY
   .col-md-9
     - if @itineraries
-      - @itineraries.each do |itin| 
+      - @itineraries.order('id ASC').each do |itin| 
         .copy-brick.itinerary-brick
           .fa.fa-plus
           .fa.fa-minus
