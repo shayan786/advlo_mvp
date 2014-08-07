@@ -3,6 +3,9 @@
     //.brick-icons.overview-scroll-icon= image_tag 'magnify.png'
     .brick-title 
       OVERVIEW
+  .col-md-4
+    %span.default-title SUMMARY:
+    .default-summary= @adventure.summary
   .col-md-5
     .container
       .row.default-body
@@ -45,7 +48,5 @@
           %span.default-title LOCATION:
         .col-md-3
           %span.default-content= @adventure.location
-  .col-md-3.col-md-offset-1
-    %span.default-title SUMMARY:
-    .default-summary= @adventure.summary
+  
     
