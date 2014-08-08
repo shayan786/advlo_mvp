@@ -1,7 +1,7 @@
 #request_form_modal.modal.fade{role: "dialog"}
   .modal-dialog
     .modal-content
-      .modal-header
+      .modal-header.text-center
         Create an Adventure — We'll Find You a Host
       .modal-body
         %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_form", "data-remote" => "true"}
@@ -43,8 +43,7 @@
             .col-md-6
               %input.form-control{type: "text", name: "request[email]", id: "request_email", maxlength: "40"}
           .row.text-center
-            %input.btn.btn-primary.request_btn{type: "submit", value: "Request Adventure"}
-              / Request Adventure
+            %input.btn.btn-primary.request_btn.disabled{type: "submit", value: "Request Adventure"}
 
         #request_submitted
           .row
