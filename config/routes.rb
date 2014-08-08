@@ -48,5 +48,8 @@ Rails.application.routes.draw do
 
   root to: 'application#homepage'
   
+  resources :sitemaps, :only => :show
+  get "sitemap" => "sitemaps#show"
+
   get '*not_found', to: 'application#render_error'
 end	
