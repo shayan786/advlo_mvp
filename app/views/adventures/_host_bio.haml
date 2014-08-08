@@ -1,0 +1,12 @@
+.container
+  .brick-title 
+    ABOUT THE HOST
+  .col-md-9
+    .copy-brick
+      .brick-copy 
+        = @adventure.users.first.bio
+        %br
+        %br
+        %a{href: "/users/#{@adventure.users.first.to_param}", target: "_blank"}
+          View Full Profile
+

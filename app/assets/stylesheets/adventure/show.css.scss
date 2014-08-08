@@ -264,8 +264,12 @@
         @extend #additional_info;
       }
 
-      #similar {
-        
+      #host_bio {
+        padding-bottom: 20px;
+
+        a {
+          text-decoration: none;
+        }
       }
     }
 
