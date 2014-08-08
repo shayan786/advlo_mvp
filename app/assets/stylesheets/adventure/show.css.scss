@@ -26,7 +26,8 @@
     right: 0px;
     margin-right: 15px;
     margin-left: 15px;
-    height: 400px;
+    min-height: 400px;
+    padding-bottom: 20px;
 
     .guide-block {
       color: #fff;
@@ -83,6 +84,11 @@
 
         .add_space {
           padding-top: 5px;
+        }
+
+        .rating-xs {
+          font-size: 1.0em;
+          cursor: default;
         }
       }
 

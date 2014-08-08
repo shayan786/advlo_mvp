@@ -582,12 +582,23 @@ function adv_browse_rating_show() {
   }
 }
 
-function loader_overlay_show(){
-  // $('#adventure_edit_form').submit(function(){
-  //   //e.preventDefault();
+function adv_show_rating_show() {
+  var rating;
+  var adv_rating_show_id;
 
-  //   $('#loader-overlay').show();
-  // })
+  adv_rating_show_id = "#adventure-reviews-count input#adv_rating_show";
+
+  //initialize
+  $(adv_rating_show_id).rating({
+    'min': 0,
+    'max': 5,
+    'step': 0.1,
+    'size': 'xs',
+    'readonly': true,
+    'showCaption': false,
+    'showClear': false
+  });
+
 }
 
 //------------------FORM VALIDATORS------------------
@@ -1101,6 +1112,7 @@ adventureShow = function() {
   request_time_validator();
   request_time_datepicker();
   request_time_timepicker();
+  adv_show_rating_show();
 };
 
 adventureIndex = function() {
