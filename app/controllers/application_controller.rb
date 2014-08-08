@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath 
     else 
-      session[:previous_url] = '/users/edit'
+      if session[:previous_url] != '/users/sign_in' && session[:previous_url] != '/users/sign_up'
+        session[:previous_previous_url] = session[:previous_url]
+      else
+        session[:previous_url] = '/'
+      end
     end
   end
 

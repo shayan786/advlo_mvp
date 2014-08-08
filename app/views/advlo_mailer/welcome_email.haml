@@ -8,14 +8,12 @@
     %h3.center   
       = "Your account email is: #{@user.email}"
     .indented
-      %br
-
       You can now 
-      %a{href: "#{root_url}users/edit"}
+      %a{href: "#{root_url}/adventures"}
         book
       awesome local adventures or become a certified Advlo guide by completing 
 
-      %a{href: 'http://beta.advlo.com/users/edit'}
+      %a{href: '#{root_url}users/edit'}
         your profile
 
       and 

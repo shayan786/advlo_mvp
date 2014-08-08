@@ -117,3 +117,9 @@ body {
     margin-top: 10px;
   }
 }
+
+select {
+  -moz-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: '';
+}
