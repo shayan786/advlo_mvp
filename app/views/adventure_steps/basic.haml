@@ -69,7 +69,7 @@
                 .input-group
                   %span.input-group-addon
                     $
-                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: "#{@adventure.price}", max: 10000}
+                  %input.form-control{type: "text", required: "required", name: "adventure[price]", id: "adv_price", value: "#{@adventure.price}", min: 1, max: 10000}
                   %span.input-group-addon
                     USD
               .col-md-3
