@@ -9,6 +9,7 @@ class Adventure < ActiveRecord::Base
   has_many :user_adventures
   has_many :itineraries
   has_many :events
+  has_many :reviews
   has_many :users, through: :user_adventures
   has_many :adventure_gallery_images
 

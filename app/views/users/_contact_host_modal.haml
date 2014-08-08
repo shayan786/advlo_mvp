@@ -1,33 +1,68 @@
-#contact_host_modal.modal.fade{role: "dialog"}
-  .modal-dialog
-    .modal-content
-      .modal-header.text-center
-        = "Message - #{user.name}"
-      .modal-body
-        .contact_host_form
-          %form{"accept-charset" => "UTF-8", action: "/users/contact_host", method: "POST", id: "contact_host_form", "data-remote" => "true"}
-            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            = tag(:input, :type => "hidden", :name => "contact_host[host_id]", :value => user.id)
-            = tag(:input, :type => "hidden", :name => "contact_host[user_id]", :value => current_user ? current_user.id : nil)
+- if res
+  #contact_host_modal.modal.fade{role: "dialog", class: "contact_host_modal_#{res.id}"}
+    .modal-dialog
+      .modal-content
+        .modal-header.text-center
+          = "Message - #{user.name}"
+        .modal-body
+          .contact_host_form
+            %form{"accept-charset" => "UTF-8", action: "/users/contact_host", method: "POST", id: "contact_host_form", "data-remote" => "true"}
+              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+              = tag(:input, :type => "hidden", :name => "contact_host[host_id]", :value => user.id)
+              = tag(:input, :type => "hidden", :name => "contact_host[user_id]", :value => current_user ? current_user.id : nil)
 
-            .form-group.row
-              .col-md-4 
-                .form_label.text-right Email *
-              .col-md-6
-                %input.form-control{type: "text", name: "contact_host[email]", id: "contact_email", value: current_user ? current_user.email : ''}
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right Email *
+                .col-md-6
+                  %input.form-control{type: "text", name: "contact_host[email]", id: "contact_email", value: current_user ? current_user.email : ''}
 
-            .form-group.row
-              .col-md-4 
-                .form_label.text-right Message *
-              .col-md-6
-                %textarea.form-control{rows: "5", type: "text", name: "contact_host[message]", id: "contact_message", maxlength: "250"}
-            .row.text-center
-              %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right Message *
+                .col-md-6
+                  %textarea.form-control{rows: "5", type: "text", name: "contact_host[message]", id: "contact_message", maxlength: "250"}
+              .row.text-center
+                %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
 
-        #contact_host_submitted.contact_host_submitted
-          .row
-            .col-md-10.col-md-offset-1.text-center
-              = image_tag "icons/request_icon.png", class: "img-responsive"
-              %em= "Your email has been sent to #{user.name}"
-              %br
-              %em Please allow the host to reply back within the next 24-48 hrs
+          #contact_host_submitted.contact_host_submitted
+            .row
+              .col-md-10.col-md-offset-1.text-center
+                = image_tag "icons/request_icon.png", class: "img-responsive"
+                %em= "Your email has been sent to #{user.name}"
+                %br
+                %em Please allow the host to reply back within the next 24-48 hrs
+- else
+  #contact_host_modal.modal.fade{role: "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-header.text-center
+          = "Message - #{user.name}"
+        .modal-body
+          .contact_host_form
+            %form{"accept-charset" => "UTF-8", action: "/users/contact_host", method: "POST", id: "contact_host_form", "data-remote" => "true"}
+              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+              = tag(:input, :type => "hidden", :name => "contact_host[host_id]", :value => user.id)
+              = tag(:input, :type => "hidden", :name => "contact_host[user_id]", :value => current_user ? current_user.id : nil)
+
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right Email *
+                .col-md-6
+                  %input.form-control{type: "text", name: "contact_host[email]", id: "contact_email", value: current_user ? current_user.email : ''}
+
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right Message *
+                .col-md-6
+                  %textarea.form-control{rows: "5", type: "text", name: "contact_host[message]", id: "contact_message", maxlength: "250"}
+              .row.text-center
+                %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
+
+          #contact_host_submitted.contact_host_submitted
+            .row
+              .col-md-10.col-md-offset-1.text-center
+                = image_tag "icons/request_icon.png", class: "img-responsive"
+                %em= "Your email has been sent to #{user.name}"
+                %br
+                %em Please allow the host to reply back within the next 24-48 hrs

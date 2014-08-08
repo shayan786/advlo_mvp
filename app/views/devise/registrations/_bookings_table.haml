@@ -37,9 +37,9 @@
         = render partial: "bookings_actions", locals: {res: res, reservation_type: reservation_type}
 
       - host = User.find_by_id(res.host_id)
-      = render partial: "users/contact_host_modal", locals: {user: host}
+      = render partial: "users/contact_host_modal", locals: {res: res, user: host}
       
-      - review = Review.find_by_user_id(res.user_id)
+      - review = Review.where("adventure_id = '#{res.adventure_id}' AND user_id = '#{res.user_id}'").first
       - if review
         = render partial: "adventure_review_modal", locals: {host: host, type: "update", res: res, review: review}
       - else
