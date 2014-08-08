@@ -73,6 +73,27 @@ function actions_button_popover() {
   })
 }
 
+function adv_review_validation() {
+  $('#adventure_review_modal').on('shown.bs.modal', function(e){
+    $('#adventure_review_modal .adventure_review_form .review-button').addClass('disabled');
+
+    if ($('#adventure_review_modal .adventure_review_form #adv_rating_input').val() && $('#adventure_review_modal .adventure_review_form #host_rating_input').val() && $('#adventure_review_modal .adventure_review_form #adv_review_comments').val()) {
+      $('#adventure_review_modal .adventure_review_form .review-button').removeClass('disabled');    
+    }
+
+    $('#adventure_review_modal .adventure_review_form #adv_review_comments').on('keyup', function() {
+      var details = $.trim($(this).val());
+
+        if (details.length > 4) {
+            $('#adventure_review_modal .adventure_review_form .review-button').removeClass('disabled');
+        }
+        else if (details.length <= 4) {
+          $('#adventure_review_modal .adventure_review_form .review-button').addClass('disabled');
+        }
+    })
+  });
+}
+
 function adv_review_ratings_init() {
   $(".adventure_review_form #adv_rating_input").rating({
     'min': 0,
@@ -134,6 +155,7 @@ function bookings_init() {
 	actions_button_popover();
 	adv_review_ratings_init();
   host_contact_validation();
+  adv_review_validation();
 }
 
 function reservations_init(){

@@ -33,12 +33,12 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def wallet_variables
-    upcoming_sql = "processed = 'false' OR event_start_time > '#{Time.now}'"
+    upcoming_sql = "processed = 'false' AND event_start_time > '#{Time.now}'"
     past_sql = "processed = 'true' OR event_start_time < '#{Time.now}'"
 
     @payouts = Payout.where(user_id: current_user.id).order('created_at DESC')
-    @upcoming_reservations = Reservation.where(user_id: current_user.id).where(upcoming_sql).where(cancelled: false)
-    @past_reservations = Reservation.where(user_id: current_user.id).where(past_sql).where(cancelled: false)
+    @upcoming_reservations = Reservation.where(user_id: current_user.id).where(upcoming_sql).where(cancelled: false).order('event_start_time')
+    @past_reservations = Reservation.where(user_id: current_user.id).where(past_sql).where(cancelled: false).order('event_start_time')
     @host_past_reservations = Reservation.where(host_id: current_user.id).where(past_sql).where(cancelled: false).order('event_start_time')
     @host_upcoming_reservations = Reservation.where(host_id: current_user.id).where(upcoming_sql).where(cancelled: false).order('event_start_time')
     @cancelled_reservations = Reservation.where(user_id: current_user.id).where(cancelled: true).order('event_start_time')

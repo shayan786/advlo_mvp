@@ -3,7 +3,7 @@
 - else
   - controller_action = "/#{review.id}"
 
-#adventure_review_modal.modal.fade{role: "dialog"}
+#adventure_review_modal.modal.fade{role: "dialog", class: "adventure_review_modal_#{res.id}"}
   .modal-dialog
     .modal-content
       .modal-header.text-center
@@ -45,7 +45,7 @@
               .form_label.col-md-4.text-right
                 Comments:
               .col-md-7
-                %textarea.form-control{rows: '5', maxlength: "250", name: "review[body]"}
+                %textarea.form-control{rows: '5', maxlength: "250", name: "review[body]", id: "adv_review_comments"}
                   - if type == "update"
                     = review.body
             .row.text-center
