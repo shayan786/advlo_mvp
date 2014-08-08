@@ -1,4 +1,4 @@
-- image =  @banner_image ? @banner_image.attachment.url(:hero) : HeroImage.last.attachment.url(:hero)
+- image =  @banner_image ? @banner_image.attachment.url(:hero) : HeroImage.where(region: 'default_profile')
 #p_banner{style: "background: url(#{image})no-repeat center center;"}
   .container
     .row
