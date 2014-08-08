@@ -198,7 +198,7 @@
 }
 
 #locations-menu {
-	background: #000;
+	background: rgba(0,0,0, 0.9);
 	min-height: 150px;
 	width: 650px;
 	font-family: 'nexa_light';
@@ -212,7 +212,7 @@
 	.main-location {
 		position: relative;
 		float: left;
-		text-align: left;
+		text-align: center;
 		width: 25%;
 		margin-top: 2.5%;
 		font-size: 14px;

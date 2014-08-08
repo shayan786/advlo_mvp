@@ -140,11 +140,10 @@
                   %a.btn.btn-primary.update_btn{href: "/adventures/new"}
                     HOST AN ADVENTURE
 
-            .row
-              .col-md-6.col-md-offset-3
-                %a.btn.btn-default.preview_profile_btn{href: "#{current_user.to_param}", target: "_blank"}
-                  %i.fa.fa-eye
-                  PREVIEW PROFILE
+                .col-md-6.col-md-offset-3
+                  %a.btn.btn-default.preview_profile_btn{href: "#{current_user.to_param}", target: "_blank"}
+                    %i.fa.fa-eye
+                    PREVIEW PROFILE
 
 :javascript
   usersInit()

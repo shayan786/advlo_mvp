@@ -100,6 +100,14 @@ body {
   border-radius: 50%;
 }
 
+.alert-warning {
+  background-color: rgba(0,0,0, 0.65) !important;
+  border-color: #000 !important;
+  color: #fff !important;
+  font-family: 'nexa_light' !important;
+  font-size: 18px !important;
+}
+
 .alert-info {
   color: #fff !important;
 }

@@ -34,7 +34,7 @@ class AdventuresController < ApplicationController
   end
 
   def get_hero(location)
-    @hero_image = HeroImage.where(region: location).last || HeroImage.where(region: 'all').last
+    @hero_image = HeroImage.where(region: location).last || HeroImage.where(region: Adventure.where("country LIKE ?", "%#{location}%").first.region).first || HeroImage.last
   end
 
   def show
