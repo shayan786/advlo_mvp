@@ -58,7 +58,7 @@
               .col-md-4
                 .form_label.text-right Biography
               .col-md-8
-                %textarea.form-control.show_ml{rows: "8", name: "user[bio]", id: "user_bio", placeholder: "What's your story?", maxlength: "300", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you by sharing your story"}}
+                %textarea.form-control.show_ml{rows: "8", name: "user[bio]", id: "user_bio", placeholder: "What's your story?", maxlength: "750", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you by sharing your story"}}
                   - if !current_user.bio.nil?
                     #{current_user.bio}
             .form-group.row
@@ -95,7 +95,12 @@
         .col-md-6.text-center
 
           // profile image upload
-          .row
+
+          %a.btn.btn-default.preview_profile_btn{href: "#{current_user.to_param}", target: "_blank"}
+            %i.fa.fa-eye
+            VIEW PROFILE
+
+          .row{style: 'margin-top: 30px'}
             - if !current_user.avatar_file_name.nil?
               = image_tag "#{current_user.avatar.url(:profile)}", :class => "img-thumbnail img-responsive"
             - elsif !current_user.avatar_url.nil?
@@ -158,13 +163,10 @@
                     .panel-heading.panel-title.be_host_title You're ready to host!
                     .panel-body.text-left.text-center
                       Your profile is complete
+                .col-md-6.col-md-offset-3                  
                   %a.btn.btn-primary.update_btn{href: "/adventures/new"}
                     HOST AN ADVENTURE
 
-                .col-md-6.col-md-offset-3
-                  %a.btn.btn-default.preview_profile_btn{href: "#{current_user.to_param}", target: "_blank"}
-                    %i.fa.fa-eye
-                    PREVIEW PROFILE
 
 :javascript
   usersInit()
