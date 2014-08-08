@@ -1,9 +1,11 @@
 class VideoValidator < ActiveModel::Validator
 
   def validate(record)
-    unless record.video_url.empty?
-      unless valid_url?(record.video_url)
-        record.errors[:video_url] << " - Only YouTube or Vimeo URL's are allowed"
+    unless record.class != Adventure
+      unless record.video_url.empty?
+        unless valid_url?(record.video_url)
+          record.errors[:video_url] << " - Only YouTube or Vimeo URL's are allowed"
+        end
       end
     end
   end
