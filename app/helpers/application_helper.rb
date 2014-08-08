@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def adv_count(r)
-    Adventure.where(region: r).count
+    Adventure.approved.where(region: r).count
   end
 
   def get_regions

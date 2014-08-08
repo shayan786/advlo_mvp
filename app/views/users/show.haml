@@ -1,4 +1,5 @@
-#p_banner{style: "background: url(#{@banner_image.attachment.url(:hero)})no-repeat center center;"}
+- image =  @banner_image ? @banner_image.attachment.url(:hero) : '/background/advlo_mountains.jpg'
+#p_banner{style: "background: url(#{image})no-repeat center center;"}
   .container
     .row
       .col-md-4.col-md-offset-4#profile-box

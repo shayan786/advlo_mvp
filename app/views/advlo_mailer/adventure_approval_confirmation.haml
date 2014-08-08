@@ -8,7 +8,7 @@
       %h4 
         Your Book it Now times
         %ul
-          - @adventure.events.each do |event|
+          - @adventure.events.order('start_time').each do |event|
             %li
               = "#{event.start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} for #{@adventure.duration_num} #{@adventure.duration_type}"
       %h4
