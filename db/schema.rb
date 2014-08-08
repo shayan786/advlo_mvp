@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807053503) do
+ActiveRecord::Schema.define(version: 20140808174106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,8 +91,6 @@ ActiveRecord::Schema.define(version: 20140807053503) do
     t.string   "video_url"
   end
 
-  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
-
   create_table "contact_advlos", force: true do |t|
     t.integer  "user_id"
     t.string   "email"
@@ -144,6 +142,7 @@ ActiveRecord::Schema.define(version: 20140807053503) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "itineraries", force: true do |t|

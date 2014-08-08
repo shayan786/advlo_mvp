@@ -95,7 +95,8 @@ function input_maxlength() {
 }
 
 function photoInput(){
-  $(":file").filestyle({input: false, icon: false, buttonText: "SET PROFILE IMAGE"});
+  $("#user_avatar").filestyle({input: false, icon: false, buttonText: "SET PROFILE IMAGE"});
+  $("#banner_image").filestyle({input: false, icon: false, buttonText: "SET BANNER IMAGE"});
 }
 
 function create_tabs() {
@@ -132,6 +133,12 @@ function upload_profile_photo() {
   $('#user_img_edit_form input[type="file"]').change(function(){
     $('#loader-overlay').show(function() {
       $('#user_img_edit_form input[type="submit"]').click();
+    });
+  })
+
+  $('#user_profile_edit_form input[type="file"]').change(function(){
+    $('#loader-overlay').show(function() {
+      $('#user_profile_edit_form input[type="submit"]').click();
     });
   })
 }

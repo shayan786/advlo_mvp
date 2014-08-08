@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @user_languages = @user.language.split(',')
     @user_skillsets = @user.skillset.split(',')
 
+    @banner_image = HeroImage.where(user_id: @user.id).first
+
     @reviews = Review.where(host_id: @user.id)
   end
 
@@ -26,10 +28,27 @@ class UsersController < ApplicationController
     end
   end 
 
+  def hero_image
+    HeroImage.where(user_id: hero_image_params[:user_id]).each do |hi|
+      hi.destroy
+    end
+    @banner_image = HeroImage.create!(hero_image_params)
+
+    if @banner_image.save
+      respond_to do |format|
+        format.html {redirect_to "/users/edit"}
+      end
+    end
+  end
+
   private 
 
   def contact_host_params
     params.required(:contact_host).permit(:user_id, :host_id, :message, :email)
+  end
+
+  def hero_image_params
+    params.required(:hero_image).permit(:user_id, :attachment)
   end
 
 end

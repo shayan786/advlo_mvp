@@ -6,12 +6,8 @@
 	margin-top: 50px;
 	margin-bottom: 20px;
 
-	//Change to let user change profile pic?
-	background-image: asset-url("background/advlo_mountains.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-
+	background-size: cover !important;
+	
 	#profile-box {
 		margin-top: 6%;
 

@@ -4,6 +4,10 @@
 
 	color: $profile_font_color;
 
+	.img-banner {
+		min-height: 200px;
+		max-width: 300px;
+	}
 	.container {
 
 		.panel {
