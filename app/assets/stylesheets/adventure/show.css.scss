@@ -391,6 +391,7 @@
           margin: 0 auto;
           .gallery-image {
             cursor: pointer;
+            max-width: 300px;
             margin: 10px;
             img {
               width: 100%;
