@@ -14,7 +14,7 @@
   #how_it_works_panels
     .row.text-center
       .col-md-4
-        %a{href: "#"}
+        %a.find-adventures{href: "#"}
           .panel.panel-default
             .panel-heading
               FIND
@@ -47,3 +47,9 @@
 
 
 
+:javascript
+  
+  $('.find-adventures').click(function(e){
+     e.stopPropagation();
+    $(".navbar-btn").first().dropdown('toggle');
+  })
