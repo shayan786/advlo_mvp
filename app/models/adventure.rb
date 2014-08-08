@@ -1,6 +1,6 @@
 class Adventure < ActiveRecord::Base
   include ActiveModel::Validations
-  #validates_with VideoValidator
+  validates_with VideoValidator
   
   before_save :set_slug
 
