@@ -12,11 +12,9 @@
           .panel-heading.text-center.section_header
             BASICS
           .panel-body
-            = render partial: "notice"
             - if @adventure && @adventure.errors.any?
               - @adventure.errors.full_messages.each do |msg|
                 .alert.alert-warning.text-center= msg
-
 
             .form-group.row
               .col-md-4
@@ -44,10 +42,10 @@
               .col-md-4
                 .form_label.text-right Capacity *
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[cap_min]", id: "adv_cap_min", value: "#{@adventure.cap_min}", min: 1}
+                %input.form-control{type: "text", name: "adventure[cap_min]", id: "adv_cap_min", value: "#{@adventure.cap_min}"}
                 .text-center Min
               .col-md-1
-                %input.form-control{type: "text", required: "required", name: "adventure[cap_max]", id: "adv_cap_max", value: "#{@adventure.cap_max}", max: 101, :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "How many people can you reasonably host while offering a great experience?"}}
+                %input.form-control{type: "text", name: "adventure[cap_max]", id: "adv_cap_max", value: "#{@adventure.cap_max}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "How many people can you reasonably host while offering a great experience?"}}
                 .text-center Max
             .form-group.row
               .col-md-4
