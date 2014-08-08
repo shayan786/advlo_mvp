@@ -13,6 +13,7 @@
 
       - # SHOW LOCATION FILTER BASED ON INDEX VIEW
       .panel-heading{id: "location_heading"}
+        %i.fa.fa-plus-circle
         Location:
       .panel-body{id: "location_body", style: "display: none"}
         %ul.nav.nav-pills.nav-stacked.location_ul
@@ -55,6 +56,7 @@
 
 
       .panel-heading{id: "cat_heading"}
+        %i.fa.fa-plus-circle
         Category:
       .panel-body{id: "cat_body", style: "display: none"}
         %ul.nav.nav-pills.nav-stacked.cat_ul
@@ -86,10 +88,21 @@
 
   $('#filter_nav #location_heading').click(function() {
     $('#filter_nav #location_body').slideToggle();
+
+    $(this).find("i").rotate({
+      endDeg: 90,
+      duration: 0.5
+    });
   })
 
   $('#filter_nav #cat_heading').click(function() {
     $('#filter_nav #cat_body').slideToggle();
+
+    
+    $(this).find("i").rotate({
+      endDeg: 90,
+      duration: 0.5
+    });
   })
   
   // SORT BY
