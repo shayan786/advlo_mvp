@@ -561,6 +561,22 @@ function adv_show_rating_show() {
 
 }
 
+function contact_form_validator() {
+  $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
+
+  //request adventure form validation on button
+  $('#contact_host_modal .modal-dialog #contact_message').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 6) {
+        $('#contact_host_modal .modal-dialog .contact_btn').removeClass('disabled');
+      }
+      else if (details.length <= 6) {
+        $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
+      }
+  })
+}
+
 //------------------FORM VALIDATORS------------------
 
 function form_validator(){
@@ -939,25 +955,6 @@ function payment_modal_validator() {
       }
     }
   });
-
-  // $('#update_paypal_form input#paypal_email').change(function() {
-  //   var email = $.trim($(this).val());
-
-  //   if (email.length > 5) {
-  //     $('#update_paypal_form #update_paypal_btn').removeClass('disabled');
-  //   }
-
-  // });
-
-  // $('#add_paypal_form input#paypal_email').change(function() {
-  //   var email = $.trim($(this).val());
-
-
-  //   if (email.length > 5) {
-  //     $('#add_paypal_form #add_paypal_btn').removeClass('disabled');
-  //   }
-
-  // });
 }
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
@@ -1071,6 +1068,7 @@ adventureShow = function() {
   request_time_datepicker();
   request_time_timepicker();
   adv_show_rating_show();
+  contact_form_validator();
 };
 
 adventureIndex = function() {

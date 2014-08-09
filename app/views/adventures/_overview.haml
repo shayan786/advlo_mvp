@@ -51,5 +51,10 @@
               %span.default-title LOCATION:
             .col-md-3
               %span.default-content= @adventure.location
-  
-    
+
+    .row.text-center
+      .btn.btn-primary.contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal'}
+        %i.fa.fa-envelope-o
+        CONTACT HOST
+
+= render partial: "users/contact_host_modal", locals: {user: @adventure.users.first, res: nil}
