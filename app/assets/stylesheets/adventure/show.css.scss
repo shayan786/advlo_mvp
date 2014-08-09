@@ -160,6 +160,39 @@
           border: 1px solid $light_gray;
         }
 
+        .contact_btn {
+          font-size: 0.6em;
+          padding: 10px 20px;
+          margin-bottom: 15px;
+
+          background-color: $login_btn_color;
+          border-color: $login_btn_color;
+
+          .fa {
+            padding-top: 4px;
+            padding-right: 10px;
+          }
+
+          &:hover {
+            background-color: $login_btn_color_hover;
+            border-color: $login_btn_color_hover;
+          }
+        }
+
+        #contact_host_modal {
+          .modal-header {
+            font-size: 0.7em;
+          }
+
+          .form_label {
+            font-size: 0.6em;
+          }
+
+          #contact_host_submitted {
+            font-size: 0.7em;
+          }
+        }
+
         .fa-chevron-circle-right {
           color: $gray;
           margin-right: 15px;
