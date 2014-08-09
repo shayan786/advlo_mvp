@@ -21,6 +21,10 @@ h = HeroImage.new(location: 'all', region: 'all')
 h.attachment = File.open(File.join(Rails.root, 'db', 'fixtures', "test#{rand(1..4)}.jpg"))
 h.save!
 
+h = HeroImage.new(location: 'all', region: 'default')
+h.attachment = File.open(File.join(Rails.root, 'db', 'fixtures', "test#{rand(1..4)}.jpg"))
+h.save!
+
 75.times do |i|
   puts "creating adventure #{i}"
   if i >= 70

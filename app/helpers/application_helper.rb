@@ -13,7 +13,17 @@ module ApplicationHelper
     all_cities.each do |elem|    
       region_count[elem] += 1
     end
-    @regions = region_count.sort_by {|key, value| key}.sort_by{|key, v| v }.reverse.take(6)
+    @regions =[]
+    regions = region_count.sort_by {|key, value| key}.sort_by{|key, v| v }.reverse.take(6)
+
+    regions.each do |r|
+      Struct.new("Region", :place, :count, :region) #=> Struct::Region
+      hero = HeroImage.find_by_region(r[0]) ? HeroImage.find_by_region(r[0]) : HeroImage.where(region: 'default').first
+      @regions << r = Struct::Region.new(r[0],r[1], hero) #=> #<struct Struct::Point x=0, y=0>
+    end
+
+    return  @regions
+    # hero_image = HeroImage.find_by_region(r[0]) ? HeroImage.find_by_region(r[0]).attachment.url(:hero) : 
   end
 
   def get_explorer_regions

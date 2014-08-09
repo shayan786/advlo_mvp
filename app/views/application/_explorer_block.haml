@@ -9,8 +9,9 @@
           - @regions.each do |r|
             %a{href: "/adventures?location=#{r[0]}"}
               .region
-                - hero_image = HeroImage.find_by_region(r[0]) ? HeroImage.find_by_region(r[0]).attachment.url(:hero) : '/background/advlo_mountains.jpg'
-                = link_to (image_tag asset_url(hero_image)), "/adventures?city=#{r[0].gsub(' ','-')}"
+                - if r.region == nil
+                  - r.region = 'default'
+                = link_to (image_tag HeroImage.find(r.region).attachment.url(:hero)), "/adventures?city=#{r[0].gsub(' ','-')}"
                 - adv_count = Adventure.where(city: r[0]).count
                 - if r[0].length > 14
                   .region-text= "#{r[0][0..14]}... (#{adv_count})"  
