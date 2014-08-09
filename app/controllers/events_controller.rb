@@ -11,8 +11,11 @@ class EventsController < ApplicationController
 		end_q = Time.at(params[:end].to_i)
 
 		@events_n = @events_open.where("start_time >= ? and end_time <= ?", start_q, end_q)
-		# "timezoneParam" => "UTC" ?
 		@events_j = @events_n.all.map{|e| {"id" => "#{e.id}", "title"=> @adventure.title, "allDay" => false, "start"=> e.start_time.to_time.iso8601, "end"=> e.end_time.to_time.iso8601}}
+
+		puts "********"
+		puts @events_j
+		puts "********"
 
 		respond_to do |format|
 			format.json {render json: @events_j}
@@ -30,7 +33,6 @@ class EventsController < ApplicationController
 		end_q = Time.at(params[:end].to_i)
 
 		@events_n = @events_reserved.where("start_time >= ? and end_time <= ?", start_q, end_q)
-		# "timezoneParam" => "UTC" ?
 		@events_j = @events_n.all.map{|e| {"id" => "#{e.id}", "title"=> @adventure.title, "allDay" => false, "start"=> e.start_time.to_time.iso8601, "end"=> e.end_time.to_time.iso8601}}
 
 		respond_to do |format|
