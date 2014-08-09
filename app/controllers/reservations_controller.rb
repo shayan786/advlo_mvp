@@ -145,6 +145,9 @@ class ReservationsController < ApplicationController
       stripe_charge = create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
 
       if stripe_charge
+        puts "***** stripe_charge ====>>> #{stripe_charge} ******"
+
+
         @reservation.stripe_charge_id = stripe_charge.id
         @reservation.stripe_customer_id = user.stripe_customer_id
 
@@ -185,8 +188,10 @@ class ReservationsController < ApplicationController
 
       if res.save 
         # Process refunds from stripe to all users
-        charge = Stripe::Charge.retrieve(res.stripe_charge_id)
-        refund = charge.refunds.create
+        if res.stripe_charge_id
+          charge = Stripe::Charge.retrieve(res.stripe_charge_id)
+          refund = charge.refunds.create
+        end
 
         # Send email to users
         AdvloMailer.delay.host_cancel_email_to_users(res)
