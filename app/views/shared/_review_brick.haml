@@ -5,6 +5,8 @@
     - else 
       = image_tag 'missing.png'
   .review-text 
+    %a.review-adventure-title{href: "/adventures/#{review.adventure.slug}", target: "_blank"}
+      = review.adventure.title
     .review-body= review.body
     - if review.user.name
       .review-credit= "- #{review.user.name}"
