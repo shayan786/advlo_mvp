@@ -21,7 +21,8 @@
               .col-md-6.col-md-offset-3.text-center
                 .alert.alert-warning
                   Host an adventure and start getting paid
-                %span= link_to 'Create an adventure', "/adventures/info"
+                %a.btn.btn-default{href: "/adventures/new"}
+                  GET OUT THERE
 
             -else 
               .panel-heading.text-center

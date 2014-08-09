@@ -38,6 +38,11 @@
 					}
 				}
 
+				.btn-default {
+					@extend .host_btn;
+					color: white;
+				}
+
 				.user_adv {
 					border-bottom: 1px solid $lighter_gray;
 					padding-bottom: 25px;
