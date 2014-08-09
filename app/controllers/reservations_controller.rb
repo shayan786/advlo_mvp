@@ -34,6 +34,9 @@ class ReservationsController < ApplicationController
       if stripe_charge
         @reservation.update(stripe_charge_id: stripe_charge.id)
         @reservation.update(stripe_customer_id: user.stripe_customer_id)
+      else
+        #didn't go through, cancel the reservation
+        @reservation.destroy
       end 
 
     # Otherwise create a new stripe customer and get stripe information
