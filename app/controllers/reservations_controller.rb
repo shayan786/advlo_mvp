@@ -34,6 +34,9 @@ class ReservationsController < ApplicationController
       if stripe_charge
         @reservation.update(stripe_charge_id: stripe_charge.id)
         @reservation.update(stripe_customer_id: user.stripe_customer_id)
+      else
+        #didn't go through, cancel the reservation
+        @reservation.destroy
       end 
 
     # Otherwise create a new stripe customer and get stripe information
@@ -88,13 +91,9 @@ class ReservationsController < ApplicationController
 
     @reservation.event_start_time = request_date_time
 
-    # EMAIL THE USER
+    # AdvloMailer
     AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
 
-
-
-    # EMAIL THE HOST ABOUT THIS
-    # AdvloMailer.
 
     # If the current user (customer) does not have a stripe customer id
     # => create one
@@ -145,17 +144,22 @@ class ReservationsController < ApplicationController
       # Charge the user
       stripe_charge = create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
 
-      @reservation.stripe_charge_id = stripe_charge.id
-      @reservation.stripe_customer_id = user.stripe_customer_id
+      if stripe_charge
+        @reservation.stripe_charge_id = stripe_charge.id
+        @reservation.stripe_customer_id = user.stripe_customer_id
 
-      @reservation.save
+        if @reservation.save
+          # Email both the user that request has been approved
+          # AdvloMailer
+          adventure_approve = Adventure.find_by_id(@reservation.adventure_id)
+          user_approve = User.find_by_id(@reservation.user_id)
 
-      # Email both the user that request has been approved
-      # AdvloMailer
-      adventure_approve = Adventure.find_by_id(@reservation.adventure_id)
-      user_approve = User.find_by_id(@reservation.user_id)
+          AdvloMailer.delay.booking_confirmation_email(user_approve, adventure_approve, @reservation)
+        end
 
-      AdvloMailer.delay.booking_confirmation_email(user_approve, adventure_approve, @reservation)
+      else 
+        puts "*****APPROVAL CHARGE FAILED******"
+      end
 
     else
       AdvloMailer.delay.booking_request_email_rejection(@reservation)
