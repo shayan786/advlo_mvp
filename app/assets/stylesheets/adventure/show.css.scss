@@ -150,7 +150,15 @@
 
       #overview {
         padding-top: 15px;
-        padding-bottom: 25px;
+        padding-bottom: 20px;
+
+        .panel {
+          width: 77%;
+          background: rgba(0,0,0,0.5);
+          padding-left: 5px;
+          padding-right: 5px;
+          border: 1px solid $light_gray;
+        }
 
         .fa-chevron-circle-right {
           color: $gray;
@@ -182,6 +190,7 @@
         }
 
         .default-summary {
+          font-family: nexa_light;
           font-size: 0.6em;
           line-height: 1.3em;
           margin-top: 5px;
@@ -345,10 +354,6 @@
         color: #c35b26;
         left: 20px;
         margin-top: 7px;
-      }
-
-      .itinerary-title {
-        
       }
     }
 
@@ -627,6 +632,10 @@
     display: none;
   }
 
+
+  .adventure-show-container .adventure-copy-wrapper .information-container #overview .panel {
+    width: 100%;
+  }
 
 }
 
