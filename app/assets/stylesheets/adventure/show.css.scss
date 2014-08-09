@@ -61,6 +61,7 @@
         .image-wrapper{
           height: 100%;
           width: auto;
+          border-radius: 50%;
         }:hover{
           opacity: 0.9;
         }
@@ -81,6 +82,8 @@
       #adventure-reviews-count {
         color: $white;
         font-size: 1.2em;
+        position: relative;
+        height: 28px;
 
         .add_space {
           padding-top: 5px;
@@ -90,6 +93,12 @@
           font-size: 1.0em;
           cursor: default;
         }
+
+      }
+      .star-position {
+        position: absolute;
+        left: 68px;
+        top: 1px;
       }
 
       #adventure-price {
@@ -126,11 +135,6 @@
 
   .adventure-copy-wrapper {
 
-    .alert {
-      font-size: 20px;
-      text-align: center;
-      list-style: none;
-    }
 
     position: relative;
     width: 100%;

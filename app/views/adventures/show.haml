@@ -18,7 +18,7 @@
 
 
       .adventure-block
-        #adventure-reviews-count
+        #adventure-reviews-count        
           - if @adventure.title.length > 25
             .add_space
           - review_count = Review.where(adventure_id: @adventure.id).count
@@ -28,14 +28,16 @@
           - when 1
             / %input{id: "adv_rating_value", type: "hidden", "data-adv-rating"=>@adventure.rating}
             %input{id: "adv_rating_show", value: @adventure.rating}
-            %em= "#{review_count} Review"
+            %em.star-position= "#{review_count} Review"
+
           - else
             %input{id: "adv_rating_show", value: @adventure.rating}
             %em= "#{review_count} Reviews"
+
         #adventure-price
           %span= "$ #{@adventure.price}"
         -if !@adventure.approved || @current_guide == current_user
-          #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+          #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 
             %span 
               BOOK IT
         -else
@@ -50,10 +52,10 @@
         .guide-profile-image
           = image_tag 'missing.png'
 
+  - flash.each do |key, value|
+    %div{class: 'alert-warning adv-show-alert'}
+      = value
   .adventure-copy-wrapper
-    - flash.each do |key, value|
-      %div{class: flash_class(key)}
-        %li= value
     .row
       .col-md-12#mobile-adventure-infographic.text-center
         .navigation-brick
@@ -141,4 +143,9 @@
   $(window).resize(function(){
     sizeSidebar();
     resizeAdventureShowImage();
+  })
+
+  $(document).ready(function(){
+    $('.rating-xs').css('width','70%')
+    $('.rating-xs').css('float','right')
   })

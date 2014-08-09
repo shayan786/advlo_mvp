@@ -2,7 +2,7 @@
   #hero_image_wrapper
     - if @hero_image
       #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
-    #location_text= @location ? @location.upcase : "Advlo" 
+    #location_text= @location ? @location.upcase : "Adventure Local" 
 
   #adventures-content-container
     = render partial: 'filter_nav'
