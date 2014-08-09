@@ -11,7 +11,7 @@
 
 
   	.adv_info_btn {
-  		margin-top: 120px;
+  		margin-top: 40px;
   		font-size: 1.6em;
   		background-color: $login_btn_color;
   		border-color: $login_btn_color;
@@ -33,25 +33,35 @@
 
   .adventure_info_body {
   	padding-bottom: 20px;
-  	background: $lighter_gray;
+
+    .border {
+      border-top: 2px solid $light_gray;
+    }
 
   	.gray_background {
-  		background: $lighter_gray !important;
+  		background: transparent;
   	}
 
   	.white_background {
-  		background: #FFF !important;
+  		background: rgba(0,0,0,0.5);
+      border-top: 2px solid $light_gray;
+      padding-bottom: 20px;
   	}
 
   	h2 {
   		margin-top: 30px;
   		font-family: cabin_bold !important;
   		font-size: 3.2em;
+      text-align: center;
+      color: white;
   	}
 
   	.body_content {
   		font-size: 1.6em;
   		padding-bottom: 30px;
+      color: white;
+      opacity: 0.8;
+      text-align: center;
   	}
 
   	.body_list {
@@ -59,15 +69,26 @@
   	}
 
   	.matrix_header {
-  		font-family: nexa_bold;
-  		font-size: 0.8em;
+  		font-family: nexa_light;
+  		font-size: 1.8em;
   		margin-top: 15px;
   		margin-bottom: 5px;
+      text-align: center;
+      border-bottom: 1px solid $advlo_orange;
+      color: $orange;
   	}
 
   	.matrix_content {
-  		font-size: 0.8em;
-  		margin-bottom: 15px;
+  		font-size: 1.4em;
+      margin-top: 10px;
+      color: white;
+      opacity: 0.8;
+      text-align: center;
+      min-height: 170px;
+
+      .display_percent {
+        font-size: 2.6em;
+      }
   	}
   }
 }
