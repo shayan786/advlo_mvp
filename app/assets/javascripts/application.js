@@ -18,11 +18,13 @@
 //= require jquery.ui.resizable
 //= require jquery.timepicker.min
 //= require jquery.rotate
+//= require jquery.blueimp-gallery.min
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-filestyle
 //= require bootstrap-maxlength
 //= require bootstrapValidator.min
+//= require bootstrap-image-gallery.min
 //= require idangerous.swiper.min
 //= require masonry.pkgd.min.js
 //= require imagesloaded.pkgd.min.js
