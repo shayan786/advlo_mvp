@@ -1,4 +1,4 @@
-- image =  @banner_image ? @banner_image.attachment.url(:hero) : '/background/advlo_mountains.jpg'
+- image =  @banner_image ? @banner_image.attachment.url(:hero) : asset_url('/assets/background/advlo_mountains.jpg')
 #p_banner{style: "background: url(#{image})no-repeat center center;"}
   .container
     .row
