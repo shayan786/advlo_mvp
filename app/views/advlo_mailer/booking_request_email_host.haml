@@ -5,7 +5,7 @@
   %body
     .indented
       %h2= "#{@user.name} requested a reservation for:"
-      %h4= "#{@adventure.title}"
+      %h4= link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
       %span on
       %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}" 
       %p

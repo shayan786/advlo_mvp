@@ -28,7 +28,7 @@
           - when 1
             / %input{id: "adv_rating_value", type: "hidden", "data-adv-rating"=>@adventure.rating}
             %input{id: "adv_rating_show", value: @adventure.rating}
-            %em.star-position= "#{review_count} Review"
+            %em= "#{review_count} Review"
 
           - else
             %input{id: "adv_rating_show", value: @adventure.rating}

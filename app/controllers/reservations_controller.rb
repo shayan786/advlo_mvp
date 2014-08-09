@@ -88,8 +88,9 @@ class ReservationsController < ApplicationController
 
     @reservation.event_start_time = request_date_time
 
-    # EMAIL THE HOST ABOUT THIS
-    # AdvloMailer.
+    # AdvloMailer
+    AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
+
 
     # If the current user (customer) does not have a stripe customer id
     # => create one
@@ -150,10 +151,10 @@ class ReservationsController < ApplicationController
       adventure_approve = Adventure.find_by_id(@reservation.adventure_id)
       user_approve = User.find_by_id(@reservation.user_id)
 
-      AdvloMailer.booking_confirmation_email(user_approve, adventure_approve, @reservation).deliver
+      AdvloMailer.delay.booking_confirmation_email(user_approve, adventure_approve, @reservation)
 
     else
-      AdvloMailer.booking_request_email_rejection(@reservation).deliver
+      AdvloMailer.delay.booking_request_email_rejection(@reservation)
       @reservation.destroy
     end
 
@@ -180,11 +181,11 @@ class ReservationsController < ApplicationController
         refund = charge.refunds.create
 
         # Send email to users
-        AdvloMailer.host_cancel_email_to_users(res).deliver
+        AdvloMailer.delay.host_cancel_email_to_users(res)
       end
     end
 
-    AdvloMailer.host_cancel_email_to_self(reservation).deliver
+    AdvloMailer.delay.host_cancel_email_to_self(reservation)
 
     respond_to do |format|
       format.js {render "host_cancel.js", layout: false}
@@ -214,8 +215,8 @@ class ReservationsController < ApplicationController
         )
 
         # Send emails
-        AdvloMailer.user_cancel_email_to_host(reservation).deliver
-        AdvloMailer.user_cancel_email_to_self(reservation).deliver
+        AdvloMailer.delay.user_cancel_email_to_host(reservation)
+        AdvloMailer.delay.user_cancel_email_to_self(reservation)
       end 
 
       respond_to do |format|
