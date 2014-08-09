@@ -28,11 +28,13 @@
           - when 1
             / %input{id: "adv_rating_value", type: "hidden", "data-adv-rating"=>@adventure.rating}
             %input{id: "adv_rating_show", value: @adventure.rating}
-            %em= "#{review_count} Review"
+            .review-count
+              %em= "#{review_count} Review"
 
           - else
             %input{id: "adv_rating_show", value: @adventure.rating}
-            %em= "#{review_count} Reviews"
+            .review-count
+              %em= "#{review_count} Reviews"
 
         #adventure-price
           %span= "$ #{@adventure.price}"
@@ -145,6 +147,8 @@
   })
 
   $(document).ready(function(){
-    $('.rating-xs').css('width','70%')
+    $('.rating-xs').css('width','50%')
     $('.rating-xs').css('float','right')
+    $('.rating-xs').css('text-align','left')
+  
   })

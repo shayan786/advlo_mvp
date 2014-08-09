@@ -94,11 +94,22 @@
           cursor: default;
         }
 
+        .review-count{
+          width: 45%;
+          float: left;
+          text-align: right;
+        }
       }
 
       #adventure-price {
         font-size: 30px;
         color: $advlo_green;
+
+        span {
+          position: relative;
+          width: 100%;
+          float: left;
+        }
       }
 
     }
