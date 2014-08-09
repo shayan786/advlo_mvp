@@ -188,11 +188,10 @@ class ReservationsController < ApplicationController
 
       if res.save 
         # Process refunds from stripe to all users
-        puts "res.inspect ======>>>>>> #{res.inspect} ***"
-        
-        puts "res.stripe_charge_id ======>>>>>> #{res.stripe_charge_id} ***"
-        charge = Stripe::Charge.retrieve(res.stripe_charge_id)
-        refund = charge.refunds.create
+        if res.stripe_charge_id
+          charge = Stripe::Charge.retrieve(res.stripe_charge_id)
+          refund = charge.refunds.create
+        end
 
         # Send email to users
         AdvloMailer.delay.host_cancel_email_to_users(res)
