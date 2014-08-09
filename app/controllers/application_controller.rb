@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
   def contact
     @contact = ContactAdvlo.create!(contact_params)
 
-    AdvloMailer.contact_email(@contact).deliver
+    AdvloMailer.delay.contact_email(@contact)
 
     if @contact.save
       respond_to do |format|

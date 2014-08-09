@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     
     if @contact.save
       # Mail the host to be messaged
-      AdvloMailer.contact_host_email(@contact).deliver
+      AdvloMailer.delay.contact_host_email(@contact)
 
       respond_to do |format|
         format.js {render "contact_host.js", layout: false}
