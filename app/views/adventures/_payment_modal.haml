@@ -27,6 +27,25 @@
             Request a Reservation
         = render partial: 'request_time_form', locals: {adventure: @adventure}
 
+#reservations-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-modal", role: "dialog"}
+  .modal-dialog.payment-modal-wrapper
+    .modal-content
+      .modal-body
+        - if current_user && @current_guide
+          = render partial: "/reservations/new", locals: {reservation: @reservation}
+        - else 
+          .row
+            .adventure-login-title= @adventure.title
+            .sign-in-toggle.btn-success.button-style
+              Sign In
+            .sign-in.mid-purchase.sign-in-form
+              = render file: 'users/sign_in', locals: {adventure: @adventure}
+
+            .sign-up-toggle.btn-success.button-style
+              Sign Up
+            .sign-up.mid-purchase.sign-up-form
+              = render file: 'users/sign_up', locals: {adventure: @adventure}
+
 
 #reservations-request-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-request-modal", role: "dialog"}
   .modal-dialog.payment-modal-wrapper
