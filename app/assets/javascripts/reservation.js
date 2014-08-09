@@ -3,6 +3,7 @@ function getStripeToken(){
   $('.event').click(function(){
     $('.cap_selector').empty()
     
+    alert('')
     $('#hidden_event_id').val( $(this).data('id') )
     $('#event_id').val( $(this).data('id') )
     $('#event-info').html( $(this).data('event-info') )
