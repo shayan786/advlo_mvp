@@ -6,13 +6,44 @@
   .copy-brick
     .brick-copy 
       #gallery-masonry-container
-        - @adventure.adventure_gallery_images.each_with_index do |gi, i|
-          .gallery-image{"data-target" => "#galleryModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), class: "image#{i}", id: i}
-            = image_tag gi.picture.url(:thumb)
+        #links
+          - @adventure.adventure_gallery_images.each do |gi|
+            %a.gallery-image{href: "#{gi.picture.url(:large)}", "data-gallery" => ""}
+              %img{src: "#{gi.picture.url(:thumb)}"}
+        / - @adventure.adventure_gallery_images.each_with_index do |gi, i|
+        /   .gallery-image{"data-target" => "#galleryModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), class: "image#{i}", id: i}
+        /     = image_tag gi.picture.url(:thumb)
 
-  #galleryModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "gallery_modal", role: "dialog"}
-    .modal-dialog.image-modal-dialog
-      .modal-content.image-modal-content
-        .modal-body
-          %img{src: '', id: ''}
+  / #galleryModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "gallery_modal", role: "dialog"}
+  /   .modal-dialog.image-modal-dialog
+  /     .modal-content.image-modal-content
+  /       .modal-body
+  /         %img{src: '', id: ''}
 
+
+
+#blueimp-gallery.blueimp-gallery.blueimp-gallery-controls{"data-use-bootstrap-modal" => "false"}
+  / The container for the modal slides
+  .slides
+  / Controls for the borderless lightbox
+  %h3.title
+  %a.prev ‹
+  %a.next ›
+  %a.close ×
+  %a.play-pause
+  %ol.indicator
+  / The modal dialog, which will be used to wrap the lightbox content
+  .modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", type: "button"} ×
+          %h4.modal-title
+        .modal-body.next
+        .modal-footer
+          %button.btn.btn-default.pull-left.prev{type: "button"}
+            %i.glyphicon.glyphicon-chevron-left
+            Previous
+          %button.btn.btn-primary.next{type: "button"}
+            Next
+            %i.glyphicon.glyphicon-chevron-right

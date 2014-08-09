@@ -26,8 +26,11 @@
           - when 0
             %em= "No Reviews"
           - when 1
+            / %input{id: "adv_rating_value", type: "hidden", "data-adv-rating"=>@adventure.rating}
+            %input{id: "adv_rating_show", value: @adventure.rating}
             %em= "#{review_count} Review"
           - else
+            %input{id: "adv_rating_show", value: @adventure.rating}
             %em= "#{review_count} Reviews"
         #adventure-price
           %span= "$ #{@adventure.price}"
@@ -97,6 +100,9 @@
       - if !@adventure.summary.empty?
         #additional_info.title-brick.dark_gray_background
           = render partial: 'additional_info'
+
+      #host_bio.title-brick.dark_gray_background
+        = render partial: 'host_bio'
 
       - if @adventure.approved
         #reviews.title-brick
