@@ -108,6 +108,14 @@ body {
   color: #fff !important;
   font-family: 'nexa_light' !important;
   font-size: 18px !important;
+
+  button{
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 .alert-info {
