@@ -145,6 +145,9 @@ class ReservationsController < ApplicationController
       stripe_charge = create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
 
       if stripe_charge
+        puts "***** stripe_charge ====>>> #{stripe_charge} ******"
+
+
         @reservation.stripe_charge_id = stripe_charge.id
         @reservation.stripe_customer_id = user.stripe_customer_id
 
