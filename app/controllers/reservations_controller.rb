@@ -60,8 +60,7 @@ class ReservationsController < ApplicationController
     end
 
     if @reservation.save
-      # AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
-      # AdvloMailer.booking_confirmation_email(user, adventure, @reservation).deliver
+      AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
 
       respond_to do |format|
         format.js {render action: 'create.js', layout: false}
@@ -89,11 +88,6 @@ class ReservationsController < ApplicationController
 
     @reservation.event_start_time = request_date_time
 
-    # EMAIL THE USER
-    # AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
-    # AdvloMailer.booking_confirmation_email(user, adventure, @reservation).deliver
-
-
     # EMAIL THE HOST ABOUT THIS
     # AdvloMailer.
 
@@ -112,8 +106,8 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
 
-      AdvloMailer.booking_request_email_user(@reservation).deliver
-      AdvloMailer.booking_request_email_host(@reservation).deliver
+      AdvloMailer.delay.booking_request_email_user(@reservation)
+      AdvloMailer.delay.booking_request_email_host(@reservation)
 
       respond_to do |format|
         format.js {render "request.js", layout: false}

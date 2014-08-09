@@ -96,7 +96,6 @@
           - if @adventure.video_url
             = raw(@adventure.embed(@adventure.video_url))
       
-
       = render partial: 'payment_modal'
               
       - if !@adventure.summary.empty?
