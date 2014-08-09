@@ -104,6 +104,12 @@
       #adventure-price {
         font-size: 30px;
         color: $advlo_green;
+
+        span {
+          position: relative;
+          width: 100%;
+          float: left;
+        }
       }
 
     }
