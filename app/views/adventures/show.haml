@@ -63,7 +63,7 @@
             .guide-name
               = @current_guide.name
             
-            .guide-profile-image= link_to (image_tag @current_guide.get_avatar_url('large')), user_path(@current_guide)
+            .guide-profile-image{style: "background: url(#{@current_guide.get_avatar_url('large')}) no-repeat center center;"}
               
 
             .adventure-block.col-sm-12.text-center
