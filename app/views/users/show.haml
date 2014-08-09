@@ -25,10 +25,6 @@
                 SEX
                 %br
                 %span= @user.sex
-              %li.overview_item
-                AGE
-                %br
-                %span= @user.get_age
               %li.overview_item 
                 BASED IN 
                 %br
@@ -77,10 +73,11 @@
 
 #p_my_adventures
   .container
-    .my_adv_header 
-      MY ADVENTURES
-      %span.header_sub 
-        %span= "( #{@user.adventures.count} )"
+    .my_adv_header
+      .text-center
+        MY ADVENTURES
+        %span.header_sub 
+          %span= "( #{@user.adventures.count} )"
 
         - if @user.adventures.count >= 1
           #mobile-user-adventures
@@ -141,9 +138,9 @@
   .container
     .row
       .col-md-12
-        .bio_header
+        .bio_header.text-center
           BIO
-        .bio_body
+        .bio_body.text-center
           %br
           = @user.bio
 
@@ -152,7 +149,8 @@
     .row
       .col-md-12
         .review_header
-          REVIEWS
+          .text-center
+            REVIEWS
           - if !@reviews.empty?
             .copy-brick.container-fluid#reviews
               - @reviews.each do |review|

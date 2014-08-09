@@ -318,6 +318,22 @@ function user_adv_rating_show() {
   }
 }
 
+function contact_form_validator() {
+  $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
+
+  //request adventure form validation on button
+  $('#contact_host_modal .modal-dialog #contact_message').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 6) {
+        $('#contact_host_modal .modal-dialog .contact_btn').removeClass('disabled');
+      }
+      else if (details.length <= 6) {
+        $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
+      }
+  })
+}
+
 
 function usersInit(){
   input_popover();
@@ -337,4 +353,5 @@ function usersShowInit(){
   user_rating_show();
   user_adv_rating_show();
   host_contact_validator();
+  contact_form_validator();
 }

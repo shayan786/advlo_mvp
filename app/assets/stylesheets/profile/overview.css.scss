@@ -3,10 +3,9 @@
 	padding: 25px 0;
 
 	.panel {
-		background-color: $profile_overview_box_color;
+		background: rgba(0,0,0,0.5);
 		color: $white;
-		border-color: $profile_overview_box_color;
-		@include border_radius(0px);
+		border-color: $light_gray;
 		min-height: 200px;
 
 		li {
@@ -21,8 +20,8 @@
 			span {
 				color: #fff;
 				font-family: cabin_regular;
-
 			}
+			text-align: center;
 		}
 
 		.overview_item_header {
@@ -32,7 +31,7 @@
 
 			.over_item_sub {
 				font-family: cabin_regular;
-				font-size: 0.8em;
+				font-size: 1.0em;
 				color: $white;
 			}
 		}
