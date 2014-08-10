@@ -957,6 +957,23 @@ function payment_modal_validator() {
   });
 }
 
+function sign_in_sign_up_modal() {
+  $('.sign-in-toggle').click(function(){
+    $(this).hide();
+    $('.sign-up-form').fadeOut();
+    $('.sign-up-toggle').fadeIn();
+    $('.sign-in-form').fadeIn();
+  })
+
+  $('.sign-up-toggle').click(function(){
+    $(this).hide();
+    $('.sign-in-form').fadeOut();
+    $('.sign-in-toggle').fadeIn();
+    $('.sign-up-form').fadeIn();
+  })
+
+}
+
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
 function FSInitialize(adventure_id) {
   $('#calendar').fullCalendar({
@@ -1056,6 +1073,7 @@ adventureShow = function() {
   request_time_timepicker();
   adv_show_rating_show();
   contact_form_validator();
+  sign_in_sign_up_modal();
 };
 
 adventureIndex = function() {

@@ -814,37 +814,68 @@
 }
 
 .sign-in-toggle {
-  height: 40px;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 25%;
-  border-radius: 5px;
-  float: left;
+  font-size: 1.6em;
+  color: #fff;
+  font-family: 'nexa_light';
+  padding: 10px 20px 5px 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 
+.sign-up-toggle {
+  @extend .sign-in-toggle;
 }
 
 .adventure-login-title {
   text-align: center;
   font-size: 35px;
+  margin-bottom: 15px;
   color: $advlo_orange !important;
   font-family: 'nexa_light';
+  border-bottom: 1px solid $orange;
 }
 
-.button-style {
-  font-size: 26px;
-  color: #fff;
-  text-align: center;
-  font-family: 'nexa_light';
-  cursor: pointer;
+.sign-in-form {
+  .sign_in_btn {
+    width: 92%; 
+    font-size: 1.2em;
+    background-color: $login_btn_color;
+    border-color: $login_btn_color;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: $login_btn_color_hover;
+      border-color: $login_btn_color_hover;
+    }
+  }
+
+  .fb_btn {
+    width: 92%;
+    color: #FFFFFF !important;
+    font-size: 1.3em;
+    margin-top: 25px;
+    padding-top: 10px;
+
+    .fa {
+      margin-right: 10px;
+    }
+  }
 }
 
-.sign-up-toggle {
-  height: 40px;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 25%;
-  border-radius: 5px;
-  float: right;
+.sign-up-form {
+  @extend .sign-in-form;
+  .sign_up_btn {
+    width: 92%; 
+    font-size: 1.2em;
+    background-color: $login_btn_color;
+    border-color: $login_btn_color;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: $login_btn_color_hover;
+      border-color: $login_btn_color_hover;
+    }
+  }
 }
 
 .sign-copy {
