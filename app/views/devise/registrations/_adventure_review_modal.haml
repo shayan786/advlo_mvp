@@ -12,7 +12,7 @@
         by
         %br
         %em
-          = host.name
+          = host.get_abbreviated_name
       .modal-body
         .adventure_review_form
           %form{"accept-charset" => "UTF-8", action: "/reviews#{controller_action}", method: "POST", id: "adventure_review_form", "data-remote" => "true"}

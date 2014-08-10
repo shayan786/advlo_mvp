@@ -11,7 +11,7 @@
           - else
             = @adventure.title
         .guide-name
-          = @current_guide.name
+          = @current_guide.get_abbreviated_name
         .guide-profile-image
           %a{href: user_path(@current_guide)}
             .image-wrapper{style: "background: url(#{@current_guide.get_avatar_url("medium")}) no-repeat center center;"}

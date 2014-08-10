@@ -3,7 +3,7 @@
     .modal-dialog
       .modal-content
         .modal-header.text-center
-          = "Message - #{user.name}"
+          = "Message - #{user.get_abbreviated_name}"
         .modal-body
           .contact_host_form
             %form{"accept-charset" => "UTF-8", action: "/users/contact_host", method: "POST", id: "contact_host_form", "data-remote" => "true"}
@@ -29,7 +29,7 @@
             .row
               .col-md-10.col-md-offset-1.text-center
                 = image_tag "icons/request_icon.png", class: "img-responsive"
-                %em= "Your email has been sent to #{user.name}"
+                %em= "Your email has been sent to #{user.get_abbreviated_name}"
                 %br
                 %em Please allow the host to reply back within the next 24-48 hrs
 - else
@@ -37,7 +37,7 @@
     .modal-dialog
       .modal-content
         .modal-header.text-center
-          = "Message - #{user.name}"
+          = "Message - #{user.get_abbreviated_name}"
         .modal-body
           .contact_host_form
             %form{"accept-charset" => "UTF-8", action: "/users/contact_host", method: "POST", id: "contact_host_form", "data-remote" => "true"}
@@ -63,6 +63,6 @@
             .row
               .col-md-10.col-md-offset-1.text-center
                 = image_tag "icons/request_icon.png", class: "img-responsive"
-                %em= "Your email has been sent to #{user.name}"
+                %em= "Your email has been sent to #{user.get_abbreviated_name}"
                 %br
                 %em Please allow the host to reply back within the next 24-48 hrs

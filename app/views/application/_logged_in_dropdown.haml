@@ -10,7 +10,7 @@
     - if current_user.name.nil? || current_user.name.empty?
       = current_user.email
     - else 
-      = current_user.name
+      = current_user.get_abbreviated_name
     %b.caret
 
   %ul.dropdown-menu.right-side.logged_in_dropdown_menu{role: "menu"}

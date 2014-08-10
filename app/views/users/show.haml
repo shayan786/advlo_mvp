@@ -10,7 +10,7 @@
         .panel.panel-default
           .panel-body.text-center
             .profile-image{style: "background: url(#{@user.get_avatar_url("medium")}) no-repeat center center;"}
-            .banner_name= @user.name
+            .banner_name= @user.get_abbreviated_name
             .banner_subtitle= @user.short_description
             
             - if !@user.rating.nil? || !(@user.rating == '')
@@ -51,7 +51,7 @@
             .box_header.text-center 
               CONTACT
               %br
-              %span= @user.name.upcase
+              %span= @user.get_abbreviated_name.upcase
 
             .box_header_line
             .text-center

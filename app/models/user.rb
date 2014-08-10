@@ -137,6 +137,16 @@ class User < ActiveRecord::Base
       
   end
 
+  def get_abbreviated_name
+    @user = User.find_by_id(self.id)
+
+    name_split = @user.name.split(' ')
+
+    name_abbrv = "#{name_split[0]} #{name_split[name_split.length-1][0..0]}."
+
+    return name_abbrv
+  end
+
   def calculate_rating 
     reviews = Review.where(host_id: self.id)
     @user = User.find_by_id(self.id)
