@@ -958,7 +958,7 @@ function payment_modal_validator() {
 }
 
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
-FSInitialize = function(adventure_id) {
+function FSInitialize(adventure_id) {
   $('#calendar').fullCalendar({
     defaultView: "agendaWeek",
     height: 600,
@@ -967,7 +967,6 @@ FSInitialize = function(adventure_id) {
     selectable: true,
     allDaySlot: false,
     timezone: 'UTC',
-    timezoneParam: 'UTC',
     header: {
       left: 'today prev,next',
       center: 'title',
@@ -992,10 +991,11 @@ FSInitialize = function(adventure_id) {
 
     //CREATE NEW EVENT
     select: function(start, end) {
+
       $.ajax({
         url: "/events",
         dataType: "JSON",
-        data: {adventure_id: adventure_id, start_time: start, end_time: end},
+        data: {adventure_id: adventure_id, start_time: start.utc().format(), end_time: end.utc().format()},
         type: "POST",
         success: function(data){   
           $('#calendar').fullCalendar('renderEvent',data);
@@ -1026,7 +1026,7 @@ FSInitialize = function(adventure_id) {
       $.ajax({
         url: "/events/"+event.id,
         dataType: "JSON",
-        data: {start: event.start, end: event.end},
+        data: {start: event.start.utc().format(), end: event.end.utc().format()},
         type: "POST",
         method: "PUT",
         error: function(){   

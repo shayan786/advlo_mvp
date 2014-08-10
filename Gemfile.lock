@@ -129,7 +129,6 @@ GEM
       railties (>= 3.2, < 5.0)
     formtastic (2.3.0.rc3)
       actionpack (>= 3.0)
-    fullcalendar-rails (1.6.4.0)
     geocoder (1.2.2)
     haml (4.0.5)
       tilt
@@ -335,7 +334,6 @@ DEPENDENCIES
   delayed_paperclip
   devise
   font-awesome-rails
-  fullcalendar-rails
   geocoder
   haml-rails
   hirefire-resource

@@ -33,7 +33,8 @@
 //= require reservation.js
 //= require user.js
 //= require wallet.js
-//= require fullcalendar
+//= require moment.min
+//= require fullcalendar.min
 //= require jquery.geocomplete.min
 //= require star-rating.min
 

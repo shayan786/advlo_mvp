@@ -17,7 +17,6 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap-filestyle-rails'
 gem 'bootstrap_form'
 gem 'font-awesome-rails'
-gem 'fullcalendar-rails'
 
 group :production do 
   gem 'rails_12factor'
