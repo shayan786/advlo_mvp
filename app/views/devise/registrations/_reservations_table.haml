@@ -35,15 +35,17 @@
           - elsif res.requested == true && res.stripe_charge_id
             .btn.btn-info.disabled
               Request - Approved
-            .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#host_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}"}
-              %i.fa.fa-times
-              Cancel
+            - if reservation_type == "Upcoming"
+              .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#host_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}"}
+                %i.fa.fa-times
+                Cancel
           - else
             .btn.btn-success.disabled
               Instant Reservation
-            .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#host_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}"}
-              %i.fa.fa-times
-              Cancel
+            - if reservation_type == "Upcoming"
+              .btn.btn-danger.cancellation_btn{"data-res-id"=>res.id, "data-target" => "#host_cancel_reservation_modal", "data-toggle" => "modal", "data-event-time"=>"#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title"=>"#{res.adventure.title}"}
+                %i.fa.fa-times
+                Cancel
         %td= "$ #{sprintf('%.2f',res.host_fee)}"
         %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.host_fee)}"
     %thead
