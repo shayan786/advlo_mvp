@@ -273,10 +273,24 @@ function request_time_datepicker() {
     todayBtn: true,
     todayHighlight: true
   });
+
+  $('#payment_panel #request_reservation_date').datepicker({
+    format: "yyyy/mm/dd",
+    startDate: cur_yr+"/"+cur_mon+"/"+cur_day,
+    orientation: "auto right",
+    autoclose: true,
+    todayBtn: true,
+    todayHighlight: true
+  });
 }
 
 function request_time_timepicker() {
   $('#request_reservation_time').timepicker({
+    'scrollDefault': 'now',
+    'timeFormat': 'h:i A',
+  });
+
+  $('#payment_panel #request_reservation_time').timepicker({
     'scrollDefault': 'now',
     'timeFormat': 'h:i A',
   });
