@@ -6,7 +6,7 @@
     .text-center
       %h1 Region Request
       %h4 
-        = "for #{User.find(@location_request.user_id).name}" ? "#{User.find(@location_request.user_id).name}" : @location_request.email
+        = "for #{User.find(@location_request.user_id).get_abbreviated_name}" ? "#{User.find(@location_request.user_id).get_abbreviated_name}" : @location_request.email
         
       %p Thanks for requesting a region.
       %p#requested{style: "width: 70%; margin: 0 auto;"}= "We are working hard at Advlo HQ to expand the platform. We are hoping we can get to #{@location_request.location} very soon!"

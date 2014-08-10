@@ -7,9 +7,9 @@
       %h1 Booking Confirmation
       %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
       %h4
-        = link_to @adventure.title, "http://beta.advlo.com/adventures/#{@adventure.slug}"  
+        = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
         %span with
-        = link_to @adventure.users.first.name,"#{root_url}#{user_path(@adventure.users.first)}" 
+        = link_to @adventure.users.first.get_abbreviated_name,"#{root_url}#{user_path(@adventure.users.first)}" 
       %h4
         Contact your guide at: 
         = mail_to "#{@adventure.users.first.email}"
@@ -23,7 +23,7 @@
             
             %tr
               %td
-                %a{href: "/adventures/#{@adventure.slug}"}
+                %a{href: "#{root_url}adventures/#{@adventure.slug}"}
                   %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}
