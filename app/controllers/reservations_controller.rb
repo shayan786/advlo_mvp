@@ -8,11 +8,11 @@ class ReservationsController < ApplicationController
     # Currently fee structure
     # From Host = 15%
     # From Traveler = 4%
-    host_fee = (params[:total_price] * 0.15).round(2)
-    user_fee = (params[:total_price] * 0.04).round(2)
+    host_fee = (params[:reservation][:total_price].to_f * 0.15).round(2)
+    user_fee = (params[:reservation][:total_price].to_f * 0.04).round(2)
 
     # Stripe only takes price as cents ... convert to cents
-    total_price_cents = ((params[:total_price]+user_fee)*100).round(0)
+    total_price_cents = ((params[:reservation][:total_price].to_f+user_fee)*100).round(0)
 
 
     #Create a new stripe customer and get stripe information
@@ -32,7 +32,6 @@ class ReservationsController < ApplicationController
     if stripe_charge
       @reservation = Reservation.create!(reservation_params)
       @reservation.update(host_fee: host_fee, user_fee: user_fee)
-
 
       event = Event.find_by_id(params[:event_id])
       new_capacity = event.capacity.to_i - params[:reservation][:head_count].to_i

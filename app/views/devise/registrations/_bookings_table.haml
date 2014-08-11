@@ -32,7 +32,7 @@
             .btn.btn-success.disabled
               Instant Reservation
         %td.text-center= res.head_count
-        %td.text-left= "$ #{sprintf('%.2f', res.total_price)}"
+        %td.text-left= "$ #{sprintf('%.2f', res.total_price+res.user_fee)}"
 
         = render partial: "bookings_actions", locals: {res: res, reservation_type: reservation_type}
 
@@ -52,5 +52,5 @@
         %th
         %th
         %th.text-center= reservations.sum(:head_count)
-        %th= "$ #{sprintf('%.2f', reservations.sum(:total_price))}"
+        %th= "$ #{sprintf('%.2f', reservations.sum(:total_price)+reservations.sum(:user_fee))}"
         %th

@@ -160,7 +160,7 @@
               - @reviews.each do |review|
                 = render partial: '/shared/review_brick', locals: {review: review}
           - else 
-            .no_reviews_text
+            .no_reviews_text.text-center
               There are no reviews for this host yet.
 
 = render partial: "contact_host_modal", locals: {user: @user, res: nil}
