@@ -42,7 +42,8 @@ class ReservationsController < ApplicationController
     end   
 
     if @reservation.save
-      AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
+      # add a mialer for the host
+      AdvloMailer.delay.booking_confirmation_email_user(user, adventure, @reservation)
 
       respond_to do |format|
         format.js {render action: 'create.js', layout: false}
@@ -71,7 +72,7 @@ class ReservationsController < ApplicationController
     @reservation.event_start_time = request_date_time
 
     # AdvloMailer
-    AdvloMailer.delay.booking_confirmation_email(user, adventure, @reservation)
+    AdvloMailer.delay.booking_confirmation_email_user(user, adventure, @reservation)
 
     # For now, 
     # => create one
@@ -125,7 +126,7 @@ class ReservationsController < ApplicationController
           adventure_approve = Adventure.find_by_id(@reservation.adventure_id)
           user_approve = User.find_by_id(@reservation.user_id)
 
-          AdvloMailer.delay.booking_confirmation_email(user_approve, adventure_approve, @reservation)
+          AdvloMailer.delay.booking_confirmation_email_user(user_approve, adventure_approve, @reservation)
         end
 
       else 

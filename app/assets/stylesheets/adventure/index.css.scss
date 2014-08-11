@@ -162,7 +162,7 @@
 
   .adventure-brick {
     height: 300px;
-    width: 400px;
+    width: 375px;
     float: left;
     overflow: hidden;
     margin-top: 10px;
@@ -206,7 +206,7 @@
     .image-wrapper {
       position: relative;
       height: 300px;
-      width: 400px;
+      width: 375px;
       margin: 0 auto;
 
       .copy{
@@ -455,7 +455,7 @@
   }
 }
 
-@media screen and (max-width: 1335px){
+@media screen and (max-width: 1145px){
   .brick-wrapper .adventure-brick {
     height: 200px;
     width: 300px;

@@ -57,6 +57,9 @@
     if(response == true){
       var img_id = this.id;
 
+      $('.how_to strong').first().html(parseInt($('.how_to strong').html()) + 1)
+      
+
       e.preventDefault();
       $.ajax({
         url: "#{wizard_path}",
