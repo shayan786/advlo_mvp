@@ -210,7 +210,7 @@ class ReservationsController < ApplicationController
 
   def create_stripe_charge(amount, customer_id, description)
     stripe_charge =  Stripe::Charge.create(
-      :amount => amount,
+      :amount => amount.to_i,
       :currency => "usd",
       :customer => customer_id,
       :description => description
