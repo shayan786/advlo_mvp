@@ -1,0 +1,32 @@
+#contact_traveler_modal.modal.fade{role: "dialog", class: "contact_traveler_modal_#{res.id}"}
+  - traveler = User.find_by_id(res.user_id)
+  .modal-dialog
+    .modal-content
+      .modal-header.text-center
+        = "Message - #{traveler.email}"
+      .modal-body
+        .contact_traveler_form
+          %form{"accept-charset" => "UTF-8", action: "/users/contact_traveler", method: "POST", id: "contact_traveler_form", "data-remote" => "true"}
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            = tag(:input, :type => "hidden", :name => "contact_traveler[res_id]", :value => res.id)
+
+            .form-group.row
+              .col-md-4 
+                .form_label.text-right Email *
+              .col-md-6
+                
+                .form_label= traveler.email
+
+            .form-group.row
+              .col-md-4 
+                .form_label.text-right Message *
+              .col-md-6
+                %textarea.form-control{rows: "5", type: "text", name: "contact_traveler[message]", id: "contact_message", maxlength: "250"}
+            .row.text-center
+              %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
+
+        #contact_traveler_submitted.contact_traveler_submitted
+          .row
+            .col-md-10.col-md-offset-1.text-center
+              = image_tag "icons/request_icon.png", class: "img-responsive"
+              %em= "Your email has been sent to #{traveler.email}"

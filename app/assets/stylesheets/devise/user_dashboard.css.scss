@@ -111,7 +111,6 @@
 					.customer_img {
 						width: 50px;
 						height: 50px;
-						margin-right: 15px;
 					}
 
 					.disabled {
@@ -143,7 +142,7 @@
           	color: #FFF;
 		}
 
-		.cancel_btn, .review-button {
+		.cancel_btn, .review-button, .contact_btn {
 
 			margin-top: 20px;
 		    font-size: 1.2em;
@@ -196,6 +195,15 @@
 
 	  	#cancel_user_submitted {
 	      @extend #cancel_host_submitted;
+	  	}
+
+	  	#contact_traveler_submitted {
+	  		@extend #cancel_host_submitted;
+
+	  		img {
+	  			width: 150px;
+	      		margin: 10px auto 25px auto;
+	  		}
 	  	}
 
 	  	#adventure_review_submitted {

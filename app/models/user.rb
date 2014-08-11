@@ -138,7 +138,7 @@ class User < ActiveRecord::Base
     @user = User.find_by_id(self.id)
 
     if !@user.name.nil? && !(@user.name == '') && !@user.email.nil? && !(@user.email == '')
-      return "#{@user.get_abbreviated_name} - #{@user.email}"
+      return "#{@user.get_abbreviated_name} <br> #{@user.email}"
     elsif !@user.name.nil? && !(@user.name == '') && (@user.email.nil? || @user.email == '')
       return "#{@user.get_abbreviated_name}"
     else
