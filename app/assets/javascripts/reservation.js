@@ -34,15 +34,18 @@ function getStripeToken(){
   $('.cap_selector').change(function() {
     var count = $(this).val();
     var price = $('#adv_price').val();
-    var cost = Math.round(count*price*100/100)
-    var fees = Math.round(cost*0.04*100/100)
-    var total_cost = cost+fees;
+    var cost = parseFloat(Math.round(count*price*100) /100)
+    var fees = parseFloat(Math.round(cost*0.04*100) /100)
+    var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
 
     $('.reservation_cost').empty();
-    $('.reservation_cost').append("$ "+total_cost.toFixed(2));
+    $('.reservation_cost').append("$ "+total_cost);
 
     $('.reservation_breakdown').empty();
-    $('.reservation_breakdown').append("($ "+cost.toFixed(2)+" + $ "+fees.toFixed(2)+" fees)");
+    $('.reservation_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fees)");
+
+    $("#reservation_head_count").val(count);
+    $('#reservation_total_price').val(total_cost);
   });
 
   $("#reservations-modal #reservation #book-button").click(function() {
@@ -68,10 +71,6 @@ function getStripeToken(){
       if (status === 200) {
         // $("#user_last_4_digits").val(response.card.last4);
         $("#stripe_token").val(response.id);
-        $("#reservation_head_count").val($('.cap_selector').val());
-
-        var total_price = $('.cap_selector').val()*$('#adv_price').val()
-        $('#reservation_total_price').val(total_price)
         
         $('#new_reservation').submit();
       } else {
@@ -193,9 +192,10 @@ function reservation_request_prefill() {
     var request_head_count = $('#request_time_form #request_reservation_head_count').val();
     var adv_price = $('#request_reservation #adv_price').val();
 
-    var cost = Math.round(request_head_count*adv_price*100/100)
-    var fees = Math.round(cost*0.04*100/100)
-    var total_cost = cost+fees;
+
+    var cost = parseFloat(Math.round(request_head_count*adv_price*100) /100)
+    var fees = parseFloat(Math.round(cost*0.04*100) /100)
+    var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
 
     $('#request_reservation #hidden_request_reservation_date').val(request_date);
     $('#request_reservation #hidden_request_reservation_time').val(request_time);
@@ -211,10 +211,10 @@ function reservation_request_prefill() {
     $('#request_reservation .prefill_request_people').append(request_head_count);
 
     $('#request_reservation .prefill_request_cost').empty();
-    $('#request_reservation .prefill_request_cost').append("$ "+total_cost.toFixed(2));
+    $('#request_reservation .prefill_request_cost').append("$ "+total_cost);
 
     $('#request_reservation .prefill_request_breakdown').empty();
-    $('#request_reservation .prefill_request_breakdown').append("($ "+cost.toFixed(2)+" + $ "+fees.toFixed(2)+" fees)");
+    $('#request_reservation .prefill_request_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fees)");
   });
 }
 
