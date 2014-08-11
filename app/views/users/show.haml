@@ -108,8 +108,8 @@
 
         .shared-slider-container#user-adventure-slider
           .slider-wrapper
-            %i.next.fa.fa-chevron-right#profile-next
             %i.prev.fa.fa-chevron-left#profile-prev
+            %i.next.fa.fa-chevron-right#profile-next
 
             - if @user.adventures
               .adventure-container
@@ -131,7 +131,7 @@
                               %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
                               %input{id: "adv_rating_show_#{i}"}
 
-                            .price= "$ #{adv.price}"
+                            .user-show-price.price= "$ #{adv.price}"
                             .user-show-copy-container{class: "copy-#{i}"}
               
             

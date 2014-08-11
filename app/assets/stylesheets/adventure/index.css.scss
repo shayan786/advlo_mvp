@@ -216,6 +216,8 @@
         position: absolute;
         z-index: 100;
         left: 15px;
+        font-family: 'cabin_regular';
+
 
         .title {
           font-size: 20px;
@@ -244,12 +246,19 @@
       }
 
       .price {
+        font-family: 'nexa_light';
+        font-size: 35px;
         position: absolute;
         bottom: 0px;
         right: 10px;
         font-size: 35px;
         z-index: 10;
         color: #fff;
+      }
+
+      .user-show-price {
+        bottom: -5px;
+        right: 3px;
       }
     }
   }

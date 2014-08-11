@@ -38,17 +38,19 @@
 
 	#profile-next {
 		position: relative;
-		right: -52%;
-		top: 180px;
 		font-size: 2em;
 		cursor: pointer;
+		float: right;
+		margin-right: -35px;
+		margin-top: 100px;
 	}
 	#profile-prev {
-		position: absolute;
-		left: -52%;
-		top: 180px;
+		position: relative;
 		font-size: 2em;
 		cursor: pointer;
+		float: left;
+		margin-left: -35px;
+		margin-top: 100px;
 	}	
 }
 
