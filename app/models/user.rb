@@ -124,19 +124,6 @@ class User < ActiveRecord::Base
       
   end
 
-  def get_name_and_email
-    @user = User.find_by_id(self.id)
-
-    if !@user.name.nil? && !(@user.name == '') && !@user.email.nil? && !(@user.email == '')
-      return "#{@user.name} - #{@user.email}"
-    elsif !@user.name.nil? && !(@user.name == '') && (@user.email.nil? || @user.email == '')
-      return "#{@user.name}"
-    else
-      return "#{@user.email}"
-    end
-      
-  end
-
   def get_abbreviated_name
     @user = User.find_by_id(self.id)
 
@@ -145,6 +132,18 @@ class User < ActiveRecord::Base
     name_abbrv = "#{name_split[0]} #{name_split[name_split.length-1][0..0]}."
 
     return name_abbrv
+  end
+
+  def get_name_and_email
+    @user = User.find_by_id(self.id)
+
+    if !@user.name.nil? && !(@user.name == '') && !@user.email.nil? && !(@user.email == '')
+      return "#{@user.get_abbreviated_name} - #{@user.email}"
+    elsif !@user.name.nil? && !(@user.name == '') && (@user.email.nil? || @user.email == '')
+      return "#{@user.get_abbreviated_name}"
+    else
+      return "#{@user.email}"
+    end
   end
 
   def calculate_rating 
