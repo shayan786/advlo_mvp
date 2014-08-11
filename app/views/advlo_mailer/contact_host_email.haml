@@ -7,10 +7,10 @@
       %h1 Host Contact
       %h4 
         User:
-        %p= "From #{@user}" ? "#{@user.name}" : @contact.email
+        %p= "From #{@user}" ? "#{@user.get_abbreviated_name}" : @contact.email
       %h4 
         Host:
-        %p= "#{@host.name}" 
+        %p= "#{@host.get_abbreviated_name}" 
         
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr

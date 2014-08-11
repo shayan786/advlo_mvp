@@ -273,10 +273,24 @@ function request_time_datepicker() {
     todayBtn: true,
     todayHighlight: true
   });
+
+  $('#payment_panel #request_reservation_date').datepicker({
+    format: "yyyy/mm/dd",
+    startDate: cur_yr+"/"+cur_mon+"/"+cur_day,
+    orientation: "auto right",
+    autoclose: true,
+    todayBtn: true,
+    todayHighlight: true
+  });
 }
 
 function request_time_timepicker() {
   $('#request_reservation_time').timepicker({
+    'scrollDefault': 'now',
+    'timeFormat': 'h:i A',
+  });
+
+  $('#payment_panel #request_reservation_time').timepicker({
     'scrollDefault': 'now',
     'timeFormat': 'h:i A',
   });
@@ -957,8 +971,25 @@ function payment_modal_validator() {
   });
 }
 
+function sign_in_sign_up_modal() {
+  $('.sign-in-toggle').click(function(){
+    $(this).hide();
+    $('.sign-up-form').fadeOut();
+    $('.sign-up-toggle').fadeIn();
+    $('.sign-in-form').fadeIn();
+  })
+
+  $('.sign-up-toggle').click(function(){
+    $(this).hide();
+    $('.sign-in-form').fadeOut();
+    $('.sign-in-toggle').fadeIn();
+    $('.sign-up-form').fadeIn();
+  })
+
+}
+
 //----------------FULL CALENDAR & SCHEDULE RELATED FUNCTIONS ------------
-FSInitialize = function(adventure_id) {
+function FSInitialize(adventure_id) {
   $('#calendar').fullCalendar({
     defaultView: "agendaWeek",
     height: 600,
@@ -967,7 +998,6 @@ FSInitialize = function(adventure_id) {
     selectable: true,
     allDaySlot: false,
     timezone: 'UTC',
-    timezoneParam: 'UTC',
     header: {
       left: 'today prev,next',
       center: 'title',
@@ -987,28 +1017,16 @@ FSInitialize = function(adventure_id) {
         },
         success: function() {
         }
-      },
-      {
-        url: '/events/reserved',
-        type: 'GET',
-        data: {
-          adventure_id: adventure_id
-        },
-        color: '#C35B26',
-        error: function(data) {
-          alert('Something went wrong!');
-        },
-        success: function() {
-        }
       }
     ],
 
     //CREATE NEW EVENT
     select: function(start, end) {
+
       $.ajax({
         url: "/events",
         dataType: "JSON",
-        data: {adventure_id: adventure_id, start_time: start, end_time: end},
+        data: {adventure_id: adventure_id, start_time: start.utc().format(), end_time: end.utc().format()},
         type: "POST",
         success: function(data){   
           $('#calendar').fullCalendar('renderEvent',data);
@@ -1039,7 +1057,7 @@ FSInitialize = function(adventure_id) {
       $.ajax({
         url: "/events/"+event.id,
         dataType: "JSON",
-        data: {start: event.start, end: event.end},
+        data: {start: event.start.utc().format(), end: event.end.utc().format()},
         type: "POST",
         method: "PUT",
         error: function(){   
@@ -1078,6 +1096,7 @@ adventureShow = function() {
   request_time_timepicker();
   adv_show_rating_show();
   contact_form_validator();
+  sign_in_sign_up_modal();
 };
 
 adventureIndex = function() {

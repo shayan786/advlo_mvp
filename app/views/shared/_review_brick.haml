@@ -9,6 +9,6 @@
       = review.adventure.title
     .review-body= review.body
     - if review.user.name
-      .review-credit= "- #{review.user.name}"
+      .review-credit= "- #{review.user.get_abbreviated_name}"
     - else
       .review-credit= "- anonymous"

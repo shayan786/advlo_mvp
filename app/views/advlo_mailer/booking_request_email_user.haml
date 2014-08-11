@@ -10,10 +10,10 @@
       %h4
         = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
         %span with
-        = link_to @adventure.users.first.name,"#{root_url}#{user_path(@adventure.users.first)}" 
+        = link_to @adventure.users.first.get_abbreviated_name,"#{root_url}#{user_path(@adventure.users.first)}" 
       %p
         %i
-          ="* Please allow 24 - 48 hours for #{@host.name} to respond."
+          ="* Please allow 24 - 48 hours for #{@host.get_abbreviated_name} to respond."
           %br
           %br
         %i

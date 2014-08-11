@@ -15,7 +15,7 @@
     - reservations.each_with_index do |res, i|
       - # Add logic for sorting them by timeslot
       %tr
-        %td.text-left= link_to res.adventure.users.first.name, "/users/#{res.adventure.users.first.to_param}", target: '_blank'
+        %td.text-left= link_to res.adventure.users.first.get_abbreviated_name, "/users/#{res.adventure.users.first.to_param}", target: '_blank'
         %td.text-left= link_to res.adventure.title, "/adventures/#{res.adventure.slug}", target: '_blank'
         %td.text-left= res.event_start_time.strftime("%m/%d/%Y - %l:%M %P")
         %td.text-center

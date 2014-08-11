@@ -1,0 +1,33 @@
+.container
+  .col-md-9
+    .panel.panel-default
+      .panel-body
+        - if @all_adventure_events.empty?
+          .text-center
+            %em.tab_header
+              Instant Reservations
+            .no_ib_text
+              There are no instant reservations for this adventure. 
+              %br
+              Try requesting one!
+
+        - else
+          .upcoming
+            .row.text-center
+              %em.tab_header
+                Instant Reservations
+            - @all_adventure_events.each do |event| 
+              
+              = render partial: 'event_partial', locals: {event: event}
+
+                
+      .panel-footer
+        .row.text-center
+          %em.tab_header
+            Request a Reservation
+        = render partial: 'request_time_form', locals: {adventure: @adventure}
+
+
+        
+
+

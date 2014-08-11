@@ -57,8 +57,8 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(@contact.host_id)
     @user = User.find(@contact.user_id)
 
-    mail(to: @host.email, subject: "Private message from: #{@user.name}")
-    mail(to: "info@advlo.com", subject: "Private Message to #{@host.name}")
+    mail(from: @user.email, to: @host.email, subject: "Private message from: #{@user.get_abbreviated_name}")
+    mail(to: "info@advlo.com", subject: "Private Message to #{@host.get_abbreviated_name}")
   end
 
   # -- REQUEST A BOOKING EMAILS -- 

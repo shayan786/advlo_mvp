@@ -10,7 +10,7 @@
         .panel.panel-default
           .panel-body.text-center
             .profile-image{style: "background: url(#{@user.get_avatar_url("medium")}) no-repeat center center;"}
-            .banner_name= @user.name
+            .banner_name= @user.get_abbreviated_name
             .banner_subtitle= @user.short_description
             
             - if !@user.rating.nil? || !(@user.rating == '')
@@ -51,7 +51,7 @@
             .box_header.text-center 
               CONTACT
               %br
-              %span= @user.name.upcase
+              %span= @user.get_abbreviated_name.upcase
 
             .box_header_line
             .text-center
@@ -83,60 +83,60 @@
         %span.header_sub 
           %span= "( #{@user.adventures.count} )"
 
-        - if @user.adventures.count >= 1
-          #mobile-user-adventures
-            .adventure-container 
-              .brick-wrapper.masonry.js-masonry
-                - @user.adventures.each_with_index do |adv, i|
-                  %a.adventure-brick{href: adventure_path(adv.slug)}
-                    .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
-                      .copy{id: "#{i}"}
-                        - if adv.title.length > 38
-                          .title= "#{adv.title[0..38]}..."
-                        -else
-                          .title= adv.title
+      - if @user.adventures.count >= 1
+        #mobile-user-adventures
+          .adventure-container 
+            .brick-wrapper.masonry.js-masonry
+              - @user.adventures.each_with_index do |adv, i|
+                %a.adventure-brick{href: adventure_path(adv.slug)}
+                  .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+                    .copy{id: "#{i}"}
+                      - if adv.title.length > 38
+                        .title= "#{adv.title[0..38]}..."
+                      -else
+                        .title= adv.title
 
-                        - if adv.location
-                          .location= "#{adv.city}, #{adv.state}".upcase
-                        
-                        %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
-                        %input{id: "adv_rating_show_#{i}"}  
+                      - if adv.location
+                        .location= "#{adv.city}, #{adv.state}".upcase
+                      
+                      %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
+                      %input{id: "adv_rating_show_#{i}"}  
 
-                      .price= "$ #{adv.price}"
+                    .price= "$ #{adv.price}"
 
-                      .copy-container{class: "copy-#{i}"}
+                    .copy-container{class: "copy-#{i}"}
 
-          .shared-slider-container#user-adventure-slider
-            .slider-wrapper
-              %i.next.fa.fa-chevron-right#profile-next
-              %i.prev.fa.fa-chevron-left#profile-prev
+        .shared-slider-container#user-adventure-slider
+          .slider-wrapper
+            %i.next.fa.fa-chevron-right#profile-next
+            %i.prev.fa.fa-chevron-left#profile-prev
 
-              - if @user.adventures
-                .adventure-container
-                  .brick-wrapper
-                    .swiper-container
-                      .swiper-wrapper
-                        - @user.adventures.each_with_index do |adv, i|
-                          %a.adventure-brick.swiper-slide{href: adventure_path(adv.slug)}
-                            .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
-                              .copy{id: "#{i}"}
-                                - if adv.title.length > 38
-                                  .title= "#{adv.title[0..38]}..."
-                                -else
-                                  .title= adv.title
+            - if @user.adventures
+              .adventure-container
+                .brick-wrapper
+                  .swiper-container
+                    .swiper-wrapper
+                      - @user.adventures.each_with_index do |adv, i|
+                        %a.adventure-brick.swiper-slide{href: adventure_path(adv.slug)}
+                          .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+                            .copy{id: "#{i}"}
+                              - if adv.title.length > 38
+                                .title= "#{adv.title[0..38]}..."
+                              -else
+                                .title= adv.title
 
-                                - if adv.location
-                                  .location= "#{adv.city}, #{adv.state}".upcase
+                              - if adv.location
+                                .location= "#{adv.city}, #{adv.state}".upcase
 
-                                %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
-                                %input{id: "adv_rating_show_#{i}"}
+                              %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
+                              %input{id: "adv_rating_show_#{i}"}
 
-                              .price= "$ #{adv.price}"
-                              .user-show-copy-container{class: "copy-#{i}"}
-                
+                            .price= "$ #{adv.price}"
+                            .user-show-copy-container{class: "copy-#{i}"}
               
-        -else
-          No adventures posted 
+            
+      -else
+        No adventures posted 
 
 #p_bio
   .container

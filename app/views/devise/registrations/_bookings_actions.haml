@@ -20,5 +20,5 @@
 
 
 
-  %button.btn.btn-info.actions_btn{"data-toggle"=>"popover", "data-content"=>"#{options}", "data-placement" => "bottom", "data-container"=>"body", "data-res-id" => "#{res.id}", "data-event-time" => "#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title" => "#{res.adventure.title}", "data-refund-amount" => "#{res.get_refund_amount}"}
+  %a.btn.btn-info.actions_btn{tabindex: "0", "data-toggle"=>"popover", "data-content"=>"#{options}", "data-placement" => "bottom", "data-container"=>"body", "data-res-id" => "#{res.id}", "data-event-time" => "#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}", "data-adventure-title" => "#{res.adventure.title}", "data-refund-amount" => "#{res.get_refund_amount}"}
     %i.fa.fa-cog

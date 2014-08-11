@@ -6,7 +6,7 @@
     .text-center
       %h1 Adventure Request
       %h4 
-        = @request.user_id ? "#{User.find(@request.user_id).name}" : @request.email
+        = @request.user_id ? "#{User.find(@request.user_id).get_abbreviated_name}" : @request.email
       %p Thanks for making a request!
       %p#requested{style: "width: 70%; margin: 0 auto;"} We have sent this out to all the guides we know that are qualified to lead this trip, and you will be notified as soon as we find you a match!
         

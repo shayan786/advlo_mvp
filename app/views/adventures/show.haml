@@ -11,7 +11,7 @@
           - else
             = @adventure.title
         .guide-name
-          = @current_guide.name
+          = @current_guide.get_abbreviated_name
         .guide-profile-image
           %a{href: user_path(@current_guide)}
             .image-wrapper{style: "background: url(#{@current_guide.get_avatar_url("medium")}) no-repeat center center;"}
@@ -106,6 +106,10 @@
 
       #host_bio.title-brick.dark_gray_background
         = render partial: 'host_bio'
+
+      - if @adventure.approved && @current_guide != current_user
+        #payment_panel.title-brick
+          = render partial: 'payment_panel'
 
       - if @adventure.approved
         #reviews.title-brick

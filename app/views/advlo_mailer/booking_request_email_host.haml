@@ -4,13 +4,13 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented
-      %h2= "#{@user.name} requested a reservation for:"
+      %h2= "#{@user.name ? @user.get_abbreviated_name : @user.email} requested a reservation for:"
       %h4= link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
       %span on
       %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}" 
       %p
         %h2
-          = link_to 'accept / reject', 'http://beta.advlo.com/users/reservations'
+          = link_to 'accept / reject', "#{root_url}users/reservations"
 
         %i
           ="* Please respond within 24 - 48 hours."
@@ -28,7 +28,7 @@
             
             %tr
               %td
-                %a{href: "/adventures/#{@adventure.slug}"}
+                %a{href: "#{root_url}adventures/#{@adventure.slug}"}
                   %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}
