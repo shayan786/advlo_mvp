@@ -209,6 +209,7 @@ class ReservationsController < ApplicationController
   end
 
   def create_stripe_charge(amount, customer_id, description)
+    puts "amount => #{amount} => #{amount.class}"
     stripe_charge =  Stripe::Charge.create(
       :amount => amount.to_i,
       :currency => "usd",
