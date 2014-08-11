@@ -1054,7 +1054,16 @@ adventureSchedule = function(adventure_id) {
   FSInitialize(adventure_id);
 }
 
+function setRatingStars(){
+  $(document).ready(function(){
+    $('#adventure-reviews-count .rating-xs').css('width','50%')
+    $('#adventure-reviews-count .rating-xs').css('float','right')
+    $('#adventure-reviews-count .rating-xs').css('text-align','left')
+  })
+}
+
 adventureShow = function() {
+  setRatingStars();
   galleryMasonry();
   sizeSidebar();
   navBarCatch(); 
