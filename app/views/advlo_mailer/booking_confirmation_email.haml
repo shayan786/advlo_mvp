@@ -34,6 +34,7 @@
                     .price= "1 person / $ #{@adventure.price}"
                   - else
                     .price= "#{@reservation.head_count} people / $ #{@adventure.price} a person"
-                %h3= "Total Price: $ #{@reservation.total_price}"
+                %h3= "Total Price: $ #{@reservation.total_price + @reservation.user_fee}"
+                %h2= "Fee: $ #{@reservation.user_fee}
             %tr
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
