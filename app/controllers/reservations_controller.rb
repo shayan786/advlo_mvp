@@ -72,9 +72,6 @@ class ReservationsController < ApplicationController
     request_date_time = (request_date+" "+request_time).to_datetime
     @reservation.event_start_time = request_date_time
 
-    # AdvloMailer
-    AdvloMailer.delay.booking_confirmation_email_user(user, adventure, @reservation)
-
     # For now, 
     # => create one
     customer = Stripe::Customer.create(
