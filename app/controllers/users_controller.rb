@@ -28,6 +28,19 @@ class UsersController < ApplicationController
     end
   end 
 
+
+  # Just email for now
+  def contact_traveler
+    reservation = Reservation.find_by_id(params[:contact_traveler][:res_id])
+
+    # Mail the traveler to be messaged
+    AdvloMailer.delay.contact_traveler_email(reservation, params[:contact_traveler][:message])
+
+    respond_to do |format|
+      format.js {render "contact_traveler.js", layout: false}
+    end
+  end
+
   def hero_image
     HeroImage.where(user_id: hero_image_params[:user_id]).each do |hi|
       hi.destroy

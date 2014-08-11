@@ -31,60 +31,9 @@
               - if !@host_past_reservations.empty?
                 = render partial: 'reservations_table', :locals => {reservations: @host_past_reservations, reservation_type: 'Past'}
 
+  = render partial: "host_cancel_reservation_modal"
 
 
 :javascript
   reservations_init();
-
-  $('.request_approve_btn').click(function(e) {
-    var response = confirm("Approve this adventure request?");
-
-    if(response == true){
-      var res_id = this.getAttribute('id')
-
-      e.preventDefault();
-      $.ajax({
-        url: "/reservations/" + res_id,
-        dataType: "script",
-        data: {approve: "true", #{request_forgery_protection_token.to_s}: "#{form_authenticity_token}"},
-        type: "POST",
-        method: "PUT",
-        beforeSend: function() {
-          $('#'+res_id+'.request_approve_btn').fadeOut(200, function() {
-            $(this).remove();
-          });
-          $('#'+res_id+'.request_reject_btn').fadeOut(200, function() {
-            $(this).remove();
-          });
-          $('.requested_approved_msg').fadeIn();
-        }
-      });
-    }
-  });
-
-  $('.request_reject_btn').click(function(e) {
-    var response = confirm("Reject this adventure request?");
-
-    if(response == true){
-      var res_id = this.getAttribute('id')
-
-      e.preventDefault();
-      $.ajax({
-        url: "/reservations/" + res_id,
-        dataType: "script",
-        data: {approve: "false", #{request_forgery_protection_token.to_s}: "#{form_authenticity_token}"},
-        type: "POST",
-        method: "PUT",
-        beforeSend: function() {
-          $('#'+res_id+'.request_approve_btn').fadeOut(200, function() {
-            $(this).remove();
-          });
-          $('#'+res_id+'.request_reject_btn').fadeOut(200, function() {
-            $(this).remove();
-          });
-          $('.requested_rejected_msg').fadeIn();
-        }
-      });
-    }
-  });
                   

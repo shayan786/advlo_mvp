@@ -10,7 +10,7 @@ function host_cancellation() {
 	    }
 	})
 
-	$('.cancellation_btn').click(function() {
+	$('.actions_btn').click(function() {
 		var res_id = $(this).data('res-id');
 		var adv_title = $(this).data('adventure-title');
 		var res_time = $(this).data('event-time');
@@ -23,14 +23,50 @@ function host_cancellation() {
 	})
 }
 
+function host_request_actions() {
+
+  $('.actions_btn').click(function() {
+    var res_id = $(this).data('res-id');
+
+    $('#request_approve_btn_'+res_id).click(function(e) {
+      var response = confirm("Approve this adventure request?");
+
+      if(response == true){
+        $.ajax({
+          url: "/reservations/" + res_id,
+          dataType: "script",
+          data: {approve: "true"},
+          type: "POST",
+          method: "PUT"
+        });
+      }
+    });
+
+    $('#request_reject_btn_'+res_id).click(function(e) {
+      var response = confirm("Reject this adventure request?");
+
+      if(response == true){
+        $.ajax({
+          url: "/reservations/" + res_id,
+          dataType: "script",
+          data: {approve: "false"},
+          type: "POST",
+          method: "PUT"
+        });
+      }
+    });
+
+  })
+}
+
 function user_cancellation() {
 	$('#user_cancel_reservation_modal #user_cancel_form #user_cancel_details').on('keyup', function() {
 		var details = $.trim($(this).val());
 
-	    if (details.length > 8) {
+	    if (details.length > 5) {
 	      	$('#user_cancel_reservation_modal #user_cancel_form .cancel_btn').removeClass('disabled');
 	    }
-	    else if (details.length <= 8) {
+	    else if (details.length <= 5) {
 	    	$('#user_cancel_reservation_modal #user_cancel_form .cancel_btn').addClass('disabled');
 	    }
 	})
@@ -65,6 +101,22 @@ function host_contact_validation() {
       }
   })
 }
+
+function traveler_contact_validation() {
+  $('#contact_traveler_modal .contact_traveler_form .contact_btn').addClass('disabled');
+
+  $('#contact_traveler_modal .contact_traveler_form #contact_message').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 5) {
+          $('#contact_traveler_modal .contact_traveler_form .contact_btn').removeClass('disabled');
+      }
+      else if (details.length <= 5) {
+        $('#contact_traveler_modal .contact_traveler_form .contact_btn').addClass('disabled');
+      }
+  })
+}
+
 
 function actions_button_popover() {
   $('.actions_btn').popover({
@@ -160,6 +212,9 @@ function bookings_init() {
 
 function reservations_init(){
 	host_cancellation();
+  host_request_actions();
+  actions_button_popover();
+  traveler_contact_validation();
 }
 
 function payouts_init() {

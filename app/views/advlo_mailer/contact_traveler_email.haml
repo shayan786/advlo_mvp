@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .text-center
+      %h1 Traveler Contact
+      %h4 
+        Host:
+        %p= "From #{@host.get_abbreviated_name}"
+      %h4 
+        User:
+        %p= @user.email ? "#{@user.get_abbreviated_name}" : "#{@user.email}"
+        
+    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
+      %tr
+        %td{align: "center", valign: "top"}
+          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
+            
+            %tr
+              %td{valign: "top"}
+                %h3 
+                  Message
+                %span= @mesage
+
+
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}

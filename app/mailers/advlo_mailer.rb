@@ -61,6 +61,16 @@ class AdvloMailer < ActionMailer::Base
     mail(to: "info@advlo.com", subject: "Private Message to #{@host.get_abbreviated_name}")
   end
 
+  def contact_traveler_email(reservation, message)
+    @message = message
+    @reservation = reservation
+    @user = User.find(reservation.user_id)
+    @host = User.find(reservation.host_id)
+    @adventure = Adventure.find(reservation.adventure_id)
+
+    mail(from: @host.email, to: @user.email, subject: "Message regarding: #{@adventure.title}")
+  end
+
   # -- REQUEST A BOOKING EMAILS -- 
 
   def booking_request_email_user(reservation)
