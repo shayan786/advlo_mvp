@@ -440,7 +440,7 @@ function upload_images() {
 
       if(uploadCount > maxLeft){
         $('#loader-overlay').hide();
-        $('#upload-error').show().html('you have selected '+"<strong>"+uploadCount+"</strong>"+ ' and only have '+"<strong>" + maxLeft +"</strong>"+' left')
+        $('#upload-error').show().html('you have selected '+"<strong>"+uploadCount+"</strong>"+ ' and only have '+"<strong>" + maxLeft +"</strong>"+' spots')
         $('#adv_gallery_img_upload input[type=file]').get(0).value = ''
 
       }else{
