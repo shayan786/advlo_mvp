@@ -52,6 +52,7 @@ ActiveAdmin.register Adventure do
       f.input :price
       f.input :price_type, as: :select, collection: ["per_person", "per_adv"]
       f.input :summary
+      f.input :video_url
       f.input :attachment, as: :file
       f.has_many :user_adventures do |app|
         app.input :user_id, as: :select, collection: User.all.map{|u| ["#{u.email}", u.id]}, label: 'Guide'
