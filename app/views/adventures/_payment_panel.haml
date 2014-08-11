@@ -16,9 +16,9 @@
             .row.text-center
               %em.tab_header
                 Instant Reservations
-            - @all_adventure_events.each do |event| 
-              
-              = render partial: 'event_partial', locals: {event: event}
+            .adventure-scroll-container
+              - @all_adventure_events.each do |event|               
+                = render partial: 'event_partial', locals: {event: event}
 
                 
       .panel-footer

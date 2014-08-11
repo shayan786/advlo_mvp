@@ -18,7 +18,7 @@
 
 
       .adventure-block
-        #adventure-reviews-count        
+        #adventure-reviews-count
           - if @adventure.title.length > 25
             .add_space
           - review_count = Review.where(adventure_id: @adventure.id).count
@@ -150,9 +150,3 @@
     resizeAdventureShowImage();
   })
 
-  $(document).ready(function(){
-    $('#adventure-reviews-count .rating-xs').css('width','50%')
-    $('#adventure-reviews-count .rating-xs').css('float','right')
-    $('#adventure-reviews-count .rating-xs').css('text-align','left')
-  
-  })
