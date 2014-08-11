@@ -10,14 +10,12 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Welcome to Adventure Local')
   end
 
-  def booking_confirmation_email(user, adventure, reservation)
+  def booking_confirmation_email_user(user, adventure, reservation)
     @adventure = adventure
     @user = user
     @reservation = reservation
-    @host = User.find(@reservation.host_id)
 
     mail(to: @user.email, subject: 'Advlo: booking confirmed')
-    mail(to: @host.email, subject: 'Advlo: booking confirmed')
   end
 
 

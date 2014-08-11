@@ -634,21 +634,6 @@ function form_validator(){
           }
         }
       },
-      'adventure[cap_max]': {
-        validators: {
-          notEmpty: {
-            message: 'Max req.'
-          },
-          integer: {
-            message: 'Int. req'
-          },
-          between: {
-            min: 1,
-            max: 50,
-            message: 'Invalid input'
-          }
-        }
-      },
       'adventure[cap_min]': {
         validators: {
           notEmpty: {
@@ -664,7 +649,21 @@ function form_validator(){
           }
         }
       },
-
+      'adventure[cap_max]': {
+        validators: {
+          notEmpty: {
+            message: 'Max req.'
+          },
+          integer: {
+            message: 'Int. req'
+          },
+          between: {
+            min: 1,
+            max: 50,
+            message: 'Invalid input'
+          }
+        }
+      },
       'adventure[duration_num]': {
         validators: {
           notEmpty: {
@@ -1090,6 +1089,23 @@ function setRatingStars(){
   })
 }
 
+function capMaxValidation(){
+  $("#adv_cap_max").focusout(function(){
+    var minVal = $("#adv_cap_min").val()
+    var maxVal = $(this).val()
+
+    if ( parseInt(minVal) >= parseInt(maxVal)){
+      $('#adv_cap_max').val('')
+      $('#adv_cap_max').css('border-color','#a94442')
+      $('.cap-max-error').html('must be greater than min')
+      alert('must be greater than min')
+
+    } else {
+      $('#adv_cap_max').css('border-color','#3c763d')
+    }
+  });
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1124,6 +1140,7 @@ adventureIndex = function() {
 }
 
 adventureCreate = function() {
+  capMaxValidation();
   advPhotoInput();
   input_popover();
   input_datepicker();
