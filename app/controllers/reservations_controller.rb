@@ -42,8 +42,9 @@ class ReservationsController < ApplicationController
     end   
 
     if @reservation.save
-      # add a mialer for the host
+      host = User.find(@reservation.host_id)
       AdvloMailer.delay.booking_confirmation_email_user(user, adventure, @reservation)
+      AdvloMailer.delay.booking_confirmation_email_host(host, adventure, @reservation)
 
       respond_to do |format|
         format.js {render action: 'create.js', layout: false}
@@ -125,8 +126,10 @@ class ReservationsController < ApplicationController
           # AdvloMailer
           adventure_approve = Adventure.find_by_id(@reservation.adventure_id)
           user_approve = User.find_by_id(@reservation.user_id)
+          host = User.find(@reservation.host_id)
 
           AdvloMailer.delay.booking_confirmation_email_user(user_approve, adventure_approve, @reservation)
+          AdvloMailer.delay.booking_confirmation_email_host(host, adventure_approve, @reservation)
         end
 
       else 

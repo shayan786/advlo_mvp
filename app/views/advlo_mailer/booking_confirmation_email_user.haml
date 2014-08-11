@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %h1 Booking Confirmation
+      %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
+      %h4
+        = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
+        %span with
+        = link_to @adventure.users.first.get_abbreviated_name,"#{root_url}#{user_path(@adventure.users.first)}" 
+      %h4
+        Contact your guide at: 
+        = mail_to "#{@adventure.users.first.email}"
+
+    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
+      %tr
+        %td{align: "center", valign: "top"}
+          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
+            
+            %tr
+              %td
+                %a{href: "#{root_url}adventures/#{@adventure.slug}"}
+                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
+
+              %td{valign: "top"}
+                %h2= @adventure.title
+                %h4= @adventure.summary
+                %h4
+                  - if @reservation.head_count == 1
+                    .price= "1 person / $ #{@adventure.price}"
+                  - else
+                    .price= "#{@reservation.head_count} people / $ #{@adventure.price} a person"
+                %h3= "Total Price: $ #{sprintf('%.2f', @reservation.total_price)}"
+                %h4= "Fee: $ #{sprintf('%.2f', @reservation.user_fee)}"
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}

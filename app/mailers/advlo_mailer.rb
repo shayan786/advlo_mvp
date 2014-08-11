@@ -20,6 +20,14 @@ class AdvloMailer < ActionMailer::Base
 
 
   # HOST EMAILS:
+  def booking_confirmation_email_host(host, adventure, reservation)
+    @adventure = adventure
+    @user = host
+    @reservation = reservation
+
+    mail(to: @user.email, subject: 'Advlo: booking confirmed')
+  end
+
   def adventure_approval_request(adventure)
     @adventure = adventure
     mail(to: 'info@advlo.com', subject: '[ATTENTION] Adventure Approval Request')
