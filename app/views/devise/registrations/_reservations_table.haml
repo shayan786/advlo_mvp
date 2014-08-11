@@ -36,7 +36,7 @@
             .btn.btn-success.disabled
               Instant Reservation
         %td= "$ #{sprintf('%.2f',res.host_fee)}"
-        %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.host_fee)}"
+        %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.user_fee-res.host_fee)}"
 
         = render partial: "reservations_actions", locals: {res: res, reservation_type: reservation_type}
 
@@ -55,13 +55,15 @@
         %th.text-center= total_head_count
         %th
         - if reservation_type == "Upcoming"
-          - total_fee = reservations.where(requested: false).sum(:host_fee)+reservations.where(requested: true).sum(:host_fee)
+          - total_host_fee = reservations.where(requested: false).sum(:host_fee)+reservations.where(requested: true).sum(:host_fee)
+          - total_user_fee = reservations.where(requested: false).sum(:user_fee)+reservations.where(requested: true).sum(:user_fee)
         - else
-          - total_fee = reservations.sum(:host_fee)
-        %th= "$ #{sprintf('%.2f', total_fee)}"
+          - total_host_fee = reservations.sum(:host_fee)
+          - total_user_fee = reservations.sum(:user_fee)
+        %th= "$ #{sprintf('%.2f', total_host_fee)}"
         - if reservation_type == "Upcoming"
-          - total_amount_earned = reservations.where(requested: false).sum(:total_price)+reservations.where(requested: true).sum(:total_price) - total_fee
+          - total_amount_earned = reservations.where(requested: false).sum(:total_price)+reservations.where(requested: true).sum(:total_price) - total_host_fee-total_user_fee
         - else
-          - total_amount_earned = reservations.sum(:total_price) - total_fee
+          - total_amount_earned = reservations.sum(:total_price) - total_host_fee - total_user_fee
         %th= "$ #{sprintf('%.2f', total_amount_earned)}"
         %th

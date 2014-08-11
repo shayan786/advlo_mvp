@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808174106) do
+ActiveRecord::Schema.define(version: 20140811224242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,7 +194,7 @@ ActiveRecord::Schema.define(version: 20140808174106) do
     t.string   "stripe_recipient_id"
     t.string   "stripe_customer_id"
     t.string   "stripe_charge_id"
-    t.integer  "total_price"
+    t.float    "total_price"
     t.integer  "head_count"
     t.datetime "created_at"
     t.datetime "updated_at"

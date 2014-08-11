@@ -39,7 +39,8 @@
                     .price= "1 person / $ #{@adventure.price}"
                   - else
                     .price= "#{@reservation.head_count} people / $ #{@adventure.price} a person"
-                %h3= "Booking Price: $ #{@reservation.total_price}"
+                %h3= "Booking Price: $ #{sprintf('%.2f', @reservation.total_price)}"
+                %h4= "Fee: $ #{sprintf('%.2f', @reservation.user_fee)}"
 
 
             %tr

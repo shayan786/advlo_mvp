@@ -8,11 +8,11 @@ class ReservationsController < ApplicationController
     # Currently fee structure
     # From Host = 15%
     # From Traveler = 4%
-    host_fee = (params[:reservation][:total_price].to_f * 0.15).round(2)
-    user_fee = (params[:reservation][:total_price].to_f * 0.04).round(2)
+    host_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.15).round(2)
+    user_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.04).round(2)
 
     # Stripe only takes price as cents ... convert to cents
-    total_price_cents = ((params[:reservation][:total_price].to_f+user_fee)*100).round(0)
+    total_price_cents = ((params[:reservation][:total_price].to_f)*100).round(0)
 
 
     #Create a new stripe customer and get stripe information
@@ -57,19 +57,17 @@ class ReservationsController < ApplicationController
 
   def request_time
     @reservation = Reservation.create!(request_reservation_params)
+    adventure = Adventure.find_by_id(params[:adventure_id])
     user = User.find_by_id(params[:user_id])
 
-    host_fee = (@reservation.total_price * 0.15).round(2)
-    user_fee = (@reservation.total_price * 0.04).round(2)
+    host_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.15).round(2)
+    user_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.04).round(2)
     @reservation.update(host_fee: host_fee, user_fee: user_fee)
-
-    adventure = Adventure.find(params[:adventure_id])
 
     request_date = params[:reservation_request][:date]
     request_time = params[:reservation_request][:time]
 
     request_date_time = (request_date+" "+request_time).to_datetime
-
     @reservation.event_start_time = request_date_time
 
     # AdvloMailer
@@ -107,13 +105,8 @@ class ReservationsController < ApplicationController
     user = User.find_by_id(@reservation.user_id)
     adventure = Adventure.find_by_id(@reservation.adventure_id)
 
-    # Calculate fee associated with that reservation
-    # Currently fee structure
-    # From Host = 15%
-    # From Traveler = 4%
-
     # Stripe only takes price as cents ... convert to cents
-    total_price_cents = ((@reservation.total_price+@reservation.user_fee)*100).round(0)
+    total_price_cents = ((@reservation.total_price)*100).round(0)
 
     if params[:approve] == "true"
       # Charge the user
