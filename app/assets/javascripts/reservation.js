@@ -29,6 +29,15 @@ function getStripeToken(){
       var option_string = "<option name='reservation_count' value='"+i+"'>"+i+"</option>";
       $('.cap_selector').append(option_string);
     }
+
+    var count = $('.cap_selector').val();
+    var price = $('#adv_price').val();
+    var cost = parseFloat(Math.round(count*price*100) /100)
+    var fees = parseFloat(Math.round(cost*0.04*100) /100)
+    var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
+
+    $("#reservation_head_count").val(count);
+    $('#reservation_total_price').val(total_cost);
   })
 
   $('.cap_selector').change(function() {
