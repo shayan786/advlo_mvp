@@ -352,7 +352,7 @@
           .event {
             color: #fff;
             width: 100%;
-            margin-top: 10px;
+            margin-bottom: 10px;
           }
 
           #request_time_form {
@@ -571,6 +571,11 @@
   }
 }
 
+.adventure-scroll-container {
+  max-height: 250px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
 
 #event-modal {
 
@@ -595,12 +600,6 @@
       font-size: 1.4em;
     }
 
-    .upcoming {
-      max-height: 235px;
-      overflow-y: scroll;
-      overflow-x: hidden;
-    }
-
     .modal-footer {
       text-align: center !important;
       padding-top: 10px;
@@ -623,7 +622,7 @@
     .event {
       color: #fff;
       width: 100%;
-      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     #request_time_form {
