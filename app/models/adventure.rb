@@ -89,8 +89,8 @@ class Adventure < ActiveRecord::Base
   end
 
   def vimeo_embed(vimeo_url)
-    vimeo_id = vimeo_url[-8..-1]
-    %Q{<iframe id="moog" src="http://player.vimeo.com/video/#{ vimeo_id }" width="800" height="487.5" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>} 
+    vimeo_id = vimeo_url.split('/')[-1]
+    %Q{<iframe src="//player.vimeo.com/video/#{ vimeo_id }" width="800" height="487.5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>}
   end
 
   def embed(url)
