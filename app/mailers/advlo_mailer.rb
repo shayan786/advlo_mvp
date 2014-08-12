@@ -53,11 +53,7 @@ class AdvloMailer < ActionMailer::Base
 
   def request_location_email(location_request)
     @location_request = location_request
-
-    puts @location_request.inspect
-
     mail(to: @location_request.email, subject: "Region Request: #{@location_request.location}")
-    mail(to: "info@advlo.com", subject: "Region Request #{@location_request.location}")
   end
 
   # MESSAGING THE HOST FROM ANY USER // 
