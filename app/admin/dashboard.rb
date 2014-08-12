@@ -11,7 +11,7 @@ ActiveAdmin.register_page "Dashboard" do
     end
 
     section "Background Jobs" do
-      now = Time.now.getgm
+      now = Time.now.utc.getgm
       ul do
         li do
           jobs = Delayed::Job.where('failed_at is not null').count(:id)
