@@ -188,6 +188,13 @@ class ReservationsController < ApplicationController
       refund_amount = reservation.get_refund_amount
       # User loses 4% no matter the cancellation
       # Determine whether cancellation is within 48 hours or not and calculate refund amount
+      
+      # Send emails
+      AdvloMailer.delay.user_cancel_email_to_host(reservation)
+      AdvloMailer.delay.user_cancel_email_to_self(reservation)
+
+      puts "refund_amount => #{refund_amount}"
+
       if refund_amount != 0
         # Process refunds from stripe to that user based on the advlo's cancellation policy
         charge = Stripe::Charge.retrieve(reservation.stripe_charge_id)
@@ -196,9 +203,6 @@ class ReservationsController < ApplicationController
           :amount => (refund_amount*100).to_i
         )
 
-        # Send emails
-        AdvloMailer.delay.user_cancel_email_to_host(reservation)
-        AdvloMailer.delay.user_cancel_email_to_self(reservation)
       end 
 
       respond_to do |format|
