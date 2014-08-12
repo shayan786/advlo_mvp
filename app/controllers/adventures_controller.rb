@@ -185,7 +185,8 @@ class AdventuresController < ApplicationController
   # Request Adventure
   def requests 
     @request = Request.create!(request_params)
-    @request.category = params[:request_category].join(',')
+    @request.category = params[:request_category] ? params[:request_category].join(',') : 'No category selected'
+    puts "@request.save =======>>>> #{@request.inspect}"
 
     if @request.save
       # Mail the requester

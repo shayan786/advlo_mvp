@@ -26,7 +26,7 @@
             .col-md-4 
               .form_label.text-right Dates *
             .col-md-6
-              %textarea.form-control{rows: "2", type: "text", name: "request[dates]", id: "request_dates", maxlength: "250", placeholder: "Ex: 7/4/14 or 7/4/14 - 7/10/14 or any Saturday"}
+              %textarea.form-control{rows: "2", type: "text", name: "request[dates]", id: "request_dates", maxlength: "250", placeholder: "Ex: 8/24/14 or any Saturday in November"}
           .form-group.row
             .col-md-4 
               .form_label.text-right Description / Details *
@@ -49,6 +49,13 @@
           .row
             .col-md-10.col-md-offset-1
               = image_tag "icons/request_icon.png", class: "img-responsive"
-              Don’t worry — Advlo knows a guy. 
-              %br
-              We’ll contact you once we find a qualified host for your adventure.
+              .adv-request-text.text-center{style: 'margin-top: 20px;'}
+                Don’t worry — Advlo knows a guy. 
+                %br
+                We’ll contact you once we find a qualified host for your adventure.
+
+:javascript
+  $('.request_btn').click(function(e){
+    e.preventDefault();
+    $(this).submit();
+  })
