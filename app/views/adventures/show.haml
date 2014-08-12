@@ -54,10 +54,10 @@
         .guide-profile-image
           = image_tag 'missing.png'
 
-  - flash.each do |key, value|
-    %div{class: 'alert-warning adv-show-alert'}
-      = value
   .adventure-copy-wrapper
+    - flash.each do |key, value|
+      .alert-warning.adv-show-alert.text-center
+        = value
     .row
       .col-md-12#mobile-adventure-infographic.text-center
         .navigation-brick
