@@ -84,6 +84,13 @@ function user_cancellation() {
 		$('#user_cancel_reservation_modal #cancel_user_submitted .adv_time').append(res_time);
 		$('#user_cancel_reservation_modal #cancel_user_submitted .res_refund_amount').empty();
 		$('#user_cancel_reservation_modal #cancel_user_submitted .res_refund_amount').append("Refund Amount: $ "+refund_amount);
+
+    if (refund_amount == 0) {
+      var cancel_note = "<strong> THIS EXCEEDS THE 48 HR CANCELLATION POLICY. <br> YOU WILL NOT RECEIVE A REFUND IF YOU CANCEL THIS RESERVATION </strong>"
+
+      $('#user_cancel_reservation_modal .cancellation_note').empty();
+      $('#user_cancel_reservation_modal .cancellation_note').append(cancel_note);
+    }
 	})
 }
 

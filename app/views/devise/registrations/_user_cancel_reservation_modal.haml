@@ -3,6 +3,7 @@
     .modal-content
       .modal-header.text-center
         Cancel Resevation
+      .cancellation_note.text-center
       .modal-body
         %form{"accept-charset" => "UTF-8", action: "/reservations/user_cancel", method: "POST", id: "user_cancel_form", "data-remote" => "true"}
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
