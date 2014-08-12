@@ -17,7 +17,7 @@
   #how_it_works_panels
     .row.text-center
       .col-md-4
-        %a.find-adventures{href: "#"}
+        %a.find-adventures{href: "/adventures?country=United%20States"}
           .panel.panel-default
             .panel-heading
               FIND
@@ -49,10 +49,3 @@
   
 
 
-
-:javascript
-  
-  $('.find-adventures').click(function(e){
-     e.stopPropagation();
-    $(".navbar-btn").first().dropdown('toggle');
-  })

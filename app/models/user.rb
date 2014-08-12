@@ -127,11 +127,13 @@ class User < ActiveRecord::Base
   def get_abbreviated_name
     @user = User.find_by_id(self.id)
 
-    name_split = @user.name.split(' ')
-
-    name_abbrv = "#{name_split[0]} #{name_split[name_split.length-1][0..0]}."
-
-    return name_abbrv
+    if @user.name
+      name_split = @user.name.split(' ')
+      name_abbrv = "#{name_split[0]} #{name_split[name_split.length-1][0..0]}."
+      return name_abbrv
+    else
+      return 'Advlo User'
+    end
   end
 
   def get_name_and_email
