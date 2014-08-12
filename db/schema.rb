@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811224242) do
+ActiveRecord::Schema.define(version: 20140812200742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,15 +165,6 @@ ActiveRecord::Schema.define(version: 20140811224242) do
     t.datetime "updated_at"
     t.string   "payout_via"
     t.string   "paypal_masspay_correlation_id"
-  end
-
-  create_table "request_locations", force: true do |t|
-    t.string   "location"
-    t.string   "email"
-    t.integer  "user_id"
-    t.text     "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "requests", force: true do |t|
