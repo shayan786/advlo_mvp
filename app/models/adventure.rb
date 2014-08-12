@@ -48,14 +48,11 @@ class Adventure < ActiveRecord::Base
 
   def send_approval_email
     if self.approved == false
-      puts "regular update"
       return
     elsif self.approved == true
       @adventure = self
       AdvloMailer.delay.adventure_approval_accepted(@adventure)
     else
-      puts "else update"
-
       return
     end
   end
