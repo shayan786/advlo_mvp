@@ -52,4 +52,3 @@ gem 'delayed_paperclip'
 gem 'daemons'
 gem 'roadie-rails'
 gem 'hirefire-resource'
-gem 'whenever', :require => false
