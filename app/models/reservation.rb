@@ -13,6 +13,8 @@ class Reservation < ActiveRecord::Base
 
     difference = ((reservation.event_start_time - current_time)/1.hour).round
 
+    puts "difference ====>>> #{difference}"
+
     if difference >= 48
       # User gets full refund
       return (reservation.total_price - reservation.user_fee)

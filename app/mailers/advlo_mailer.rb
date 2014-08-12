@@ -105,7 +105,7 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
 
-    mail(to: @user.email, subject: "Booking request for: #{@adventure.title}")
+    mail(to: @user.email, subject: "Booking Declined: #{@adventure.title}")
   end
 
   # ------ CANCELLATION EMAILS ------

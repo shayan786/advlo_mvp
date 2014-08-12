@@ -134,8 +134,7 @@ class ReservationsController < ApplicationController
       end
 
     else
-      puts "AdvloMailer.delay.booking_request_email_rejection(@reservation) => SENT"
-      AdvloMailer.delay.booking_request_email_rejection(@reservation)
+      AdvloMailer.booking_request_email_rejection(@reservation).deliver
       @reservation.destroy
     end
 
@@ -152,6 +151,8 @@ class ReservationsController < ApplicationController
     # Need to cancel all reservations associated with that event time
     reservations_to_cancel = Reservation.where(event_id: reservation.event_id)
 
+    AdvloMailer.delay.host_cancel_email_to_self(reservation)
+
     reservations_to_cancel.each do |res|
       res.cancelled = true
       res.cancel_reason = cancel_reason
@@ -167,8 +168,6 @@ class ReservationsController < ApplicationController
         AdvloMailer.delay.host_cancel_email_to_users(res)
       end
     end
-
-    AdvloMailer.delay.host_cancel_email_to_self(reservation)
 
     respond_to do |format|
       format.js {render "host_cancel.js", layout: false}
@@ -189,6 +188,13 @@ class ReservationsController < ApplicationController
       refund_amount = reservation.get_refund_amount
       # User loses 4% no matter the cancellation
       # Determine whether cancellation is within 48 hours or not and calculate refund amount
+      
+      # Send emails
+      AdvloMailer.delay.user_cancel_email_to_host(reservation)
+      AdvloMailer.delay.user_cancel_email_to_self(reservation)
+
+      puts "refund_amount => #{refund_amount}"
+
       if refund_amount != 0
         # Process refunds from stripe to that user based on the advlo's cancellation policy
         charge = Stripe::Charge.retrieve(reservation.stripe_charge_id)
@@ -197,9 +203,6 @@ class ReservationsController < ApplicationController
           :amount => (refund_amount*100).to_i
         )
 
-        # Send emails
-        AdvloMailer.delay.user_cancel_email_to_host(reservation)
-        AdvloMailer.delay.user_cancel_email_to_self(reservation)
       end 
 
       respond_to do |format|

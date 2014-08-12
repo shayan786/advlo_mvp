@@ -455,36 +455,43 @@
   }
 }
 
-@media screen and (max-width: 1344px){
-  .brick-wrapper .adventure-brick {
-    height: 200px;
-    width: 300px;
-  }
 
-  .brick-wrapper .adventure-brick .image-wrapper {
-    height: 200px;
-    width: 300px;
-  }
+@media screen and (max-width: 1270px){
+ 
+  #adventure-partial {
+    .brick-wrapper .adventure-brick {
+      height: 290px;
+      width: 325px;
+    }
 
-  .brick-wrapper .adventure-brick .image-wrapper .copy {
-    bottom: 3px;
-  }
+    .brick-wrapper .adventure-brick .image-wrapper {
+      height: 290px;
+      width: 325px;
+    }
 
-  .brick-wrapper .adventure-brick .guide-image {
-    top: 10px;
-  }
-  .brick-wrapper .adventure-brick .image-wrapper .copy .title {
-    font-size: 16px;
-  }
-  .brick-wrapper .adventure-brick .image-wrapper .copy .location {
-    font-size: 11px;
-  }
-  .brick-wrapper .adventure-brick .image-wrapper .price {
-    bottom: 0px;
-    font-size: 27px;
+    .brick-wrapper .adventure-brick .image-wrapper .price {
+      font-size: 25px;
+    }
   }
 
 }
+
+#filter_nav_mobile_toggle {
+  display: none;
+}
+
+@media screen and (min-width: 768px){ 
+  #filter_nav {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px){
+
+}
+
+
+
 
 #filter_nav_mobile_toggle {
   display: none;
