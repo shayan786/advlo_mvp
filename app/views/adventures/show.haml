@@ -124,9 +124,10 @@
         %a{href: '#overview'}
           .item
             %span overview
-        %a{href: '#itinerary'}
-          .item
-            %span itinerary
+        - if @adventure.itineraries.count > 0
+          %a{href: '#itinerary'}
+            .item
+              %span itinerary
         %a{href: '#gallery'}
           .item
             %span gallery
