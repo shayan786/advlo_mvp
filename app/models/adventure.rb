@@ -47,9 +47,7 @@ class Adventure < ActiveRecord::Base
   end
 
   def send_approval_email
-    if self.approved == false
-      return
-    elsif self.approved == true
+    if self.approved == true && self.published == true
       @adventure = self
       AdvloMailer.delay.adventure_approval_accepted(@adventure)
     else

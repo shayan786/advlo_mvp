@@ -1,18 +1,24 @@
-!!!
+<!DOCTYPE html>
 %html
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented
-      %h1 Your Adventure Has been Submitted for approval
-
-      %h1 Guide
-      %h4 
-        = link_to @adventure.users.first.name,"#{root_url}#{user_path(@adventure.users.first)}" 
-      is requesting to host
+      %h1.text-center Your Adventure has Been Submitted For Approval
+      - if @adventure.events.count > 0
+        %h4 
+          Your Book it Now times
+          %ul
+            - @adventure.events.order('start_time').each do |event|
+              %li
+                = "#{event.start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} for #{@adventure.duration_num} #{@adventure.duration_type}"
       %h4
         = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
-
+        %span with
+        = link_to @adventure.users.first.name,"#{root_url}#{user_path(@adventure.users.first)}" 
+      %h4
+        Your email:
+        = @adventure.users.first.email
 
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
@@ -23,25 +29,13 @@
             
             %tr
               %td
-                %a{href: "#{root_url}admin/adventures/#{@adventure.id}/edit"}
+                %a{href: "#{root_url}adventures/#{@adventure.slug}"}
                   %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}
-                = @adventure.title
-                %br
-                = @adventure.location
-                %br
-                = @adventure.summary
-                %br
-                = "$ #{@adventure.price}"
-                %br
-                = @adventure.category
-                %br
-                = @adventure.region
-                %br
-                %br
-                %h1= link_to "approve / deny", "#{root_url}/admin/adventures/#{@adventure.id}/edit"
-
-                
+                %h2= @adventure.title
+                %h4= @adventure.summary
+                %h4= @adventure.other_notes
+                %h4= "$ #{@adventure.price}"
             %tr
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
