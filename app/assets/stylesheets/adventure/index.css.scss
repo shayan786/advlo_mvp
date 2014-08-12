@@ -352,53 +352,6 @@
   }
 }
 
-#request_location_modal {
-
-  .modal-dialog {
-    margin: 75px auto 0 auto;
-  }
-
-  .modal-header {
-    font-family: cabin_bold;
-    color: $orange;
-    font-size: 1.6em;
-  }
-
-  .modal-body {
-
-    form {
-      .form_label {
-        padding-top: 5px;
-        font-size: 1.2em;
-        font-weight: bold;
-        color: #FFF;
-      }
-
-      .checkbox-inline {
-        color: #FFF;
-      }
-
-      .request_btn {
-        margin-top: 10px;
-        padding: 5px 15px;
-      }
-    }
-
-    #request_location_submitted {
-      display: none;
-      color: #FFF;
-      font-size: 1.4em;
-      margin-bottom: 20px;
-
-      img {
-        margin: 0px auto 15px auto;
-        width: 150px;
-        height: auto;
-      }
-    }
-
-  }
-}
 
 .filter-container, .filter-static {
   background-color: #000;

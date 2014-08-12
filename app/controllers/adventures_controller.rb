@@ -198,20 +198,6 @@ class AdventuresController < ApplicationController
     end
   end
 
-  # Request Location / Destination not covered yet
-  def request_location
-    @request_location = RequestLocation.create!(request_location_params)
-    
-    if @request_location.save
-      # Mail the requester
-      # AdvloMailer.delay.request_email(params[:request_location][:email])
-      AdvloMailer.delay.request_location_email(@request_location)
-
-      respond_to do |format|
-        format.js {render "request_location.js", layout: false}
-      end
-    end
-  end
 
   #------------------------HOST LOGIC START----------------------------
 
@@ -296,10 +282,6 @@ class AdventuresController < ApplicationController
 
   def request_params
     params.required(:request).permit(:user_id, :description, :email, :location, :dates, :budget)
-  end
-
-  def request_location_params
-    params.required(:request_location).permit(:user_id, :comments, :email, :location)
   end
 
 end

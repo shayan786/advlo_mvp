@@ -52,11 +52,6 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @receiver, subject: "Advlo Request : #{locations}")
   end
 
-  def request_location_email(location_request)
-    @location_request = location_request
-    mail(to: @location_request.email, subject: "Region Request: #{@location_request.location}")
-  end
-
   # MESSAGING THE HOST FROM ANY USER // 
   # BCC ON initial mail.. figure out internal messaging
   def contact_host_email(contact)
@@ -64,8 +59,7 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(@contact.host_id)
     @user = User.find(@contact.user_id)
 
-    mail(from: @user.email, to: @host.email, subject: "Private message from: #{@user.get_abbreviated_name}")
-    mail(to: "info@advlo.com", subject: "Private Message to #{@host.get_abbreviated_name}")
+    mail(from: @user.email, to: @host.email, bcc:'info@advlo.com', subject: "Private message from: #{@user.get_abbreviated_name}")
   end
 
   def contact_traveler_email(reservation, message)
