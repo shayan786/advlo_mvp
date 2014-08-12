@@ -29,7 +29,7 @@ function host_request_actions() {
     var res_id = $(this).data('res-id');
 
     $('#request_approve_btn_'+res_id).click(function(e) {
-      var response = confirm("Approve this adventure request? The travler will be charged at this time.");
+      var response = confirm("Approve this adventure request? The traveler will be charged at this time.");
 
       if(response == true){
         $.ajax({
@@ -75,7 +75,7 @@ function user_cancellation() {
 		var res_id = $(this).data('res-id');
 		var adv_title = $(this).data('adventure-title');
 		var res_time = $(this).data('event-time');
-		var refund_amount = $(this).data('refund-amount').toFixed(2);
+		var refund_amount = parseFloat(Math.round(($(this).data('refund-amount')*100)/100)).toFixed(2);
 
 		$('#user_cancel_reservation_modal #user_cancel_form #reservation_id').val(res_id);
 		$('#user_cancel_reservation_modal #cancel_user_submitted .adv_title').empty();
@@ -85,11 +85,13 @@ function user_cancellation() {
 		$('#user_cancel_reservation_modal #cancel_user_submitted .res_refund_amount').empty();
 		$('#user_cancel_reservation_modal #cancel_user_submitted .res_refund_amount').append("Refund Amount: $ "+refund_amount);
 
+    $('#user_cancel_reservation_modal .cancellation_note').html('');
+    $("#user_cancel_details").val('')
+
     if (refund_amount == 0) {
       var cancel_note = "<strong> THIS EXCEEDS THE 48 HR CANCELLATION POLICY. <br> YOU WILL NOT RECEIVE A REFUND IF YOU CANCEL THIS RESERVATION </strong>"
 
-      $('#user_cancel_reservation_modal .cancellation_note').empty();
-      $('#user_cancel_reservation_modal .cancellation_note').append(cancel_note);
+      $('#user_cancel_reservation_modal .cancellation_note').html(cancel_note);
     }
 	})
 }

@@ -1,14 +1,15 @@
 !!!
 %html
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     .indented
-      %h1.text-center Congratulations!
-      %h2.text-center Your adventure has been approved
+      %h1 Your Adventure Has been Submitted for approval
+
+      %h1 Guide
       %h4 
         = link_to @adventure.users.first.name,"#{root_url}#{user_path(@adventure.users.first)}" 
-      created
+      is requesting to host
       %h4
         = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
 
@@ -26,8 +27,7 @@
                   %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}
-                %h4
-                  = @adventure.title
+                = @adventure.title
                 %br
                 = @adventure.location
                 %br
@@ -40,9 +40,7 @@
                 = @adventure.region
                 %br
                 %br
-
-            %tr
-              %h5= link_to "Check out our guide on how to most successfully market yourself to prospective travelers.", '/adventures/info'
+                %h1= link_to "approve / deny", "#{root_url}/admin/adventures/#{@adventure.id}/edit"
 
                 
             %tr
