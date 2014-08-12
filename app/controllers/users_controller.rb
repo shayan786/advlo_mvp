@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_languages = @user.language.split(',')
-    @user_skillsets = @user.skillset.split(',')
+    @user_languages = @user.language ? @user.language.split(',') : ['']
+    @user_skillsets = @user.skillset ? @user.skillset.split(',') : ['']
 
     @banner_image = HeroImage.where(user_id: @user.id).first
 

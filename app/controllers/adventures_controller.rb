@@ -185,11 +185,12 @@ class AdventuresController < ApplicationController
   # Request Adventure
   def requests 
     @request = Request.create!(request_params)
-    @request.category = params[:request_category].join(',')
+    @request.category = params[:request_category] ? params[:request_category].join(',') : 'No category selected'
 
     if @request.save
       # Mail the requester
-      AdvloMailer.delay.request_adventure_email(@request)
+      AdvloMailer.delay.request_adventure_email(@request, @request.email)
+      AdvloMailer.delay.request_adventure_email(@request, 'info@advlo.com')
 
       respond_to do |format|
         format.js {render "request.js", layout: false}

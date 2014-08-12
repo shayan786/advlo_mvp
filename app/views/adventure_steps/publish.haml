@@ -49,11 +49,13 @@
                     %strong
                       3. Publish 
                     your adventure and we'll notify you when it goes live
-                .row.text-center
+                .row.text-center.agree-to-terms
                   .col-md-11.col-md-offset-1
                   %br
+                  %input{type: "checkbox"}
                   %a{href: "/terms", target: "_blank"}
                     By publishing your adventure, you agree to Advlo's terms of service & privacy policy.
+
                
         .panel-footer.text-center
           .row
@@ -81,4 +83,9 @@
                   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
                   = tag(:input, :type => "hidden", :name => "published", :value => "1")
                   = tag(:input, :type => "hidden", :name => "adventure_id", :value => @adventure.id)
-                  %input.btn.btn-primary.preview_btn{type: 'submit', value: 'PUBLISH'}
+                  %input.btn.btn-primary.preview_btn.publish-adventure.disabled{type: 'submit', value: 'PUBLISH'}
+
+:javascript
+  $('.agree-to-terms').find('input').click(function(){
+    $('.publish-adventure').toggleClass('disabled')
+  })

@@ -3,6 +3,7 @@ class Adventure < ActiveRecord::Base
   validates_with VideoValidator
   
   before_save :set_slug
+  after_update :send_approval_email
 
   scope :approved, -> { where(approved: true) }
 
@@ -42,6 +43,20 @@ class Adventure < ActiveRecord::Base
       if self.slug[-1] == '-'
         self.slug = self.slug[0..-2]
       end
+    end
+  end
+
+  def send_approval_email
+    if self.approved == false
+      puts "regular update"
+      return
+    elsif self.approved == true
+      @adventure = self
+      AdvloMailer.delay.adventure_approval_accepted(@adventure)
+    else
+      puts "else update"
+
+      return
     end
   end
 
