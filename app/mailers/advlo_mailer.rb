@@ -44,11 +44,11 @@ class AdvloMailer < ActionMailer::Base
   end
 
   # INFORMATIONAL & REQUESTS:---------------------------------------------------------------------------------------------------------------------
-  def request_adventure_email(request)
+  def request_adventure_email(request, receiver)
     @request = request
     locations = @request.category.gsub(',',' & ')
 
-    mail(to: @request.email, bcc: 'info@advlo.com', subject: "Advlo Request : #{locations}")
+    mail(to: receiver, subject: "Advlo Request : #{locations}")
   end
 
   def request_location_email(location_request)
