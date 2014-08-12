@@ -25,25 +25,16 @@
         %br
         = reason_details
 
-      - if @reservation.get_refund_amount != 0
-        %p 
-          %b Refund Amount:
-          %span= "$ #{sprintf('%.2f', @reservation.total_price)}"
-          %br
-          %i
-            This reservation was cancelled prior to the 48 hour cancellation policy, and will be issued a refund minus Advlo's fee.
-            You can find additional information about Advlo's cancellation policy and how it affects your reservations
-            = link_to "here", "#{root_url}terms"
+      %p 
+        %b Refund Amount:
+        %span= "$ #{sprintf('%.2f', @reservation.get_refund_amount)}"
+        %br
+        %i
+          This reservation was cancelled prior to the 48 hour cancellation policy, and will be issued a refund minus Advlo's fee.
+          You can find additional information about Advlo's cancellation policy and how it affects your reservations
+          = link_to "here", "#{root_url}terms"
             
-      - else
-        %p
-          %b Refund Amount:
-          %span= "$ #{sprintf('%.2f', @reservation.total_price)}"
-          %br
-          %i
-            This reservation was cancelled after the 48 hour cancellation policy, and will not be issued a refund.
-            You can find additional information about Advlo's cancellation policy and how it affects your reservations
-            = link_to "here", "#{root_url}terms"
+
             
 
 
