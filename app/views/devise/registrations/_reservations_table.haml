@@ -28,7 +28,7 @@
           - # If reservation is cancelled or requested show button to approve or not
           - if res.requested == true && !res.stripe_charge_id
             .btn.btn-danger.disabled 
-              Request - ACTION REQ.
+              Request - ACTION REQ >>
           - elsif res.requested == true && res.stripe_charge_id
             .btn.btn-info.disabled
               Request - Approved

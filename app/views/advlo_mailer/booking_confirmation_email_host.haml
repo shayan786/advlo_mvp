@@ -4,14 +4,14 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented
-      %h1 Booking Confirmation
+      %h1 Reservation Confirmation
       %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")} at #{@adventure.location}"
       %h4
         = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"  
         %span with
         = link_to @adventure.users.first.get_abbreviated_name,"#{root_url}#{user_path(@adventure.users.first)}" 
       %h4
-        Contact your traveler at: 
+        Contact the traveler at: 
         = mail_to "#{User.find_by_id(@reservation.user_id).email}"
 
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}

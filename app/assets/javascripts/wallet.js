@@ -29,7 +29,7 @@ function host_request_actions() {
     var res_id = $(this).data('res-id');
 
     $('#request_approve_btn_'+res_id).click(function(e) {
-      var response = confirm("Approve this adventure request?");
+      var response = confirm("Approve this adventure request? The travler will be charged at this time.");
 
       if(response == true){
         $.ajax({
