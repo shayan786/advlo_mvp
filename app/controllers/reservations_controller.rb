@@ -151,6 +151,8 @@ class ReservationsController < ApplicationController
     # Need to cancel all reservations associated with that event time
     reservations_to_cancel = Reservation.where(event_id: reservation.event_id)
 
+    AdvloMailer.delay.host_cancel_email_to_self(reservation)
+
     reservations_to_cancel.each do |res|
       res.cancelled = true
       res.cancel_reason = cancel_reason
@@ -166,8 +168,6 @@ class ReservationsController < ApplicationController
         AdvloMailer.delay.host_cancel_email_to_users(res)
       end
     end
-
-    AdvloMailer.delay.host_cancel_email_to_self(reservation)
 
     respond_to do |format|
       format.js {render "host_cancel.js", layout: false}

@@ -30,7 +30,7 @@
         %br
         - @event.reservations.each do |res|
           - user = User.find_by_id(res.user_id)
-          = user.get_name_and_email
+          = user.email
           %br
 
       %p
