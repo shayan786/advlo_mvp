@@ -12,12 +12,12 @@ class AdvloMailer < ActionMailer::Base
 
   # HOST EMAILS:---------------------------------------------------------------------------------------------------------------------
 
-  def adventure_approval_request(adventure)
+  def adventure_publish_request(adventure)
     @adventure = adventure
     mail(to: 'info@advlo.com', subject: '[ATTENTION] Adventure Approval Request')
   end
 
-  def adventure_approval_submitted(adventure)
+  def adventure_published_submitted(adventure)
     @adventure = adventure
     mail(to: @adventure.users.first.email, subject: 'Your Adventure is submitted for Approval')
   end

@@ -26,7 +26,8 @@
                   %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
 
               %td{valign: "top"}
-                = @adventure.title
+                %h4
+                  = @adventure.title
                 %br
                 = @adventure.location
                 %br
