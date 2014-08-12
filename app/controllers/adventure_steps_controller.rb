@@ -93,7 +93,7 @@ class AdventureStepsController < ApplicationController
       render_wizard @adventure
 
       AdvloMailer.delay.adventure_approval_request(@adventure)
-      AdvloMailer.delay.adventure_approval_confirmation(@adventure)
+      AdvloMailer.delay.adventure_approval_submitted(@adventure)
 
     elsif params[:published] == '2'
     # Un-Publish an Adventure

@@ -4,7 +4,7 @@ class AdvloMailer < ActionMailer::Base
   default from: "info@advlo.com"
   layout 'advlo_mail'
 
-  # USER EMAILS:
+  # USER EMAILS:---------------------------------------------------------------------------------------------------------------------
   def welcome_email(user)
     @user = user
     mail(to: @user.email, subject: 'Welcome to Adventure Local')
@@ -18,8 +18,7 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Advlo: booking confirmed')
   end
 
-
-  # HOST EMAILS:
+  # HOST EMAILS:---------------------------------------------------------------------------------------------------------------------
   def booking_confirmation_email_host(host, adventure, reservation)
     @adventure = adventure
     @user = host
@@ -34,12 +33,17 @@ class AdvloMailer < ActionMailer::Base
     mail(to: 'info@advlo.com', subject: '[ATTENTION] Adventure Approval Request')
   end
 
-  def adventure_approval_confirmation(adventure)
+  def adventure_approval_submitted(adventure)
     @adventure = adventure
     mail(to: @adventure.users.first.email, subject: 'Your Adventure is submitted for Approval')
   end
 
-  # INFORMATIONAL & REQUESTS:
+  def adventure_approval_accepted(adventure)
+    @adventure = adventure
+    mail(to: @adventure.users.first.email, subject: 'Your Adventure has been approved!')
+  end
+
+  # INFORMATIONAL & REQUESTS:---------------------------------------------------------------------------------------------------------------------
   def request_adventure_email(request)
     @request = request
     locations = @request.category.gsub(',',' & ')
@@ -78,7 +82,7 @@ class AdvloMailer < ActionMailer::Base
     mail(from: @host.email, to: @user.email, subject: "Message regarding: #{@adventure.title}")
   end
 
-  # -- REQUEST A BOOKING EMAILS -- 
+  # -- REQUEST A BOOKING EMAILS ------------------------------------------------------------------------------------------------------------ 
 
   def booking_request_email_user(reservation)
     @reservation = reservation
@@ -108,7 +112,7 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: "Booking Declined: #{@adventure.title}")
   end
 
-  # ------ CANCELLATION EMAILS ------
+  # ------ CANCELLATION EMAILS ------------------------------------------------------------------------------------------------------------
   def host_cancel_email_to_users(reservation)
     @user = User.find_by_id(reservation.user_id)
     @reservation = reservation
