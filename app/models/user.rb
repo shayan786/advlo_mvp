@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :requests
   has_many :contact_advlos
   has_many :payouts
+  has_many :flags
   
   accepts_nested_attributes_for :user_adventures, :allow_destroy => true
   # Include default devise modules. Others available are:

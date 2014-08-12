@@ -135,6 +135,16 @@ ActiveRecord::Schema.define(version: 20140812200742) do
     t.integer  "capacity"
   end
 
+  create_table "flags", force: true do |t|
+    t.integer  "user_id"
+    t.string   "type"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "adventure_id"
+    t.integer  "reservation_id"
+  end
+
   create_table "hero_images", force: true do |t|
     t.string   "location"
     t.string   "region"
