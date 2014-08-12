@@ -86,8 +86,7 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
 
-    mail(to: @user.email, subject: "Booking request: #{@adventure.title}")
-    mail(to: 'info@advlo.com', subject: "Booking request: #{@adventure.title}")
+    mail(to: @user.email, bcc: 'info@advlo.com', subject: "Booking request: #{@adventure.title}")
   end
 
   def booking_request_email_host(reservation)
