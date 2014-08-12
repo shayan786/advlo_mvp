@@ -134,8 +134,8 @@ class ReservationsController < ApplicationController
       end
 
     else
+      AdvloMailer.booking_request_email_rejection(@reservation).deliver
       puts "AdvloMailer.delay.booking_request_email_rejection(@reservation) => SENT"
-      AdvloMailer.delay.booking_request_email_rejection(@reservation)
       @reservation.destroy
     end
 
