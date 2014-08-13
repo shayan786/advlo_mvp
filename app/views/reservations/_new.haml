@@ -31,7 +31,7 @@
     
     // other rails controller params 
     %input#adv_price{name: "adv_price", type: "hidden", value: @adventure.price}
-    %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id }
+    %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id}
     %input#stripe_token{name: "stripe_token", type: "hidden"}
     %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
 
@@ -71,14 +71,24 @@
         .form_label.text-right People
       .col-md-2
         %select.form-control.cap_selector
+      .col-md-4
+        .prefill_price_type
+          - if @adventure.price_type == "per_adventure"
+            %em Price Per Group
+          - else
+            %em Price Per Person
     .row
       .col-md-4
         .form_label.text-right Total Cost
       .col-md-6
         .col-md-4
           .reservation_cost
-            - adventure_cost = @adventure.price * @adventure.cap_min
-            - adventure_user_fee = (adventure_cost * 0.04).round(2)
+            - if @adventure.price_type == "per_adventure"
+              - adventure_cost = @adventure.price
+              - adventure_user_fee = (adventure_cost * 0.04).round(2)
+            - else
+              - adventure_cost = @adventure.price * @adventure.cap_min
+              - adventure_user_fee = (adventure_cost * 0.04).round(2)
             
             = "$ #{sprintf('%.2f', adventure_cost + adventure_user_fee)}"
         .col-md-8

@@ -1,61 +1,98 @@
 function getStripeToken(){
 
   $('.event').click(function(){
-    $('.cap_selector').empty()
-    $('#hidden_event_id').val( $(this).data('id') )
-    $('#event_id').val( $(this).data('id') )
-    $('#event-info').html( $(this).data('event-info') )
-    $("#reservation_start_time").val( $(this).data('event-start-time') )
+    var price_type = $(this).data('price-type');
 
-    var adv_cap_min = $(this).data('adv-cap-min');
-    var adv_cap_max = $(this).data('adv-cap-max');
-    var adv_reserved = $(this).data('adv-reserved');
+    if(price_type == "per_adventure") {
 
-    var adv_cap_remain = adv_cap_max - adv_reserved;
+      $('.cap_selector').empty()
+      $('#hidden_event_id').val( $(this).data('id') )
+      $('#event_id').val( $(this).data('id') )
+      $('#event-info').html( $(this).data('event-info') )
+      $("#reservation_start_time").val( $(this).data('event-start-time'))
 
-    if(adv_reserved >= adv_cap_min){
-      adv_cap_min = 1;
-    }else if(adv_reserved != 0) {
-      adv_cap_min = (adv_cap_min - adv_reserved);
-    }
+      var adv_cap_min = $(this).data('adv-cap-min');
+      var adv_cap_max = $(this).data('adv-cap-max');
 
-    var i = adv_cap_min;
-    
-    for (; i <= adv_cap_remain; i++) {
-      if (adv_cap_remain < adv_cap_min){
-        break;
+      for (var i = adv_cap_min; i <= adv_cap_max; i++) {
+
+        var option_string = "<option name='reservation_count' value='"+i+"'>"+i+"</option>";
+        $('.cap_selector').append(option_string);
       }
 
-      var option_string = "<option name='reservation_count' value='"+i+"'>"+i+"</option>";
-      $('.cap_selector').append(option_string);
+      var count = $('.cap_selector').val();
+      var price = $('#adv_price').val();
+      var cost = parseFloat(Math.round(price*100) /100)
+      var fees = parseFloat(Math.round(cost*0.04*100) /100)
+      var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
+
+      console.log(adv_cap_min + " - " + adv_cap_max + " - " + price);
+
+      $("#reservation_head_count").val(count);
+      $('#reservation_total_price').val(total_cost);
+
+      $('.cap_selector').change(function() {
+        var count = $(this).val();
+
+        $("#reservation_head_count").val(count);
+      });
     }
+    else {
+      $('.cap_selector').empty()
+      $('#hidden_event_id').val( $(this).data('id') )
+      $('#event_id').val( $(this).data('id') )
+      $('#event-info').html( $(this).data('event-info') )
+      $("#reservation_start_time").val( $(this).data('event-start-time') )
 
-    var count = $('.cap_selector').val();
-    var price = $('#adv_price').val();
-    var cost = parseFloat(Math.round(count*price*100) /100)
-    var fees = parseFloat(Math.round(cost*0.04*100) /100)
-    var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
+      var adv_cap_min = $(this).data('adv-cap-min');
+      var adv_cap_max = $(this).data('adv-cap-max');
+      var adv_reserved = $(this).data('adv-reserved');
 
-    $("#reservation_head_count").val(count);
-    $('#reservation_total_price').val(total_cost);
+      var adv_cap_remain = adv_cap_max - adv_reserved;
+
+      if(adv_reserved >= adv_cap_min){
+        adv_cap_min = 1;
+      }else if(adv_reserved != 0) {
+        adv_cap_min = (adv_cap_min - adv_reserved);
+      }
+
+      for (var i = adv_cap_min; i <= adv_cap_remain; i++) {
+        if (adv_cap_remain < adv_cap_min){
+          break;
+        }
+
+        var option_string = "<option name='reservation_count' value='"+i+"'>"+i+"</option>";
+        $('.cap_selector').append(option_string);
+      }
+
+      var count = $('.cap_selector').val();
+      var price = $('#adv_price').val();
+      var cost = parseFloat(Math.round(count*price*100) /100)
+      var fees = parseFloat(Math.round(cost*0.04*100) /100)
+      var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
+
+      $("#reservation_head_count").val(count);
+      $('#reservation_total_price').val(total_cost);
+
+
+      $('.cap_selector').change(function() {
+        var count = $(this).val();
+        var price = $('#adv_price').val();
+        var cost = parseFloat(Math.round(count*price*100) /100)
+        var fees = parseFloat(Math.round(cost*0.04*100) /100)
+        var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
+
+        $('.reservation_cost').empty();
+        $('.reservation_cost').append("$ "+total_cost);
+
+        $('.reservation_breakdown').empty();
+        $('.reservation_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fees)");
+
+        $("#reservation_head_count").val(count);
+        $('#reservation_total_price').val(total_cost);
+      });
+    }
   })
-
-  $('.cap_selector').change(function() {
-    var count = $(this).val();
-    var price = $('#adv_price').val();
-    var cost = parseFloat(Math.round(count*price*100) /100)
-    var fees = parseFloat(Math.round(cost*0.04*100) /100)
-    var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
-
-    $('.reservation_cost').empty();
-    $('.reservation_cost').append("$ "+total_cost);
-
-    $('.reservation_breakdown').empty();
-    $('.reservation_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fees)");
-
-    $("#reservation_head_count").val(count);
-    $('#reservation_total_price').val(total_cost);
-  });
 
   $("#reservations-modal #reservation #book-button").click(function() {
 
@@ -200,9 +237,15 @@ function reservation_request_prefill() {
     var request_time = $(this).parent().parent().find('#request_reservation_time').val();
     var request_head_count = $(this).parent().parent().find('#request_reservation_head_count').val();
     var adv_price = $('#request_reservation #adv_price').val();
+    var price_type = $('#request_reservation #price_type').val();
 
+    if (price_type == "per_adventure") {
+      var cost = parseFloat(Math.round(adv_price*100) /100)
+    }
+    else {
+      var cost = parseFloat(Math.round(request_head_count*adv_price*100) /100)
+    }
 
-    var cost = parseFloat(Math.round(request_head_count*adv_price*100) /100)
     var fees = parseFloat(Math.round(cost*0.04*100) /100)
     var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
 

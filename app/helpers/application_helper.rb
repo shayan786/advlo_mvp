@@ -104,6 +104,15 @@ module ApplicationHelper
 
   end
 
+  def default_meta_tags
+    {
+      :title          => 'Advlo - Adventure Local',
+      :description    => '',
+      :keywords       => '',
+      :separator      => "&mdash;".html_safe
+    }
+  end
+
   def flash_class(level)
     case level
       when 'notice' then "alert alert-info alert-block"
