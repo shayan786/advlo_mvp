@@ -41,12 +41,14 @@
         .form_label.text-right Account Number
       .col-md-6
         %input.form-control{type: "text", name: "recipient[bank_account_number]", id: "bank_account_number", placeholder: "********"+"#{recipient_info.active_account.last4}"}
+        = image_tag "icons/check_routing_account_display.png", class: "img-responsive check_img"
 
     .form-group.row.save
       .btn.btn-primary{id: "update_bank_form_btn"}
         Update Account
     .text-center
-      %em By adding your bank account, you agree to Advlo’s payment policies, terms, and privacy. 
+      %a{href: "/terms", target: "_blank"}
+        %em By adding your bank account, you agree to Advlo’s terms & privacy policies
 
 - else 
     
@@ -81,10 +83,12 @@
           .form_label.text-right Account Number
         .col-md-6
           %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_account_number]", id: "bank_account_number"}
+          = image_tag "icons/check_routing_account_display.png", class: "img-responsive check_img"
 
 
       .form-group.row.save
         .btn.btn-primary{id: "add_bank_form_btn"}
           Add Account
       .text-center
-        %em By adding your bank account, you agree to Advlo’s payment policies, terms, and privacy.
+        %a{href: "/terms", target: "_blank"}
+          %em By adding your bank account, you agree to Advlo’s terms & privacy policies
