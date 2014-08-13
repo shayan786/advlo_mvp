@@ -28,7 +28,7 @@
       %p
         %b Following people will be notified of the cancellation:
         %br
-        - if @reservation.event_id
+        - if @reservation.event_id != nil 
           - @event.reservations.each do |res|
             - user = User.find_by_id(res.user_id)
             = user.email
