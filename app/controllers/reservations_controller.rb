@@ -154,6 +154,8 @@ class ReservationsController < ApplicationController
 
       if res.save 
         # Process refunds from stripe to all users
+        AdvloMailer.delay.host_cancel_email_to_users(res)
+        
         if res.stripe_charge_id
           charge = Stripe::Charge.retrieve(res.stripe_charge_id)
           refund = charge.refunds.create
@@ -161,7 +163,6 @@ class ReservationsController < ApplicationController
       end
     end
 
-    AdvloMailer.delay.host_cancel_email_to_users(res)
     AdvloMailer.delay.host_cancel_email_to_self(reservation)
 
     respond_to do |format|
