@@ -148,6 +148,8 @@ class ReservationsController < ApplicationController
     # Need to cancel all reservations associated with that event time || unless its requested then just take the one
     reservations_to_cancel = Reservation.where(event_id: reservation.event_id) ? Reservation.where(event_id: reservation.event_id) : reservation.to_a
 
+    puts "reservations_to_cancel =======> #{reservations_to_cancel}"
+
     reservations_to_cancel.each do |res|
       res.cancelled = true
       res.cancel_reason = cancel_reason
@@ -155,7 +157,7 @@ class ReservationsController < ApplicationController
       if res.save 
         # Process refunds from stripe to all users
         AdvloMailer.delay.host_cancel_email_to_users(res)
-        
+
         if res.stripe_charge_id
           charge = Stripe::Charge.retrieve(res.stripe_charge_id)
           refund = charge.refunds.create
