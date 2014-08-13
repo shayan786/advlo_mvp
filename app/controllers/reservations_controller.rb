@@ -145,23 +145,35 @@ class ReservationsController < ApplicationController
     reservation = Reservation.find_by_id(params[:host_cancel][:reservation_id])
     cancel_reason = "HOST: #{params[:host_cancel][:reason]} - #{params[:host_cancel][:details]}"
 
-    # Need to cancel all reservations associated with that event time || unless its requested then just take the one
-    reservations_to_cancel = Reservation.where(event_id: reservation.event_id) ? Reservation.where(event_id: reservation.event_id) : reservation.to_a
+    # Need to cancel all reservations associated with that event time || unless its requested then just take the ones
+    if reservation.event_id
+      reservations_to_cancel = Reservation.where(event_id: reservation.event_id)
 
-    puts "reservations_to_cancel =======> #{reservations_to_cancel}"
+      reservations_to_cancel.each do |res|
+        res.cancelled = true
+        res.cancel_reason = cancel_reason
 
-    reservations_to_cancel.each do |res|
-      res.cancelled = true
-      res.cancel_reason = cancel_reason
+        if res.save 
+          # Process refunds from stripe to all users
+          AdvloMailer.delay.host_cancel_email_to_users(res)
 
-      if res.save 
-        # Process refunds from stripe to all users
-        AdvloMailer.delay.host_cancel_email_to_users(res)
+          if res.stripe_charge_id
+            charge = Stripe::Charge.retrieve(res.stripe_charge_id)
+            refund = charge.refunds.create
+          end        
+        end
+      end
+    else
+      AdvloMailer.delay.host_cancel_email_to_users(reservation)
 
-        if res.stripe_charge_id
-          charge = Stripe::Charge.retrieve(res.stripe_charge_id)
+      reservation.cancelled = true
+      reservation.cancel_reason = cancel_reason
+
+      if reservation.save 
+        if reservation.stripe_charge_id
+          charge = Stripe::Charge.retrieve(reservation.stripe_charge_id)
           refund = charge.refunds.create
-        end        
+        end
       end
     end
 
