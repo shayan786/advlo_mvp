@@ -65,7 +65,13 @@
         .form_label.text-right People
       .col-md-2
         .prefill_request_people
-        
+      .col-md-4
+        .prefill_price_type_request
+          - if @adventure.price_type == "per_adventure"
+            %em Price Per Group
+          - else
+            %em Price Per Person
+
     .row
       .col-md-4
         .form_label.text-right Total Cost
