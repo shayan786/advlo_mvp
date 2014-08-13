@@ -27,4 +27,9 @@
 
   $(window).resize(function(){
     positionLocationText()
+
+    if($(this).width() > 767 ){
+      $('#filter_nav').show()
+    }
   })
+

@@ -83,9 +83,13 @@
   }
 
   #filter_nav {
+    margin-bottom: 40px;
+    float: left;
+    width: 14%;
+    position: relative;
 
     .filter-wrapper {
-      width: 12%;
+      width: 100%;
       float: left;
     }
 
@@ -140,7 +144,7 @@
 
 
     #adventure-partial {
-      margin-top: -50px;
+      
     }
   }
 }
@@ -409,7 +413,7 @@
 }
 
 
-@media screen and (max-width: 1270px){
+@media screen and (max-width: 1343px){
  
   #adventure-partial {
     .brick-wrapper .adventure-brick {
@@ -433,39 +437,27 @@
   display: none;
 }
 
-@media screen and (min-width: 768px){ 
-  #filter_nav {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 767px){
-
-}
-
-
-
 
 #filter_nav_mobile_toggle {
   display: none;
 }
 
-@media screen and (min-width: 768px){ 
-  #filter_nav {
-    display: block;
-  }
-}
 
 @media screen and (max-width: 767px){
 
   .adventure-page-container .adventure-container #adventure-partial {
-    margin-top: 0px
+    margin-top: 0px;
   }
+  .adventure-page-container #filter_nav  {
+    width: 100%;
+  }
+
   .adventure-page-container #filter_nav .filter-wrapper {
     width: 90%;
     float: none;
     margin: 0 auto;
   }
+
   .adventure-page-container .adventure-container {
     width: 100%;
   }
