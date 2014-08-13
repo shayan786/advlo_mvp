@@ -31,7 +31,7 @@ class Adventure < ActiveRecord::Base
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     puts "obj => #{obj}"
-    puts "obj insp=> #{obj.inpect}"
+    puts "obj insp=> #{obj.inspect}"
     puts "results => #{results}"
     puts "results ins => #{results.inspect}"
     if geo = results.first
