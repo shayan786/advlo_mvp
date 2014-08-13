@@ -27,7 +27,7 @@ class ReservationsController < ApplicationController
     # user.update(stripe_customer_id: customer.id)
 
     # Now charge that customer
-    stripe_charge = create_stripe_charge(total_price_cents, customer.stripe_customer_id, adventure.title)
+    stripe_charge = create_stripe_charge(total_price_cents, customer.id, adventure.title)
 
     # Update reservation with charge id
     if stripe_charge
