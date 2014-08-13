@@ -179,6 +179,15 @@ class ReservationsController < ApplicationController
 
     AdvloMailer.delay.host_cancel_email_to_self(reservation)
 
+    # Create flag for the Host for canceling
+    host = User.find_by_id(reservation.host_id)
+
+    # Generat a flag for that host
+    flag_type = "#{current_time} - Cancellation"
+    flag_body = "#{current_time} - Host cancellation by #{host.name}"
+
+    Flag.create!(reservation_id: reservation.id, user_id: reservation.host_id, adventure_id: reservation.adventure_id, type: flag_type, body: flag_body)
+
     respond_to do |format|
       format.js {render "host_cancel.js", layout: false}
     end
