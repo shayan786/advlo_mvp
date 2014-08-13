@@ -41,7 +41,10 @@
                       - else 
                         = cat.capitalize
                     - if adv.price_type && adv.price 
-                      .adv_price= "$"+adv.price.to_s + " " + adv.price_type.gsub("_"," ") 
+                      - if adv.price_type == 'per_person'
+                        .adv_price= "$"+adv.price.to_s + " " + "per person" 
+                      - else
+                        .adv_price= "$"+adv.price.to_s + " " + "per group"
 
                   .row.container
                     %a.btn.btn-default.edit_btn{href: "/adventures/#{adv.slug}"}

@@ -10,7 +10,7 @@
       %h4= "#{@reservation.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}" 
       %p
         %h2
-          = link_to 'accept / reject', "#{root_url}users/reservations"
+          = link_to 'accept / decline', "#{root_url}users/reservations"
 
         %i
           ="* Please respond within 24 - 48 hours."
