@@ -21,7 +21,7 @@
             = res.adventure.title[0..12] + "..."
         %td.text-left
           = image_tag "#{customer.get_avatar_url("thumb")}", class: "img-circle customer_img pull-left"
-          .pull-right{style: "padding-top: 5px;"}= customer.get_name_and_email.html_safe
+          .pull-left{style: "padding-top: 5px; margin-left: 10px;"}= customer.get_name_and_email.html_safe
         %td.text-left= res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
         %td.text-center= res.head_count
         %td.text-center
