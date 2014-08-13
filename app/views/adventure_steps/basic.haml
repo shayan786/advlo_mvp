@@ -73,12 +73,21 @@
                   %span.input-group-addon
                     USD
               .col-md-3
-                %label.radio-inline
-                  %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_person", checked: "checked"}
-                    Per Person
-                %label.radio-inline
-                  %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_adventure"}
-                    Per Group
+                - if @adventure.price_type == 'per_adventure'
+                  %label.radio-inline
+                    %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_person"}
+                      Per Person
+                  %label.radio-inline
+                    %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_adventure", checked: "checked"}
+                      Per Group
+                - else
+                  %label.radio-inline
+                    %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_person", checked: "checked"}
+                      Per Person
+                  %label.radio-inline
+                    %input{type: "radio", name: "adventure[price_type]", id: "adv_price_type", value: "per_adventure"}
+                      Per Group
+
             .form-group.row
               .col-md-4
                 .form_label.text-right Categories *
