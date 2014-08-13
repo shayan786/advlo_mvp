@@ -47,11 +47,11 @@ ActiveAdmin.register Adventure do
       f.input :slug, label: 'permalink'
       f.input :summary
       f.input :location
+      f.input :city
       f.input :region, collection: adv_regions
       f.input :category
       f.input :price
       f.input :price_type, as: :select, collection: ["per_person", "per_adv"]
-      f.input :summary
       f.input :video_url
       f.input :attachment, as: :file
       f.has_many :user_adventures do |app|
