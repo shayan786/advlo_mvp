@@ -27,6 +27,7 @@
     %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id }
     %input#stripe_token{name: "stripe_token", type: "hidden"}
     %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
+    %input#price_type{name: "adv_type", type: "hidden", value: @adventure.price_type}
 
     .form-group.row
       .col-md-4
@@ -64,7 +65,13 @@
         .form_label.text-right People
       .col-md-2
         .prefill_request_people
-        
+      .col-md-4
+        .prefill_price_type_request
+          - if @adventure.price_type == "per_adventure"
+            %em Price Per Group
+          - else
+            %em Price Per Person
+
     .row
       .col-md-4
         .form_label.text-right Total Cost

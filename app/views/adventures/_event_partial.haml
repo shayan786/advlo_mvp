@@ -1,5 +1,5 @@
 - if event.reservations.empty? && @adventure.price_type == "per_adventure"
-  .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-event-info' => event.start_time.strftime("%A  - %B %d - %l:%M %p "), 'data-id' => event.id, 'data-event-start-time' => event.start_time}
+  .event.btn.btn-primary{"data-price-type" => @adventure.price_type, "data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-event-info' => event.start_time.strftime("%A  - %B %d - %l:%M %p "), 'data-id' => event.id, 'data-event-start-time' => event.start_time, 'data-adv-cap-max' => @adventure.cap_max, 'data-adv-cap-min' => @adventure.cap_min,}
     .col-md-4.col-md-offset-1
       = event.start_time.strftime("%A  - %B %d - %l:%M %p ")
     .col-md-2
@@ -8,7 +8,7 @@
         = "Max. Group Size: "+@adventure.cap_max.to_s
 - # if event is PERSON and has capacity
 - if @adventure.price_type == "per_person" && ((event.reservations.sum(:head_count) + @adventure.cap_min) <= @adventure.cap_max)
-  .event.btn.btn-primary{"data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-event-info' => event.start_time.strftime("%A  - %B %d - %l:%M %p "), 'data-id' => event.id, 'data-adv-cap-min' => event.id, 'data-adv-cap-max' => @adventure.cap_max, 'data-adv-cap-min' => @adventure.cap_min, 'data-adv-reserved' => "#{event.reservations.where(cancelled: false).sum(:head_count)}", 'data-event-start-time' => event.start_time}
+  .event.btn.btn-primary{"data-price-type" => @adventure.price_type, "data-target" => "#reservations-modal", "data-toggle" => "modal", 'data-event-info' => event.start_time.strftime("%A  - %B %d - %l:%M %p "), 'data-id' => event.id, 'data-adv-cap-max' => @adventure.cap_max, 'data-adv-cap-min' => @adventure.cap_min, 'data-adv-reserved' => "#{event.reservations.where(cancelled: false).sum(:head_count)}", 'data-event-start-time' => event.start_time}
     .col-md-4.col-md-offset-1
       = event.start_time.strftime("%A  - %B %d - %l:%M %p ")
     .col-md-2
