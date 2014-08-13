@@ -253,7 +253,7 @@ class AdventuresController < ApplicationController
       session[:adventure_id] =  @adventure.id
 
       # For updating the region
-      continent = get_continent(params[:adventure][:region]);
+      continent = get_continent(params[:adventure][:region])
       @adventure.update(region: continent)
 
       redirect_to "/adventure_steps/photos"

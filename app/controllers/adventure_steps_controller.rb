@@ -216,7 +216,10 @@ class AdventureStepsController < ApplicationController
       @adventure.category = params[:category].join(",")
 
       # For updating the region
-      continent = get_continent(params[:adventure][:region]);
+      puts "UPDATING REGION"
+      puts "params - #{params[:adventure][:region]}"
+      puts "get_continent - #{get_continent(params[:adventure][:region])}"
+      continent = get_continent(params[:adventure][:region])
       @adventure.update(region: continent)
       
       render_wizard @adventure
