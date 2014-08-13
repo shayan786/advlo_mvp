@@ -3,6 +3,7 @@ class Reservation < ActiveRecord::Base
 	belongs_to :adventure
   belongs_to :user
 	belongs_to :payout
+  has_many :flags
 
   accepts_nested_attributes_for :user, :event, :flag
 
