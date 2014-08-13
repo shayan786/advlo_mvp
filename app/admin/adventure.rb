@@ -51,7 +51,7 @@ ActiveAdmin.register Adventure do
       f.input :region, collection: adv_regions
       f.input :category
       f.input :price
-      f.input :price_type, as: :select, collection: ["per_person", "per_adv"]
+      f.input :price_type, as: :select, collection: ["per_person", "per_adventure"]
       f.input :video_url
       f.input :attachment, as: :file
       f.has_many :user_adventures do |app|
