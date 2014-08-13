@@ -5,7 +5,7 @@ class Reservation < ActiveRecord::Base
 	belongs_to :payout
   has_many :flags
 
-  accepts_nested_attributes_for :user, :event, :flag
+  accepts_nested_attributes_for :user, :event
 
   def get_refund_amount
     reservation = Reservation.find_by_id(self.id)
