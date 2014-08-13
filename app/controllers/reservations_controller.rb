@@ -148,8 +148,8 @@ class ReservationsController < ApplicationController
     reservation = Reservation.find_by_id(params[:host_cancel][:reservation_id])
     cancel_reason = "HOST: #{params[:host_cancel][:reason]} - #{params[:host_cancel][:details]}"
 
-    # Need to cancel all reservations associated with that event time
-    reservations_to_cancel = Reservation.where(event_id: reservation.event_id)
+    # Need to cancel all reservations associated with that event time || unless its requested then just take the one
+    reservations_to_cancel = Reservation.where(event_id: reservation.event_id) ? Reservation.where(event_id: reservation.event_id) : reservation.to_a
 
     reservations_to_cancel.each do |res|
       res.cancelled = true
