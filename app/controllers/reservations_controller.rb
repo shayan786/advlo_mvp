@@ -177,7 +177,7 @@ class ReservationsController < ApplicationController
       end
     end
 
-    AdvloMailer.host_cancel_email_to_self(reservation).deliver
+    AdvloMailer.delay.host_cancel_email_to_self(reservation)
 
     # Create flag for the Host for canceling
     host = User.find_by_id(reservation.host_id)

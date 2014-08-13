@@ -118,7 +118,10 @@ class AdvloMailer < ActionMailer::Base
     @reservation = reservation
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
-    @event = Event.find_by_id(reservation.event_id)
+
+    if @reservation.event_id
+      @event = Event.find_by_id(reservation.event_id)
+    end
 
     mail(to: @host.email, bcc: "info@advlo.com", subject: "Booking cancellation for: #{@adventure.title}")
   end
