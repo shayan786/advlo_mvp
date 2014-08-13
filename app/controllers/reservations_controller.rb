@@ -23,7 +23,8 @@ class ReservationsController < ApplicationController
     )
 
     # Add user stripe unique customer id to our database for future transactions
-    user.update(stripe_customer_id: customer.id)
+    # Taking out because stripe_customer_id is stored on reservation
+    # user.update(stripe_customer_id: customer.id)
 
     # Now charge that customer
     stripe_charge = create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
@@ -38,7 +39,7 @@ class ReservationsController < ApplicationController
       event.update(capacity: new_capacity)
 
       @reservation.update(stripe_charge_id: stripe_charge.id)
-      @reservation.update(stripe_customer_id: user.stripe_customer_id)
+      @reservation.update(stripe_customer_id: customer.id)
     end   
 
     if @reservation.save
@@ -80,8 +81,8 @@ class ReservationsController < ApplicationController
       :description => params[:credit_card_name]
     )
 
-    # Add user stripe unique customer id to our database for future transactions
-    user.update(stripe_customer_id: customer.id)
+    @reservation.stripe_customer_id = customer.id
+
 
     if @reservation.save
       AdvloMailer.delay.booking_request_email_user(@reservation)
@@ -93,11 +94,8 @@ class ReservationsController < ApplicationController
     else
       flash[:notice] = "Something went wrong"
     end
-
-  # Stripe processing errors
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
   end
+
 
 	def update
     @reservation = Reservation.find_by_id(params[:id])
@@ -109,14 +107,13 @@ class ReservationsController < ApplicationController
 
     if params[:approve] == "true"
       # Charge the user
-      stripe_charge = create_stripe_charge(total_price_cents, user.stripe_customer_id, adventure.title)
+      stripe_charge = create_stripe_charge(total_price_cents, @reservation.stripe_customer_id, adventure.title)
 
       if stripe_charge
-        puts "***** stripe_charge ====>>> #{stripe_charge} ******"
+        puts "***** stripe_charge from request ====>>> #{stripe_charge} ******"
 
         @reservation.requested = true
         @reservation.stripe_charge_id = stripe_charge.id
-        @reservation.stripe_customer_id = user.stripe_customer_id
 
         if @reservation.save
           # Email both the user that request has been approved
