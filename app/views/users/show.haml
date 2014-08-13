@@ -155,7 +155,7 @@
         .review_header
           .text-center
             REVIEWS
-          - if !@reviews.empty?
+          - if @reviews.count > 0
             .copy-brick.container-fluid#reviews
               - @reviews.each do |review|
                 = render partial: '/shared/review_brick', locals: {review: review}

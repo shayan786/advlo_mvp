@@ -5,7 +5,7 @@ class Reservation < ActiveRecord::Base
 	belongs_to :payout
   has_many :flags
 
-  accepts_nested_attributes_for :user, :event, :flag
+  accepts_nested_attributes_for :user, :event
 
   def get_refund_amount
     reservation = Reservation.find_by_id(self.id)
@@ -38,6 +38,7 @@ class Reservation < ActiveRecord::Base
       if difference >= 48
         # Host took too long to respond and cancel this reservations
         res.cancelled = true
+        res.save
 
         host = User.find_by_id(res.host_id)
 
@@ -45,7 +46,7 @@ class Reservation < ActiveRecord::Base
         flag_type = "#{current_time} - Request - No Response"
         flag_body = "#{current_time} - Autodecline reservation, no response from #{host.name}"
 
-        Flag.create!(reservation_id: res.id, user_id: res.host_id, adventure_id: res.adventure_id, type: flag_type, body: flag_body)
+        Flag.create!(reservation_id: res.id, user_id: res.host_id, adventure_id: res.adventure_id, flag_type: flag_type, flag_body: flag_body)
 
         # Email the traveler
         AdvloMailer.delay.booking_request_email_rejection(res)
