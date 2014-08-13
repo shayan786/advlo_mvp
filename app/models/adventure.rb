@@ -30,6 +30,10 @@ class Adventure < ActiveRecord::Base
   after_validation :reverse_geocode
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
+    puts "obj => #{obj}"
+    puts "obj insp=> #{obj.inpect}"
+    puts "results => #{results}"
+    puts "results ins => #{results.inspect}"
     if geo = results.first
       obj.city    = geo.city
       obj.state   = geo.state

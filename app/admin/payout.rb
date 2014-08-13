@@ -1,6 +1,4 @@
 ActiveAdmin.register Payout do
-
-  
   index do
     column :user_id
     column :amount
