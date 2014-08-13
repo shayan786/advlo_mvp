@@ -9,3 +9,6 @@ $('#request_reservation #success').text('Your reservation request has been recei
 $('#request_reservation #success-detail').text("You will be notified via email when the host accepts or rejects your reservation request");
 
 // If user clicks out of the thankyou modal refresh the page
+$('#reservations-request-modal').on('hide.bs.modal', function(e){
+  window.location.reload(true);
+})
