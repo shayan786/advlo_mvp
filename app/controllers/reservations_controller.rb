@@ -182,6 +182,8 @@ class ReservationsController < ApplicationController
     # Create flag for the Host for canceling
     host = User.find_by_id(reservation.host_id)
 
+    current_time = Time.now.utc
+
     # Generat a flag for that host
     flag_type = "#{current_time} - Cancellation"
     flag_body = "#{current_time} - Host cancellation by #{host.name}"
