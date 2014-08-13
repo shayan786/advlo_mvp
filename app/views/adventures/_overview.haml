@@ -33,7 +33,7 @@
               %i.fa.fa-chevron-circle-right 
               %span.default-title GROUP SIZE:
             .col-md-3
-              - if @adventure.price_type == 'per_adv'
+              - if @adventure.price_type == 'per_adventure'
                 %span.default-content= "#{@adventure.cap_max} / group"
               - elsif @adventure.cap_min == @adventure.cap_max
                 %span.default-content= "#{@adventure.cap_max} people"
