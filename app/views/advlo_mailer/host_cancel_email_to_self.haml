@@ -28,10 +28,15 @@
       %p
         %b Following people will be notified of the cancellation:
         %br
-        - @event.reservations.each do |res|
-          - user = User.find_by_id(res.user_id)
+        - if @reservation.event_id
+          - @event.reservations.each do |res|
+            - user = User.find_by_id(res.user_id)
+            = user.email
+            %br
+        - else 
+          - user = User.find_by_id(reservation.user_id)
           = user.email
-          %br
+
 
       %p
         %i
