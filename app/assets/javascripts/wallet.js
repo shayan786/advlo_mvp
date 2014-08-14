@@ -1,15 +1,4 @@
 function host_cancellation() {
-	$('#host_cancel_reservation_modal #host_cancel_form #host_cancel_details').on('keyup', function() {
-		var details = $.trim($(this).val());
-
-	    if (details.length > 8) {
-	      	$('#host_cancel_reservation_modal #host_cancel_form .cancel_btn').removeClass('disabled');
-	    }
-	    else if (details.length <= 8) {
-	    	$('#host_cancel_reservation_modal #host_cancel_form .cancel_btn').addClass('disabled');
-	    }
-	})
-
 	$('.actions_btn').click(function() {
 		var res_id = $(this).data('res-id');
 		var adv_title = $(this).data('adventure-title');
@@ -60,17 +49,6 @@ function host_request_actions() {
 }
 
 function user_cancellation() {
-	$('#user_cancel_reservation_modal #user_cancel_form #user_cancel_details').on('keyup', function() {
-		var details = $.trim($(this).val());
-
-	    if (details.length > 5) {
-	      	$('#user_cancel_reservation_modal #user_cancel_form .cancel_btn').removeClass('disabled');
-	    }
-	    else if (details.length <= 5) {
-	    	$('#user_cancel_reservation_modal #user_cancel_form .cancel_btn').addClass('disabled');
-	    }
-	})
-
 	$('.actions_btn').click(function() {
 		var res_id = $(this).data('res-id');
 		var adv_title = $(this).data('adventure-title');

@@ -27,6 +27,16 @@
             %em
               The host will automatically be notified of your cancellation
 
+
+          .row.text-center
+            .col-md-11.col-md-offset-1
+            %br
+            .agree-to-cancel
+              %input{type: "checkbox"}
+              By cancelling this reservation you agree to 
+              %a{href: "/terms", target: "_blank"}
+                Advlo's cancellation policy.
+                
             .row.text-center
               %input.btn.btn-primary.cancel_btn.disabled{type: "submit", value: "Cancel Adventure Reservation"}
 
@@ -40,3 +50,9 @@
               %br
               Expect to receive your refund if applicable within 3-4 business days 
           = image_tag 'logos/advlo_header_logo.png'
+
+
+:javascript
+  $('.agree-to-cancel').find('input').click(function(){
+    $('.cancel_btn').toggleClass('disabled')
+  })
