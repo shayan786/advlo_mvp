@@ -6,9 +6,6 @@ class StripeHooksController < ApplicationController
 
     receiving_data = JSON.parse request.body.read
 
-    puts receiving_data['data']['object']['status']
-    puts receiving_data.inspect
-
     update_payout(receiving_data)
 
     respond_to do |format|
