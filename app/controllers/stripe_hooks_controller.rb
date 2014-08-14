@@ -9,6 +9,8 @@ class StripeHooksController < ApplicationController
     puts receiving_data['data']['object']
     puts receiving_data.inspect
 
+
+    render status: 200
   end
   
 
