@@ -30,10 +30,6 @@ class Adventure < ActiveRecord::Base
   after_validation :reverse_geocode
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
-    puts "obj => #{obj}"
-    puts "obj insp=> #{obj.inspect}"
-    puts "results => #{results}"
-    puts "results ins => #{results.inspect}"
     if geo = results.first
       obj.city    = geo.city
       obj.state   = geo.state
@@ -51,9 +47,11 @@ class Adventure < ActiveRecord::Base
   end
 
   def send_approval_email
-    if self.approved == true && self.published == true
+    if self.approved == true && self.published == true && self.sent_approval_email == false
       @adventure = self
       AdvloMailer.delay.adventure_approval_accepted(@adventure)
+      self.sent_approval_email = true
+      self.save
     else
       return
     end
