@@ -7,16 +7,22 @@ class Payout < ActiveRecord::Base
     payout_user = User.find(user_id)
     unprocessed_reservations = Reservation.where(host_id: payout_user.id).where(processed: false).where(cancelled: false)
 
-    # unprocessed_reservations.where 48 hours has passed the completion date
-    reservations = unprocessed_reservations.where("event_start_time < ?", DateTime.now+2)
+    # unprocessed_reservations.where 48 hours has passed the completion date    !!!!!!!!!!!
+    reservations = unprocessed_reservations #.where("event_start_time < ?", DateTime.now+2)
+
     payout_amount = (reservations.sum(:total_price) - reservations.sum(:user_fee) - reservations.sum(:host_fee)).round(2)
+
+    puts "payout_amount => #{payout_amount}"
+
 
     begin 
       # ---------------------- STRIPE PAYOUTS ------------------------
       if payout_user.payout_via_stripe?
         
         user_recip_id = payout_user.stripe_recipient_id
-        amount = payout_amount*100.to_i
+        amount = payout_amount
+
+        puts "amount => #{amount}"
 
         @payout = Payout.create!(
           payout_via: 'stripe',
@@ -26,8 +32,10 @@ class Payout < ActiveRecord::Base
           amount: amount
         )
 
+        puts "@payout.amount => #{@payout.amount}"
+
         stripe_transfer = Stripe::Transfer.create(
-          amount: @payout.amount.to_i,
+          amount: sprintf('%.0f',@payout.amount*100).to_i,
           currency: 'usd',
           recipient: user_recip_id
         )
