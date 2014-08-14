@@ -52,5 +52,8 @@ Rails.application.routes.draw do
   resources :sitemaps, :only => :show
   get "sitemap" => "sitemaps#show"
 
+  #Stripe Webhooks
+  post "/stripe-webhooks"             => 'stripe_hooks#receiver'
+
   get '*not_found', to: 'application#render_error'
 end	

@@ -1,0 +1,41 @@
+class StripeHooksController < ApplicationController
+  protect_from_forgery :except => :receiver
+
+
+  def receiver 
+
+    receiving_data = JSON.parse request.body.read
+
+    update_payout(receiving_data)
+
+    respond_to do |format|
+      format.json {render json: {status: 200}}
+    end 
+  end
+
+
+  private
+
+  def update_payout(receiving_data)
+    tr_id = receiving_data['data']['object']['id']
+    tr_status = receiving_data['data']['object']['status']
+    tr_message = receiving_data['data']['object']['failure_message']
+    tr_last4 = receiving_data['data']['object']['bank_account']['last4']
+
+
+    @payout = Payout.find_by_stripe_transfer_id(receiving_data.object.id)
+
+    #Update payout object depending on response from stripe
+    @payout.status = tr_status
+
+    message = "Bank Account Last 4: #{tr_last4} - #{tr_message}"
+
+    @payout.message = message
+
+    @payout.save
+  end
+  
+end
+
+
+
