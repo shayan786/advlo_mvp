@@ -107,9 +107,61 @@ module ApplicationHelper
   def default_meta_tags
     {
       :title          => 'Advlo - Adventure Local',
-      :description    => '',
-      :keywords       => '',
+      :description    => 'Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure',
+      :keywords       => 'Adventure, Adventure Local, Adventure with Locals',
       :separator      => "&mdash;".html_safe
+    }
+  end
+
+  def default_og_tags
+    return {
+      :title          => 'Advlo - Adventure Local',
+      :type           => 'website',
+      :url            => "#{root_url}",
+      :description    => 'Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure',
+      :image          => 'http://i.imgur.com/a6L0hYB.png'
+    }
+  end
+
+  def default_twitter_tags
+    return {
+      :card           => 'summary',
+      :site           => '@advlo_',
+      :title          => 'Advlo - Adventure Local',
+      :description    => 'Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure',
+      :image          => {
+                          :_ => 'http://i.imgur.com/a6L0hYB.png'
+                        }
+    }
+  end
+
+  def get_meta_tags(title, description, keywords)
+    return {
+      :title          => "#{title} - Advlo",
+      :description    => "#{description}",
+      :keywords       => "Advlo, Adventure Local, Adventure with Locals, #{keywords}"
+    }
+  end
+
+  def get_og_tags(title, url, description, image_src)
+    return {
+      :title          => "#{title}",
+      :type           => 'website',
+      :url            => "#{url}",
+      :description    => "#{description}",
+      :image          => "#{image_src}"
+    }
+  end
+
+  def get_twitter_tags(title, description, image_src)
+    return {
+      :card           => 'summary',
+      :site           => '@advlo_',
+      :title          => "#{title}",
+      :description    => "#{description}",
+      :image          => {
+                          :_ => "#{image_src}"
+                        }
     }
   end
 

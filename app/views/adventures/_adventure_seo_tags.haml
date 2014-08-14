@@ -1,0 +1,4 @@
+.meta_tags{style: "display: none"}
+  = set_meta_tags(get_meta_tags(@adventure.title, @adventure.summary, @adventure.category))
+  = set_meta_tags :og => get_og_tags(@adventure.title, "#{root_url}adventures/#{@adventure.slug}", @adventure.summary, @adventure.attachment.url(:medium))
+  = set_meta_tags :twitter => get_twitter_tags(@adventure.title, @adventure.summary, @adventure.attachment.url(:medium))

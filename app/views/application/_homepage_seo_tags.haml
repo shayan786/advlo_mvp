@@ -1,1 +1,4 @@
-= display_meta_tags(default_meta_tags)
+.meta_tags{style: "display: none"}
+  = set_meta_tags(default_meta_tags)
+  = set_meta_tags :og => default_og_tags
+  = set_meta_tags :twitter => default_twitter_tags
