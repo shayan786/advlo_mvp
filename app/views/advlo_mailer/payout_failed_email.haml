@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %h1 A payout request has failed.
+
+      %p
+        %b Method:
+        = @payout.payout_via.capitalize
+      
+    %table#main{border: "0", cellpadding: "0", cellspacing: "10", width: "650"}
+      %tr
+        %th #
+        %th Adventure
+        %th Reservation Info.
+        %th Fees
+        %th Revenue
+
+      %tr
+        %td.divider{bgcolor: "#555555", colspan: "10", height: "2"}
+
+      - @payout_reservations.each_with_index do |res, i|
+        %tr
+          %td.text-center= i+1
+          %td.text-center= res.adventure.title
+          %td.text-center= "#{res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")}"
+          %td.text-center= "$ #{sprintf('%.2f',res.host_fee)}"
+          - revenue = res.total_price - res.host_fee - res.user_fee
+          %td.text-center= "#{res.head_count} people / "+ "$ #{sprintf('%.2f',revenue)}"
+
+      %tr
+        %td.divider{bgcolor: "#555555", colspan: "10", height: "2"}
+
+      %tr
+        %th
+        %th
+        %th
+        %th= "$ #{sprintf('%.2f', @payout_reservations.sum(:host_fee))}"
+        %th= "$ #{sprintf('%.2f', @payout.amount)}"
+
+    %br
+    .indented
+      %p
+        %b
+          PLEASE CONTACT US AT SUPPORT@ADVLO.COM TO RESOLVE THIS ISSUE AT YOUR EARLIEST CONVENIENCE.
+
+    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}

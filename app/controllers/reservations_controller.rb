@@ -8,8 +8,13 @@ class ReservationsController < ApplicationController
     # Currently fee structure
     # From Host = 15%
     # From Traveler = 4%
-    host_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.15).round(2)
-    user_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.04).round(2)
+    if adventure.price_type == "per_adventure"
+      host_fee = (adventure.price.to_f * 0.15).round(2)
+      user_fee = (adventure.price.to_f * 0.04).round(2)
+    else
+      host_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.15).round(2)
+      user_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.04).round(2)
+    end
 
     # Stripe only takes price as cents ... convert to cents
     total_price_cents = ((params[:reservation][:total_price].to_f)*100).round(0)
@@ -63,8 +68,14 @@ class ReservationsController < ApplicationController
     adventure = Adventure.find_by_id(params[:adventure_id])
     user = User.find_by_id(params[:user_id])
 
-    host_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.15).round(2)
-    user_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.04).round(2)
+    if adventure.price_type == "per_adventure"
+      host_fee = (adventure.price.to_f * 0.15).round(2)
+      user_fee = (adventure.price.to_f * 0.04).round(2)
+    else
+      host_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.15).round(2)
+      user_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.04).round(2)
+    end
+    
     @reservation.update(host_fee: host_fee, user_fee: user_fee)
 
     request_date = params[:reservation_request][:date]

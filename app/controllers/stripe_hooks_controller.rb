@@ -33,6 +33,11 @@ class StripeHooksController < ApplicationController
     @payout.message = message
 
     @payout.save
+
+    #Notify user if payout failed
+    if tr_status == 'failed'
+      AdvloMailer.delay.payout_failed_email(@payout)
+    end
   end
   
 end
