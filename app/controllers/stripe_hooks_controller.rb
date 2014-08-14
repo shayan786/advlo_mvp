@@ -1,11 +1,13 @@
 class StripeHooksController < ApplicationController
-  require 'json'
+  protect_from_forgery :except => :receiver
+
 
   def receiver 
 
     receiving_data = JSON.parse request.body.read
 
-    puts data_json['data']['object']
+    puts receiving_data['data']['object']
+    puts receiving_data.inspect
 
   end
   
