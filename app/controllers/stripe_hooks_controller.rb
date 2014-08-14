@@ -21,7 +21,7 @@ class StripeHooksController < ApplicationController
 
   def update_payout(receiving_data)
     puts "****"
-    puts receiving_data.object.id
+    puts receiving_data['data']['object']['id']
 
     #@payout = Payout.find_by_stripe_transfer_id(receiving_data.object.id)
 
