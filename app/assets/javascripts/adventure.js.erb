@@ -1090,6 +1090,38 @@ function capMaxValidation(){
   });
 }
 
+function social_init(){
+  window.fbAsyncInit = function(){
+    FB.init({
+        appId: '210802829129036', status: true, cookie: true, xfbml: true }); 
+  };
+  
+  (function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];if   (d.getElementById(id)) {return;}js = d.createElement('script'); js.id = id; js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
+  
+  function postToFeed(title, desc, url, image){
+  var obj = {method: 'feed',link: url, picture: 'http://www.url.com/images/'+image,name: title,description: desc};
+  
+  function callback(response){}
+    FB.ui(obj, callback);
+  }
+
+  $('.fb').click(function(e) {
+    e.preventDefault();
+
+    elem = $(this);
+
+    postToFeed(elem.data('title'), elem.data('desc'), elem.prop('href'), elem.data('image'))
+  })
+
+  $('.twitter').click(function(){
+    var encodedUrl = encodeURIComponent(document.URL);
+    height = $(window).height();
+    width = $(window).width();
+
+    window.open("https://twitter.com/share?url=" + 'xml.mny.mx' + "&text=%23AdventureLocal - Check out this adventure on Advlo - " + encodeURIComponent(document.URL), 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
+  })
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1107,6 +1139,7 @@ adventureShow = function() {
   adv_show_rating_show();
   contact_form_validator();
   sign_in_sign_up_modal();
+  social_init();
 };
 
 adventureIndex = function() {

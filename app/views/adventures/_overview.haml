@@ -52,9 +52,18 @@
             .col-md-3
               %span.default-content= @adventure.location
 
-    .row.text-center
-      .btn.btn-primary.contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal'}
-        %i.fa.fa-envelope-o
-        CONTACT HOST
+    .row
+      .col-md-4.col-md-offset-4.text-center
+        .btn.btn-primary.contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal'}
+          %i.fa.fa-envelope-o
+          CONTACT HOST
+
+      - fb_share_url = "#{root_url}adventures/#{@adventure.slug}"
+      - twitter_tweet_url = ""
+      .col-md-2.col-md-offset-1.pull-right
+        %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "#{@adventure.title}", "data-desc" => "#{@adventure.summary}", "data-image" => "#{@adventure.attachment.url(:medium)}", style: "margin-right: 5px;"}
+          %i.fa.fa-facebook
+        .btn.btn-default.social_btn.twitter
+          %i.fa.fa-twitter
 
 = render partial: "users/contact_host_modal", locals: {user: @adventure.users.first, res: nil}
