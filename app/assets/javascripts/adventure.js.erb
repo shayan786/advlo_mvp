@@ -1093,7 +1093,7 @@ function capMaxValidation(){
 function social_init(){
   window.fbAsyncInit = function(){
     FB.init({
-        appId: '210802829129036', status: true, cookie: true, xfbml: true }); 
+      appId: '210802829129036', status: true, cookie: true, xfbml: true }); 
   };
   
   (function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];if   (d.getElementById(id)) {return;}js = d.createElement('script'); js.id = id; js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
@@ -1118,7 +1118,7 @@ function social_init(){
     height = $(window).height();
     width = $(window).width();
 
-    window.open("https://twitter.com/share?url=" + 'xml.mny.mx' + "&text=%23AdventureLocal - Check out this adventure on Advlo - " + encodeURIComponent(document.URL), 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
+    window.open("https://twitter.com/share?url=" + 'beta.advlo.com' + "&text=%23AdventureLocal - Check out this adventure on Advlo - " + encodeURIComponent(document.URL), 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
   })
 }
 
