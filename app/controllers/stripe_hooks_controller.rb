@@ -10,7 +10,9 @@ class StripeHooksController < ApplicationController
     puts receiving_data.inspect
 
 
-    render status: 200
+    respond_to do |format|
+      format.json {render json: {status: 200}}
+    end 
   end
   
 
