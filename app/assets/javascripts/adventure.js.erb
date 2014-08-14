@@ -202,6 +202,36 @@ function input_geocomplete() {
   }
 }
 
+function validateGeoAutocomplete(){
+
+  var geocoder = new google.maps.Geocoder();
+
+  $('#adv_location').focusin(function(){
+    $('#adv_location').css('border-color','none')
+    $('#adv_location').removeClass('failed')
+    $('.geo-complete-errors').html('')
+  })
+
+  $('#adv_location').focusout(function(){
+    var geo_val = $('#adv_location').val()
+    geocoder.geocode( {"address": geo_val}, function(results, status) {
+      console.log(results)
+
+      if (results.length == 1){
+        $('#adv_location').css('border-color','none')
+        $(".btn-primary").removeClass('disabled')
+
+      } else {
+        $('#adv_location').addClass('failed')
+        $('#adv_location').css('border-color','#a94442')
+        $('.geo-complete-errors').html('Please Geo-Complete the form')
+
+        $(".btn-primary").addClass('disabled')
+      }
+    })
+  });
+}
+
 function create_header_remove_arrow() {
   if ($(window).width() > 768) {
     $('.create_steps_header ul li i').addClass('fa fa-long-arrow-right');
@@ -1094,6 +1124,7 @@ adventureIndex = function() {
 }
 
 adventureCreate = function() {
+  validateGeoAutocomplete()
   capMaxValidation();
   advPhotoInput();
   input_popover();

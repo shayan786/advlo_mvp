@@ -26,6 +26,7 @@
                 .form_label.text-right Location *
               .col-md-6
                 %input.form-control.show_ml{type: "text", required: "required", name: "adventure[location]", id: "adv_location", value: "#{@adventure.location}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Write the general adventure location. Ex: Vail, CO"}}
+                .geo-complete-errors
             .row
               .col-md-4
               .col-md-6
