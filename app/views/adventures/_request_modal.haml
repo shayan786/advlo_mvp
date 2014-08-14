@@ -55,7 +55,8 @@
                 We’ll contact you once we find a qualified host for your adventure.
 
 :javascript
-  $('.request_btn').click(function(e){
-    e.preventDefault();
-    $(this).submit();
+  $('#request_form').submit(function(e){
+    e.preventDefault()
+    $(this).submit()
+    return false;
   })

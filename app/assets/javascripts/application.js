@@ -175,14 +175,11 @@ $(document).ready(function(){
   //request adventure form validation on button
   $('#request_form_modal .modal-dialog #request_email').on('keyup', function() {
     var details = $.trim($(this).val());
-
-      if (details.length > 6) {
-          $('#request_form_modal .modal-dialog .request_btn').removeClass('disabled');
-      }
-      else if (details.length <= 6) {
-        $('#request_form_modal .modal-dialog .request_btn').addClass('disabled');
-      }
+    if (details.length > 6) {
+      $('#request_form_modal .modal-dialog .request_btn').removeClass('disabled');
+    } else if (details.length <= 6) {
+      $('#request_form_modal .modal-dialog .request_btn').addClass('disabled');
+    }
   })
-  
 });
 
