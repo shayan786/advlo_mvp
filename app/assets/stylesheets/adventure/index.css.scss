@@ -489,3 +489,32 @@
     height: 400px;
   }
 }
+
+
+@media screen and (max-width: 500px){
+  .brick-wrapper .adventure-brick .image-wrapper {
+    height: 250px !important;
+    width: 300px !important;
+  }
+
+  .brick-wrapper .adventure-brick {
+    height: 250px !important;
+    width: 300px !important;
+  }
+
+  .brick-wrapper .hover-block {
+    height: 176px !important;
+  }
+
+  .brick-wrapper .adventure-brick .guide-image {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .brick-wrapper .adventure-brick .image-wrapper .price {
+    font-size: 20px !important;
+  }
+  .adventure-container {
+    width: 100% !important;
+  }
+}
