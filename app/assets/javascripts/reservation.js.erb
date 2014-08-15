@@ -26,7 +26,6 @@ function getStripeToken(){
       var fees = parseFloat(Math.round(cost*0.04*100) /100)
       var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
 
-      console.log(adv_cap_min + " - " + adv_cap_max + " - " + price);
 
       $("#reservation_head_count").val(count);
       $('#reservation_total_price').val(total_cost);
@@ -111,7 +110,8 @@ function getStripeToken(){
       cvc:      $("#cvv").val()
     };
 
-    Stripe.setPublishableKey('pk_test_4KNIbgcUXuK1cAeGAoZgixpD');
+
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))    
     Stripe.card.createToken(card, function(status, response) {
 
       if (status === 200) {
@@ -120,7 +120,6 @@ function getStripeToken(){
         
         $('#new_reservation').submit();
       } else {
-        $('#card-decline-error').empty();
         $("#stripe-error-message").text(response.error.message);
         // $("#user_submit").attr("disabled", false);
       }
@@ -150,8 +149,7 @@ function getStripeToken_bank() {
     $('#bank_routing_number').val('');
     $('#bank_account_number').val('');
 
-    Stripe.setPublishableKey('pk_test_4KNIbgcUXuK1cAeGAoZgixpD');
-
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
     Stripe.bankAccount.createToken(bank, function(status, response) {
 
       if (status === 200) {
@@ -222,7 +220,6 @@ function getStripeToken_request(){
 
         $('#request_reservation form#request_reservation').submit();
       } else {
-        $('#card-decline-error').empty();
         $("#request_reservation #stripe-error-message").text(response.error.message);
         // $("#user_submit").attr("disabled", false);
       }
