@@ -30,16 +30,16 @@ production:
   client_secret: ENjbIBBaTkf18oeGE2GgNYupkjXOO5JKGP7UFtWywRfbpGYzu_OKK_rrveD_
 
   # Mode can be 'live' or 'sandbox'
-  mode: sandbox
+  mode: live
 
   # Credentials for Classic APIs
-  app_id: APP-80W284485P519543T
-  username: paypal-facilitator_api1.advlo.com
-  password: 1406696201
-  signature: Ajq945eIQKTFUi-1GcDAbFM3-JWsAqgpz7pcOoeTpCsskTsvcckjmzPS
-  # # With Certificate
-  # cert_path: "config/cert_key.pem"
-  sandbox_email_address: paypal-facilitator@advlo.com
+  # app_id: APP-80W284485P519543T
+  # username: paypal-facilitator_api1.advlo.com
+  # password: 1406696201
+  # signature: Ajq945eIQKTFUi-1GcDAbFM3-JWsAqgpz7pcOoeTpCsskTsvcckjmzPS
+  # # # With Certificate
+  # # cert_path: "config/cert_key.pem"
+  # sandbox_email_address: paypal-facilitator@advlo.com
 
   # # IP Address
   # ip_address: 127.0.0.1
@@ -48,10 +48,10 @@ production:
 
 
   # LIVE CLASSIC API INFO
-#  app_id: APP-84822379CF191413U
-#  username: paypal_api1.advlo.com
-#  password: 5XLES9AY65HAN48P
-#  signature: AjHkXon9E6Nuoo0twxHcXVj.GBshAs0lHD5CjH5QD15q0b7Ar33uR03b
+ app_id: APP-84822379CF191413U
+ username: paypal_api1.advlo.com
+ password: 5XLES9AY65HAN48P
+ signature: AjHkXon9E6Nuoo0twxHcXVj.GBshAs0lHD5CjH5QD15q0b7Ar33uR03b
   # # With Certificate
   # cert_path: "config/cert_key.pem"
   # sandbox_email_address: paypal@advlo.com

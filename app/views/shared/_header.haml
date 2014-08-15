@@ -39,7 +39,7 @@
         - if current_user && count = action_required(current_user)
           %li
             %form
-              %a.btn.btn-default.navbar-btn{href: "/users/reservations"}
+              %a.btn.btn-default.navbar-btn{href: "/users/reservations", title: "Action Required"}
                 %i.fa.fa-flag
                 = "(#{count})"
 
