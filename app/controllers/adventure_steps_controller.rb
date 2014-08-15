@@ -208,10 +208,12 @@ class AdventureStepsController < ApplicationController
       @get_verified_status = @api.build_get_verified_status({
         :emailAddress => "#{params[:paypal_email]}",
         :matchCriteria => "NONE" 
-        })
+      })
 
       # Make API call & get response
       @get_verified_status_response = @api.get_verified_status(@get_verified_status)
+
+      puts "@get_verified_status_response===========> #{@get_verified_status_response.inspect}"
 
       # Access Response
       if @get_verified_status_response.success?
