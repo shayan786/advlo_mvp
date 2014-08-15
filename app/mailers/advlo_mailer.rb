@@ -149,4 +149,22 @@ class AdvloMailer < ActionMailer::Base
     @contact_user = contact_user
     mail(reply_to: @contact_user.email, to: 'info@advlo.com', subject: '[ATTENTION] Advlo Contact-us Submission')
   end
+
+  # ------ PAYOUT EMAILS ------------------------------------------------------------------------------------------------------------
+  def payout_initiated_email(payout)
+    @payout = payout
+    @payout_user = User.find_by_id(@payout.user_id)
+    @payout_reservations = Reservation.where(processed: true).where(host_id: @payout_user.id)
+
+    mail(to: @payout_user.email, subject: "Advlo Payment - Initiated")
+  end
+
+  def payout_failed_email(payout)
+    @payout = payout
+    @payout_user = User.find_by_id(payout.user_id)
+    @payout_reservations = Reservation.where(processed: true).where(host_id: @payout_user.id)
+
+    mail(to: @payout_user.email, subject: "Advlo Payment - Failed")
+  end
+
 end

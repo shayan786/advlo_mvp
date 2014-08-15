@@ -1,3 +1,6 @@
+.meta_tags{style: "display: none"}
+  = set_meta_tags(default_meta_tags)
+
 #d_user_dashboard
   .container
     .panel.panel-default
@@ -35,23 +38,23 @@
                             %th Payout date
                             %th Method - Status
                             %th Adventures on payout
-                            %th Payout Fees
+                            %th Fees
                             %th Revenue per Adventure
                         %tbody
                         %tr
                           %td.text-left= payout.created_at.strftime("%A - %D - %l:%M %P")
                           %td.text-left= "#{payout.payout_via.capitalize} - #{payout.status}"
                           %td.text-left
-                            - payout.reservations.where(cancelled: false).each do |r|
+                            - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
                               %span= r.adventure.title
                               %br
                           %td.text-left
-                            - payout.reservations.where(cancelled: false).each do |r|
+                            - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
                               %span= "$ #{sprintf('%.2f',r.host_fee)}"
                               %br
                           %td.text-left
-                            - payout.reservations.where(cancelled: false).each do |r|
-                              - revenue = r.total_price - r.host_fee
+                            - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
+                              - revenue = r.total_price - r.host_fee - r.user_fee
                               %span= "#{r.head_count} people / "+ "$ #{sprintf('%.2f',revenue)}"
                               %br
 
@@ -60,6 +63,6 @@
                             %th
                             %th
                             %th
-                            %th= "$ #{sprintf('%.2f', payout.reservations.sum(:host_fee))}"
+                            %th= "$ #{sprintf('%.2f', Reservation.where(cancelled: false).where(host_id: payout.user_id).sum(:host_fee))}"
                             %th= "$ #{sprintf('%.2f',payout.amount)}"
                     

@@ -23,7 +23,7 @@ class StripeHooksController < ApplicationController
     tr_last4 = receiving_data['data']['object']['bank_account']['last4']
 
 
-    @payout = Payout.find_by_stripe_transfer_id(receiving_data.object.id)
+    @payout = Payout.find_by_stripe_transfer_id(tr_id)
 
     #Update payout object depending on response from stripe
     @payout.status = tr_status
@@ -33,6 +33,11 @@ class StripeHooksController < ApplicationController
     @payout.message = message
 
     @payout.save
+
+    #Notify user if payout failed
+    if tr_status == 'failed'
+      AdvloMailer.delay.payout_failed_email(@payout)
+    end
   end
   
 end

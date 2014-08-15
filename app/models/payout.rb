@@ -51,6 +51,9 @@ class Payout < ActiveRecord::Base
           reservation.payout_id = @payout.id
           reservation.save
         end
+
+        #Notify host of the initiated payout
+        AdvloMailer.delay.payout_initiated_email(@payout)
     
       # -------------------- PAYPAL PAYOUTS --------------------------
       elsif payout_user.payout_via_paypal?
@@ -88,6 +91,9 @@ class Payout < ActiveRecord::Base
             reservation.payout_id = @payout.id
             reservation.save
           end
+
+          #Notify host of the initiated payout
+          AdvloMailer.delay.payout_initiated_email(@payout)
         else
           @payout.status = 'failed'
           @payout.save

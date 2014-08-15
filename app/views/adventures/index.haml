@@ -1,3 +1,6 @@
+.meta_tags{style: "display: none"}
+  = set_meta_tags(get_meta_tags(@location.upcase,"Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure",@location))
+
 .adventure-page-container
   #hero_image_wrapper
     - if @hero_image
