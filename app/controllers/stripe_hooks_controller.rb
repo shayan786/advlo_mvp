@@ -33,7 +33,7 @@ class StripeHooksController < ApplicationController
     #Update payout object depending on response from stripe
     @payout.status = tr_status
 
-    message = "Bank Account Last 4: #{tr_last4}  || Return Message: #{tr_message}"
+    message = "Bank Account Last 4: #{tr_last4}  || #{tr_status} => Return Message: #{tr_message}"
 
     @payout.message = message
 
