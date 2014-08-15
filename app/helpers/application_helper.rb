@@ -99,7 +99,7 @@ module ApplicationHelper
     {
       :title          => 'Advlo - Adventure Local',
       :description    => 'Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure',
-      :keywords       => 'Adventure, Adventure Local, Adventure with Locals',
+      :keywords       => 'Adventure, Adventure Local, travel, tourism, booking',
       :separator      => "&mdash;".html_safe
     }
   end
