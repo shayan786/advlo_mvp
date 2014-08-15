@@ -45,3 +45,17 @@ production:
   # ip_address: 127.0.0.1
   # # HTTP Proxy
   # http_proxy: http://proxy-ipaddress:3129/
+
+
+  # LIVE CLASSIC API INFO
+#  app_id: APP-84822379CF191413U
+#  username: paypal_api1.advlo.com
+#  password: 5XLES9AY65HAN48P
+#  signature: AjHkXon9E6Nuoo0twxHcXVj.GBshAs0lHD5CjH5QD15q0b7Ar33uR03b
+  # # With Certificate
+  # cert_path: "config/cert_key.pem"
+  # sandbox_email_address: paypal@advlo.com
+
+
+
+
