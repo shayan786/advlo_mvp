@@ -3,17 +3,14 @@ class Payout < ActiveRecord::Base
   has_many :reservations
 
   def self.calculate_amount_and_trigger_transfer(user_id)
-
     payout_user = User.find(user_id)
     unprocessed_reservations = Reservation.where(host_id: payout_user.id).where(processed: false).where(cancelled: false)
 
     # unprocessed_reservations.where 48 hours has passed the completion date    !!!!!!!!!!!
-    reservations = unprocessed_reservations #.where("event_start_time < ?", DateTime.now+2)
-
+    reservations = unprocessed_reservations.where("event_start_time < ?", DateTime.now+2)
     payout_amount = (reservations.sum(:total_price) - reservations.sum(:user_fee) - reservations.sum(:host_fee)).round(2)
-
+    
     puts "payout_amount => #{payout_amount}"
-
 
     begin 
       # ---------------------- STRIPE PAYOUTS ------------------------
@@ -21,9 +18,6 @@ class Payout < ActiveRecord::Base
         
         user_recip_id = payout_user.stripe_recipient_id
         amount = payout_amount
-
-        puts "amount => #{amount}"
-
         @payout = Payout.create!(
           payout_via: 'stripe',
           status: 'initiated',
@@ -31,8 +25,6 @@ class Payout < ActiveRecord::Base
           user_id: payout_user.id,
           amount: amount
         )
-
-        puts "@payout.amount => #{@payout.amount}"
 
         stripe_transfer = Stripe::Transfer.create(
           amount: sprintf('%.0f',@payout.amount*100).to_i,

@@ -366,7 +366,7 @@ function request_time_validator() {
 function request_form_validator() {
   $('#request_form').bootstrapValidator({
     fields: {
-      'request[email]': {
+      '#request_email': {
         validators: {
           notEmpty: {
             message: 'Email is required and cannot be empty'
