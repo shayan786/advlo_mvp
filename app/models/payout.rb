@@ -93,9 +93,9 @@ class Payout < ActiveRecord::Base
           AdvloMailer.delay.payout_completed_email(@payout)
         else
           @payout.status = 'failed'
-          @payout.save
+          @payout.message = @mass_pay_response.Errors[0].LongMessage
 
-          puts @mass_pay_response.Errors[0].LongMessage
+          @payout.save
         end
 
       end
