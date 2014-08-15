@@ -6,8 +6,6 @@
       .modal-body
         %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_form", "data-remote" => "true"}
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-          - if current_user
-            = tag(:input, :type => "hidden", :name => "request[user_id]", :value => current_user.id)
           .form-group.row
             .col-md-4 
               .form_label.text-right Location *
@@ -34,14 +32,20 @@
               %textarea.form-control{rows: "5", type: "text", name: "request[description]", id: "request_description", maxlength: "250"}
           .form-group.row
             .col-md-4 
-              .form_label.text-right Budget / person *
+              .form_label.text-right Budget/person *
             .col-md-6
               %input.form-control{type: "text", name: "request[budget]", id: "request_budget", placeholder: "$50 - $100"}
-          .form-group.row
-            .col-md-4 
-              .form_label.text-right Email *
-            .col-md-6
-              %input.form-control{type: "text", name: "request[email]", id: "request_email", maxlength: "40"}
+          
+          - if current_user
+            = tag(:input, :type => "hidden", :name => "request[email]", :value => current_user.email )
+
+          - else
+            .form-group.row
+              .col-md-4 
+                .form_label.text-right Email *
+              .col-md-6
+                %input.form-control{type: "text", name: "request[email]", id: "request_email", maxlength: "40"}
+
           .row.text-center
             %input.btn.btn-primary.request_btn.disabled{type: "submit", value: "Request Adventure"}
 
@@ -50,7 +54,7 @@
             .col-md-10.col-md-offset-1
               = image_tag "icons/request_icon.png", class: "img-responsive"
               .adv-request-text.text-center{style: 'margin-top: 20px;'}
-                Don’t worry — Advlo knows a guy. 
+                Don’t worry — Advlo knows someone.
                 %br
                 We’ll contact you once we find a qualified host for your adventure.
 

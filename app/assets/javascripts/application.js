@@ -173,13 +173,23 @@ $(document).ready(function(){
   });
 
   //request adventure form validation on button
-  $('#request_form_modal .modal-dialog #request_email').on('keyup', function() {
-    var details = $.trim($(this).val());
-    if (details.length > 6) {
-      $('#request_form_modal .modal-dialog .request_btn').removeClass('disabled');
-    } else if (details.length <= 6) {
-      $('#request_form_modal .modal-dialog .request_btn').addClass('disabled');
-    }
+  $('#request_form_modal .modal-dialog #request_location').on('keyup', function() {
+  
+    if ( $('#request_email').css('display') == undefined ) {
+      $('#request_budget').keyup(function(){
+        if($(this).val() != '' ){
+          $('.request_btn').removeClass('disabled') 
+        }
+      })
+    } 
+
+    if ( $('#request_email').css('display') == 'block' ) {
+      $('#request_email').keyup(function(){
+        if($(this).val() != '' ){
+          $('.request_btn').removeClass('disabled') 
+        }
+      })
+    } 
   })
 });
 

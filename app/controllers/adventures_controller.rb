@@ -184,6 +184,7 @@ class AdventuresController < ApplicationController
 
   # Request Adventure
   def requests 
+    puts "******************************#{request_params}"
     @request = Request.create!(request_params)
     @request.category = params[:request_category] ? params[:request_category].join(',') : 'No category selected'
 
