@@ -7,7 +7,7 @@ class Payout < ActiveRecord::Base
     unprocessed_reservations = Reservation.where(host_id: payout_user.id).where(processed: false).where(cancelled: false)
 
     # unprocessed_reservations.where 48 hours has passed the completion date    !!!!!!!!!!!
-    reservations = unprocessed_reservations.where("event_start_time < ?", DateTime.now+2)
+    reservations = unprocessed_reservations #.where("event_start_time < ?", DateTime.now+2)
     payout_amount = (reservations.sum(:total_price) - reservations.sum(:user_fee) - reservations.sum(:host_fee)).round(2)
     
     puts "payout_amount => #{payout_amount}"
