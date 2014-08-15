@@ -58,6 +58,9 @@ class Payout < ActiveRecord::Base
         @api = PayPal::SDK::Merchant::API.new
 
         # Build mass payout object and call paypal merchant api
+
+        puts "*************** @payout before ===>>> #{@payout.inspect} ***************"
+
         @mass_pay = @api.build_mass_pay({
           :ReceiverType => "EmailAddress",
           :MassPayItem => [{
@@ -70,6 +73,8 @@ class Payout < ActiveRecord::Base
         })
 
         @mass_pay_response = @api.mass_pay(@mass_pay)
+
+        puts "***************  @mass_pay_response =====>>> #{@mass_pay_response}  ***************"
 
         if @mass_pay_response.success?
           #update the payout
