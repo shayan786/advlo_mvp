@@ -156,6 +156,16 @@ module ApplicationHelper
     }
   end
 
+  def action_required(user)
+    reservations_action_required = Reservation.where(processed: false).where(cancelled: false).where(requested: true).where(host_id: user.id).where("stripe_charge_id IS NULL OR stripe_charge_id = ''").where("event_start_time > '#{Time.now.utc}'")
+
+    if reservations_action_required.count > 0
+      return reservations_action_required.count
+    else
+      return false
+    end
+  end
+
   def flash_class(level)
     case level
       when 'notice' then "alert alert-info alert-block"

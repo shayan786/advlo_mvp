@@ -36,6 +36,14 @@
             %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
               Host
         
+        - if current_user && count = action_required(current_user)
+          %li
+            %form
+              %a.btn.btn-default.navbar-btn{href: "/users/reservations"}
+                %i.fa.fa-flag
+                = "(#{count})"
+
+        
         - if current_user
           = render partial: 'logged_in_dropdown'
 
