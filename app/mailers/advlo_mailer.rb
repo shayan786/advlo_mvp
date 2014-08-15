@@ -156,7 +156,7 @@ class AdvloMailer < ActionMailer::Base
     @payout_user = User.find_by_id(@payout.user_id)
     @payout_reservations = Reservation.where(processed: true).where(host_id: @payout_user.id)
 
-    mail(to: @payout_user.email, subject: "Advlo Payment - Initiated")
+    mail(to: @payout_user.email, subject: "Advlo Payment - Completed")
   end
 
   def payout_failed_email(payout)
