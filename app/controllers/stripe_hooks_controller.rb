@@ -23,10 +23,10 @@ class StripeHooksController < ApplicationController
     tr_last4 = receiving_data['data']['object']['bank_account']['last4']
 
 
-    puts "tr_id ===========>> {tr_id}"
-    puts "tr_status ===========>> {tr_status}"
-    puts "tr_message ===========>> {tr_message}"
-    puts "tr_last4 ===========>> {tr_last4}"
+    puts "tr_id ===========>> #{tr_id}"
+    puts "tr_status ===========>> #{tr_status}"
+    puts "tr_message ===========>> #{tr_message}"
+    puts "tr_last4 ===========>> #{tr_last4}"
 
     @payout = Payout.find_by_stripe_transfer_id(tr_id)
 
