@@ -43,6 +43,10 @@ class StripeHooksController < ApplicationController
     if tr_status == 'failed'
       AdvloMailer.delay.payout_failed_email(@payout)
     end
+    if tr_status == 'paid'
+      #Notify host of the initiated payout
+      AdvloMailer.delay.payout_completed_email(@payout)
+    end
   end
   
 end

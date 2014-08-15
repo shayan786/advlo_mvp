@@ -42,7 +42,7 @@
                             %th Revenue per Adventure
                         %tbody
                         %tr
-                          %td.text-left= payout.created_at.strftime("%A - %D - %l:%M %P")
+                          %td.text-left= payout.created_at.strftime("%A - %D")
                           %td.text-left= "#{payout.payout_via.capitalize} - #{payout.status}"
                           %td.text-left
                             - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|

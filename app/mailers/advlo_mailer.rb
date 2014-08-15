@@ -151,7 +151,7 @@ class AdvloMailer < ActionMailer::Base
   end
 
   # ------ PAYOUT EMAILS ------------------------------------------------------------------------------------------------------------
-  def payout_initiated_email(payout)
+  def payout_completed_email(payout)
     @payout = payout
     @payout_user = User.find_by_id(@payout.user_id)
     @payout_reservations = Reservation.where(processed: true).where(host_id: @payout_user.id)
