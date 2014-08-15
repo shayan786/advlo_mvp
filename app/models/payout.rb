@@ -74,7 +74,7 @@ class Payout < ActiveRecord::Base
 
         @mass_pay_response = @api.mass_pay(@mass_pay)
 
-        puts "***************  @mass_pay_response =====>>> #{@mass_pay_response}  ***************"
+        system("***************  @mass_pay_response =====>>> #{@mass_pay_response}  ***************")
 
         if @mass_pay_response.success?
           #update the payout
