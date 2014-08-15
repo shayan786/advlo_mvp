@@ -18,6 +18,7 @@ class Payout < ActiveRecord::Base
         
         user_recip_id = payout_user.stripe_recipient_id
         amount = payout_amount
+
         @payout = Payout.create!(
           payout_via: 'stripe',
           status: 'initiated',
