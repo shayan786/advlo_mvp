@@ -105,6 +105,14 @@ class ReservationsController < ApplicationController
     else
       flash[:notice] = "Something went wrong"
     end
+
+  rescue Stripe::CardError => e
+    @card_error = e.message
+
+    respond_to do |format|
+      format.js {render "request_card_failure.js", layout: false}
+    end
+
   end
 
 
@@ -149,6 +157,7 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       format.js {render "update.js", layout: false}
     end
+
 	end
 
 

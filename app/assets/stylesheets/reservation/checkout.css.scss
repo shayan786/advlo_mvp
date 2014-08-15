@@ -87,3 +87,7 @@
   font-size: 20px;
   margin: 20px;
 }
+
+#card-decline-error {
+  @extend #stripe-error-message;
+}

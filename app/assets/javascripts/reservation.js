@@ -120,6 +120,7 @@ function getStripeToken(){
         
         $('#new_reservation').submit();
       } else {
+        $('#card-decline-error').empty();
         $("#stripe-error-message").text(response.error.message);
         // $("#user_submit").attr("disabled", false);
       }
@@ -221,6 +222,7 @@ function getStripeToken_request(){
 
         $('#request_reservation form#request_reservation').submit();
       } else {
+        $('#card-decline-error').empty();
         $("#request_reservation #stripe-error-message").text(response.error.message);
         // $("#user_submit").attr("disabled", false);
       }
