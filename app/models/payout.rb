@@ -83,7 +83,7 @@ class Payout < ActiveRecord::Base
 
           #update the payout
           @payout.status = @pay_response.responseEnvelope.ack
-          @payout.paypal_correlation_id = @pay_response.responseEnvelope.correlationID
+          @payout.paypal_correlation_id = @pay_response.responseEnvelope.correlationId
           @payout.save
 
           #update the reservations associated with the payout
