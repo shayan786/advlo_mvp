@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    .indented  
+      %h1 PAYPAL PAYMENT REQUIRED
+      
+      %p 
+        URL:  
+        %a{href: "#{@payment_url}"}
+          = @payment_url

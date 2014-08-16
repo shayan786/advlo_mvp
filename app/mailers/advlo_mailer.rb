@@ -167,4 +167,10 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @payout_user.email, subject: "Advlo Payment - Failed")
   end
 
+  def paypal_payment_email(payment_url)
+    @payment_url = payment_url
+
+    mail(to: 'info@advlo.com', subject: "PAYPAL PAYMENT REQUIRED")
+  end
+
 end

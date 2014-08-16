@@ -72,7 +72,6 @@ class Payout < ActiveRecord::Base
           :requestEnvelope => {
             :errorLanguage => "en_US"
           },
-          :senderEmail => "paypal@advlo.com",
           :feesPayer => "SENDER"
         })
 
@@ -84,7 +83,7 @@ class Payout < ActiveRecord::Base
 
           #update the payout
           @payout.status = @pay_response.Ack
-          @payout.paypal_masspay_correlation_id = @pay_response.CorrelationID
+          @payout.paypal_correlation_id = @pay_response.CorrelationID
           @payout.save
 
           #update the reservations associated with the payout
@@ -93,26 +92,20 @@ class Payout < ActiveRecord::Base
             reservation.payout_id = @payout.id
             reservation.save
           end
-
-          @pay_response.payKey
-          @pay_response.paymentExecStatus
-          @pay_response.payErrorList
-          @pay_response.paymentInfoList
-          @pay_response.sender
-          @pay_response.defaultFundingPlan
-          @pay_response.warningDataList
+          
+          pay_url = @api.payment_url(@pay_response)
 
           #Notify host of the initiated payout
           AdvloMailer.delay.payout_completed_email(@payout)
+
+          #Notify us of link to pay host
+          AdvloMailer.delay.paypal_payment_email(pay_url)
         else
           @payout.status = 'failed'
           @payout.message = @pay_response.error
 
           @payout.save
         end
-
-        # Build pay object and call paypal merchant api
-
 
       end
 
@@ -122,7 +115,3 @@ class Payout < ActiveRecord::Base
   end
 
 end
-
-
-
-
