@@ -1,4 +1,4 @@
-#how_it_works.destination-block
+#destination-block.destination-block
   .container.homepage-container.text-center
     %h1 TOP LOCATIONS
 
@@ -22,7 +22,7 @@
     = render partial: "/adventures/request_modal"
 
 :javascript
-  $('.region-wrapper').masonry({
+  $('#destination-block .region-wrapper').masonry({
     isFitWidth: true,
     itemSelector: '.region'
   })
