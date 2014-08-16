@@ -55,48 +55,45 @@ class Payout < ActiveRecord::Base
           amount: payout_amount
         )
 
-        @api = PayPal::SDK::Merchant::API.new
+        @api = PayPal::SDK::AdaptivePayments::API.new
 
-        # Build mass payout object and call paypal merchant api
-
-        puts "*************** @payout before ===>>> #{@payout.inspect} ***************"
-
-        @mass_pay = @api.build_mass_pay({
-          :ReceiverType => "EmailAddress",
-          :MassPayItem => [{
-            :ReceiverEmail => payout_user.paypal_email,
-            :Amount => {
-              :currencyID => "USD",
-              :value => "#{sprintf('%.2f',payout_amount)}"
-            }
-          }]
+        # Build request object
+        @pay = @api.build_pay({
+          :actionType => "PAY",
+          :receiverList => {
+            :receiver => [{
+              :amount => 10.0,
+              :email => "advlo-personal@advlo.com" 
+            }] 
+          },
+          :currencyCode => "USD",
+          :cancelUrl => "http://beta.advlo.com",
+          :returnUrl => "http://beta.advlo.com",
+          :requestEnvelope => {
+            :errorLanguage => "en_US"
+          },
+          :senderEmail => "paypal-facilitator@advlo.com",
+          :feesPayer => "SENDER"
         })
 
-        @mass_pay_response = @api.mass_pay(@mass_pay)
+        # Make API call & get response
+        @pay_response = @api.pay(@pay)
 
-        puts "***************  @mass_pay_response =====>>> #{@mass_pay_response}  ***************"
-
-        if @mass_pay_response.success?
-          #update the payout
-          @payout.status = @mass_pay_response.Ack
-          @payout.paypal_masspay_correlation_id = @mass_pay_response.CorrelationID
-          @payout.save
-
-          #update the reservations associated with the payout
-          reservations.each do |reservation|
-            reservation.processed = true
-            reservation.payout_id = @payout.id
-            reservation.save
-          end
-
-          #Notify host of the initiated payout
-          AdvloMailer.delay.payout_completed_email(@payout)
+        # Access Response
+        if @pay_response.success?
+          @pay_response.payKey
+          @pay_response.paymentExecStatus
+          @pay_response.payErrorList
+          @pay_response.paymentInfoList
+          @pay_response.sender
+          @pay_response.defaultFundingPlan
+          @pay_response.warningDataList
         else
-          @payout.status = 'failed'
-          @payout.message = @mass_pay_response.Errors[0].LongMessage
-
-          @payout.save
+          @pay_response.error
         end
+
+        # Build pay object and call paypal merchant api
+
 
       end
 

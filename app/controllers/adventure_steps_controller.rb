@@ -201,42 +201,15 @@ class AdventureStepsController < ApplicationController
     elsif params[:paypal] == "1"
       user = User.find_by_id(params[:host_id])
 
-      # Verify that paypal email is legit
-      @api = PayPal::SDK::AdaptiveAccounts::API.new
+      user.update(paypal_email: params[:paypal_email])
 
-      # Build request object
-      @get_verified_status = @api.build_get_verified_status({
-        :emailAddress => "#{params[:paypal_email]}",
-        :matchCriteria => "NONE" 
-      })
-
-      # Make API call & get response
-      @get_verified_status_response = @api.get_verified_status(@get_verified_status)
-
-      puts "@get_verified_status_response===========> #{@get_verified_status_response.inspect}"
-
-      # Access Response
-      if @get_verified_status_response.success?
-        user.update(paypal_email: params[:paypal_email])
-
-        respond_to do |format|
-          if params[:paypal_update] == "1"
-            format.js {render "paypal_update.js", layout: false}
-          else
-            format.js {render "paypal.js", layout: false}
-          end
-        end
-      else
-        respond_to do |format|
-          if params[:paypal_update] == "1"
-            format.js {render "paypal_fail_update.js", layout: false}
-          else
-            format.js {render "paypal_fail.js", layout: false}
-          end
+      respond_to do |format|
+        if params[:paypal_update] == "1"
+          format.js {render "paypal_update.js", layout: false}
+        else
+          format.js {render "paypal.js", layout: false}
         end
       end
-
-      
 
     # For updating the 'basic' info
     else

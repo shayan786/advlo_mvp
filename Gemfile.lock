@@ -197,11 +197,11 @@ GEM
       paperclip (>= 3.0.2, < 5.0)
     paypal-sdk-adaptiveaccounts (1.102.0)
       paypal-sdk-core (~> 0.2.3)
+    paypal-sdk-adaptivepayments (1.110.0)
+      paypal-sdk-core (~> 0.2.3)
     paypal-sdk-core (0.2.10)
       multi_json (~> 1.0)
       xml-simple
-    paypal-sdk-merchant (1.115.0)
-      paypal-sdk-core (~> 0.2.7)
     pg (0.17.1)
     polyamorous (1.0.0)
       activerecord (>= 3.0)
@@ -352,7 +352,7 @@ DEPENDENCIES
   paperclip!
   paperclip-meta
   paypal-sdk-adaptiveaccounts
-  paypal-sdk-merchant
+  paypal-sdk-adaptivepayments
   pg
   rails (= 4.1.0)
   rails_12factor
