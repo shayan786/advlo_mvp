@@ -82,8 +82,8 @@ class Payout < ActiveRecord::Base
         if @pay_response.success?
 
           #update the payout
-          @payout.status = @pay_response.Ack
-          @payout.paypal_correlation_id = @pay_response.CorrelationID
+          @payout.status = @pay_response.responseEnvelope.ack
+          @payout.paypal_correlation_id = @pay_response.responseEnvelope.correlationID
           @payout.save
 
           #update the reservations associated with the payout
