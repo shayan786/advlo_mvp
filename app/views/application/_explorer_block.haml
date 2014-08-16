@@ -12,7 +12,7 @@
                 - if r.region == nil
                   - r.region = 'default'
                 = link_to (image_tag HeroImage.find(r.region).attachment.url(:hero)), "/adventures?city=#{r[0].gsub(' ','-')}"
-                - adv_count = Adventure.where(city: r[0]).count
+                - adv_count = Adventure.approved.where(city: r[0]).count
                 - if r[0].length > 14
                   .region-text= "#{r[0][0..14]}... (#{adv_count})"  
                 - else 
