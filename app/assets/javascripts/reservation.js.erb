@@ -176,8 +176,7 @@ function getStripeToken_bank() {
     $('#change_bank_form #bank_routing_number').val('');
     $('#change_bank_form #bank_account_number').val('');
 
-    Stripe.setPublishableKey('pk_test_4KNIbgcUXuK1cAeGAoZgixpD');
-
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
     Stripe.bankAccount.createToken(bank, function(status, response) {
 
       if (status === 200) {
@@ -211,7 +210,7 @@ function getStripeToken_request(){
       cvc:      $("#request_reservation #cvv").val()
     };
 
-    Stripe.setPublishableKey('pk_test_4KNIbgcUXuK1cAeGAoZgixpD');
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
     Stripe.card.createToken(card, function(status, response) {
 
       if (status === 200) {
