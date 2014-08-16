@@ -26,8 +26,8 @@ test:
 
 production:
   # Credentials for REST APIs
-  client_id: Ae4bVRC8PlR2wdsjYgNCUGDPeV94y7CRTmar6oHUPM_-XkPsxaOsQgJ-dq_r
-  client_secret: ENjbIBBaTkf18oeGE2GgNYupkjXOO5JKGP7UFtWywRfbpGYzu_OKK_rrveD_
+  # client_id: Ae4bVRC8PlR2wdsjYgNCUGDPeV94y7CRTmar6oHUPM_-XkPsxaOsQgJ-dq_r
+  # client_secret: ENjbIBBaTkf18oeGE2GgNYupkjXOO5JKGP7UFtWywRfbpGYzu_OKK_rrveD_
 
   # Mode can be 'live' or 'sandbox'
   mode: live
