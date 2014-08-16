@@ -14,7 +14,7 @@ task :payout => :environment do
   end
 
 
-  .each do |host_id|
+  hosts_with_reservations.each do |host_id|
     puts "Host: #{host_id} => sending payout"
     Payout.calculate_amount_and_trigger_transfer(host_id)
   end
