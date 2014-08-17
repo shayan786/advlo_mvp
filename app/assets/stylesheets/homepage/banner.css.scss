@@ -31,35 +31,6 @@
 	}
 }
 
-.dropdown-container {
-	position: relative;
-	width: 100%;
-	margin-top: 50px;
-
-	.dropdown-toggle {
-		position: relative; 
-		width: 235px;
-		margin: 0 auto;
-
-		.header_btn_fix {
-			background-color: $header_btn_color_hover;
-			font-size: 1.5em;
-			width: 100%;
-			padding: 12px 30px;
-			border: transparent;
-
-			&:hover {
-				background-color: $header_btn_color;
-				border-bottom: none;
-			}
-
-			&:active {
-				background-color: $header_btn_color_hover;
-				border-color: #fff;
-			}
-		}
-	}
-}
 
 #how_it_works_panels {
 	position: relative;
@@ -243,9 +214,6 @@
     background: #fff;
     width: 100%;
     top: 50px;
-  }
-  .dropdown-container {
-    margin-top: 30px !important;
   }
 
   #how_it_works_panels {
