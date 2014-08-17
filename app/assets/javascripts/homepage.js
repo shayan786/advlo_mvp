@@ -68,6 +68,7 @@ function mobileHeaderLoginToggle(){
   $('#mobile-login-form-submit').hide()
   $('#mobile-login-toggle').click(function(e){
     e.preventDefault()
+    $('#login-mobile').hide()
     $('.fb_btn').css('margin-bottom','15px')
     $('#mobile-login-toggle').hide()
     $('#mobile_user_email_login').fadeIn()
