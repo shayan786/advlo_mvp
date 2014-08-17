@@ -1,20 +1,3 @@
-function exploreDropdownToggle(){
-  $('.dropdown-toggle').hover(function(){
-    $('.dropdown-box').dequeue().stop().slideDown()
-    $('.header_btn_fix').dequeue().stop().animate({
-      borderBottomLeftRadius: 0, 
-      borderBottomRightRadius: 0
-    }, 400);
-  },function(){
-    $('.dropdown-box').dequeue().stop().slideUp()
-    $('.header_btn_fix').dequeue().stop().animate({
-      borderTopLeftRadius: 10, 
-      borderTopRightRadius: 10, 
-      borderBottomLeftRadius: 10, 
-      borderBottomRightRadius: 10
-    }, 400);
-  })
-}
 
 function homepageTextScroll(){
   if($(window).width() < 700) {
@@ -27,24 +10,6 @@ function homepageTextScroll(){
     else if ($(this).width() > 700) {
       $('.jumbotron').append($('#how_it_works_panels'));
     }   
-  })
-
-  $(window).scroll(function(){
-
-    // if(s > 200 && !$('#homepage-text').hasClass('passed')){
-    //   $('#homepage-text').animate({
-    //     opacity: 0
-    //   },300)
-
-    //   $('#homepage-text').addClass('passed')
-    // }
-    // if(s < 200 && $('#homepage-text').hasClass('passed')){
-    //   $('#homepage-text').animate({
-    //     opacity: 1
-    //   },1000)
-
-    //   $('#homepage-text').removeClass('passed')
-    // }  
   })
 }
 
@@ -68,6 +33,7 @@ function mobileHeaderLoginToggle(){
   $('#mobile-login-form-submit').hide()
   $('#mobile-login-toggle').click(function(e){
     e.preventDefault()
+    $('#login-mobile').hide()
     $('.fb_btn').css('margin-bottom','15px')
     $('#mobile-login-toggle').hide()
     $('#mobile_user_email_login').fadeIn()
@@ -117,7 +83,6 @@ function overall_rating_show() {
 homepageInit = function() {
   adventureHover();
   centerGuideImage();
-  exploreDropdownToggle();
   homepageTextScroll();
   overall_rating_show();
   request_form_validator();

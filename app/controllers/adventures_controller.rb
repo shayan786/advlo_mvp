@@ -29,6 +29,17 @@ class AdventuresController < ApplicationController
     end
   end
 
+
+  def filter_index()
+    region = params[:region].gsub('-',' ')
+    get_adventures('region'.to_sym,region)
+    get_hero(region)
+    @location = region.downcase
+    @filter_location = params[:region]
+  end
+
+
+
   def get_adventures(type, location)
     @adventures = Adventure.where(type => location).approved.order('created_at DESC')
   end
