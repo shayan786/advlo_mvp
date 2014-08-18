@@ -25,10 +25,9 @@
               .main-location
                 = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
                 - get_countries(r).each do |l|
-                  .sub-location.country=link_to l[0], "/adventures?country=#{l[0]}"
-
-                - get_cities(r).each do |l|
-                  .sub-location.city=link_to l[0], "/adventures?city=#{l[0]}"
+                  .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
+                  - get_cities(l[0]).each do |l|
+                    .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
 
       
         %li

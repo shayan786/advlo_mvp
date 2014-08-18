@@ -212,7 +212,7 @@
 	.main-location {
 		position: relative;
 		float: left;
-		text-align: center;
+		text-align: left;
 		width: 25%;
 		margin-top: 2.5%;
 		font-size: 14px;
@@ -243,6 +243,28 @@
 				&:hover {
 					color: $orange;
 				}
+			}
+		}
+		.country {
+			
+			margin-left: 5px;
+			float: left;
+			width: 100%;
+			a:hover {
+				opacity: 0.7;
+			}
+		}
+
+		.city {
+			margin-top: 5px;
+			width: 100%;
+			position: relative;
+			float: left;
+			font-style: italic;
+			font-size: 85%;
+			margin-left: 15px;
+			a:hover {
+				opacity: 0.7;
 			}
 		}
 	}
