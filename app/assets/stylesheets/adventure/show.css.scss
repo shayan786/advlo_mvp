@@ -420,7 +420,7 @@
     }
 
     #mobile-adventure-infographic {
-      margin: 35px;
+      margin: 5px;
       display: none;
       .navigation-brick{
         opacity: 0.0;
@@ -437,8 +437,8 @@
         }
 
         .guide-profile-image {
-          width: 300px;
-          height: 300px;
+          width: 200px;
+          height: 200px;
           margin: 0 auto;
           overflow: hidden;
           border-radius: 50%;
@@ -710,10 +710,6 @@
 
 @media screen and (max-width: 991px){
 
-  .adventure-show-container .adventure-copy-wrapper .title-brick .brick-title {
-    text-align: center;
-  }
-  
   .adventure-show-container .adventure-copy-wrapper #mobile-adventure-infographic .navigation-brick {
     opacity: 1.0;
   }

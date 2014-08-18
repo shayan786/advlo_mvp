@@ -14,22 +14,22 @@
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
             .form-group.row
               .col-md-4
-                .form_label.text-right Name
+                .form_label.edit-label Name
               .col-md-8
                 %input.form-control{placeholder: "Name", type: "text", name: "user[name]", id: "user_name", value: "#{current_user.name}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Display Name"}}
             .form-group.row
               .col-md-4
-                .form_label.text-right Email
+                .form_label.edit-label Email
               .col-md-8
                 %input.form-control{placeholder: "Email Address", type: "email", name: "user[email]", id: "user_email", value: "#{current_user.email}"}
             .form-group.row
               .col-md-4
-                .form_label.text-right Short Description
+                .form_label.edit-label Short Description
               .col-md-8
                 %input.form-control.show_ml{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", maxlength: "35", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! Ex: Climber, Hiker"}}
             .form-group.row
               .col-md-4
-                .form_label.text-right Location
+                .form_label.edit-label Location
               .col-md-8
                 %input.form-control{placeholder: "Location", type: "text", name: "user[location]", id: "user_location", value: "#{current_user.location}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Current Location"}}
             .row
@@ -38,7 +38,7 @@
                 .location_map
             .form-group.row
               .col-md-4
-                .form_label.text-right Sex
+                .form_label.edit-label Sex
               .col-md-3
                 - if current_user.sex
                   .prefill_input= current_user.sex
@@ -48,7 +48,7 @@
                     %option Female
             .form-group.row
               .col-md-4
-                .form_label.text-right Date of Birth
+                .form_label.edit-label Date of Birth
               .col-md-4
                 - if current_user.dob
                   .prefill_input= current_user.dob.strftime("%m/%d/%Y")
@@ -56,36 +56,36 @@
                   %input.form-control{type: "text", name: "user[dob]", id: "user_dob"}
             .form-group.row
               .col-md-4
-                .form_label.text-right Biography
+                .form_label.edit-label Biography
               .col-md-8
                 %textarea.form-control.show_ml{rows: "8", name: "user[bio]", id: "user_bio", placeholder: "What's your story?", maxlength: "750", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you by sharing your story"}}
                   - if !current_user.bio.nil?
                     #{current_user.bio}
             .form-group.row
               .col-md-4
-                .form_label.text-right Languages
+                .form_label.edit-label Languages
               .col-md-8
                 %input.form-control.show_ml{placeholder: "Languages", type: "text", name: "user[language]", id: "user_language", value: "#{current_user.language}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Languages spoken, seperate by a comma (,) (Ex: English, French)"}}
             .form-group.row
               .col-md-4
-                .form_label.text-right Skills / Certifications
+                .form_label.edit-label Skills / Certifications
               .col-md-8
                 %textarea.form-control.show_ml{rows: "7", name: "user[skillset]", id: "user_skillset", placeholder: "Ex: Certified Scuba Diver, Wilderness First Responder", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Do you have any skills or certifications which qualify you as an adventure guide? Separate each by a comma (,)"}}
                   - if !current_user.skillset.nil?
                     #{current_user.skillset}
             .form-group.row
               .col-md-4
-                .form_label.text-right Facebook URL
+                .form_label.edit-label Facebook URL
               .col-md-8
                 %input.form-control{placeholder: "www.facebook.com/myname", type: "text", name: "user[fb_url]", id: "user_fb_url", value: "#{current_user.fb_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of booking"}}
             .form-group.row
               .col-md-4
-                .form_label.text-right Twitter URL
+                .form_label.edit-label Twitter URL
               .col-md-8
                 %input.form-control{placeholder: "www.twitter.com/myname", type: "text", name: "user[tw_url]", id: "user_tw_url", value: "#{current_user.tw_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of booking"}}
             .form-group.row
               .col-md-4
-                .form_label.text-right LinkedIn URL
+                .form_label.edit-label LinkedIn URL
               .col-md-8
                 %input.form-control{placeholder: "www.linkedin.com/in/myname", type: "text", name: "user[li_url]", id: "user_li_url", value: "#{current_user.li_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of booking"}}
             .text-center

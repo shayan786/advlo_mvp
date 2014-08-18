@@ -26,6 +26,10 @@
  *= require blueimp-gallery
  */
 
+.meta_tags{
+  display: none;
+}
+
 #feedback-button {
   position: fixed;
   right: 0;
@@ -158,4 +162,24 @@ select {
   color: #a94442;
   margin-top: 5px;
   font-size: 85%;
+}
+
+
+@media only screen and (max-width: 991px) {
+  .edit-label {
+    text-align: left !important;
+  }
+
+  #adventure_create {
+    position: relative;
+  }
+
+  .schedule-instruction {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+}
+
+.edit-label {
+  text-align: right;
 }

@@ -7,6 +7,7 @@
 	.img-banner {
 		min-height: 200px;
 		max-width: 300px;
+		width: 100%;
 	}
 	.container {
 
@@ -37,7 +38,6 @@
 				.form_label {
 					font-weight: bold;
 					padding-top: 7px;
-
 				}
 
 				.update_btn {
@@ -97,5 +97,4 @@
 			}
 		}
 	}
-
 }
