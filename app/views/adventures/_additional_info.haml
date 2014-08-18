@@ -1,7 +1,8 @@
-.container
-  .brick-title 
-    ADDITIONAL INFO
-  .col-md-9
-    .copy-brick
-      .brick-copy
-        = @adventure.other_notes
+- if @adventure.other_notes
+  .container
+    .brick-title 
+      ADDITIONAL INFO
+    .col-md-9
+      .copy-brick
+        .brick-copy
+          = @adventure.other_notes

@@ -2,26 +2,17 @@ class AdventuresController < ApplicationController
   include ApplicationHelper
 
   def index
-    if params[:region].present?
-      region = params[:region].gsub('-',' ')
-      get_adventures('region'.to_sym,region)
-      get_hero(region)
-      @location = region.downcase
-      @filter_location = params[:region]
+    if params[:region]
+      region = params[:region]
+      filter_index('region'.to_sym,region)
 
     elsif params[:country]
-      country = params[:country].gsub('-',' ')
-      get_adventures('country'.to_sym,country)
-      get_hero(country)
-      @location = country.downcase
-      @filter_location = params[:country]
+      country = params[:country]
+      filter_index('country'.to_sym,country)
 
     elsif params[:city]
-      city = params[:city].gsub('-',' ')
-      get_adventures('city'.to_sym,city)
-      get_hero(city)
-      @location = city.downcase
-      @filter_location = params[:city]
+      city = params[:city]
+      filter_index('city'.to_sym,city)
       
     else
       @adventures = Adventure.all.approved
@@ -30,12 +21,12 @@ class AdventuresController < ApplicationController
   end
 
 
-  def filter_index()
-    region = params[:region].gsub('-',' ')
-    get_adventures('region'.to_sym,region)
+  def filter_index(type, position)
+    region = position.gsub('-',' ')
+    get_adventures(type,region)
     get_hero(region)
     @location = region.downcase
-    @filter_location = params[:region]
+    @filter_location = region
   end
 
 
