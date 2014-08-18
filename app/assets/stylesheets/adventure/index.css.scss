@@ -8,6 +8,7 @@
 
   #hero_image_wrapper {
     height: 600px;
+    overflow: hidden;
 
     #hero_image{
       margin-top: 71px;
@@ -19,6 +20,16 @@
     }
   }
 
+  #hero_image_darken {
+    background: rgba(0,0,0, 0.65);
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    opacity: 0;
+  }
+
   #location_text {
     position: absolute;
     top: 16%;
@@ -27,7 +38,7 @@
     font-size: 100px;
     color: #fff;
     font-family: 'nexa_light';
-    letter-spacing: 25px;
+    letter-spacing: 15px;
     text-shadow: -5px -3px 7px #000;
   }
 
@@ -420,6 +431,10 @@
       width: 325px;
     }
 
+    .brick-wrapper .adventure-brick .image-wrapper .hover-block {
+      height: 216px;
+    }
+
     .brick-wrapper .adventure-brick .image-wrapper {
       height: 290px;
       width: 325px;
@@ -476,9 +491,7 @@
   }
 
   .adventure-page-container #location_text {
-    font-size: 3em !important;
-    top: 45% !important;
-    word-wrap: break-word;
+    font-size: 1.75em;
   }
 
   .adventure-page-container #hero_image_wrapper #hero_image {

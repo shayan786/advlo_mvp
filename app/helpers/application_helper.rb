@@ -4,6 +4,10 @@ module ApplicationHelper
     Adventure.approved.where(region: r).count
   end
 
+  def city_adv_count(c)
+    Adventure.approved.where(country: c).count
+  end
+
   def get_regions
     all_cities = []
     region_count = Hash.new 0
@@ -42,7 +46,8 @@ module ApplicationHelper
 
   def get_cities(region)
     all_cities = []
-    Adventure.approved.where(region: region).each do |a|
+
+    Adventure.approved.where(country: region).each do |a|
       all_cities << a.city
     end
 
@@ -51,7 +56,7 @@ module ApplicationHelper
       city_count[elem] += 1
     end
     city_locations = []
-    city_count.each {|l| city_locations << l if l[1] >= 2}
+    city_count.each {|l| city_locations << l if l[1] >= 1}
     
     return city_locations
   end
