@@ -13,7 +13,7 @@
           - else
             = @adventure.title
         .guide-name
-          = @current_guide.get_abbreviated_name
+          = link_to @current_guide.get_abbreviated_name, user_path(@current_guide)
         .guide-profile-image
           %a{href: user_path(@current_guide)}
             .image-wrapper{style: "background: url(#{@current_guide.get_avatar_url("medium")}) no-repeat center center;"}
@@ -67,9 +67,10 @@
             #adventure-title-mobile
               = @adventure.title
             .guide-name
-              = @current_guide.name
+              = link_to @current_guide.name, user_path(@current_guide)
             
-            .guide-profile-image{style: "background: url(#{@current_guide.get_avatar_url('large')}) no-repeat center center;"}
+            %a{href: user_path(@current_guide)}
+              .guide-profile-image{style: "background: url(#{@current_guide.get_avatar_url('large')}) no-repeat center center;"}
               
 
             .adventure-block.col-sm-12.text-center
