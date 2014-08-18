@@ -8,12 +8,12 @@
       = tag(:input, :type => "hidden", :name => "iten_id", :value => iten.id)
       .form-group.row
         .col-md-4
-          .form_label.text-right Point of Interest
+          .form_label.edit-label Point of Interest
         .col-md-6
           %input.form-control.show_ml{type: "text", name: "headline", id: "iten_headline", value: "#{iten.headline}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Pick up surfboard at Seal Beach surfboard rental shop"}}
       .form-group.row
         .col-md-4
-          .form_label.text-right Description
+          .form_label.edit-label Description
         .col-md-6
           %textarea.form-control.show_ml{rows: "6", type: "text", name: "description", id: "iten_description", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Description of the event in the itinerary"}}
             #{iten.description}

@@ -10,7 +10,7 @@
   #existing-paypal
     .row
       .col-md-5
-        .form_label.text-right Paypal Email
+        .form_label.edit-label Paypal Email
       .prefill_label.col-md-4
         = current_user.paypal_email
     .row.save
@@ -27,7 +27,7 @@
 
     .form-group.row
       .col-md-5
-        .form_label.text-right Paypal Email
+        .form_label.edit-label Paypal Email
       .col-md-4
         %input.form-control{type: "text", placeholder: current_user.email, name: "paypal_email", id: "paypal_email"}
     .form-group.row.save
@@ -45,7 +45,7 @@
 
     .form-group.row
       .col-md-5
-        .form_label.text-right Paypal Email
+        .form_label.edit-label Paypal Email
       .col-md-4
         %input.form-control{type: "text", placeholder: current_user.email, name: "paypal_email", id: "paypal_email"}
     .form-group.row.save

@@ -25,20 +25,20 @@
 
     .form-group.row
       .col-md-4
-        .form_label.text-right Name on Bank Account
+        .form_label.edit-label Name on Bank Account
       .col-md-6
         %input.form-control{type: "text", placeholder: recipient_info.name, name: "recipient[bank_account_name]", id: "bank_account_name"}
         
 
     .form-group.row
       .col-md-4
-        .form_label.text-right Routing Number
+        .form_label.edit-label Routing Number
       .col-md-6
         %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
 
     .form-group.row
       .col-md-4
-        .form_label.text-right Account Number
+        .form_label.edit-label Account Number
       .col-md-6
         %input.form-control{type: "text", name: "recipient[bank_account_number]", id: "bank_account_number", placeholder: "********"+"#{recipient_info.active_account.last4}"}
         = image_tag "icons/check_routing_account_display.png", class: "img-responsive check_img"
@@ -68,19 +68,19 @@
       #stripe-error-message
       .form-group.row
         .col-md-4
-          .form_label.text-right Name on Bank Account
+          .form_label.edit-label Name on Bank Account
         .col-md-6
           %input.form-control{type: "text", placeholder: "John Doe", name: "recipient[bank_account_name]", id: "bank_account_name"}
 
       .form-group.row
         .col-md-4
-          .form_label.text-right Routing Number
+          .form_label.edit-label Routing Number
         .col-md-6
           %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
 
       .form-group.row
         .col-md-4
-          .form_label.text-right Account Number
+          .form_label.edit-label Account Number
         .col-md-6
           %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_account_number]", id: "bank_account_number"}
           = image_tag "icons/check_routing_account_display.png", class: "img-responsive check_img"
