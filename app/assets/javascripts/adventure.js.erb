@@ -30,6 +30,7 @@ function positionLocationText(){
         $('#location_text').css('top', ($('#hero_image').height() / 1.75));
       }
     } else {
+      $('#location_text').css('text-shadow','-1px -1px 0px #000;')
       if($('#location_text').height() > 50){
         $('#location_text').css('top', ($('#hero_image').height() / 1.75));
       } else {
@@ -94,19 +95,6 @@ function masonrySetup(){
   })
 }
 
-function navBarCatch(){
-  $(window).load(function(){
-    
-    $(window).scroll(function(){
-      var scrollPosition = window.pageYOffset;
-      var windowSize     = window.innerHeight;
-      var bodyHeight     = document.body.offsetHeight;
-      var distanceFromBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
-      var s = $(window).scrollTop();
-
-    })
-  })
-}
 
 function widthOfBrowser(){
   var windowWidth = $(window).width();
@@ -1140,7 +1128,6 @@ adventureShow = function() {
   setRatingStars();
   galleryMasonry();
   sizeSidebar();
-  navBarCatch(); 
   navigationBreadcrumbs();
   adventureScroll();
   centerGuideImage();
