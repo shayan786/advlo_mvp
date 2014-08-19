@@ -252,12 +252,15 @@ class AdventuresController < ApplicationController
       @adventure.attachment = params[:adventure][:attachment]
       @adventure.save
 
+      session[:adventure_id] = @adventure.id
+
       respond_to do |format|
         format.js {render "adventure_image_upload.js", layout: false}
       end
 
     elsif params[:adventure_id]
-      @adventure = Adventure.find_by_id(session[:adventure_id])
+
+      @adventure = Adventure.find_by_id(params[:adventure_id])
       @adventure.update(adventure_params)
 
       @adventure.category = params[:category].join(',')
