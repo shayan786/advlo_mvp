@@ -2,7 +2,7 @@ class Adventure < ActiveRecord::Base
   include ActiveModel::Validations
   validates_with VideoValidator
   
-  before_save :set_slug
+  after_update :set_slug
   after_update :send_approval_email
 
   scope :approved, -> { where(approved: true) }
@@ -17,13 +17,16 @@ class Adventure < ActiveRecord::Base
 
   accepts_nested_attributes_for :user_adventures, :adventure_gallery_images, :itineraries, :events, :allow_destroy => true
 
-  has_attached_file :attachment, :styles => { :hero => "1280X720>", :large => "600x750>", :medium => "325x285>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :attachment, :styles => { :hero => "1280X720>", :large => "600x750>", :medium => "325x285>", :thumb => "100x100>" }, :only_process => [:large], :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
-  process_in_background :attachment
+  process_in_background :attachment, :only_process => [:hero, :medium, :thumb]
 
-  validates_uniqueness_of :title
-  validates_presence_of :title, :location, :summary, :cap_min, :cap_max, :duration_num, :price, :price_type, :attachment, :region
-  validates_numericality_of :price, :cap_min, :cap_max, :duration_num
+  validates_uniqueness_of :title, :on => :update
+  validates_presence_of :attachment
+  validates_numericality_of :price, :on => :update
+  validates_numericality_of :cap_min, :on => :update
+  validates_numericality_of :cap_max, :on => :update
+  validates_numericality_of :duration_num, :on => :update
 
   geocoded_by :location
   after_validation :geocode

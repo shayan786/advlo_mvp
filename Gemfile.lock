@@ -238,6 +238,7 @@ GEM
       polyamorous (~> 1.0.0)
     rdoc (4.1.1)
       json (~> 1.4)
+    remotipart (1.2.1)
     responders (1.1.0)
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
@@ -356,6 +357,7 @@ DEPENDENCIES
   pg
   rails (= 4.1.0)
   rails_12factor
+  remotipart (~> 1.2)
   roadie-rails
   rspec-rails
   sass-rails (~> 4.0.3)

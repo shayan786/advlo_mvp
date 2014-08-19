@@ -1,0 +1,3 @@
+$('#adventure_image_form .form-group .col-md-6').find("img").remove();
+$('#adventure_image_form .form-group .col-md-6').append('<%= image_tag @adventure.attachment.url(:large), class: "img-responsive img-square", style: "margin: 15px auto;" %>');
+$('#adventure_edit_form #adventure_id').val('<%= @adventure.id %>')

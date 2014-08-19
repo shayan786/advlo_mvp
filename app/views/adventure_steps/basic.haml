@@ -5,20 +5,18 @@
   .container
     = render partial: "/adventures/adv_create_header"
     #adv_basics
+      .panel.panel-default
+        .panel-heading.text-center.section_header
+          BASICS
+        .panel-body
 
-      %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_edit_form", enctype: "multipart/form-data"}
-        = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-        = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-        = tag(:input, :type => "hidden", :name => "adventure[region]", id: "adv_region", "data-geo" => "country_short")
-          
-        .panel.panel-default 
-          .panel-heading.text-center.section_header
-            BASICS
-          .panel-body
+          %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_edit_form", enctype: "multipart/form-data"}
+            = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            = tag(:input, :type => "hidden", :name => "adventure[region]", id: "adv_region", "data-geo" => "country_short")
             - if @adventure && @adventure.errors.any?
               - @adventure.errors.full_messages.each do |msg|
                 .alert.alert-warning.text-center= msg
-
             .form-group.row
               .col-md-4
                 .form_label.edit-label Title *
@@ -118,6 +116,11 @@
               .col-md-6
                 %input.form-control.show_ml{type: "text", name: "adventure[video_url]", placeholder: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',id: "adv_video_url", value: "#{@adventure.video_url}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Input a Youtube or Vimeo video URL that highlights your adventure"}}
 
+            %input{type: "submit", style: "display: none;", id: "adv_edit_submit_btn"}
+
+          %form{"accept-charset" => "UTF-8", action: wizard_path, method: "post", id: "adventure_image_form", enctype: "multipart/form-data", "data-remote" => "true"}
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            = tag(:input, :type => "hidden", :value => "put", :name => "_method")
             .form-group
               .col-md-4
                 .form_label.edit-label Main Adventure Image *
@@ -130,14 +133,15 @@
                   %input.filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
                   %em Please choose a high quality, large photo (.png or .jpg)
 
-          .panel-footer.text-center
-            .row
-              .col-md-2.col-md-offset-4
-                %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}", target: '_blank'}
-                  %i.fa.fa-eye
-                  PREVIEW
-              .col-md-2
-                %input.btn.btn-primary.preview_btn{name: "commit", type: "submit", value: "NEXT", target: '_blank'}
+        .panel-footer.text-center
+          .row
+            .col-md-2.col-md-offset-4
+              %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}", target: '_blank'}
+                %i.fa.fa-eye
+                PREVIEW
+            .col-md-2
+              .btn.btn-primary.preview_btn
+                NEXT
                 
 :javascript
   adventureCreate();
