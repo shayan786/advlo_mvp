@@ -17,7 +17,6 @@ function headerLoginToggle(){
   $('#user_email_login').hide()
   $('#user_password').hide()
   $('.login-form-submit').hide()
-
   $('#login-toggle').click(function(e){
     e.preventDefault()
     $('.fb_btn').css('margin-bottom','15px')
@@ -32,7 +31,6 @@ function mobileHeaderLoginToggle(){
   $('#mobile_user_email_login').hide()
   $('#mobile_user_password').hide()
   $('#mobile-login-form-submit').hide()
-
   $('#mobile-login-toggle').click(function(e){
     e.preventDefault()
     $('#login-mobile').hide()
