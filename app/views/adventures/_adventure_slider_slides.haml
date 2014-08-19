@@ -2,7 +2,11 @@
   .brick-wrapper.masonry.js-masonry
     - adventures.each_with_index do |adv, i|
       %a.adventure-brick{href: adventure_path(adv.slug)}
-        .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+        - if adv.attachment.height(:large) >= 300
+          - adv_img = adv.attachment.url(:large)
+        - else
+          - adv_img = adv.attachment.url(:hero)
+        .image-wrapper{style: "background: url(#{adv_img}) no-repeat center center;"}
           .copy{id: "#{i}"}
             - if adv.title.length > 38
               .title= "#{adv.title[0..38]}..."
@@ -12,7 +16,6 @@
             - if adv.location
               - max_city_length = 16
               - max_state_length = 13
-
 
               - if adv.state && adv.city
                 - if adv.city.length > max_city_length && adv.state.length > max_state_length
