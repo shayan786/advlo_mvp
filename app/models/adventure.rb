@@ -36,7 +36,7 @@ class Adventure < ActiveRecord::Base
     if results.first.city == nil
       city = results.first.country
     else
-      city = resultes.first.city
+      city = results.first.city
     end
     
     if geo = results.first
