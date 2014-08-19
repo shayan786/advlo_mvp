@@ -13,10 +13,11 @@
                   - r.region = 'default'
                 = link_to (image_tag HeroImage.find(r.region).attachment.url(:hero)), "/adventures?city=#{r[0].gsub(' ','-')}"
                 - adv_count = Adventure.approved.where(city: r[0]).count
+                // removed for beta cuz count is sad (#{adv_count})
                 - if r[0].length > 14
-                  .region-text= "#{r[0][0..14]}... (#{adv_count})"  
+                  .region-text= "#{r[0][0..14]}... "  
                 - else 
-                  .region-text= "#{r[0]} (#{adv_count})"
+                  .region-text= "#{r[0]} "
 
 
     = render partial: "/adventures/request_modal"

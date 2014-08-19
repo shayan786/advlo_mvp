@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816182909) do
+ActiveRecord::Schema.define(version: 20140819172327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140816182909) do
     t.string   "country"
     t.string   "video_url"
     t.boolean  "sent_approval_email",     default: false
+    t.text     "attachment_meta"
   end
 
   add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree

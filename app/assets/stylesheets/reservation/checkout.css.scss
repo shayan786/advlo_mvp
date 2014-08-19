@@ -92,46 +92,7 @@
   @extend #stripe-error-message;
 }
 
-.security-credentials {
-  position: relative;
-  height: 65px;
-  width: 100%;
-  float: left;
 
-
-  .logo {
-    float: left;
-  }
-
-  .secure-payment {
-    display: inline;
-    font-size: 20px;
-    margin-left: 20px;
-    position: relative;
-    top: -5px;
-    letter-spacing: 1px;
-  }
-  .ssl-encryption {
-    width: 400px;
-    position: relative;
-    margin-top: -6px;
-    left: 20px;
-    font-size: 12px;
-    letter-spacing: 0.25px;
-  }
-}
-.powered-by-stripe {
-  width: 100px;
-  float: right;
-  position: absolute;
-  left: 353px;
-  top: 79px;
-
-  img {
-    height: 35px;
-    width: auto;
-  }
-}
 
 @media only screen and (max-width: 600px) {
 }
