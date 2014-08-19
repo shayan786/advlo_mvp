@@ -223,12 +223,14 @@ function validateGeoAutocomplete(){
 
       if (results.length >= 1){
         $('#adv_location').css('border-color','none')
-        $(".btn-primary").removeClass('disabled')
+
+        if($('.img-responsive').length > 0){
+          $(".btn-primary").removeClass('disabled')
+        }
       } else {
         $('#adv_location').addClass('failed')
         $('#adv_location').css('border-color','#a94442')
         $('.geo-complete-errors').html('Please Geo-Complete the form')
-
         $(".btn-primary").addClass('disabled')
       }
     })
