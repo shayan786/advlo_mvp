@@ -240,6 +240,16 @@ function create_header_remove_arrow() {
     $('.create_steps_header ul li i').addClass('fa fa-long-arrow-right');
   }
 
+  if ($(window).width() < 768) {
+    $('.create_steps_header ul').addClass('nav-stacked');
+    $('.create_steps_header ul li i').removeClass('fa fa-long-arrow-right');
+    $('.create_steps_header .nav').css({
+        paddingLeft: "0",
+        fontSize: "0.8em",
+        textAlign: "center"
+      });
+  }
+
   $(window).resize(function() {
     if ($(window).width() < 768) {
       $('.create_steps_header ul li i').removeClass('fa fa-long-arrow-right');
@@ -1135,6 +1145,7 @@ function adv_create_new_basic_submit() {
     $('#adventure_image_form').submit();
   }) 
 }
+
 
 adventureShow = function() {
   setRatingStars();

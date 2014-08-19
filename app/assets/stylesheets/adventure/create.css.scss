@@ -338,3 +338,14 @@
 	z-index: 9999;
 	position: fixed;
 }
+
+
+@media screen and (max-width: 767px){ 
+	#adventure_create .panel-footer .view_btn {
+		font-size: 1.1em !important;
+		margin-bottom: 15px !important;
+	}
+	#adventure_create .panel-footer .preview_btn {
+		font-size: 1.1em !important;
+	}
+}

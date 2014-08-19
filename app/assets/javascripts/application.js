@@ -49,7 +49,11 @@ $(document).ready(function(){
 
 
 $(document).ajaxStart(function(){
-  $('#loader-overlay').show()
+  $('#loader-spinner').css({
+    top: $(window).height()/4,
+    left: $(window).width()/4
+  });
+  $('#loader-overlay').show();
 });
 $(document).ajaxStop(function(){
   $('#loader-overlay').fadeOut()
