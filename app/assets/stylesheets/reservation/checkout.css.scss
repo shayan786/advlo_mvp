@@ -91,3 +91,12 @@
 #card-decline-error {
   @extend #stripe-error-message;
 }
+
+
+@media only screen and (max-width: 991px) {
+  .ui-timepicker-wrapper {
+    width: 200px !important;
+    left: none !important;
+    right: 21px !important;
+  }
+}

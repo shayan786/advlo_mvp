@@ -37,6 +37,14 @@
         margin-top: 5px;
         font-style: italic;
         font-family: 'Nexa_light';
+
+        a { 
+          text-decoration: none;
+          color: #fff;
+        }
+        &:hover {
+          opacity: 0.6;
+        }
       }
       .adv-title {
         position: relative;
@@ -62,6 +70,8 @@
           height: 100%;
           width: auto;
           border-radius: 50%;
+          background-size: 100% !important;
+
         }:hover{
           opacity: 0.9;
         }
@@ -432,6 +442,10 @@
             font-size: 30px;
             margin-bottom: 20px;
             font-family: 'Nexa_light';
+            a {
+              text-decoration: none;
+              color: #fff;
+            }
           }
           
         }
