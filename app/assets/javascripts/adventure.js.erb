@@ -216,13 +216,12 @@ function validateGeoAutocomplete(){
 
   $('#adv_location').focusout(function(){
     var geo_val = $('#adv_location').val()
+    
     geocoder.geocode( {"address": geo_val}, function(results, status) {
-      console.log(results)
 
-      if (results.length == 1){
+      if (results.length >= 1){
         $('#adv_location').css('border-color','none')
         $(".btn-primary").removeClass('disabled')
-
       } else {
         $('#adv_location').addClass('failed')
         $('#adv_location').css('border-color','#a94442')

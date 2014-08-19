@@ -14,7 +14,7 @@
               - max_state_length = 13
 
 
-              - if adv.state
+              - if adv.state && adv.city
                 - if adv.city.length > max_city_length && adv.state.length > max_state_length
                   .location= "#{adv.city[0..max_city_length]}..., #{adv.state[0..max_state_length]}...".upcase
                 - elsif adv.city.length > max_city_length && adv.state.length < max_state_length
