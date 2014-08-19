@@ -244,24 +244,37 @@ class AdventuresController < ApplicationController
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
       redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host"
     end
-  
-    @adventure = Adventure.create!(adventure_params)
-    @adventure.category = params[:category].join(',')
 
-    if @adventure.save
-      #associate that adventure with that adventure
-      @useradventure = @adventure.user_adventures.build(user_id: current_user.id, adventure_id: @adventure.id)
-      @useradventure.save
+    # Hook for banner image upload
+    if params[:adventure][:attachment] 
+      @adventure = Adventure.new
 
-      session[:adventure_id] =  @adventure.id
+      @adventure.attachment = params[:adventure][:attachment]
+      @adventure.save
 
-      # For updating the region
-      continent = get_continent(params[:adventure][:region])
-      @adventure.update(region: continent)
+      respond_to do |format|
+        format.js {render "adventure_image_upload.js", layout: false}
+      end
 
-      redirect_to "/adventure_steps/photos"
-    else
-      render :new
+    elsif params[:adventure_id]
+      @adventure = Adventure.find_by_id(session[:adventure_id])
+      @adventure.update(adventure_params)
+
+      @adventure.category = params[:category].join(',')
+
+      if @adventure.save
+        #associate that adventure with that adventure
+        @useradventure = @adventure.user_adventures.build(user_id: current_user.id, adventure_id: @adventure.id)
+        @useradventure.save
+
+        # For updating the region
+        continent = get_continent(params[:adventure][:region])
+        @adventure.update(region: continent)
+
+        redirect_to "/adventure_steps/photos"
+      else
+        render :new
+      end
     end
   end
 

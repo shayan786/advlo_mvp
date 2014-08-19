@@ -235,14 +235,25 @@ class AdventureStepsController < ApplicationController
 
     # For updating the 'basic' info
     else
-      @adventure.attributes = adventure_params
-      @adventure.category = params[:category].join(",")
+      if params[:adventure][:attachment] 
+        puts @adventure
 
-      # For updating the region
-      continent = get_continent(params[:adventure][:region])
-      @adventure.update(region: continent)
-      
-      render_wizard @adventure
+        @adventure.attachment = params[:adventure][:attachment]
+        @adventure.save
+
+        respond_to do |format|
+          format.js {render "adventures/adventure_image_upload.js", layout: false}
+        end
+      else 
+        @adventure.attributes = adventure_params
+        @adventure.category = params[:category].join(",")
+
+        # For updating the region
+        continent = get_continent(params[:adventure][:region])
+        @adventure.update(region: continent)
+        
+        render_wizard @adventure
+      end
     end
 
   rescue Stripe::InvalidRequestError => e
