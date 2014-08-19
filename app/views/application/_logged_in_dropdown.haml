@@ -1,17 +1,20 @@
 %li.dropdown
   %a.logged_in_dropdown_box{href: "#", "data-toggle" => "dropdown", type: 'button'}
     - if current_user.avatar.exists?
-      = image_tag "#{current_user.avatar.url(:thumb)}", :class => "img-circle up_profile_img"
+      .img-circle.profile_img{style: "background: url('#{current_user.avatar.url(:thumb)}') center center no-repeat"}
     - elsif current_user.avatar_url
-      = image_tag "#{current_user.avatar_url}", :class => "img-circle fb_profile_img"
+      .img-circle.profile_img{style: "background: url('#{current_user.avatar_url}') center center no-repeat"}
     - else 
-      = image_tag 'missing.png', :class => "img-circle miss_profile_img"
+      .img-circle.profile_img{style: "background: url('missing.png') center center no-repeat"}
 
     - if current_user.name.nil? || current_user.name.empty?
-      = current_user.email
+      .user_name
+        = current_user.email
+        %b.caret
     - else 
-      = current_user.get_abbreviated_name
-    %b.caret
+      .user_name
+        = current_user.get_abbreviated_name
+        %b.caret
 
   %ul.dropdown-menu.right-side.logged_in_dropdown_menu{role: "menu"}
     %li
