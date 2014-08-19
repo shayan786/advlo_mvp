@@ -1,0 +1,6 @@
+$('#d_user_edit .profile_banner_img').find(".img-banner").remove();
+$('#d_user_edit .profile_banner_img').append('<%= image_tag HeroImage.find_by_user_id(current_user.id).attachment.url(:thumb), :class => "img-thumbnail img-responsive img-banner" %>');
+
+$('#user_profile_edit_form #banner_image').change(function(){
+	$('#user_profile_edit_form').submit();
+})

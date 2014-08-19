@@ -95,12 +95,11 @@
         .col-md-6.text-center
 
           // profile image upload
-
           %a.btn.btn-default.preview_profile_btn{href: "#{current_user.to_param}", target: "_blank"}
             %i.fa.fa-eye
             VIEW PROFILE
 
-          .row{style: 'margin-top: 30px'}
+          .profile_avatar_img.row{style: 'margin-top: 30px'}
             - if !current_user.avatar_file_name.nil?
               = image_tag "#{current_user.avatar.url(:profile)}", :class => "img-thumbnail img-responsive"
             - elsif !current_user.avatar_url.nil?
@@ -108,29 +107,27 @@
             - else 
               = image_tag 'missing.png', :class => "img-thumbnail img-responsive"
 
-          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_img_edit_form", enctype: "multipart/form-data"}
-            = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+          %form{"accept-charset" => "UTF-8", action: "/upload/user_avatar_image", method: "post", id: "user_img_edit_form", enctype: "multipart/form-data", "data-remote" => "true"}
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            = tag(:input, :type => "hidden", :name => "user_id", :value => current_user.id)
             .row.form-group
               %input{type: "file", name: "user[avatar]", id: "user_avatar"}
             %input{type: "submit", style: "display: none"}
 
 
           // banner image upload
-          .row
+          .profile_banner_img.row
             - if HeroImage.find_by_user_id(current_user.id)
               = image_tag HeroImage.find_by_user_id(current_user.id).attachment.url(:thumb), :class => "img-thumbnail img-responsive img-banner"
             - else 
               = image_tag "missing_banner.jpg", :class => "img-thumbnail img-responsive img-banner"
 
-          %form{"accept-charset" => "UTF-8", action: "/upload/hero_image", method: "post", id: "user_profile_edit_form", enctype: "multipart/form-data"}
+          %form{"accept-charset" => "UTF-8", action: "/upload/hero_image", method: "post", id: "user_profile_edit_form", enctype: "multipart/form-data", "data-remote" => "true"}
             = tag(:input, :type => "hidden", :value => "post", :name => "_method")
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
             = tag(:input, :type => "hidden", :name => 'hero_image[user_id]', :value => current_user.id)
             .row.form-group
               %input{type: "file", name: "hero_image[attachment]", id: "banner_image"}
-            %input{type: "submit", style: "display: none"}
-
 
 
             - if !current_user.is_guide?(current_user.id)

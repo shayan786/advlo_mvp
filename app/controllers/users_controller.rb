@@ -28,6 +28,17 @@ class UsersController < ApplicationController
     end
   end 
 
+  def update_profile_img
+    @user = User.find_by_id(params[:user_id])
+
+    @user.avatar = params[:user][:avatar]
+    @user.save
+
+    respond_to do |format|
+      format.js {render 'update_user_avatar_image.js', layout: false}
+    end
+  end
+
 
   # Just email for now
   def contact_traveler
@@ -49,7 +60,7 @@ class UsersController < ApplicationController
 
     if @banner_image.save
       respond_to do |format|
-        format.html {redirect_to "/users/edit"}
+        format.js {render 'update_user_banner_image.js', layout: false}
       end
     end
   end

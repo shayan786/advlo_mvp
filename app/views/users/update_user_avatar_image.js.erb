@@ -1,0 +1,6 @@
+$('#d_user_edit .profile_avatar_img').find("img").remove();
+$('#d_user_edit .profile_avatar_img').append('<%= image_tag "#{current_user.avatar.url(:profile)}", :class => "img-thumbnail img-responsive" %>');
+
+$('#user_img_edit_form #user_avatar').change(function(){
+	$('#user_img_edit_form').submit();
+})

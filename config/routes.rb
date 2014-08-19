@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post '/users/contact_host'        => 'users#contact_host'
     post '/users/contact_traveler'    => 'users#contact_traveler'
     post '/upload/hero_image'         => 'users#hero_image'
+    post '/upload/user_avatar_image'  => 'users#update_profile_img'
     get '/users/dashboard'            => 'registrations#dashboard'
     get '/users/wallet'               => 'registrations#wallet'
     get '/users/payouts'              => 'registrations#payouts'

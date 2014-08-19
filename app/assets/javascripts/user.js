@@ -130,16 +130,12 @@ function profileCenterImage(){
 }
 
 function upload_profile_photo() {
-  $('#user_img_edit_form input[type="file"]').change(function(){
-    $('#loader-overlay').show(function() {
-      $('#user_img_edit_form input[type="submit"]').click();
-    });
+  $('#user_img_edit_form #user_avatar').change(function(){
+    $('#user_img_edit_form').submit();
   })
 
-  $('#user_profile_edit_form input[type="file"]').change(function(){
-    $('#loader-overlay').show(function() {
-      $('#user_profile_edit_form input[type="submit"]').click();
-    });
+  $('#user_profile_edit_form #banner_image').change(function(){
+    $('#user_profile_edit_form').submit();
   })
 }
 
