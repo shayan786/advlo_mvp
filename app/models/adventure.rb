@@ -33,11 +33,12 @@ class Adventure < ActiveRecord::Base
   after_validation :reverse_geocode
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
-    if obj.city
-      city = obj.city
+    if results.first.city == nil
+      city = results.first.country
     else
-      city = obj.country
+      city = resultes.first.city
     end
+    
     if geo = results.first
       obj.city    = city
       obj.state   = geo.state

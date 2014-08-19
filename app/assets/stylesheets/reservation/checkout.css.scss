@@ -102,15 +102,6 @@
   .logo {
     float: left;
   }
-  .powered-by-stripe {
-    position: relative;
-    width: 50%;
-    float: right;
-    img {
-      height: 35px;
-      width: auto;
-    }
-  }
 
   .secure-payment {
     display: inline;
@@ -127,6 +118,18 @@
     left: 20px;
     font-size: 12px;
     letter-spacing: 0.25px;
+  }
+}
+.powered-by-stripe {
+  width: 100px;
+  float: right;
+  position: absolute;
+  left: 353px;
+  top: 79px;
+
+  img {
+    height: 35px;
+    width: auto;
   }
 }
 

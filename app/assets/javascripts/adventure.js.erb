@@ -219,6 +219,8 @@ function validateGeoAutocomplete(){
     
     geocoder.geocode( {"address": geo_val}, function(results, status) {
 
+      console.log(results)
+
       if (results.length >= 1){
         $('#adv_location').css('border-color','none')
         $(".btn-primary").removeClass('disabled')
