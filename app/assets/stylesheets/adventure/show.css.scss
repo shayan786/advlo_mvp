@@ -421,6 +421,13 @@
           text-decoration: none;
         }
       }
+
+      #adv_map {
+        .adv_map_show {
+          height: 400px;
+          width: auto;
+        }
+      }
     }
 
     #mobile-adventure-nav {
@@ -617,7 +624,7 @@
 .adventure-scroll-container {
   margin-top: 15px;
   max-height: 250px;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
 }
 

@@ -117,7 +117,11 @@ class User < ActiveRecord::Base
           return @user.avatar.url(:profile)
       end
     elsif @user.avatar_url
-      return "#{@user.avatar_url}?type=large"
+      if size == "thumb" 
+        return "#{@user.avatar_url}?type=square"
+      else 
+        return "#{@user.avatar_url}?type=large"
+      end
     else
       return 'missing.png'
     end

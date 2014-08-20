@@ -4,9 +4,10 @@
       .image-wrapper{style: "background: url(#{review.user.get_avatar_url("medium")}) no-repeat center center;"}
     - else 
       = image_tag 'missing.png'
-  .review-text 
-    %a.review-adventure-title{href: "/adventures/#{review.adventure.slug}", target: "_blank"}
-      = review.adventure.title
+  .review-text
+    - if params[:controller] == "users" 
+      %a.review-adventure-title{href: "/adventures/#{review.adventure.slug}", target: "_blank"}
+        = review.adventure.title
     .review-body= review.body
     - if review.user.name
       .review-credit= "- #{review.user.get_abbreviated_name}"
