@@ -29,8 +29,8 @@ class Adventure < ActiveRecord::Base
   validates_numericality_of :duration_num, :on => :update
 
   geocoded_by :location
-  after_update :geocode
-  after_update :reverse_geocode
+  after_validation :geocode, :on => :update
+  after_validation :reverse_geocode, :on => :update
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if results.first.city == nil
