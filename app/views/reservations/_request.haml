@@ -30,14 +30,11 @@
     %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
     %input#price_type{name: "adv_type", type: "hidden", value: @adventure.price_type}
 
-    / .security-credentials
-    /   .secure-payment 
-    /     .logo= image_tag 'lock.png'
-    /     .ssl-encryption This is a secure 128-bit SSL encrypted payment
-    /     Secure credit card payment:
-    /     .ssl-encryption This is a secure 128-bit SSL encrypted payment
-
-    /   .powered-by-stripe= image_tag 'powered-by-stripe.png'
+    .col-md-8.col-md-offset-2
+      .well.secure-payment.text-center
+        .fa.fa-lock
+        This is a secure 128-bit SSL encrypted payment
+        .powered-by-stripe= image_tag 'powered-by-stripe.png'
 
     .form-group.row
       .col-md-4
@@ -58,6 +55,12 @@
         .form_label.cvv-box.text-right CVV
       .col-md-1
         %input.form-control{type: "text", placeholder: '123', name: "cvv", id: "cvv", maxlength: "3"}
+      .col-md-1
+      .col-md-5
+        .cc_icon= image_tag 'icons/visa.png'
+        .cc_icon= image_tag 'icons/discover.png'
+        .cc_icon= image_tag 'icons/mastercard.png'
+        .cc_icon= image_tag 'icons/amex.png'
     
     .form-group.row
       .col-md-4

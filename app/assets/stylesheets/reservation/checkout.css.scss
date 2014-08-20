@@ -26,6 +26,37 @@
     color: #000;
   }
 
+  .secure-payment {
+    background-color: $light_gray;
+    font-size: 1.1em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .fa {
+      margin-right: 10px; 
+    }
+
+    .powered-by-stripe {
+      margin: 10px auto 0 auto;
+      width: 120px;
+
+      img {
+        cursor: default !important;
+      }
+    }
+  }
+
+  .cc_icon {
+    padding-top: 5px;
+    width: 40px;
+    padding-right: 5px;
+    float: left;
+
+    img {
+      cursor: default;
+    }
+  }
+
   #success {
     padding-top: 20px;
     text-align: center;
