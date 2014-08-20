@@ -403,13 +403,22 @@
 	}
 }
 	
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
 	#header-navbar {
 		display: none;
 	}
+	#mobile-toggle-button {
+		display: block;
+	}
+	.navbar-nav {
+		display: none !important;
+	}
+	.navbar-header {
+		width: 102% !important;
+	}
 }
 
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 769px) {
 	#mobile-navbar {
 		display: none !important;
 	}

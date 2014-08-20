@@ -49,10 +49,16 @@ $(document).ready(function(){
 
 
 $(document).ajaxStart(function(){
-  if ($(window).width() < 767) {
+  if ($(window).width() <= 767) {
     $('#loader-spinner').css({
       top: $(window).height()/4,
       left: $(window).width()/4
+    });
+  }
+  if ($(window).width() == 768) {
+    $('#loader-spinner').css({
+      top: $(window).height()/2.5,
+      left: $(window).width()/2.5
     });
   }
   $('#loader-overlay').show();
@@ -66,7 +72,7 @@ $(document).ajaxStop(function(){
 $(document).ready(function(){
 	var flag = 0;
 
-    if($(window).width() > 766){
+    if($(window).width() > 768){
     $(window).scroll(function () {
       if ($(this).scrollTop() > 50 && flag == 0) {
 
