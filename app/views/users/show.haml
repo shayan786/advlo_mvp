@@ -11,10 +11,13 @@
       .col-md-4.col-md-offset-4#profile-box
         .panel.panel-default
           .panel-body.text-center
-            - if @user.avatar.height(:medium) >= 200
+            - if @user.avatar.height && @user.avatar.height(:medium) >= 200
               - profile_img = @user.avatar.url(:medium)
-            - else
+            - elsif @user.avatar.height && @user.avatar.height(:medium) < 200
               - profile_img = @user.avatar.url(:large)
+            - else
+              - profile_img = "#{@user.avatar_url}?type=large"
+
             .profile-image{style: "background: url(#{profile_img}) no-repeat center center;"}
             
             .banner_name= @user.get_abbreviated_name

@@ -16,10 +16,13 @@
           = link_to @current_guide.get_abbreviated_name, user_path(@current_guide)
         .guide-profile-image
           %a{href: user_path(@current_guide)}
-            - if @current_guide.avatar.height(:medium) >= 160
+            - if @current_guide.avatar.height && @current_guide.avatar.height(:medium) >= 160
               - profile_img = @current_guide.avatar.url(:medium)
-            - else
+            - elsif @current_guide.avatar.height && @current_guide.avatar.height(:medium) < 160
               - profile_img = @current_guide.avatar.url(:large)
+            - else
+              - profile_img = "#{@current_guide.avatar_url}?type=large"
+
             .image-wrapper{style: "background: url(#{profile_img}) no-repeat center center;"}
 
 
