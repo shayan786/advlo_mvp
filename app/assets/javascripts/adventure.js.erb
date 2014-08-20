@@ -1148,6 +1148,15 @@ function adv_create_new_basic_submit() {
   }) 
 }
 
+function adv_map_show() {
+  //only show on non-mobile
+  if ($(window).width() > 767) {
+    $('#adv_map').show();
+  }
+  else {
+    $('#adv_map').hide();
+  }
+}
 
 adventureShow = function() {
   setRatingStars();
@@ -1166,6 +1175,7 @@ adventureShow = function() {
   contact_form_validator();
   sign_in_sign_up_modal();
   social_init();
+  adv_map_show();
 };
 
 adventureIndex = function() {

@@ -1,0 +1,10 @@
+.container
+  .col-md-9
+    %input{type: "text", id: "adv_map_show", style: "display: none;"}
+    .adv_map_show
+
+:javascript
+  $('#adv_map #adv_map_show').geocomplete({
+    map: "#adv_map .adv_map_show",
+    location: "#{@adventure.location}"
+  })

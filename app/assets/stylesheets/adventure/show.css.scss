@@ -421,6 +421,13 @@
           text-decoration: none;
         }
       }
+
+      #adv_map {
+        .adv_map_show {
+          height: 400px;
+          width: auto;
+        }
+      }
     }
 
     #mobile-adventure-nav {
