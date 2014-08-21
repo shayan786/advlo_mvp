@@ -114,6 +114,9 @@
         #additional_info.title-brick.dark_gray_background
           = render partial: 'additional_info'
 
+      #adv_map.title-brick
+        = render partial: 'adv_map'
+        
       #host_bio.title-brick.dark_gray_background
         = render partial: 'host_bio'
 
@@ -121,8 +124,6 @@
         #payment_panel.title-brick
           = render partial: 'payment_panel'
 
-      #adv_map.title-brick
-        = render partial: 'adv_map'
 
       - if @adventure.approved
         #reviews.title-brick
