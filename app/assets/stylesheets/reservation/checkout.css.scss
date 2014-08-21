@@ -27,10 +27,15 @@
   }
 
   .secure-payment {
-    background-color: $light_gray;
+    background-color: $light_dark_gray;
     font-size: 1.1em;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 0 0 10px 0;
+    margin-top: 10px;
+    margin-bottom: 0px;
+
+    .col-md-8 {
+      padding-top: 15px;
+    }
 
     .fa {
       margin-right: 10px; 
