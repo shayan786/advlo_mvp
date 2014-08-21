@@ -104,9 +104,8 @@ module ApplicationHelper
   def default_meta_tags
     {
       :title          => 'Advlo - Adventure Local',
-      :description    => 'Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure',
-      :keywords       => 'Adventure, Adventure Local, travel, tourism, booking',
-      :separator      => "&mdash;".html_safe
+      :description    => 'Advlo connects locals with travelers seeking to have an adventure',
+      :keywords       => 'Adventure, Adventure Travel, Adventure Local, Adventure with Locals, travel, tourism, booking, trip'
     }
   end
 
@@ -125,7 +124,7 @@ module ApplicationHelper
       :card           => 'summary',
       :site           => '@advlo_',
       :title          => 'Advlo - Adventure Local',
-      :description    => 'Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure',
+      :description    => 'Advlo connects locals with travelers seeking to have an adventure',
       :image          => {
                           :_ => 'http://i.imgur.com/a6L0hYB.png'
                         }
@@ -136,7 +135,7 @@ module ApplicationHelper
     return {
       :title          => "#{title} - Advlo",
       :description    => "#{description}",
-      :keywords       => "Advlo, Adventure Local, Adventure with Locals, #{keywords}"
+      :keywords       => "Adventure, Adventure Travel, Adventure Local, Adventure with Locals, travel, tourism, booking, trip, #{keywords}"
     }
   end
 
