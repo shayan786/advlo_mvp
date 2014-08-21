@@ -47,7 +47,8 @@
               .col-md-4
                 .form_label.edit-label Duration *
               .col-md-1
-                %input.form-control{type: "text", name: "adventure[duration_num]", id: "adv_duration_num", value: ""}
+                %input.form-control{type: "text", name: "adventure[duration_num]", id: "adv_duration_num", value: "", :data => {:container => "body", :toggle => "popover", :placement => "top", :content => "Approximate duration"}}}
+                
               .col-md-2
                 %select.form-control{name: "adventure[duration_type]", id: "adv_duration_type"}
                   %option Hours
