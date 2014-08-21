@@ -2,3 +2,7 @@ $('#adventure_image_form .form-group .col-md-6').find("img").remove();
 $('#adventure_image_form .form-group .col-md-6').append('<%= image_tag @adventure.attachment.url(:large), class: "img-responsive img-square", style: "margin: 15px auto;" %>');
 console.log('<%= @adventure.id %>')
 $('#adv_id').val('<%= @adventure.id %>')
+
+$('#adv_basics #adventure_attachment').change(function(){
+	$('#adventure_image_form').submit();
+}) 
