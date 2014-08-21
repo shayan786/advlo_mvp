@@ -2,14 +2,9 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  rescue_from ActionController::RoutingError, with: :render_error
   protect_from_forgery with: :exception
 
   after_filter :store_location
-
-  def render_error
-    render '/error_404'
-  end
 
   def terms
 

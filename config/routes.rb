@@ -55,4 +55,6 @@ Rails.application.routes.draw do
 
   #Stripe Webhooks
   post "/stripe-webhooks"             => 'stripe_hooks#receiver'
+
+  get '*not_found', to: 'application#render_error'
 end	

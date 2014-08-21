@@ -97,9 +97,13 @@
         #mobile-user-adventures
           .adventure-container 
             .brick-wrapper.masonry.js-masonry
-              - @user.adventures.each_with_index do |adv, i|
+              - @user.adventures.approved.each_with_index do |adv, i|
                 %a.adventure-brick{href: adventure_path(adv.slug)}
-                  .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+                  - if adv.attachment.height(:large) >= 300
+                    - adv_img = adv.attachment.url(:large)
+                  - else
+                    - adv_img = adv.attachment.url(:hero)
+                  .image-wrapper{style: "background: url(#{adv_img}) no-repeat center center;"}
                     .copy{id: "#{i}"}
                       - if adv.title.length > 38
                         .title= "#{adv.title[0..38]}..."
