@@ -21,9 +21,10 @@ module ApplicationHelper
     regions = region_count.sort_by {|key, value| key}.sort_by{|key, v| v }.reverse.take(6)
 
     regions.each do |r|
-      Struct.new("Region", :place, :count, :region) #=> Struct::Region
+      Struct.new("Region", :place, :count, :region, :country) #=> Struct::Region
       hero = HeroImage.find_by_region(r[0]) ? HeroImage.find_by_region(r[0]) : HeroImage.where(region: 'default').first
-      @regions << r = Struct::Region.new(r[0],r[1], hero) #=> #<struct Struct::Point x=0, y=0>
+      country = Adventure.find_by_city(r[0]).country
+      @regions << r = Struct::Region.new(r[0],r[1], hero, country) #=> #<struct Struct::Point x=0, y=0>
     end
 
     return  @regions
