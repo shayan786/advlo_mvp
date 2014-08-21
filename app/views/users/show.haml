@@ -100,10 +100,11 @@
               - @user.adventures.approved.each_with_index do |adv, i|
                 %a.adventure-brick{href: adventure_path(adv.slug)}
                   - if adv.attachment.height(:large) > 295
-                    - adv_img = adv.attachment.url(:large)
+                    - adv_img_show = adv.attachment.url(:large)
                   - else
-                    - adv_img = adv.attachment.url(:hero)
-                  .image-wrapper{style: "background: url(#{adv_img}) no-repeat center center;"}
+                    - adv_img_show = adv.attachment.url(:hero)
+                  .image-wrapper{style: "background: url(#{adv_img_show}) no-repeat center center;"}
+
                     .copy{id: "#{i}"}
                       - if adv.title.length > 38
                         .title= "#{adv.title[0..38]}..."
