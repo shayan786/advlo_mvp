@@ -9,11 +9,16 @@
           %li
             %a{href: '#privacy_policy', role: "tab", "data-toggle"=>"tab"} 
               Privacy Policy
+          %li
+            %a{href: '#cancellation_refunds', role: "tab", "data-toggle"=>"tab"} 
+              Cancellations & Refunds
               
       .panel-body
         .tab-content
           = render partial: "terms_of_service"
           = render partial: "privacy_policy"
+          = render partial: "cancellation_refunds"
+
 
 :javascript
   $('#terms_nav a').click(function (e) {
