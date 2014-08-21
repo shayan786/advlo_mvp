@@ -99,7 +99,7 @@
             .brick-wrapper.masonry.js-masonry
               - @user.adventures.approved.each_with_index do |adv, i|
                 %a.adventure-brick{href: adventure_path(adv.slug)}
-                  - if adv.attachment.height(:large) >= 300
+                  - if adv.attachment.height(:large) > 295
                     - adv_img = adv.attachment.url(:large)
                   - else
                     - adv_img = adv.attachment.url(:hero)
