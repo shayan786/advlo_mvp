@@ -110,9 +110,12 @@
       
       = render partial: 'payment_modal'
               
-      - if !@adventure.summary.empty?
+      - if !@adventure.other_notes.empty?
         #additional_info.title-brick.dark_gray_background
           = render partial: 'additional_info'
+
+      #adv_map.title-brick
+        = render partial: 'adv_map'
 
       #host_bio.title-brick.dark_gray_background
         = render partial: 'host_bio'
@@ -120,9 +123,6 @@
       - if @adventure.approved && @current_guide != current_user
         #payment_panel.title-brick
           = render partial: 'payment_panel'
-
-      #adv_map.title-brick
-        = render partial: 'adv_map'
 
       - if @adventure.approved
         #reviews.title-brick
