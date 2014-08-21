@@ -99,11 +99,11 @@
             .brick-wrapper.masonry.js-masonry
               - @user.adventures.approved.each_with_index do |adv, i|
                 %a.adventure-brick{href: adventure_path(adv.slug)}
-                  - if adv.attachment.height(:large) > 295
-                    - adv_img_show = adv.attachment.url(:large)
+                  - if adv.attachment.height(:large) >= 295
+                    - adv_img = adv.attachment.url(:large)
                   - else
-                    - adv_img_show = adv.attachment.url(:hero)
-                  .image-wrapper{style: "background: url(#{adv_img_show}) no-repeat center center;"}
+                    - adv_img = adv.attachment.url(:hero)
+                  .image-wrapper{style: "background: url(#{adv_img}) no-repeat center center;"}
 
                     .copy{id: "#{i}"}
                       - if adv.title.length > 38
@@ -133,7 +133,11 @@
                     .swiper-wrapper
                       - @user.adventures.each_with_index do |adv, i|
                         %a.adventure-brick.swiper-slide{href: adventure_path(adv.slug)}
-                          .image-wrapper{style: "background: url(#{adv.attachment.url(:large)}) no-repeat center center;"}
+                          - if adv.attachment.height(:large) >= 295
+                            - adv_img_show = adv.attachment.url(:large)
+                          - else
+                            - adv_img_show = adv.attachment.url(:hero)
+                          .image-wrapper{style: "background: url(#{adv_img_show}) no-repeat center center;"}
                             .copy{id: "#{i}"}
                               - if adv.title.length > 38
                                 .title= "#{adv.title[0..38]}..."
