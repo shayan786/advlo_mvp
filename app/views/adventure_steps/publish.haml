@@ -89,7 +89,13 @@
                   %input.btn.btn-primary.preview_btn.publish-adventure.disabled{type: 'submit', value: 'PUBLISH'}
 
 :javascript
+
   $('.agree-to-terms').find('input').click(function(){
-    $('.publish-adventure').toggleClass('disabled')
+    if( $(this).is(":checked") == true){
+      $('.publish-adventure').removeClass('disabled')
+    } else {
+      $('.publish-adventure').addClass('disabled')
+    }
   })
+
   adventureCreate();
