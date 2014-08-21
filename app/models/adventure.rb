@@ -2,7 +2,6 @@ class Adventure < ActiveRecord::Base
   include ActiveModel::Validations
   validates_with VideoValidator
   
-  after_update :set_slug
   after_update :send_approval_email
 
   scope :approved, -> { where(approved: true) }
@@ -31,6 +30,7 @@ class Adventure < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode, :on => :update
   after_validation :reverse_geocode, :on => :update
+  after_validation :set_slug, :on => :update
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if results.first.city == nil
