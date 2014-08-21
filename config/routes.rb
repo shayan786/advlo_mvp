@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   resources :adventure_steps
   
   #events
-  get '/events/reserved'              => 'events#reserved'
   resources :events
   
   #reservations
