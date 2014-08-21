@@ -1,114 +1,115 @@
 #reservation
   #adv-title= @adventure.title
   #event-info
-  #success
-  #success-detail
-  #advlo-logo= image_tag 'logos/advlo_header_logo.png'
-  #advlo-logo
-  #stripe-error-message
-  %form#new_reservation.new_reservation{"accept-charset" => "UTF-8", action: "/reservations", "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
-    %div{style: "display:none"}
-      %input{name: "utf8", type: "hidden", value: "✓"}
-
-    // reservation time request params
-    %input#hidden_request_reservation_date{name: "reservation_request[date]", type: "hidden"}
-    %input#hidden_request_reservation_time{name: "reservation_request[time]", type: "hidden"}
-    %input#hidden_request_reservation_head_count{name: "reservation_request[head_count]", type: "hidden"}
-
-    #request_reservation_info{style: "display: none"}
-      BLAH
-
-    // reservation object params 
-    %input#hidden_event_id{name: "reservation[event_id]", type: "hidden"}
-    %input#event_id{name: "event_id", type: "hidden"}
-    %input#reservation_head_count{name: "reservation[head_count]", type: "hidden"}
-    %input#reservation_adventure_id{name: "reservation[adventure_id]", type: "hidden", value: @adventure.id }
-    %input#reservation_user_id{name: "reservation[user_id]", type: "hidden", value: current_user.id}
-    %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: @current_guide.id}
-    %input#reservation_total_price{name: "reservation[total_price]", type: "hidden"}
-    %input#reservation_start_time{name: "reservation[event_start_time]", type: "hidden"}
-
-    
-    // other rails controller params 
-    %input#adv_price{name: "adv_price", type: "hidden", value: @adventure.price}
-    %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id}
-    %input#stripe_token{name: "stripe_token", type: "hidden"}
-    %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
-
-    .col-md-8.col-md-offset-2
-      .well.secure-payment.text-center
+  .well.secure-payment.text-center
+    .row
+      .col-md-8
         .fa.fa-lock
         This is a secure 128-bit SSL encrypted payment
+      .col-md-4
         .powered-by-stripe= image_tag 'powered-by-stripe.png'
+    #success
+    #success-detail
+    #advlo-logo= image_tag 'logos/advlo_header_logo.png'
+    #advlo-logo
+    #stripe-error-message
+    %form#new_reservation.new_reservation{"accept-charset" => "UTF-8", action: "/reservations", "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
+      %div{style: "display:none"}
+        %input{name: "utf8", type: "hidden", value: "✓"}
 
-    .form-group.row
-      .col-md-4
-        .form_label.text-right Full Name
-      .col-md-6
-        %input.form-control#credit_card_name{type: "text", name: "credit_card_name", type: "text", placeholder: "First Last"}
-    
+      // reservation time request params
+      %input#hidden_request_reservation_date{name: "reservation_request[date]", type: "hidden"}
+      %input#hidden_request_reservation_time{name: "reservation_request[time]", type: "hidden"}
+      %input#hidden_request_reservation_head_count{name: "reservation_request[head_count]", type: "hidden"}
 
-    .form-group.row
-      .col-md-4
-        .form_label.text-right Card Number
-      .col-md-6
-        %input.form-control{type: "text", placeholder: '1234567890123', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
+      #request_reservation_info{style: "display: none"}
+        BLAH
 
-    
-    .form-group.row
-      .col-md-4
-        .form_label.cvv-box.text-right CVV
-      .col-md-1
-        %input.form-control{type: "text", placeholder: '123', name: "cvv", id: "cvv", maxlength: "3"}
-      .col-md-1
-      .col-md-5
-        .cc_icon= image_tag 'icons/visa.png'
-        .cc_icon= image_tag 'icons/discover.png'
-        .cc_icon= image_tag 'icons/mastercard.png'
-        .cc_icon= image_tag 'icons/amex.png'
-    
-    .form-group.row
-      .col-md-4
-        .form_label.text-right Card Expiration
-      .col-md-2
-        .form-group
-          %label Exp Month
-          %input.form-control{placeholder: "MM", type: "text", maxlength: "2", name: "exp_month", id: 'exp_month'}
-      .col-md-2
-        .form-group
-          %label Exp Year
-          %input.form-control{placeholder: "YYYY", type: "text", maxlength: "4", name: "exp_year", id: 'exp_year'}
-    .form-group.row
-      .col-md-4
-        .form_label.text-right People
-      .col-md-2
-        %select.form-control.cap_selector
-      .col-md-4
-        .prefill_price_type
-          - if @adventure.price_type == "per_adventure"
-            %em Price Per Group
-          - else
-            %em Price Per Person
-    .row
-      .col-md-4
-        .form_label.text-right Total Cost
-      .col-md-6
+      // reservation object params 
+      %input#hidden_event_id{name: "reservation[event_id]", type: "hidden"}
+      %input#event_id{name: "event_id", type: "hidden"}
+      %input#reservation_head_count{name: "reservation[head_count]", type: "hidden"}
+      %input#reservation_adventure_id{name: "reservation[adventure_id]", type: "hidden", value: @adventure.id }
+      %input#reservation_user_id{name: "reservation[user_id]", type: "hidden", value: current_user.id}
+      %input#reservation_host_id{name: "reservation[host_id]", type: "hidden", value: @current_guide.id}
+      %input#reservation_total_price{name: "reservation[total_price]", type: "hidden"}
+      %input#reservation_start_time{name: "reservation[event_start_time]", type: "hidden"}
+
+      
+      // other rails controller params 
+      %input#adv_price{name: "adv_price", type: "hidden", value: @adventure.price}
+      %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id}
+      %input#stripe_token{name: "stripe_token", type: "hidden"}
+      %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
+
+      .form-group.row
         .col-md-4
-          .reservation_cost
-            - if @adventure.price_type == "per_adventure"
-              - adventure_cost = @adventure.price
-              - adventure_user_fee = (adventure_cost * 0.04).round(2)
-            - else
-              - adventure_cost = @adventure.price * @adventure.cap_min
-              - adventure_user_fee = (adventure_cost * 0.04).round(2)
-            
-            = "$ #{sprintf('%.2f', adventure_cost + adventure_user_fee)}"
-        .col-md-8
-          .reservation_breakdown
-            = "($ #{sprintf('%.2f',adventure_cost)} + $ #{sprintf('%.2f', adventure_user_fee)} fees)"
+          .form_label.text-right Full Name
+        .col-md-6
+          %input.form-control#credit_card_name{type: "text", name: "credit_card_name", type: "text", placeholder: "First Last"}
+      
 
-    #book-it-wrapper
-      .btn.btn-success#book-button.button Book
+      .form-group.row
+        .col-md-4
+          .form_label.text-right Card Number
+        .col-md-6
+          %input.form-control{type: "text", placeholder: '1234567890123', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
+
+      
+      .form-group.row
+        .col-md-4
+          .form_label.cvv-box.text-right CVV
+        .col-md-1
+          %input.form-control{type: "text", placeholder: '123', name: "cvv", id: "cvv", maxlength: "3"}
+        .col-md-1
+        .col-md-5
+          .cc_icon= image_tag 'icons/visa.png'
+          .cc_icon= image_tag 'icons/discover.png'
+          .cc_icon= image_tag 'icons/mastercard.png'
+          .cc_icon= image_tag 'icons/amex.png'
+      
+      .form-group.row
+        .col-md-4
+          .form_label.text-right Card Expiration
+        .col-md-2
+          .form-group
+            %label Exp Month
+            %input.form-control{placeholder: "MM", type: "text", maxlength: "2", name: "exp_month", id: 'exp_month'}
+        .col-md-2
+          .form-group
+            %label Exp Year
+            %input.form-control{placeholder: "YYYY", type: "text", maxlength: "4", name: "exp_year", id: 'exp_year'}
+      .form-group.row
+        .col-md-4
+          .form_label.text-right People
+        .col-md-2
+          %select.form-control.cap_selector
+        .col-md-4
+          .prefill_price_type
+            - if @adventure.price_type == "per_adventure"
+              %em Price Per Group
+            - else
+              %em Price Per Person
+      .row
+        .col-md-4
+          .form_label.text-right Total Cost
+        .col-md-6
+          .col-md-4
+            .reservation_cost
+              - if @adventure.price_type == "per_adventure"
+                - adventure_cost = @adventure.price
+                - adventure_user_fee = (adventure_cost * 0.04).round(2)
+              - else
+                - adventure_cost = @adventure.price * @adventure.cap_min
+                - adventure_user_fee = (adventure_cost * 0.04).round(2)
+              
+              = "$ #{sprintf('%.2f', adventure_cost + adventure_user_fee)}"
+          .col-md-8
+            .reservation_breakdown
+              = "($ #{sprintf('%.2f',adventure_cost)} + $ #{sprintf('%.2f', adventure_user_fee)} fees)"
+
+  #book-it-wrapper
+    .btn.btn-success#book-button.button Book
 
 
 
