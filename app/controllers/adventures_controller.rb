@@ -83,6 +83,7 @@ class AdventuresController < ApplicationController
     case region_type
     when "continent"
       adventures_region = Adventure.approved
+      available_categories = [];
 
       location_sql_string = ''
       location_array.each_with_index do |loc,i|
@@ -141,9 +142,6 @@ class AdventuresController < ApplicationController
       else
         @adventures = adventures_region.where(category_sql_string).where(location_sql_string)
       end
-      respond_to do |format|
-        format.js {render :action => '/adventure_filter', :layout => false }
-      end
     when 'price'
       # Apply sorting and category and location logic
       if category_param == 'all' && location_array[0] == "all"
@@ -154,9 +152,6 @@ class AdventuresController < ApplicationController
         @adventures = adventures_region.where(category_sql_string).order("#{sort_by} ASC")
       else
         @adventures = adventures_region.where(category_sql_string).where(location_sql_string).order("#{sort_by} ASC")
-      end
-      respond_to do |format|
-        format.js {render :action => '/adventure_filter', :layout => false }
       end
     else
       # Apply sorting and  category and location logic
@@ -169,9 +164,17 @@ class AdventuresController < ApplicationController
       else  
         @adventures = adventures_region.where(category_sql_string).where(location_sql_string).order("#{sort_by} DESC")
       end
-      respond_to do |format|
-        format.js {render :action => '/adventure_filter', :layout => false }
-      end
+    end
+
+    # @adventures.each do |adv|
+    #   ind_adv_categories = adv.category.split(',')  
+    #   available_categories += ind_adv_categories
+    # end
+
+    # @uniq_available_categories = available_categories.sort.uniq
+
+    respond_to do |format|
+      format.js {render :action => '/adventure_filter', :layout => false }
     end
   end
   
@@ -186,7 +189,6 @@ class AdventuresController < ApplicationController
 
   # Request Adventure
   def requests 
-    puts "******************************#{request_params}"
     @request = Request.create!(request_params)
     @request.category = params[:request_category] ? params[:request_category].join(',') : 'No category selected'
 

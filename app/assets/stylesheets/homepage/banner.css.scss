@@ -176,7 +176,7 @@
 
 
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 701px){
 
   .jumbotron_fix {
     margin-top: -80px !important;
@@ -201,6 +201,51 @@
     position: absolute;
     width: 100%;
     top: 150px;
+    left: 0px;
+  }
+
+  .navbar-collapse {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .navbar-nav {
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    top: 50px;
+  }
+
+  #how_it_works_panels {
+  	margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 768px){
+
+  .jumbotron_fix {
+    margin-top: -80px !important;
+    padding-top: 0px !important;
+    min-height: 500px !important;
+    max-height: 500px !important;
+
+  }
+
+  .jumbotron_fix span.large_text {
+    font-size: 2.8em !important;
+  }
+  .jumbotron_fix span.medium_text {
+    font-size: 2.2em !important;
+  }
+
+  .jumbotron_fix span.small_text {
+    font-size: 1.6em !important;
+  }
+
+  #homepage-text {
+    position: absolute;
+    width: 100%;
+    top: 200px;
     left: 0px;
   }
 

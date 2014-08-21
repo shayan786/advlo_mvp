@@ -6,6 +6,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    puts "*****"
+    puts @user.id
+    puts @user.email
+    puts @user.short_description
+    puts "*****"
+
     @user_languages = @user.language ? @user.language.split(',') : ['']
     @user_skillsets = @user.skillset ? @user.skillset.split(',') : ['']
 

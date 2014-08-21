@@ -1,13 +1,13 @@
-
 function homepageTextScroll(){
-  if($(window).width() < 700) {
+  if($(window).width() < 769) {
     $('.jumbotron').after($('#how_it_works_panels'));
   }
+
   $(window).resize(function() {
-    if ($(this).width() < 700){
+    if ($(this).width() < 769){
       $('.jumbotron').after($('#how_it_works_panels'));
     }
-    else if ($(this).width() > 700) {
+    else if ($(this).width() >= 769) {
       $('.jumbotron').append($('#how_it_works_panels'));
     }   
   })
