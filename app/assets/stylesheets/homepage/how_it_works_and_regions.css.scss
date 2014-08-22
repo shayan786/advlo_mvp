@@ -1,5 +1,6 @@
 #destination-block {
-  margin-top: 20px;
+  padding-top: 30px;
+  background: rgba(0, 0, 0, 0.6);
 
   #advlo-location {
   	text-align: center;
@@ -46,7 +47,8 @@
 }
 
 #how_it_works {
-	padding-bottom: 30px;
+	padding-bottom: 20px;
+	padding-top: 30px;
 
 	h1 {
 		margin-bottom: 25px;
@@ -70,6 +72,8 @@
 		height: 100%; 
 	}
 }
+
+
 
 .destination-block {
 	background: asset_url('cartographer_small.png');
