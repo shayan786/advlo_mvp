@@ -40,6 +40,38 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_phone_number
+    user = User.find_by_id(params[:user_id])
+    phone_number = params[:phone_number]
+
+    # Get Country code
+    geo_results = Geocoder.search(user.location)
+    country_code = geo_results[0].country_code
+
+    # Normalize the phone number
+    @n_phone_number = PhonyRails.normalize_number(phone_number,:country_code => country_code)
+
+    # Verify its a phone number in correct format
+    if !@n_phone_number.phony_formatted(:strict => true).nil?
+      # Store normalized phone number
+      user.update(phone_number: @n_phone_number)
+
+      respond_to do |format|
+        if params[:update]
+          format.js {render "update_phone_number.js", layout: false}
+        else
+          format.js {render "new_phone_number.js", layout: false}
+        end
+      end
+    else
+      respond_to do |format|
+        format.js {render "invalid_phone_number.js", layout: false}
+      end
+    end
+
+
+  end
+
 
   # Just email for now
   def contact_traveler

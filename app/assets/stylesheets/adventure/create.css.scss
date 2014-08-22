@@ -323,6 +323,15 @@
 		.panel-body {
 			min-height: 350px;
 		}
+
+		#update_phone_number_form {
+			display: none;
+		}
+
+		.prefill_label {
+			padding-top: 5px;
+			font-size: 1.2em;
+		}
 	}
 }
 

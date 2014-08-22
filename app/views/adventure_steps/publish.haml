@@ -59,7 +59,11 @@
                   %a{href: "/terms", target: "_blank"}
                     By publishing your adventure, you agree to Advlo's terms of service & privacy policy.
 
-               
+          - if current_user.phone_number
+            = render partial: "phone_form_update"
+          - else
+            = render partial: "phone_form_new"
+
         .panel-footer.text-center
           .row
             - if @adventure.published == true

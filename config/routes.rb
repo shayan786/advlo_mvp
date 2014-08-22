@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/users/wallet'               => 'registrations#wallet'
     get '/users/payouts'              => 'registrations#payouts'
     get '/users/reservations'         => 'registrations#reservations'
+    post '/users/phone'               => 'users#edit_phone_number'
   end
 
   #contact

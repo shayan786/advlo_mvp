@@ -1158,6 +1158,34 @@ function adv_map_show() {
   }
 }
 
+function phone_num_validation() {
+  $('#new_phone_number_form .verify_phone_btn').addClass('disabled');
+
+  $('#new_phone_number_form #phone_number').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 4) {
+        $('#new_phone_number_form .verify_phone_btn').removeClass('disabled');
+      }
+      else if (details.length <= 4) {
+        $('#new_phone_number_form .verify_phone_btn').addClass('disabled');
+      }
+  })
+
+  $('#update_phone_number_form .verify_phone_btn').addClass('disabled');
+
+  $('#update_phone_number_form #phone_number').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 4) {
+        $('#update_phone_number_form .verify_phone_btn').removeClass('disabled');
+      }
+      else if (details.length <= 4) {
+        $('#update_phone_number_form .verify_phone_btn').addClass('disabled');
+      }
+  })
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1206,4 +1234,5 @@ adventureCreate = function() {
   create_header_remove_arrow();
   upload_images();
   adv_create_new_basic_submit();
+  phone_num_validation();
 }
