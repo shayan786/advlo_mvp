@@ -89,7 +89,7 @@
 				.find_icon {
 					background-image: asset-url($find_icon);
 					background-repeat: no-repeat;
-					background-size: cover;
+					background-size: contain;
 					height: 140px;
 					width: 140px;
 					margin: 0px auto 20px auto;
@@ -97,11 +97,13 @@
 
 				.host_icon {
 					@extend .find_icon;
+					height: 140px;
+					width: 140px;
 					background-image: asset-url($host_icon);
 				}
 
 				.request_icon {
-					@extend .find_icon;
+					@extend .host_icon;
 					background-image: asset-url($request_icon);
 				}
 			}
