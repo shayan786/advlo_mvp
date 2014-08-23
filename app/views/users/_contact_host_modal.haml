@@ -21,7 +21,7 @@
                 .col-md-4 
                   .form_label.text-right Message *
                 .col-md-6
-                  %textarea.form-control{rows: "5", type: "text", name: "contact_host[message]", id: "contact_message", maxlength: "250"}
+                  %textarea.form-control{rows: "5", type: "text", name: "contact_host[message]", id: "contact_message"}
               .row.text-center
                 %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
 
@@ -55,9 +55,10 @@
                 .col-md-4 
                   .form_label.text-right Message *
                 .col-md-6
-                  %textarea.form-control{rows: "5", type: "text", name: "contact_host[message]", id: "contact_message", maxlength: "250"}
+                  %textarea.form-control{rows: "5", type: "text", name: "contact_host[message]", id: "contact_message"}
               .row.text-center
-                %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
+                .btn.btn-primary.contact_btn
+                  Submit
 
           #contact_host_submitted.contact_host_submitted
             .row
@@ -66,4 +67,9 @@
                 %em= "Your email has been sent to #{user.get_abbreviated_name}"
                 %br
                 %em Please allow the host to reply back within the next 24-48 hrs
+
+  :javascript 
+    $('#contact_host_form .contact_btn').click(function() {
+      $('#contact_host_form').submit();
+    })
                 
