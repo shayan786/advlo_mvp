@@ -13,7 +13,7 @@ module ApplicationHelper
       return "#{adventure.city}, #{adventure.state}".upcase
     else
       targets = adventure.location.split(',')
-      first = "#{targets[0]}"
+      first = "#{targets[0]},"
       second = targets[-1]
 
       if targets.count == 1 && targets[0] != 'Costa Rica'
@@ -24,7 +24,7 @@ module ApplicationHelper
         if first.length > 20
           first = "#{first[0..20]}..."
         end
-        return "#{first}, #{second}".upcase
+        return "#{first} #{second}".upcase
       else
         return "#{second}".upcase
       end
