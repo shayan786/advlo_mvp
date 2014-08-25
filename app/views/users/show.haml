@@ -107,7 +107,7 @@
 
                     .copy{id: "#{i}"}
                       - if adv.title.length > 38
-                        .title= "#{adv.title[0..38]}..."
+                        .title= "#{adv.title[0..36]}..."
                       -else
                         .title= adv.title
 
@@ -140,7 +140,7 @@
                           .image-wrapper{style: "background: url(#{adv_img_show}) no-repeat center center;"}
                             .copy{id: "#{i}"}
                               - if adv.title.length > 38
-                                .title= "#{adv.title[0..38]}..."
+                                .title= "#{adv.title[0..36]}..."
                               -else
                                 .title= adv.title
 
