@@ -8,12 +8,12 @@
       .col-md-4
         .form_label.edit-label Point of Interest
       .col-md-6
-        %input.form-control.show_ml{type: "text", required: "required", name: "headline", id: "iten_headline", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Meet & Greet, Bike to Cliff Jumping Spot"}}
+        %input.form-control.show_ml{type: "text", required: "required", name: "headline", id: "iten_headline", maxlength: "100", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Meet & Greet, Bike to Cliff Jumping Spot"}}
     .form-group.row
       .col-md-4
         .form_label.edit-label Description
       .col-md-6
-        %textarea.form-control.show_ml{rows: "6", type: "text", required: "required", name: "description", id: "iten_description", maxlength: "600"}
+        %textarea.form-control.show_ml{rows: "6", type: "text", required: "required", name: "description", id: "iten_description", maxlength: "1000"}
 
     .text-center
       %button.btn.btn-primary.add_event_btn

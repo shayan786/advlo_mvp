@@ -8,6 +8,29 @@ module ApplicationHelper
     Adventure.approved.where(country: c).count
   end
 
+  def get_display_location(adventure)
+    if adventure.region == 'North America'
+      return "#{adventure.city}, #{adventure.state}".upcase
+    else
+      targets = adventure.location.split(',')
+      first = "#{targets[0]}"
+      second = targets[-1]
+
+      if targets.count == 1 && targets[0] != 'Costa Rica'
+        return "#{targets[0][0..19]}...  #{adventure.country}".upcase
+      end
+
+      if !first.include?(second)
+        if first.length > 20
+          first = "#{first[0..20]}..."
+        end
+        return "#{first}, #{second}".upcase
+      else
+        return "#{second}".upcase
+      end
+    end
+  end
+
   def get_regions
     all_cities = []
     region_count = Hash.new 0
