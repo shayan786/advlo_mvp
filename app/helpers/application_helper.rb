@@ -1,5 +1,14 @@
 module ApplicationHelper
 
+
+  def check_if_advlo(user)
+    if user.email == 'chrisknight.mail@gmail.com' || user.email == 'shayan@advlo.com' || user.email 'jon@advlo.com'
+      return true
+    else
+      return false
+    end
+  end
+
   def adv_count(r)
     Adventure.approved.where(region: r).count
   end
