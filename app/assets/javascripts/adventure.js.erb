@@ -1186,6 +1186,13 @@ function phone_num_validation() {
   })
 }
 
+function summary_readmore() {
+  $('#overview .default-summary').readmore({
+    speed: 75,
+    maxHeight: 250
+  });
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1204,6 +1211,7 @@ adventureShow = function() {
   sign_in_sign_up_modal();
   social_init();
   adv_map_show();
+  summary_readmore();
 };
 
 adventureIndex = function() {

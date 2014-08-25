@@ -1,3 +1,116 @@
 #adventure_request {
-	min-height: 500px;
+  padding-top: 80px;
+
+  .jumbotron {
+  	
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	background-position: center center;
+  	height: 65vh;
+  	margin-top: -30px;
+
+
+  	.request_info_text {
+      text-shadow: -1px -1px 5px #000;
+  		margin-top: 17vh;
+  		font-size: 2.8em;
+  		color: #FFF;
+  	}
+  }
+
+  .adventure_info_body {
+  	padding-bottom: 20px;
+
+    .border {
+      border-top: 2px solid $light_gray;
+    }
+
+  	.gray_background {
+  		background: transparent;
+  	}
+
+  	.white_background {
+  		background: rgba(0,0,0,0.5);
+      border-top: 2px solid $light_gray;
+      padding-bottom: 20px;
+  	}
+
+  	h2 {
+  		margin-top: 30px;
+  		font-family: cabin_bold !important;
+  		font-size: 3.2em;
+      text-align: center;
+      color: white;
+  	}
+
+  	.body_content {
+  		font-size: 1.6em;
+  		padding-bottom: 30px;
+     	color: white;
+      	opacity: 0.8;
+      	text-align: center;
+  	}
+
+  	form {
+  		margin-top: 40px;
+  		margin-bottom: 25px;
+
+      .form_label {
+        font-family: nexa_light;
+        padding-top: 5px;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #FFF;
+      }
+
+      .checkbox-inline {
+        color: #FFF;
+      }
+
+      .request_btn {
+		  margin-top: 40px;
+		  font-size: 1.8em;
+		  background-color: $login_btn_color;
+		  border-color: $login_btn_color;
+		  padding: 10px 20px;
+
+		  &:hover {
+		    background-color: $login_btn_color_hover;
+		    border-color: $login_btn_color_hover;
+		  }
+		}
+    }
+
+    #request_submitted {
+      display: none;
+      color: #FFF;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      margin-top: 25px;
+
+      img {
+        margin: 0px auto;
+        width: 175px;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 675px){
+	#adventure_request {
+	  .request_info_text {
+	  		font-size: 2.2em !important;
+	  }
+	}
+
+  #adventure_info {
+    .adv_info_btn {
+      margin-left: -17px;
+    }
+  }
+
+  #adventure_request .jumbotron .request_info_text {
+    font-size: 1.5em !important;
+  }
 }

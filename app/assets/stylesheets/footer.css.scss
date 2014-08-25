@@ -4,7 +4,7 @@
 	background-color: $footer_background_color;
 	overflow-y: hidden !important;
 	border-top: 1px solid $light_gray;
-	padding: 10px 0 5px 0;
+	padding: 15px 0 10px 0;
 
 
 	.container {
@@ -12,14 +12,16 @@
 
 		.footer_text {
 
+			.col-md-4 {
+				padding-top: 2px;
+				font-family: 'nexa_light';
+			}
+
 			.dash {
 				display: inline;
 				color: #000;
 			}
 
-			.row {
-				margin-bottom: 10px;
-			}
 			a {
 				text-decoration: none;
 				color: $dark_gray;

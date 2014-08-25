@@ -185,6 +185,7 @@ class AdventuresController < ApplicationController
 
   # info page for requesting a certain adventure
   def request_info
+    @hero_image = HeroImage.where(region: 'request').first
   end
 
   # Request Adventure
