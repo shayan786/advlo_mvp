@@ -3,7 +3,7 @@
   #event-info
   .well.secure-payment.text-center
     .row
-      .col-md-8
+      .col-md-8.ssl-info
         .fa.fa-lock
         This is a secure 128-bit SSL encrypted payment
       .col-md-4
@@ -108,9 +108,20 @@
             .reservation_breakdown
               = "($ #{sprintf('%.2f',adventure_cost)} + $ #{sprintf('%.2f', adventure_user_fee)} fees)"
 
+    .accept-tos
+      %input{type: "checkbox"}  
+      By booking this adventure, you agree to Advlo's 
+      %a{href: "/terms", target: "_blank"}terms of service & privacy policy.
+
     #book-it-wrapper
-      .btn.btn-success#book-button.button Book
+      .btn.btn-success#book-button.button.disabled Book
 
 
-
-
+:javascript
+  $('.accept-tos').find('input').click(function(){
+    if( $(this).is(":checked") == true){
+      $('#book-button').removeClass('disabled')
+    } else {
+      $('#book-button').addClass('disabled')
+    }
+  })
