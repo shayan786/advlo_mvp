@@ -60,6 +60,7 @@ module ApplicationHelper
     Adventure.approved.each do |a|
       all_places << a.city
       all_places << a.country
+      all_places << a.state
     end
     
     return all_places.uniq!
