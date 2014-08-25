@@ -45,6 +45,20 @@
               %li{id: "location_#{c.downcase}", "data-location"=>"#{c}"}
                 = c.gsub('-',' ')
 
+          - elsif params[:state].present?
+            %li.active{id: "location_all", "data-location"=>"", "data-location-type"=>"state"}
+              %i.fa.fa-check{style: "margin-right: 10px;"}
+              ALL
+
+            - cities = []
+            - @adventures.each do |adv|
+              - cities << adv.city
+
+            - cities.sort.uniq.each do |c|
+              - c = c.gsub(' ','-')
+              %li{id: "location_#{c.downcase}", "data-location"=>"#{c}"}
+                = c.gsub('-',' ')
+
           - else  
             %li.active{id: "location_all", "data-location"=>"", "data-location-type"=>"continent"}
               %i.fa.fa-check{style: "margin-right: 10px;"}

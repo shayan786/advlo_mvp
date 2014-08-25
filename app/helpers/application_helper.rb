@@ -55,17 +55,14 @@ module ApplicationHelper
   end
 
   def get_explorer_regions
-    all_cities = []
-    region_count = Hash.new 0
+    all_places = []
+
     Adventure.approved.each do |a|
-      all_cities << a.city
+      all_places << a.city
+      all_places << a.country
     end
-    all_cities.each do |elem|    
-      region_count[elem] += 1
-    end
-    hero_regions = []
-    regions = region_count.each{|r| hero_regions << r[0]}
-    return hero_regions
+    
+    return all_places.uniq!
   end
 
   def get_cities(region)
