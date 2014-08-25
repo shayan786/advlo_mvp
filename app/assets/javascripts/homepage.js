@@ -78,7 +78,6 @@ function overall_rating_show() {
       $('.no_ratings').css('opacity','0.35');
     }
   }
-
 }
   
 homepageInit = function() {

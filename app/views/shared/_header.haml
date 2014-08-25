@@ -34,6 +34,10 @@
           %form
             %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
               Host
+        %li
+          %form
+            %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/request"}
+              Request
         
         - if current_user && count = action_required(current_user)
           %li
