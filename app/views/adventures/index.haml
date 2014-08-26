@@ -1,9 +1,9 @@
 - @location = @location ? @location.upcase : "Adventure Local" 
 .meta_tags
-  = set_meta_tags(get_meta_tags(@location.upcase,"Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure",@location))
+  = set_meta_tags(get_meta_tags(@location,"Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure",@location))
 
 .adventure-page-container
-  - if !params[:region].present? && !params[:state].present? && !params[:city].present? && !params[:country].present?
+  - if !params[:state].present? && !params[:city].present? && !params[:country].present?
     #region_map
   - else
     #hero_image_wrapper
@@ -40,107 +40,235 @@
     }
   })
 
-  function initialize() {
-    // CREATE STRUCT FOR REGION
-    var region = {};
+- if params[:region].present?
+  :javascript
+    function initialize() {
+      // GET # unique countries from adventures
+      var uniq_country_count = "#{Adventure.approved.where('country IS NOT NULL').uniq.pluck(:country).count}";
 
-    region['NorthAmerica'] = {
-      title: 'North America',
-      center: new google.maps.LatLng(38.210262, -98.926994),
-      label_center: new google.maps.LatLng(40, -99.626994),
-      count: "#{Adventure.approved.where(region: 'North America').count}"
-    };
-    region['Europe'] = {
-      title: 'Europe',
-      center: new google.maps.LatLng(50.23853, 14.979256),
-      label_center: new google.maps.LatLng(51.63853, 14.279256),
-      count: "#{Adventure.approved.where(region: 'Europe').count}"
-    };
-    region['Asia'] = {
-      title: 'Asia',
-      center: new google.maps.LatLng(42.234743, 82.479256),
-      label_center: new google.maps.LatLng(43.734743, 81.979256),
-      count: "#{Adventure.approved.where(region: 'Asia').count}"
-    };
-    region['Oceania'] = {
-      title: 'Oceania',
-      center: new google.maps.LatLng(-25.23709, 133.455819),
-      label_center: new google.maps.LatLng(-23.23709, 132.855819),
-      count: "#{Adventure.approved.where(region: 'Oceania').count}"
-    };
-    region['LatinAmerica'] = {
-      title: 'Latin America',
-      center: new google.maps.LatLng(-13.600957, -59.903556),
-      label_center: new google.maps.LatLng(-11.600957, -60.603556),
-      count: "#{Adventure.approved.where(region: 'Latin America').count}"
-    };
-    region['Africa'] = {
-      title: 'Africa',
-      center: new google.maps.LatLng(9.370649, 22.010506),
-      label_center: new google.maps.LatLng(11.270649, 21.510506),
-      count: "#{Adventure.approved.where(region: 'Africa').count}"
-    };
+      var latlong = #{get_latlong.to_json};
 
-    var mapOptions = {
-      center: new google.maps.LatLng(30, 0),
-      zoom: 2,
-      panControl: false,
-      zoomControl: false,
-      mapTypeControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      overviewMapControl: false,
-      scrollwheel: false
-    };
+      var j = 0;
+      // CREATE STRUCT FOR REGION
+      var region = {};
 
-    var map = new google.maps.Map(document.getElementById("region_map"), mapOptions);
+      for (var country in latlong) {
+        region[country.replace(" ", "")] = {
+          title: country,
+          center: new google.maps.LatLng(latlong[country]['lat'], latlong[country]['long'])
+        };
 
-    var image = {
-      url: "#{image_path 'icons/map_icon.png'}",
-      size: new google.maps.Size(50,50),
-      origin: new google.maps.Point(0,0),
-      anchor: new google.maps.Point(25,25)
-    };
-    
-
-    function getMarkerTitle(marker){
-      return function() {
-        var cont = marker.getTitle().replace(" ", "-");
-
-        window.location.href = "#{root_url}adventures?region="+cont
       }
-    }
 
-    var i = 0;
-    var marker = [];
-    // CONSTRUCT ICONS & NUMBERS FOR EACH REGION
-    for (var continent in region) {
+      /*
+      region['UnitedStates'] = {
+        title: 'United States',
+        center: new google.maps.LatLng(38.210262, -98.926994),
+        label_center: new google.maps.LatLng(39, -99.326994),
+        count: "#{Adventure.approved.where(country: 'United States').count}"
+      };
+      */
 
-      marker[i] = new google.maps.Marker({
-        position: region[continent].center,
-        map: map,
-        icon: image,
-        title: region[continent].title
-      });
+      switch("#{params[:region]}") {
+        case "North-America":
+          var map_center = new google.maps.LatLng(46.210262, -98.926994);
+          var zoom_level = 3;
+          break;
+        case "Asia":
+          var map_center = new google.maps.LatLng(44.801327,75.058594);
+          var zoom_level = 3;
+          break;
+        case "Europe":
+          var map_center = new google.maps.LatLng(52.016256,18.825378);
+          var zoom_level = 4;
+          break;
+        case "Latin-America":
+          var map_center = new google.maps.LatLng(-12.69842,-60.449219);
+          var zoom_level = 3;
+          break;
+        case "Africa":
+          var map_center = new google.maps.LatLng(6.168751,22.519531);
+          var zoom_level = 3;
+          break;
+        default:
+          var map_center = new google.maps.LatLng(-22.742797,140.324219);
+          var zoom_level = 3;
+          break;
+      }
 
-      if (region[continent].count != "0") {
-        var mapLabel = new MapLabel({
-          text: region[continent].count,
-          position: region[continent].label_center,
+
+      var mapOptions = {
+        center: map_center,
+        zoom: zoom_level,
+        panControl: false,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        overviewMapControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
+        draggable: false
+      };
+
+
+      var map = new google.maps.Map(document.getElementById("region_map"), mapOptions);
+
+      
+      var image = {
+        url: "#{image_path 'icons/map_icon.png'}",
+        size: new google.maps.Size(50,50),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(25,25)
+      };
+      
+
+      function getMarkerTitle(marker){
+        return function() {
+          var cont = marker.getTitle().replace(" ", "-");
+
+          window.location.href = "#{root_url}adventures?country="+cont
+        }
+      }
+
+      var i = 0;
+      var marker = [];
+      // CONSTRUCT ICONS & NUMBERS FOR EACH REGION
+      for (var country in region) {
+
+        marker[i] = new google.maps.Marker({
+          position: region[country].center,
           map: map,
-          fontSize: 16,
-          align: 'center'
+          icon: image,
+          title: region[country].title
         });
+
+        /*
+        if (region[country].count != "0") {
+          var mapLabel = new MapLabel({
+            text: region[country].count,
+            position: region[country].label_center,
+            map: map,
+            fontSize: 16,
+            align: 'center'
+          });
+        }
+        */
+
+        google.maps.event.addListener(marker[i], 'click', getMarkerTitle(marker[i]))
+
+        i++;
       }
 
-      google.maps.event.addListener(marker[i], 'click', getMarkerTitle(marker[i]))
-
-      i++;
     }
 
-  }
+    google.maps.event.addDomListener(window, 'load', initialize);
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+- else 
+  :javascript
+    function initialize() {
+      // CREATE STRUCT FOR REGION
+      var region = {};
+
+      region['NorthAmerica'] = {
+        title: 'North America',
+        center: new google.maps.LatLng(38.210262, -98.926994),
+        label_center: new google.maps.LatLng(40, -99.626994),
+        count: "#{Adventure.approved.where(region: 'North America').count}"
+      };
+      region['Europe'] = {
+        title: 'Europe',
+        center: new google.maps.LatLng(50.23853, 14.979256),
+        label_center: new google.maps.LatLng(51.63853, 14.279256),
+        count: "#{Adventure.approved.where(region: 'Europe').count}"
+      };
+      region['Asia'] = {
+        title: 'Asia',
+        center: new google.maps.LatLng(42.234743, 82.479256),
+        label_center: new google.maps.LatLng(43.734743, 81.979256),
+        count: "#{Adventure.approved.where(region: 'Asia').count}"
+      };
+      region['Oceania'] = {
+        title: 'Oceania',
+        center: new google.maps.LatLng(-25.23709, 133.455819),
+        label_center: new google.maps.LatLng(-23.23709, 132.855819),
+        count: "#{Adventure.approved.where(region: 'Oceania').count}"
+      };
+      region['LatinAmerica'] = {
+        title: 'Latin America',
+        center: new google.maps.LatLng(-13.600957, -59.903556),
+        label_center: new google.maps.LatLng(-11.600957, -60.603556),
+        count: "#{Adventure.approved.where(region: 'Latin America').count}"
+      };
+      region['Africa'] = {
+        title: 'Africa',
+        center: new google.maps.LatLng(9.370649, 22.010506),
+        label_center: new google.maps.LatLng(11.270649, 21.510506),
+        count: "#{Adventure.approved.where(region: 'Africa').count}"
+      };
+
+      var mapOptions = {
+        center: new google.maps.LatLng(30, 0),
+        zoom: 2,
+        panControl: false,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        overviewMapControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
+        draggable: false
+      };
+
+      var map = new google.maps.Map(document.getElementById("region_map"), mapOptions);
+
+      var image = {
+        url: "#{image_path 'icons/map_icon.png'}",
+        size: new google.maps.Size(50,50),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(25,25)
+      };
+      
+
+      function getMarkerTitle(marker){
+        return function() {
+          var cont = marker.getTitle().replace(" ", "-");
+
+          window.location.href = "#{root_url}adventures?region="+cont
+        }
+      }
+
+      var i = 0;
+      var marker = [];
+      // CONSTRUCT ICONS & NUMBERS FOR EACH REGION
+      for (var continent in region) {
+
+        marker[i] = new google.maps.Marker({
+          position: region[continent].center,
+          map: map,
+          icon: image,
+          title: region[continent].title
+        });
+
+        if (region[continent].count != "0") {
+          var mapLabel = new MapLabel({
+            text: region[continent].count,
+            position: region[continent].label_center,
+            map: map,
+            fontSize: 16,
+            align: 'center'
+          });
+        }
+
+        google.maps.event.addListener(marker[i], 'click', getMarkerTitle(marker[i]))
+
+        i++;
+      }
+
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
 
 
 
