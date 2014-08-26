@@ -77,17 +77,17 @@
               .col-md-4
                 .form_label.edit-label Facebook URL
               .col-md-8
-                %input.form-control{placeholder: "www.facebook.com/myname", type: "text", name: "user[fb_url]", id: "user_fb_url", value: "#{current_user.fb_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of booking"}}
+                %input.form-control{placeholder: "www.facebook.com/myname", type: "text", name: "user[fb_url]", id: "user_fb_url", value: "#{current_user.fb_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
             .form-group.row
               .col-md-4
                 .form_label.edit-label Twitter URL
               .col-md-8
-                %input.form-control{placeholder: "www.twitter.com/myname", type: "text", name: "user[tw_url]", id: "user_tw_url", value: "#{current_user.tw_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of booking"}}
+                %input.form-control{placeholder: "www.twitter.com/myname", type: "text", name: "user[tw_url]", id: "user_tw_url", value: "#{current_user.tw_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
             .form-group.row
               .col-md-4
-                .form_label.edit-label LinkedIn URL
+                .form_label.edit-label TripAdvisor URL
               .col-md-8
-                %input.form-control{placeholder: "www.linkedin.com/in/myname", type: "text", name: "user[li_url]", id: "user_li_url", value: "#{current_user.li_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of booking"}}
+                %input.form-control{placeholder: "www.tripadvisor.com/members/myname", type: "text", name: "user[ta_url]", id: "user_ta_url", value: "#{current_user.ta_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
             .text-center
               %input.btn.btn-primary.update_btn{name: "commit", type: "submit", value: "UPDATE"}
 
