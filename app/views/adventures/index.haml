@@ -5,6 +5,14 @@
 .adventure-page-container
   - if !params[:state].present? && !params[:city].present? && !params[:country].present?
     #region_map
+    #legend
+      = image_tag 'icons/map_icon.png', class: 'pull-left'
+      .legend_text.pull-right.text-center
+        Advlo 
+        %br
+        Adventures
+        %br
+        (Click to see country)
   - else
     #hero_image_wrapper
       - if @hero_image
@@ -167,8 +175,31 @@
           i++;
         }
 
+        switch("#{params[:region]}") {
+          case "North-America":
+            map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(document.getElementById('legend'));
+            break;
+          case "Asia":
+           map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('legend'));
+            break;
+          case "Europe":
+            map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(document.getElementById('legend'));
+            break;
+          case "Latin-America":
+            map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(document.getElementById('legend'));
+            break;
+          case "Africa":
+            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('legend'));
+            break;
+          default:
+            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('legend'));
+            break;
+        }
+
       }
 
+
+      // LOAD MAP
       google.maps.event.addDomListener(window, 'load', initialize);
     }
 
@@ -180,6 +211,9 @@
         paddingTop: '145px'
       })
     }
+
+    $('#legend').hide();
+    
     if ($(window).width() > 767) {
       function initialize() {
         // CREATE STRUCT FOR REGION
