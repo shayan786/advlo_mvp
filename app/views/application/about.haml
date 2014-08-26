@@ -1,0 +1,25 @@
+#d_user_dashboard
+  .container
+    .panel.panel-default
+      %h3.text-center We started Advlo..
+      .well.text-center
+        Because travel is a luxury that most people of the world never have access to. 
+
+      .well
+        %h4 Jon
+        .pic= image_tag User.where(email:'jemaser@syr.edu').first.get_avatar_url('large')
+        .about-text.text-center
+          
+
+      .well 
+        %h4.text-right Shayan
+        .pic{style:'float:right;'}= image_tag User.where(email: 'shayan@advlo.com').first.get_avatar_url("large")
+        .about-text.text-center
+          
+
+
+      .well
+        %h4 Christopher
+        .pic= image_tag User.where(id: 1).first.get_avatar_url('large')
+        .about-text.text-center
+          

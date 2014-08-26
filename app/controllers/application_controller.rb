@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def about
+
+  end
+
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get? 
