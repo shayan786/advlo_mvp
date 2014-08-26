@@ -41,7 +41,7 @@ ActiveAdmin.register User do
       f.input :short_description
       f.input :fb_url
       f.input :tw_url
-      f.input :li_url
+      f.input :ta_url
     end
     f.actions
   end
