@@ -8,12 +8,12 @@
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           .form-group.row
             .col-md-4 
-              .form_label.text-right Location *
+              .form_label.edit-label Location *
             .col-md-6
               %input.form-control{type: "text", name: "request[location]", id: "request_location", placeholder: "Enter a destination. Ex: Denver, CO"}
           .form-group.row
             .col-md-4 
-              .form_label.text-right Category *
+              .form_label.edit-label Category *
             .col-md-6
               - options = adv_categories
               - options.each do |o|
@@ -22,17 +22,17 @@
                   = o
           .form-group.row
             .col-md-4 
-              .form_label.text-right Dates *
+              .form_label.edit-label Dates *
             .col-md-6
               %textarea.form-control{rows: "2", type: "text", name: "request[dates]", id: "request_dates", maxlength: "250", placeholder: "Ex: 8/24/14 or any Saturday in November"}
           .form-group.row
             .col-md-4 
-              .form_label.text-right Description / Details *
+              .form_label.edit-label Description / Details *
             .col-md-6
               %textarea.form-control{rows: "5", type: "text", name: "request[description]", id: "request_description", maxlength: "250"}
           .form-group.row
             .col-md-4 
-              .form_label.text-right Budget/person *
+              .form_label.edit-label Budget/person *
             .col-md-6
               %input.form-control{type: "text", name: "request[budget]", id: "request_budget", placeholder: "$50 - $100"}
           
@@ -42,7 +42,7 @@
           - else
             .form-group.row
               .col-md-4 
-                .form_label.text-right Email *
+                .form_label.edit-label Email *
               .col-md-6
                 %input.form-control{type: "text", name: "request[email]", id: "request_email", maxlength: "40"}
 

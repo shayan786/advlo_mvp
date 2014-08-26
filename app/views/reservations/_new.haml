@@ -44,25 +44,25 @@
 
       .form-group.row
         .col-md-4
-          .form_label.text-right Full Name
+          .form_label.edit-label Full Name
         .col-md-6
           %input.form-control#credit_card_name{type: "text", name: "credit_card_name", type: "text", placeholder: "First Last"}
       
 
       .form-group.row
         .col-md-4
-          .form_label.text-right Card Number
+          .form_label.edit-label Card Number
         .col-md-6
           %input.form-control{type: "text", placeholder: '1234567890123', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
 
       
       .form-group.row
         .col-md-4
-          .form_label.cvv-box.text-right CVV
+          .form_label.cvv-box.edit-label CVV
         .col-md-1
           %input.form-control{type: "text", placeholder: '123', name: "cvv", id: "cvv", maxlength: "3"}
         .col-md-1
-        .col-md-5
+        .col-md-5.credit-cards
           .cc_icon= image_tag 'icons/visa.png'
           .cc_icon= image_tag 'icons/discover.png'
           .cc_icon= image_tag 'icons/mastercard.png'
@@ -70,7 +70,7 @@
       
       .form-group.row
         .col-md-4
-          .form_label.text-right Card Expiration
+          .form_label.edit-label Card Expiration
         .col-md-2
           .form-group
             %label Exp Month
@@ -81,7 +81,7 @@
             %input.form-control{placeholder: "YYYY", type: "text", maxlength: "4", name: "exp_year", id: 'exp_year'}
       .form-group.row
         .col-md-4
-          .form_label.text-right People
+          .form_label.edit-label People
         .col-md-2
           %select.form-control.cap_selector
         .col-md-4
@@ -92,7 +92,7 @@
               %em Price Per Person
       .row
         .col-md-4
-          .form_label.text-right Total Cost
+          .form_label.edit-label Total Cost
         .col-md-6
           .col-md-4
             .reservation_cost

@@ -14,22 +14,22 @@
           .panel-body
             .form-group.row
               .col-md-4
-                .form_label.text-right Title *
+                .form_label.edit-label Title *
               .col-md-6
                 %input.form-control.show_ml{type: "text", required: "required", name: "adventure[title]", id: "adv_name", value: "", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Surfing in la punta"}}
             .form-group.row
               .col-md-4
-                .form_label.text-right Location *
+                .form_label.edit-label Location *
               .col-md-6
                 %input.form-control.show_ml{type: "text", required: "required", name: "adventure[location]", id: "adv_location", value: "", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Meeting Address, Ex: 123 Hiking St. Denver, CO 80219"}}
             .form-group.row
               .col-md-4
-                .form_label.text-right Summary *
+                .form_label.edit-label Summary *
               .col-md-6
                 %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", value: "", maxlength: "250", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This is the description for your adventure! Sell it with a detailed & informative summary!"}}
             .form-group.row
               .col-md-4
-                .form_label.text-right Capacity *
+                .form_label.edit-label Capacity *
               .col-md-1
                 %input.form-control{type: "text", required: "required", name: "adventure[cap_min]", id: "adv_cap_min", value: ""}
                 .text-center Min
@@ -38,7 +38,7 @@
                 .text-center Max
             .form-group.row
               .col-md-4
-                .form_label.text-right Duration *
+                .form_label.edit-label Duration *
               .col-md-1
                 %input.form-control{type: "text", required: "required", name: "adventure[duration_num]", id: "adv_duration_num", value: ""}
               .col-md-2
@@ -48,7 +48,7 @@
                   %option Days
             .form-group.row
               .col-md-4
-                .form_label.text-right Price *
+                .form_label.edit-label Price *
               .col-md-2
                 .input-group
                   %span.input-group-addon
@@ -65,7 +65,7 @@
                     Flat Rate
             .form-group.row
               .col-md-4
-                .form_label.text-right Category
+                .form_label.edit-label Category
               .col-md-2
                 %select.form-control{name: "user[category]", id: "adv_category"}
                   %option 
@@ -75,7 +75,7 @@
                   %option Surfing
             .form-group.row
               .col-md-4
-                .form_label.text-right Other Notes
+                .form_label.edit-label Other Notes
               .col-md-6
                 %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", value: "", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "This information will be emailed to the users after they book your adventure"}}
           .panel-footer.text-center

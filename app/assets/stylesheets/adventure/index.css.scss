@@ -450,6 +450,9 @@
   .brick-wrapper .adventure-brick .image-wrapper .copy .title {
     font-size: 16px;
   }
+  .brick-wrapper .adventure-brick .image-wrapper .copy .location {
+    font-size: 13px;
+  }
 }
 
 #filter_nav_mobile_toggle {
@@ -461,7 +464,7 @@
   display: none;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 780px){
 
   .adventure-page-container .adventure-container #adventure-partial {
     margin-top: 0px;

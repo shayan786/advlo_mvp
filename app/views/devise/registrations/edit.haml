@@ -95,7 +95,8 @@
         .col-md-6.text-center
 
           - if check_if_advlo(current_user)
-            .switch_users= switch_user_select
+            .switch_users
+              = switch_user_select
 
           // profile image upload
           %a.btn.btn-default.preview_profile_btn{href: "#{current_user.to_param}", target: "_blank"}
