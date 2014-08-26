@@ -14,6 +14,9 @@ class AdventuresController < ApplicationController
       city = params[:city]
       filter_index('city'.to_sym,city)
       
+    elsif params[:state]
+      state = params[:state]
+      filter_index('state'.to_sym,state)
     else
       @adventures = Adventure.all.approved
       @hero_image = HeroImage.where(region: "all").first
@@ -26,10 +29,12 @@ class AdventuresController < ApplicationController
     get_adventures(type,region)
     get_hero(region)
     @location = region.downcase
-    @filter_location = region
+    if type == :state
+      @filter_location = 'United States'
+    else
+      @filter_location = region
+    end
   end
-
-
 
   def get_adventures(type, location)
     @adventures = Adventure.where(type => location).approved.order('created_at DESC')
@@ -74,11 +79,18 @@ class AdventuresController < ApplicationController
 
   def filter
     region_type = params[:region_type]
+    puts "region_type => #{region_type}"
     location_array = params[:region].gsub('-',' ').split(',')
+    puts "location_array => #{location_array}"
     region_one_up = params[:region_one_up].gsub('-',' ')
+    puts "region_one_up => #{region_one_up}"
     category_param = params[:category].gsub(',',' ').downcase
+    puts "category_param => #{category_param}"
     category_array = category_param.split('-')
+    puts "category_array => #{category_array}"
     sort_by = params[:sort_by]
+    puts "sort_by => #{sort_by}"
+
 
     case region_type
     when "continent"
@@ -116,7 +128,19 @@ class AdventuresController < ApplicationController
           location_sql_string = location_sql_string + " OR city LIKE '%#{loc}%'"
         end
       end
+    when "state"
+      adventures_region = Adventure.approved.where(country: region_one_up)
+
+      location_sql_string = ''
+      location_array.each_with_index do |loc,i|
+        if (i==0)
+          location_sql_string = "city LIKE '%#{loc}%'"
+        elsif (i > 0)
+          location_sql_string = location_sql_string + " OR city LIKE '%#{loc}%'"
+        end
+      end
     else
+
       adventures_region = Adventure.approved.where(city: region_one_up)
     end
 

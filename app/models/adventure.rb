@@ -48,12 +48,13 @@ class Adventure < ActiveRecord::Base
 
   def set_slug
     if self.slug == nil || self.slug == ''
-      self.slug = self.title.downcase.gsub(' ','-').gsub('.','').gsub("'",'').gsub(":",'')
+      self.slug = self.title.downcase.gsub(' ','-').gsub('.','').gsub("'",'').gsub(":",'').gsub(",",'').gsub("/",'')
       if self.slug[-1] == '-'
         self.slug = self.slug[0..-2]
       end
     end
   end
+
 
   def send_approval_email
     if self.approved == true && self.published == true && self.sent_approval_email == false

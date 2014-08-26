@@ -6,18 +6,55 @@
     .container
       .region-container
         .region-wrapper
-          - @regions.each do |r|
-            %a{href: "/adventures?location=#{r[0]}"}
-              .region
-                - if r.region == nil
-                  - r.region = 'default'
-                = link_to (image_tag HeroImage.find(r.region).attachment.url(:hero)), "/adventures?city=#{r.place.gsub(' ','-')}"
-                - adv_count = Adventure.approved.where(city: r.place).count
-                // removed for beta cuz count is sad (#{adv_count})
-                - if r.place.length > 14
-                  .region-text= "#{r[0][0..11]}... #{r.country}"
-                - else 
-                  .region-text= "#{r.place},  #{r.country}"
+          %a{href: '/adventures?country=Costa Rica'}          
+            .region 
+              = image_tag HeroImage.where(region: 'Costa Rica').first.attachment.url(:hero)
+              .region-text
+                Costa Rica
+
+          %a{href: '/adventures?country=Nicaragua'}  
+            .region 
+              = image_tag HeroImage.where(region: 'Nicaragua').first.attachment.url(:hero)
+              .region-text
+                Nicaragua
+
+          %a{href: '/adventures?country=Ecuador'}  
+            .region 
+              = image_tag HeroImage.where(region: 'Ecuador').first.attachment.url(:hero)
+              .region-text
+                Ecuador
+
+          %a{href: '/adventures?state=Colorado'}  
+            .region 
+              = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero)
+              .region-text
+                Colorado
+
+
+          %a{href: '/adventures?state=Washington'}  
+            .region 
+              = image_tag HeroImage.where(region: 'Washington').first.attachment.url(:hero)
+              .region-text
+                Washington
+
+          %a{href: '/adventures?country=United States'}  
+            .region 
+              = image_tag HeroImage.where(region: 'United States').first.attachment.url(:hero)
+              .region-text
+                United States
+
+          / - @regions.each do |r|
+          /   %a{href: "/adventures?location=#{r[0]}"}
+          /     .region
+          /       - if r.region == nil
+          /         - r.region = 'default'
+          /       = link_to (image_tag HeroImage.find(r.region).attachment.url(:hero)), "/adventures?city=#{r.place.gsub(' ','-')}"
+          /       - adv_count = Adventure.approved.where(city: r.place).count
+          /       // removed for beta cuz count is sad (#{adv_count})
+          /       - if r.place.length > 14
+          /         .region-text= "#{r[0][0..11]}... #{r.country}"
+          /       - else 
+          /         .region-text= "#{r.place},  #{r.country}"
 
 
     = render partial: "/adventures/request_modal"

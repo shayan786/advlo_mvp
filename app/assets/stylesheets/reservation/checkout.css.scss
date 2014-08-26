@@ -33,7 +33,7 @@
     margin-top: 10px;
     margin-bottom: 0px;
 
-    .col-md-8 {
+    .ssl-info {
       padding-top: 15px;
     }
 
@@ -48,6 +48,22 @@
       img {
         cursor: default !important;
       }
+    }
+  }
+
+  .accept-tos {
+    position: relative;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 5px;
+
+    a {
+      color: #fff;
+    }
+    &:hover {
+      color: #fff;
+      text-transform: underline;
     }
   }
 
@@ -94,6 +110,7 @@
     #book-button {
       width: 32%;
       margin-top: 15px;
+      margin-bottom: 15px;
     }
 
     #request-book-button {
