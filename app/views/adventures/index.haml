@@ -13,12 +13,12 @@
         Adventures
         %br
         (Click to see country)
-  - else
-    #hero_image_wrapper
-      - if @hero_image
-        #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
-        #hero_image_darken
-      #location_text= @location 
+
+  #hero_image_wrapper
+    - if @hero_image
+      #hero_image{style: "background-image: url('#{@hero_image.attachment.url(:hero)}');"}
+      #hero_image_darken
+    #location_text= @location 
 
   #adventures-content-container
     = render partial: 'filter_nav'
@@ -52,9 +52,8 @@
   :javascript
     if ($(window).width() <= 767) {
       $('#region_map').hide();
-      $('#adventures-content-container').css({
-        paddingTop: '145px'
-      })
+    } else {
+      $('#hero_image_wrapper').remove()
     }
     if ($(window).width() > 767) {
       function initialize() {
@@ -207,9 +206,8 @@
   :javascript
     if ($(window).width() <= 767) {
       $('#region_map').hide();
-      $('#adventures-content-container').css({
-        paddingTop: '145px'
-      })
+    } else {
+      $('#hero_image_wrapper').remove()
     }
 
     $('#legend').hide();
