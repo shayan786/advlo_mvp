@@ -8,6 +8,6 @@
           = @adventure.other_notes
 
       - if @adventure.waiver_id
-        %a{href: Waiver.find(@adventure.waiver_id).file(:original), target: '_blank'}
+        %a.waiver-view-wrapper{href: Waiver.find(@adventure.waiver_id).file(:original), target: '_blank'}
           .glyphicon.glyphicon-download
           .waiver-text View Waiver
