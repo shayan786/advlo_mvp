@@ -43,18 +43,23 @@ class UsersController < ApplicationController
     user = User.find_by_id(params[:user_id])
     @adventure = Adventure.find(session[:adventure_id])
 
-    @waiver = Waiver.create!(title: params[:waiver][:title])
-    @waiver.user_id = user.id
-    @adventure.waiver_id = @waiver.id
-    @adventure.save
-    @waiver.file = params[:waiver][:file]
+    if params[:waiver]['file'].content_type == "application/pdf"
+      @waiver = Waiver.create!(title: params[:waiver][:title])
+      @waiver.user_id = user.id
+      @adventure.waiver_id = @waiver.id
+      @adventure.save
+      @waiver.file = params[:waiver][:file]
 
-    respond_to do |format|
-      if @waiver.save 
-        format.js {render "waiver_upload_success.js", layout: false}
-      else
-        @waiver.destroy
-        format.js {render "waiver_upload_failure.js", layout: false}
+      respond_to do |format|
+        if @waiver.save 
+          format.html {redirect_to :back}
+        end
+      end
+
+    else
+      respond_to do |format|
+        flash[:notice] = 'Not correct file type'
+        format.html {redirect_to :back}
       end
     end
   end

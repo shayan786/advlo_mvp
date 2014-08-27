@@ -1,13 +1,20 @@
 #waiver_update  
   .col-md-6.col-md-offset-3
     .well.how_to.text-center.waiver-on-file
-      The waiver on file is
-      %b="#{Waiver.find(@adventure.waiver_id).title}."
+      Your Waiver is 
+      %b on file. 
+      You may update it below as required.
 
+  .col-md-5.waiver-margin
+    .form_label.edit-label Waiver:
+  .col-md-2.waiver-margin
+    .prefill_label= Waiver.find(@adventure.waiver_id).file_file_name
 
-.row
+  .row
+    .col-md-4.col-md-offset-4.paypal_update_notice.waiver-alert.alert.alert-warning.text-center{style: "display: none;"}
+
   .waiver-btn-row
-    %form{"accept-charset" => "UTF-8", action: '/delete/waiver', method: "POST", id: "delete_wavier", "data-remote" => "true"}
+    %form{"accept-charset" => "UTF-8", action: '/delete/waiver', method: "POST", id: "delete_wavier", 'data-remote' => true}
       = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
       = tag(:input, :type => "hidden", :name => "waiver_id", :value => Waiver.find(@adventure.waiver_id).id)
       %input.btn.btn-danger.waiver-btn{type: 'submit', value: 'DELETE'}
@@ -15,36 +22,16 @@
 
     %input.btn.btn-primary.waiver-btn{type: 'submit', value: 'UPDATE', id: 'update_waiver_toggle'}
 
-.row
-  .col-md-4.col-md-offset-4.paypal_update_notice.waiver-alert.alert.alert-warning.text-center{style: "display: none;"}
+  %form{"accept-charset" => "UTF-8", action: '/upload/waiver', method: "POST", id: "update_waiver", enctype: "multipart/form-data"}
+    = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+    = tag(:input, :type => "hidden", :name => "user_id", :value => current_user.id)
+    = tag(:input, :type => "hidden", :name => "waiver[title]", :value => current_user.email)
+    .form-group.row
 
-%form{"accept-charset" => "UTF-8", action: '/upload/waiver', method: "POST", id: "update_waiver", enctype: "multipart/form-data", 'data-remote' => true}
-  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-  = tag(:input, :type => "hidden", :name => "user_id", :value => current_user.id)
-  .form-group.row
-    .col-md-5
-      .form_label.edit-label Title
-    .col-md-3
-      %input.form-control{type: "text", name: "waiver[title]", id: "waiver_title", placeholder: 'waiver title'}
+      .col-md-5
+        .form_label.edit-label PDF
+      .col-md-3
+        %input.form-control{type: "file", name: "waiver[file]", id: "waiver_file"}
 
-    .col-md-5
-      .form_label.edit-label PDF
-    .col-md-3
-      %input.form-control{type: "file", name: "waiver[file]", id: "waiver_file"}
-
-  .text-center
-    %input.btn.btn-primary.upload-waiver-button.disabled{type: 'submit', value: 'UPDATE'}
-
-:javascript
-  $('#upload-toggle').click(function(){
-    $(this).hide()
-    $('#upload_waiver').show()
-  })
-
-  $('#waiver_file').on('change', function(){
-    if($('#waiver_file').get(0).files.length == 1){
-      $('.upload-waiver-button').removeClass('disabled')
-    }
-  })
-
-  $("#waiver_file").filestyle({input: true, icon: true, buttonText: "UPLOAD WAIVER"});
+    .text-center
+      %input.btn.btn-primary.upload-waiver-button.disabled{type: 'submit', value: 'UPDATE'}

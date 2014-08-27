@@ -1193,6 +1193,37 @@ function summary_readmore() {
   });
 }
 
+function waiverScripts() {
+  $('#upload-toggle').click(function(){
+    $(this).hide()
+    $('#upload_waiver').show()
+  })
+
+  $('#waiver_file').on('change', function(){
+    if($('#waiver_file').get(0).files.length == 1){
+      $('.upload-waiver-button').removeClass('disabled')
+    }
+  })
+
+  $("#waiver_file").filestyle({input: true, icon: true, buttonText: "UPLOAD WAIVER"});
+
+  $('#update_waiver_toggle').click(function(){
+    $(this).hide()
+    $('#update_waiver').show()
+
+    $('.waiver-btn').css('margin-left','35%')
+    $('#delete_wavier').css('text-align','center')
+  })
+
+  $('.agree-to-terms').find('input').click(function(){
+    if( $(this).is(":checked") == true){
+      $('.publish-adventure').removeClass('disabled')
+    } else {
+      $('.publish-adventure').addClass('disabled')
+    }
+  })
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1229,6 +1260,7 @@ adventureIndex = function() {
 }
 
 adventureCreate = function() {
+  waiverScripts()
   validateGeoAutocomplete()
   capMaxValidation();
   advPhotoInput();

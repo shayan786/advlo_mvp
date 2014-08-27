@@ -348,8 +348,13 @@
 			}
 
 			.waiver-alert {
-				margin-bottom: 0px !important;
-				margin-top: 20px !important;
+				margin-bottom: 20px !important;
+				margin-top: -5px !important;
+			}
+
+			.waiver-margin {
+				margin-top: 20px;
+				margin-bottom: 10px;
 			}
 
 			.waiver-on-file{

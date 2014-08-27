@@ -1,21 +1,19 @@
-$('#upload_waiver').hide();
-$('.waiver-btn-row').remove()
-$('.waiver-on-file').remove()
-$('#update_waiver').hide()
+$('#waiver_new').empty()
 $('#waiver_new').append("<%= escape_javascript("#{render partial: '/adventure_steps/new_waiver'}").html_safe %>");
-$('.waiver-alert').html('');
-$('.waiver-alert').html('You have deleted the waiver');
 
-
-$('#update_waiver_toggle').click(function(){
-  $(this).hide()
-  $('#update_waiver').show()
-
-  $('.waiver-btn').css('margin-left','35%')
-  $('#delete_wavier').css('text-align','center')
-})
+$('#waiver_new .waiver-alert').show();
+$('#waiver_new .waiver-alert').html('');
+$('#waiver_new .waiver-alert').html('Succesfully deleted your waiver');
 
 $('#upload-toggle').click(function(){
-  $('#upload_waiver').show()
-  $(this).hide()
+  $(this).hide();
+  $('#upload_waiver').show();
 })
+
+$('#waiver_file').on('change', function(){
+  if($('#waiver_file').get(0).files.length == 1){
+    $('.upload-waiver-button').removeClass('disabled');
+  }
+})
+
+$("#waiver_file").filestyle({input: true, icon: true, buttonText: "UPLOAD WAIVER"});
