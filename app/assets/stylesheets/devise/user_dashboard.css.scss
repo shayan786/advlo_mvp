@@ -239,6 +239,19 @@
 		  	}
 	  	}
 
-
 	}
 }
+
+//IPAD && IPHONE
+@media screen and (max-width: 780px){ 
+	#d_user_dashboard .container .panel .panel-body .user_adv {
+		text-align: center !important;
+	}
+}
+//IPHONE
+@media screen and (max-width: 500px){ 
+	#d_user_dashboard .container .panel .panel-body .user_adv .edit_btn {
+		width: 90%;
+	}
+}
+

@@ -327,6 +327,19 @@
 		text-transform: uppercase;
 		cursor: pointer;
 	}
+
+	#host-mobile {
+		@extend .mobile-item;
+		width: 49%;
+		font-size: 26px;
+
+	}
+
+	#request-mobile {
+		@extend #host-mobile;
+		float: right;
+	}
+
 	.text {
 		margin-top: 5px;
 		position: relative;

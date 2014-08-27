@@ -180,6 +180,27 @@ select {
   }
 }
 
+@media only screen and (max-width: 500px) {
+  #feedback-button {
+    height: 25px;
+    width: 100px;
+    z-index: 999999;
+
+    #text {
+      margin-top: 10px;
+      font-family: 'nexa_light';
+      margin-left: 15px;
+      letter-spacing: 2px;
+      font-size: 0.8em;
+    }
+
+    #text:hover{
+      letter-spacing: 2px;
+      margin-left: 15px;
+    }
+  }
+}
+
 .edit-label {
   text-align: right;
 }
