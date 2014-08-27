@@ -18,8 +18,6 @@ Rails.application.routes.draw do
     post '/users/phone'               => 'users#edit_phone_number'
   end
 
-  #waiver
-
   #contact
   post '/contact'                     => 'application#contact'
 
@@ -60,7 +58,6 @@ Rails.application.routes.draw do
 
   #Stripe Webhooks
   post "/stripe-webhooks"             => 'stripe_hooks#receiver'
-
 
   get 'switch_user' => 'switch_user#set_current_user'
 
