@@ -1186,6 +1186,10 @@ function phone_num_validation() {
   })
 }
 
+function waiverLoad(){
+  $("#waiver_file").filestyle({input: true, icon: true, buttonText: "UPLOAD WAIVER"});
+}
+
 function summary_readmore() {
   $('#overview .default-summary').readmore({
     speed: 75,
@@ -1229,6 +1233,7 @@ adventureIndex = function() {
 }
 
 adventureCreate = function() {
+  waiverLoad();
   validateGeoAutocomplete()
   capMaxValidation();
   advPhotoInput();

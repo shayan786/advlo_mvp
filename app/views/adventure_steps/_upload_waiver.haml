@@ -1,0 +1,6 @@
+#waiver_new
+  - if @adventure.waiver_id
+    = render :partial => 'update_waiver'
+
+  - else
+    = render :partial => 'new_waiver'

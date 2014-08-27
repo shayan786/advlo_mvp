@@ -31,12 +31,44 @@ class UsersController < ApplicationController
 
   def update_profile_img
     @user = User.find_by_id(params[:user_id])
-
     @user.avatar = params[:user][:avatar]
     @user.save
 
     respond_to do |format|
       format.js {render 'update_user_avatar_image.js', layout: false}
+    end
+  end
+
+  def upload_waiver
+    user = User.find_by_id(params[:user_id])
+    @adventure = Adventure.find(session[:adventure_id])
+
+    @waiver = Waiver.create!(title: params[:waiver][:title])
+    @waiver.user_id = user.id
+    @adventure.waiver_id = @waiver.id
+    @adventure.save
+    @waiver.file = params[:waiver][:file]
+
+    respond_to do |format|
+      if @waiver.save 
+        format.js {render "waiver_upload_success.js", layout: false}
+      else
+        @waiver.destroy
+        format.js {render "waiver_upload_failure.js", layout: false}
+      end
+    end
+  end
+
+  def delete_waiver
+    @waiver = Waiver.find(params[:waiver_id])
+    @waiver.destroy
+
+    adventure = Adventure.find(session[:adventure_id])
+    adventure.waiver_id = nil
+    adventure.save
+
+    respond_to do |format|
+      format.js {render "waiver_destroy.js", layout: false}
     end
   end
 
@@ -68,8 +100,6 @@ class UsersController < ApplicationController
         format.js {render "invalid_phone_number.js", layout: false}
       end
     end
-
-
   end
 
 

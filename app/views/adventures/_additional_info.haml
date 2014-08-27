@@ -6,3 +6,8 @@
       .copy-brick
         .brick-copy
           = @adventure.other_notes
+
+      - if @adventure.waiver_id
+        %a{href: Waiver.find(@adventure.waiver_id).file(:original), target: '_blank'}
+          .glyphicon.glyphicon-download
+          .waiver-text View Waiver

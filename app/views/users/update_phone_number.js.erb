@@ -5,6 +5,6 @@ $('#adv_publish #update_phone_number_form #phone_number').val('');
 $('#phone_update .prefill_label').empty();
 $('#phone_update .prefill_label').append('<%= @n_phone_number.phony_formatted(:format => :international, :spaces => '-') %>');
 
-$('#adv_publish .alert').show();
-$('#adv_publish .alert').html('')
-$('#adv_publish .alert').html('Your phone number has been updated')
+$('#adv_publish .phone-alert').show();
+$('#adv_publish .phone-alert').html('')
+$('#adv_publish .phone-alert').html('Your phone number has been updated')

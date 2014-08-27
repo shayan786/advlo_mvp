@@ -4,7 +4,7 @@
       Although not required to publish an adventure, we highly recommend adding a phone number so travelers can contact you after making a reservation.
 
   .row
-    .col-md-4.col-md-offset-4.paypal_update_notice.alert.alert-warning.text-center{style: "display: none;"}
+    .col-md-4.col-md-offset-4.paypal_update_notice.phone-alert.alert.alert-warning.text-center{style: "display: none;"}
 
   %form{"accept-charset" => "UTF-8", action: '/users/phone', method: "POST", id: "new_phone_number_form", "data-remote" => "true"}
     = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)

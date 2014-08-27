@@ -1,0 +1,39 @@
+.col-md-6.col-md-offset-3
+  .well.how_to.text-center.waiver-info
+    If you wish to provide access to a waiver prior to travelers prior to an adventure you can upload one here.
+
+
+.row
+  .col-md-4.col-md-offset-4.paypal_update_notice.waiver-alert.alert.alert-warning.text-center{style: "display: none;"}
+
+%form{"accept-charset" => "UTF-8", action: '/upload/waiver', method: "POST", id: "upload_waiver", enctype: "multipart/form-data", 'data-remote' => true}
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  = tag(:input, :type => "hidden", :name => "user_id", :value => current_user.id)
+  .form-group.row
+    .col-md-5
+      .form_label.edit-label Title
+    .col-md-3
+      %input.form-control{type: "text", name: "waiver[title]", id: "waiver_title", placeholder: 'waiver title'}
+
+    .col-md-5
+      .form_label.edit-label PDF
+    .col-md-3
+      %input.form-control{type: "file", name: "waiver[file]", id: "waiver_file"}
+
+  .text-center
+    %input.btn.btn-primary.disabled.upload-waiver-button{type: 'submit', value: 'UPLOAD'}
+
+.row.text-center
+  %input.btn.btn-primary{type: 'submit', value: 'WAIVER', id: 'upload-toggle'}
+
+:javascript 
+  $('#upload-toggle').click(function(){
+    $(this).hide()
+    $('#upload_waiver').show()
+  })
+
+  $('#waiver_file').on('change', function(){
+    if($('#waiver_file').get(0).files.length == 1){
+      $('.upload-waiver-button').removeClass('disabled')
+    }
+  })

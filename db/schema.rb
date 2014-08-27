@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822211029) do
+ActiveRecord::Schema.define(version: 20140826191357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140822211029) do
     t.string   "video_url"
     t.boolean  "sent_approval_email",     default: false
     t.text     "attachment_meta"
+    t.integer  "waiver_id"
   end
 
   create_table "contact_advlos", force: true do |t|
@@ -273,5 +274,16 @@ ActiveRecord::Schema.define(version: 20140822211029) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "waivers", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
 
 end

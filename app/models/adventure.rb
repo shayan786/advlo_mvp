@@ -13,6 +13,7 @@ class Adventure < ActiveRecord::Base
   has_many :users, through: :user_adventures
   has_many :adventure_gallery_images
   has_many :flags
+  has_one :waiver
 
   accepts_nested_attributes_for :user_adventures, :adventure_gallery_images, :itineraries, :events, :allow_destroy => true
 

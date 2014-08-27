@@ -9,12 +9,16 @@ Rails.application.routes.draw do
     post '/users/contact_traveler'    => 'users#contact_traveler'
     post '/upload/hero_image'         => 'users#hero_image'
     post '/upload/user_avatar_image'  => 'users#update_profile_img'
+    post '/upload/waiver'             => 'users#upload_waiver'
+    post '/delete/waiver'             => 'users#delete_waiver'
     get '/users/dashboard'            => 'registrations#dashboard'
     get '/users/wallet'               => 'registrations#wallet'
     get '/users/payouts'              => 'registrations#payouts'
     get '/users/reservations'         => 'registrations#reservations'
     post '/users/phone'               => 'users#edit_phone_number'
   end
+
+  #waiver
 
   #contact
   post '/contact'                     => 'application#contact'
