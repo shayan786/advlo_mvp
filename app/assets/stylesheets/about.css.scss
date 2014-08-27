@@ -1,0 +1,34 @@
+#about {
+   padding-top: 80px;
+
+  .jumbotron {
+  	
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	background-position: center center;
+  	height: 65vh;
+  	margin-top: -30px;
+  }
+
+  .border {
+  	border: 1px solid $light_gray;
+  }
+
+  .white_background {
+  	background: $lighter_gray;
+  	padding-top: 20px;
+  	padding-bottom: 20px;
+  }
+
+  .mission_statement {
+  	font-size: 1.5em;
+  }
+
+  h3 {
+  	font-family: 'nexa_light';
+  	font-size: 2.2em;
+  	margin-bottom: 20px;
+  }
+
+
+}

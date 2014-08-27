@@ -1,25 +1,54 @@
-#d_user_dashboard
-  .container
-    .panel.panel-default
-      %h3.text-center We started Advlo..
-      .well.text-center
-        Because travel is a luxury that most people of the world never have access to. 
+#about
+  - image = "background/advlo_about.jpg"
+  .jumbotron{:style => "background-image: url(#{image_path image})"}
+      
+  .border
 
-      .well
-        %h4 Jon
-        .pic= image_tag User.where(email:'jemaser@syr.edu').first.get_avatar_url('large')
-        .about-text.text-center
+  .white_background
+    .container
+      %p.text-center.mission_statement
+        This is the location to note down our mission statement and what we are trying to accomplish by releasing this platform to the world. What is our goal and motivation.
+  
+  .border
+
+  .white_background.container-fluid
+    .col-md-4
+      .row.text-center
+        %h3 CHRISTOPHER
+      %p
+        blah blah blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah
+    .col-md-4
+      .row.text-center
+        %h3 JONATHAN
+      %p
+        blah blah blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah
+    .col-md-4
+      .row.text-center
+        %h3 SHAYAN
+      %p
+        blah blah blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah
+
+  / .container
+  /   .panel.panel-default
+  /     %h3.text-center We started Advlo..
+  /     .well.text-center
+  /       Because travel is a luxury that most people of the world never have access to. 
+
+  /     .well
+  /       %h4 Jon
+  /       .pic= image_tag User.where(email:'jemaser@syr.edu').first.get_avatar_url('large')
+  /       .about-text.text-center
           
 
-      .well 
-        %h4.text-right Shayan
-        .pic{style:'float:right;'}= image_tag User.where(email: 'shayan@advlo.com').first.get_avatar_url("large")
-        .about-text.text-center
+  /     .well 
+  /       %h4.text-right Shayan
+  /       .pic{style:'float:right;'}= image_tag User.where(email: 'shayan@advlo.com').first.get_avatar_url("large")
+  /       .about-text.text-center
           
 
 
-      .well
-        %h4 Christopher
-        .pic= image_tag User.where(id: 1).first.get_avatar_url('large')
-        .about-text.text-center
+  /     .well
+  /       %h4 Christopher
+  /       .pic= image_tag User.where(id: 1).first.get_avatar_url('large')
+  /       .about-text.text-center
           
