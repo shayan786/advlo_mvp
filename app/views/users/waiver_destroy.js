@@ -12,7 +12,8 @@ $('#upload-toggle').click(function(){
 
 $('#waiver_file').on('change', function(){
   if($('#waiver_file').get(0).files.length == 1){
-    $('.upload-waiver-button').removeClass('disabled');
+    $('#upload_waiver').submit()
+    $('#update_waiver').submit()
   }
 })
 
