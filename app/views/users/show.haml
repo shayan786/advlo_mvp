@@ -70,13 +70,13 @@
                 SEND MESSAGE
             .box_social.text-center
               - if @user.fb_url && !(@user.fb_url == '')
-                %a.btn.btn-default.social_btn.fb{href: "http://#{@user.fb_url}", target: "_blank", style: "margin-right: 5px;"}
+                %a.btn.btn-default.social_btn.fb{href: "#{@user.fb_url}", target: "_blank", style: "margin-right: 5px;"}
                   %i.fa.fa-facebook
               - if @user.tw_url && !(@user.tw_url == '')
-                %a.btn.btn-default.social_btn.twitter{href: "http://#{@user.tw_url}", target: "_blank", style: "margin-right: 5px;"}
+                %a.btn.btn-default.social_btn.twitter{href: "#{@user.tw_url}", target: "_blank", style: "margin-right: 5px;"}
                   %i.fa.fa-twitter
               - if @user.ta_url && !(@user.ta_url == '')
-                %a.btn.btn-default.social_btn.ta{href: "http://#{@user.ta_url}", target: "_blank"}
+                %a.btn.btn-default.social_btn.ta{href: "#{@user.ta_url}", target: "_blank"}
                   %svg{:viewbox => "-5 10 110 110", :xmlns => "http://www.w3.org/2000/svg"}
                     %circle{:cx => "28.4", :cy => "50.6", :r => "3.4"}
                     %circle{:cx => "70.4", :cy => "50.6", :r => "3.4"}
