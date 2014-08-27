@@ -59,7 +59,6 @@
           CONTACT HOST
 
       - fb_share_url = "#{root_url}adventures/#{@adventure.slug}"
-      - twitter_tweet_url = ""
       .col-md-2.col-md-offset-1.pull-right
         %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "#{@adventure.title}", "data-desc" => "#{@adventure.summary}", "data-image" => "#{@adventure.attachment.url(:medium)}", style: "margin-right: 5px;"}
           %i.fa.fa-facebook

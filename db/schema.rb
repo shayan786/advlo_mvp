@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20140826191357) do
     t.integer  "waiver_id"
   end
 
+  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
+
   create_table "contact_advlos", force: true do |t|
     t.integer  "user_id"
     t.string   "email"
@@ -263,7 +265,7 @@ ActiveRecord::Schema.define(version: 20140826191357) do
     t.string   "short_description"
     t.string   "fb_url"
     t.string   "tw_url"
-    t.string   "li_url"
+    t.string   "ta_url"
     t.string   "stripe_recipient_id"
     t.string   "stripe_customer_id"
     t.string   "rating",                 default: ""
