@@ -238,11 +238,11 @@ function validateGeoAutocomplete(){
 }
 
 function create_header_remove_arrow() {
-  if ($(window).width() > 768) {
+  if ($(window).width() > 780) {
     $('.create_steps_header ul li i').addClass('fa fa-long-arrow-right');
   }
 
-  if ($(window).width() < 768) {
+  if ($(window).width() <= 780) {
     $('.create_steps_header ul').addClass('nav-stacked');
     $('.create_steps_header ul li i').removeClass('fa fa-long-arrow-right');
     $('.create_steps_header .nav').css({
@@ -253,14 +253,14 @@ function create_header_remove_arrow() {
   }
 
   $(window).resize(function() {
-    if ($(window).width() < 768) {
+    if ($(window).width() <= 780) {
       $('.create_steps_header ul li i').removeClass('fa fa-long-arrow-right');
       $('.create_steps_header ul').addClass('nav-stacked');
       $('.create_steps_header .nav').css({
         paddingLeft: "0"
       });
     } 
-    if ($(window).width() > 768) {
+    if ($(window).width() > 780) {
       $('.create_steps_header ul li i').addClass('fa fa-long-arrow-right');
       $('.create_steps_header ul').removeClass('nav-stacked')
       $('.create_steps_header .nav').css({
