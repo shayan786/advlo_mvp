@@ -79,18 +79,11 @@ class AdventuresController < ApplicationController
 
   def filter
     region_type = params[:region_type]
-    puts "region_type => #{region_type}"
     location_array = params[:region].gsub('-',' ').split(',')
-    puts "location_array => #{location_array}"
     region_one_up = params[:region_one_up].gsub('-',' ')
-    puts "region_one_up => #{region_one_up}"
     category_param = params[:category].gsub(',',' ').downcase
-    puts "category_param => #{category_param}"
     category_array = category_param.split('-')
-    puts "category_array => #{category_array}"
     sort_by = params[:sort_by]
-    puts "sort_by => #{sort_by}"
-
 
     case region_type
     when "continent"

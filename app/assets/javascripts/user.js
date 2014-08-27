@@ -164,6 +164,30 @@ function edit_user_form_validator(){
             max: 40
           }
         }
+      },
+      'user[fb_url]': {
+        validators: {
+          regexp: {
+            regexp: /^(http|https):\/\/?(?:www.)?facebook.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[?\w\-]*\/)?(?:profile.php\?id=(?=\d.*))?([\w\-]*)?/i,
+            message: "Must be a valid facebook profile"
+          }
+        }
+      },
+      'user[tw_url]': {
+        validators: {
+          regexp: {
+            regexp: /^(http|https):\/\/?(?:www.)?twitter\.com\/(#!\/)?([^\/ ].)+/,
+            message: "Must be a Valid Twitter profile"
+          }
+        }
+      },
+      'user[ta_url]': {
+        validators: {
+          regexp: {
+            regexp: /^(http|https):\/\/?(?:www.)?tripadvisor\.com\/(#!\/)?([^\/ ].)+/,
+            message: "Must be a Valid TripAdvisor page"
+          }
+        }
       }
     }
   });
