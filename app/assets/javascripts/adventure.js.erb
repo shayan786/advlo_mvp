@@ -1201,6 +1201,8 @@ function waiverScripts() {
 
   $('#waiver_file').on('change', function(){
     if($('#waiver_file').get(0).files.length == 1){
+      $('#loader-overlay').show();
+
       $('#upload_waiver').submit()
       $('#update_waiver').submit()
     }
