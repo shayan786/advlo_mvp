@@ -324,9 +324,20 @@
 			min-height: 350px;
 		}
 
+		.how_to {
+			h3 {
+				font-family: 'nexa_light' !important;
+				margin-top: 0px;
+			}
+		}
+
+		#new_phone_number_form{
+			margin-top: 15px;
+		}
+
 		#update_phone_number_form {
 			display: none;
-			margin-bottom: 20px;
+			margin-top: 15px;
 		}
 
 		.prefill_label {
@@ -338,6 +349,7 @@
 
 			#upload_waiver {
 				display: none;
+				margin-top: 15px;
 			}
 			.waiver-info {
 				margin-top: 20px;
@@ -345,11 +357,6 @@
 
 			#update_waiver {
 				display: none;
-			}
-
-			.waiver-alert {
-				margin-bottom: 20px !important;
-				margin-top: -5px !important;
 			}
 
 			.waiver-margin {
@@ -422,5 +429,9 @@
 	}
 	#adventure_create .panel-footer .preview_btn {
 		font-size: 1.1em !important;
+	}
+
+	#adventure_create #adv_publish .well {
+		text-align: center;
 	}
 }

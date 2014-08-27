@@ -8,3 +8,16 @@ $('#phone_update .prefill_label').append('<%= @n_phone_number.phony_formatted(:f
 $('#adv_publish .phone-alert').show();
 $('#adv_publish .phone-alert').html('')
 $('#adv_publish .phone-alert').html('Your phone number has been updated')
+
+$('#update_phone_number_form .verify_phone_btn').addClass('disabled');
+
+$('#update_phone_number_form #phone_number').on('keyup', function() {
+  var details = $.trim($(this).val());
+
+  if (details.length > 4) {
+    $('#update_phone_number_form .verify_phone_btn').removeClass('disabled');
+  }
+  else if (details.length <= 4) {
+    $('#update_phone_number_form .verify_phone_btn').addClass('disabled');
+  }
+})
