@@ -51,7 +51,8 @@
 - if params[:region].present?
   :javascript
     if ($(window).width() <= 767) {
-      $('#region_map').hide();
+      $('#region_map').remove();
+      $('#legend').remove();
     } else {
       $('#hero_image_wrapper').remove()
     }
@@ -202,11 +203,14 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     }
 
-- else 
+- else
   :javascript
     if ($(window).width() <= 767) {
-      $('#region_map').hide();
-    } else {
+      $('#region_map').remove();
+      $('#legend').remove();
+    } 
+
+    if (#{!params[:country].present?} && #{!params[:city].present?} && #{!params[:state].present?} && $(window).width() > 767) {
       $('#hero_image_wrapper').remove()
     }
 
@@ -317,6 +321,7 @@
 
       google.maps.event.addDomListener(window, 'load', initialize);
     }
+}
 
 
 
