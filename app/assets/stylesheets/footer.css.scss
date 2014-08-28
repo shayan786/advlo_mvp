@@ -5,12 +5,14 @@
 	overflow-y: hidden !important;
 	border-top: 1px solid $light_gray;
 	padding: 15px 0 10px 0;
+	opacity: 0.95;
 
 
 	.container {
 		font-size: 1.2em;
 
 		.footer_text {
+			color: $footer_text_color;
 
 			.col-md-4 {
 				padding-top: 2px;
@@ -19,17 +21,17 @@
 
 			.dash {
 				display: inline;
-				color: #000;
 			}
 
 			a {
 				text-decoration: none;
-				color: $dark_gray;
+				color: $footer_text_color;
 
 				.fa {
 					margin-right: 40px;
 					font-size: 1.6em;
 					opacity: 0.5;
+					color: $footer_text_color;
 
 					&:hover {
 						color: $advlo_orange;
