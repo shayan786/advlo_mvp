@@ -18,7 +18,11 @@ ActiveAdmin.register User do
     column :name
     column :is_guide
     column 'avatar' do |user|
-      image_tag(user.avatar(:thumb))
+      if user.avatar_url
+        image_tag user.avatar_url
+      else
+        image_tag(user.avatar(:thumb))
+      end
     end
     actions
   end

@@ -30,10 +30,14 @@ ActiveAdmin.register Adventure do
       adv.users.first.name if adv.users.first
     end
     column 'Guide pic' do |adv|
-      image_tag adv.users.first.avatar(:thumb) if adv.users.first
+      if adv.users.first.avatar_url
+        image_tag adv.users.first.avatar_url
+      else
+        image_tag(adv.users.first.avatar(:thumb))
+      end
     end
     column 'attachment' do |adv|
-      image_tag(adv.attachment(:thumb))
+      image_tag(adv.attachment(:thumb)) if adv.attachment
     end
     actions
   end
