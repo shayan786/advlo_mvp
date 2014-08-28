@@ -46,8 +46,10 @@ class ApplicationController < ActionController::Base
     # puts "session[:previous_url] => #{session[:previous_url]}"
     if session[:previous_url] == '/users/edit'
       root_url
-    else
+    elsif session[:previous_url]
       session[:previous_url]
+    else
+      root_url
     end
   end
 
