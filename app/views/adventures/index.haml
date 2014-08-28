@@ -6,7 +6,7 @@
   - if !params[:state].present? && !params[:city].present? && !params[:country].present?
     #region_map
     #legend
-      = image_tag 'icons/map_icon.png', class: 'pull-left'
+      = image_tag 'icons/map_icon2.png', class: 'pull-left'
       .legend_text.pull-right.text-center
         Advlo 
         %br
@@ -131,11 +131,13 @@
 
         
         var image = {
-          url: "#{image_path 'icons/map_icon.png'}",
+          url: "#{image_path 'icons/map_icon2.png'}",
           size: new google.maps.Size(50,50),
           origin: new google.maps.Point(0,0),
           anchor: new google.maps.Point(25,25)
         };
+
+        console.log(image)
         
 
         function getMarkerTitle(marker){
