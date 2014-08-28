@@ -85,7 +85,7 @@
 #p_my_adventures
   .container
     .my_adv_header
-      .text-center
+      .text-center.nexa-light
         MY ADVENTURES
         %span.header_sub 
           %span= "( #{@user.adventures.count} )"
@@ -159,7 +159,7 @@
     .row
       .col-md-12
         .bio_header.text-center
-          BIO
+          .nexa-light BIO
         .bio_body.text-center
           %br
           = @user.bio
@@ -169,7 +169,7 @@
     .row
       .col-md-12
         .review_header
-          .text-center
+          .text-center.nexa-light
             REVIEWS
           - if @reviews.count > 0
             .copy-brick.container-fluid#reviews
