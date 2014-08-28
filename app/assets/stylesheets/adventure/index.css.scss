@@ -168,13 +168,17 @@
       }
     }
   }
+
+  .adventure-container {
+    width: 86%;
+  }
 }
 
 
 
 .adventure-container {
   position: relative;
-  width: 86%;
+  width: 94%;
   max-width: 1500px;
   margin: 0 auto;
 }
