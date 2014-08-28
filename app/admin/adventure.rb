@@ -32,7 +32,7 @@ ActiveAdmin.register Adventure do
     column 'Guide pic' do |adv|
       if adv.users.first && adv.users.first.avatar_url
         image_tag adv.users.first.avatar_url
-      else
+      elsif adv.users.first
         image_tag(adv.users.first.avatar(:thumb))
       end
     end
