@@ -9,6 +9,7 @@ $('#success').text('You are going on an adventure!');
 $('#success-detail').text("You will receive an email confirmation shortly with all the adventure details. You can now contact the guide to setup any specific details. Can't wait to hear about your experience");
 
 $('#book-button').hide()
+$('.accept-tos').hide()
 
 
 // If user clicks out of the thankyou modal, refresh the page
