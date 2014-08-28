@@ -482,6 +482,17 @@
   .adventure-page-container .adventure-container #adventure-partial {
     margin-top: 0px;
   }
+
+  .brick-wrapper .adventure-brick .image-wrapper {
+    height: 250px !important;
+    width: 300px !important;
+  }
+
+  .brick-wrapper .adventure-brick {
+    height: 250px !important;
+    width: 300px !important;
+  }
+
   .adventure-page-container #filter_nav  {
     width: 100%;
   }
@@ -544,6 +555,7 @@
     font-size: 20px !important;
   }
   .adventure-container {
+    margin-left: -15px !important;
     width: 100% !important;
   }
 }

@@ -1,5 +1,6 @@
 #p_my_adventures {
 	min-height: 400px;
+	padding-bottom: 40px;
 
 	.my_adv_header {
 		font-family: nexa_bold !important;
@@ -55,8 +56,14 @@
 }
 
 
+@media screen and (max-width: 780px){
+	.adventure-container {
+		width: 87% !important;
+	}
+}
+
 @media screen and (max-width: 500px){
 	#p_my_adventures .my_adv_header {
-		font-size: 2em;
+		font-size: 1.9em;
 	}
 }

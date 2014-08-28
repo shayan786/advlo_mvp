@@ -950,10 +950,6 @@
     width: 80% !important;
   }
 
-  #request_reservation #book-it-wrapper #request-book-button {
-    width: 50%;
-  }
-
   .payment-modal-wrapper {
     width: 80%;
 
@@ -1045,3 +1041,83 @@
     margin-right: 5%;
   }
 }
+
+@media screen and (max-width: 780px) {
+  #reservations-modal .sign-in-form .sign_in_btn{
+    width: 76%;
+  }
+  #reservations-modal .sign-in-form .fb_btn {
+    width: 76%;
+  }
+  #reservations-modal .sign-up-form .sign_up_btn {
+    width: 76%;
+  }
+  #reservations-modal .sign-up-form .fb_btn {
+    width: 76%;
+  }
+
+  #reservations-request-modal .sign-in-form .sign_in_btn{
+    width: 76%;
+  }
+  #reservations-request-modal .sign-in-form .fb_btn {
+    width: 76%;
+  }
+  #reservations-request-modal .sign-up-form .sign_up_btn {
+    width: 76%;
+  }
+  #reservations-request-modal .sign-up-form .fb_btn {
+    width: 76%;
+  }
+
+  #reservations-modal .adventure-login-title {
+    font-size: 26px;
+  }
+
+  #reservations-request-modal .adventure-login-title {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #reservations-modal .sign-in-form .sign_in_btn{
+    font-size: 1.1em;
+  }
+  #reservations-modal .sign-in-form .fb_btn {
+    font-size: 1.1em;
+  }
+  #reservations-modal .sign-up-form .sign_up_btn {
+    font-size: 1.1em;
+  }
+  #reservations-modal .sign-up-form .fb_btn {
+    font-size: 1.1em;
+  }
+
+  #reservations-request-modal .sign-in-form .sign_in_btn{
+    font-size: 1.1em;
+  }
+  #reservations-request-modal .sign-in-form .fb_btn {
+    font-size: 1.1em;
+  }
+  #reservations-request-modal .sign-up-form .sign_up_btn {
+    font-size: 1.1em;
+  }
+  #reservations-request-modal .sign-up-form .fb_btn {
+    font-size: 1.1em;
+  }
+
+  #reservations-modal .modal-content {
+    width: 127%;
+    margin-left: -31px;
+  }
+
+  #reservations-request-modal .modal-content {
+    width: 127%;
+    margin-left: -31px;
+  }
+
+  #reservation #event-info, #request_reservation #event-info {
+    font-size: 19px !important;
+  }
+}
+
+
