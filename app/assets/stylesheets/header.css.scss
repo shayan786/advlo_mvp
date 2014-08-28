@@ -5,6 +5,7 @@
 	opacity: $header_opacity;
 	padding: 4px 0 4px 10px;
 	z-index: 1001;
+	border-bottom: none;
 
 	.navbar-brand {
 		background: asset-url("logos/advlo_header_logo_beta.png");
@@ -26,7 +27,8 @@
 		}
 	}
 
-	a.btn.btn-default {
+	.btn.btn-default {
+		color: $header_text_color;
 		border-color: $header_background_color;
 		background-color: $header_background_color;
 
@@ -148,6 +150,7 @@
 	}
 
 	.user_name {
+		color: $header_text_color;
 		float: right;
 		margin-top: 15px;
 	}

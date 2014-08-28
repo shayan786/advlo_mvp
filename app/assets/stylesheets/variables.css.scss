@@ -101,8 +101,8 @@ $white:			#FFFFFF;
 
 
 //---------------------HEADER VARIALBES--------------------
-$header_background_color:	$lightest_gray !default;
-$header_opacity:			1;
+$header_background_color:	$dark_gray !default;
+$header_opacity:			0.95;
 $header_text_color:			#FFFFFF;
 $header_btn_color:			$advlo_orange !default;
 $header_btn_color_hover: 	$orange !default;
@@ -129,7 +129,9 @@ $adv_slider_background_color:			$dark_gray !default;
 $adv_slider_font_color:					$orange !default;
 
 //---------------------FOOTER VARIABLES---------------------
-$footer_background_color:		#ffffff !default;
+$footer_background_color:		$dark_gray !default;
+$footer_opacity:				0.95;
+$footer_text_color:				#FFF;
 
 
 

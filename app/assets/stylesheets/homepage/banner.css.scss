@@ -56,9 +56,7 @@
 			}
 		  }
 
-  	    .panel {
-        	height: 375px;
-        }
+  	    
 	}
 
 		.panel {
@@ -72,7 +70,7 @@
 				background: transparent;
 				border-bottom: none;
 				color: #FFF;
-				font-size: 3.6em;
+				font-size: 3.0em;
 				font-family: 'nexa_light';
 				margin-bottom: 0;
 				padding-bottom: 0;
@@ -90,15 +88,15 @@
 					background-image: asset-url($find_icon);
 					background-repeat: no-repeat;
 					background-size: contain;
-					height: 140px;
-					width: 140px;
+					height: 100px;
+					width: 100px;
 					margin: 0px auto 20px auto;
 				}
 
 				.host_icon {
 					@extend .find_icon;
-					height: 140px;
-					width: 140px;
+					height: 100px;
+					width: 100px;
 					background-image: asset-url($host_icon);
 				}
 
