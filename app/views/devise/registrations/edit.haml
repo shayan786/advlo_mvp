@@ -44,11 +44,24 @@
                 .form_label.edit-label Sex
               .col-md-3
                 - if current_user.sex
-                  .prefill_input= current_user.sex
+                  %select.form-control{name: "user[sex]", id: "user_sex"}
+                    - if current_user.sex == 'Male'
+                      %option{selected: true} Male
+                      %option Female
+                      %option Couple
+                    - elsif current_user.sex == 'Female'
+                      %option Male
+                      %option{selected: true} Female
+                      %option Couple
+                    - else
+                      %option Male
+                      %option Female
+                      %option{selected: true} Couple
                 - else
                   %select.form-control{name: "user[sex]", id: "user_sex"}
                     %option Male
                     %option Female
+                    %option Couple
             .form-group.row
               .col-md-4
                 .form_label.edit-label Date of Birth
