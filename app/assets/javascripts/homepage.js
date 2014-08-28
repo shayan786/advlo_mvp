@@ -1,6 +1,9 @@
 function homepageTextScroll(){
   if($(window).width() < 769) {
     $('.jumbotron').after($('#how_it_works_panels'));
+    $('#how_it_works_panels .panel').css({
+      marginBottom: '10px'
+    })
   }
 
   $(window).resize(function() {
