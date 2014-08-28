@@ -15,8 +15,6 @@
 //= require jquery_ujs
 //= require jquery.remotipart
 // require jquery.ui.all
-//= require jquery.ui.draggable
-//= require jquery.ui.resizable
 //= require jquery.timepicker.min
 //= require jquery.rotate
 //= require jquery.blueimp-gallery.min
