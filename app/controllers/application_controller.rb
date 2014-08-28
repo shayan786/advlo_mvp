@@ -43,7 +43,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    # puts "session[:previous_url] => #{session[:previous_url]}"
     if session[:previous_url] == '/users/edit'
       root_url
     elsif session[:previous_url]

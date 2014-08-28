@@ -121,6 +121,16 @@ body {
       color: #fff;
     }
   }
+
+  a {
+    color: #fff;
+    opacity: 0.7;
+  }
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+    opacity: 1;
+  }
 }
 
 .alert-info {
