@@ -3,7 +3,7 @@
   .filter-wrapper
     .panel.panel-default
       .panel-heading
-        Sort by:
+        SORT BY:
       .panel-body
         %ul.nav.nav-pills.nav-stacked.sort_by_ul
           %li{id: "price", "data-sort_by"=>"price"}
@@ -14,7 +14,7 @@
       - # SHOW LOCATION FILTER BASED ON INDEX VIEW
       .panel-heading{id: "location_heading"}
         %i.fa.fa-plus-circle
-        Location:
+        LOCATION:
       .panel-body{id: "location_body", style: "display: none"}
         %ul.nav.nav-pills.nav-stacked.location_ul
           - if params[:region].present?
@@ -71,7 +71,7 @@
 
       .panel-heading{id: "cat_heading"}
         %i.fa.fa-plus-circle
-        Category:
+        CATEGORY:
       .panel-body{id: "cat_body", style: "display: none"}
         %ul.nav.nav-pills.nav-stacked.cat_ul
           %li.active{id: "cat_all", "data-category"=>"all"}
