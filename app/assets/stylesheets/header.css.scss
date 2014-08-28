@@ -308,13 +308,14 @@
 }
 
 #mobile-navbar { 
-	background-color: #fff;
+	background-color: $header_background_color;
+	opacity: $header_opacity;
 	padding-top: 15px;
 	display: none;
 
 	a {
 		text-decoration: none;
-		color: #000000;
+		color: $header_text_color;
 	}
 
 	.mobile-item {
@@ -335,7 +336,6 @@
 		@extend .mobile-item;
 		width: 49%;
 		font-size: 26px;
-
 	}
 
 	#request-mobile {
@@ -346,6 +346,7 @@
 	.text {
 		margin-top: 5px;
 		position: relative;
+		color: $header_text_color;
 	}
 	.text:hover {
 		opacity: 0.4;
