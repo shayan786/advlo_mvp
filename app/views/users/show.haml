@@ -104,9 +104,9 @@
 
                     .copy{id: "#{i}"}
                       - if adv.title.length > 38
-                        .title= "#{adv.title[0..36]}..."
+                        .title.profile-page-title= "#{adv.title[0..36]}..."
                       -else
-                        .title= adv.title
+                        .title.profile-page-title= adv.title
 
                       - if adv.location
                         .location= "#{adv.city}, #{adv.state}".upcase
@@ -137,9 +137,9 @@
                           .image-wrapper{style: "background: url(#{adv_img_show}) no-repeat center center;"}
                             .copy{id: "#{i}"}
                               - if adv.title.length > 38
-                                .title= "#{adv.title[0..36]}..."
+                                .title.profile-page-title= "#{adv.title[0..36]}..."
                               -else
-                                .title= adv.title
+                                .title.profile-page-title= adv.title
 
                               - if adv.location
                                 .location= "#{adv.city}, #{adv.state}".upcase
