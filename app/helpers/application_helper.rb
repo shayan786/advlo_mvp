@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def check_if_advlo(user)
-    if user.email == 'chrisknight.mail@gmail.com' || user.email == 'shayan@advlo.com' || user.email == 'jon@advlo.com'
+    if user.email == 'chrisknight.mail@gmail.com' || user.email == 'shayan@advlo.com' || user.email == 'jemaser@syr.edu'
       return true
     else
       return false
