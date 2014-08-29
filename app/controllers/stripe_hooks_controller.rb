@@ -23,6 +23,9 @@ class StripeHooksController < ApplicationController
     tr_message = receiving_data['data']['object']['failure_message']
     tr_last4 = receiving_data['data']['object']['bank_account']['last4']
 
+    puts "*****"
+    puts "BLAHB LAHB LAH!!!"
+
     @payout = Payout.find_by_stripe_transfer_id(tr_id)
 
     #Update payout object depending on response from stripe
