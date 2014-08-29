@@ -5,7 +5,11 @@ class StripeHooksController < ApplicationController
   def receiver 
     receiving_data = JSON.parse request.body.read
 
-    if receiving_data['data']['type'] == 'transfer.failed' || receiving_data['data']['type'] == 'transfer.paid'
+    if receiving_data['data']['type'] == 'transfer.failed'
+      puts '******'
+      puts 'BLAH BLAHB BLAH'
+      update_payout(receiving_data)
+    elsif receiving_data['data']['type'] == 'transfer.paid'
       puts '******'
       puts 'BLAH BLAHB BLAH'
       update_payout(receiving_data)
