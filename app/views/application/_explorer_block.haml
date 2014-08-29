@@ -43,18 +43,18 @@
               .region-text
                 United States
 
-          / - @regions.each do |r|
-          /   %a{href: "/adventures?location=#{r[0]}"}
-          /     .region
-          /       - if r.region == nil
-          /         - r.region = 'default'
-          /       = link_to (image_tag HeroImage.find(r.region).attachment.url(:hero)), "/adventures?city=#{r.place.gsub(' ','-')}"
-          /       - adv_count = Adventure.approved.where(city: r.place).count
-          /       // removed for beta cuz count is sad (#{adv_count})
-          /       - if r.place.length > 14
-          /         .region-text= "#{r[0][0..11]}... #{r.country}"
-          /       - else 
-          /         .region-text= "#{r.place},  #{r.country}"
+          - @regions.each do |r|
+            %a{href: "/adventures?location=#{r[0]}"}
+              .region
+                - if r.region == nil
+                  - r.region = 'default'
+                = link_to (image_tag HeroImage.find(r.region).attachment.url(:hero)), "/adventures?city=#{r.place.gsub(' ','-')}"
+                - adv_count = Adventure.approved.where(city: r.place).count
+                // removed for beta cuz count is sad (#{adv_count})
+                - if r.place.length > 14
+                  .region-text= "#{r[0][0..11]}... #{r.country}"
+                - else 
+                  .region-text= "#{r.place},  #{r.country}"
 
 
     = render partial: "/adventures/request_modal"

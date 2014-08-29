@@ -3,25 +3,15 @@ class StripeHooksController < ApplicationController
 
 
   def receiver 
-    puts "************************* HIT THE RECEIVER *************************"
     receiving_data = JSON.parse request.body.read
-    puts "************************* #{receiving_data} *************************"
-    puts "receiving_data['data'] => #{receiving_data['data']}"
-    puts "receiving_data['data']['type'] => #{receiving_data['data']['type']}"
 
-    puts receiving_data['data']['type']
-
-    if receiving_data['data']['type'] == "transfer.failed"
-      puts '******'
-      puts 'FAILED tranfers !!!'
+    if receiving_data['type'] == "transfer.failed"
       update_payout(receiving_data)
 
       respond_to do |format|
-        format.json {render json: {status: 200, type: "#{receiving_data['data']['type']}"}}
+        format.json {render json: {status: 200, type: "#{receiving_data['type']}"}}
       end 
-    elsif receiving_data['data']['type'] == "transfer.paid"
-      puts '******'
-      puts 'PAID tranfers !!!'
+    elsif receiving_data['type'] == "transfer.paid"
       update_payout(receiving_data)
 
       respond_to do |format|
@@ -34,15 +24,17 @@ class StripeHooksController < ApplicationController
     end
   end
 
-
   def update_payout(receiving_data)
+    # Puts for logs
+    puts '*************************'
+    puts receiving_data
+    puts '*************************'
+
     tr_id = receiving_data['data']['object']['id']
     tr_status = receiving_data['data']['object']['status']
+
     tr_message = receiving_data['data']['object']['failure_message']
     tr_last4 = receiving_data['data']['object']['bank_account']['last4']
-
-    puts "*****"
-    puts "BLAHB LAHB LAH!!!"
 
     @payout = Payout.find_by_stripe_transfer_id(tr_id)
 
