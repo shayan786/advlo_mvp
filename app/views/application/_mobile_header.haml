@@ -4,11 +4,13 @@
   .text Request
 
 .mobile-item#adventures-mobile 
-  .text Adventures
+  .text#scope-toggle Adventures
   #adventures-div
-    - ["North America", "Asia", "Latin America", "Europe", "Africa", "Oceania"].each_with_index do |r, i|
-      %a.mobile-location{href:"/adventures?region=#{r.gsub(' ','-')}"}
-        = "#{r} (#{adv_count(r)})"
+    - adv_regions.each_with_index do |r, i|
+      .mobile-location
+        .region= "#{r}" if  adv_count(r) > 0
+        - get_countries(r).each do |l|
+          .mobile-country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
 
 - if current_user
   .mobile-item
@@ -36,3 +38,26 @@
         Connect with Email
     #sign_up_link
       = link_to "SIGN UP", new_user_registration_path    
+
+
+:javascript
+  $('#mobile-toggle-button').click(function(){
+    $('#mobile-navbar').slideToggle('down')
+  })
+
+  $('#scope-toggle').click(function(){
+    $('#adventures-div').slideToggle('down');
+  })
+
+  $('#login-mobile').click(function(){
+    $('#mobile-login-form').slideToggle('slow');
+    $('#adventures-div').slideUp()
+  })
+
+  $('.mobile-location').click(function(){
+    $('.mobile-location').find('.region').css('text-decoration','none')
+    $(this).find('.region').css('text-decoration','underline')
+    $('.mobile-country').hide()
+    $('#adventures-div').show()
+    $(this).children('.mobile-country').toggle()
+  })

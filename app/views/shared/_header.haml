@@ -53,17 +53,3 @@
         - else
           = render partial: 'logged_out_dropdown'
 
-
-:javascript
-  $('#mobile-toggle-button').click(function(){
-    $('#mobile-navbar').slideToggle('down')
-  })
-
-  $('#adventures-mobile').click(function(){
-    $('#adventures-div').slideToggle('down');
-  })
-
-  $('#login-mobile').click(function(){
-    $('#mobile-login-form').slideToggle('slow');
-    $('#adventures-div').slideUp()
-  })
