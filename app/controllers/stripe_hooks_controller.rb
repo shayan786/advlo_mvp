@@ -9,8 +9,6 @@ class StripeHooksController < ApplicationController
     puts "receiving_data['data'] => #{receiving_data['data']}"
     puts "receiving_data['data']['type'] => #{receiving_data['data']['type']}"
 
-    puts receiving_data['data']['type']
-
     if receiving_data['type'] == "transfer.failed"
       puts '******'
       puts 'FAILED tranfers !!!'
@@ -38,6 +36,10 @@ class StripeHooksController < ApplicationController
   def update_payout(receiving_data)
     tr_id = receiving_data['data']['object']['id']
     tr_status = receiving_data['data']['object']['status']
+
+    puts '******'
+    puts tr_status
+
     tr_message = receiving_data['data']['object']['failure_message']
     tr_last4 = receiving_data['data']['object']['bank_account']['last4']
 
