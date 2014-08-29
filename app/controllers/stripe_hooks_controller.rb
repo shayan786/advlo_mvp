@@ -6,6 +6,8 @@ class StripeHooksController < ApplicationController
     receiving_data = JSON.parse request.body.read
 
     if receiving_data['data']['type'] == 'transfer.failed' || receiving_data['data']['type'] == 'transfer.paid'
+      puts '******'
+      puts 'BLAH BLAHB BLAH'
       update_payout(receiving_data)
     end
     
@@ -15,13 +17,14 @@ class StripeHooksController < ApplicationController
   end
 
 
-  private
-
   def update_payout(receiving_data)
     tr_id = receiving_data['data']['object']['id']
     tr_status = receiving_data['data']['object']['status']
     tr_message = receiving_data['data']['object']['failure_message']
     tr_last4 = receiving_data['data']['object']['bank_account']['last4']
+
+    puts "*****"
+    puts "BLAHB LAHB LAH!!!"
 
     @payout = Payout.find_by_stripe_transfer_id(tr_id)
 
