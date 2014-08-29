@@ -434,4 +434,12 @@
 	#adventure_create #adv_publish .well {
 		text-align: center;
 	}
+
+	#adventure_create #adv_payment #existing-paypal {
+		text-align: center;
+
+		.edit-label {
+			text-align: center !important;
+		}
+	}
 }
