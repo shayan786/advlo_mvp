@@ -1,8 +1,7 @@
 = render partial: 'info_seo_tags'
 
 #adventure_request
-  - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/hot_air_request.jpg"
-  .jumbotron{:style => "background-image: url(#{image_path image})"}
+  .jumbotron{:style => "background-image: url(#{image_path 'background/air.png'})"}
     .container
       .row.text-center
         .col-md-8.request_info_text.col-md-offset-2
@@ -15,12 +14,10 @@
         %h2
           REQUEST GUIDLINES
         .body_content
-          In order for us to find a suitable host, tell us more about your customized adventure. 
           %br
+          We will contact our network of local hosts who have the skills that fit your trip specifications.
           %br
-          By filling out the below form, we will try our best to find a local host to lead you on your trip. 
-          %br
-          If we are unable to find someone in your budget or region, we will let you know via email.
+          If you have an idea of what the perfect Adventure Local trip should be...
 
     .gray_background
       .container

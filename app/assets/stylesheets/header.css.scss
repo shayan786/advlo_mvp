@@ -312,6 +312,9 @@
 	opacity: $header_opacity;
 	padding-top: 15px;
 	display: none;
+	position: relative;
+	float: left;
+	width: 100%;
 
 	a {
 		text-decoration: none;
@@ -330,6 +333,29 @@
 		font-family: 'nexa_light';
 		text-transform: uppercase;
 		cursor: pointer;
+		background: #fff;
+
+		.text {
+			margin-top: 5px;
+			position: relative;
+			color: #000;
+		}
+		.text:hover {
+			opacity: 0.5;
+		}
+
+		.mobile-location {
+			width: 100%;
+			position: relative;
+			float: left;
+			text-align: center;
+			font-size: 20px;
+			font-family: 'nexa_light';
+			color: #000;
+		}
+		.mobile-location:hover {
+			opacity: 0.6;
+		}
 	}
 
 	#host-mobile {
@@ -343,14 +369,7 @@
 		float: right;
 	}
 
-	.text {
-		margin-top: 5px;
-		position: relative;
-		color: $header_text_color;
-	}
-	.text:hover {
-		opacity: 0.4;
-	}
+	
 
 	#adventures-div {
 		display: none;
@@ -359,19 +378,7 @@
 		float: left;
 		margin-bottom: 20px;
 	}
-	.mobile-location {
-		width: 100%;
-		position: relative;
-		float: left;
-		text-align: center;
-		font-size: 20px;
-		font-family: 'nexa_light';
-	}
-	.mobile-location:hover {
-		opacity: 0.6;
-
-	}
-
+	
 	#sign_up_link {
 		margin-top: 10px;
 	}

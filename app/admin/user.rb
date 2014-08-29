@@ -20,8 +20,9 @@ ActiveAdmin.register User do
     column 'avatar' do |user|
       if user.avatar_url
         image_tag user.avatar_url
-      else
+      elsif user.avatar
         image_tag(user.avatar(:thumb))
+        -fail
       end
     end
     actions
