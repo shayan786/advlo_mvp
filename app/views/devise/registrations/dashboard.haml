@@ -16,7 +16,7 @@
         - else
           - current_user.adventures.each_with_index do |adv, i|
             .user_adv{id: "adventure-number-#{i}"}
-              .container
+              .container-fluid
                 .col-md-4.col-md-offset-1
                   .adv_img{style: "background: url('#{adv.attachment.url(:medium)}')"}
                   - if !adv.published
@@ -31,6 +31,7 @@
                     .col-md-offset-4
                       .btn.btn-default.disabled
                         Active Adventure
+                .col-md-1
                 .col-md-6
                   .adv_title
                     = adv.title
@@ -49,7 +50,7 @@
                       - else
                         .adv_price= "$"+adv.price.to_s + " " + "per group"
 
-                  .row.container
+                  .row
                     %a.btn.btn-default.edit_btn{href: "/adventures/#{adv.slug}"}
                       %i.fa.fa-eye
                       VIEW
