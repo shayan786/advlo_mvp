@@ -9,15 +9,23 @@ class StripeHooksController < ApplicationController
       puts '******'
       puts 'BLAH BLAHB BLAH'
       update_payout(receiving_data)
+
+      respond_to do |format|
+        format.json {render json: {status: 200}}
+      end 
     elsif receiving_data['data']['type'] == 'transfer.paid'
       puts '******'
       puts 'BLAH BLAHB BLAH'
       update_payout(receiving_data)
+
+      respond_to do |format|
+        format.json {render json: {status: 200}}
+      end 
+    else
+      respond_to do |format|
+        format.json {render json: {status: 200}}
+      end 
     end
-    
-    respond_to do |format|
-      format.json {render json: {status: 200}}
-    end 
   end
 
 
