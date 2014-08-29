@@ -22,7 +22,6 @@ ActiveAdmin.register User do
         image_tag user.avatar_url
       elsif user.avatar
         image_tag(user.avatar(:thumb))
-        -fail
       end
     end
     actions
