@@ -1,63 +1,65 @@
 .meta_tags
   = set_meta_tags(default_meta_tags)
 
-#cancellation_refunds.tab-pane.active
-  .col-md-12.container
+#cancellation_refunds.tab-pane
+  .container-fluid
     %h2 CANCELLATIONS & REFUNDS
     %b Last Updated: August 15, 2014
     %br
+    %br
 
-    %table.table.refund_table.table
-      %tr
-        %th
-        %th Scenario
-        %th HOST
-        %th TRAVELER
-      %tr
-        %th HOST
-        %td.v_middle
-          .row
-            Cancels for any reason inluding:
-          %li Emergency
-          %li Personal
-          %li Travel Issues
-          %li Weather
-          %li Over-booked
-          %li Other
-        %td.v_middle.text-center
-          NO PAYMENT
-        %td.v_middle.text-center
-          FULL REFUND INCLUDING SERVICE FEE
-      %tr
-        %th TRAVELER
-        %td.v_middle
-          .row
-            Cancels for any reason inluding:
-          %li Emergency
-          %li Personal
-          %li Travel Issues
-          %li Weather
-          %li Other
-        %td.v_middle.text-center
-          .row
-            %b > 48 hours
-          .row
+    .table-responsive
+      %table.table.refund_table.table
+        %tr
+          %th
+          %th Scenario
+          %th HOST
+          %th TRAVELER
+        %tr
+          %th HOST
+          %td.v_middle
+            .row
+              Cancels for any reason inluding:
+            %li Emergency
+            %li Personal
+            %li Travel Issues
+            %li Weather
+            %li Over-booked
+            %li Other
+          %td.v_middle.text-center
             NO PAYMENT
-          %br
-          .row
-            %b < 48 hours
-          .row
-            FULL PAYMENT
-        %td.v_middle.text-center
-          .row
-            %b > 48 hours
-          .row
-            FULL REFUND MINUS 4% SERVICE FEE
-          %br
-          .row
-            %b < 48 hours
-          .row
-            NO REFUND
+          %td.v_middle.text-center
+            FULL REFUND INCLUDING SERVICE FEE
+        %tr
+          %th TRAVELER
+          %td.v_middle
+            .row
+              Cancels for any reason inluding:
+            %li Emergency
+            %li Personal
+            %li Travel Issues
+            %li Weather
+            %li Other
+          %td.v_middle.text-center
+            .row
+              %b > 48 hours
+            .row
+              NO PAYMENT
+            %br
+            .row
+              %b < 48 hours
+            .row
+              FULL PAYMENT
+          %td.v_middle.text-center
+            .row
+              %b > 48 hours
+            .row
+              FULL REFUND MINUS 4% SERVICE FEE
+            %br
+            .row
+              %b < 48 hours
+            .row
+              NO REFUND
 
     %ul
       %li

@@ -11,39 +11,38 @@
         %th $ Total Paid
         %th.text-center Actions
     %tbody
+      - reservations.each_with_index do |res, i|
+        - # Add logic for sorting them by timeslot
+        %tr
+          %td.text-left= link_to res.adventure.users.first.get_abbreviated_name, "/users/#{res.adventure.users.first.to_param}", target: '_blank'
+          %td.text-left= link_to res.adventure.title, "/adventures/#{res.adventure.slug}", target: '_blank'
+          %td.text-left= res.event_start_time.strftime("%m/%d/%Y - %l:%M %P")
+          %td.text-center
+            - if res.cancelled == true
+              .btn.btn-danger.disabled
+                Cancelled
+            - elsif res.requested == true && !res.stripe_charge_id
+              .btn.btn-warning.disabled
+                Request - Pending
+            - elsif res.requested == true && res.stripe_charge_id
+              .btn.btn-info.disabled
+                Request - Approved
+            - else
+              .btn.btn-success.disabled
+                Instant Reservation
+          %td.text-center= res.head_count
+          %td.text-left= "$ #{sprintf('%.2f', res.total_price)}"
 
-    - reservations.each_with_index do |res, i|
-      - # Add logic for sorting them by timeslot
-      %tr
-        %td.text-left= link_to res.adventure.users.first.get_abbreviated_name, "/users/#{res.adventure.users.first.to_param}", target: '_blank'
-        %td.text-left= link_to res.adventure.title, "/adventures/#{res.adventure.slug}", target: '_blank'
-        %td.text-left= res.event_start_time.strftime("%m/%d/%Y - %l:%M %P")
-        %td.text-center
-          - if res.cancelled == true
-            .btn.btn-danger.disabled
-              Cancelled
-          - elsif res.requested == true && !res.stripe_charge_id
-            .btn.btn-warning.disabled
-              Request - Pending
-          - elsif res.requested == true && res.stripe_charge_id
-            .btn.btn-info.disabled
-              Request - Approved
-          - else
-            .btn.btn-success.disabled
-              Instant Reservation
-        %td.text-center= res.head_count
-        %td.text-left= "$ #{sprintf('%.2f', res.total_price)}"
+          = render partial: "bookings_actions", locals: {res: res, reservation_type: reservation_type}
 
-        = render partial: "bookings_actions", locals: {res: res, reservation_type: reservation_type}
-
-      - host = User.find_by_id(res.host_id)
-      = render partial: "users/contact_host_modal", locals: {res: res, user: host}
-      
-      - review = Review.where("adventure_id = '#{res.adventure_id}' AND user_id = '#{res.user_id}'").first
-      - if review
-        = render partial: "adventure_review_modal", locals: {host: host, type: "update", res: res, review: review}
-      - else
-        = render partial: "adventure_review_modal", locals: {host: host, type: "new",  res: res}
+        - host = User.find_by_id(res.host_id)
+        = render partial: "users/contact_host_modal", locals: {res: res, user: host}
+        
+        - review = Review.where("adventure_id = '#{res.adventure_id}' AND user_id = '#{res.user_id}'").first
+        - if review
+          = render partial: "adventure_review_modal", locals: {host: host, type: "update", res: res, review: review}
+        - else
+          = render partial: "adventure_review_modal", locals: {host: host, type: "new",  res: res}
    
     %thead
       %tr

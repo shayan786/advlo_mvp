@@ -1,4 +1,4 @@
-.table-responsive
+.table-responsive.reservation_table_overflow
   %h3.text-left= reservation_type
   %table.table.table-hover
     %thead
@@ -12,35 +12,35 @@
         %th $ Earned
         %th Actions
     %tbody
-    - reservations.each_with_index do |res, i|
-      - host = res.adventure.users.first
-      - customer = User.find_by_id(res.user_id)
-      %tr
-        %td.text-left
-          %a{href: "/adventures/#{res.adventure.slug}"}
-            = res.adventure.title[0..12] + "..."
-        %td.text-left
-          = image_tag "#{customer.get_avatar_url("thumb")}", class: "img-circle customer_img pull-left"
-          .pull-left{style: "padding-top: 5px; margin-left: 10px;"}= customer.get_name_and_email.html_safe
-        %td.text-left= res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
-        %td.text-center= res.head_count
-        %td.text-center
-          - # If reservation is cancelled or requested show button to approve or not
-          - if res.requested == true && !res.stripe_charge_id
-            .btn.btn-danger.disabled 
-              Request - ACTION REQ >>
-          - elsif res.requested == true && res.stripe_charge_id
-            .btn.btn-info.disabled
-              Request - Approved
-          - else
-            .btn.btn-success.disabled
-              Instant Reservation
-        %td= "$ #{sprintf('%.2f',res.host_fee)}"
-        %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.user_fee-res.host_fee)}"
+      - reservations.each_with_index do |res, i|
+        - host = res.adventure.users.first
+        - customer = User.find_by_id(res.user_id)
+        %tr
+          %td.text-left
+            %a{href: "/adventures/#{res.adventure.slug}"}
+              = res.adventure.title[0..12] + "..."
+          %td.text-left
+            = image_tag "#{customer.get_avatar_url("thumb")}", class: "img-circle customer_img pull-left"
+            .pull-left{style: "padding-top: 5px; margin-left: 10px;"}= customer.get_name_and_email.html_safe
+          %td.text-left= res.event_start_time.strftime("%A - %m/%d/%Y - %l:%M %P")
+          %td.text-center= res.head_count
+          %td.text-center
+            - # If reservation is cancelled or requested show button to approve or not
+            - if res.requested == true && !res.stripe_charge_id
+              .btn.btn-danger.disabled 
+                Request - ACTION REQ >>
+            - elsif res.requested == true && res.stripe_charge_id
+              .btn.btn-info.disabled
+                Request - Approved
+            - else
+              .btn.btn-success.disabled
+                Instant Reservation
+          %td= "$ #{sprintf('%.2f',res.host_fee)}"
+          %td.text-left= "$ #{sprintf('%.2f', res.total_price-res.user_fee-res.host_fee)}"
 
-        = render partial: "reservations_actions", locals: {res: res, reservation_type: reservation_type}
+          = render partial: "reservations_actions", locals: {res: res, reservation_type: reservation_type}
 
-        = render partial: "contact_traveler_modal", locals: {res: res}
+          = render partial: "contact_traveler_modal", locals: {res: res}
 
     %thead
       %tr
