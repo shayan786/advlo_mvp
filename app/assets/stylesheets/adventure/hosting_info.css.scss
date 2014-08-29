@@ -1,8 +1,9 @@
 #adventure_info {
+  position: relative;
   padding-top: 80px;
 
   .jumbotron {
-  	
+    min-height: 450px;
   	background-repeat: no-repeat;
   	background-size: cover;
   	background-position: center center;
@@ -91,6 +92,17 @@
         font-size: 2.6em;
       }
   	}
+  }
+}
+
+@media screen and (max-width: 800px){
+
+  .matrix_content {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px !important;
+    margin-bottom: 40px !important;
+    min-height: 0px !important;
   }
 }
 

@@ -240,7 +240,7 @@ module ApplicationHelper
   end
 
   def adv_regions
-    return ["North America", "Europe", "Latin America", "Asia", "Africa", "Oceania"]
+    return ["North America", "Latin America", "Asia", "Africa", "Oceania", "Europe"]
   end
 
   def host_cancellation_reasons 

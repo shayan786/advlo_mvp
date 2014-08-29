@@ -1,19 +1,20 @@
 #adventure_request {
+  position: relative;
   padding-top: 80px;
 
   .jumbotron {
-  	
+  	min-height: 450px;
   	background-repeat: no-repeat;
   	background-size: cover;
-  	background-position: center center;
-    min-height: 500px;
-    margin-top: -22px;
+  	background-position: right;
+  	margin-top: -30px;
+
 
   	.request_info_text {
+      margin-top: 10%;
       text-shadow: -1px -1px 5px #000;
-      margin-top: 15%;
-      font-size: 2.8em;
-      color: #FFF;
+  		font-size: 2.8em;
+  		color: #FFF;
   	}
   }
 
@@ -96,11 +97,28 @@
   }
 }
 
+@media screen and (max-width: 800px){
+  #adventure_request .jumbotron .request_info_text {
+    margin-top: 13%;
+  }
+
+  #adventure_request .adventure_info_body .body_content {
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+} 
+
 @media screen and (max-width: 675px){
 	#adventure_request {
 	  .request_info_text {
-	  		font-size: 2.2em !important;
+      font-size: 2em !important; 
 	  }
+
+    .adventure_info_body .body_content {
+      width: 90%;
+      margin: 0 auto;
+    }
 	}
 
   #adventure_info {
@@ -108,8 +126,8 @@
       margin-left: -17px;
     }
   }
-
   #adventure_request .jumbotron .request_info_text {
-    font-size: 1.5em !important;
+    margin-top: 35%;
   }
 }
+

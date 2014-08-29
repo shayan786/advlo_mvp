@@ -184,7 +184,7 @@ function edit_user_form_validator(){
       'user[ta_url]': {
         validators: {
           regexp: {
-            regexp: /^(http|https):\/\/?(?:www.)?tripadvisor\.com\/(#!\/)?([^\/ ].)+/,
+            regexp: /^(http|https):\/\/?(?:www.)?tripadvisor./,
             message: "Must be a Valid TripAdvisor page"
           }
         }

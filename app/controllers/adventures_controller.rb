@@ -73,7 +73,7 @@ class AdventuresController < ApplicationController
 
     cats = @adventure.category.split(',')
     count = 0
-    if cats.length > 1 && count < 2
+    if cats.length > 1 && count < 1
       cats.each do |cat|
         count += 1
         related << Adventure.approved.where('category LIKE ?',"%#{cat}%").first
@@ -83,7 +83,8 @@ class AdventuresController < ApplicationController
     end
     related << @adventure.nearbys(20).limit(2) if @adventure.nearbys(20)
     related = related.flatten.uniq
-    @related = related - [@adventure]
+    related = related - [@adventure]
+    @related = related.take(4)
     @reservation = Reservation.new
   end
 
