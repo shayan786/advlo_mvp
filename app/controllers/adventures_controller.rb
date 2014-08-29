@@ -132,7 +132,11 @@ class AdventuresController < ApplicationController
         end
       end
     when "state"
-      adventures_region = Adventure.approved.where(country: region_one_up)
+      if params[:state].present?
+        adventures_region = Adventure.approved.where(country: region_one_up).where(state: params[:state])
+      else
+        adventures_region = Adventure.approved.where(country: region_one_up)
+      end
 
       location_sql_string = ''
       location_array.each_with_index do |loc,i|

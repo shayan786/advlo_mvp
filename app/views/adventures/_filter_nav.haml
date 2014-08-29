@@ -170,7 +170,7 @@
     location_array = $.makeArray(location_array);
 
     // Check to see if there are no categories selected
-    if (location_array.length > 0) {
+    if (location_array.length > 0 && location_array[0] != "") {
       //Loop through the array and convert to string for request
       for (var i in location_array){
         if (i==0) {
@@ -273,7 +273,7 @@
     location_array = $.makeArray(location_array);
 
     // Check to see if there are no categories selected
-    if (location_array.length > 0) {
+    if (location_array.length > 0 && location_array[0] != "") {
       //Loop through the array and convert to string for request
       for (var i in location_array){
         if (i==0) {
@@ -340,7 +340,6 @@
   $('#filter_nav ul.location_ul li').click(function(e) {
     //First check if all is clicked
     if($(this).attr('id')=="location_all") {
-      console.log($(this).attr('id'))
       //Clear all actives
       $('#filter_nav ul.location_ul li').removeClass('active');
       //Clear all check icons
@@ -423,8 +422,7 @@
     // Convert to js array
     location_array = $.makeArray(location_array);
 
-    // Check to see if there are no categories selected
-    if (location_array.length > 0) {
+    if (location_array.length > 0 && location_array[0] != "") {
       //Loop through the array and convert to string for request
       for (var i in location_array){
         if (i==0) {
@@ -437,24 +435,48 @@
     }
     else {
       region = "all";
+      if (#{params[:state].present?}) {
+        var state = "#{params[:state]}"
+      }
     }
 
 
     e.preventDefault();
-    $.ajax({
-      url: "/adventures/filter",
-      dataType: "script",
-      data: {
-        region_one_up: region_one_up,
-        region_type: region_type,
-        region: region,
-        category: categories,
-        sort_by: sort_by
-      },
-      type: "GET",
-      beforeSend: function() {
-      }
-    });
+
+    if (state) {
+      $.ajax({
+        url: "/adventures/filter",
+        dataType: "script",
+        data: {
+          region_one_up: region_one_up,
+          region_type: region_type,
+          region: region,
+          state: state,
+          category: categories,
+          sort_by: sort_by
+        },
+        type: "GET",
+        beforeSend: function() {
+        }
+      });
+    }
+    else {
+      $.ajax({
+        url: "/adventures/filter",
+        dataType: "script",
+        data: {
+          region_one_up: region_one_up,
+          region_type: region_type,
+          region: region,
+          category: categories,
+          sort_by: sort_by
+        },
+        type: "GET",
+        beforeSend: function() {
+        }
+      });
+    }
+
   });
 
 
