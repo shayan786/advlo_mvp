@@ -42,7 +42,6 @@ class Adventure < ActiveRecord::Base
     else
       city = results.first.city
     end
-    
     if geo = results.first
       obj.city    = city
       obj.state   = geo.state
