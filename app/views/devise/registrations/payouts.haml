@@ -43,20 +43,22 @@
                         %tbody
                         %tr
                           %td.text-left= payout.created_at.strftime("%A - %D")
-                          %td.text-left= "#{payout.payout_via.capitalize} - #{payout.status}"
-                          %td.text-left
-                            - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
-                              %span= r.adventure.title
-                              %br
-                          %td.text-left
-                            - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
-                              %span= "$ #{sprintf('%.2f',r.host_fee)}"
-                              %br
-                          %td.text-left
-                            - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
-                              - revenue = r.total_price - r.host_fee - r.user_fee
-                              %span= "#{r.head_count} people / "+ "$ #{sprintf('%.2f',revenue)}"
-                              %br
+                          - method = payout.payout_via.capitalize
+                          - if method == "Stripe" then method = 'Bank'
+                            %td.text-left= "#{method} - #{payout.status}"
+                            %td.text-left
+                              - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
+                                %span= r.adventure.title
+                                %br
+                            %td.text-left
+                              - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
+                                %span= "$ #{sprintf('%.2f',r.host_fee)}"
+                                %br
+                            %td.text-left
+                              - Reservation.where(cancelled: false).where(host_id: payout.user_id).each do |r|
+                                - revenue = r.total_price - r.host_fee - r.user_fee
+                                %span= "#{r.head_count} people / "+ "$ #{sprintf('%.2f',revenue)}"
+                                %br
 
                         %thead
                           %tr
