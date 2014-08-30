@@ -4,7 +4,11 @@ class Adventure < ActiveRecord::Base
   
   after_update :send_approval_email
 
-  scope :approved, -> { where(approved: true) }
+  # scope :approved, -> { where(approved: true) }
+
+  def self.approved
+    where(published: true).where(approved: true)
+  end
 
   has_many :user_adventures
   has_many :itineraries
@@ -38,7 +42,6 @@ class Adventure < ActiveRecord::Base
     else
       city = results.first.city
     end
-    
     if geo = results.first
       obj.city    = city
       obj.state   = geo.state
