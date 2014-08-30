@@ -171,6 +171,14 @@
         padding-top: 15px;
         padding-bottom: 20px;
 
+        .contact-row {
+          position: relative;
+          width: 200px;
+          text-align: center;
+          float: right;
+          top: 18px;
+        }
+
         .panel {
           width: 77%;
           background: rgba(0,0,0,0.5);
@@ -243,6 +251,7 @@
           }
         }
 
+
         .default-title {
           color: $gray;
           font-family: 'nexa_light';
@@ -253,7 +262,8 @@
           font-family: 'nexa_light';
           font-size: 0.6em;
           line-height: 1.3em;
-          margin-top: 5px;
+          margin-top: 15px;
+          margin-bottom: 15px;
           font-weight: bold;
         }
 
@@ -943,6 +953,11 @@
 
 @media screen and (max-width: 991px){
 
+  .default-summary {
+    width: 90% !important;
+  }
+
+
   .datepicker {
     left: 21px !important;
   }
@@ -1080,6 +1095,10 @@
 }
 
 @media screen and (max-width: 500px) {
+
+  .default-summary {
+    width: 100%;
+  }
   #reservations-modal .sign-in-form .sign_in_btn{
     font-size: 1.1em;
   }
