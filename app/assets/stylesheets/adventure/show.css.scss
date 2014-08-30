@@ -127,19 +127,23 @@
   #book-it {
     cursor: pointer;
     width: 80%;
-    max-width: 300px;
+    max-width: 200px;
     margin: 0 auto;
-    padding-top: 10px;
-    padding-bottom: 5px;
     margin-top: 5px;
+    background-color: rgba(92,184,92,0.5);
+
     span {
       color: #fff;
-      font-size: 25px;
+      font-size: 34px;
       position: relative;
-      top: -1px;
+      top: 2px;
       margin-right: 10px;
+      font-family: 'bebas_neue';
       margin-left: 10px;
     }
+  }
+  #book-it:hover {
+    background-color: rgba(92,184,92,1);
   }
 
   #adventure-title-mobile {
@@ -173,7 +177,7 @@
 
         .contact-row {
           position: relative;
-          width: 200px;
+          width: 300px;
           text-align: center;
           float: right;
           top: 18px;
@@ -200,8 +204,7 @@
           font-size: 0.6em;
           padding: 10px 20px;
           margin-bottom: 15px;
-
-          background-color: $login_btn_color;
+          background-color: rgba(229,107,45, 0.5);
           border-color: $login_btn_color;
 
           .fa {
@@ -498,6 +501,7 @@
             color: $advlo_green;
             font-family: 'nexa_light';
             margin-top: -10px;
+            font-family: 'bebas_neue';
           }
         }
       }
