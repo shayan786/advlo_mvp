@@ -127,19 +127,23 @@
   #book-it {
     cursor: pointer;
     width: 80%;
-    max-width: 300px;
+    max-width: 200px;
     margin: 0 auto;
-    padding-top: 10px;
-    padding-bottom: 5px;
     margin-top: 5px;
+    background-color: rgba(92,184,92,0.5);
+
     span {
       color: #fff;
-      font-size: 25px;
+      font-size: 34px;
       position: relative;
-      top: -1px;
+      top: 2px;
       margin-right: 10px;
+      font-family: 'bebas_neue';
       margin-left: 10px;
     }
+  }
+  #book-it:hover {
+    background-color: rgba(92,184,92,1);
   }
 
   #adventure-title-mobile {
@@ -171,6 +175,16 @@
         padding-top: 15px;
         padding-bottom: 20px;
 
+        .contact-row {
+          position: relative;
+          text-align: center;
+          float: right;
+          top: 18px;
+          z-index: 999;
+          margin-bottom: 30px;
+          width: 275px;
+        }
+
         .panel {
           width: 77%;
           background: rgba(0,0,0,0.5);
@@ -191,8 +205,7 @@
           font-size: 0.6em;
           padding: 10px 20px;
           margin-bottom: 15px;
-
-          background-color: $login_btn_color;
+          background-color: rgba(229,107,45, 0.5);
           border-color: $login_btn_color;
 
           .fa {
@@ -243,6 +256,7 @@
           }
         }
 
+
         .default-title {
           color: $gray;
           font-family: 'nexa_light';
@@ -253,7 +267,8 @@
           font-family: 'nexa_light';
           font-size: 0.6em;
           line-height: 1.3em;
-          margin-top: 5px;
+          margin-top: 15px;
+          margin-bottom: 15px;
           font-weight: bold;
         }
 
@@ -487,6 +502,7 @@
             color: $advlo_green;
             font-family: 'nexa_light';
             margin-top: -10px;
+            font-family: 'bebas_neue';
           }
         }
       }
@@ -736,7 +752,7 @@
 #desktop-adventure-nav {
   position: fixed;
   right: 0px;
-  top: 481px;
+  top: 488px;
 }
 
 .adventure-show-arrow-right {
@@ -943,6 +959,11 @@
 
 @media screen and (max-width: 991px){
 
+  .default-summary {
+    width: 90% !important;
+  }
+
+
   .datepicker {
     left: 21px !important;
   }
@@ -1080,6 +1101,10 @@
 }
 
 @media screen and (max-width: 500px) {
+
+  .default-summary {
+    width: 100%;
+  }
   #reservations-modal .sign-in-form .sign_in_btn{
     font-size: 1.1em;
   }
