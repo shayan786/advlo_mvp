@@ -6,42 +6,42 @@
     .container
       .region-container
         .region-wrapper
-          / %a{href: '/adventures?country=Costa Rica'}          
-          /   .region 
-          /     = image_tag HeroImage.where(region: 'Costa Rica').first.attachment.url(:hero)
-          /     .region-text
-          /       Costa Rica
+          %a{href: '/adventures?country=Costa Rica'}          
+            .region 
+              = image_tag HeroImage.where(region: 'Costa Rica').first.attachment.url(:hero)
+              .region-text
+                Costa Rica
 
-          / %a{href: '/adventures?country=Nicaragua'}  
-          /   .region 
-          /     = image_tag HeroImage.where(region: 'Nicaragua').first.attachment.url(:hero)
-          /     .region-text
-          /       Nicaragua
+          %a{href: '/adventures?country=Nicaragua'}  
+            .region 
+              = image_tag HeroImage.where(region: 'Nicaragua').first.attachment.url(:hero)
+              .region-text
+                Nicaragua
 
-          / %a{href: '/adventures?country=Ecuador'}  
-          /   .region 
-          /     = image_tag HeroImage.where(region: 'Ecuador').first.attachment.url(:hero)
-          /     .region-text
-          /       Ecuador
+          %a{href: '/adventures?country=Ecuador'}  
+            .region 
+              = image_tag HeroImage.where(region: 'Ecuador').first.attachment.url(:hero)
+              .region-text
+                Ecuador
 
-          / %a{href: '/adventures?state=Colorado'}  
-          /   .region 
-          /     = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero)
-          /     .region-text
-          /       Colorado
+          %a{href: '/adventures?state=Colorado'}  
+            .region 
+              = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero)
+              .region-text
+                Colorado
 
 
-          / %a{href: '/adventures?state=Washington'}  
-          /   .region 
-          /     = image_tag HeroImage.where(region: 'Washington').first.attachment.url(:hero)
-          /     .region-text
-          /       Washington
+          %a{href: '/adventures?state=Washington'}  
+            .region 
+              = image_tag HeroImage.where(region: 'Washington').first.attachment.url(:hero)
+              .region-text
+                Washington
 
-          / %a{href: '/adventures?country=United States'}  
-          /   .region 
-          /     = image_tag HeroImage.where(region: 'United States').first.attachment.url(:hero)
-          /     .region-text
-          /       United States
+          %a{href: '/adventures?country=United States'}  
+            .region 
+              = image_tag HeroImage.where(region: 'United States').first.attachment.url(:hero)
+              .region-text
+                United States
 
           / - @regions.each do |r|
           /   %a{href: "/adventures?location=#{r[0]}"}
