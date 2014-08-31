@@ -301,7 +301,7 @@ class AdventuresController < ApplicationController
       @adventure.category = params[:category].join(',')
 
       if @adventure.save
-        #associate that adventure with that adventure
+        #associate that adventure with that host
         @useradventure = @adventure.user_adventures.build(user_id: current_user.id, adventure_id: @adventure.id)
         @useradventure.save
 

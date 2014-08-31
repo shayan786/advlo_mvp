@@ -67,8 +67,8 @@ class Payout < ActiveRecord::Base
             }] 
           },
           :currencyCode => "USD",
-          :cancelUrl => "http://beta.advlo.com",
-          :returnUrl => "http://beta.advlo.com",
+          :cancelUrl => "http://www.advlo.com",
+          :returnUrl => "http://www.advlo.com",
           :requestEnvelope => {
             :errorLanguage => "en_US"
           },
