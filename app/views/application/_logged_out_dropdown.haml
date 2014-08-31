@@ -1,5 +1,5 @@
 %li.dropdown
-  %button.btn.btn-primary.navbar-btn{"data-toggle" => "dropdown", href: "#", style: "margin-right: 10px;"}
+  %button.btn.btn-primary.navbar-btn.login_in_sign_up_btn{"data-toggle" => "dropdown", href: "#", style: "margin-right: 10px;"}
     LOGIN
     %b.caret
   %ul.dropdown-menu.logged_out_dropdown_menu{role: "menu"}
@@ -22,5 +22,5 @@
         = link_to "New to Advlo? Sign Up", new_user_registration_path
 %li
   %form
-    %a.btn.btn-primary.navbar-btn{href: "/users/sign_up", style: "margin-right: 10px; font-weight: bold;"}
+    %a.btn.btn-primary.navbar-btn.login_in_sign_up_btn{href: "/users/sign_up", style: "margin-right: 10px; font-weight: bold;"}
       SIGN-UP
