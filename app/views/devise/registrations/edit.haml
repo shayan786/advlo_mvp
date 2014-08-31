@@ -9,7 +9,7 @@
       - if notice
         .col-md-6.col-md-offset-3.text-center
           .update_notice.alert.alert-warning
-            = notice
+            = notice.html_safe
       .panel-body
         .col-md-6
           %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_edit_form", enctype: "multipart/form-data"}

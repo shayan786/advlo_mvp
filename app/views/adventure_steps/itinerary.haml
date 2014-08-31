@@ -12,7 +12,7 @@
           - if notice
             .col-md-6.col-md-offset-3.text-center
               .update_notice.alert.alert-warning
-                = notice
+                = notice.html_safe
           - if @adventure.itineraries.empty?
             .col-md-6.col-md-offset-3
               .well.how_to.text-center
