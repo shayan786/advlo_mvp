@@ -236,8 +236,6 @@ class AdventureStepsController < ApplicationController
     # For updating the 'basic' info
     else
       if params[:adventure][:attachment] 
-        puts @adventure
-
         @adventure.attachment = params[:adventure][:attachment]
         @adventure.save
 
