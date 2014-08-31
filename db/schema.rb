@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826191357) do
+ActiveRecord::Schema.define(version: 20140831191007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140826191357) do
     t.boolean  "sent_approval_email",     default: false
     t.text     "attachment_meta"
     t.integer  "waiver_id"
+    t.boolean  "featured"
   end
 
   create_table "contact_advlos", force: true do |t|
