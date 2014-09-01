@@ -40,6 +40,16 @@
 	small.help-block {
 		text-align: center;
 	}
+
+	.login_in_sign_up_btn {
+		border-color: $advlo_orange;
+		background-color: $advlo_orange;
+
+		&:hover {
+			border-color: $orange;
+			background-color: $orange;
+		}
+	}
 }
 
 .navbar .nav {
