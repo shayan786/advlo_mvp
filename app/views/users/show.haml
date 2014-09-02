@@ -164,6 +164,10 @@
           %br
           = @user.bio
 
+        - if @user.video_url
+          .user-video-wrapper.text-center
+            = raw(@user.embed(@user.video_url))
+
 #p_reviews
   .container
     .row

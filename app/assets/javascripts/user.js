@@ -188,6 +188,14 @@ function edit_user_form_validator(){
             message: "Must be a Valid TripAdvisor page"
           }
         }
+      },
+      'user[video_url]': {
+        validators: {
+          regexp: {
+            regexp: /(\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9_\-]+))|(\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+))/,
+            message: "Must be a Valid youtube or vimeo video url"
+          }
+        }
       }
     }
   });
