@@ -36,7 +36,7 @@
               .col-md-4
                 .form_label.edit-label Summary *
               .col-md-6
-                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "1000", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Market your adventure with an informative and detailed summary of what you're offering"}}
+                %textarea.form-control.show_ml{rows: "7", type: "text", required: "required", name: "adventure[summary]", id: "adv_summary", maxlength: "1500", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Market your adventure with an informative and detailed summary of what you're offering"}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.summary}
                     
@@ -106,7 +106,7 @@
               .col-md-4
                 .form_label.edit-label Additional Info
               .col-md-6
-                %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", maxlength: "600", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Things to bring, whats not included, detailed directions, etc."}}
+                %textarea.form-control.show_ml{placeholder: "(Optional)", rows: "5", type: "text", name: "adventure[other_notes]", id: "adv_other_notes", maxlength: "1000", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Ex: Things to bring, whats not included, detailed directions, etc."}}
                   - if !@adventure.other_notes.nil?
                     #{@adventure.other_notes}
 

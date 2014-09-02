@@ -2,7 +2,7 @@
   .modal-dialog
     .modal-content
       .modal-header.text-center
-        Create an Adventure — We'll Find You a Host
+        Request an Adventure — We'll Find You a Host
       .modal-body
         %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_form", "data-remote" => "true"}
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
