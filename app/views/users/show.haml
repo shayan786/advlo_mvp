@@ -162,7 +162,7 @@
           .nexa-light BIO
         .bio_body.text-center
           %br
-          = @user.bio
+          = @user.bio.gsub(/\n/, '<br/>').html_safe
 
 #p_reviews
   .container

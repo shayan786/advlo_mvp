@@ -67,7 +67,7 @@
               %span.default-title.summary-information SUMMARY:
           .row.default_body
             .col-md-8
-              .default-summary= @adventure.summary
+              .default-summary= @adventure.summary.gsub(/\n/, '<br/>').html_safe
 
 
 = render partial: "users/contact_host_modal", locals: {user: @adventure.users.first, res: nil}

@@ -5,7 +5,7 @@
     .col-md-9
       .copy-brick
         .brick-copy
-          = @adventure.other_notes
+          = @adventure.other_notes.gsub(/\n/, '<br/>').html_safe
 
       - if @adventure.waiver_id
         %a.waiver-view-wrapper{href: Waiver.find(@adventure.waiver_id).file(:original), target: '_blank'}
