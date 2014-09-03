@@ -91,6 +91,11 @@
                     #{current_user.skillset}
             .form-group.row
               .col-md-4
+                .form_label.edit-label Youtube or Vimeo video url
+              .col-md-8
+                %input.form-control.show_ml{type: "text", name: "user[video_url]", placeholder: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',id: "user_video_url", value: "#{@current_user.video_url}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Input a Youtube or Vimeo video URL that describes you"}}
+            .form-group.row
+              .col-md-4
                 .form_label.edit-label Facebook URL
               .col-md-8
                 %input.form-control{placeholder: "https://www.facebook.com/myname", type: "text", name: "user[fb_url]", id: "user_fb_url", value: "#{current_user.fb_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}

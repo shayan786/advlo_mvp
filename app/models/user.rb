@@ -197,4 +197,27 @@ class User < ActiveRecord::Base
       "#{id}"
     end
   end 
+
+  def youtube_embed(youtube_url)
+    if youtube_url[/yout\.be\/([^\?]*)/]
+      youtube_id = $1
+    else
+      youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      youtube_id = $5
+    end
+    %Q{<iframe title="youTube video player" width="800" height="487.5" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
+  end
+
+  def vimeo_embed(vimeo_url)
+    vimeo_id = vimeo_url.split('/')[-1]
+    %Q{<iframe src="//player.vimeo.com/video/#{ vimeo_id }" width="800" height="487.5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>}
+  end
+
+  def embed(url)
+    if url.include?("youtu")
+      youtube_embed(url)
+    elsif url.include?("vimeo")
+      vimeo_embed(url)
+    end
+  end
 end
