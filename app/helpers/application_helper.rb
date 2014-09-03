@@ -169,8 +169,7 @@ module ApplicationHelper
       :type           => 'website',
       :url            => "#{root_url}",
       :description    => 'Advlo is a peer-to-peer adventure travel marketplace where locals can create and sell unique adventure activities',
-      :image          => 'http://i.imgur.com/a6L0hYB.png',
-      :app_id         => '210802829129036'
+      :image          => 'http://i.imgur.com/a6L0hYB.png'
     }
   end
 
@@ -200,8 +199,7 @@ module ApplicationHelper
       :type           => 'website',
       :url            => "#{url}",
       :description    => "#{description}",
-      :image          => "#{image_src}",
-      :app_id         => '210802829129036'
+      :image          => "#{image_src}"
     }
   end
 
