@@ -55,6 +55,7 @@ class ApplicationController < ActionController::Base
   def homepage
     @hero_image = HeroImage.where(region: 'Homepage').first
     @feat_adventures = Adventure.approved.where(featured: true).limit(6)
+    @new_adventures = Adventure.approved.order('CREATED_AT desc').limit(3)
     get_regions
   end
 
