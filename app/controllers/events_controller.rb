@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 		start_q = Time.at(params[:start].to_time)
 		end_q = Time.at(params[:end].to_time)
 
-		@events_n = @events.where("start_time >= ? and end_time <= ?", start_q, end_q)
+		@events_n = @events.where("start_time >= ? OR end_time <= ?", start_q, end_q)
 		@events_j = @events_n.all.map{|e| {"id" => "#{e.id}", "title"=> @adventure.title, "allDay" => false, "start"=> e.start_time.to_time, "end"=> e.end_time.to_time}}
 
 		respond_to do |format|
