@@ -7,6 +7,7 @@ ActiveAdmin.register HeroImage do
         image_tag (p.attachment.url(:thumb))
       end
     end
+    column :user_id
     actions
   end
 
