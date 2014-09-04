@@ -2,4 +2,5 @@
 
   = set_meta_tags(get_meta_tags(@user.get_abbreviated_name, @user.bio, "#{@user.short_description},#{@user.get_abbreviated_name},#{@user.adventures.approved.to_a.map{|adv| adv.title}.join(',')}"))
   = set_meta_tags :og => get_og_tags(@user.get_abbreviated_name, "#{root_url}users/#{@user.to_param}", @user.bio, @user.avatar.url(:profile))
+  = set_meta_tags :fb => {:app_id => '210802829129036'}
   = set_meta_tags :twitter => get_twitter_tags(@user.get_abbreviated_name, @user.bio, @user.avatar.url(:profile))
