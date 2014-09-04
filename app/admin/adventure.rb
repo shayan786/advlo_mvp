@@ -21,6 +21,7 @@ ActiveAdmin.register Adventure do
     column :title
     column :published
     column :approved
+    column :featured
     column :category
     column :region
     column 'Email' do |adv|
