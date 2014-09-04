@@ -73,15 +73,15 @@ class AdventuresController < ApplicationController
 
     cats = @adventure.category.split(',')
     count = 0
-    if cats.length > 1 && count < 1
+    if cats.length > 1 && count < 0
       cats.each do |cat|
         count += 1
         related << Adventure.approved.where('category LIKE ?',"%#{cat}%").first
       end
     else
-      related << Adventure.approved.where('category LIKE ?',"%#{@adventure.category}%").limit(2) 
+      related << Adventure.approved.where('category LIKE ?',"%#{@adventure.category}%").limit(1) 
     end
-    @adventure.nearbys(20).limit(2).each do |adv|
+    @adventure.nearbys(50).limit(3).each do |adv|
       related <<  adv if adv.approved && adv.published
     end
     related = related.flatten.uniq
