@@ -51,6 +51,7 @@ ActiveAdmin.register Adventure do
       f.input :approved
       f.input :slug, label: 'permalink'
       f.input :summary
+      f.input :other_notes
       f.input :location
       f.input :city
       f.input :region, collection: adv_regions
