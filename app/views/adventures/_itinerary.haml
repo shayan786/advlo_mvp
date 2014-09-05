@@ -11,4 +11,4 @@
           .headline
             = itin.headline
           .description
-            = itin.description
+            = itin.description.gsub(/\n/, '<br/>').html_safe

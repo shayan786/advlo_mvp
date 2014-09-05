@@ -21,6 +21,7 @@ ActiveAdmin.register Adventure do
     column :title
     column :published
     column :approved
+    column :featured
     column :category
     column :region
     column 'Email' do |adv|
@@ -51,6 +52,7 @@ ActiveAdmin.register Adventure do
       f.input :approved
       f.input :slug, label: 'permalink'
       f.input :summary
+      f.input :other_notes
       f.input :location
       f.input :city
       f.input :region, collection: adv_regions
