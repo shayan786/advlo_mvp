@@ -61,14 +61,16 @@ class ApplicationController < ActionController::Base
 
 
   def contact
-    @contact = ContactAdvlo.create!(contact_params)
-
-    AdvloMailer.delay.contact_email(@contact)
-
-    if @contact.save
-      respond_to do |format|
-        format.js {render "contact.js", layout: false}
+    if params[:honeypot] == ''
+      @contact = ContactAdvlo.create!(contact_params)
+      AdvloMailer.delay.contact_email(@contact)
+      if @contact.save
+        respond_to do |format|
+          format.js {render "contact.js", layout: false}
+        end
       end
+    else
+      redirect_to :back
     end
   end
 
