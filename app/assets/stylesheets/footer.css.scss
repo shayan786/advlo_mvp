@@ -43,16 +43,25 @@
 
 	#signup-please-modal {
 
-		.btn {
-			width: 180px;
-		}
-
-		hr {
-			width: 310px;
+		.sign_up_btn {
+			width: 57%;
+			margin-bottom: 25px;
+			margin-top: 5px;
+			font-size: 1.2em;
 		}
 
 		.fb_btn {
-			margin-bottom: 20px;
+			width: 57%;
+			margin-bottom: 5px;
+			font-size: 1.2em;
+
+			.fa {
+				margin-right: 10px;
+			}
+		}
+
+		hr {
+			width: 60%;
 		}
 
 		h1 {
@@ -109,9 +118,9 @@
 
 			.form_label {
 				padding-top: 5px;
-	    	font-size: 1.2em;
-	    	font-weight: bold;
-	    	color: #FFF;
+		    	font-size: 1.2em;
+		    	font-weight: bold;
+		    	color: #FFF;
 			}
 		}
 	}

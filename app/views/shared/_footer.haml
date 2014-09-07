@@ -34,6 +34,13 @@
             %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal'}
               =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
 
+              .row
+                %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
+                  %i.fa.fa-facebook
+                  Connect with Facebook
+
+              %hr
+
               .form-group
                 %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
               .form-group
@@ -41,12 +48,7 @@
               .form-group
                 %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
               .row
-                %input.btn.btn-success.sign_up_btn{name: "sign_up", type: "submit", value: "Sign Up"}
-              %hr
-              .row
-                %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
-                  %i.fa.fa-facebook
-                  Sign Up with Facebook
+                %input.btn.btn-success.sign_up_btn{name: "sign_up", type: "submit", value: "SIGN UP"}
 
 
   #contact_form_modal.modal.fade{role: "dialog"}
