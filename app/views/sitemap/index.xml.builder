@@ -52,7 +52,7 @@ xml.urlset(xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9") do
   end
   @adventures.each do |adv|
     xml.url do
-      xml.loc adventure_path(adv.slug)
+      xml.loc("http://www.advlo.com/adventures/#{adv.slug}")
       xml.changefreq("daily")
       xml.priority "0.8"
     end
