@@ -76,8 +76,6 @@
 			text-shadow: none;
 		}
 
-		background: asset-url('cartographer_small.png');
-
 		.modal-dialog {
 			margin: 100px auto 0 auto;
 			color: #fff;
@@ -85,6 +83,7 @@
 			.modal-content {
 				max-width: 535px;
 				margin: 0 auto;
+				background-image: asset-url('cartographer_small.png');
 			}
 
 			#network {
@@ -115,16 +114,6 @@
 	    	color: #FFF;
 			}
 		}
-
-		.fade {
-		  opacity: 0;
-		  -webkit-transition: opacity 2.25s linear;
-      -moz-transition: opacity 2.25s linear;
-      -ms-transition: opacity 2.25s linear;
-      -o-transition: opacity 2.25s linear;
-      transition: opacity 2.25s linear;
-	  }
-
 	}
 
 	#contact_form_modal {
