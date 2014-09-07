@@ -23,7 +23,7 @@
       = yield
     = render partial: 'shared/footer'
 
-    - if Rails.env == 'production'
+    - if Rails.env.production?
       = render partial: 'shared/google_analytics'
 
 
