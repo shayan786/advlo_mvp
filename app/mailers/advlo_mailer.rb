@@ -42,9 +42,7 @@ class AdvloMailer < ActionMailer::Base
   def contact_host_email(contact)
     @contact = contact
     @host = User.find(@contact.host_id)
-    @user = User.find(@contact.user_id)
-
-    mail(from: @user.email, to: @host.email, bcc:'info@advlo.com', subject: "Private message from: #{@user.get_abbreviated_name}")
+    mail(from: @contact.email, to: @host.email, bcc:'info@advlo.com', subject: "Private message from: #{contact.email}")
   end
 
   def contact_traveler_email(reservation, message)

@@ -18,10 +18,10 @@ class UsersController < ApplicationController
   # Messaging the host through the profile show page
   def contact_host
     @contact = ContactHost.create!(contact_host_params)
-    
+    puts "contact_host_params =>>>>>>>>>>>>>>>>  #{contact_host_params}"
     if @contact.save
       # Mail the host to be messaged
-      AdvloMailer.delay.contact_host_email(@contact)
+      AdvloMailer.contact_host_email(@contact).deliver
 
       respond_to do |format|
         format.js {render "contact_host.js", layout: false}
