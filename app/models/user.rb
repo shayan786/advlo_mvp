@@ -133,7 +133,11 @@ class User < ActiveRecord::Base
 
     if @user.name
       name_split = @user.name.split(' ')
-      name_abbrv = "#{name_split[0]} #{name_split[name_split.length-1][0..0]}."
+      if name_split.count > 1
+        name_abbrv = "#{name_split[0]} #{name_split[name_split.length-1][0..0]}."
+      else
+        name_abbrv = "#{name_split[0]}"
+      end
       return name_abbrv
     else
       return 'Advlo User'
