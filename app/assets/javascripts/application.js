@@ -212,5 +212,21 @@ $(document).ready(function(){
       })
     } 
   })
+
+
+  //contact form submit button
+  $('#contact_form_modal .modal-dialog .contact_btn').addClass('disabled');
+
+  //request adventure form validation on button
+  $('#contact_form_modal .modal-dialog #contact_comments').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 6) {
+        $('#contact_form_modal .modal-dialog .contact_btn').removeClass('disabled');
+      }
+      else if (details.length <= 6) {
+        $('#contact_form_modal .modal-dialog .contact_btn').addClass('disabled');
+      }
+  })
 });
 
