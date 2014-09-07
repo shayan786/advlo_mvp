@@ -63,8 +63,6 @@
               = tag(:input, :type => "hidden", :name => "contact[user_id]", :value => current_user.id)
 
 
-            #honeypot
-              %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
 
             .form-group.row
               .col-md-4 
@@ -77,6 +75,9 @@
                 .form_label.text-right Comments / Question *
               .col-md-6
                 %textarea.form-control{rows: "7", type: "text", name: "contact[comments]", id: "contact_comments"}
+            #honeypot
+              %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
+              
             .row.text-center
               .btn.btn-primary.contact_btn
                 SUBMIT
