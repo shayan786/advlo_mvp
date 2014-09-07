@@ -52,9 +52,8 @@ Rails.application.routes.draw do
   resources :reviews
 
   root to: 'application#homepage'
-  
-  resources :sitemaps, :only => :show
-  get "sitemap" => "sitemaps#show"
+
+  resources :sitemap, only: [:index]
 
   #Stripe Webhooks
   post "/stripe-webhooks"             => 'stripe_hooks#receiver'
