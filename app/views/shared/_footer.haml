@@ -62,6 +62,10 @@
             - if current_user
               = tag(:input, :type => "hidden", :name => "contact[user_id]", :value => current_user.id)
 
+
+            #honeypot
+              %input.form-control{type: "text", name: "honeypot", id: "honeypot"}
+
             .form-group.row
               .col-md-4 
                 .form_label.text-right Email *
@@ -93,6 +97,9 @@
 
 :javascript
   $('#contact_form .contact_btn').click(function() {
-    $('#contact_form').submit();
+    if($('#honeypot input').val() == ''){
+      $('#contact_form').submit();
+    } else {
+      location.reload();
+    }
   })
-              
