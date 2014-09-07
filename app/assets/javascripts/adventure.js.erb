@@ -1228,15 +1228,18 @@ function waiverScripts() {
 }
 
 function signup_cookie(){
-  $('#signup-please-modal').modal('show')
-  if(!$.cookie('signup')){
-    $.cookie('signup', true, { expires: 7 });
-    setTimeout(function(){
-      $('#signup-please-modal').modal('show')
-    }, 5000);
-  }
-
-
+  $(document).ready(function(){
+    if(!$.cookie('signup')){
+      $.cookie('signup', 'visited', { expires: 7 });
+      setTimeout(function(){
+        $('#signup-please-modal').modal('show')
+      }, 7000);
+    }
+    
+    $('.close').click(function(){
+      $('#signup-please-modal').modal('hide')
+    })
+  })
 }
 
 adventureShow = function() {

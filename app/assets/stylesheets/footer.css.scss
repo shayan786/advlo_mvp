@@ -44,7 +44,7 @@
 	#signup-please-modal {
 
 		.btn {
-			width: 250px;
+			width: 180px;
 		}
 
 		hr {
@@ -82,6 +82,11 @@
 			margin: 100px auto 0 auto;
 			color: #fff;
 
+			.modal-content {
+				max-width: 535px;
+				margin: 0 auto;
+			}
+
 			#network {
 				width: 64%;
 				margin: 0 auto;
@@ -110,6 +115,15 @@
 	    	color: #FFF;
 			}
 		}
+
+		.fade {
+		  opacity: 0;
+		  -webkit-transition: opacity 2.25s linear;
+      -moz-transition: opacity 2.25s linear;
+      -ms-transition: opacity 2.25s linear;
+      -o-transition: opacity 2.25s linear;
+      transition: opacity 2.25s linear;
+	  }
 
 	}
 
