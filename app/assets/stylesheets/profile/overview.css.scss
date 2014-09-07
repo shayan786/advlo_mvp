@@ -77,67 +77,47 @@
 
 		.box_social {
 			.social_btn {
-	          width: 40px;
-	          height: 40px;
-	          text-align: center;
-	          padding: 7px 0;
-	          font-size: 18px;
-	          line-height: 1.6;
-	          border-radius: 20px;
-	        }
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        padding: 7px 0;
+        font-size: 18px;
+        line-height: 1.6;
+        border-radius: 20px;
+      }
 
-	        .fb {
-	          color: #FFF;
-	          background-color: #3B5998;
-	          border-color: #3B5998;
+      .fb {
+        color: #FFF;
+        background-color: #3B5998;
+        border-color: #3B5998;
 
-	          &:hover {
-	            opacity: 0.8;
-	          }          
-	        }
+        &:hover {
+          opacity: 0.8;
+        }          
+      }
 
-	        .twitter {
-	          color: #FFF;
-	          background-color: #30D8F0;
-	          border-color: #30D8F0;
+      .twitter {
+        color: #FFF;
+        background-color: #30D8F0;
+        border-color: #30D8F0;
 
-	          &:hover {
-	            opacity: 0.8;
-	          }
-	        }
+        &:hover {
+          opacity: 0.8;
+        }
+      }
 
-	        .ta {
-	          background-color: #589442;
-	          border-color: #589442;
+      .ta {
+        background-color: #589442;
+        border-color: #589442;
 
-	          &:hover {
-	            opacity: 0.8;
-	          }
+        &:hover {
+          opacity: 0.8;
+        }
 
-	          svg {
-	          	fill: #FFF;
-	          }
-	        }
-
-			/*
-			font-size: 1.4em;
-
-			.disabled {
-				opacity: 0.8;
-			}
-
-			.btn {
-				width: 80%;
-				text-align: left !important;
-				margin-bottom: 5px;
-			}
-
-			.fa {
-				width: 40px;
-				margin-left: 20px;
-				//font-size: 2.2em;
-			}
-			*/
+        svg {
+        	fill: #FFF;
+        }
+      }
 		}
 	}
 }

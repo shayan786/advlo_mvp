@@ -17,6 +17,7 @@
 // require jquery.ui.all
 //= require jquery.timepicker.min
 //= require jquery.rotate
+//= require jquery.cookie
 //= require jquery.blueimp-gallery.min
 //= require bootstrap
 //= require bootstrap-datepicker

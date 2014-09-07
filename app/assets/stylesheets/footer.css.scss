@@ -41,6 +41,78 @@
 		}
 	}
 
+	#signup-please-modal {
+
+		.btn {
+			width: 250px;
+		}
+
+		hr {
+			width: 310px;
+		}
+
+		.fb_btn {
+			margin-bottom: 20px;
+		}
+
+		h1 {
+			font-family: 'nexa_light' !important;
+			font-weight: bold !important;
+		}
+		h4 {
+			font-family: 'nexa_light' !important;
+		}
+
+		.close {
+			font-size: 50px;
+			color: #fff;
+			opacity: 0.5;
+			cursor: pointer;
+			z-index: 999;
+			position: absolute;
+			top: 3px;
+			right: 22px;
+			font-weight: regular;
+			text-shadow: none;
+		}
+
+		background: asset-url('cartographer_small.png');
+
+		.modal-dialog {
+			margin: 100px auto 0 auto;
+			color: #fff;
+
+			#network {
+				width: 64%;
+				margin: 0 auto;
+			}
+
+			#signup_modal {
+				margin-top: 30px;
+			}
+
+			.form-group {
+				.form-control {
+					width: 60%;
+					margin: 0 auto;
+				}
+			}
+
+			.modal-header {
+				font-size: 1.6em;
+				color: $orange;
+			}
+
+			.form_label {
+				padding-top: 5px;
+	    	font-size: 1.2em;
+	    	font-weight: bold;
+	    	color: #FFF;
+			}
+		}
+
+	}
+
 	#contact_form_modal {
 		.modal-dialog {
 			margin: 65px auto 0 auto;
@@ -53,9 +125,9 @@
 
 		.form_label {
 			padding-top: 5px;
-          	font-size: 1.2em;
-          	font-weight: bold;
-          	color: #FFF;
+    	font-size: 1.2em;
+    	font-weight: bold;
+    	color: #FFF;
 		}
 
 		.contact_btn {

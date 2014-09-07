@@ -1227,6 +1227,18 @@ function waiverScripts() {
   })
 }
 
+function signup_cookie(){
+  $('#signup-please-modal').modal('show')
+  if(!$.cookie('signup')){
+    $.cookie('signup', true, { expires: 7 });
+    setTimeout(function(){
+      $('#signup-please-modal').modal('show')
+    }, 5000);
+  }
+
+
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1246,6 +1258,7 @@ adventureShow = function() {
   social_init();
   adv_map_show();
   summary_readmore();
+  signup_cookie();
 };
 
 adventureIndex = function() {
