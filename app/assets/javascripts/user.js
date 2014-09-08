@@ -362,6 +362,60 @@ function contact_form_validator() {
   })
 }
 
+/*
+function profile_img_area_edit() {
+
+  function preview(img, selection) {
+    if (!selection.width || !selection.height)
+        return;
+    
+    var scaleX = 150 / selection.width;
+    var scaleY = 150 / selection.height;
+
+    $('#d_user_edit .profile_avatar_crop_update_btn').fadeIn();
+
+    $('#d_user_edit .profile_avatar_img_preview img').css({
+        width: Math.round(scaleX * 265),
+        height: Math.round(scaleY * 200),
+        marginLeft: -Math.round(scaleX * selection.x1),
+        marginTop: -Math.round(scaleY * selection.y1)
+    });
+
+    // $('#x1').val(selection.x1);
+    // $('#y1').val(selection.y1);
+    // $('#x2').val(selection.x2);
+    // $('#y2').val(selection.y2);
+    // $('#w').val(selection.width);
+    // $('#h').val(selection.height);  
+  }
+
+  var ias = $('#d_user_edit .profile_avatar_img img').imgAreaSelect({
+    aspectRatio: '1:1',
+    handles: true,
+    fadeSpeed: 200,
+    onSelectChange: preview,
+    instance: true
+  })
+
+  $('#d_user_edit .profile_avatar_crop_update_btn .btn').click(function(){
+    var selection = ias.getSelection();
+
+    var user_id = $('#user_img_edit_form #user_id').val();
+    
+    //MAKE AJAX CALL TO CONTROLLER TO UPDATE CROP IMAGE
+    $.ajax({
+      url: "/users/crop_profile_img",
+      data: {
+        user_id: user_id, 
+        crop_x: selection.
+      },
+      type: "POST"
+    });
+  })
+
+}
+*/
+
 
 function usersInit(){
   input_popover();
