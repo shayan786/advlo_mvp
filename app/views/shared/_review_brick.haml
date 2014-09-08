@@ -1,4 +1,4 @@
-.review{id: review.id}
+.review{id: review.id, :itemscope => true, :itemtype => "http://schema.org/Review"}
   .reviewer-image-wrapper
     - if review.user.get_avatar_url(:profile_circle) != "missing.png"
       .image-wrapper{style: "background: url(#{review.user.get_avatar_url("medium")}) no-repeat center center;"}
@@ -8,8 +8,8 @@
     - if params[:controller] == "users" 
       %a.review-adventure-title{href: "/adventures/#{review.adventure.slug}", target: "_blank"}
         = review.adventure.title
-    .review-body= review.body
+    .review-body{itemprop: 'about'}= review.body
     - if review.user.name
-      .review-credit= "- #{review.user.get_abbreviated_name}"
+      .review-credit{itemprop: 'author'}= "- #{review.user.get_abbreviated_name}"
     - else
       .review-credit= "- anonymous"

@@ -1,13 +1,15 @@
 = render partial: 'adventure_seo_tags'
 
-.adventure-show-container.col-md-12
+.adventure-show-container.col-md-12{:itemscope => true, :itemtype => "http://schema.org/Thing"}
   #adventure-title
+    .rich-image{style: 'display:none;', itemprop: 'image', src: @adventure.attachment.url}
+    .rich-url{style: 'display:none;', itemprop: 'url', href: "http://advlo.com/adventures/#{@adventure.slug}"}
     #main_image{style: "background-image: url('#{@adventure.attachment.url(:hero)}')"}
 
   .col-md-3.adventure-show-infographic
     -if @current_guide
       .guide-block
-        .adv-title
+        .adv-title{itemprop: 'name'}
           - if @adventure.title.length > 25
             .shortened= @adventure.title
           - else
