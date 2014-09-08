@@ -134,7 +134,7 @@
 
           %form{"accept-charset" => "UTF-8", action: "/upload/user_avatar_image", method: "post", id: "user_img_edit_form", enctype: "multipart/form-data", "data-remote" => "true"}
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            = tag(:input, :type => "hidden", :name => "user_id", :value => current_user.id)
+            = tag(:input, :type => "hidden", :id => "user_id", :name => "user_id", :value => current_user.id)
             .row.form-group
               %input{type: "file", name: "user[avatar]", id: "user_avatar"}
             %input{type: "submit", style: "display: none"}
