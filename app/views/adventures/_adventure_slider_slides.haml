@@ -1,8 +1,8 @@
 .adventure-container.adventure-container-homepage
   .brick-wrapper.masonry.js-masonry
     - adventures.each_with_index do |adv, i|
-      %div{:itemscope => true, :itemtype => "http://schema.org/Thing",}
-        %a.adventure-brick{href: adventure_path(adv.slug), itemprop: 'url'}
+      %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing",}
+        %a{href: adventure_path(adv.slug), itemprop: 'url'}
           - if adv.attachment.height(:large) >= 300
             - adv_img = adv.attachment.url(:large)
           - else
