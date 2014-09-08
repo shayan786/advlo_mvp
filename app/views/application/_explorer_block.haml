@@ -8,38 +8,38 @@
         .region-wrapper
           %a{href: '/adventures?country=Costa Rica'}          
             .region 
-              = image_tag HeroImage.where(region: 'Costa Rica').first.attachment.url(:hero)
+              = image_tag HeroImage.where(region: 'Costa Rica').first.attachment.url(:hero), alt: "Costa Rica"
               .region-text
                 Costa Rica
 
           %a{href: '/adventures?country=Nicaragua'}  
             .region 
-              = image_tag HeroImage.where(region: 'Nicaragua').first.attachment.url(:hero)
+              = image_tag HeroImage.where(region: 'Nicaragua').first.attachment.url(:hero), alt: "Nicaragua"
               .region-text
                 Nicaragua
 
           %a{href: '/adventures?country=Ecuador'}  
             .region 
-              = image_tag HeroImage.where(region: 'Ecuador').first.attachment.url(:hero)
+              = image_tag HeroImage.where(region: 'Ecuador').first.attachment.url(:hero), alt: "Ecuador"
               .region-text
                 Ecuador
 
           %a{href: '/adventures?state=Colorado'}  
             .region 
-              = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero)
+              = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero), alt: "Colorado"
               .region-text
                 Colorado
 
 
           %a{href: '/adventures?state=Washington'}  
             .region 
-              = image_tag HeroImage.where(region: 'Washington').first.attachment.url(:hero)
+              = image_tag HeroImage.where(region: 'Washington').first.attachment.url(:hero), alt: "Washington"
               .region-text
                 Washington
 
           %a{href: '/adventures?country=United States'}  
             .region 
-              = image_tag HeroImage.where(region: 'United States').first.attachment.url(:hero)
+              = image_tag HeroImage.where(region: 'United States').first.attachment.url(:hero), alt: "United States"
               .region-text
                 United States
 
