@@ -7,19 +7,13 @@
     .brick-copy 
       #gallery-masonry-container
         #links
-          - @adventure.adventure_gallery_images.each do |gi|
-            %a.gallery-image{href: "#{gi.picture.url(:large)}", "data-gallery" => ""}
-              %img{src: "#{gi.picture.url(:thumb)}"}
-        / - @adventure.adventure_gallery_images.each_with_index do |gi, i|
-        /   .gallery-image{"data-target" => "#galleryModal", "data-toggle" => "modal", "data-image" => gi.picture.url(:large), class: "image#{i}", id: i}
-        /     = image_tag gi.picture.url(:thumb)
-
-  / #galleryModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "gallery_modal", role: "dialog"}
-  /   .modal-dialog.image-modal-dialog
-  /     .modal-content.image-modal-content
-  /       .modal-body
-  /         %img{src: '', id: ''}
-
+          - @adventure.adventure_gallery_images.each_with_index do |gi, i|
+            - if i % 2 == 0
+              - alt = @adventure.region
+            - else
+              - alt = @adventure.city
+            %a.gallery-image{href: "#{gi.picture.url(:large)}", "data-gallery" => "", alt: alt}
+              %img{src: "#{gi.picture.url(:thumb)}", alt: @adventure.title}
 
 
 #blueimp-gallery.blueimp-gallery.blueimp-gallery-controls{"data-use-bootstrap-modal" => "false"}
