@@ -1,22 +1,70 @@
 #invite
-  %br
-  %br
-  %br
-  %br
   .container
-    %h1 The Travel Fund
+    .panel.panel-default
+      .panel-body
+        .row.text-center
+          .btn.btn-default.number_btn
+            1
+        
+        .row
+          .col-md-8.col-md-offset-2.text-center.number_1_text
+            Share your personal travel-fund link with your friends
 
-    .row
-      .panel.panel-default
-        %div
-          = current_user.email
-        %div
-          = current_user.name
-        .referral-link{'data-fund' => "/travel-fund/#{current_user.referral_code}"}
-          CLICK ME CLICK ME CLICK ME
+        .row
+          .col-md-6.col-md-offset-3.text-center.referral_link
+            = "#{root_url}travel-fund/#{current_user.referral_code}"
+
+        .row.text-center.social_btns
+          - fb_share_url = "#{root_url}travel-fund/#{current_user.referral_code}"
+          %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "", "data-desc" => "", "data-image" => "", style: "margin-right: 25px;"}
+            %i.fa.fa-facebook
+          .btn.btn-default.social_btn.twitter{style: "margin-right: 25px;"}
+            %i.fa.fa-twitter
+          .btn.btn-default.social_btn.email
+            %i.fa.fa-envelope-o
+
+        .border
+
+        .row.text-center
+          .btn.btn-default.number_btn
+            2
+        .row
+          .col-md-8.col-md-offset-2.text-center.number_2_text
+            Sign-up 5 friends and you get:
+        .row
+          .col-md-8.col-md-offset-2.text-center.number_2_money
+            $25
+        .row
+          .col-md-8.col-md-offset-2.text-center.number_2_credit
+            ADVLO CREDIT
+
+        .border
+
+        .row.text-center
+          .btn.btn-default.number_btn
+            3
+        .row
+          .col-md-8.col-md-offset-2.text-center.number_3_text
+            TRACK IT:
+
+        - referral_count = User.where(referrer_id: current_user.id).count
+        - if referral_count < 5
+          .row
+            .col-md-6.col-md-offset-3.text-center.referral_count
+              You have invited
+              = referral_count
+              of 5 users
+
+          .row.text-center.referral_icons
+            - for i in 1..5
+              %i.fa.fa-male{style: "font-size: #{i*22}px; #{referral_count != 0 ? (i <= referral_count ? "color: #484848;" : "color: #E6E6E6")  : "color: #E6E6E6;"}"}
 
 
-:javascript
-  $('.referral-link').click(function(){
-    alert($(this).data('fund'))
-  })
+
+        - else
+          Congrats! You have earned your travel fund reward.
+          %br
+          %a{href: '/adventures'}
+            Start Exploring
+          
+            
