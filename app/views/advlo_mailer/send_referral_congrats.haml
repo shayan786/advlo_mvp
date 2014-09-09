@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1.center Thanks for being so awesome!
+
+    %h3.center   
+      = "You invited #{@referrals.count} members to join Advlo."
+    %h2 We really value you as a member, and to show our thanks, heres 
+    %a{href: "#{root_url}/users/travel-fund"} $25
+    towards your next adventure
+    .indented
+      We will keep you updated on
+      %a{href: "#{root_url}"} adventures
+      in your area.
+
+      %br
+        %h4.center
+          You Invited
+          - @referrals.each do |r|
+            %p r.email
+
