@@ -1,13 +1,13 @@
 .adventure-container.adventure-container-homepage
   .brick-wrapper.masonry.js-masonry
     - adventures.each_with_index do |adv, i|
-      %div{:itemscope => true, :itemtype => "http://schema.org/Thing",}
-        %a.adventure-brick{href: adventure_path(adv.slug), itemprop: 'url'}
+      %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing",}
+        %a{href: adventure_path(adv.slug), itemprop: 'url'}
           - if adv.attachment.height(:large) >= 300
             - adv_img = adv.attachment.url(:large)
           - else
             - adv_img = adv.attachment.url(:hero)
-          .rich-image{style: 'display:none;', itemprop: 'image', src: adv.attachment.url}
+          .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
           .image-wrapper{style: "background: url(#{adv_img}) no-repeat center center;"}
             .copy{id: "#{i}"}
               - if adv.title.length > 38

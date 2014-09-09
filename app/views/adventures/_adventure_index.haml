@@ -7,7 +7,7 @@
             - adv_img = adv.attachment.url(:large)
           - else
             - adv_img = adv.attachment.url(:hero)
-          .rich-image{style: 'display:none;', itemprop: 'image', src: adv.attachment.url}
+          .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
           .image-wrapper{style: "background: url(#{adv_img}) no-repeat center center;"}
             .copy{id: "#{i}"}
               - if adv.title.length > 38

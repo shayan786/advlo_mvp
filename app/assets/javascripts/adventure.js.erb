@@ -1230,10 +1230,10 @@ function waiverScripts() {
 function signup_cookie(){
   $(document).ready(function(){
     if(!$.cookie('signup')){
-      $.cookie('signup', 'visited', { expires: 7 });
       setTimeout(function(){
+        $.cookie('signup', 'visited', { expires: 7, path: '/' });
         $('#signup-please-modal').modal('show')
-      }, 7000);
+      }, 10000);
     }
 
     $('.close').click(function(){
@@ -1261,7 +1261,6 @@ adventureShow = function() {
   social_init();
   adv_map_show();
   summary_readmore();
-  signup_cookie();
 };
 
 adventureIndex = function() {
