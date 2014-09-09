@@ -63,6 +63,18 @@ class RegistrationsController < Devise::RegistrationsController
     redirect_to "/users/edit"
   end
 
+  def referral_sign_up
+    # Make sure user is not signed up
+    if user_signed_in?
+      redirect_to '/', notice: "You area already logged in! You can invite your friends!"
+    else
+      @referrer = User.find_by_referral_code(params[:referral_code])
+
+      build_resource({})
+      respond_with self.resource
+    end
+  end
+
   private
 
   # Customize Signing Up Devise Params

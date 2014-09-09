@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     get '/users/payouts'              => 'registrations#payouts'
     get '/users/reservations'         => 'registrations#reservations'
     post '/users/phone'               => 'users#edit_phone_number'
+
+    #Sign up with referral show page
+    get '/travelfund/:referral_code'    => 'registrations#referral_sign_up'
   end
+
 
   #contact
   post '/contact'                     => 'application#contact'
