@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     post '/users/phone'               => 'users#edit_phone_number'
 
     #Sign up with referral show page
-    get '/travelfund/:referral_code'    => 'registrations#referral_sign_up'
+    get '/travel-fund/:referral_code'    => 'registrations#referral_sign_up'
   end
 
 

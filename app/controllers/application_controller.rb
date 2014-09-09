@@ -38,7 +38,11 @@ class ApplicationController < ActionController::Base
     if request.path == '/admin/login' 
       return
     end
-    # puts "session[:previous_url] => #{session[:previous_url]}"
+
+    @user.referrer_id = session[:referrer_id]
+    @user.save
+    session[:referrer_id] = nil
+    
     session[:previous_url] || '/users/edit'
   end
 

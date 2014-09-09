@@ -9,7 +9,7 @@
       .panel-body
         .d_error_msgs= devise_error_messages!
         %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form"}
-          %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook?referrer_id=#{@referrer_id}"}
+          %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook?referrer_id=#{@referrer.id}"}
             %i.fa.fa-facebook
             Sign Up with Facebook
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)

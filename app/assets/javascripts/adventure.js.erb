@@ -1229,7 +1229,7 @@ function waiverScripts() {
 
 function signup_cookie(){
   $(document).ready(function(){
-    if((!$.cookie('signup') && location.pathname != '/users/sign_up')){
+    if((!$.cookie('signup') && (location.pathname != '/users/sign_up' && location.pathname.indexOf('travel-fund') != 1 ))){
       setTimeout(function(){
         $.cookie('signup', 'visited', { expires: 7, path: '/' });
         $('#signup-please-modal').modal('show')
