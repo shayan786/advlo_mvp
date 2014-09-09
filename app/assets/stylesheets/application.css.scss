@@ -43,29 +43,6 @@
   margin-bottom: -50px;
 }
 
-#feedback-button {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  height: 30px;
-  width: 150px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.65);
-  border-top-left-radius: 25px;
-  z-index: 999999;
-
-  #text {
-    margin-top: 10px;
-    font-family: 'nexa_light';
-    margin-left: 35px;
-    letter-spacing: 2px;
-  }
-  #text:hover{
-    margin-left: 25px;
-    letter-spacing: 5px;
-  }
-}
-
 
 #loader-overlay {
   display: none;
@@ -200,27 +177,6 @@ select {
   .schedule-instruction {
     margin-bottom: 15px;
     text-align: center;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  #feedback-button {
-    height: 25px;
-    width: 100px;
-    z-index: 999999;
-
-    #text {
-      margin-top: 10px;
-      font-family: 'nexa_light';
-      margin-left: 15px;
-      letter-spacing: 2px;
-      font-size: 0.8em;
-    }
-
-    #text:hover{
-      letter-spacing: 2px;
-      margin-left: 15px;
-    }
   }
 }
 
