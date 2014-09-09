@@ -60,6 +60,13 @@
 }
 
 .login-right {
+	.header-fa {
+		margin-right: 20px !important;
+	}
+	.header-fa-little {
+		margin-right: 10px !important;
+	}
+
 	li {
 		.dropdown-menu, .right-side {
 			padding: 12px 0px 10px 0px;
@@ -137,7 +144,6 @@
 						margin-right: 3px;
 					}
 				}
-				
 			}
 		}
 	}
@@ -174,7 +180,7 @@
 	right: 0px;
 
 	width: 220px;
-	height: 80px;
+	height: 160px;
 
 	li {
 		a {

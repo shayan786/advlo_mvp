@@ -13,11 +13,26 @@
 
   %ul.dropdown-menu.right-side.logged_in_dropdown_menu{role: "menu"}
     %li
+      %a.orange-hover{href: "/users/edit"} 
+        %i.fa.fa-user.header-fa{style: 'float: left; margin-right: 10px;'}
+        .text Profile
+
+    %li
       %a.orange-hover{href: "/users/dashboard"} 
-        %i.fa.fa-user{style: 'float: left; margin-right: 10px;'}
-        .text My Dashboard
+        %i.fa.fa-bicycle.header-fa-little{style: 'float: left; margin-right: 10px;'}
+        .text Adventures
+
+    %li
+      %a.orange-hover{href: "/travel-fund"} 
+        %i.fa.fa-angellist.header-fa{style: 'float: left; margin-right: 10px;'}
+        .text Invite
+
+    %li
+      %a.orange-hover{href: "/users/wallet"} 
+        %i.fa.fa-cc-visa.header-fa-little{style: 'float: left; margin-right: 10px;'}
+        .text Wallet
     
     %li
       %a.orange-hover{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} 
-        %i.fa.fa-sign-out{style: 'float: left; margin-right: 10px;'}
+        %i.fa.fa-sign-out.header-fa{style: 'float: left; margin-right: 10px;'}
         Sign Out
