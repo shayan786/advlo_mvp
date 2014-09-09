@@ -1229,7 +1229,7 @@ function waiverScripts() {
 
 function signup_cookie(){
   $(document).ready(function(){
-    if(!$.cookie('signup')){
+    if((!$.cookie('signup') && location.pathname != '/users/sign_up')){
       setTimeout(function(){
         $.cookie('signup', 'visited', { expires: 7, path: '/' });
         $('#signup-please-modal').modal('show')
