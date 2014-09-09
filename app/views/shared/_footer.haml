@@ -28,19 +28,19 @@
             %span.sr-only Close
 
           .modal-body.text-center
-            %h1 Hey Newcomer
+            .advlo_img
+              = image_tag 'logos/advlo_header_logo_closed.png'
             #network
               %h4 We would love for you to join our network of global adventure travelers.
+            .row
+              %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
+                %i.fa.fa-facebook
+                Connect with Facebook
+
+            %hr
+
             %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal'}
               =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-
-              .row
-                %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
-                  %i.fa.fa-facebook
-                  Connect with Facebook
-
-              %hr
-
               .form-group
                 %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
               .form-group
@@ -49,6 +49,10 @@
                 %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
               .row
                 %input.btn.btn-success.sign_up_btn{name: "sign_up", type: "submit", value: "SIGN UP"}
+
+            .row
+              .btn.btn-success.sign_up_toggle_btn
+                SIGN UP
 
 
   #contact_form_modal.modal.fade{role: "dialog"}
@@ -103,4 +107,9 @@
     } else {
       location.reload();
     }
+  })
+
+  $('#signup-please-modal .sign_up_toggle_btn').click(function(){
+    $('#signup-please-modal #signup_modal').fadeIn();
+    $(this).hide();
   })
