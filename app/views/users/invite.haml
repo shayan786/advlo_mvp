@@ -20,7 +20,7 @@
             %i.fa.fa-facebook
           .btn.btn-default.social_btn.twitter{style: "margin-right: 25px;", "data-invite-url" => "#{invite_url}"}
             %i.fa.fa-twitter
-          .btn.btn-default.social_btn.email
+          %a.btn.btn-default.social_btn.email{href: "mailto:?subject=Advlo%20-%20Travel%20Fund&body=Hey%2C%0A%0AHelp%20me%20earn%20%2425%20towards%20an%20adventure%20on%20Advlo%20by%20signing-up%20here%3A%0A%0A#{invite_url}%0A%0AThanks%2C%0A#{current_user.name ? current_user.get_abbreviated_name : ''}"}
             %i.fa.fa-envelope-o
 
         .border
@@ -37,6 +37,9 @@
         .row
           .col-md-8.col-md-offset-2.text-center.number_2_credit
             ADVLO CREDIT
+        .row
+          .col-md-8.col-md-offset-2.text-center
+            %em (For a maximum of $25 credit)
 
         .border
 
