@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :contact_advlos
   has_many :payouts
   has_many :flags
+
+  belongs_to :referrer, :class_name => "User"
   
   accepts_nested_attributes_for :user_adventures, :allow_destroy => true
   # Include default devise modules. Others available are:
@@ -18,6 +20,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   after_create :send_welcome_email
+  after_create :generate_referral_code
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -223,6 +226,15 @@ class User < ActiveRecord::Base
     elsif url.include?("vimeo")
       vimeo_embed(url)
     end
+  end
+
+  def generate_referral_code
+    self.referral_code = loop do
+      random_code = SecureRandom.hex(3)
+      break random_code unless User.exists?(referral_code: random_code)
+    end
+
+    self.save
   end
 
 end
