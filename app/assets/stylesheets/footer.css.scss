@@ -48,16 +48,29 @@
 			margin-bottom: 25px;
 			margin-top: 5px;
 			font-size: 1.2em;
+			background-color: $advlo_orange;
+			border-color: $advlo_orange;
+		}
+
+		.sign_up_toggle_btn {
+			@extend .sign_up_btn;
 		}
 
 		.fb_btn {
 			width: 57%;
 			margin-bottom: 5px;
+			margin-top: 10px;
 			font-size: 1.2em;
 
 			.fa {
 				margin-right: 10px;
 			}
+		}
+
+		.advlo_img {
+			height: auto;
+			width: 130px;
+			margin: 15px auto;
 		}
 
 		hr {
@@ -70,6 +83,8 @@
 		}
 		h4 {
 			font-family: 'nexa_light' !important;
+			font-weight: bold;
+			line-height: 20px;
 		}
 
 		.close {
@@ -102,6 +117,7 @@
 
 			#signup_modal {
 				margin-top: 30px;
+				display: none;
 			}
 
 			.form-group {
