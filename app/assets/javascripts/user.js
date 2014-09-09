@@ -85,7 +85,7 @@ function input_maxlength() {
     placement: 'bottom'
   });
 
-  $('textarea').maxlength({
+  $('textarea.show_ml').maxlength({
     alwaysShow: true,
     warningClass: "label label-success",
     limitReachedClass: "label label-danger",
