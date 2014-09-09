@@ -15,10 +15,10 @@
             = "#{root_url}travel-fund/#{current_user.referral_code}"
 
         .row.text-center.social_btns
-          - fb_share_url = "#{root_url}travel-fund/#{current_user.referral_code}"
-          %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "", "data-desc" => "", "data-image" => "", style: "margin-right: 25px;"}
+          - invite_url = "#{root_url}travel-fund/#{current_user.referral_code}"
+          %a.btn.btn-default.social_btn.fb{href: "#{invite_url}", "data-title" => "Adventure Local & Receive $25", "data-desc" => "Sign-up on Advlo to help your friend receive $25 towards and amazing adventure", "data-image" => "http://i.imgur.com/a6L0hYB.png", style: "margin-right: 25px;"}
             %i.fa.fa-facebook
-          .btn.btn-default.social_btn.twitter{style: "margin-right: 25px;"}
+          .btn.btn-default.social_btn.twitter{style: "margin-right: 25px;", "data-invite-url" => "#{invite_url}"}
             %i.fa.fa-twitter
           .btn.btn-default.social_btn.email
             %i.fa.fa-envelope-o
@@ -66,5 +66,8 @@
           %br
           %a{href: '/adventures'}
             Start Exploring
+
+:javascript
+  standalone_invite_init();
           
             

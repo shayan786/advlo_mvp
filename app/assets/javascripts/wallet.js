@@ -189,6 +189,47 @@ function adv_review_ratings_init() {
 
 }
 
+function invite_social_init(){
+  window.fbAsyncInit = function(){
+    FB.init({
+      appId: '210802829129036', status: true, cookie: true, xfbml: true }); 
+  };
+  
+  (function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];if   (d.getElementById(id)) {return;}js = d.createElement('script'); js.id = id; js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
+  
+  function postToFeed(title, desc, url, image){
+  var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
+  
+  function callback(response){}
+    FB.ui(obj, callback);
+  }
+
+  $('.fb').click(function(e) {
+    e.preventDefault();
+
+    elem = $(this);
+
+    postToFeed(elem.data('title'), elem.data('desc'), elem.prop('href'), elem.data('image'))
+  })
+
+  $('.twitter').click(function(){
+    var encodedUrl = encodeURIComponent(document.URL);
+    var invite_url = $(this).data('invite-url');
+    height = $(window).height();
+    width = $(window).width();
+
+    window.open("https://twitter.com/share?url=" + invite_url + "&text=%23AdventureLocal - Sign-up on @Advlo_ to help me receive $25 towards and amazing adventure.", 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
+  })
+}
+
+function wallet_invite_init() {
+
+}
+
+function standalone_invite_init() {
+  invite_social_init();
+}
+
 function bookings_init() {
 	user_cancellation();
 	actions_button_popover();
