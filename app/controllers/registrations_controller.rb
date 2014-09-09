@@ -24,6 +24,11 @@ class RegistrationsController < Devise::RegistrationsController
     wallet_variables
   end
 
+  def travel_fund
+    @referrals = User.where(referrer_id: current_user.id)
+    @code = current_user.referral_code
+  end
+
   def reservations
     if !current_user
       redirect_to '/users/sign_up', notice: "Lets get you started with an account"

@@ -48,7 +48,9 @@
               %em= "#{review_count} Reviews"
 
         #adventure-price
-          %span= "$ #{@adventure.price}"
+          - if current_user
+            -fail
+            %span= "$ #{@adventure.price}"
         -if !@adventure.approved || @current_guide == current_user
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 
             %span 

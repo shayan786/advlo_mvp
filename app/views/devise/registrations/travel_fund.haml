@@ -1,0 +1,55 @@
+#d_user_dashboard
+  .container
+    .panel.panel-default
+      = render partial: "dashboard_header"
+      .panel-body
+        #wallet
+          %h2.text-center
+            %ul.nav.nav-tabs
+              %li
+                %a{href: "/users/wallet"}
+                  Bookings
+              %li
+                %a{href: "/users/reservations"}
+                  Reservations
+              %li.active
+                %a{href: "/users/travel-fund"} 
+                  Travel Fund
+              %li
+                %a{href: "/users/payouts"} 
+                  Payouts
+
+          .panel-heading.text-center
+            .panel-body
+              - if @referrals.count < 1
+                .col-md-6.col-md-offset-3
+                  .alert.alert-warning.text-center
+                    You have no referrals
+
+                  %h2= 'Share the code!'
+                  %h3= "#{@root_url}/travel-fund/#{@code}"
+              - else
+                .panel-heading.text-center
+                  .panel-body
+                    .invite= link_to "Invite 5 People and get $25 Advlo credit", '/travel-fund'
+                    .table-responsive
+                      %table.table.table-hover
+                        %thead
+                          %tr
+                            %th Referral Email
+                            %th Date Joined
+                            %th Earned
+                          - @referrals.each_with_index do |ref, i|
+                            - number = i+1
+                            %tbody
+                            %tr
+                              %td.text-left= ref.email
+                              %td.text-left= ref.created_at.strftime("%A  - %B %d")
+                              %td.text-left.profit
+
+                              -if number != 0 && number % 5 == 0
+                                :javascript
+                                  $('.profit').last().html('25$')
+                                 
+
+                            
