@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   #terms/conditions/privacy
   get '/terms'                        => 'application#terms'
-  get '/about'                        => 'application#homepage'
+  get '/about'                        => 'application#about'
 
   #profile show route
   resources :users, :only => [:show]

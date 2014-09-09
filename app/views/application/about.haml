@@ -1,54 +1,49 @@
 #about
   - image = "background/advlo_about.jpg"
   .jumbotron{:style => "background-image: url(#{image_path image})"}
-      
+  .border
+  .logo= image_tag 'logos/advlo_header_logo.png'
   .border
 
-  .white_background
+
+  .about-wrapper
     .container
-      %p.text-center.mission_statement
-        Adventure Local aims to connect adventure travelers around the world, with the most authentic local hosts. We have built the platform as something we want to use ourselves, and have seen the neccessity for this service with the countless guides we have encountered on our own travels.
+      .panel.panel-default
+        %p.text-center.mission_statement
+          .text-brick
+            Our goal is to connect adventure travelers around the world with the most authentic locals. We have built the platform as something we want to use ourselves, and out of the neccessity we have seen from the incredible guides around the globe we have adventured with on our own.
+          .text-brick
+            We know travelling is a luxury that most of the world's people never get to experience. However, the ability to immerse yourself into a foreign culture has been the greatest learning experience the three of us have ever had. To build a tool to help others do the same, in conjunction with enabling adventure guides around the world... Well. We couldn't ask for a better way to spend our time. 
   
+
+
   .border
 
   .white_background.container-fluid
     .col-md-4
       .row.text-center
         %h3 CHRISTOPHER
-      %p
+        %h4 The Anthropologist Programmer
+
+      .panel.panel-default.text-brick
+        .self-bio
+          Someone once told, "If it were easy, anyone could do it." Over the past few years i've searched long and hard for a way to live life to the fullest. Often times I reflect on my experiences from traveling...
+          
 
     .col-md-4
       .row.text-center
         %h3 JONATHAN
-      %p
+        %h4 The Entreprenuerial Thrillseeker
+
+      .panel.panel-default.text-brick
+        .self-bio
 
     .col-md-4
       .row.text-center
         %h3 SHAYAN
-      %p
+        %h4 The Exploring scientist
 
 
-  / .container
-  /   .panel.panel-default
-  /     %h3.text-center We started Advlo..
-  /     .well.text-center
-  /       Because travel is a luxury that most people of the world never have access to. 
+      .panel.panel-default.text-brick
+        .self-bio
 
-  /     .well
-  /       %h4 Jon
-  /       .pic= image_tag User.where(email:'jemaser@syr.edu').first.get_avatar_url('large')
-  /       .about-text.text-center
-          
-
-  /     .well 
-  /       %h4.text-right Shayan
-  /       .pic{style:'float:right;'}= image_tag User.where(email: 'shayan@advlo.com').first.get_avatar_url("large")
-  /       .about-text.text-center
-          
-
-
-  /     .well
-  /       %h4 Christopher
-  /       .pic= image_tag User.where(id: 1).first.get_avatar_url('large')
-  /       .about-text.text-center
-          
