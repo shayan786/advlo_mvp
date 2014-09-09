@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902221305) do
+ActiveRecord::Schema.define(version: 20140909002156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20140902221305) do
     t.integer  "waiver_id"
     t.boolean  "featured"
   end
+
+  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
 
   create_table "contact_advlos", force: true do |t|
     t.integer  "user_id"
@@ -272,6 +274,8 @@ ActiveRecord::Schema.define(version: 20140902221305) do
     t.string   "paypal_email"
     t.string   "phone_number"
     t.string   "video_url"
+    t.string   "referral_code"
+    t.integer  "referrer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
