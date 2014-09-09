@@ -1,1 +1,22 @@
-#invit
+#invite
+  %br
+  %br
+  %br
+  %br
+  .container
+    %h1 The Travel Fund
+
+    .row
+      .panel.panel-default
+        %div
+          = current_user.email
+        %div
+          = current_user.name
+        .referral-link{'data-fund' => "/travel-fund/#{current_user.referral_code}"}
+          CLICK ME CLICK ME CLICK ME
+
+
+:javascript
+  $('.referral-link').click(function(){
+    alert($(this).data('fund'))
+  })

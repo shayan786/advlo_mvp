@@ -233,7 +233,6 @@ class User < ActiveRecord::Base
       random_code = SecureRandom.hex(3)
       break random_code unless User.exists?(referral_code: random_code)
     end
-
     self.save
   end
 end

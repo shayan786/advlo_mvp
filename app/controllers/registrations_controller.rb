@@ -66,7 +66,7 @@ class RegistrationsController < Devise::RegistrationsController
   def referral_sign_up
     # Make sure user is not signed up
     if user_signed_in?
-      redirect_to '/', notice: "<a href='/users/invite'>Now you can invite your friends and add to your own travel fund!</a>" 
+      redirect_to '/', notice: "<a href='/travel-fund'>Now you can invite your friends and add to your own travel fund!</a>" 
 
     else
       @referrer = User.find_by_referral_code(params[:referral_code])
