@@ -4,8 +4,6 @@ class Adventure < ActiveRecord::Base
   
   after_update :send_approval_email
 
-  # scope :approved, -> { where(approved: true) }
-
   def self.approved
     where(published: true).where(approved: true)
   end
