@@ -22,6 +22,16 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
   after_create :generate_referral_code
 
+  def update_referral_count
+    self.referral_count += 1
+    self.save
+
+     -fail 
+    if self.referral_count >= 5
+      AdvloMailer.send_referral_congrats(self).deliver
+    end
+  end
+
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

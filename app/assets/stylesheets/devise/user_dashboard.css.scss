@@ -17,6 +17,16 @@
 				border: none;
 			}
 
+
+			.invite {
+				a {
+					color: $advlo_orange;
+				}
+				margin-bottom: 25px;
+				font-size: 30px;
+				font-family: 'nexa_light';
+			}
+
 			.panel-body {
 				min-height: 70vh;
 

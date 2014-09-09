@@ -171,4 +171,13 @@ class AdvloMailer < ActionMailer::Base
     mail(to: 'info@advlo.com', subject: "PAYPAL PAYMENT REQUIRED")
   end
 
+
+  # ---------- REFERRAL EMAIL ------------------------------------------------------------------------------------------------------
+
+  def send_referral_congrats(user)
+    @user = user
+    @referrals = User.where(referrer_id: user.id)
+
+  end
+
 end
