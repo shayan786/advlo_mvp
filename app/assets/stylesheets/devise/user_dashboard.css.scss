@@ -3,8 +3,18 @@
 	background-size: cover;
 	margin-top: -80px;
 	padding-top: 155px;
-
 	color: $profile_font_color;
+
+	.travel-fund-credit {
+	  text-align: center;
+	  margin-top: 30px;
+	  font-family: 'nexa_light';
+	  font-size: 25px;
+	  span {
+	  	color: $advlo_green;
+	  	font-weight: bold;
+	  }
+	}
 
 	.container {
 

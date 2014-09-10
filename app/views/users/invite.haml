@@ -4,7 +4,7 @@
       .panel-body
         .row.text-center
           .btn.btn-default.number_btn
-            1
+            Invite
         
         .row
           .col-md-8.col-md-offset-2.text-center.number_1_text
@@ -24,51 +24,51 @@
             %i.fa.fa-envelope-o
 
         .border
+          - referral_count = current_user.referral_count
+
 
         .row.text-center
           .btn.btn-default.number_btn
-            2
-        .row
-          .col-md-8.col-md-offset-2.text-center.number_2_text
-            Sign-up 5 friends and you get:
-        .row
-          .col-md-8.col-md-offset-2.text-center.number_2_money
-            $25
-        .row
-          .col-md-8.col-md-offset-2.text-center.number_2_credit
-            ADVLO CREDIT
-        .row
-          .col-md-8.col-md-offset-2.text-center
-            %em (For a maximum of $25 credit)
-
-        .border
-
-        .row.text-center
-          .btn.btn-default.number_btn
-            3
-        .row
-          .col-md-8.col-md-offset-2.text-center.number_3_text
-            TRACK IT:
-
-        - referral_count = User.where(referrer_id: current_user.id).count
-        - if referral_count < 5
+            Profit
+        - if 5 - referral_count > 0
           .row
-            .col-md-6.col-md-offset-3.text-center.referral_count
-              You have invited
-              = referral_count
-              of 5 users
+            .col-md-8.col-md-offset-2.text-center.number_2_text
+              Sign-up
+              = 5 - referral_count
+              friends and you get:
+
+          .row
+            .col-md-8.col-md-offset-2.text-center.number_2_money
+              $25
+          .row
+            .col-md-8.col-md-offset-2.text-center.number_2_credit
+              ADVLO CREDIT
+          .row
+            .col-md-8.col-md-offset-2.text-center
+              %em (For a maximum of $25 credit)
+
 
           .row.text-center.referral_icons
             - for i in 1..5
-              %i.fa.fa-male{style: "font-size: #{i*22}px; #{referral_count != 0 ? (i <= referral_count ? "color: #699967;" : "color: #E6E6E6")  : "color: #E6E6E6;"}"}
+              %i.fa.fa-male{style: "font-size: #{i*22}px; #{referral_count != 0 ? (i <= referral_count ? "color: #699967;" : "color: rgba(0,0,0,0.3)")  : "color: rgba(0,0,0,0.3);"}"}
 
 
 
         - else
-          Congrats! You have earned your travel fund reward.
-          %br
-          %a{href: '/adventures'}
-            Start Exploring
+          .row.text-center
+            %h2
+              Congrats! You have earned your travel fund reward
+              %h3 Stay tuned for more incentive programs
+            %br
+          .row.text-center.referral_icons
+            - for i in 1..5
+              %i.fa.fa-male{style: "font-size: #{i*22}px; #{referral_count != 0 ? (i <= referral_count ? "color: #699967;" : "color: rgba(0,0,0,0.3)")  : "color: rgba(0,0,0,0.3);"}"}
+
+          .row.text-center
+            %a{href: '/adventures'}
+              .btn.btn-primary.adv_info_btn{style: 'border-color: transparent; margin-top: 35px;'} Start Exploring
+
+
 
 :javascript
   standalone_invite_init();
