@@ -60,7 +60,7 @@
 
               %td{valign: "top"}
                 %h2= @adventure.title
-                %h4= @adventure.summary
+                %h4= "#{@adventure.summary[0..800]}..."
                 %h4
                   - if @reservation.head_count == 1
                     .price= "1 person / $ #{@adventure.price}"

@@ -34,7 +34,7 @@
 
               %td{valign: "top"}
                 %h2= @adventure.title
-                %h4= @adventure.summary
+                %h4= "#{@adventure.summary[0..800]}..."
                 %h4= @adventure.other_notes
                 %h4= "$ #{@adventure.price}"
             %tr

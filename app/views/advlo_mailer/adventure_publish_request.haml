@@ -31,7 +31,7 @@
                 %br
                 = @adventure.location
                 %br
-                = @adventure.summary
+                = "#{@adventure.summary[0..800]}..."
                 %br
                 = "$ #{@adventure.price}"
                 %br
