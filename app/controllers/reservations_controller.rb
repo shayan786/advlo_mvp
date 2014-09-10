@@ -226,9 +226,10 @@ class ReservationsController < ApplicationController
 
 
     if reservation.save
-      refund_amount = reservation.get_refund_amount
       # User loses 4% no matter the cancellation
       # Determine whether cancellation is within 48 hours or not and calculate refund amount
+
+      refund_amount = reservation.get_refund_amount
       
       # Send emails
       AdvloMailer.delay.user_cancel_email_to_host(reservation)

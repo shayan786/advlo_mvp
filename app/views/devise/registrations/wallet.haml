@@ -21,9 +21,8 @@
 
           - if current_user.credit > 0
             .travel-fund-credit
-              You currently have
-              %span= "$ #{current_user.credit}"
-              in Advlo credit.
+              Advlo Credit:
+              %span= "$#{sprintf('%.2f',current_user.credit)}"
                   
           .panel-heading.text-center
             .panel-body
