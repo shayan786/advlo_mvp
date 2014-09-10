@@ -14,6 +14,8 @@
       To show our thanks, heres 
       %a{href: "#{root_url}users/wallet"} $25
       towards your next adventure
+      %br
+      %i{style: 'font-size: 10px;'} (applicable to adventures $30 or more)
     .indented.text-center
       We will keep you updated on
       %a{href: "#{root_url}"} adventures
@@ -22,7 +24,8 @@
       %br
         %h4
           You Invited
-        - @referrals.each do |r|
-          %strong.text-left{style: 'float:left; margin-right: 30px;'}= "#{r.email}"
-          %p.text-right= "signed up on #{r.created_at.strftime("%A  - %B %d")}"
+        - @referrals.each_with_index do |r, i|
+          .invited{style: 'width:100%; float: left;'}
+            %strong{style: 'float:left; margin-right: 30px;'}= "#{i + 1}) #{r.email[0..29]}"
+            %strong{style: 'float:right;'}= "#{r.created_at.strftime("%A  - %B %d")}"
 
