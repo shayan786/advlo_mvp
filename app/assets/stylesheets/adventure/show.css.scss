@@ -110,30 +110,30 @@
           text-align: right;
         }
       }
+    }
+  }
+  #adventure-price {
+    font-size: 30px;
+    color: $advlo_green;
 
-      #adventure-price {
-        font-size: 30px;
-        color: $advlo_green;
+    span {
+      position: relative;
+      width: 100%;
+      float: left;
+    }
 
-        span {
-          position: relative;
-          width: 100%;
-          float: left;
-        }
+    span.old_price {
+      width: 50%;
+      display: block;
+      text-align: right;
+    }
 
-        span.old_price {
-          width: 50%;
-          display: block;
-        }
-
-        span.new_price {
-          width: 50%;
-          float: right;
-          display: block;
-        }
-
-      }
-
+    span.new_price {
+      width: 45%;
+      float: right;
+      display: block;
+      text-align: left;
+      color: $advlo_orange;
     }
   }
 
