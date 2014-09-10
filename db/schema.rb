@@ -95,8 +95,6 @@ ActiveRecord::Schema.define(version: 20140909195943) do
     t.boolean  "featured"
   end
 
-  add_index "adventures", ["slug"], name: "index_adventures_on_slug", using: :btree
-
   create_table "contact_advlos", force: true do |t|
     t.integer  "user_id"
     t.string   "email"

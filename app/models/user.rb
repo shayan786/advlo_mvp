@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
     self.referral_count += 1
     self.save
 
-     -fail 
     if self.referral_count >= 5
+      puts "WE HaVE A WINNER ************************"
       AdvloMailer.send_referral_congrats(self).deliver
     end
   end

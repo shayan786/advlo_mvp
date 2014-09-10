@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     get '/users/dashboard'            => 'registrations#dashboard'
     get '/users/wallet'               => 'registrations#wallet'
     get '/users/payouts'              => 'registrations#payouts'
-    get '/users/travel-fund'          => 'registrations#travel_fund'
     get '/users/reservations'         => 'registrations#reservations'
     post '/users/phone'               => 'users#edit_phone_number'
 

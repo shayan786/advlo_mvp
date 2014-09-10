@@ -7,17 +7,19 @@
 
     %h3.center   
       = "You invited #{@referrals.count} members to join Advlo."
-    %h2 We really value you as a member, and to show our thanks, heres 
-    %a{href: "#{root_url}/users/travel-fund"} $25
-    towards your next adventure
-    .indented
+    %h4.text-center 
+      We really value you as a member, and to show our thanks, heres 
+      %a{href: "#{root_url}travel-fund"} $25
+      towards your next adventure
+    .indented.text-center
       We will keep you updated on
       %a{href: "#{root_url}"} adventures
       in your area.
 
       %br
-        %h4.center
+        %h4
           You Invited
-          - @referrals.each do |r|
-            %p r.email
+        - @referrals.each do |r|
+          %strong{style: 'float:left; margin-right: 30px;'}= "#{r.email}"
+          %p.text-left= "signed up on #{r.created_at.strftime("%A  - %B %d")}"
 

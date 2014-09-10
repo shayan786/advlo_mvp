@@ -75,7 +75,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     else
       @referrer = User.find_by_referral_code(params[:referral_code])
-      session[:referrer_id] = @referrer.id
+      session[:referrer_id] = @referrer.id if @referrer
 
       build_resource({})
       respond_with self.resource
