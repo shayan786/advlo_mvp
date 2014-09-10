@@ -87,5 +87,4 @@ class ApplicationController < ActionController::Base
   def contact_params
     params.required(:contact).permit(:user_id, :email, :comments)
   end
-
 end

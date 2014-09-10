@@ -38,8 +38,7 @@
 //= require jquery.geocomplete.min
 //= require star-rating.min
 //= require readmore.min
-// require jquery.imgareaselect.min
-// require jquery.imgareaselect.pack
+
 
 
 $(document).ready(function(){
