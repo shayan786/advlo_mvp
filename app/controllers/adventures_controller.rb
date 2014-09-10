@@ -222,6 +222,7 @@ class AdventuresController < ApplicationController
     @hero_image = HeroImage.where(region: 'request').first
   end
 
+  
   # Request Adventure
   def requests 
     if params[:honeypot] == ''
@@ -241,7 +242,6 @@ class AdventuresController < ApplicationController
       redirect_to :back
     end
   end
-
 
   #------------------------HOST LOGIC START----------------------------
 
