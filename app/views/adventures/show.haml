@@ -48,8 +48,10 @@
               %em= "#{review_count} Reviews"
 
         #adventure-price
-          - if current_user
-            -fail
+          - if current_user.credit > 0 && @adventure.price >= 30
+            %span.old_price{style: "text-decoration: line-through;"}= "$ #{@adventure.price}"
+            %span.new_price= "$ #{(@adventure.price - current_user.credit).to_i}"
+          - else
             %span= "$ #{@adventure.price}"
         -if !@adventure.approved || @current_guide == current_user
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 

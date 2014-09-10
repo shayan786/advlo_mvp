@@ -120,6 +120,18 @@
           width: 100%;
           float: left;
         }
+
+        span.old_price {
+          width: 50%;
+          display: block;
+        }
+
+        span.new_price {
+          width: 50%;
+          float: right;
+          display: block;
+        }
+
       }
 
     }

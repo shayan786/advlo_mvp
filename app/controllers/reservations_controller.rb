@@ -17,8 +17,13 @@ class ReservationsController < ApplicationController
     end
 
     # Stripe only takes price as cents ... convert to cents
-    total_price_cents = ((params[:reservation][:total_price].to_f)*100).round(0)
 
+    # Account for user credit
+    if current_user.credit > 0
+      total_price_cents = ((params[:reservation][:total_price].to_f - current_user.credit)*100).round(0)
+    else
+      total_price_cents = ((params[:reservation][:total_price].to_f)*100).round(0)
+    end
 
     #Create a new stripe customer and get stripe information
     customer = Stripe::Customer.create(
@@ -122,7 +127,13 @@ class ReservationsController < ApplicationController
     adventure = Adventure.find_by_id(@reservation.adventure_id)
 
     # Stripe only takes price as cents ... convert to cents
-    total_price_cents = ((@reservation.total_price)*100).round(0)
+
+    # Account for user credit
+    if current_user.credit > 0
+      total_price_cents = ((@reservation.total_price - current_user.credit)*100).round(0)
+    else
+      total_price_cents = ((@reservation.total_price)*100).round(0)
+    end
 
     if params[:approve] == "true"
       # Charge the user
