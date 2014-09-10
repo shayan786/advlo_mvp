@@ -212,6 +212,10 @@ class ReservationsController < ApplicationController
           if res.stripe_charge_id
             charge = Stripe::Charge.retrieve(res.stripe_charge_id)
             refund = charge.refunds.create
+
+            traveler = User.find(res.user_id)
+            traveler.credit = res.credit
+            traveler.save
           end        
         end
       end
@@ -225,6 +229,10 @@ class ReservationsController < ApplicationController
         if reservation.stripe_charge_id
           charge = Stripe::Charge.retrieve(reservation.stripe_charge_id)
           refund = charge.refunds.create
+
+          traveler = User.find(reservation.user_id)
+          traveler.credit = reservation.credit
+          traveler.save
         end
       end
     end
@@ -251,10 +259,14 @@ class ReservationsController < ApplicationController
   def user_cancel 
     reservation = Reservation.find_by_id(params[:user_cancel][:reservation_id])
     event = Event.find_by_id(reservation.event_id)
+    traveler = User.find(reservation.user_id)
     cancel_reason = "USER: #{params[:user_cancel][:reason]} - #{params[:user_cancel][:details]}"
 
     reservation.cancelled = true
     reservation.cancel_reason = cancel_reason
+
+    traveler.credit = reservation.credit
+    traveler.save
 
 
     if reservation.save
@@ -266,8 +278,6 @@ class ReservationsController < ApplicationController
       # Send emails
       AdvloMailer.delay.user_cancel_email_to_host(reservation)
       AdvloMailer.delay.user_cancel_email_to_self(reservation)
-
-      puts "refund_amount => #{refund_amount}"
 
       if refund_amount != 0
         # Process refunds from stripe to that user based on the advlo's cancellation policy

@@ -16,7 +16,7 @@ class Reservation < ActiveRecord::Base
 
     if difference >= 48
       # User gets full refund
-      return (reservation.total_price - reservation.user_fee)
+      return (reservation.total_price - reservation.user_fee - reservation.credit)
     else
       # User get nothing
       return 0

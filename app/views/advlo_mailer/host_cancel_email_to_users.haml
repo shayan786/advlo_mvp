@@ -31,7 +31,7 @@
 
       %p
         %b Refund Amount:
-        %span= "$ #{sprintf('%.2f', @reservation.total_price)}"
+        %span= "$ #{sprintf('%.2f', (@reservation.total_price - @reservation.credit))}"
         %br
         %i
           You can find additional information about Advlo's cancellation policy and how it affects your reservations

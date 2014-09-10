@@ -102,14 +102,6 @@ function getStripeToken(){
 
   $("#reservations-modal #reservation #book-button").click(function() {
 
-    // $("#user_submit").attr("disabled", true);
-    // $("#reservation input, #reservation select").attr("name", "");
-
-    // if (!$("#reservation").is(":visible")) {
-    //   $("#reservation input, #reservation select").attr("disabled", true);
-    //   return true;
-    // }
-    
     var card = {
       number:   $("#credit_card_number").val(),
       expMonth: $("#exp_month").val(),
@@ -122,25 +114,16 @@ function getStripeToken(){
     Stripe.card.createToken(card, function(status, response) {
 
       if (status === 200) {
-        // $("#user_last_4_digits").val(response.card.last4);
         $("#stripe_token").val(response.id);
         
         $('#new_reservation').submit();
       } else {
         $("#stripe-error-message").text(response.error.message);
-        // $("#user_submit").attr("disabled", false);
       }
     });
 
     return false;
   });
-
-  // $("#change-card a").click(function() {
-  //   $("#change-card").hide();
-  //   $("#reservation").show();
-  //   $("#credit_card_number").focus();
-  //   return false;
-  // });
 };
 
 function getStripeToken_bank() {
@@ -166,7 +149,6 @@ function getStripeToken_bank() {
       else {
         console.log('error=> '+response.error.message);
         $("#stripe-error-message").text(response.error.message);
-        // $("#stripe-error-message").text(response.error.message);
       }
     });
   });
@@ -201,14 +183,6 @@ function getStripeToken_bank() {
 function getStripeToken_request(){
 
   $("#request-book-button").click(function() {
-
-    // $("#user_submit").attr("disabled", true);
-    // $("#reservation input, #reservation select").attr("name", "");
-
-    // if (!$("#reservation").is(":visible")) {
-    //   $("#reservation input, #reservation select").attr("disabled", true);
-    //   return true;
-    // }
     
     var card = {
       number:   $("#request_reservation #credit_card_number").val(),
@@ -221,13 +195,11 @@ function getStripeToken_request(){
     Stripe.card.createToken(card, function(status, response) {
 
       if (status === 200) {
-        // $("#user_last_4_digits").val(response.card.last4);
         $("#request_reservation #stripe_token").val(response.id);
 
         $('#request_reservation form#request_reservation').submit();
       } else {
         $("#request_reservation #stripe-error-message").text(response.error.message);
-        // $("#user_submit").attr("disabled", false);
       }
     });
 
