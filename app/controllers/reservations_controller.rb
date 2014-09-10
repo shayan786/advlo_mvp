@@ -19,8 +19,8 @@ class ReservationsController < ApplicationController
     # Stripe only takes price as cents ... convert to cents
 
     # Account for user credit
-    if current_user.credit > 0
-      total_price_cents = ((params[:reservation][:total_price].to_f - current_user.credit)*100).round(0)
+    if user.credit > 0
+      total_price_cents = ((params[:reservation][:total_price].to_f - user.credit)*100).round(0)
     else
       total_price_cents = ((params[:reservation][:total_price].to_f)*100).round(0)
     end
@@ -43,6 +43,13 @@ class ReservationsController < ApplicationController
     if stripe_charge
       @reservation = Reservation.create!(reservation_params)
       @reservation.update(host_fee: host_fee, user_fee: user_fee)
+
+      if user.credit > 0
+        @reservation.credit = user.credit
+        @reservation.save
+        user.credit = 0
+        user.save
+      end
 
       event = Event.find_by_id(params[:event_id])
       new_capacity = event.capacity.to_i - params[:reservation][:head_count].to_i

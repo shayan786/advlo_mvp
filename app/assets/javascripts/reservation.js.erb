@@ -26,7 +26,6 @@ function getStripeToken(){
       var fees = parseFloat(Math.round(cost*0.04*100) /100)
       var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
 
-
       $("#reservation_head_count").val(count);
       $('#reservation_total_price').val(total_cost);
 
@@ -35,8 +34,9 @@ function getStripeToken(){
 
         $("#reservation_head_count").val(count);
       });
-    }
-    else {
+
+    } else {
+
       $('.cap_selector').empty()
       $('#hidden_event_id').val( $(this).data('id') )
       $('#event_id').val( $(this).data('id') )
@@ -73,6 +73,8 @@ function getStripeToken(){
       $("#reservation_head_count").val(count);
       $('#reservation_total_price').val(total_cost);
 
+      var user_credit = $('.reservation_cost').data('user-credit')
+
 
       $('.cap_selector').change(function() {
         var count = $(this).val();
@@ -81,12 +83,17 @@ function getStripeToken(){
         var fees = parseFloat(Math.round(cost*0.04*100) /100)
         var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
 
+        var total_cost_minus_credit = parseFloat(Math.round((cost+fees-user_credit)*100) /100).toFixed(2)
+
         $('.reservation_cost').empty();
-        $('.reservation_cost').append("$ "+total_cost);
-
         $('.reservation_breakdown').empty();
-        $('.reservation_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fees)");
-
+        if(user_credit > 0){
+          $('.reservation_cost').append("$ "+total_cost_minus_credit);
+          $('.reservation_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fee - $ " + user_credit + ")");
+        } else {
+          $('.reservation_cost').append("$ "+total_cost);
+          $('.reservation_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fees)");
+        }
         $("#reservation_head_count").val(count);
         $('#reservation_total_price').val(total_cost);
       });
@@ -272,7 +279,12 @@ function reservation_request_prefill() {
     $('.request_reservation .prefill_request_cost').append("$ "+total_cost_minus_credit);
 
     $('.request_reservation .prefill_request_breakdown').empty();
-    $('.request_reservation .prefill_request_breakdown').append("($ "+total_cost +" + $ "+fees.toFixed(2)+" fee - $" + user_credit + ")");
+
+    if(user_credit > 0){
+      $('.request_reservation .prefill_request_breakdown').append("($ "+total_cost +" + $ "+fees.toFixed(2)+" fee - $" + user_credit + ")");
+    }else{
+      $('.request_reservation .prefill_request_breakdown').append("($ "+total_cost +" + $ "+fees.toFixed(2)+" fee)");
+    }
   });
 }
 

@@ -23,7 +23,6 @@
       %input#hidden_request_reservation_head_count{name: "reservation_request[head_count]", type: "hidden"}
 
       #request_reservation_info{style: "display: none"}
-        BLAH
 
       // reservation object params 
       %input#hidden_event_id{name: "reservation[event_id]", type: "hidden"}
@@ -96,7 +95,7 @@
           .form_label.edit-label Total Cost
         .col-md-6
           .col-md-4
-            .reservation_cost
+            .reservation_cost{"data-user-credit" => current_user.credit}
               - if @adventure.price_type == "per_adventure"
                 - adventure_cost = @adventure.price
                 - adventure_user_fee = (adventure_cost * 0.04).round(2)
@@ -104,10 +103,14 @@
                 - adventure_cost = @adventure.price * @adventure.cap_min
                 - adventure_user_fee = (adventure_cost * 0.04).round(2)
               
-              = "$ #{sprintf('%.2f', adventure_cost + adventure_user_fee)}"
+              = "$ #{sprintf('%.2f', adventure_cost + adventure_user_fee - current_user.credit)}"
           .col-md-8
             .reservation_breakdown
-              = "($ #{sprintf('%.2f',adventure_cost)} + $ #{sprintf('%.2f', adventure_user_fee)} fees)"
+              - if current_user.credit
+                = "($ #{sprintf('%.2f',adventure_cost)} + $ #{sprintf('%.2f', adventure_user_fee)} fees - $ #{sprintf('%.1f', current_user.credit)})"
+              - else
+                = "($ #{sprintf('%.2f',adventure_cost)} + $ #{sprintf('%.2f', adventure_user_fee)} fees)"
+
 
     .accept-tos
       %input{type: "checkbox"}  
