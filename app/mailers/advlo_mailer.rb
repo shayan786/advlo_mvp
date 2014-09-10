@@ -178,7 +178,6 @@ class AdvloMailer < ActionMailer::Base
     @user = user
     @referrals = User.where(referrer_id: user.id)
 
-    mail(to: @user.email, subject: "Advlo Team - you earned your 25$")
+    mail(to: @user.email, subject: "Advlo Team - Your 25$")
   end
-
 end
