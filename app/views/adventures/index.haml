@@ -1,6 +1,5 @@
 - @location = @location ? @location.upcase : "Adventure Local" 
-.meta_tags
-  = set_meta_tags(get_meta_tags(@location,"Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure",@location))
+- set_meta_tags(get_meta_tags(@location,"Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure",@location))
 
 .adventure-page-container
   - if !params[:state].present? && !params[:city].present? && !params[:country].present?
