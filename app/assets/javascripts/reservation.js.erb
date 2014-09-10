@@ -237,6 +237,9 @@ function reservation_request_prefill() {
     var adv_price = $('#request_reservation #adv_price').val();
     var price_type = $('#request_reservation #price_type').val();
 
+    //Get user credit if any
+    var user_credit = $('.request_reservation .prefill_request_cost').data('user-credit');
+
     if (price_type == "per_adventure") {
       var cost = parseFloat(Math.round(adv_price*100) /100)
     }
@@ -245,7 +248,7 @@ function reservation_request_prefill() {
     }
 
     var fees = parseFloat(Math.round(cost*0.04*100) /100)
-    var total_cost = parseFloat(Math.round((cost+fees)*100) /100).toFixed(2)
+    var total_cost = parseFloat(Math.round((cost+fees-user_credit)*100) /100).toFixed(2)
 
     $('.request_reservation #hidden_request_reservation_date').val(request_date);
     $('.request_reservation #hidden_request_reservation_time').val(request_time);
@@ -264,7 +267,7 @@ function reservation_request_prefill() {
     $('.request_reservation .prefill_request_cost').append("$ "+total_cost);
 
     $('.request_reservation .prefill_request_breakdown').empty();
-    $('.request_reservation .prefill_request_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fees)");
+    $('.request_reservation .prefill_request_breakdown').append("($ "+cost+" + $ "+fees.toFixed(2)+" fee - $ " + user_credit + ")");
   });
 }
 
