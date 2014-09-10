@@ -81,7 +81,16 @@ class ReservationsController < ApplicationController
       user_fee = (adventure.price * params[:reservation][:head_count].to_f * 0.04).round(2)
     end
     
+    puts "user.credit => #{user.credit}"
     @reservation.update(host_fee: host_fee, user_fee: user_fee)
+    
+    if user.credit > 0
+      @reservation.update(credit: user.credit)
+      user.credit = 0
+      user.save
+    end
+
+    puts "@reservation.credit => #{@reservation.credit}"
 
     request_date = params[:reservation_request][:date]
     request_time = params[:reservation_request][:time]
@@ -129,8 +138,8 @@ class ReservationsController < ApplicationController
     # Stripe only takes price as cents ... convert to cents
 
     # Account for user credit
-    if current_user.credit > 0
-      total_price_cents = ((@reservation.total_price - current_user.credit)*100).round(0)
+    if @reservation.credit > 0
+      total_price_cents = ((@reservation.total_price - @reservation.credit)*100).round(0)
     else
       total_price_cents = ((@reservation.total_price)*100).round(0)
     end
@@ -161,6 +170,11 @@ class ReservationsController < ApplicationController
       end
 
     else
+      if @reservation.credit > 0
+        user.credit = @reservation.credit
+        user.save
+      end
+
       AdvloMailer.booking_request_email_rejection(@reservation).deliver
       @reservation.destroy
     end

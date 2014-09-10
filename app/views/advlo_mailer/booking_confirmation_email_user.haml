@@ -39,5 +39,9 @@
                     .price= "#{@reservation.head_count} people / $ #{@adventure.price} a person"
                 %h3= "Total Price: $ #{sprintf('%.2f', @reservation.total_price)}"
                 %h4= "Fee: $ #{sprintf('%.2f', @reservation.user_fee)}"
+                - if @reservation.credit > 0
+                  %h4= "Credit: $ #{sprintf('%.2f', @reservation.credit)}"
+                  %h3= "Discounted Price: $ #{sprintf('%.2f', (@reservation.total_price - @reservation.credit))}"
+
             %tr
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
