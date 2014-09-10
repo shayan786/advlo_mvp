@@ -41,10 +41,11 @@ class ApplicationController < ActionController::Base
 
     @user.referrer_id = session[:referrer_id]
     @user.save
-    User.find(session[:referrer_id]).update_referral_count
 
-    session[:referrer_id] = nil
-
+    if session[:referrer_id]
+      User.find(session[:referrer_id]).update_referral_count
+      session[:referrer_id] = nil
+    end
     
     session[:previous_url] || '/users/edit'
   end
