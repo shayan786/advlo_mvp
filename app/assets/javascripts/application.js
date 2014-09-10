@@ -171,6 +171,7 @@ $(document).ready(function(){
     }
   });
 
+
   //Contact form validation
   $('#contact_form').bootstrapValidator({
     fields: {

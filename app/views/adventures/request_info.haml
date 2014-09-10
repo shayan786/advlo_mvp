@@ -25,6 +25,8 @@
           TELL US
         %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_form", "data-remote" => "true"}
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          #honeypot
+            %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
           .form-group.row
             .col-md-4 
               .form_label.text-right.edit-label Location *
@@ -84,16 +86,7 @@
     return false;
   })
 
-  $('#request_form #request_location').on('keyup', function() {
-  
-    if ( $('#request_email').css('display') == undefined ) {
-      $('#request_budget').keyup(function(){
-        if($(this).val() != '' ){
-          $('.request_btn').removeClass('disabled') 
-        }
-      })
-    } 
-
+  $('#request_form').on('keyup', function() {
     if ( $('#request_email').css('display') == 'block' ) {
       $('#request_email').keyup(function(){
         if($(this).val() != '' ){
@@ -102,6 +95,28 @@
       })
     } 
   })
+
+  $('#request_form').bootstrapValidator({
+    fields: {
+      'request[email]': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'request[location]': {
+        validators: {
+          notEmpty: {
+            message: 'Comments/question is required and cannot be empty'
+          }
+        }
+      }
+    }
+  });
 
   request_form_validator();
   request_form_geocomplete();

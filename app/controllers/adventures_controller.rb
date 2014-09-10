@@ -224,17 +224,21 @@ class AdventuresController < ApplicationController
 
   # Request Adventure
   def requests 
-    @request = Request.create!(request_params)
-    @request.category = params[:request_category] ? params[:request_category].join(',') : 'No category selected'
+    if params[:honeypot] == ''
+      @request = Request.create!(request_params)
+      @request.category = params[:request_category] ? params[:request_category].join(',') : 'No category selected'
 
-    if @request.save
-      # Mail the requester
-      AdvloMailer.delay.request_adventure_email(@request, @request.email)
-      AdvloMailer.delay.request_adventure_email(@request, 'info@advlo.com')
+      if @request.save
+        # Mail the requester
+        AdvloMailer.delay.request_adventure_email(@request, @request.email)
+        AdvloMailer.delay.request_adventure_email(@request, 'info@advlo.com')
 
-      respond_to do |format|
-        format.js {render "request.js", layout: false}
+        respond_to do |format|
+          format.js {render "request.js", layout: false}
+        end
       end
+    else
+      redirect_to :back
     end
   end
 
