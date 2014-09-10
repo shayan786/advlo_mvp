@@ -18,7 +18,7 @@
       %ul.nav.navbar-nav.navbar-right.login-right
         %li.dropdown.header-button
           %button.btn.btn-default.navbar-btn{"data-toggle" => "dropdown", href: "#"}
-            Find
+            FIND
             %b.caret
           %ul.dropdown-menu#locations-menu{role: "menu"}
             - adv_regions.each_with_index do |r, i|
@@ -33,11 +33,16 @@
         %li
           %form
             %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
-              Host
+              HOST
         %li
           %form
             %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/request"}
-              Request
+              REQUEST
+
+        %li
+          %form
+            %a.btn.btn-default.navbar-btn.header-button{href: "/travel-fund"}
+              INVITE
         
         - if current_user && count = action_required(current_user)
           %li
