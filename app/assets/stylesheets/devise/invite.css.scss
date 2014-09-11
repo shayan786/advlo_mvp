@@ -1,5 +1,5 @@
 #invite {
-	margin-top: 90px;
+	margin-top: 85px;
 
 	.number_2_money {
 		font-family: bebas_neue_book;
@@ -24,6 +24,10 @@
 		.panel-body {
 			padding-bottom: 35px;
 
+			.invite_profit_container {
+				margin-left: 35%;
+			}
+
 			.number_btn {
 				width: 100px;
 				height: 100px;
@@ -38,6 +42,7 @@
 				font-weight: bold;
 				margin-top: 20px;
 				padding-left: 15px;
+				float: left;
 
 				&:hover {
 					background-color: $orange;
@@ -45,14 +50,23 @@
 				}
 			}
 
+			.fa-long-arrow-right {
+				float: left;
+				font-size: 4.0em;
+				padding-top: 43px;
+				margin-left: 40px;
+				margin-right: 40px;
+				color: $advlo_orange;
+			}
+
 			.number_1_text {
 				margin-top: 20px;
-				font-size: 1.4em;
+				font-size: 2.0em;
 			}
 
 			.number_2_text {
 				margin-top: 20px;
-				font-size: 1.6em;
+				font-size: 2.0em;
 			}
 
 			.number_3_text {
@@ -61,7 +75,7 @@
 			}
 
 			.referral_link {
-				font-size: 1.3em;
+				font-size: 1.1em;
 				margin-top: 15px;
 				border: 1px solid $lighter_gray;
 				border-radius: 3px;
@@ -73,10 +87,7 @@
 					position: relative;
 					float: right;
 					cursor: pointer;
-					top: -20px;
-				}
-				.fa:hover{
-					opacity: 0.5;
+					top: -15px;
 				}
 			}
 
