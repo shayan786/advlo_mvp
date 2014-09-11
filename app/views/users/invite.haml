@@ -23,7 +23,7 @@
 
         .row.text-center.social_btns
           - invite_url = "#{root_url}travel-fund/#{current_user.referral_code}"
-          %a.btn.btn-default.social_btn.fb{href: "#{invite_url}", "data-title" => "Adventure Local & Receive $25", "data-desc" => "Sign-up on Advlo to help your friend receive $25 towards an amazing adventure", "data-image" => "http://i.imgur.com/a6L0hYB.png", style: "margin-right: 25px;"}
+          %a.btn.btn-default.social_btn.fb{href: "#{invite_url}", "data-title" => "Help #{current_user.name? ? current_user.get_first_name : "your friend"} Adventure Local", "data-desc" => "Join Advlo to help #{current_user.name? ? current_user.get_first_name : "your friend"} receive $25", "data-image" => "http://i.imgur.com/a6L0hYB.png", style: "margin-right: 25px;"}
             %i.fa.fa-facebook
           .btn.btn-default.social_btn.twitter{style: "margin-right: 25px;", "data-invite-url" => "#{invite_url}"}
             %i.fa.fa-twitter
