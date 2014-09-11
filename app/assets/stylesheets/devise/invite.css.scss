@@ -160,3 +160,50 @@
 		}
 	}
 }
+
+//IPHONE
+@media screen and (max-width: 550px) {
+	.number_1_text {
+		margin-top: 140px !important;
+		font-size: 1.2em !important;
+	}
+
+	.number_2_text {
+		font-size: 1.2em !important;
+	}
+
+	.invite_profit_container {
+		margin-left: 1% !important;
+	}
+
+	.number_btn {
+		width: 90px !important;
+		height: 90px !important;
+		border-radius: 50%;
+		font-size: 20px !important;
+		line-height: 80px !important;
+	}
+
+	.fa-long-arrow-right {
+		float: left;
+		font-size: 3.2em !important;
+		padding-top: 43px;
+		margin-left: 15px !important;
+		margin-right: 15px !important;
+		color: $advlo_orange;
+	}
+
+	.referral_link {
+		font-size: 0.85em !important;
+
+		#fe_text {
+			padding-top: 5px !important;
+		}
+	}
+
+	.referral_icons {
+		.fa {
+			margin-right: 10px !important;
+		}
+	}
+}
