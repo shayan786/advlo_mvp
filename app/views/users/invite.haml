@@ -16,8 +16,10 @@
             Share your personal travel-fund link with your friends
 
         .row
-          .col-md-4.col-md-offset-4.text-center.referral_link
-            = "#{root_url}travel-fund/#{current_user.referral_code}"
+          .col-md-6.col-md-offset-3.text-center.referral_link
+            #fe_text= "#{root_url}travel-fund/#{current_user.referral_code}"
+            .fa.fa-file-text#d_clip_button.my_clip_button{"data-clipboard-target" => "fe_text", "data-clipboard-text" => "#{root_url}travel-fund/#{current_user.referral_code}"}
+                 
 
         .row.text-center.social_btns
           - invite_url = "#{root_url}travel-fund/#{current_user.referral_code}"
@@ -80,5 +82,19 @@
 
 :javascript
   standalone_invite_init();
+
+  $(document).ready(function() {
+    var clip = new ZeroClipboard($("#d_clip_button"))
+  });
+
+  $("#clear-test").on("click", function(){
+    $("#fe_text").val("Copy me!");
+    $("#testarea").val("");
+  });
+
+  $('.fa-file-text').hover(function(){
+    $(this).css('opacity','0.5')
+  },function(){
+    $(this).css('opacity','1')
+  })
           
-            

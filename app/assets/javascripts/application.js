@@ -38,6 +38,7 @@
 //= require jquery.geocomplete.min
 //= require star-rating.min
 //= require readmore.min
+//= require zeroclipboard
 
 
 
