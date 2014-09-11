@@ -14,7 +14,20 @@
 
         .row
           .col-md-6.col-md-offset-3.text-center.referral_link
-            = "#{root_url}travel-fund/#{current_user.referral_code}"
+            #fe_text= "#{root_url}travel-fund/#{current_user.referral_code}"
+            .fa.fa-file-text#d_clip_button.my_clip_button{"data-clipboard-target" => "fe_text", "data-clipboard-text" => "#{root_url}travel-fund/#{current_user.referral_code}"}
+
+         
+
+        :javascript
+          $(document).ready(function() {
+            var clip = new ZeroClipboard($("#d_clip_button"))
+          });
+
+          $("#clear-test").on("click", function(){
+            $("#fe_text").val("Copy me!");
+            $("#testarea").val("");
+          });
 
         .row.text-center.social_btns
           - invite_url = "#{root_url}travel-fund/#{current_user.referral_code}"
