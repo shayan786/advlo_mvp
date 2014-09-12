@@ -362,6 +362,12 @@ function contact_form_validator() {
   })
 }
 
+function setTravelFundCookie(){
+  $(document).ready(function(){  
+    $.cookie('referral', 'travel-fund', { expires: 7, path: '/' });
+  });
+}
+
 
 function copyPasteCode(){
   $(document).ready(function() {
@@ -369,14 +375,13 @@ function copyPasteCode(){
   });
 
   $("#clear-test").on("click", function(){
-    $("#fe_text").val("Copy me!");
     $("#testarea").val("");
   });
 
   $('.fa-file-text').hover(function(){
-    $(this).css('opacity','0.5')
+    $(this).css('opacity','0.5');
   },function(){
-    $(this).css('opacity','1')
+    $(this).css('opacity','1');
   })
 }
 
@@ -403,6 +408,6 @@ function usersShowInit(){
 
 function travelFundInit(){
   standalone_invite_init();
-  
-  copyPasteCode()
+  copyPasteCode();
+  setTravelFundCookie();
 }

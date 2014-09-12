@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
       session[:referrer_id] = nil
     end
     
-    if cookies[:referral] == true
+    if cookies[:referral] == 'travel-fund'
       session[:previous_url] || '/users/edit'
     else
       '/travel-fund'

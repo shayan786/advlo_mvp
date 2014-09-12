@@ -171,6 +171,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_first_name
+    @user = User.find_by_id(self.id)
+
+    if @user.name
+      name_split = @user.name.split(' ')
+
+      return "#{name_split[0]}"
+    end
+
+  end
+
   def calculate_rating 
     reviews = Review.where(host_id: self.id)
     @user = User.find_by_id(self.id)
