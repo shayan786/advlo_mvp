@@ -39,10 +39,16 @@
             %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/request"}
               REQUEST
 
-        %li
-          %form
-            %a.btn.btn-default.navbar-btn.header-button{href: "/travel-fund"}
-              Travel Fund
+        - if current_user
+          %li
+            %form
+              %a.btn.btn-default.navbar-btn.header-button{href: "/travel-fund"}
+                Travel Fund
+        - else
+          %li
+            %form
+              %a.btn.btn-default.navbar-btn.header-button#travel-fund-signup{href: "/travel-fund"}
+                Travel Fund
         
         - if current_user && count = action_required(current_user)
           %li
@@ -58,3 +64,10 @@
         - else
           = render partial: 'logged_out_dropdown'
 
+
+:javascript 
+  $('#travel-fund-signup').click(function(e){
+    e.preventDefault()
+    $('#signup-please-modal').modal('show')  
+    $('#network').html('<h4>'+'Join our community to start adding to your travel fund.'+'</h4>')
+  })
