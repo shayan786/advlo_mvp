@@ -47,7 +47,11 @@ class ApplicationController < ActionController::Base
       session[:referrer_id] = nil
     end
     
-    session[:previous_url] || '/users/edit'
+    if cookies[:referral] == true
+      session[:previous_url] || '/users/edit'
+    else
+      '/travel-fund'
+    end
   end
 
   def after_sign_out_path_for(resource)

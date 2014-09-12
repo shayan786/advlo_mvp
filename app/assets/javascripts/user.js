@@ -362,6 +362,24 @@ function contact_form_validator() {
   })
 }
 
+
+function copyPasteCode(){
+  $(document).ready(function() {
+    var clip = new ZeroClipboard($("#d_clip_button"))
+  });
+
+  $("#clear-test").on("click", function(){
+    $("#fe_text").val("Copy me!");
+    $("#testarea").val("");
+  });
+
+  $('.fa-file-text').hover(function(){
+    $(this).css('opacity','0.5')
+  },function(){
+    $(this).css('opacity','1')
+  })
+}
+
 function usersInit(){
   input_popover();
   input_datepicker();
@@ -381,4 +399,10 @@ function usersShowInit(){
   user_adv_rating_show();
   host_contact_validator();
   contact_form_validator();
+}
+
+function travelFundInit(){
+  standalone_invite_init();
+  
+  copyPasteCode()
 }
