@@ -79,22 +79,5 @@
               .btn.btn-primary.adv_info_btn{style: 'border-color: transparent; margin-top: 35px;'} Start Exploring
 
 
-
 :javascript
-  standalone_invite_init();
-
-  $(document).ready(function() {
-    var clip = new ZeroClipboard($("#d_clip_button"))
-  });
-
-  $("#clear-test").on("click", function(){
-    $("#fe_text").val("Copy me!");
-    $("#testarea").val("");
-  });
-
-  $('.fa-file-text').hover(function(){
-    $(this).css('opacity','0.5')
-  },function(){
-    $(this).css('opacity','1')
-  })
-          
+  travelFundInit()
