@@ -78,7 +78,11 @@ class ApplicationController < ActionController::Base
       AdvloMailer.delay.contact_email(@contact)
       if @contact.save
         respond_to do |format|
-          format.js {render "contact.js", layout: false}
+          if params[:about_us] == 'true'
+            format.js {render "contact_from_about.js", layout: false}
+          else
+            format.js {render "contact.js", layout: false}
+          end
         end
       end
     else

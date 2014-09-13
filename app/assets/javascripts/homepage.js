@@ -83,6 +83,46 @@ function overall_rating_show() {
     }
   }
 }
+
+function aboutContactValidator(){
+  $(document).ready(function(){
+
+    $('#about_us_contact_form').bootstrapValidator({
+      fields: {
+        'contact[email]': {
+          validators: {
+            notEmpty: {
+              message: 'Email is required and cannot be empty'
+            },
+            emailAddress: {
+              message: 'Not a valid email address'
+            }
+          }
+        },
+        'contact[comments]': {
+          validators: {
+            notEmpty: {
+              message: 'Password cannot be empty'
+            }
+          }
+        }
+      }
+    })
+  })
+}
+
+function contactToggle(){
+  $('#contact-us p').click(function(){
+    $('#contact-advlo').fadeIn();
+    $('#leave-a-note').css('margin-bottom', '20px');
+  })
+}
+
+function submitAboutUsContact(){
+  $('#about-us-contact').click(function(){
+    $('#about_us_contact_form').submit()
+  })
+}
   
 homepageInit = function() {
   adventureHover();
@@ -92,4 +132,10 @@ homepageInit = function() {
   request_form_validator();
   request_form_geocomplete();
   request_form_maxlength();
+}
+
+aboutPageInit = function() {
+  aboutContactValidator();
+  contactToggle();
+  submitAboutUsContact();
 }

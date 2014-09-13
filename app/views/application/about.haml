@@ -36,6 +36,7 @@
 
       .panel.panel-default.text-brick
         .self-bio
+          Hi Im Jon and I like turtles
 
 
     .col-md-4
@@ -50,24 +51,30 @@
 
     .col-md-12.text-center
       .row#contact-us
-        %h1 Drop us a line
+        #leave-a-note
+          %p Leave us a Note
 
-    .row#contact-advlo
-      .img-circle.profile_img{style: "background: url('#{User.find(1).get_avatar_url("thumb")}') center center no-repeat"}
-      .toggle-email
-      .toggle-email
-
-
-      %form{"accept-charset" => "UTF-8", action: "/contact", method: "POST", id: "contact_form", "data-remote" => "true"}
+    .col-md-4.col-md-offset-4.text-center#contact-advlo
+      %form{"accept-charset" => "UTF-8", action: "/contact", method: "POST", id: "about_us_contact_form", "data-remote" => "true"}
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        = tag(:input, :type => "hidden", :name => "about_us", :value => true)
+
         - if current_user
           = tag(:input, :type => "hidden", :name => "contact[user_id]", :value => current_user.id)
 
-        %input.form-control{type: "text", name: "email", class: "email-field", value: current_user ? current_user.email : ''}
-        %textarea.form-control{rows: "7", type: "text", name: "comments"}
+        .form-group.row
+          %input.form-control{type: "text", name: "contact[email]", id: "contact_email", placeholder: 'Email Address', class: "email-field", value: current_user ? current_user.email : ''}
+
+        .form-group.row
+          %textarea.form-control{rows: "7", type: "text", name: "contact[comments]", id: "contact_comments", placeholder: 'We would love to hear from you.'}
+
         #honeypot
           %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
           
         .row.text-center
-          .btn.btn-primary.contact_btn
-            SUBMIT
+          .btn.btn-primary#about-us-contact Submit
+
+          
+:javascript
+  aboutPageInit();
+  

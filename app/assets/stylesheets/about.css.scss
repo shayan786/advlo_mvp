@@ -80,5 +80,42 @@
 
   #contact-advlo {
     display: none;
+    margin-bottom: 25px;
+
+    p {
+      color: #fff;
+      font-size: 19px;
+      font-family: 'nexa_light' !important;
+      opacity: 0.8;
+    }
+  }
+
+  #leave-a-note {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    p{
+      font-size: 24px;
+      display: inline;
+      font-family: 'nexa_light' !important;
+      color: $advlo_orange;
+      cursor: pointer;
+    }
+  }
+
+  #about-us-contact {
+    margin-top: 25px;
+    margin-bottom: 30px;
+    font-size: 1.6em;
+    background-color: transparent;
+    background: rgba(0,0,0,0.2);
+    border-color: $login_btn_color;
+    padding: 15px 20px;
+    border: 5px solid $orange;
+    opacity: 0.75;
+
+    &:hover {
+      border-color: $advlo_orange;
+    }
   }
 }
+
