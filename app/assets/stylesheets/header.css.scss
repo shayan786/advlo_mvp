@@ -160,20 +160,20 @@
 	color: $dark_gray;
 	font-size: 1.1em;
 
-	.profile_img {
-		float: left;
-		width: 50px;
-		height: 50px;
-		vertical-align: middle;
-		margin-right: 10px;
-		background-size: cover;
-	}
-
 	.user_name {
 		color: $header_text_color;
 		float: right;
 		margin-top: 15px;
 	}
+}
+
+.profile_img {
+	float: left;
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+	margin-right: 10px;
+	background-size: cover;
 }
 
 //SIGN UP LINK PROPERTIES

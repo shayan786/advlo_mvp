@@ -1,7 +1,6 @@
 
 #about {
    padding-top: 80px;
-
   .jumbotron {
   	background-repeat: no-repeat;
   	background-size: cover;
@@ -34,9 +33,7 @@
   h4 {
     color: $advlo_orange;
     font-style: italic;
-
   }
-
 
   .border {
   	border: 1px solid $light_gray;
@@ -48,10 +45,13 @@
   	padding-bottom: 20px;
     .mission_statement {
     	font-size: 1.5em;
-
-
     }
-
+    .panel {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
   }
 
   .text-brick {
@@ -78,5 +78,7 @@
   	margin-bottom: 20px;
   }
 
-
+  #contact-advlo {
+    display: none;
+  }
 }
