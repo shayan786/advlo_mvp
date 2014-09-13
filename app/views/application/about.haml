@@ -11,9 +11,8 @@
       .panel.panel-default
         %p.text-center.mission_statement
           .text-brick
-            Our goal is to connect adventure travelers around the world with the most authentic locals. We have built the platform as something we want to use ourselves, and out of the neccessity we have seen from the incredible guides around the globe we have adventured with on our own.
-          .text-brick
-            We know travelling is a luxury that most of the world's people never get to experience. However, the ability to immerse yourself into a foreign culture has been the greatest learning experience the three of us have ever had. To build a tool to help others do the same, in conjunction with enabling adventure guides around the world... Well. We couldn't ask for a better way to spend our time. 
+            Our goal is to connect adventure travelers around the world with the most authentic locals. We have built the platform as something we want to use ourselves, and for the incredible guides around the globe who deserve to be seen. 
+            
   
 
 
@@ -21,18 +20,18 @@
 
   .white_background.container-fluid
     .col-md-4
-      .row.text-center
-        %h3 CHRISTOPHER
+      .row.text-center 
+        %h3 CHRISTOPHER KNIGHT
         %h4 The Anthropologist Programmer
 
       .panel.panel-default.text-brick
         .self-bio
-          Someone once told, "If it were easy, anyone could do it." Over the past few years i've searched long and hard for a way to live life to the fullest. Often times I reflect on my experiences from traveling...
+          Over the past few years i've searched near and far for a way to live life to the fullest. When I think about my experiences from traveling my fondest memories are not about what I did, but from the people I adventured with. Travel is a luxury that most of the world's people never get to experience. However, the ability to immerse yourself into a foreign culture has been the greatest learning experience I have ever had. To build a tool to help others do the same, in conjunction with enabling adventure guides around the world... Well. I couldn't ask for a better way to spend my time. Safe travels to all!
           
 
     .col-md-4
       .row.text-center
-        %h3 JONATHAN
+        %h3 JONATHAN MASER
         %h4 The Entreprenuerial Thrillseeker
 
       .panel.panel-default.text-brick
@@ -41,10 +40,34 @@
 
     .col-md-4
       .row.text-center
-        %h3 SHAYAN
+        %h3 SHAYAN DHANANI
         %h4 The Exploring Scientist
 
       .panel.panel-default.text-brick
         .self-bio
           The world is an extremely diverse place, and I truly believe that the only way to experience and learn about what it has to offer is by being there and interacting with those whom have spent a good portion of their life there. Stepping out of your comfort zone and going after that unusual or scary experience to me is the definition of an Adventure and Traveling. Every person's experience is different when they travel, for me the cultural exchange along with learning from the locals about their customs and language will have me traveling for the remainder of my life.
 
+
+    .col-md-12.text-center
+      .row#contact-us
+        %h1 Drop us a line
+
+    .row#contact-advlo
+      .img-circle.profile_img{style: "background: url('#{User.find(1).get_avatar_url("thumb")}') center center no-repeat"}
+      .toggle-email
+      .toggle-email
+
+
+      %form{"accept-charset" => "UTF-8", action: "/contact", method: "POST", id: "contact_form", "data-remote" => "true"}
+        = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        - if current_user
+          = tag(:input, :type => "hidden", :name => "contact[user_id]", :value => current_user.id)
+
+        %input.form-control{type: "text", name: "email", class: "email-field", value: current_user ? current_user.email : ''}
+        %textarea.form-control{rows: "7", type: "text", name: "comments"}
+        #honeypot
+          %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
+          
+        .row.text-center
+          .btn.btn-primary.contact_btn
+            SUBMIT
