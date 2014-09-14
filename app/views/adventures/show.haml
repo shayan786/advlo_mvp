@@ -35,7 +35,7 @@
           - review_count = Review.where(adventure_id: @adventure.id).count
           - case review_count
           - when 0
-            %em= "No Reviews"
+            //%em= "No Reviews"
           - when 1
             / %input{id: "adv_rating_value", type: "hidden", "data-adv-rating"=>@adventure.rating}
             %input{id: "adv_rating_show", value: @adventure.rating}

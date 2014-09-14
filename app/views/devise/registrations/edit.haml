@@ -49,15 +49,18 @@
                       %option Female
                       %option Couple
                     - elsif current_user.sex == 'Female'
+                      %option{selected: true} Male
                       %option Male
                       %option{selected: true} Female
                       %option Couple
                     - else
+                      %option
                       %option Male
                       %option Female
                       %option{selected: true} Couple
                 - else
                   %select.form-control{name: "user[sex]", id: "user_sex"}
+                    %option
                     %option Male
                     %option Female
                     %option Couple
@@ -169,6 +172,8 @@
                         %li Short Description
                       - if current_user.location.nil? || current_user.location.empty?
                         %li Location
+                      - if current_user.sex.nil? || current_user.sex.empty?
+                        %li Sex
                       - if current_user.dob.nil?
                         %li Date of Birth
                       - if current_user.bio.nil? || current_user.bio.empty?
