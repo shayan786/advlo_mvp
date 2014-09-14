@@ -364,7 +364,7 @@ function contact_form_validator() {
 
 function setTravelFundCookie(){
   $(document).ready(function(){  
-    $.cookie('referral', 'travel-fund', { expires: 7, path: '/' });
+    $.cookie('referral', 'travel-fund', { expires: 4, path: '/' });
   });
 }
 
