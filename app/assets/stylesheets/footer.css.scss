@@ -187,11 +187,34 @@
 	}
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
 	#footer {
 		.footer_text {
 			.col-md-3 {
 				margin-left: 50px;
+			}
+		}
+
+		#signup-please-modal {
+
+			.sign_up_btn {
+				width: 74% !important;
+			}
+
+			.fb_btn {
+				width: 74% !important;
+			}
+
+			hr {
+				width: 80% !important;
+			}
+
+			.modal-dialog {
+
+				#network {
+					width: 95% !important;
+					margin: 0 auto !important;
+				}
 			}
 		}
 	}
