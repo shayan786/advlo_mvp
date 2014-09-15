@@ -38,14 +38,6 @@ class ApplicationController < ActionController::Base
     if request.path == '/admin/login' 
       return
     end
-
-    @user.referrer_id = session[:referrer_id]
-    @user.save
-
-    if session[:referrer_id]
-      User.find(session[:referrer_id]).update_referral_count
-      session[:referrer_id] = nil
-    end
     
     if cookies[:referral] == 'travel-fund'
       session[:previous_url] || '/users/edit'
