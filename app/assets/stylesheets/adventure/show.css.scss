@@ -319,6 +319,16 @@
           }
         }
 
+        .gp {
+          color: #FFF;
+          background-color: #d34836;
+          border-color: #d34836;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
         #map {
           margin-top: -178px;
           float: right;
