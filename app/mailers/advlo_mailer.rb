@@ -181,8 +181,8 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: "Advlo Team - Your 25$")
   end
 
-  def marketing_referral(user)
-    @user = user
-    mail(to: @user.email, subject: "Advlo: Invite friends... Get Money")
+  def marketing_referral(email)
+    email = email
+    mail(to: email, subject: "Advlo: Invite friends... Get Money")
   end
 end
