@@ -183,6 +183,6 @@ class AdvloMailer < ActionMailer::Base
 
   def marketing_referral(email)
     email = email
-    mail(to: email, subject: "Advlo: Invite friends... Get Money")
+    mail(to: email, subject: "Adventure local travel-fund")
   end
 end
