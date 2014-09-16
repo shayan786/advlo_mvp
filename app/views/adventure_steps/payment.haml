@@ -27,17 +27,8 @@
 :javascript
   adventureCreate();
   getStripeToken_bank();
-  paypal_forms_control();
 
   $('[data-toggle="tooltip"]').tooltip({
     animated: 'fade'
   });
 
-  $('#add-bank').click(function(){
-    $('#updated-bank-form').fadeToggle();
-    $('#add-bank-form').fadeToggle();
-  });
-
-  $('#add-card').click(function(){
-    $('#add-card-form').fadeToggle();
-  });
