@@ -1366,20 +1366,72 @@ function signup_cookie(){
 }
 
 function payment_options_btns() {
-  //15% OPTION
-  $('.option_btn_1').click(function(){
-    $('#commission-tree').fadeIn();
-    $('#subscription-tree').hide();
-  })
-
-  $('#adventure_create #adv_payment .option_1_well .continue_btn').click(function(){
-    $('#adventure_create #adv_payment .stripe_paypal_payouts').fadeToggle();
+  //COMMISSION OPTION
+  $('#add-card').click(function(){
+    $('#add-card-form').fadeToggle();
   });
 
+  $('.option_btn_1').click(function(){
+    $('.option_btn_2').removeClass('active')
+    $(this).toggleClass('active')
+    $('#add-paypal').removeClass('active')
+
+    $('#commission-tree').fadeToggle();
+    $('#subscription-tree').hide();
+  })
+  
   //SUBSCRIBE OPTION
   $('.option_btn_2').click(function(){
+    $('.option_btn_1').removeClass('active')
+    $(this).toggleClass('active')
+    $('#add-bank').removeClass('active')
+
     $('#commission-tree').hide();
-    $('#subscription-tree').fadeIn();
+    $('#subscription-tree').fadeToggle();
+  })
+}
+
+
+function paypal_or_bank_toggle(){
+  // bank 
+  $('#add-bank').click(function(){    
+    $('.alert').hide()
+    $('#add-paypal').removeClass('active')
+    $(this).toggleClass('active')
+    
+    $('#updated-bank-form').fadeToggle();
+    $('#add-bank-form').fadeToggle();
+
+    $('#change_bank_form').hide()
+    $('#existing-paypal').hide();
+    $('#add_paypal_form').hide();
+  });
+
+  // paypal
+  $('#add-paypal').click(function(){
+    $('.alert').hide()
+    $('#add-bank').removeClass('active')
+    $(this).toggleClass('active')
+
+    $('#existing-paypal').fadeToggle();
+    $('#add_paypal_form').fadeToggle();
+
+    $('#updated-bank-form').hide();
+    $('#change_bank_form').hide()
+    $('#add-bank-form').hide();
+  });
+
+  $('#change_paypal_btn').click(function() {
+    $('#update_paypal_form').show();
+  })
+
+  $('#update_paypal_btn').click(function() {
+    //Verify email field is not empty
+    $('#update_paypal_form').submit();
+  })
+
+  $('#add_paypal_btn').click(function() {
+    $('#add_paypal_form').submit();
   })
 
   $('.option_2_well .subscribe_btn_1').click(function(){
@@ -1496,5 +1548,6 @@ adventureCreate = function() {
   adv_create_new_basic_submit();
   phone_num_validation();
   payment_options_btns();
+  paypal_or_bank_toggle();
   subscription_payment_validation();
 }
