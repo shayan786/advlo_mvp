@@ -1242,6 +1242,39 @@ function signup_cookie(){
   })
 }
 
+function payment_options_btns() {
+  //15% OPTION
+  $('#adventure_create #adv_payment .option_btn_1').click(function(){
+    $('#adventure_create #adv_payment .option_btn_2').removeClass('active');
+    $(this).toggleClass('active');
+    $('#adventure_create #adv_payment .stripe_paypal_payouts').hide();
+    $('#adventure_create #adv_payment .option_2_well').hide();
+    $('#adventure_create #adv_payment .option_1_well').fadeToggle();
+    $('#adventure_create #adv_payment .option_1_well').css({
+      marginTop: '20px'
+    });
+  })
+
+  $('#adventure_create #adv_payment .option_1_well .continue_btn').click(function(){
+    $('#adventure_create #adv_payment .stripe_paypal_payouts').fadeToggle();
+  });
+
+  //SUBSCRIBE OPTION
+  $('#adventure_create #adv_payment .option_btn_2').click(function(){
+    $('#adventure_create #adv_payment .option_btn_1').removeClass('active');
+    $(this).toggleClass('active');
+    $('#adventure_create #adv_payment .stripe_paypal_payouts').hide();
+    $('#adventure_create #adv_payment .option_1_well').hide();
+    $('#adventure_create #adv_payment .option_2_well').fadeToggle();
+    $('#adventure_create #adv_payment .option_2_well').css({
+      marginTop: '20px'
+    });
+  })
+
+
+
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1294,4 +1327,5 @@ adventureCreate = function() {
   upload_images();
   adv_create_new_basic_submit();
   phone_num_validation();
+  payment_options_btns();
 }

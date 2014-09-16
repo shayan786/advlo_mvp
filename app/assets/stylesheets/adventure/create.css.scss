@@ -208,6 +208,56 @@
 			min-height: 500px;
 		}
 
+		.option_btn_1, .option_btn_2, .subscribe_btn_1, .subscribe_btn_2 {
+			margin-top: 20px;
+			padding-top: 25px;
+			padding-bottom: 25px;
+
+			.percent {
+				font-family: bebas_neue_book;
+				font-size: 4.0em;	
+				letter-spacing: 3px;
+			}
+
+			.text {
+				font-family: nexa_light;
+				font-weight: bold;
+			}
+		}
+
+		.option_1_well {
+			padding: 10px 30px;
+			display: none;
+
+			.header {
+				font-size: 1.3em;
+			}
+		}
+
+		.option_2_well {
+			@extend .option_1_well;
+
+			.dollar {
+				font-family: bebas_neue;
+				font-size: 2.6em;	
+				letter-spacing: 2px;
+			}
+
+			.text {
+				font-family: nexa_light;
+				font-weight: bold;
+				font-size: 0.8em;
+			}
+		}
+
+		.continue_btn {
+			.fa {
+				padding: 0 !important;	
+				color: #FFF !important;
+				margin-left: 5px;
+			}
+		}
+
 		.check_img {
 			margin: 10px auto 0 auto;
 		}
