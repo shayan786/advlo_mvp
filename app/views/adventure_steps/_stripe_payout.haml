@@ -50,8 +50,7 @@
       %a{href: "/terms", target: "_blank"}
         %em By adding your bank account, you agree to Advlo’s terms & privacy policies
 
-- else 
-    
+- else     
   %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", "data-remote" => "true"}
     = tag(:input, :type => "hidden", :value => "put", :name => "_method")
     = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)

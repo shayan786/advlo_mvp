@@ -12,51 +12,6 @@
           .payout_options_btns
             = render partial: "payout_options_btns"
 
-          .col-md-6.col-md-offset-3
-            .well.how_to.text-center{style: "display: none"}
-              .row
-                Add a
-                %strong Bank Account
-                or
-                %strong Paypal email
-                to receive your payments
-              %br
-              .row
-                .col-md-4.text-left
-                  %strong
-                    Bank Payouts
-                .col-md-8.text-left
-                  Available in:
-                  Austrailia, 
-                  Canada, 
-                  Ireland, 
-                  United Kingdom, 
-                  United States
-              %br 
-              .row   
-                .col-md-4.text-left
-                  %strong
-                    Paypal Payouts
-                .col-md-8.text-left
-                  Available globally with a valid paypal account & email address
-
-
-          .subscribe_options_btns
-            = render partial: "subscribe_options_btns"
-
-          .stripe_paypal_payouts{style: "display: none"}
-            = render partial: "notice"
-
-            = render partial: "stripe_payout"
-
-            = render partial: "paypal_payout"
-
-            %br
-            %br
-            .text-center
-              %em
-                If both information is provided, bank account will be used as the default payout method.
-
         .panel-footer.text-center
           .row
             .col-md-2.col-md-offset-4
