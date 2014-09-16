@@ -233,6 +233,45 @@ class AdventureStepsController < ApplicationController
         end
       end
 
+    # Hook for subscription
+    elsif params[:subscription] == "1"
+      # Get UserAdventure
+      user_adventure = UserAdventure.find_by_user_id(params[:host_id])
+      user = User.find_by_id(params[:host_id])
+
+      # Create stripe customer
+      customer = Stripe::Customer.create(
+        :card => params[:stripe_token],
+        :email => user.email,
+        :description => params[:credit_card_name]
+      )
+
+      # Store stripe customer id in the UserAdventure model
+      user_adventure.stripe_customer_id = customer.id
+
+      # Update their charge type in the UserAdventure model
+      user_adventure.charge_type = "subscription"
+
+      # Enroll them in a subscription via stripe
+      customer.subscriptions.create(:plan => "basic")
+
+      # Update redirect url if that option is selected
+      if params[:redirect_url]
+        adventure = Adventure.find_by_id(user_adventure.adventure_id)
+
+        adventure.subscription_redirect_url = params[:redirect_url]
+
+        adventure.save
+      end
+
+      # Respond back
+      if user_adventure.save
+        respond_to do |format|
+          format.js {render "subscription_charged.js", layout: false}
+        end
+      end
+
+
     # For updating the 'basic' info
     else
       if params[:adventure][:attachment] 

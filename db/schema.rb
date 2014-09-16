@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916185001) do
+ActiveRecord::Schema.define(version: 20140916213958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,13 +86,14 @@ ActiveRecord::Schema.define(version: 20140916185001) do
     t.string   "city"
     t.string   "state"
     t.string   "region"
-    t.string   "rating",                  default: ""
+    t.string   "rating",                    default: ""
     t.string   "country"
     t.string   "video_url"
-    t.boolean  "sent_approval_email",     default: false
+    t.boolean  "sent_approval_email",       default: false
     t.text     "attachment_meta"
     t.integer  "waiver_id"
     t.boolean  "featured"
+    t.string   "subscription_redirect_url"
   end
 
   create_table "contact_advlos", force: true do |t|
