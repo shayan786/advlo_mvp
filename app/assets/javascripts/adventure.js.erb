@@ -1435,11 +1435,15 @@ function paypal_or_bank_toggle(){
   })
 
   $('.option_2_well .subscribe_btn_1').click(function(){
+    $(this).toggleClass('active');
+    $('.option_2_well .subscribe_btn_2').removeClass('active');
     $('.option_2_well #subscription_payment_form_2').hide();
     $('.option_2_well #subscription_payment_form_1').fadeToggle();
   })
 
   $('.option_2_well .subscribe_btn_2').click(function(){
+    $(this).toggleClass('active');
+    $('.option_2_well .subscribe_btn_1').removeClass('active');
     $('.option_2_well #subscription_payment_form_1').hide();
     $('.option_2_well #subscription_payment_form_2').fadeToggle();
   })
