@@ -91,6 +91,8 @@ class RegistrationsController < Devise::RegistrationsController
       User.find(session[:referrer_id]).update_referral_count
       session[:referrer_id] = nil
     end
+
+    '/travel-fund'
   end
   # Customize Signing Up Devise Params
   #def sign_up_params
