@@ -1,0 +1,54 @@
+%form#subscription_payment_form_1{"accept-charset" => "UTF-8", action: wizard_path, "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
+  = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  = tag(:input, :type => "hidden", :name => "host_id", :value => "#{current_user.id}")
+
+  .amount_warning.row.text-center
+    %b Charge Amount:
+    %span.subscription_cost
+      $10
+    %br
+    %em
+      You can cancel your subscription at any time by revisiting this page after subscribing. 
+
+  .form-group.row
+    .col-md-4
+      .form_label.edit-label Full Name
+    .col-md-6
+      %input.form-control#credit_card_name{type: "text", name: "credit_card_name", type: "text", placeholder: "First Last"}
+  
+
+  .form-group.row
+    .col-md-4
+      .form_label.edit-label Card Number
+    .col-md-6
+      %input.form-control{type: "text", placeholder: '1234567890123', name: "credit_card_number", id: "credit_card_number", maxlength: "16"}
+
+  
+  .form-group.row
+    .col-md-4
+      .form_label.cvv-box.edit-label CVV
+    .col-md-2
+      %input.form-control{type: "text", placeholder: '123', name: "cvv", id: "cvv", maxlength: "3"}
+    .col-md-1
+    .col-md-5.credit-cards
+      .cc_icon= image_tag 'icons/visa.png'
+      .cc_icon= image_tag 'icons/discover.png'
+      .cc_icon= image_tag 'icons/mastercard.png'
+      .cc_icon= image_tag 'icons/amex.png'
+      
+  
+  .form-group.row
+    .col-md-4
+      .form_label.edit-label Card Expiration
+    .col-md-3
+      .form-group
+        %label.form_label Exp Month
+        %input.form-control{placeholder: "MM", type: "text", maxlength: "2", name: "exp_month", id: 'exp_month'}
+    .col-md-3
+      .form-group
+        %label.form_label Exp Year
+        %input.form-control{placeholder: "YYYY", type: "text", maxlength: "4", name: "exp_year", id: 'exp_year'}
+
+  .row.text-center
+    %input.btn.btn-success{type: "submit", value: "SUBSCRIBE"}

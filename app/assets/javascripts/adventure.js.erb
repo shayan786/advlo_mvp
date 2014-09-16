@@ -978,6 +978,129 @@ function payment_modal_validator() {
   });
 }
 
+function subscription_payment_validation() {
+  $('#subscription_payment_form_1').bootstrapValidator({
+    fields: {
+      'credit_card_name': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card full name'
+          }
+        }
+      },
+      'credit_card_number': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card number'
+          },
+          creditCard: {
+            message: 'Credit card number is invalid'
+          }
+        }
+      },
+      'cvv': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card CVV'
+          },
+          cvv: {
+            message: 'CVV number is invalid'
+          }
+        }
+      },
+      'exp_month': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          digits: {
+            message: 'Exp. month is invalid'
+          },
+          lessThan: {
+            value: 12,
+            inclusive: false,
+            message: 'Exp. month is invalid'
+          }
+        }
+      },
+      'exp_year': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          integer: {
+            message: 'Exp. year is invalid'
+          }
+        }
+      }
+    }
+  });
+
+  $('#subscription_payment_form_2').bootstrapValidator({
+    fields: {
+      'redirect_url': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter a redirect url'
+          }
+        }
+      },
+      'credit_card_name': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card full name'
+          }
+        }
+      },
+      'credit_card_number': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card number'
+          },
+          creditCard: {
+            message: 'Credit card number is invalid'
+          }
+        }
+      },
+      'cvv': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card CVV'
+          },
+          cvv: {
+            message: 'CVV number is invalid'
+          }
+        }
+      },
+      'exp_month': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          digits: {
+            message: 'Exp. month is invalid'
+          },
+          lessThan: {
+            value: 12,
+            inclusive: false,
+            message: 'Exp. month is invalid'
+          }
+        }
+      },
+      'exp_year': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          integer: {
+            message: 'Exp. year is invalid'
+          }
+        }
+      }
+    }
+  });
+}
+
 function sign_in_sign_up_modal() {
   $('.sign-in-toggle').click(function(){
     $(this).hide();
@@ -1258,6 +1381,16 @@ function payment_options_btns() {
     $('#commission-tree').hide();
     $('#subscription-tree').fadeIn();
   })
+
+  $('.option_2_well .subscribe_btn_1').click(function(){
+    $('.option_2_well #subscription_payment_form_2').hide();
+    $('.option_2_well #subscription_payment_form_1').fadeToggle();
+  })
+
+  $('.option_2_well .subscribe_btn_2').click(function(){
+    $('.option_2_well #subscription_payment_form_1').hide();
+    $('.option_2_well #subscription_payment_form_2').fadeToggle();
+  })
 }
 
 adventureShow = function() {
@@ -1313,4 +1446,5 @@ adventureCreate = function() {
   adv_create_new_basic_submit();
   phone_num_validation();
   payment_options_btns();
+  subscription_payment_validation();
 }
