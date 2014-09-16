@@ -1244,9 +1244,9 @@ function signup_cookie(){
 
 function payment_options_btns() {
   //15% OPTION
-  $('#adventure_create #adv_payment .option_btn_1').click(function(){
-    $('#adventure_create #adv_payment .option_2_well').hide();
-    $('#adventure_create #adv_payment .option_1_well').fadeToggle();
+  $('.option_btn_1').click(function(){
+    $('#commission-tree').fadeIn();
+    $('#subscription-tree').hide();
   })
 
   $('#adventure_create #adv_payment .option_1_well .continue_btn').click(function(){
@@ -1254,15 +1254,10 @@ function payment_options_btns() {
   });
 
   //SUBSCRIBE OPTION
-  $('#adventure_create #adv_payment .option_btn_2').click(function(){
-    $('#adventure_create #adv_payment .option_1_well').hide();
-    $('#adventure_create #adv_payment .option_2_well').css({
-      marginTop: '20px'
-    });
-    $('#adventure_create #adv_payment .option_2_well').fadeToggle();
+  $('.option_btn_2').click(function(){
+    $('#commission-tree').hide();
+    $('#subscription-tree').fadeIn();
   })
-
-
 }
 
 adventureShow = function() {

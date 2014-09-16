@@ -12,11 +12,11 @@
               .region-text
                 Costa Rica
 
-          %a{href: '/adventures?country=Nicaragua'}  
-            .region 
-              = image_tag HeroImage.where(region: 'Nicaragua').first.attachment.url(:hero), alt: "Nicaragua"
-              .region-text
-                Nicaragua
+          / %a{href: '/adventures?country=Nicaragua'}  
+          /   .region 
+          /     = image_tag HeroImage.where(region: 'Nicaragua').first.attachment.url(:hero), alt: "Nicaragua"
+          /     .region-text
+          /       Nicaragua
 
           %a{href: '/adventures?country=Ecuador'}  
             .region 
@@ -24,18 +24,18 @@
               .region-text
                 Ecuador
 
-          %a{href: '/adventures?state=Colorado'}  
-            .region 
-              = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero), alt: "Colorado"
-              .region-text
-                Colorado
+          / %a{href: '/adventures?state=Colorado'}  
+          /   .region 
+          /     = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero), alt: "Colorado"
+          /     .region-text
+          /       Colorado
 
 
-          %a{href: '/adventures?state=Washington'}  
-            .region 
-              = image_tag HeroImage.where(region: 'Washington').first.attachment.url(:hero), alt: "Washington"
-              .region-text
-                Washington
+          / %a{href: '/adventures?state=Washington'}  
+          /   .region 
+          /     = image_tag HeroImage.where(region: 'Washington').first.attachment.url(:hero), alt: "Washington"
+          /     .region-text
+          /       Washington
 
           %a{href: '/adventures?country=United States'}  
             .region 

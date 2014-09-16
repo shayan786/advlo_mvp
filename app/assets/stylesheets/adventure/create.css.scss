@@ -239,9 +239,17 @@
 			}
 		}
 
-		.option_1_well {
-			padding: 10px 30px;
+		#subscription-tree{
 			display: none;
+		}
+
+		#commission-tree{
+			display: none;
+		}
+
+		.option_1_well {
+			margin-top: 30px;
+			padding: 10px 30px;
 
 			.header {
 				font-size: 1.3em;
