@@ -1256,9 +1256,11 @@ function payment_options_btns() {
   //SUBSCRIBE OPTION
   $('#adventure_create #adv_payment .option_btn_2').click(function(){
     $('#adventure_create #adv_payment .option_1_well').hide();
+    $('#adventure_create #adv_payment .option_2_well').css({
+      marginTop: '20px'
+    });
     $('#adventure_create #adv_payment .option_2_well').fadeToggle();
   })
-
 
 
 }

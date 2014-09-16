@@ -208,7 +208,7 @@
 			min-height: 500px;
 		}
 
-		.option_btn_1, .option_btn_2, .subscribe_btn_1, .subscribe_btn_2 {
+		.option_btn_1, .option_btn_2 {
 			margin-top: 20px;
 			padding-top: 25px;
 			padding-bottom: 25px;
@@ -222,6 +222,20 @@
 			.text {
 				font-family: nexa_light;
 				font-weight: bold;
+			}
+		}
+
+		.subscribe_btn_1, .subscribe_btn_2 {
+			@extend .option_btn_1;
+
+			.text {
+				font-family: cabin_bold !important;
+				font-size: 1.05em !important;
+			}
+
+			.fa {
+				color: $advlo_orange;
+				font-size: 1.6em;
 			}
 		}
 
