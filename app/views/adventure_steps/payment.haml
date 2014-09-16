@@ -8,8 +8,12 @@
         .panel-heading.text-center.section_header
           PAYMENT DETAILS
         .panel-body
+
+          .payout_options_btns
+            = render partial: "payout_options_btns"
+
           .col-md-6.col-md-offset-3
-            .well.how_to.text-center
+            .well.how_to.text-center{style: "display: none"}
               .row
                 Add a
                 %strong Bank Account
@@ -36,17 +40,22 @@
                 .col-md-8.text-left
                   Available globally with a valid paypal account & email address
 
-          = render partial: "notice"
 
-          = render partial: "stripe_payout"
+          .subscribe_options_btns
+            = render partial: "subscribe_options_btns"
 
-          = render partial: "paypal_payout" 
+          .stripe_paypal_payouts{style: "display: none"}
+            = render partial: "notice"
 
-          %br
-          %br
-          .text-center
-            %em
-              If both information is provided, bank account will be used as the default payout method.
+            = render partial: "stripe_payout"
+
+            = render partial: "paypal_payout"
+
+            %br
+            %br
+            .text-center
+              %em
+                If both information is provided, bank account will be used as the default payout method.
 
         .panel-footer.text-center
           .row
