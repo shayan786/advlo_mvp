@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %h2.text-center= "Thanks for signing up with Adventure Local"
+      %h4.text-center= "You have subscribed #{@adventure.title}"
+      We are excited to help you connect with more travelers
+      %h5
+        Your adventure is accessible at: 
+        = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"
+        %br
+        while your profile is accessible at:
+        = link_to @adventure.users.first.name,"#{root_url}#{user_path(@adventure.users.first)}" 
+      
+      %p
+        %i= "Your subscription started on #{Time.at(@sub.current_period_start).strftime("%m-%d-%Y")} and will be renewed on #{Time.at(@sub.current_period_end).strftime("%m-%d-%Y")}"
+
+      - if @adventure.is_subscribed_and_has_redirect_url?
+        %p
+          * You can cancel the subscription at any time 
+          %a{href: "#{root_url}adventure_steps/payment?adventure_id=#{@adventure.id}"}here
+          %br
+          %br
+          %i
+            ="You chose to use your own transaction system via this link => #{@adventure.subscription_redirect_url}. Please be aware you must also have the traveler acknowledge that you are using your own cancellation policy."
+      - else
+        %p
+          * You can cancel the subscription at any time 
+          %a{href: "#{root_url}adventure_steps/payment?adventure_id=#{@adventure.id}"}here
+          %br
+          %br
+          %i
+            You chose to use our transaction service so you can find all information about Advlo's cancellation policy and how it affects your reservations
+            = link_to "here", "#{root_url}terms"
+
+
+    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
+      %tr
+        %td{align: "center", valign: "top"}
+          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
+            
+            %tr
+              %td
+                %a{href: "#{root_url}/adventures/#{@adventure.slug}"}
+                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
+
+              %td{valign: "top"}
+                %h2= @adventure.title
+                %h4= "#{@adventure.summary[0..800]}..."
+
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}

@@ -249,6 +249,8 @@ class AdventureStepsController < ApplicationController
         # Delete that subscription
         customer.subscriptions.retrieve(user_adventure.stripe_subscription_id).delete(:at_period_end => true)
 
+        AdvloMailer.subscription_cancelled(user_adventure).deliver
+
         respond_to do |format|
           format.js {render "subscription_charged.js", layout: false}
         end
@@ -285,6 +287,8 @@ class AdventureStepsController < ApplicationController
 
           # Respond back
           if user_adventure.save
+            AdvloMailer.subscription_created(user_adventure).deliver
+
             respond_to do |format|
               format.js {render "subscription_charged.js", layout: false}
             end
@@ -324,6 +328,8 @@ class AdventureStepsController < ApplicationController
 
           # Respond back
           if user_adventure.save
+            AdvloMailer.subscription_created(user_adventure).deliver
+
             respond_to do |format|
               format.js {render "subscription_charged.js", layout: false}
             end

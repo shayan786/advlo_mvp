@@ -56,8 +56,8 @@
 
         -if !@adventure.approved || @current_guide == current_user
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 
-              %span 
-                BOOK IT
+            %span 
+              BOOK IT
         -else
           - if @adventure.is_subscribed_and_has_redirect_url?
             %a#book-it.btn.btn-success{href: "#{@adventure.redirect_url}", target: "_blank"}

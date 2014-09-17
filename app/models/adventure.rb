@@ -106,7 +106,7 @@ class Adventure < ActiveRecord::Base
     adventure = Adventure.find(self.id)
     user_adventure = UserAdventure.find_by_adventure_id(self.id)
 
-    if user_adventure.charge_type = "subscribed" && adventure.redirect_url
+    if user_adventure.charge_type = "subscribed" && adventure.subscription_redirect_url
       return true
     else
       return false
