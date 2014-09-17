@@ -9,8 +9,13 @@
           PAYMENT DETAILS
         .panel-body
 
-          .payout_options_btns
-            = render partial: "payout_options_btns"
+          - user_adventure = UserAdventure.find_by_adventure_id(@adventure.id)
+          - if user_adventure.charge_type == "subscription"
+            = render partial: "payout_subscribed"
+
+          - else
+            .payout_options_btns
+              = render partial: "payout_options_btns"
 
         .panel-footer.text-center
           .row
