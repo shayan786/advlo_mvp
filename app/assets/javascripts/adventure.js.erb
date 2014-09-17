@@ -1501,6 +1501,25 @@ function getStripeToken_subscription() {
   });
 }
 
+function cancel_subscription() {
+  $('.subscribed_well .cancel_subscription_btn').click(function() {
+    var adv_id = $(this).data('adventure-id');
+
+    var ans = confirm("Are you sure you want to cancel your subscription?");
+
+    if (ans == true) {
+      $.ajax({
+        url: "/adventure_steps/payment",
+        dataType: "script",
+        data: {subscription: "1", adventure_id: adv_id, cancel_subscription: true},
+        type: "POST",
+        method: "PUT"
+      });
+    }
+
+  })
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1556,4 +1575,5 @@ adventureCreate = function() {
   payment_options_btns();
   paypal_or_bank_toggle();
   subscription_payment_validation();
+  cancel_subscription();
 }

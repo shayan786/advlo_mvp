@@ -1,3 +1,8 @@
+- # NEED TO DO SOME CHECKING WITH THESE:
+- # 1) SUBSCRIBED - ALL IS GOOD
+- # 2) SUBSCRIBED BUT CANCELLED & STILL WITHIN SUBSCRIPTION PERIOD
+- # OTHER CASES WILL BE HANDLED MANUALLY FOR NOW
+
 .well.subscribed_well.text-center.col-md-6.col-md-offset-3
   THIS ADVENTURE IS UNDER A 
   %br
@@ -16,3 +21,14 @@
   %br
   %b
     PLACEHOLDER
+
+  %br
+  %br
+  .btn.btn-danger.cancel_subscription_btn{"data-adventure-id" => "#{@adventure.id}"}
+    %i.fa.fa-times
+    CANCEL SUBSCRIPTION
+
+  %br
+  %br
+  To modify this subscription or if you have any questions, please contact us at: 
+  = mail_to 'support@advlo.com'

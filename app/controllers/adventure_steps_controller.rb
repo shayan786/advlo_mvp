@@ -235,39 +235,95 @@ class AdventureStepsController < ApplicationController
 
     # Hook for subscription
     elsif params[:subscription] == "1"
-      # Get UserAdventure
-      user_adventure = UserAdventure.find_by_user_id(params[:host_id])
-      user = User.find_by_id(params[:host_id])
+      # Check if its a cancellation request
+      if params[:cancel_subscription]
+        user_adventure = UserAdventure.find_by_adventure_id(params[:adventure_id])
 
-      # Create stripe customer
-      customer = Stripe::Customer.create(
-        :card => params[:stripe_token],
-        :email => user.email,
-        :description => params[:credit_card_name]
-      )
+        # Get stripe customer id
+        stripe_customer_id = user_adventure.stripe_customer_id
 
-      # Store stripe customer id in the UserAdventure model
-      user_adventure.stripe_customer_id = customer.id
+        # Update stripe to cancel their subscription on next pay cycle
+        customer = Stripe::Customer.retrieve(stripe_customer_id)
 
-      # Update their charge type in the UserAdventure model
-      user_adventure.charge_type = "subscription"
+        # Delete that subscription
+        customer.subscriptions.retrieve(user_adventure.stripe_subscription_id).delete
 
-      # Enroll them in a subscription via stripe
-      customer.subscriptions.create(:plan => "basic")
+      else
+        # Get UserAdventure
+        user_adventure = UserAdventure.find_by_user_id(params[:host_id])
+        user = User.find_by_id(params[:host_id])
 
-      # Update redirect url if that option is selected
-      if params[:redirect_url]
-        adventure = Adventure.find_by_id(user_adventure.adventure_id)
+        # Need to check if that person already has an adventure on subscription...i.e. already is a stripe customer
+        existing_subscription_adventures = UserAdventure.where(user_id: user_adventure.user_id).where('adventure_id <> ?',user_adventure.adventure_id).where('stripe_customer_id IS NOT NULL')
+        
+        if existing_subscription_adventures.count > 0
+          existing_stripe_customer_id = existing_subscription_adventures.first.stripe_customer_id
+          existing_stripe_customer = Stripe::Customer.retrieve(existing_stripe_customer_id)
 
-        adventure.subscription_redirect_url = params[:redirect_url]
+          # Create another subscription
+          new_subscription = existing_stripe_customer.subscriptions.create(:plan => "basic")
 
-        adventure.save
-      end
+          # Store stripe customer id in the UserAdventure model
+          user_adventure.stripe_customer_id = existing_stripe_customer.id
 
-      # Respond back
-      if user_adventure.save
-        respond_to do |format|
-          format.js {render "subscription_charged.js", layout: false}
+          # Update their charge type in the UserAdventure model
+          user_adventure.charge_type = "subscription"
+
+          # Update their subscription id in the UserAdventure model
+          user_adventure.stripe_subscription_id = new_subscription.id
+
+          # Update redirect url if that option is selected
+          if params[:redirect_url]
+            adventure = Adventure.find_by_id(user_adventure.adventure_id)
+
+            adventure.subscription_redirect_url = params[:redirect_url]
+
+            adventure.save
+          end
+
+          # Respond back
+          if user_adventure.save
+            respond_to do |format|
+              format.js {render "subscription_charged.js", layout: false}
+            end
+          end
+
+        else
+          # Create stripe customer
+          customer = Stripe::Customer.create(
+            :card => params[:stripe_token],
+            :email => user.email,
+            :description => params[:credit_card_name]
+          )
+
+          # Enroll them in a subscription via stripe
+          new_subscription = customer.subscriptions.create(:plan => "basic")
+
+          # Store stripe customer id in the UserAdventure model
+          user_adventure.stripe_customer_id = customer.id
+
+          # Update their charge type in the UserAdventure model
+          user_adventure.charge_type = "subscription"
+
+          # Update their subscription id in the UserAdventure model
+          user_adventure.stripe_subscription_id = new_subscription.id
+
+
+          # Update redirect url if that option is selected
+          if params[:redirect_url]
+            adventure = Adventure.find_by_id(user_adventure.adventure_id)
+
+            adventure.subscription_redirect_url = params[:redirect_url]
+
+            adventure.save
+          end
+
+          # Respond back
+          if user_adventure.save
+            respond_to do |format|
+              format.js {render "subscription_charged.js", layout: false}
+            end
+          end
         end
       end
 
