@@ -1,4 +1,9 @@
 #invite {
+	
+	.invite-alert {
+		margin-top: 25px;
+	}
+
 	margin-top: 85px;
 
 	.number_2_money {
@@ -25,6 +30,8 @@
 			padding-bottom: 35px;
 
 			.invite_profit_container {
+				width: 100%;
+				float: left;
 				margin-left: 35%;
 			}
 

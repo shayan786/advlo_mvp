@@ -246,8 +246,9 @@
 		
 		#add-bank {
 			margin-top: 20px;
-	  		cursor: pointer;
+  		cursor: pointer;
 			text-align: center;
+			margin: 0 auto;
 		}
 		#add-card {
 			margin-top: 25px;
@@ -258,6 +259,7 @@
 		#add-paypal {
 			margin-top: 30px;
 			cursor: pointer;
+			margin: 0 auto;
 
 			.glyphicon {
 				padding-left: 35px;
