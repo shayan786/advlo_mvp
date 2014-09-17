@@ -247,7 +247,11 @@ class AdventureStepsController < ApplicationController
         customer = Stripe::Customer.retrieve(stripe_customer_id)
 
         # Delete that subscription
-        customer.subscriptions.retrieve(user_adventure.stripe_subscription_id).delete
+        customer.subscriptions.retrieve(user_adventure.stripe_subscription_id).delete(:at_period_end => true)
+
+        respond_to do |format|
+          format.js {render "subscription_charged.js", layout: false}
+        end
 
       else
         # Need to check if that person already has an adventure on subscription...i.e. already is a stripe customer

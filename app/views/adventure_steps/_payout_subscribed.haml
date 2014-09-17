@@ -29,13 +29,14 @@
 
 
 
-  - if Time.now < Time.at(stripe_subscription_obj.current_period_end)
-    .btn.btn-danger.cancel_subscription_btn{"data-adventure-id" => "#{@adventure.id}"}
+  - if stripe_subscription_obj.cancel_at_period_end == false
+    .btn.btn-danger.cancel_subscription_btn{"data-adventure-id" => "#{@adventure.id}", "data-host-id" => "#{@adventure.users.first.id}"}
       %i.fa.fa-times
       CANCEL SUBSCRIPTION
-  - else
+  - elsif Time.now < Time.at(stripe_subscription_obj.current_period_end)
     THIS SUBSCRIPTION HAS BEEN CANCELLED BUT IS STILL ACTIVE UNTIL
-    = Time.at(stripe_subscription_obj.current_period_end).strftime("%m-%d-%Y")
+    %br
+    %b= Time.at(stripe_subscription_obj.current_period_end).strftime("%m-%d-%Y")
 
   %br
   %br

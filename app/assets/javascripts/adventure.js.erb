@@ -1504,6 +1504,7 @@ function getStripeToken_subscription() {
 function cancel_subscription() {
   $('.subscribed_well .cancel_subscription_btn').click(function() {
     var adv_id = $(this).data('adventure-id');
+    var host_id = $(this).data('host-id');
 
     var ans = confirm("Are you sure you want to cancel your subscription?");
 
@@ -1511,7 +1512,7 @@ function cancel_subscription() {
       $.ajax({
         url: "/adventure_steps/payment",
         dataType: "script",
-        data: {subscription: "1", adventure_id: adv_id, cancel_subscription: true},
+        data: {subscription: "1", adventure_id: adv_id, host_id: host_id, cancel_subscription: true},
         type: "POST",
         method: "PUT"
       });
