@@ -142,7 +142,7 @@
       #host_bio.title-brick.dark_gray_background
         = render partial: 'host_bio'
 
-      - if @adventure.approved && @current_guide != current_user
+      - if @adventure.approved && @current_guide != current_user && !@adventure.is_subscribed_and_has_redirect_url?
         #payment_panel.title-brick
           = render partial: 'payment_panel'
 
