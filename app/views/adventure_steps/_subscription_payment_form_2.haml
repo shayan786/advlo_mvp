@@ -2,6 +2,7 @@
   = tag(:input, :type => "hidden", :value => "put", :name => "_method")
   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
   = tag(:input, :type => "hidden", :name => "host_id", :value => "#{current_user.id}")
+  = tag(:input, :type => "hidden", :name => "adventure_id", :value => "#{@adventure.id}")
   = tag(:input, :id => "stripe_token", :type => "hidden", :name => "stripe_token")
   = tag(:input, :type => "hidden", :name => "subscription", :value => "1")
 
@@ -59,4 +60,5 @@
         %input.form-control{placeholder: "YYYY", type: "text", maxlength: "4", name: "exp_year", id: 'exp_year'}
 
   .row.text-center
-    %input.btn.btn-success{type: "submit", value: "SUBSCRIBE"}
+    .btn.btn-success.subscribe_btn
+      SUBSCRIBE

@@ -3,6 +3,8 @@
 - # 2) SUBSCRIBED BUT CANCELLED & STILL WITHIN SUBSCRIPTION PERIOD
 - # OTHER CASES WILL BE HANDLED MANUALLY FOR NOW
 
+- stripe_subscription_obj = Stripe::Customer.retrieve(user_adventure.stripe_customer_id).subscriptions.retrieve(user_adventure.stripe_subscription_id)
+
 .well.subscribed_well.text-center.col-md-6.col-md-offset-3
   THIS ADVENTURE IS UNDER A 
   %br
@@ -13,20 +15,27 @@
   START DATE:
   %br
   %b
-    PLACEHOLDER
+    = Time.at(stripe_subscription_obj.current_period_start).strftime("%m-%d-%Y")
 
   %br
   %br
   END DATE:
   %br
   %b
-    PLACEHOLDER
+    = Time.at(stripe_subscription_obj.current_period_end).strftime("%m-%d-%Y")
 
   %br
   %br
-  .btn.btn-danger.cancel_subscription_btn{"data-adventure-id" => "#{@adventure.id}"}
-    %i.fa.fa-times
-    CANCEL SUBSCRIPTION
+
+
+
+  - if Time.now < Time.at(stripe_subscription_obj.current_period_end)
+    .btn.btn-danger.cancel_subscription_btn{"data-adventure-id" => "#{@adventure.id}"}
+      %i.fa.fa-times
+      CANCEL SUBSCRIPTION
+  - else
+    THIS SUBSCRIPTION HAS BEEN CANCELLED BUT IS STILL ACTIVE UNTIL
+    = Time.at(stripe_subscription_obj.current_period_end).strftime("%m-%d-%Y")
 
   %br
   %br
