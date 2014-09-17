@@ -226,6 +226,21 @@
 		}
 
 		.subscribe_btn_1, .subscribe_btn_2 {
+			margin-top: 40px !important;
+			text-align: center;
+			width: 150px;
+			height: 125px;
+
+			img {
+				position: relative;
+				width: 96px;
+				margin-top: -15px;
+			}
+			.fa-share-square-o {
+				font-size: 50px !important;
+				color: #545454 !important;
+			}
+
 			@extend .option_btn_1;
 
 			.text {
@@ -340,6 +355,9 @@
 		.fa-university{
 			color: #000 !important;
 			font-size: 32px !important;
+		}
+		.fa-paypal {
+			@extend .fa-university;
 		}
 
 		#add-bank-form {
