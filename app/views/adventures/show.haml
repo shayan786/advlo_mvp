@@ -56,12 +56,17 @@
 
         -if !@adventure.approved || @current_guide == current_user
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 
-            %span 
-              BOOK IT
+              %span 
+                BOOK IT
         -else
-          #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
-            %span 
-              BOOK IT
+          - if @adventure.is_subscribed_and_has_redirect_url?
+            %a#book-it.btn.btn-success{href: "#{@adventure.redirect_url}", target: "_blank"}
+              %span 
+                BOOK IT
+          - else
+            #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "zl"} 
+              %span 
+                BOOK IT
 
     - else
       .guide-block
@@ -100,9 +105,14 @@
                   %span 
                     BOOK IT
               -else
-                #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
-                  %span 
-                    BOOK IT
+                - if @adventure.is_subscribed_and_has_redirect_url?
+                  %a#book-it.btn.btn-success{href: "#{@adventure.redirect_url}", target: "_blank"}
+                    %span 
+                      BOOK IT
+                - else
+                  #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "zl"} 
+                    %span 
+                      BOOK IT
 
     .row.information-container
       #overview.title-brick

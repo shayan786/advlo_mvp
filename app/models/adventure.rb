@@ -102,6 +102,18 @@ class Adventure < ActiveRecord::Base
     end
   end
 
+  def is_subscribed_and_has_redirect_url?
+    adventure = Adventure.find(self.id)
+    user_adventure = UserAdventure.find_by_adventure_id(self.id)
+
+    if user_adventure.charge_type = "subscribed" && adventure.redirect_url
+      return true
+    else
+      return false
+    end
+    
+  end
+
   def youtube_embed(youtube_url)
     if youtube_url[/yout\.be\/([^\?]*)/]
       youtube_id = $1
