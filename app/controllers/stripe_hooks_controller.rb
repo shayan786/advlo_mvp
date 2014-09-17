@@ -62,8 +62,20 @@ class StripeHooksController < ApplicationController
   end
 
   def update_user_adventure(receiving_data)
-    puts 'put what do on this webhook here'
+    sub_id = receiving_data['data']['object']['id']
 
+    user_adventure = UserAdventure.find_by_stripe_subscription_id(sub_id)
+    adventure = Adventure.find(user_adventure.adventure_id)
+
+    user_adventure.charge_type = nil
+    user_adventure.stripe_subscription_id = nil
+    adventure.redirect_url = nil
+
+    user_adventure.save
+    adventure.save
+
+
+    # Send Emails?
   end
   
 end
