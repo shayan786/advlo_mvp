@@ -563,7 +563,65 @@
 	z-index: 9999;
 	position: fixed;
 }
+@media screen and (max-width: 991px){
+	.payout-buttons-row  {
+		width: 100%;
+		margin: 0 auto;
+	}
 
+	.option_btn_1 {
+		width: 100%;
+	}
+	.option_btn_2 {
+		width: 100%;
+	}
+
+	#adventure_create #adv_payment  {	
+		#commission-tree {
+			position: relative;
+			width: 100%;
+			float: left;
+		}
+		#subscription-tree {
+			position: relative;
+			width: 100%;
+			float: left;
+		}
+
+		.option_2_well {
+			width: 100%;
+		}
+		.option_1_well {
+			width: 100%;
+		}
+
+		#add-bank {
+			width: 50%;
+			float: left;
+			padding-top: 25px;
+		}
+		#add-paypal {
+			width: 50%;
+			float: left;
+			padding-top: 25px;
+		}
+		.subscribe_btn_1 {
+			width: 50%;
+			float: left;
+			margin-top: 25px;
+
+			img {
+				width: 80%;
+				margin-top: 10px;
+			}
+		}
+		.subscribe_btn_2 {
+			width: 50%;
+			float: left;
+			margin-top: 25px;
+		}
+	}
+}
 
 @media screen and (max-width: 780px){ 
 	#adventure_create .panel-footer .view_btn {
@@ -577,6 +635,8 @@
 	#adventure_create #adv_publish .well {
 		text-align: center;
 	}
+
+
 
 	#adventure_create #adv_payment #existing-paypal {
 		text-align: center;
