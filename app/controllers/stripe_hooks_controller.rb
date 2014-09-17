@@ -9,10 +9,16 @@ class StripeHooksController < ApplicationController
       update_payout(receiving_data)
 
       respond_to do |format|
-        format.json {render json: {status: 200, type: "#{receiving_data['type']}"}}
+        format.json {render json: {status: 200}}
       end 
     elsif receiving_data['type'] == "transfer.paid"
       update_payout(receiving_data)
+
+      respond_to do |format|
+        format.json {render json: {status: 200}}
+      end 
+    elsif receiving_data['type'] == "customer.subscription.deleted"
+      update_user_adventure(receiving_data)
 
       respond_to do |format|
         format.json {render json: {status: 200}}
@@ -53,6 +59,11 @@ class StripeHooksController < ApplicationController
       #Notify host of the initiated payout
       AdvloMailer.delay.payout_completed_email(@payout)
     end
+  end
+
+  def update_user_adventure(receiving_data)
+    puts 'put what do on this webhook here'
+
   end
   
 end
