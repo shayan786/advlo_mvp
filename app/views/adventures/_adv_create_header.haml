@@ -60,16 +60,16 @@
         - if params[:id] == "payment"
           %li.active 
             %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
-              PAYMENT
+              PAYOUT
         - else
           - if !@adventure.adventure_gallery_images.empty?
             %li 
               %a{href: "/adventure_steps/payment?adventure_id=#{@adventure.id}"}
-                PAYMENT
+                PAYOUT
           - else 
             %li.disabled
               %a{href: "#"}
-                PAYMENT
+                PAYOUT
         %li
           %i.fa.fa-long-arrow-right
         - if params[:id] == "publish"
