@@ -1,73 +1,76 @@
-#add-paypal.text-center{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add Paypal Email Address"}
-  .glyphicon.glyphicon-plus
-  = image_tag "icons/paypal.jpg"
-
+#paypal-tree-container
   .row
-    .col-md-4.col-md-offset-4.paypal_update_notice.alert.alert-warning.text-center{style: "display: none;"}
+    .col-md-10.col-md-offset-1.paypal_update_notice.alert.alert-warning.text-center{style: "display: none; margin-top: 25px;"}
 
-- if current_user.paypal_email
+  - if current_user.paypal_email
 
-  #existing-paypal
-    .row
-      .col-md-5
-        .form_label.edit-label Paypal Email
-      .prefill_label.col-md-4
-        = current_user.paypal_email
-    .row.save
-      .btn.btn-primary{id: "change_paypal_btn"}
-        CHANGE
-          
+    #existing-paypal
+      .row
+        .col-md-5
+          .form_label.edit-label Paypal Email
+        .prefill_label.col-md-6
+          = current_user.paypal_email
+      .row.save
+        .btn.btn-primary{id: "change_paypal_btn"}
+          CHANGE
+            
 
-  %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "update_paypal_form", "data-remote" => "true"}
-    = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-    = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-    %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
-    %input{type: 'hidden', name: 'paypal', value: "1"}
-    %input{type: 'hidden', name: 'paypal_update', value: "1"}
+    %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "update_paypal_form", "data-remote" => "true"}
+      = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
+      %input{type: 'hidden', name: 'paypal', value: "1"}
+      %input{type: 'hidden', name: 'paypal_update', value: "1"}
 
-    .form-group.row
-      .col-md-5
-        .form_label.edit-label Paypal Email
-      .col-md-4
-        %input.form-control{type: "text", placeholder: current_user.email, name: "paypal_email", id: "paypal_email"}
-    .form-group.row
-      .col-md-5
-        .form_label.edit-label First Name
-      .col-md-4
-        %input.form-control{type: "text", name: "paypal_first_name", id: "paypal_first_name"}
-    .form-group.row  
-      .col-md-5
-        .form_label.edit-label Last Name
-      .col-md-4
-        %input.form-control{type: "text", name: "paypal_last_name", id: "paypal_email"}
-    .form-group.row.save
-      .btn.btn-primary{id: "update_paypal_btn"}
-        Update
+      .form-group.row
+        .col-md-5
+          .form_label.edit-label Paypal Email
+        .col-md-6
+          %input.form-control{type: "text", placeholder: current_user.email, name: "paypal_email", id: "paypal_email"}
+      .form-group.row
+        .col-md-5
+          .form_label.edit-label First Name
+        .col-md-6
+          %input.form-control{type: "text", name: "paypal_first_name", id: "paypal_first_name"}
+      .form-group.row  
+        .col-md-5
+          .form_label.edit-label Last Name
+        .col-md-6
+          %input.form-control{type: "text", name: "paypal_last_name", id: "paypal_email"}
+      .form-group.row.save
+        .btn.btn-primary{id: "update_paypal_btn"}
+          Update
+      .text-center
+        %a{href: "/terms", target: "_blank"}
+          %em By adding your bank account, you agree to Advlo’s terms & privacy policies
 
-- else
+  - else
 
-  %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_paypal_form", "data-remote" => "true"}
-    = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-    = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-    %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
-    %input{type: 'hidden', name: 'paypal', value: "1"}
-    %input{type: 'hidden', name: 'paypal_update', value: "0"}
+    %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_paypal_form", "data-remote" => "true"}
+      = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
+      %input{type: 'hidden', name: 'paypal', value: "1"}
+      %input{type: 'hidden', name: 'paypal_update', value: "0"}
 
-    .form-group.row
-      .col-md-5
-        .form_label.edit-label Paypal Email
-      .col-md-4
-        %input.form-control{type: "text", placeholder: current_user.email, name: "paypal_email", id: "paypal_email"}
-    .form-group.row
-      .col-md-5
-        .form_label.edit-label First Name
-      .col-md-4
-        %input.form-control{type: "text", name: "paypal_first_name", id: "paypal_first_name"}
-    .form-group.row  
-      .col-md-5
-        .form_label.edit-label Last Name
-      .col-md-4
-        %input.form-control{type: "text", name: "paypal_last_name", id: "paypal_email"}
-    .form-group.row.save
-      .btn.btn-primary{id: "add_paypal_btn"}
-        Add Paypal
+      .form-group.row
+        .col-md-5
+          .form_label.edit-label Paypal Email
+        .col-md-6
+          %input.form-control{type: "text", placeholder: current_user.email, name: "paypal_email", id: "paypal_email"}
+      .form-group.row
+        .col-md-5
+          .form_label.edit-label First Name
+        .col-md-6
+          %input.form-control{type: "text", name: "paypal_first_name", id: "paypal_first_name"}
+      .form-group.row  
+        .col-md-5
+          .form_label.edit-label Last Name
+        .col-md-6
+          %input.form-control{type: "text", name: "paypal_last_name", id: "paypal_email"}
+      .form-group.row.save
+        .btn.btn-primary{id: "add_paypal_btn"}
+          Add Paypal
+      .text-center
+        %a{href: "/terms", target: "_blank"}
+          %em By adding your bank account, you agree to Advlo’s terms & privacy policies

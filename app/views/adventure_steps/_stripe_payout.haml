@@ -1,76 +1,30 @@
-.row
-  .col-md-4.col-md-offset-4.update_notice.alert.alert-warning.text-center{style: "display: none;"}
-    Your bank account information has been updated
+.col-md-10.col-md-offset-1.update_notice.alert.alert-warning.text-center{style: "display: none; margin-top: 25px;"}
+  Your bank account information has been updated
+#bank-tree-container
+  .row
 
-- if current_user.stripe_recipient_id
-  // FYI problems with recipient account 'deleted'
-  // Show existing bank / cc info with option to edit/delete etc.
-  - recipient_info = Stripe::Recipient.retrieve(current_user.stripe_recipient_id)   
+  - if current_user.stripe_recipient_id
+    // FYI problems with recipient account 'deleted'
+    // Show existing bank / cc info with option to edit/delete etc.
+    - recipient_info = Stripe::Recipient.retrieve(current_user.stripe_recipient_id)   
+    #updated-bank-form
+      = render partial: 'updated_bank_form', locals: {recipient_info: recipient_info }
 
-  #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
-    .glyphicon.glyphicon-plus
-    .fa.fa-university
+    %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "change_bank_form", "data-remote" => "true"}
+      = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
+      %input{type: 'hidden', id: 'update_stripe_token', name: 'update_stripe_token', value: ""}
+      %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
+      %input{type: 'hidden', name: 'bank_cc_add', value: "1"}
+      %input{type: 'hidden', name: 'bank_cc_update', value: "1"}
 
-  #updated-bank-form
-    = render partial: 'updated_bank_form', locals: {recipient_info: recipient_info }
-
-  %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "change_bank_form", "data-remote" => "true"}
-    = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-    = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-    %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
-    %input{type: 'hidden', id: 'update_stripe_token', name: 'update_stripe_token', value: ""}
-    %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
-    %input{type: 'hidden', name: 'bank_cc_add', value: "1"}
-    %input{type: 'hidden', name: 'bank_cc_update', value: "1"}
-
-    .form-group.row
-      .col-md-4
-        .form_label.edit-label Name on Bank Account
-      .col-md-6
-        %input.form-control{type: "text", placeholder: recipient_info.name, name: "recipient[bank_account_name]", id: "bank_account_name"}
-        
-
-    .form-group.row
-      .col-md-4
-        .form_label.edit-label Routing Number
-      .col-md-6
-        %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
-
-    .form-group.row
-      .col-md-4
-        .form_label.edit-label Account Number
-      .col-md-6
-        %input.form-control{type: "text", name: "recipient[bank_account_number]", id: "bank_account_number", placeholder: "********"+"#{recipient_info.active_account.last4}"}
-        = image_tag "icons/check_routing_account_display.png", class: "img-responsive check_img"
-
-    .form-group.row.save
-      .btn.btn-primary{id: "update_bank_form_btn"}
-        Update Account
-    .text-center
-      %a{href: "/terms", target: "_blank"}
-        %em By adding your bank account, you agree to Advlo’s terms & privacy policies
-
-- else 
-    
-  %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", "data-remote" => "true"}
-    = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-    = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-    %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
-    %input{type: 'hidden', id: 'stripe_token', name: 'stripe_token', value: ""}
-    %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
-    %input{type: 'hidden', name: 'bank_cc_add', value: "1"}
-    %input{type: 'hidden', name: 'bank_cc_update', value: "0"}
-  
-    #add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
-      .glyphicon.glyphicon-plus
-      .fa.fa-university
-    #add-bank-form  
-      #stripe-error-message
       .form-group.row
         .col-md-4
           .form_label.edit-label Name on Bank Account
         .col-md-6
-          %input.form-control{type: "text", placeholder: "John Doe", name: "recipient[bank_account_name]", id: "bank_account_name"}
+          %input.form-control{type: "text", placeholder: recipient_info.name, name: "recipient[bank_account_name]", id: "bank_account_name"}
+          
 
       .form-group.row
         .col-md-4
@@ -82,13 +36,55 @@
         .col-md-4
           .form_label.edit-label Account Number
         .col-md-6
-          %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_account_number]", id: "bank_account_number"}
+          %input.form-control{type: "text", name: "recipient[bank_account_number]", id: "bank_account_number", placeholder: "********"+"#{recipient_info.active_account.last4}"}
           = image_tag "icons/check_routing_account_display.png", class: "img-responsive check_img"
 
-
       .form-group.row.save
-        .btn.btn-primary{id: "add_bank_form_btn"}
-          Add Account
+        .btn.btn-primary{id: "update_bank_form_btn"}
+          Update Account
       .text-center
         %a{href: "/terms", target: "_blank"}
           %em By adding your bank account, you agree to Advlo’s terms & privacy policies
+
+  - else     
+    %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "add_bank_form", "data-remote" => "true"}
+      = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      %input{type: 'hidden', name: 'recipient[email]', value: "#{current_user.email}"}
+      %input{type: 'hidden', id: 'stripe_token', name: 'stripe_token', value: ""}
+      %input{type: 'hidden', name: 'host_id', value: "#{current_user.id}"}
+      %input{type: 'hidden', name: 'bank_cc_add', value: "1"}
+      %input{type: 'hidden', name: 'bank_cc_update', value: "0"}
+    
+      / .btn.btn-default.col-md-4.col-md-offset-1.subscribe_btn_1#add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
+      /   .fa.fa-university
+
+      #add-bank-form  
+        #stripe-error-message
+        .form-group.row
+          .col-md-4
+            .form_label.edit-label Name on Bank Account
+          .col-md-6
+            %input.form-control{type: "text", placeholder: "John Doe", name: "recipient[bank_account_name]", id: "bank_account_name"}
+
+        .form-group.row
+          .col-md-4
+            .form_label.edit-label Routing Number
+          .col-md-6
+            %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_routing_number]", id: "bank_routing_number"}
+
+        .form-group.row
+          .col-md-4
+            .form_label.edit-label Account Number
+          .col-md-6
+            %input.form-control{type: "text", placeholder: "123456789", name: "recipient[bank_account_number]", id: "bank_account_number"}
+            = image_tag "icons/check_routing_account_display.png", class: "img-responsive check_img"
+
+
+        .form-group.row.save
+          .btn.btn-primary{id: "add_bank_form_btn"}
+            Add Account
+        .text-center
+          %a{href: "/terms", target: "_blank"}
+            %em By adding your bank account, you agree to Advlo’s terms & privacy policies
+            

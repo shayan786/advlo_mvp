@@ -978,6 +978,129 @@ function payment_modal_validator() {
   });
 }
 
+function subscription_payment_validation() {
+  $('#subscription_payment_form_1').bootstrapValidator({
+    fields: {
+      'credit_card_name': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card full name'
+          }
+        }
+      },
+      'credit_card_number': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card number'
+          },
+          creditCard: {
+            message: 'Credit card number is invalid'
+          }
+        }
+      },
+      'cvv': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card CVV'
+          },
+          cvv: {
+            message: 'CVV number is invalid'
+          }
+        }
+      },
+      'exp_month': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          digits: {
+            message: 'Exp. month is invalid'
+          },
+          lessThan: {
+            value: 12,
+            inclusive: false,
+            message: 'Exp. month is invalid'
+          }
+        }
+      },
+      'exp_year': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          integer: {
+            message: 'Exp. year is invalid'
+          }
+        }
+      }
+    }
+  });
+
+  $('#subscription_payment_form_2').bootstrapValidator({
+    fields: {
+      'redirect_url': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter a redirect url'
+          }
+        }
+      },
+      'credit_card_name': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card full name'
+          }
+        }
+      },
+      'credit_card_number': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card number'
+          },
+          creditCard: {
+            message: 'Credit card number is invalid'
+          }
+        }
+      },
+      'cvv': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter credit card CVV'
+          },
+          cvv: {
+            message: 'CVV number is invalid'
+          }
+        }
+      },
+      'exp_month': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          digits: {
+            message: 'Exp. month is invalid'
+          },
+          lessThan: {
+            value: 12,
+            inclusive: false,
+            message: 'Exp. month is invalid'
+          }
+        }
+      },
+      'exp_year': {
+        validators: {
+          notEmpty: {
+            message: 'Please enter exp. month'
+          },
+          integer: {
+            message: 'Exp. year is invalid'
+          }
+        }
+      }
+    }
+  });
+}
+
 function sign_in_sign_up_modal() {
   $('.sign-in-toggle').click(function(){
     $(this).hide();
@@ -1242,6 +1365,174 @@ function signup_cookie(){
   })
 }
 
+function payment_options_btns() {
+  //COMMISSION OPTION
+  $('#add-card').click(function(){
+    $('#add-card-form').fadeToggle();
+  });
+
+  $('.option_btn_1').click(function(){
+    $('.option_btn_2').removeClass('active')
+    $(this).toggleClass('active')
+    $('#add-paypal').removeClass('active')
+
+    $('#commission-tree').fadeToggle();
+    $('#subscription-tree').hide();
+  })
+  
+  //SUBSCRIBE OPTION
+  $('.option_btn_2').click(function(){
+    $('.option_btn_1').removeClass('active')
+    $(this).toggleClass('active')
+    $('#add-bank').removeClass('active')
+
+    $('#commission-tree').hide();
+    $('#subscription-tree').fadeToggle();
+  })
+}
+
+
+function paypal_or_bank_toggle(){
+  // bank 
+  $('#add-bank').click(function(){    
+    $('.alert').hide()
+    $('#add-paypal').removeClass('active')
+    $(this).toggleClass('active')
+    
+    $('#updated-bank-form').fadeToggle();
+    $('#add-bank-form').fadeToggle();
+
+    $('#change_bank_form').hide()
+    $('#update_paypal_form').hide()
+    $('#existing-paypal').hide();
+    $('#add_paypal_form').hide();
+  });
+
+  // paypal
+  $('#add-paypal').click(function(){
+    $('.alert').hide()
+    $('#add-bank').removeClass('active')
+    $(this).toggleClass('active')
+
+    $('#existing-paypal').fadeToggle();
+    $('#add_paypal_form').fadeToggle();
+
+    $('#updated-bank-form').hide();
+    $('#change_bank_form').hide()
+    $('#update_paypal_form').hide()
+    $('#add-bank-form').hide();
+  });
+
+  $('#change_paypal_btn').click(function() {
+    $('#update_paypal_form').show();
+  })
+
+  $('#update_paypal_btn').click(function() {
+    //Verify email field is not empty
+    $('#update_paypal_form').submit();
+  })
+
+  $('#add_paypal_btn').click(function() {
+    $('#add_paypal_form').submit();
+  })
+
+  $('.option_2_well .subscribe_btn_1').click(function(){
+    $(this).toggleClass('active');
+    $('.option_2_well .subscribe_btn_2').removeClass('active');
+    $('.option_2_well #subscription_payment_form_2').hide();
+    $('.option_2_well #subscription_payment_form_1').fadeToggle();
+  })
+
+  $('.option_2_well .subscribe_btn_2').click(function(){
+    $(this).toggleClass('active');
+    $('.option_2_well .subscribe_btn_1').removeClass('active');
+    $('.option_2_well #subscription_payment_form_1').hide();
+    $('.option_2_well #subscription_payment_form_2').fadeToggle();
+  })
+}
+
+function getStripeToken_subscription() {
+  $('.option_2_well #subscription_payment_form_1 .subscribe_btn').click(function() {
+
+    var card = {
+      number:   $(".option_2_well #subscription_payment_form_1 #credit_card_number").val(),
+      expMonth: $(".option_2_well #subscription_payment_form_1 #exp_month").val(),
+      expYear:  $(".option_2_well #subscription_payment_form_1 #exp_year").val(),
+      cvc:      $(".option_2_well #subscription_payment_form_1 #cvv").val()
+    };
+
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))    
+    Stripe.card.createToken(card, function(status, response) {
+
+      if (status === 200) {
+        $(".option_2_well #subscription_payment_form_1 #stripe_token").val(response.id);
+        
+        $('.option_2_well #subscription_payment_form_1').submit();
+      } else {
+        $("#stripe-error-message").text(response.error.message);
+      }
+    });
+
+    return false;
+  });
+
+  $('.option_2_well #subscription_payment_form_2 .subscribe_btn').click(function() {
+
+    var card = {
+      number:   $(".option_2_well #subscription_payment_form_2 #credit_card_number").val(),
+      expMonth: $(".option_2_well #subscription_payment_form_2 #exp_month").val(),
+      expYear:  $(".option_2_well #subscription_payment_form_2 #exp_year").val(),
+      cvc:      $(".option_2_well #subscription_payment_form_2 #cvv").val()
+    };
+
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))    
+    Stripe.card.createToken(card, function(status, response) {
+
+      if (status === 200) {
+        $(".option_2_well #subscription_payment_form_2 #stripe_token").val(response.id);
+        
+        $('.option_2_well #subscription_payment_form_2').submit();
+      } else {
+        $("#stripe-error-message").text(response.error.message);
+      }
+    });
+
+    return false;
+  });
+}
+
+function cancel_subscription() {
+  $('.subscribed_well .cancel_link').click(function(){
+    $('.subscribed_well .cancel_subscription_btn').css({
+      margin: "10px auto 0px auto",
+      opacity: '0.8',
+      width: '45%'
+    })
+    $('.subscribed_well .cancel_subscription_btn').fadeToggle();
+    // $('.subscribed_well .cancel_subscription_btn .fa').css({
+    //   color: '#FFF'
+    // });
+  })
+
+  $('.subscribed_well .cancel_subscription_btn').click(function() {
+    var adv_id = $(this).data('adventure-id');
+    var host_id = $(this).data('host-id');
+
+    var ans = confirm("Are you sure you want to cancel your subscription?");
+
+    if (ans == true) {
+      $.ajax({
+        url: "/adventure_steps/payment",
+        dataType: "script",
+        data: {subscription: "1", adventure_id: adv_id, host_id: host_id, cancel_subscription: true},
+        type: "POST",
+        method: "PUT"
+      });
+    }
+
+  })
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1294,4 +1585,8 @@ adventureCreate = function() {
   upload_images();
   adv_create_new_basic_submit();
   phone_num_validation();
+  payment_options_btns();
+  paypal_or_bank_toggle();
+  subscription_payment_validation();
+  cancel_subscription();
 }

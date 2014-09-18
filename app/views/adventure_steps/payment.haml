@@ -1,52 +1,20 @@
 - set_meta_tags(default_meta_tags)
-
 #adventure_create
   .container
     = render partial: "/adventures/adv_create_header"
     #adv_payment
       .panel.panel-default
         .panel-heading.text-center.section_header
-          PAYMENT DETAILS
+          PAYOUT OPTIONS
         .panel-body
-          .col-md-6.col-md-offset-3
-            .well.how_to.text-center
-              .row
-                Add a
-                %strong Bank Account
-                or
-                %strong Paypal email
-                to receive your payments
-              %br
-              .row
-                .col-md-4.text-left
-                  %strong
-                    Bank Payouts
-                .col-md-8.text-left
-                  Available in:
-                  Austrailia, 
-                  Canada, 
-                  Ireland, 
-                  United Kingdom, 
-                  United States
-              %br 
-              .row   
-                .col-md-4.text-left
-                  %strong
-                    Paypal Payouts
-                .col-md-8.text-left
-                  Available globally with a valid paypal account & email address
+          - user_adventure = UserAdventure.find_by_adventure_id(@adventure.id)
 
-          = render partial: "notice"
+          - if user_adventure.charge_type == "subscription" 
+            = render partial: "payout_subscribed", locals: {user_adventure: user_adventure}
 
-          = render partial: "stripe_payout"
-
-          = render partial: "paypal_payout" 
-
-          %br
-          %br
-          .text-center
-            %em
-              If both information is provided, bank account will be used as the default payout method.
+          - else
+            .payout_options_btns
+              = render partial: "payout_options_btns"
 
         .panel-footer.text-center
           .row
@@ -63,17 +31,9 @@
 :javascript
   adventureCreate();
   getStripeToken_bank();
-  paypal_forms_control();
+  getStripeToken_subscription();
 
   $('[data-toggle="tooltip"]').tooltip({
     animated: 'fade'
   });
 
-  $('#add-bank').click(function(){
-    $('#updated-bank-form').fadeToggle();
-    $('#add-bank-form').fadeToggle();
-  });
-
-  $('#add-card').click(function(){
-    $('#add-card-form').fadeToggle();
-  });

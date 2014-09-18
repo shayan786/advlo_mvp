@@ -2,8 +2,8 @@
   .col-md-6.col-md-offset-3
     .well.how_to.text-center
       %h3
-        PHONE NUMBER
-      Although not required to publish an adventure, we highly recommend adding a phone number so travelers can contact you after making a reservation.
+        PHONE NUMBER (OPTIONAL)
+      We highly recommend adding a phone number so travelers can contact you after making a reservation.
 
       .row
         .paypal_update_notice.phone-alert.alert.alert-warning.text-center{style: "display: none; margin-top: 10px; margin-bottom: 0px;"}
@@ -13,7 +13,7 @@
         = tag(:input, :type => "hidden", :name => "user_id", :value => current_user.id)
         .form-group.row
           .col-md-5
-            .form_label.edit-label Phone Number
+            .form_label.edit-label Phone
           .col-md-5
             %input.form-control{type: "text", name: "phone_number", id: "phone_number"}
 

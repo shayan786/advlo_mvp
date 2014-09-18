@@ -1,0 +1,36 @@
+.well.option_2_well.text-center
+  .row
+    %strong.header
+      $10 / Month
+  %br
+    Use
+    %strong
+      Advlo's 
+    booking system for 
+    %strong
+      no commission cost.
+  %br
+    OR
+  %br
+    Use your
+    %strong
+      own booking system
+    and redirect the traveler to 
+    %strong
+      your site.
+
+
+  .row
+    .btn.btn-default.col-md-4.col-md-offset-1.subscribe_btn_1{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Use Advlo's booking system"}
+      = image_tag 'logos/advlo_header_logo_closed.png'
+      
+    .col-md-2
+
+    .btn.btn-default.col-md-4.subscribe_btn_2{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Redirect to your own link"}
+      .fa.fa-share-square-o
+
+      
+
+  = render partial: "subscription_payment_form_1"
+
+  = render partial: "subscription_payment_form_2"

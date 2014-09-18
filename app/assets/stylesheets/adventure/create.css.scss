@@ -208,6 +208,157 @@
 			min-height: 500px;
 		}
 
+		.option_btn_1, .option_btn_2 {
+			margin-top: 20px;
+			padding-top: 25px;
+			padding-bottom: 25px;
+
+			.percent {
+				font-family: bebas_neue_book;
+				font-size: 4.0em;	
+				letter-spacing: 3px;
+			}
+
+			.text {
+				font-family: nexa_light;
+				font-weight: bold;
+			}
+		}
+
+		.or_text {
+			margin-top: 75px;
+			font-size: 2.8em;
+			font-family: bebas_neue_book;
+			letter-spacing: 3px;
+			font-weight: bold;
+		}
+
+		.subscribe_btn_1, .subscribe_btn_2 {
+			margin-top: 30px !important;
+			text-align: center;
+			width: 150px;
+			height: 125px;
+
+			img {
+				position: relative;
+				width: 75px;
+				margin-top: -4px;
+			}
+
+			.fa-share-square-o {
+				font-size: 50px !important;
+				color: #545454 !important;
+			}
+
+			@extend .option_btn_1;
+
+			.text {
+				font-family: cabin_bold !important;
+				font-size: 1.0em !important;
+			}
+
+			.fa {
+				color: $advlo_orange;
+				font-size: 1.6em;
+			}
+		}
+
+		#subscription-tree{
+			display: block;
+			position: relative;
+			float: left;
+			display: none;
+		}
+
+
+		#commission-tree{
+			display: block;
+			position: relative;
+			float: left;
+			display: none;
+		}
+
+		.option_1_well {
+			margin-top: 30px;
+			padding: 10px 30px;
+			float: left;
+
+			.header {
+				font-size: 1.3em;
+			}
+
+
+			#default-use-bank {
+				margin-top: 25px;
+				margin-bottom: 15px;
+			}
+		}
+
+		.option_2_well {
+			@extend .option_1_well;
+
+			.dollar {
+				font-family: bebas_neue;
+				font-size: 2.6em;	
+				letter-spacing: 2px;
+			}
+
+			.text {
+				font-family: nexa_light;
+				font-weight: bold;
+				font-size: 0.8em;
+			}
+
+			#subscription_payment_form_1, #subscription_payment_form_2  {
+				display: none;
+				margin-top: 20px !important;
+
+				.amount_warning {
+					margin-bottom: 10px;
+
+					.subscription_cost{
+						font-weight: bold;
+					}
+				}
+
+				.form_label {
+					font-size: 1.0em;
+				}
+
+				.cc_icon {
+				    padding-top: 5px;
+				    padding-right: 5px;
+				    float: left;
+
+				    img {
+				      width: 40px;
+				      cursor: default;
+				    }
+  				}
+			}
+		}
+
+		.subscribed_well {
+			.subscription_text {
+				font-family: nexa_light;
+				font-weight: bold;
+				font-size: 2.8em;
+			}
+
+			.cancel_link {
+				cursor: pointer;
+			}
+
+			.cancel_subscription_btn {
+				display: none;
+				.fa {
+					color: #FFF;
+					padding: 0 !important;
+					margin-right: 5px;
+				}
+			}
+		}
+
 		.check_img {
 			margin: 10px auto 0 auto;
 		}
@@ -234,10 +385,9 @@
 		.fa-university{
 			color: #000 !important;
 			font-size: 32px !important;
-			padding-top: 30px !important;
-			padding-left: 20px !important;
-			padding-right: 15px !important;
-			position: absolute !important;
+		}
+		.fa-paypal {
+			@extend .fa-university;
 		}
 
 		#add-bank-form {
@@ -245,11 +395,13 @@
 		}
 		
 		#add-bank {
-			margin-top: 20px;
-  		cursor: pointer;
+			margin-top: 35px;
+  			cursor: pointer;
 			text-align: center;
-			margin: 0 auto;
+			width: 150px;
+			height: 125px;
 		}
+
 		#add-card {
 			margin-top: 25px;
 		  cursor: pointer;
@@ -257,28 +409,31 @@
 		}
 
 		#add-paypal {
-			margin-top: 30px;
+			margin-top: 35px;
+			text-align: center;
 			cursor: pointer;
-			margin: 0 auto;
+			width: 150px;
+			height: 125px;
 
 			.glyphicon {
 				padding-left: 35px;
 			}
 
 			img {
-				width: 200px;
+				width: 110px;
 				height: auto;
-				padding-bottom: 20px;
-				padding-left: 20px;
+				margin-top: 15px;
 			}
 		}
 
 		#existing-paypal {
 			display: none;
+			margin-top: 35px;
 		}
 
 		#add_paypal_form {
 			display: none;
+			margin-top: 35px;
 		}
 
 		#update_paypal_form {
@@ -422,7 +577,69 @@
 	z-index: 9999;
 	position: fixed;
 }
+@media screen and (max-width: 991px){
+	.payout-buttons-row  {
+		width: 100%;
+		margin: 0 auto;
+	}
 
+	.option_btn_1 {
+		width: 100%;
+	}
+	.option_btn_2 {
+		width: 100%;
+	}
+
+	#adventure_create #adv_payment  {	
+		#commission-tree {
+			position: relative;
+			width: 100%;
+			float: left;
+		}
+		#subscription-tree {
+			position: relative;
+			width: 100%;
+			float: left;
+		}
+
+		.option_2_well {
+			width: 100%;
+		}
+		.option_1_well {
+			width: 100%;
+		}
+
+		.or_text {
+			margin-top: 20px !important;
+		}
+
+		#add-bank {
+			width: 50%;
+			float: left;
+			padding-top: 25px;
+		}
+		#add-paypal {
+			width: 50%;
+			float: left;
+			padding-top: 25px;
+		}
+		.subscribe_btn_1 {
+			width: 50%;
+			float: left;
+			margin-top: 25px;
+
+			img {
+				width: 80%;
+				margin-top: 10px;
+			}
+		}
+		.subscribe_btn_2 {
+			width: 50%;
+			float: left;
+			margin-top: 25px;
+		}
+	}
+}
 
 @media screen and (max-width: 780px){ 
 	#adventure_create .panel-footer .view_btn {
@@ -436,6 +653,8 @@
 	#adventure_create #adv_publish .well {
 		text-align: center;
 	}
+
+
 
 	#adventure_create #adv_payment #existing-paypal {
 		text-align: center;
