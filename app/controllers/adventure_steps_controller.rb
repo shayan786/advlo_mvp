@@ -65,13 +65,13 @@ class AdventureStepsController < ApplicationController
         redirect_to "/adventure_steps/photos?adventure_id=#{@adventure.id}", notice: "Please upload atleast one photo of your adventure"
       end
     else 
-      if current_user.stripe_recipient_id || current_user.paypal_email
+      if current_user.stripe_recipient_id || current_user.paypal_email || (@adventure.subscription_redirect_url)
         respond_to do |format|
           format.html {render_wizard}
           format.js {}
         end
       else
-        redirect_to "/adventure_steps/payment?adventure_id=#{@adventure.id}", notice: "Please add a bank account for this adventure"
+        redirect_to "/adventure_steps/payment?adventure_id=#{@adventure.id}", notice: "Please add a bank account or paypal email for this adventure"
       end
     end
 
@@ -258,7 +258,6 @@ class AdventureStepsController < ApplicationController
       else
         # Need to check if that person already has an adventure on subscription...i.e. already is a stripe customer
         existing_subscription_adventures = UserAdventure.where(user_id: user_adventure.user_id).where('adventure_id <> ?',user_adventure.adventure_id).where('stripe_customer_id IS NOT NULL')
-
 
         if existing_subscription_adventures.count > 0
           existing_stripe_customer_id = existing_subscription_adventures.first.stripe_customer_id

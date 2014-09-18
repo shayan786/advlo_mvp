@@ -42,3 +42,27 @@
   %br
   To modify this subscription or if you have any questions, please contact us at: 
   = mail_to 'support@advlo.com'
+
+  %br
+  %br
+  - if !@adventure.is_subscribed_and_has_redirect_url?
+    .row.text-center
+      #default-use-bank
+        %em
+          Becuase you are using our booking system, please specify your desired payout method
+      %br
+      .btn.btn-default.col-md-4.col-md-offset-2.subscribe_btn_1#add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account", style: 'margin-bottom: 15px;'}
+        .fa.fa-university
+
+      .col-md-1
+      .btn.btn-default.col-md-4.subscribe_btn_1#add-paypal.text-center{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add Paypal Email Address", style: 'margin-bottom: 15px;'}
+        .fa.fa-paypal
+
+
+      .stripe_paypal_payouts
+        = render partial: "notice"
+
+        = render partial: "stripe_payout"
+
+        = render partial: "paypal_payout"
+
