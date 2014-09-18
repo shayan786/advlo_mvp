@@ -60,7 +60,7 @@
               BOOK IT
         -else
           - if @adventure.is_subscribed_and_has_redirect_url?
-            %a#book-it.btn.btn-success{href: "#{@adventure.redirect_url}", target: "_blank"}
+            %a#book-it.btn.btn-success{href: "#{@adventure.subscription_redirect_url}", target: "_blank"}
               %span 
                 BOOK IT
           - else
@@ -106,7 +106,7 @@
                     BOOK IT
               -else
                 - if @adventure.is_subscribed_and_has_redirect_url?
-                  %a#book-it.btn.btn-success{href: "#{@adventure.redirect_url}", target: "_blank"}
+                  %a#book-it.btn.btn-success{href: "http://#{@adventure.subscription_redirect_url}", target: "_blank"}
                     %span 
                       BOOK IT
                 - else

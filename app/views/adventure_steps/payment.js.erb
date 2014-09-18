@@ -1,5 +1,5 @@
 $('#add-bank-form').remove()
-$('#add-bank').append("<div id='updated-bank-form'></div>")
+$('#bank-tree-container .row').first().append("<div id='updated-bank-form'></div>")
 $("#updated-bank-form").html("<%= escape_javascript(render(partial: 'updated_bank_form', locals: {recipient_info: @recipient})) %>")
 $('#add-bank').click()
 $('.bank_change_btn').hide()

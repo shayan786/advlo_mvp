@@ -1,14 +1,12 @@
+.col-md-10.col-md-offset-1.update_notice.alert.alert-warning.text-center{style: "display: none; margin-top: 25px;"}
+  Your bank account information has been updated
 #bank-tree-container
   .row
-    .col-md-10.col-md-offset-1.update_notice.alert.alert-warning.text-center{style: "display: none; margin-top: 25px;"}
-      Your bank account information has been updated
 
   - if current_user.stripe_recipient_id
     // FYI problems with recipient account 'deleted'
     // Show existing bank / cc info with option to edit/delete etc.
     - recipient_info = Stripe::Recipient.retrieve(current_user.stripe_recipient_id)   
-
-    
     #updated-bank-form
       = render partial: 'updated_bank_form', locals: {recipient_info: recipient_info }
 
