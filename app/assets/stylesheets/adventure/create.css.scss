@@ -225,16 +225,24 @@
 			}
 		}
 
+		.or_text {
+			margin-top: 75px;
+			font-size: 2.8em;
+			font-family: bebas_neue_book;
+			letter-spacing: 3px;
+			font-weight: bold;
+		}
+
 		.subscribe_btn_1, .subscribe_btn_2 {
-			margin-top: 40px !important;
+			margin-top: 30px !important;
 			text-align: center;
 			width: 150px;
 			height: 125px;
 
 			img {
 				position: relative;
-				width: 96px;
-				margin-top: -12px;
+				width: 75px;
+				margin-top: -4px;
 			}
 
 			.fa-share-square-o {
@@ -337,7 +345,12 @@
 				font-size: 2.8em;
 			}
 
+			.cancel_link {
+				cursor: pointer;
+			}
+
 			.cancel_subscription_btn {
+				display: none;
 				.fa {
 					color: #FFF;
 					padding: 0 !important;
@@ -594,6 +607,10 @@
 		}
 		.option_1_well {
 			width: 100%;
+		}
+
+		.or_text {
+			margin-top: 20px !important;
 		}
 
 		#add-bank {

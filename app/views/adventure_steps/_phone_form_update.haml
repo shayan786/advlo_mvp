@@ -2,7 +2,7 @@
   .col-md-6.col-md-offset-3
     .well.how_to.text-center
       %h3
-        PHONE NUMBER
+        PHONE NUMBER (OPTIONAL)
       Your phone number is 
       %b on file. 
       You may update it below as required.
@@ -23,7 +23,7 @@
         = tag(:input, :type => "hidden", :name => "update", :value => '1')
         .form-group.row
           .col-md-5
-            .form_label.edit-label Phone Number
+            .form_label.edit-label Phone
           .col-md-5
             %input.form-control{type: "text", name: "phone_number", id: "phone_number"}
 

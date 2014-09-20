@@ -1502,6 +1502,18 @@ function getStripeToken_subscription() {
 }
 
 function cancel_subscription() {
+  $('.subscribed_well .cancel_link').click(function(){
+    $('.subscribed_well .cancel_subscription_btn').css({
+      margin: "10px auto 0px auto",
+      opacity: '0.8',
+      width: '45%'
+    })
+    $('.subscribed_well .cancel_subscription_btn').fadeToggle();
+    // $('.subscribed_well .cancel_subscription_btn .fa').css({
+    //   color: '#FFF'
+    // });
+  })
+
   $('.subscribed_well .cancel_subscription_btn').click(function() {
     var adv_id = $(this).data('adventure-id');
     var host_id = $(this).data('host-id');
