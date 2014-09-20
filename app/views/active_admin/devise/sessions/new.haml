@@ -1,0 +1,37 @@
+#login
+  #maui-logo
+    = link_to (image_tag ('logos/advlo_header_logo.png')), '/'
+  #active_admin_login
+    - scope = Devise::Mapping.find_scope!(resource_name)
+    = active_admin_form_for(resource, :as => resource_name, :url => send(:"#{scope}_session_path"), :html => { :id => "session_new" }) do |f|
+      %fieldset.inputs
+        #admin_user_email_input.input.required.stringish
+          %label.email_label{:for => "admin_user_email"}
+            Email*
+            %abbr{:title => "required"}
+          %input#admin_user_email{:autofocus => "autofocus", :maxlength => "255", :name => "admin_user[email]", :type => "email", :value => ""}
+        #admin_user_password_input.password.input.required.stringish
+          %label.password_label{:for => "admin_user_password"}
+            Password*
+            %abbr{:title => "required"}
+          %input#admin_user_password{:maxlength => "128", :name => "admin_user[password]", :type => "password"}
+        #admin_user_remember_me_input.boolean.input.optional
+          %input{:name => "admin_user[remember_me]", :type => "hidden", :value => "0"}
+          %label.remember_label{:for => "admin_user_remember_me"}
+            %input#admin_user_remember_me{:name => "admin_user[remember_me]", :type => "checkbox", :value => "1"}
+              Remember me
+        %fieldset.login_actions
+          #admin_user_submit_action.action.input_action
+            %input{:name => "commit", :type => "submit", :value => "Login"}
+          %a.pwreminder{:href => "/admin/password/new"} 
+            Forgot your password?
+    #footer
+
+:javascript
+  $(document).ready(function(){
+    $('body.logged_out .flash').css({
+      position: 'relative',
+      top: '267px',
+      color: '#fff'
+    })
+  })
