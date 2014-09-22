@@ -10,12 +10,13 @@ class AdventureStepsController < ApplicationController
     else
       @adventure = Adventure.find_by_id(session[:adventure_id])
     end
-
-    if !current_user || @adventure.users.first != current_user
-      redirect_to '/', notice: "Looks like you wandered where you dont belong"
-      return
+    unless current_user.email == 'chrisknight.mail@gmail.com' || current_user.email == 'shayan@advlo.com' || current_user.email == 'jemaser@syr.edu'
+      if !current_user || @adventure.users.first != current_user
+        redirect_to '/', notice: "Looks like you wandered where you dont belong"
+        return
+      end
     end
-    
+      
     @adventure ? session[:adventure_id] = @adventure.id : nil
 
     # Prevent URL injection
