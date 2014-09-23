@@ -1,33 +1,23 @@
 
 #about {
    padding-top: 80px;
+
   .jumbotron {
   	background-repeat: no-repeat;
   	background-size: cover;
   	background-position: center center;
-    max-height: 800px;
-  	min-height: 600px;
+    height: 450px;
   	margin-top: -30px;
-  }
-
-  .logo{
-    width: 100%;
-    position: relative;
-    float: left;
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    img {
-      width: 90%;
-      max-width: 800px;
-    }
   }
 
 
   h3 {
     color: #fff;
-    opacity: 0.7;
+    opacity: 0.8;
     margin-bottom: 0px !important;
+    font-family: bebas_neue_book;
+    font-weight: bold;
+    letter-spacing: 2px;
   }
 
   h4 {
@@ -43,9 +33,14 @@
   	background-image: asset-url('cartographer_small.png');
   	padding-top: 20px;
   	padding-bottom: 20px;
+
     .mission_statement {
     	font-size: 1.5em;
+      color: #FFF !important;
+      padding-top: 25px;
+      padding-bottom: 25px;
     }
+
     .panel {
       width: 80%;
       margin: 0 auto;
@@ -56,7 +51,7 @@
 
   .text-brick {
     font-size: 18px;
-    line-height: 20px;
+    line-height: 22px;
     font-family: 'nexa_light';
     font-weight: bold;
     text-align: center;
@@ -64,6 +59,7 @@
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    color: #FFF;
 
     .self-bio {
       margin: 25px;
@@ -109,7 +105,7 @@
     background-color: transparent;
     background: rgba(0,0,0,0.2);
     border-color: $login_btn_color;
-    padding: 15px 20px;
+    padding: 10px 20px;
     border: 5px solid $orange;
     opacity: 0.75;
 
@@ -117,5 +113,65 @@
       border-color: $advlo_orange;
     }
   }
+
+  .press {
+    background: $lighter_gray;
+    padding-top: 10px;
+    padding-bottom: 30px;
+
+    h3 {
+      font-size: 2.0em;
+      font-family: cabin_bold;
+      margin-bottom: 30px !important;
+      color: $dark_gray;
+    }
+
+    .tnooz {
+      img {
+        padding-top: 17px;
+        width: 115px;
+        margin: 10px auto;
+      }
+    }
+
+    .about {
+      img {
+        padding-top: 10px;
+        width: 125px;
+        margin: 10px auto;
+      }
+    }
+
+    .teton {
+      img {
+        width: 110px;
+        margin: 10px auto;
+      }
+    }
+
+    .skift {
+      img {
+        width: 80px;
+        margin: 10px auto;
+      }
+    }
+
+    .clapway {
+      img {
+        padding-top: 25px;
+        width: 140px;
+        margin: 10px auto;
+      }
+    }
+
+    .uc {
+      img {
+        width: 95px;
+        margin: 10px auto;
+      }
+    }
+
+  }
+
 }
 

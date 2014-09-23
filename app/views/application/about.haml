@@ -1,16 +1,15 @@
+- set_meta_tags(get_meta_tags("About Us","About the Advlo Team","Christopher Knight, Shayan Dhanani, Jonathan Maser, Advlo Founders"))
+
 #about
   - image = "background/advlo_about.jpg"
   .jumbotron{:style => "background-image: url(#{image_path image})"}
   .border
-  .logo= image_tag 'logos/advlo_header_logo.png'
   .border
 
   .about-wrapper
     .container
-      .panel.panel-default
-        %p.text-center.mission_statement
-          .text-brick
-            Our goal is to connect adventure travelers around the world with the most authentic locals. We have built the platform as something we want to use ourselves, and for the incredible guides around the globe who deserve to be seen. 
+      %p.text-center.mission_statement
+        Our goal is to connect adventure travelers around the world with the most authentic locals. We have built the platform as something we want to use ourselves, and for the incredible guides around the globe who deserve to be seen. 
             
 
   .border
@@ -18,32 +17,29 @@
   .white_background.container-fluid
     .col-md-4
       .row.text-center 
-        %h3 CHRISTOPHER KNIGHT
+        %h3 CHRISTOPHER
         %h4 The Anthropologist Programmer
 
-      .panel.panel-default.text-brick
-        .self-bio
+        .text-brick.self-bio
           Over the past few years i've searched near and far for a way to live life to the fullest. When I think about my experiences from traveling my fondest memories are not about what I did, but from the people I adventured with. Travel is a luxury that most of the world's people never get to experience. However, the ability to immerse yourself into a foreign culture has been the greatest learning experience I have ever had. To build a tool to help others do the same, in conjunction with enabling adventure guides around the world... Well - I couldn't ask for a better way to spend my time.
           
 
     .col-md-4
       .row.text-center
-        %h3 JONATHAN MASER
+        %h3 JON
         %h4 The Entreprenuerial Thrillseeker
 
-      .panel.panel-default.text-brick
-        .self-bio
+        .text-brick.self-bio
           Connection stems from shared experiences. 
           After traveling around the world, experiencing diverse cultures and meeting some of the most genuine locals, I wanted to make connecting travelers to amazing adventurers an easier process. If you love travel, people and unique experiences as much as I do, you're going to love Advlo.
 
 
     .col-md-4
       .row.text-center
-        %h3 SHAYAN DHANANI
+        %h3 SHAYAN
         %h4 The Exploring Scientist
 
-      .panel.panel-default.text-brick
-        .self-bio
+        .text-brick.self-bio
           The world is an extremely diverse place, and I truly believe that the only way to experience and learn about what it has to offer is by being there and interacting with those whom have spent a good portion of their life there. Stepping out of your comfort zone and going after that unusual or scary experience to me is the definition of an Adventure and Traveling. Every person's experience is different when they travel, for me the cultural exchange along with learning from the locals about their customs and language will have me traveling for the remainder of my life.
 
 
@@ -72,6 +68,33 @@
           
         .row.text-center
           .btn.btn-primary#about-us-contact Submit
+
+  .border
+
+  .col.md-12.text-center.press
+    .container
+      %h3 FEATURED IN
+
+      .row
+        .col-md-2
+          %a{href: ""}
+            .tnooz= image_tag 'icons/press/tnooz.png'
+        .col-md-2
+          %a{href: "http://adventuretravel.about.com/od/Adventure-Travel-General/fl/New-Online-Marketplace-Invites-Travelers-to-Adventure-with-Locals.htm", target: "_blank"}
+            .about= image_tag 'icons/press/about.png'
+        .col-md-2
+          %a{href: "http://www.tetonsports.com/adventureblog/lets-change-way-travel-adventure-locals/", target: "_blank"}
+            .teton= image_tag 'icons/press/teton.png'
+        .col-md-2
+          %a{href: "http://skift.com/2014/06/09/5-new-travel-startups-that-help-tourist-explore-the-outdoors/#3", target: "_blank"}
+            .skift= image_tag 'icons/press/skift.png'
+        .col-md-2
+          %a{href: "http://clapway.tv/needs-tour-guides-advlo-helps-adventure-locals/", target: "_blank"}
+            .clapway= image_tag 'icons/press/clapway.png'
+        .col-md-2
+          %a{href: "http://www.uncovercolorado.com/adventure-local-colorado/", target: "_blank"}
+            .uc= image_tag 'icons/press/uncovercolorado.png'
+
 
           
 :javascript
