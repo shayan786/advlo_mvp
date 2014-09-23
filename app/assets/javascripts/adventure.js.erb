@@ -285,6 +285,7 @@ function request_form_maxlength(){
 
 function request_form_geocomplete() {
   $('#request_form #request_location').geocomplete();
+  $('#request_page_form #request_location').geocomplete();
 }
 
 function request_time_datepicker() {
@@ -380,6 +381,49 @@ function request_time_validator() {
 
 function request_form_validator() {
   $('#request_form').bootstrapValidator({
+    fields: {
+      '#request_email': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'request[location]': {
+        validators: {
+          notEmpty: {
+            message: 'Destination is required and cannot be empty'
+          }
+        }
+      },
+      'request[description]': {
+        validators: {
+          notEmpty: {
+            message: 'Description is required and cannot be empty'
+          }
+        }
+      },
+      'request[dates]': {
+        validators: {
+          notEmpty: {
+            message: 'Date is required and cannot be empty'
+          }
+        }
+      },
+      'request[budget]': {
+        validators: {
+          notEmpty: {
+            message: 'Budget is required and cannot be empty'
+          }
+        }
+      }
+    }
+  });
+
+  $('#request_page_form').bootstrapValidator({
     fields: {
       '#request_email': {
         validators: {

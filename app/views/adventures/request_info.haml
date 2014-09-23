@@ -21,7 +21,7 @@
 
     .gray_background
       .container
-        %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_form", "data-remote" => "true"}
+        %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_page_form", "data-remote" => "true"}
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           #honeypot
             %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
@@ -78,13 +78,13 @@
                 We’ll contact you once we find a qualified host for your adventure.
 
 :javascript
-  $('#request_form').submit(function(e){
+  $('#request_page_form').submit(function(e){
     e.preventDefault()
     $(this).submit()
     return false;
   })
 
-  $('#request_form').on('keyup', function() {
+  $('#request_page_form').on('keyup', function() {
     if ( $('#request_email').css('display') == 'block' ) {
       $('#request_email').keyup(function(){
         if($(this).val() != '' ){
@@ -94,27 +94,6 @@
     } 
   })
 
-  $('#request_form').bootstrapValidator({
-    fields: {
-      'request[email]': {
-        validators: {
-          notEmpty: {
-            message: 'Email is required and cannot be empty'
-          },
-          emailAddress: {
-            message: 'Not a valid email address'
-          }
-        }
-      },
-      'request[location]': {
-        validators: {
-          notEmpty: {
-            message: 'Comments/question is required and cannot be empty'
-          }
-        }
-      }
-    }
-  });
 
   request_form_validator();
   request_form_geocomplete();
