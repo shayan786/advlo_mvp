@@ -23,7 +23,7 @@ ActiveAdmin.register Adventure do
     column :approved
     column :featured
     column 'Guide id' do |adv|
-      adv.users.first.id
+      adv.users.first.id if adv.users.first
     end
     column :region
     column 'Email' do |adv|
