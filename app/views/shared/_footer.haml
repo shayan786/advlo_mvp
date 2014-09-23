@@ -10,8 +10,7 @@
           %i.fa.fa-instagram
         %a{href:"http://plus.google.com/+Advlo-Adventure-Local", target: "_blank"}
           %i.fa.fa-google-plus
-      .col-md-1
-      .col-md-4
+      .col-md-6
         %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_form_modal'}
           CONTACT US
         .dash= " - " 
@@ -20,6 +19,9 @@
         .dash= " - " 
         %a{href: "/terms"}
           TERMS & PRIVACY
+        .dash= " - " 
+        %a{href: "/about"}
+          TEAM
 
   - unless current_user
     #signup-please-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "signup-please-modal", role: "dialog"}
