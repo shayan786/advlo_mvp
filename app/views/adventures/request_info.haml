@@ -85,13 +85,20 @@
   })
 
   $('#request_page_form').on('keyup', function() {
-    if ( $('#request_email').css('display') == 'block' ) {
-      $('#request_email').keyup(function(){
-        if($(this).val() != '' ){
+    if ($('#request_page_form #request_email').length > 0) {
+      $('#request_page_form #request_email').keyup(function(){
+        if($(this).val() != ''){
           $('.request_btn').removeClass('disabled') 
         }
       })
     } 
+    else {
+      $('#request_page_form #request_budget').keyup(function(){
+        if($(this).val() != ''){
+          $('.request_btn').removeClass('disabled') 
+        }
+      })
+    }
   })
 
 
