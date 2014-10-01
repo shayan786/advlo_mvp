@@ -187,7 +187,7 @@ class AdvloMailer < ActionMailer::Base
   end
 
 
-  # ----------- SUBSCRIPTION EMAILS -----------------------------------------------------------------------------------------------------
+  # ----------- SUBSCRIPTION EMAILS -------------------------------------------------------------------------------------------------
 
   def subscription_created(user_adventure)
     @user = User.find(user_adventure.user_id)
@@ -206,4 +206,26 @@ class AdvloMailer < ActionMailer::Base
 
     mail(to: @user.email, subject: "ADVLO: Subscription Cancelled")
   end
+
+
+  # ----------- ENGAGEMENT EMAILS --------------------------------------------------------------------------------------------------
+  
+  def share_your_adventure(host) 
+    @host = host
+    @adventures = @host.adventures
+
+    if @adventures.count == 1
+      mail(to: @host.email, subject: "ADVLO: Share Your Adventure")
+    else
+      mail(to: @host.email, subject: "ADVLO: Share Your Adventures")
+    end
+  end
+
+  def one_week_last_login_user(user)
+    @user = user
+
+    mail(to: @user.email, subject: "ADVLO: We Miss You")
+  end
+
+
 end
