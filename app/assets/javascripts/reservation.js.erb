@@ -253,9 +253,9 @@ function reservation_request_prefill() {
     $('.request_reservation .prefill_request_breakdown').empty();
 
     if(user_credit > 0){
-      $('.request_reservation .prefill_request_breakdown').append("($ "+total_cost +" + $ "+fees.toFixed(2)+" fee - $" + user_credit + ")");
+      $('.request_reservation .prefill_request_breakdown').append("($ "+cost +" + $ "+fees.toFixed(2)+" fee - $" + user_credit + ")");
     }else{
-      $('.request_reservation .prefill_request_breakdown').append("($ "+total_cost +" + $ "+fees.toFixed(2)+" fee)");
+      $('.request_reservation .prefill_request_breakdown').append("($ "+cost +" + $ "+fees.toFixed(2)+" fee)");
     }
   });
 }
