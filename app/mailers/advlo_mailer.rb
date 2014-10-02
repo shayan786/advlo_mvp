@@ -4,6 +4,13 @@ class AdvloMailer < ActionMailer::Base
   default from: "info@advlo.com"
   layout 'advlo_mail'
 
+
+  # error emails 
+
+  def geocode_limit_hit
+    mail(to: 'support@advlo.com', subject: 'Geocode limit hit')
+  end
+
   # USER EMAILS:---------------------------------------------------------------------------------------------------------------------
   def welcome_email(user)
     @user = user
