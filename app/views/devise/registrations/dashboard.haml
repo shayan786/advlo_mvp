@@ -43,7 +43,7 @@
                         = cat.capitalize + ", "
                       - else 
                         = cat.capitalize
-                    - if adv.price_type && adv.price 
+                    - if adv.price_type && adv.price
                       - if adv.price_type == 'per_person'
                         .adv_price= "$"+adv.price.to_s + " " + "per person" 
                       - else
@@ -59,7 +59,21 @@
                     = link_to adv, method: "delete",  data: {confirm: "Are you sure?"}, class: "btn btn-danger edit_btn" do
                       %i.fa.fa-times
                         DELETE
+                  %br
+                  .row
+                    .col-md-3
+                    - share_url = "#{root_url}adventures/#{adv.slug}"
+                    %a.btn.btn-default.social_btn.fb{href: "#{share_url}", "data-title" => "#{adv.title}", "data-desc" => "#{adv.summary}", "data-image" => "#{adv.attachment.url(:medium)}", style: "margin-right: 5px;"}
+                      %i.fa.fa-facebook
+                    .btn.btn-default.social_btn.twitter{style: "margin-right: 5px;"}
+                      %i.fa.fa-twitter
+                    %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}", onclick: "javascript:window.open(this.href,
+              '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"}
+                      %i.fa.fa-google-plus 
           %br
             .create-wrapper
               %a.btn.btn-primary.host_btn{href: "/adventures/new"}
                 HOST AN ADVENTURE
+
+:javascript
+  social_init();
