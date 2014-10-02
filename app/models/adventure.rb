@@ -35,7 +35,7 @@ class Adventure < ActiveRecord::Base
   after_validation :set_slug, :on => :update
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
-    if results.first != nil
+    if results.first
       if results.first.city == nil
         city = results.first.country
       else
@@ -48,7 +48,6 @@ class Adventure < ActiveRecord::Base
       end
     else
       AdvloMailer.delay.geocode_limit_hit
-      next
     end
   end
 
