@@ -8,7 +8,7 @@ class AdvloMailer < ActionMailer::Base
   # error emails 
 
   def geocode_limit_hit
-    mail(to: 'support@advlo.com', subject: 'Geocode limit hit')
+    mail(to: 'info@advlo.com', subject: 'Geocode limit hit')
   end
 
   # USER EMAILS:---------------------------------------------------------------------------------------------------------------------
