@@ -108,10 +108,48 @@
 				max-width: 535px;
 				margin: 0 auto;
 				background-image: asset-url('cartographer_small.png');
+
+
+				.question-wrapper {
+					.btn {
+						border: none;
+					}
+					.question {
+						margin: 20px;
+						opacity: 0.8;
+						p {
+							font-family: 'bebas_neue' !important;
+							font-size: 20px;
+							margin-top: 11px;
+							letter-spacing: 1px;
+						}
+					}
+
+					.question:hover {
+						opacity: 1;
+					}
+
+					#thrillseeker {
+						background-color: $advlo_orange;
+					}
+
+					#voluntourist {
+						background-color: $advlo_green;
+					}
+
+					#vacationist {
+						background-color: $light_gray;
+					}
+				}
+				
+
+				.form-wrapper{
+					display: none;
+				}
 			}
 
 			#network {
-				width: 64%;
+				width: 75%;
 				margin: 0 auto;
 			}
 
