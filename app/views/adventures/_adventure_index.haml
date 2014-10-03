@@ -21,11 +21,11 @@
               %input{id: "adv_rating_show_#{i}"}
 
             - if adv.price_type == "per_adventure"
-              - if adv.price > 99
-                .btn.btn-info.disabled.per_adventure_btn{style: "right: 60px !important;"}
+              - if adv.price > 999
+                .btn.btn-info.disabled.per_adventure_btn{style: "right: 68px !important;"}
                   PER GROUP
-              - elsif adv.price > 999
-                .btn.btn-info.disabled.per_adventure_btn{style: "right: 65px !important;"}
+              - elsif adv.price > 99
+                .btn.btn-info.disabled.per_adventure_btn{style: "right: 60px !important;"}
                   PER GROUP
               - else
                 .btn.btn-info.disabled.per_adventure_btn
