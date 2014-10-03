@@ -20,6 +20,17 @@
               %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
               %input{id: "adv_rating_show_#{i}"}
 
+            - if adv.price_type == "per_adventure"
+              - if adv.price > 99
+                .btn.btn-info.disabled.per_adventure_btn{style: "right: 60px !important;"}
+                  PER GROUP
+              - elsif adv.price > 999
+                .btn.btn-info.disabled.per_adventure_btn{style: "right: 65px !important;"}
+                  PER GROUP
+              - else
+                .btn.btn-info.disabled.per_adventure_btn
+                  PER GROUP
+
             .price= "$ #{adv.price}"
 
             .hover-block{id: i}

@@ -39,6 +39,7 @@
 //= require star-rating.min
 //= require readmore.min
 //= require zeroclipboard
+//= require sweet-alert.min
 
 
 

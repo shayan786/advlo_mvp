@@ -268,6 +268,18 @@
         }
       }
 
+      .per_adventure_btn {
+        position: absolute;
+        bottom: 12px;
+        right: 55px;
+        font-size: 8px;
+        z-index: 100;
+        padding: 2px 4px;
+        opacity: 0.8;
+        background-color: $advlo_orange;
+        border-color: $advlo_orange;
+      }
+
       .price {
         font-family: 'bebas_neue';
         position: absolute;

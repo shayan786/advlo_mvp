@@ -329,7 +329,9 @@ class AdventuresController < ApplicationController
 
     @adventure.destroy
 
-    redirect_to '/users/dashboard', notice: "Adventure has been deleted!"
+    respond_to do |format|
+      format.js {render "delete_adventure.js", layout: false}
+    end
   end
 
   private

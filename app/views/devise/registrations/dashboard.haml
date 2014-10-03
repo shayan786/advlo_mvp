@@ -56,7 +56,7 @@
                     %a.btn.btn-primary.edit_btn{href: "/adventure_steps/basic?adventure_id=#{adv.id}"} 
                       %i.fa.fa-pencil
                       EDIT
-                    = link_to adv, method: "delete",  data: {confirm: "Are you sure?"}, class: "btn btn-danger edit_btn" do
+                    .btn.btn-danger.edit_btn.delete_btn{"data-adv-id" => "#{adv.id}"}
                       %i.fa.fa-times
                         DELETE
                   - if adv.approved && adv.published
@@ -78,3 +78,8 @@
 
 :javascript
   social_init();
+
+  $(document).ready(function() {
+    swal_delete_adventure();
+  })
+  

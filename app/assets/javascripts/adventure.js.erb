@@ -1263,7 +1263,10 @@ function capMaxValidation(){
       $('#adv_cap_max').val('')
       $('#adv_cap_max').css('border-color','#a94442')
       $('.cap-max-error').html('must be greater than min')
-      alert('must be greater than min')
+      swal({
+        title: "Must be greater than Min",
+        imageUrl: "http://i.imgur.com/a6L0hYB.png"
+      });
 
     } else {
       $('.cap-max-error').html('')
@@ -1574,6 +1577,27 @@ function cancel_subscription() {
       });
     }
 
+  })
+}
+
+function swal_delete_adventure() {
+  
+  $('#d_user_dashboard .delete_btn').click(function(){
+    var adv_id = $(this).data('adv-id');
+
+    swal({     
+      title: "Are you sure?",  
+      showCancelButton: true,
+      imageUrl: "http://i.imgur.com/a6L0hYB.png"
+    }, 
+    function() {
+      $.ajax({
+        url: '/adventures/'+adv_id,
+        dataType: "script",
+        method: 'DELETE',
+        type: "POST"
+      })
+    });
   })
 }
 
