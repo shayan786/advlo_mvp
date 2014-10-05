@@ -188,6 +188,13 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: "Advlo Team - Your 25$")
   end
 
+  def send_25_credit(user)
+    @user = user
+    @referrals = User.where(referrer_id: user.id)
+
+    mail(to: @user.email, subject: "Advlo Team - Your 25$")
+  end
+
   def marketing_referral(email)
     email = email
     mail(to: email, subject: "Adventure local travel-fund")
