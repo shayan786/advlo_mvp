@@ -10,7 +10,8 @@
         %p= "From #{@contact.email}"
       %h4 
         Host:
-        %p= link_to "#{@host.get_abbreviated_name}", user_path(@host)
+        %p= link_to "#{@host.get_abbreviated_name}", "#{root_url}#{user_path(@host)}" 
+
         
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
