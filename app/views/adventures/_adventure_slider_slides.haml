@@ -23,5 +23,6 @@
             .price= "$ #{adv.price}"
 
             .hover-block{id: i}
-              .guide-image= image_tag adv.users.first.get_avatar_url('large'), alt: adv.title
+              .guide-image{style: "background: url('#{adv.users.first.get_avatar_url("large")}') no-repeat center center;"}
+              
             .copy-container{class: "copy-#{i}"}
