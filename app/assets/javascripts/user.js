@@ -108,8 +108,10 @@ function create_tabs() {
 
 function adventureShowHover(){
   $('.adventure-brick').hover(function(){
-    $(this).find($('.hover-block')).fadeIn()
+    $(this).find($('.hover-block')).show()
+    $(this).css('border','1px solid #000')
   }, function(){
+    $(this).css('border','none')
     $(this).find($('.hover-block')).fadeOut()
   })
 }
