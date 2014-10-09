@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get '/users/payouts'              => 'registrations#payouts'
     get '/users/reservations'         => 'registrations#reservations'
     post '/users/phone'               => 'users#edit_phone_number'
+    get '/users/conversations'          => 'registrations#conversations'
 
     #Sign up with referral show page
     get 'travel-fund'                 => 'users#invite' 
@@ -54,7 +55,11 @@ Rails.application.routes.draw do
   post '/reservations/user_cancel'    => 'reservations#user_cancel'
   resources :reservations
 
+  #reviews
   resources :reviews
+
+  #conversations & messages
+  post '/conversations/new'          => 'conversations#new'
 
   root to: 'application#homepage'
 

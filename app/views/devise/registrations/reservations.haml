@@ -17,6 +17,9 @@
               %li
                 %a{href: "/users/payouts"} 
                   Payouts
+              %li
+                %a{href: "/users/conversations"} 
+                  Messages
 
           .panel-body
             - if @host_upcoming_reservations.empty? && @host_past_reservations.empty?

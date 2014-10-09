@@ -181,6 +181,40 @@
 						opacity: 1;
 					}
 				}
+
+				#conversations {
+					.panel {
+
+						margin-top: 10px;
+
+						.panel-heading {
+							background-color: #FFF;
+							border-bottom: none;
+						}
+
+						.no_messages_btn {
+							font-size: 1.4em;
+							background-color: $login_btn_color;
+							border-color: $login_btn_color;
+							padding: 10px 20px;
+							color: #FFF;
+							margin-top: 10px;
+
+							&:hover {
+								background-color: $login_btn_color_hover;
+								border-color: $login_btn_color_hover;
+							}
+						}
+
+						table {
+							tbody{
+								tr {
+									cursor: pointer;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
