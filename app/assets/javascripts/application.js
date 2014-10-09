@@ -261,7 +261,7 @@ function footerInit(){
     $('.'+$(this).data('answer')).css('border','1px solid #fff')
 
     console.log(  parseInt($('.'+$(this).data('answer')).last().children().html()) + 1  )
-    $('.'+$(this).data('answer')).last().children().html(parseInt($('.'+$(this).data('answer')).last().children().html()) + 1)
+    //$('.'+$(this).data('answer')).last().children().html(parseInt($('.'+$(this).data('answer')).last().children().html()) + 1)
 
     $('.answer-1').last().prepend($('.answer-1').first().data('poll'))
     $('.answer-2').last().prepend($('.answer-2').first().data('poll'))
