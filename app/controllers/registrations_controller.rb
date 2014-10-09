@@ -37,6 +37,13 @@ class RegistrationsController < Devise::RegistrationsController
     wallet_variables
   end
 
+  def conversations
+    if !current_user
+      redirect_to '/users/sign_in', notice: "Please sign-in or sign-up to continue"
+      return
+    end
+  end
+
   def wallet_variables
     upcoming_sql = "processed = 'false' AND event_start_time > '#{Time.now.utc}'"
     past_sql = "processed = 'true' OR event_start_time < '#{Time.now.utc}'"

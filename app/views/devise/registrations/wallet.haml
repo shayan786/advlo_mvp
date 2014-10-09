@@ -17,6 +17,9 @@
               %li
                 %a{href: "/users/payouts"} 
                   Payouts
+              %li
+                %a{href: "/users/conversations"} 
+                  Messages
 
 
           - if current_user.credit > 0
@@ -33,7 +36,7 @@
                 .col-md-6.col-md-offset-3
                   .alert.alert-warning.text-center
                     You have no bookings
-                  %a.btn.btn-default.empty_wallet_btn{href: "/"}
+                  %a.btn.btn-default.empty_wallet_btn{href: "/adventures"}
                     START EXPLORING
 
               
