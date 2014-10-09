@@ -204,17 +204,14 @@ function edit_user_form_validator(){
 function host_contact_validator() {
   $('#contact_host_form').bootstrapValidator({
     fields: {
-      'contact_host[email]': {
+      'conversation[subject]': {
         validators: {
           notEmpty: {
-            message: "Email cannot be empty"
-          },
-          emailAddress: {
-            message: "Not a valid email address"
+            message: "Subject cannot be empty"
           }
         }
       },
-      'contact_host[message]': {
+      'message[body]': {
         validators: {
           notEmpty: {
             message: "Message cannot be empty"

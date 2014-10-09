@@ -222,6 +222,27 @@ function invite_social_init(){
   })
 }
 
+function wallet_message_validation() {
+
+  $('.modal .message_btn').addClass('disabled');
+
+  //request adventure form validation on button
+  $('.modal #message_body').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 6) {
+        $('.modal .message_btn').removeClass('disabled');
+      }
+      else if (details.length <= 6) {
+        $('.modal .message_btn').addClass('disabled');
+      }
+  })
+}
+
+function wallet_messages_init() {
+  wallet_message_validation();
+}
+
 function wallet_invite_init() {
 
 }
