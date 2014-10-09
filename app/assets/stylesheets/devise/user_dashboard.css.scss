@@ -214,6 +214,25 @@
 							}
 						}
 					}
+
+					.modal {
+
+						.message_panel {
+
+							.panel-heading {
+								font-family: nexa_light;
+								color: #333333;
+								background-color: whitesmoke;
+								border-color: #dddddd;
+								border-bottom: 1px solid transparent;
+							}
+
+							.panel-body {
+								min-height: 0px !important;
+							}
+
+						}
+					}
 				}
 			}
 		}
