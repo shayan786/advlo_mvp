@@ -20,18 +20,11 @@
               %li.active
                 %a{href: "/users/conversations"} 
                   Messages
-
-        = render partial: "/adventure_steps/notice"
-
+        .row
+          = render partial: "/adventure_steps/notice"
+          
         #conversations
           .panel.panel-default
-            %h4.panel-heading
-              %ul.nav.nav-tabs
-                %li.active
-                  %a{href: "#"}
-                    Inbox
-
-
             .panel-body
               - if current_user.conversations.count > 0
                 %table.table.table-hover
@@ -39,21 +32,21 @@
                     %tr
                       %th From:
                       %th To:
-                      %th Subject:
+                      %th Subject (Replies):
                       %th Date & Time:
 
                   %tbody
-                    - current_user.conversations.each_with_index do |con,i|
+                    - current_user.conversations.order("updated_at DESC").each do |con|
                       - sender = User.find_by_id(con.sender_id)
                       - receiver = User.find_by_id(con.receiver_id)
-                      %tr{href: "#", 'data-toggle' => "modal", 'data-target' => "#conversation_modal_#{i}"}
+                      %tr{href: "#", 'data-toggle' => "modal", 'data-target' => "#conversation_modal_#{con.id}"}
                         %td= sender.email[0..sender.email.rindex('@')]+"..."
                         %td= receiver.email[0..receiver.email.rindex('@')]+"..."
-                        %td= con.subject
+                        %td= con.subject+" (#{con.messages.count})"
                         %td= con.messages.last.created_at.strftime("%A  - %B %d - %l:%M %p")
 
 
-                      .modal.fade{role: "dialog", id: "conversation_modal_#{i}"}
+                      .modal.fade{role: "dialog", id: "conversation_modal_#{con.id}"}
                         .modal-dialog
                           .modal-content
                             .modal-header.text-center

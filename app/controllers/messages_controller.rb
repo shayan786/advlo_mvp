@@ -10,15 +10,19 @@ class MessagesController < ApplicationController
 
     @message.save
 
-    # Send email to the receiver
-    conversation = Conversation.find_by_id(@message.conversation_id)
+    @conversation = Conversation.find_by_id(@message.conversation_id)
+    @conversation.updated_at = @message.created_at
+    @conversation.save
+    
 
-    if @message.sender_id = conversation.sender_id
-      receiver = User.find_by_id(conversation.receiver_id)
+    if @message.sender_id = @conversation.sender_id
+      receiver = User.find_by_id(@conversation.receiver_id)
     else
-      receiver = User.find_by_id(conversation.sender_id)
+      receiver = User.find_by_id(@conversation.sender_id)
     end
 
+
+    # Send email to the receiver
     #AdvloMailer.delay....
 
 

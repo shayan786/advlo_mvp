@@ -42,6 +42,7 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to '/users/sign_in', notice: "Please sign-in or sign-up to continue"
       return
     end
+
   end
 
   def wallet_variables
