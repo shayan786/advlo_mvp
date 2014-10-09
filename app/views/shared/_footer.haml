@@ -47,8 +47,8 @@
 
 
             .form-wrapper
+              - total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f
               .poll-answers
-                - total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f
                 .answer-1.btn.btn-primary.answer.disabled
                   .poll-count= @poll.answer_1 > 0 ? "#{((@poll.answer_1.to_f / total_answers).round(2) * 100).to_i}%" : "0%"
                 .answer-2.btn.btn-success.answer.disabled
