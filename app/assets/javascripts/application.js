@@ -44,6 +44,7 @@
 
 
 $(document).ready(function(){
+  pollInit();
   headerLoginToggle();
   mobileHeaderLoginToggle();
   // fixes the bug that you can click right below a modal to close it
@@ -234,3 +235,11 @@ $(document).ready(function(){
   })
 });
 
+
+
+function pollInit(){
+  $('.question').click(function(e){
+    e.preventDefault()
+    
+  })
+}

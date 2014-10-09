@@ -1,3 +1,4 @@
+
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   # Prevent CSRF attacks by raising an exception.
@@ -5,6 +6,25 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_filter :store_location
+  before_filter :get_poll
+
+  def get_poll
+    @poll = Poll.find_by_name('What kind of adventurer are you?')
+  end
+
+  def calculate_poll
+    @poll = Poll.find_by_name('What kind of adventurer are you?')
+
+    case params[:answer]
+      when 'answer_1' then @poll.answer_1 += 1
+      when 'answer_2' then @poll.answer_2 += 1
+      when 'answer_3' then @poll.answer_3 += 1
+    end
+
+    puts "@poll =======>>>> #{@poll.inspect}"
+
+    @poll.save
+  end
 
   def terms
 

@@ -37,16 +37,25 @@
               = image_tag 'logos/advlo_header_logo_closed.png'
             .question-wrapper
               %h4 What kind of adventurer are you?
-              .question.btn.btn-primary#thrillseeker{'data-text'=> 'You are in the right place...'}
+              %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> 'Looks like you are in the right place...', 'data-poll' => 'thrillseeker'}
                 %p Thrillseeker
-              .question.btn.btn-success#voluntourist{'data-text'=> 'We are all about cultural experiences...'}
+              %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'At Advlo we are all about cultural experiences...', 'data-poll' => 'culturalist'}
                 %p Culturalist
-              .question.btn.btn-info#vacationist{'data-text'=> "Its time you went on a real adventure..."}
+              %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "Its time we connected you with a local adventure...", 'data-poll' => 'vacationist'}
                 %p Vacationist
 
 
 
             .form-wrapper
+              .poll-answers
+                
+                .answer-1.btn.btn-primary.answer.disabled
+                  .poll-count= @poll.answer_1
+                .answer-2.btn.btn-success.answer.disabled
+                  .poll-count= @poll.answer_2
+                .answer-3.btn.btn-info.answer.disabled
+                  .poll-count= @poll.answer_3
+
               #network
                 %h4
               .row
@@ -130,5 +139,10 @@
     $('.question-wrapper').hide()
     $('.form-wrapper').fadeIn(2000)
     $('#network h4').text($(this).data('text'))
+
+    $('.'+$(this).data('poll')).css('border','1px solid #fff')
+    $('.answer-1').last().prepend($('.answer-1').first().data('poll'))
+    $('.answer-2').last().prepend($('.answer-2').first().data('poll'))
+    $('.answer-3').last().prepend($('.answer-3').first().data('poll'))
   }) 
                 

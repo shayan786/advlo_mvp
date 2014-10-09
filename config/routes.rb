@@ -65,5 +65,7 @@ Rails.application.routes.draw do
 
   get 'switch_user' => 'switch_user#set_current_user'
 
+  get '/update-poll/:answer' => 'application#calculate_poll'
+
   get '*not_found', to: 'application#render_error'
 end	

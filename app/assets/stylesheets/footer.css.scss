@@ -128,18 +128,26 @@
 					.question:hover {
 						opacity: 1;
 					}
+				}
 
-					#thrillseeker {
-						background-color: $advlo_orange;
-					}
+				.answer {
+					width: 20%;
+					margin: 20px;
+				}
 
-					#voluntourist {
-						background-color: $advlo_green;
-					}
+				.answer-1 {
+					border: none;
+					background-color: $advlo_orange;
+				}
 
-					#vacationist {
-						background-color: $light_gray;
-					}
+				.answer-2 {
+					border: none;
+					background-color: $advlo_green;
+				}
+
+				.answer-3 {
+					border: none;
+					background-color: $light_gray;
 				}
 				
 
