@@ -63,7 +63,7 @@
                                       .col-md-5
                                       .col-md-4= mes.created_at.strftime("%B %d - %l:%M %p")
                                   .panel-body
-                                    = mes.body
+                                    = mes.body.gsub(/\n/, '<br/>').html_safe
 
                               .panel.panel-default.message_panel
                                 .panel-heading
