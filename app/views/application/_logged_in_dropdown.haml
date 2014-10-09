@@ -1,6 +1,6 @@
 %li.dropdown
   %a.logged_in_dropdown_box{href: "#", "data-toggle" => "dropdown", type: 'button'}
-    .img-circle.profile_img{style: "background: url('#{current_user.get_avatar_url("thumb")}') center center no-repeat"}
+    .img-circle.profile_img{style: %(background: url("#{current_user.get_avatar_url('thumb')}") center center no-repeat)}
 
     - if current_user.name.nil? || current_user.name.empty?
       .user_name
