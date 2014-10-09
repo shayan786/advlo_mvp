@@ -57,8 +57,10 @@
                                   .panel-heading
                                     - message_sender = User.find_by_id(mes.sender_id)
                                     .row
+                                      .col-md-1.text-center
+                                        .user_img{style: "background: url('#{message_sender.get_avatar_url('profile')}') center center no-repeat;"}
                                       .col-md-2= message_sender.email[0..message_sender.email.rindex('@')]+"..."
-                                      .col-md-6
+                                      .col-md-5
                                       .col-md-4= mes.created_at.strftime("%B %d - %l:%M %p")
                                   .panel-body
                                     = mes.body
@@ -66,8 +68,10 @@
                               .panel.panel-default.message_panel
                                 .panel-heading
                                   .row
+                                    .col-md-1.text-center
+                                      .user_img{style: "background: url('#{current_user.get_avatar_url('profile')}') center center no-repeat;"}
                                     .col-md-2= current_user.email[0..current_user.email.rindex('@')]+"..."
-                                    .col-md-6
+                                    .col-md-5
                                     .col-md-4= Time.now.strftime("%B %d - %l:%M %p")
                                 .panel-body
                                   %form{"accept-charset" => "UTF-8", action: "/messages/new", method: "POST", id: "new_message_form", 'data-remote' => true}

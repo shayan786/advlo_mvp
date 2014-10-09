@@ -24,7 +24,7 @@ class ConversationsController < ApplicationController
     conversation.save
 
     # Email the host about the initial message
-
+    AdvloMailer.delay.new_message_email(conversation, message)
 
     # Redirect to user's conversations
     redirect_to "/users/conversations", notice: "Your message has been sent."

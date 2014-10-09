@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
 
 
     # Send email to the receiver
-    #AdvloMailer.delay....
+    AdvloMailer.delay.new_message_email(@conversation, @message)
 
 
     respond_to do |format|

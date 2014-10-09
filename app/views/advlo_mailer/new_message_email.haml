@@ -4,13 +4,10 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .text-center
-      %h1 Host Contact
+      %h1 You've Received A New Message
       %h4 
-        User:
-        %p= "From #{@contact.email}"
-      %h4 
-        Host:
-        %p= "#{@host.get_abbreviated_name}" 
+        From:
+        %p= "#{@sender.email[0..@sender.email.rindex('@')]}..."
         
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
@@ -20,10 +17,21 @@
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
             
             %tr
-              %td{valign: "top"}
-                %h3 
-                  Message
-                %span= @contact.message
+              %td.text-center{valign: "top"}
+                %span= @message.body
+
+            %tr
+              %td.text-center
+                %br
+                %a.respond_btn{href: "#{root_url}users/conversations"}
+                  RESPOND
+
+
+            %tr
+              %td.text-center
+                %br
+                %i Please do not respond to this email. Use the button above to respond.
+
 
 
             %tr

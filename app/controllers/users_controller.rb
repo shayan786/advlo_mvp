@@ -15,20 +15,6 @@ class UsersController < ApplicationController
     @reviews = Review.where(host_id: @user.id)
   end
 
-  # Messaging the host through the profile show page
-  def contact_host
-    @contact = ContactHost.create!(contact_host_params)
-    puts "contact_host_params =>>>>>>>>>>>>>>>>  #{contact_host_params}"
-    if @contact.save
-      # Mail the host to be messaged
-      AdvloMailer.contact_host_email(@contact).deliver
-
-      respond_to do |format|
-        format.js {render "contact_host.js", layout: false}
-      end
-    end
-  end 
-
   def update_profile_img
     @user = User.find_by_id(params[:user_id])
     @user.avatar = params[:user][:avatar]
