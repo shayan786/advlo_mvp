@@ -398,7 +398,6 @@ function usersInit(){
 }
 
 function usersShowInit(){
-  adventureShowHover();
   profileSlider();
   centerGuideImage();
   profileCenterImage();
