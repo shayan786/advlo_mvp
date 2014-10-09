@@ -44,7 +44,7 @@
 
 
 $(document).ready(function(){
-  pollInit();
+  footerInit();
   headerLoginToggle();
   mobileHeaderLoginToggle();
   // fixes the bug that you can click right below a modal to close it
@@ -237,9 +237,35 @@ $(document).ready(function(){
 
 
 
-function pollInit(){
-  $('.question').click(function(e){
-    e.preventDefault()
-    
+function footerInit(){
+
+  $('#contact_form .contact_btn').click(function() {
+    if($('#honeypot input').val() == ''){
+      $('#contact_form').submit();
+    } else {
+      location.reload();
+    }
   })
+
+  $('#signup-please-modal .sign_up_toggle_btn').click(function(){
+    $('#signup-please-modal #signup_modal').fadeIn();
+    $(this).hide();
+  })
+
+
+  $('.question').click(function(){
+    $('.question-wrapper').hide()
+    $('.form-wrapper').fadeIn(2000)
+    $('#network h4').text($(this).data('text'))
+
+    $('.'+$(this).data('answer')).css('border','1px solid #fff')
+
+    console.log(  parseInt($('.'+$(this).data('answer')).last().children().html()) + 1  )
+    $('.'+$(this).data('answer')).last().children().html(parseInt($('.'+$(this).data('answer')).last().children().html()) + 1)
+
+    $('.answer-1').last().prepend($('.answer-1').first().data('poll'))
+    $('.answer-2').last().prepend($('.answer-2').first().data('poll'))
+    $('.answer-3').last().prepend($('.answer-3').first().data('poll'))
+  }) 
+                
 }

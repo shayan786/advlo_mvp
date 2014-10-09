@@ -37,11 +37,11 @@
               = image_tag 'logos/advlo_header_logo_closed.png'
             .question-wrapper
               %h4 What kind of adventurer are you?
-              %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> 'Looks like you are in the right place...', 'data-poll' => 'thrillseeker'}
+              %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> 'Looks like you are in the right place...', 'data-poll' => 'thrillseeker', 'data-answer' => 'answer-1'}
                 %p Thrillseeker
-              %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'At Advlo we are all about cultural experiences...', 'data-poll' => 'culturalist'}
+              %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'At Advlo we are all about cultural experiences...', 'data-poll' => 'culturalist', 'data-answer' => 'answer-2'}
                 %p Culturalist
-              %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "Its time we connected you with a local adventure...", 'data-poll' => 'vacationist'}
+              %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "Its time we connected you with a local adventure...", 'data-poll' => 'vacationist', 'data-answer' => 'answer-3'}
                 %p Vacationist
 
 
@@ -120,29 +120,5 @@
                   Thanks for reaching out to us.
                   %br
                   We will get back to you as soon as we can!
-
-:javascript
-  $('#contact_form .contact_btn').click(function() {
-    if($('#honeypot input').val() == ''){
-      $('#contact_form').submit();
-    } else {
-      location.reload();
-    }
-  })
-
-  $('#signup-please-modal .sign_up_toggle_btn').click(function(){
-    $('#signup-please-modal #signup_modal').fadeIn();
-    $(this).hide();
-  })
-
-  $('.question').click(function(){
-    $('.question-wrapper').hide()
-    $('.form-wrapper').fadeIn(2000)
-    $('#network h4').text($(this).data('text'))
-
-    $('.'+$(this).data('poll')).css('border','1px solid #fff')
-    $('.answer-1').last().prepend($('.answer-1').first().data('poll'))
-    $('.answer-2').last().prepend($('.answer-2').first().data('poll'))
-    $('.answer-3').last().prepend($('.answer-3').first().data('poll'))
-  }) 
-                
+  
+  
