@@ -261,11 +261,17 @@ function footerInit(){
     $('.'+$(this).data('answer')).css('border','1px solid #fff')
 
     console.log(  parseInt($('.'+$(this).data('answer')).last().children().html()) + 1  )
-    //$('.'+$(this).data('answer')).last().children().html(parseInt($('.'+$(this).data('answer')).last().children().html()) + 1)
+    var totalPolls = parseInt($('.poll-answers').data('total'))
+    console.log(parseInt($('.poll-answers').data('total')))
 
+    $('.answer-1').last().children().html( ((parseInt($('.answer-1').last().children().html()) / totalPolls).toFixed(2) * 100) + '%' )
     $('.answer-1').last().prepend($('.answer-1').first().data('poll'))
+
+    $('.answer-2').last().children().html( ((parseInt($('.answer-2').last().children().html()) / totalPolls).toFixed(2) * 100) + '%' )
     $('.answer-2').last().prepend($('.answer-2').first().data('poll'))
+
+    $('.answer-3').last().children().html( ((parseInt($('.answer-3').last().children().html()) / totalPolls).toFixed(2) * 100) + '%' )
     $('.answer-3').last().prepend($('.answer-3').first().data('poll'))
+
   }) 
-                
 }

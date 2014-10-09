@@ -47,14 +47,14 @@
 
 
             .form-wrapper
-              - total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f
-              .poll-answers
+              - total_answers = total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f
+              .poll-answers{'data-total' => total_answers}
                 .answer-1.btn.btn-primary.answer.disabled
-                  .poll-count= @poll.answer_1 > 0 ? "#{((@poll.answer_1.to_f / total_answers).round(2) * 100).to_i}%" : "0%"
+                  .poll-count= @poll.answer_1
                 .answer-2.btn.btn-success.answer.disabled
-                  .poll-count= @poll.answer_2 > 0 ? "#{((@poll.answer_2.to_f / total_answers).round(2) * 100).to_i}%" : "0%"
+                  .poll-count= @poll.answer_2
                 .answer-3.btn.btn-info.answer.disabled
-                  .poll-count= @poll.answer_3 > 0 ? "#{((@poll.answer_3.to_f / total_answers).round(2) * 100).to_i}%" : "0%"
+                  .poll-count= @poll.answer_3
 
               #network
                 %h4
