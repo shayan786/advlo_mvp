@@ -331,15 +331,6 @@
 	      @extend #cancel_host_submitted;
 	  	}
 
-	  	#contact_traveler_submitted {
-	  		@extend #cancel_host_submitted;
-
-	  		img {
-	  			width: 150px;
-	      		margin: 10px auto 25px auto;
-	  		}
-	  	}
-
 	  	#adventure_review_submitted {
 	  		@extend #cancel_host_submitted;
 

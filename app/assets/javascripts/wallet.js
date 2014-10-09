@@ -90,16 +90,16 @@ function host_contact_validation() {
 }
 
 function traveler_contact_validation() {
-  $('#contact_traveler_modal .contact_traveler_form .contact_btn').addClass('disabled');
+  $('#contact_traveler_modal .modal-dialog .contact_btn').addClass('disabled');
 
-  $('#contact_traveler_modal .contact_traveler_form #contact_message').on('keyup', function() {
+  $('#contact_traveler_modal .modal-dialog #message_body').on('keyup', function() {
     var details = $.trim($(this).val());
 
-      if (details.length > 5) {
-          $('#contact_traveler_modal .contact_traveler_form .contact_btn').removeClass('disabled');
+      if (details.length > 6) {
+        $('#contact_traveler_modal .modal-dialog .contact_btn').removeClass('disabled');
       }
-      else if (details.length <= 5) {
-        $('#contact_traveler_modal .contact_traveler_form .contact_btn').addClass('disabled');
+      else if (details.length <= 6) {
+        $('#contact_traveler_modal .modal-dialog .contact_btn').addClass('disabled');
       }
   })
 }

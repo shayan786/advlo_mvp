@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   
   #user dashboard route
   devise_scope :user do
-    post '/users/contact_traveler'    => 'users#contact_traveler'
     post '/upload/hero_image'         => 'users#hero_image'
     post '/upload/user_avatar_image'  => 'users#update_profile_img'
     post '/upload/waiver'             => 'users#upload_waiver'

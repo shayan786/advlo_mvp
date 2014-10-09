@@ -59,16 +59,6 @@ class AdvloMailer < ActionMailer::Base
     mail(from: 'info@advlo.com', to: @receiver.email, bcc:'info@advlo.com', subject: "Private message from: #{@sender.email[0..@sender.email.rindex('@')]}...")
   end
 
-  def contact_traveler_email(reservation, message)
-    @message = message
-    @reservation = reservation
-    @user = User.find(reservation.user_id)
-    @host = User.find(reservation.host_id)
-    @adventure = Adventure.find(reservation.adventure_id)
-
-    mail(from: @host.email, to: @user.email, subject: "Message regarding: #{@adventure.title}")
-  end
-
   # -- BOOKING && REQUEST BOOKING EMAILS ------------------------------------------------------------------------------------------------------------ 
 
   def booking_confirmation_email_user(user, adventure, reservation)
