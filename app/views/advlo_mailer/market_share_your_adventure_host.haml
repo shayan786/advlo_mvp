@@ -11,7 +11,9 @@
       .text-left
         %span= "We have been busy and we are excited to say we have onboarded #{Adventure.approved.count}" 
         %a{href: "#{root_url}/adventures"} adventures
-        in over 17 countries and we are super grateful you joined our network. We will send you updates that help our hosts - soon to come is a feature to simply customize each adventure that you offer. Please feel free to send us feedback about the platform, cool ideas, or just say hello. Simply reply to this email.
+        in over 17 countries and we are super grateful you joined our network. We will send you any feature updates that will benefit you - soon to come is a way to customize each adventure for travelers who are looking for more unique experiences. 
+        %p
+          Please feel free to send us feedback about the platform, cool ideas, or just say hello. Simply reply to this email.
 
         %br
         %br
@@ -22,7 +24,7 @@
           %tr
             %td
               - @user.adventures.approved.each do |adventure|
-                .adventure-wrapper{style: 'position: relative; float: left; width: 100%; height: 300px;'}
+                .adventure-wrapper{style: 'position: relative; float: left; width: 100%; height: 225px;'}
                   .adventure{style: 'position: relative; width: 50%; float: left; margin-right: 25px;'}
                     %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
                       %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium), style: 'width: 100%;'}
