@@ -18,24 +18,24 @@
         .divider.divider-border
 
         %p.text-center Here are a few of our favorites so far
-        %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "600px"}
+        %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "100%"}
           %tr
             %td
               - adventure = Adventure.find(154)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "200px", src: adventure.attachment.url(:medium), width: "auto"}
+                %img{alt: adventure.title, height: "125px", src: adventure.attachment.url(:medium), width: "auto"}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 %strong{style: 'margin-left: -25px;'}= adventure.location
             %td
               - adventure = Adventure.find(119)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "200px", src: adventure.attachment.url(:medium), width: "auto"}
+                %img{alt: adventure.title, height: "125px", src: adventure.attachment.url(:medium), width: "auto"}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 %strong{style: 'margin-left: -25px;'}= adventure.location
             %td
               - adventure = Adventure.find(165)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "200px", src: adventure.attachment.url(:medium), width: "auto"}
+                %img{alt: adventure.title, height: "125px", src: adventure.attachment.url(:medium), width: "auto"}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 %strong{style: 'margin-left: -25px;'}= adventure.location
 
