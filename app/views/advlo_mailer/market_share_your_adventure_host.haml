@@ -22,24 +22,25 @@
           %tr
             %td
               - @user.adventures.approved.each do |adventure|
-                .adventure{style: 'position: relative; width: 50%; float: left; margin-right: 25px;'}
-                  %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                    %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium), style: 'width: 100%;'}
+                .adventure-wrapper{style: 'position: relative; float: left; width: 100%; height: 300px;'}
+                  .adventure{style: 'position: relative; width: 50%; float: left; margin-right: 25px;'}
+                    %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
+                      %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium), style: 'width: 100%;'}
 
-                .share-links{style: 'position: relative; width: 40%; float: right;'}
-                  %h2= "#{adventure.title[0..25]}..."
-                  %p= "#{adventure.summary[0..50]}..."
+                  .share-links{style: 'position: relative; width: 40%; float: right;'}
+                    %h2= "#{adventure.title[0..25]}..."
+                    %p= "#{adventure.summary[0..50]}..."
 
-                  - share_url = "#{root_url}adventures/#{adventure.slug}"
+                    - share_url = "#{root_url}adventures/#{adventure.slug}"
 
-                  %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + adventure.title + '&p[summary]=' + adventure.summary[0..50] + '&p[url]=' + URI.escape(share_url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) }= image_tag "#{root_url}/assets/fb-email-bd69e985af97389bf052774e3531541b.png"
+                    %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + adventure.title + '&p[summary]=' + adventure.summary[0..50] + '&p[url]=' + URI.escape(share_url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) }= image_tag "#{root_url}/assets/fb-email-bd69e985af97389bf052774e3531541b.png"
 
-                  %a{href:"https://twitter.com/share?url=" + share_url + "&text=" + "Check out my adventure " + adventure.title + ' on Adventure Local'}= image_tag "#{root_url}/assets/twitter-email-f21c89929bcdb0751198c7318d9e7f53.png"
+                    %a{href:"https://twitter.com/share?url=" + share_url + "&text=" + "Check out my adventure " + adventure.title + ' on Adventure Local'}= image_tag "#{root_url}/assets/twitter-email-f21c89929bcdb0751198c7318d9e7f53.png"
 
-                  %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}"}= image_tag "#{root_url}/assets/gplus-email-5b11f1098ffab2a77fbae3f5f519811b.png"
+                    %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}"}= image_tag "#{root_url}/assets/gplus-email-5b11f1098ffab2a77fbae3f5f519811b.png"
 
 
-                  .divider-high
+                    .divider-high
 
               
 
