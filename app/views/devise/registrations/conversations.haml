@@ -82,8 +82,8 @@
                                   .row
                                     .col-md-1.text-center
                                       .user_img{style: "background: url('#{current_user.get_avatar_url('profile')}') center center no-repeat;"}
-                                    .col-md-2= current_user.get_abbreviated_name_or_email
-                                    .col-md-5
+                                    .col-md-3= current_user.get_abbreviated_name_or_email
+                                    .col-md-4
                                     .col-md-4= Time.now.strftime("%B %d - %l:%M %p")
                                 .panel-body
                                   %form{"accept-charset" => "UTF-8", action: "/messages/new", method: "POST", id: "new_message_form", 'data-remote' => true}
