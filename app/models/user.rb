@@ -196,6 +196,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_name_or_email
+    @user = User.find_by_id(self.id)
+
+    if @user.name != nil && @user.name != ''
+      return @user.get_abbreviated_name
+    else
+      return @user.email
+    end
+  end
+
   def get_first_name
     @user = User.find_by_id(self.id)
 

@@ -103,7 +103,7 @@ class AdvloMailer < ActionMailer::Base
     @reservation = reservation
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
-    
+
     mail(to: @user.email, subject: "[ADVLO] :Booking Declined: #{@adventure.title}")
   end
 
@@ -238,7 +238,16 @@ class AdvloMailer < ActionMailer::Base
   def market_one_week_last_login_user(user)
     @user = user
 
-    mail(to: @user.email, subject: "[ADVENTURE LOCAL] : We Miss You") do |format|
+    mail(to: @user.email, subject: "[ADVLO] : One month since launch") do |format|
+      format.html { render layout: 'marketing_advlo_mail' }
+      format.text
+    end
+  end
+
+  def market_new_feature_messages(user)
+    @user = user
+
+    mail(to: @user.email, subject: "[ADVLO] : Some big changes") do |format|
       format.html { render layout: 'marketing_advlo_mail' }
       format.text
     end
