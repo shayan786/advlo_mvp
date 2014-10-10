@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :contact_advlos
   has_many :payouts
   has_many :flags
+  has_many :marketing_emails
 
   has_many :conversations, foreign_key: "sender_id"
 
