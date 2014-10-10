@@ -57,8 +57,6 @@ class AdvloMailer < ActionMailer::Base
       @receiver = User.find_by_id(conversation.sender_id)
     end
 
-    puts "@receiver.inspect ======> #{@receiver.inspect}"
-
     mail(from: 'info@advlo.com', to: @receiver.email, bcc:'info@advlo.com', subject: "Private message from: #{@sender.email[0..@sender.email.rindex('@')]}...")
   end
 
