@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20141009183750) do
-=======
 ActiveRecord::Schema.define(version: 20141010002338) do
->>>>>>> bba687aae7adad7b7ea47d868b1e8d78f0a8d779
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,10 +183,7 @@ ActiveRecord::Schema.define(version: 20141010002338) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "conversation_id"
-<<<<<<< HEAD
-=======
     t.boolean  "read",            default: false
->>>>>>> bba687aae7adad7b7ea47d868b1e8d78f0a8d779
   end
 
   create_table "payouts", force: true do |t|

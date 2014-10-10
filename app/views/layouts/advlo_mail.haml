@@ -39,6 +39,28 @@
         line-height: 21px;
       }
 
+      .header-link {
+        position: relative;
+        float: left;
+        font-size: 1.2em;
+        border-radius: 3px;
+        margin-right: 15px;
+        margin-left: 15px;
+        color: #000;
+        width: 170px;
+        margin-top: 25px;
+        height: 25px;
+        background-color: #333333;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: 2px;
+        opacity: 0.85;
+        padding-top: 10px; 
+        color: #E6E6E6; 
+        font-family: Helvetica Neue; 
+        font-size: 13px;
+      }
+
       .respond_btn {
         font-family: Verdana;
         padding: 10px 15px;
@@ -118,12 +140,15 @@
                   .logo= image_tag "http://www.advlo.com/assets/logos/advlo_header_logo-439f03315b58ba7b980fd7aab2234985.png"
 
                 #header-links
-                  .header-link
-                    Find Adventures
-                  .header-link
-                    Sell Your skill
-                  .header-link
-                    Invite Friends
+                  %a{href: "#{root_url}adventures"}
+                    .header-link
+                      Find Adventures
+                  %a{href: "#{root_url}adventures/info"}
+                    .header-link
+                      Sell Your skill
+                  %a{href: "#{root_url}travel-fund"}
+                    .header-link
+                      Invite Friends
 
               // content      
               %tr
