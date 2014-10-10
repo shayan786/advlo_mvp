@@ -7,7 +7,7 @@
       %h1 You've Received A New Message
       %h4 
         From:
-        %p= "#{@sender.email[0..@sender.email.rindex('@')]}..."
+        %p= "#{@sender.get_abbreviated_name_or_email}"
         
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
