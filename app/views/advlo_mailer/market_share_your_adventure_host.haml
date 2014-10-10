@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented.text-center
+      %h2= "Hey #{@user.get_name_or_email}"
+
+      .text-center
+        %p It's been over a month since we launched.
+      .text-left
+        %span= "We have been busy since our launch and we are excited to say we have onboarded #{Adventure.approved.count}" 
+        %a{href: "#{root_url}/adventures"} adventures
+        in over 17 countries. We will keep you updated with awesome new adventures in your area (but we promise not to bug you). Please feel free to send us feedback about the platform, cool ideas, or just say hello. Simply reply to this email.
+
+        %br
+        %br
+        .divider.divider-border
+
+        %hw.text-center We are working hard to connect travelers to your page. Here are a few tools you can use to share your Advlo pages. 
+        %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "100%"}
+          %tr
+            %td
+              - @user.adventures.approved.each do |adventure|
+                %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000; width: 50%; float: left;'}
+                  %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium)}
+                  
+
+                  .share-links{style: 'width: 50%; float: right;'}
+                    - share_url = "#{root_url}adventures/#{adventure.slug}"
+                    %a{href:"https://twitter.com/share?url=" + share_url + "&text=" + "Check out my adventure " + adventure.title + ' on Adventure Local'}= image_tag 'twitter-email.png'
+
+                    %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + adventure.title + '&p[summary]=' + adventure.summary[0..50] + '&p[url]=' + share_url}= image_tag 'fb-email.png'
+
+
+                    %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}"}= image_tag 'gplus-email.png'
+
+
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
+
+
+        .divider.divider-border
+        %br
+        %br
+
+      %i Safe travels,
+      %br
+      %a{href: "#{root_url}about"} The Advlo Team
