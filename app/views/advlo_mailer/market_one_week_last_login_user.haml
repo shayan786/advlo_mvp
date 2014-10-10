@@ -6,15 +6,16 @@
     .indented.text-center
       %h2= "Hey #{@user.email}!"
 
-      %h3 Its been a few weeks since we've seen you
+      
       
       .text-left
-        %h4.text-center
-          %span= "Our team has been super busy since our launch and we are excited to say we have onboarded #{Adventure.approved.count}" 
-          %a{href: "#{root_url}/adventures"}adventures 
-          %span in over 17 countries.
-        %p We will keep you posted about adventures in your area ( but we promise not to bug you ) Feel free to send us feedback & ideas or just say hi 
-      %p just reply to this email :)
+        %p Its been a few weeks so we thought we would check in. 
+        %span= "Our team has been super busy since our launch and we are excited to say we have onboarded #{Adventure.approved.count}" 
+        %a{href: "#{root_url}/adventures"}
+          adventures 
+        in over 17 countries. We will keep you updated with awesome new adventures in your area. ( We promise not to bug you ) Feel free to send us feedback & ideas or just say hi.
+
+        %p just reply to this email.
 
       %i Safe travels,
       %br
