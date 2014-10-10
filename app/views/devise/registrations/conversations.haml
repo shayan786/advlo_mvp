@@ -19,14 +19,22 @@
                   Payouts
               %li.active
                 %a{href: "/users/conversations"} 
-                  Messages
+                  - conversations = Conversation.where('sender_id = ? OR receiver_id = ?',current_user,current_user)
+                  - count = 0
+                  - conversations.each do |con|
+                    - if con.messages.last.read == false
+                      - count = count+1
+                  - if count > 0
+                    = "Messages (#{count})"
+                  - else
+                    Messages
         .row
           = render partial: "/adventure_steps/notice"
           
         #conversations
           .panel.panel-default
             .panel-body
-              - if current_user.conversations.count > 0
+              - if @ordered_conversations.count > 0
                 %table.table.table-hover
                   %thead
                     %tr
@@ -36,7 +44,7 @@
                       %th Date & Time:
 
                   %tbody
-                    - current_user.conversations.order("updated_at DESC").each do |con|
+                    - @ordered_conversations.each do |con|
                       - sender = User.find_by_id(con.sender_id)
                       - receiver = User.find_by_id(con.receiver_id)
                       %tr{href: "#", 'data-toggle' => "modal", 'data-target' => "#conversation_modal_#{con.id}", style: "#{'font-weight: bold;' if con.messages.last.read == false}", 'data-message-id'=> con.messages.last.id}
