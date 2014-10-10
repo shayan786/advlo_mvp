@@ -119,17 +119,17 @@
                   - if current_user.email_list == true
                     %label.btn.btn-default.active
                       %input#option1{:checked => "checked", :name => "options", :type => "radio", value: 'true', name: "user[email_list]"}
-                      Yes
+                      Yes please
                     %label.btn.btn-default
                       %input#option2{:name => "options", :type => "radio", value: 'false', name: "user[email_list]"}
-                      No
+                      No thanks
                   - else
                     %label.btn.btn-default
                       %input#option1{:name => "options", :type => "radio", value: 'true', name: "user[email_list]"}
-                      Yes
+                      Yes please
                     %label.btn.btn-default.active
                       %input#option2{:name => "options", :type => "radio", value: 'false', name: "user[email_list]"}
-                      No
+                      No thanks
 
 
             .text-center

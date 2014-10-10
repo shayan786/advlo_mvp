@@ -200,7 +200,8 @@ class User < ActiveRecord::Base
     @user = User.find_by_id(self.id)
 
     if @user.name != nil && @user.name != ''
-      return @user.get_abbreviated_name
+      first_name = @user.name.split(' ')[0]
+      return first_name
     else
       return @user.email
     end
