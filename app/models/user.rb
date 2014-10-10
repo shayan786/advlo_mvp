@@ -218,6 +218,16 @@ class User < ActiveRecord::Base
 
   end
 
+  def get_abbreviated_name_or_email
+    @user = User.find_by_id(self.id)
+
+    if @user.name != nil && @user.name != ''
+      return @user.get_abbreviated_name
+    else
+      return "#{@user.email[0..@user.email.rindex('@')]}..."
+    end
+  end
+
   def calculate_rating 
     reviews = Review.where(host_id: self.id)
     @user = User.find_by_id(self.id)

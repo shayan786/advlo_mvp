@@ -50,10 +50,10 @@
                       %tr{href: "#", 'data-toggle' => "modal", 'data-target' => "#conversation_modal_#{con.id}", style: "#{'font-weight: bold;' if con.messages.last.read == false}", 'data-message-id'=> con.messages.last.id}
                         %td
                           .pull-left.user_img{style: "background: url('#{sender.get_avatar_url('profile')}') center center no-repeat;"}
-                          = sender.email[0..sender.email.rindex('@')]+"..."
+                          = sender.get_abbreviated_name_or_email
                         %td
                           .pull-left.user_img{style: "background: url('#{receiver.get_avatar_url('profile')}') center center no-repeat;"}
-                          = receiver.email[0..receiver.email.rindex('@')]+"..."
+                          = receiver.get_abbreviated_name_or_email
                         %td= con.subject+" (#{con.messages.count})"
                         %td= con.messages.last.created_at.strftime("%A  - %B %d - %l:%M %p")
 
@@ -71,7 +71,7 @@
                                     .row
                                       .col-md-1.text-center
                                         .user_img{style: "background: url('#{message_sender.get_avatar_url('profile')}') center center no-repeat;"}
-                                      .col-md-2= message_sender.email[0..message_sender.email.rindex('@')]+"..."
+                                      .col-md-2= message_sender.get_abbreviated_name_or_email
                                       .col-md-5
                                       .col-md-4= mes.created_at.strftime("%B %d - %l:%M %p")
                                   .panel-body
@@ -82,7 +82,7 @@
                                   .row
                                     .col-md-1.text-center
                                       .user_img{style: "background: url('#{current_user.get_avatar_url('profile')}') center center no-repeat;"}
-                                    .col-md-2= current_user.email[0..current_user.email.rindex('@')]+"..."
+                                    .col-md-2= current_user.get_abbreviated_name_or_email
                                     .col-md-5
                                     .col-md-4= Time.now.strftime("%B %d - %l:%M %p")
                                 .panel-body

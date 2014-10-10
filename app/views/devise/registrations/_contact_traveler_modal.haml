@@ -3,7 +3,7 @@
   .modal-dialog
     .modal-content
       .modal-header.text-center
-        = "Message - #{traveler.email[0..traveler.email.rindex('@')]}..."
+        = "Message - #{traveler.get_abbreviated_name_or_email}"
       .modal-body
         .contact_host_form
           %form{"accept-charset" => "UTF-8", action: "/conversations/new", method: "POST", id: "contact_host_form"}
