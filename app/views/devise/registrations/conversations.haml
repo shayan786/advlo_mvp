@@ -71,8 +71,8 @@
                                     .row
                                       .col-md-1.text-center
                                         .user_img{style: "background: url('#{message_sender.get_avatar_url('profile')}') center center no-repeat;"}
-                                      .col-md-2= message_sender.get_abbreviated_name_or_email
-                                      .col-md-5
+                                      .col-md-3= message_sender.get_abbreviated_name_or_email
+                                      .col-md-4
                                       .col-md-4= mes.created_at.strftime("%B %d - %l:%M %p")
                                   .panel-body
                                     = mes.body.gsub(/\n/, '<br/>').html_safe
