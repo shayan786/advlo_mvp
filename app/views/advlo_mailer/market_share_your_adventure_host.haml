@@ -17,7 +17,7 @@
         %br
         .divider.divider-border
 
-        %h4.text-center Here are a few social links that you can use to share your Advlo pages. 
+        %h4.text-center Here are a few social links to share your adventures
         %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "100%"}
           %tr
             %td
@@ -27,9 +27,8 @@
                     %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium), style: 'width: 100%;'}
 
                 .share-links{style: 'position: relative; width: 40%; float: right;'}
-                  %h2= adventure.title
+                  %h2= "#{adventure.title[0..25]}..."
                   %p= "#{adventure.summary[0..50]}..."
-                  
 
                   - share_url = "#{root_url}adventures/#{adventure.slug}"
 
@@ -40,7 +39,7 @@
                   %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}"}= image_tag "#{root_url}/assets/gplus-email-5b11f1098ffab2a77fbae3f5f519811b.png"
 
 
-                  .divider.divider-border
+                  .divider-high
 
               
 
