@@ -55,7 +55,7 @@
                           .pull-left.user_img{style: "background: url('#{receiver.get_avatar_url('profile')}') center center no-repeat;"}
                           = receiver.get_abbreviated_name_or_email
                         %td= con.subject+" (#{con.messages.count})"
-                        %td= con.messages.last.created_at.strftime("%A  - %B %d - %l:%M %p")
+                        %td= con.messages.last.created_at.utc.strftime("%A  - %B %d - %l:%M %p")
 
 
                       .modal.fade{role: "dialog", id: "conversation_modal_#{con.id}"}
@@ -73,7 +73,7 @@
                                         .user_img{style: "background: url('#{message_sender.get_avatar_url('profile')}') center center no-repeat;"}
                                       .col-md-3= message_sender.get_abbreviated_name_or_email
                                       .col-md-4
-                                      .col-md-4= mes.created_at.strftime("%B %d - %l:%M %p")
+                                      .col-md-4= mes.created_at.utc.strftime("%B %d - %l:%M %p")
                                   .panel-body
                                     = mes.body.gsub(/\n/, '<br/>').html_safe
 
