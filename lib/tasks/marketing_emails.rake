@@ -2,11 +2,6 @@ desc "This task is called by the Heroku scheduler add-on"
 
 task :marketing_emails => :environment do
 
-  hosts = []
-  users = []
-
-  count = 0
-
   User.all.each do |user|
     if user.adventures.approved.count > 0
       AdvloMailer.delay.market_share_your_adventure_host(user)
