@@ -6,12 +6,10 @@
     .indented.text-center
       %h2= "Hey #{@user.get_name_or_email}"
 
-      .text-center
-        %p It's been over a month since we launched.
       .text-left
-        %span= "We have been busy and we are excited to say we have onboarded #{Adventure.approved.count}" 
+        %span= "In the past month, we've added #{Adventure.approved.count}" 
         %a{href: "#{root_url}/adventures"} adventures
-        in over 17 countries. We will keep you updated with awesome new adventures in your area (but we promise not to bug you). Please feel free to send us feedback about the platform, cool ideas, or just say hello. Simply reply to this email.
+        118 adventures in over 17 countries. We will keep you updated with the best new adventures in your area (but we promise not to bug you more than that). Please feel free to send us feedback, trip requests, or just to say hello! Simply reply to this email. 
 
         %br
         %br
