@@ -62,10 +62,12 @@ Rails.application.routes.draw do
 
   #Stripe Webhooks
   post "/stripe-webhooks"             => 'stripe_hooks#receiver'
-
+  #switch user from admin account
   get 'switch_user' => 'switch_user#set_current_user'
-
+  #ajax for poll calculation
   get '/update-poll/:answer' => 'application#calculate_poll'
+  #unsubscribe mailer link
+  get '/users/unsubscribe/:signature' => 'users#unsubscribe'
 
   get '*not_found', to: 'application#render_error'
 end	

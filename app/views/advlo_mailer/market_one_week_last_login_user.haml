@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented.text-center
+      %h2= "Hey #{@user.email}!"
+
+      %h3 Its been a few weeks since we've seen you
+      
+      .text-left
+        %h4.text-center
+          %span= "Our team has been super busy since our launch and we are excited to say we have onboarded #{Adventure.approved.count}" 
+          %a{href: "#{root_url}/adventures"}adventures 
+          %span in over 17 countries.
+        %p We will keep you posted about adventures in your area ( but we promise not to bug you ) Feel free to send us feedback & ideas or just say hi 
+      %p just reply to this email :)
+
+      %i Safe travels,
+      %br
+      %a{href: "#{root_url}about"} The Advlo Team

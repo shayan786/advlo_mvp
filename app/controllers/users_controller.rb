@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   # Messaging the host through the profile show page
   def contact_host
     @contact = ContactHost.create!(contact_host_params)
-    puts "contact_host_params =>>>>>>>>>>>>>>>>  #{contact_host_params}"
     if @contact.save
       # Mail the host to be messaged
       AdvloMailer.contact_host_email(@contact).deliver
@@ -136,6 +135,19 @@ class UsersController < ApplicationController
   def invite
     if !user_signed_in?
       redirect_to '/travel-fund/04ca4b'
+    end
+  end
+
+  def unsubscribe 
+    if user = User.read_access_token(params[:signature])
+      user.email_list = false
+      user.save
+
+      respond_to do |format|
+        format.html {redirect_to '/', notice: 'We are sad to see you go.'}
+      end
+    else
+      render text: 'Invalid link.'
     end
   end
 

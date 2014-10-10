@@ -11,6 +11,35 @@
         background: url(http://www.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png);
       }
 
+      #header-links {
+        position: relative;
+        float: left; 
+        width: 100%; 
+      }
+
+      .header-link {
+        position: relative;
+        float: left;
+        font-size: 1.2em;
+        border-radius: 3px;
+        margin-right: 15px;
+        margin-left: 15px;
+        color: #000;
+        width: 170px;
+        margin-top: 25px;
+        height: 25px;
+        background-color: #333333;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: 2px;
+        opacity: 0.85;
+        padding-top: 10px; 
+        color: #E6E6E6; 
+        font-family: Helvetica Neue; 
+        font-size: 13px;
+      }
+    
+
       html {
         background: url(http://www.advlo.com/assets/cartographer_small-fc921f98c10167b7c55cb2de8357be54.png);
         // background: #151515;
@@ -106,12 +135,15 @@
                   .logo= image_tag "http://www.advlo.com/assets/logos/advlo_header_logo-439f03315b58ba7b980fd7aab2234985.png"
 
                 #header-links
-                  .header-link
-                    Find Adventures
-                  .header-link
-                    Sell Your skill
-                  .header-link
-                    Invite Friends
+                  %a{href: "#{root_url}adventures"}
+                    .header-link
+                      ADVENTURE
+                  %a{href: "#{root_url}adventures/info"}
+                    .header-link
+                      HOST
+                  %a{href: "#{root_url}travel-fund"}
+                    .header-link
+                      INVITE
 
               // content      
               %tr
@@ -131,3 +163,6 @@
                     %img{src: "http://www.advlo.com/assets/icons/twitter-f6d1be7d910ca451e4bcd6af6a8768a1.png", style: 'width="50" height="50"'}
                   %a{href: "http://www.instagram.com/advlo"}
                     %img{src: "http://www.advlo.com/assets/icons/instagram-a68ff616afe63c1079707d70593186d5.png", style: 'width="50" height="50"'}
+
+                = link_to 'unsubscribe from emails', "http://localhost:3000/users/unsubscribe/#{@user.access_token}"
+

@@ -111,6 +111,27 @@
                 .form_label.edit-label TripAdvisor URL
               .col-md-8
                 %input.form-control{placeholder: "https://www.tripadvisor.com/members/myname", type: "text", name: "user[ta_url]", id: "user_ta_url", value: "#{current_user.ta_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
+            .form-group.row
+              .col-md-4
+                .form_label.edit-label Advlo Emails
+              .col-md-8
+                .btn-group{"data-toggle" => "buttons"}
+                  - if current_user.email_list == true
+                    %label.btn.btn-default.active
+                      %input#option1{:checked => "checked", :name => "options", :type => "radio", value: 'true', name: "user[email_list]"}
+                      Yes
+                    %label.btn.btn-default
+                      %input#option2{:name => "options", :type => "radio", value: 'false', name: "user[email_list]"}
+                      No
+                  - else
+                    %label.btn.btn-default
+                      %input#option1{:name => "options", :type => "radio", value: 'true', name: "user[email_list]"}
+                      Yes
+                    %label.btn.btn-default.active
+                      %input#option2{:name => "options", :type => "radio", value: 'false', name: "user[email_list]"}
+                      No
+
+
             .text-center
               %input.btn.btn-primary.update_btn{name: "commit", type: "submit", value: "UPDATE"}
 

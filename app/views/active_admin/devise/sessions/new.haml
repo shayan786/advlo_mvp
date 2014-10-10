@@ -15,16 +15,11 @@
             Password*
             %abbr{:title => "required"}
           %input#admin_user_password{:maxlength => "128", :name => "admin_user[password]", :type => "password"}
-        #admin_user_remember_me_input.boolean.input.optional
-          %input{:name => "admin_user[remember_me]", :type => "hidden", :value => "0"}
-          %label.remember_label{:for => "admin_user_remember_me"}
-            %input#admin_user_remember_me{:name => "admin_user[remember_me]", :type => "checkbox", :value => "1"}
-              Remember me
-        %fieldset.login_actions
+  
+        %fieldset.login_actions{style: 'opacity:0;'}
           #admin_user_submit_action.action.input_action
             %input{:name => "commit", :type => "submit", :value => "Login"}
-          %a.pwreminder{:href => "/admin/password/new"} 
-            Forgot your password?
+  
     #footer
 
 :javascript

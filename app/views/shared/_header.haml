@@ -44,12 +44,12 @@
           %li
             %form
               %a.btn.btn-default.navbar-btn.header-button{href: "/travel-fund"}
-                Travel Fund
+                Invite Friends
         - else
           %li
             %form
               %a.btn.btn-default.navbar-btn.header-button#travel-fund-signup{href: "/travel-fund"}
-                Travel Fund
+                Invite Friends
         
         - if current_user && count = action_required(current_user)
           %li

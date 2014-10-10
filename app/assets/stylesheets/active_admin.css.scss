@@ -70,11 +70,10 @@ body.active_admin {
       -webkit-box-shadow: 0 0 0px 1000px white inset;
     }
     #maui-logo {
-      width: 440px;
-      position: relative;
-      top: -100px;
-      left: -57px;
-      width: 440px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
 
       img {
         width: 100%;
@@ -92,8 +91,9 @@ body.active_admin {
     #active_admin_login {
       width:100%;
       position: absolute;
-      left: -82px;
-      bottom: 0px;
+      opacity: 0.5;
+      top: 150px;
+      left: -30px;
 
       a {
         margin: 0 auto;

@@ -22,6 +22,29 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
   after_create :generate_referral_code
 
+  # Access token for a user's unsubscribe link
+  def access_token
+    User.create_access_token(self)
+  end
+
+  # Verifier based on our application secret
+  def self.verifier
+    ActiveSupport::MessageVerifier.new(Rails.application.secrets[:secret_key_base])
+  end
+
+  # Get a user from a token
+  def self.read_access_token(signature)
+    id = verifier.verify(signature)
+    User.find_by_id id
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
+  end
+
+  # Class method for token generation
+  def self.create_access_token(user)
+    verifier.generate(user.id)
+  end
+
   def update_referral_count
     self.referral_count += 1
     self.save

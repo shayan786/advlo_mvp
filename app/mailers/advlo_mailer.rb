@@ -222,23 +222,28 @@ class AdvloMailer < ActionMailer::Base
   end
 
 
-  # ----------- ENGAGEMENT EMAILS --------------------------------------------------------------------------------------------------
+  # ----------- MARKETING EMAILS --------------------------------------------------------------------------------------------------
   
-  def share_your_adventure(host) 
-    @host = host
-    @adventures = @host.adventures
+  # def market_share_your_adventure(host) 
+  #   layout 'marketing_advlo_mail'
 
-    if @adventures.count == 1
-      mail(to: @host.email, subject: "[ADVENTURE LOCAL] : Share Your Adventure")
-    else
-      mail(to: @host.email, subject: "[ADVENTURE LOCAL] : Share Your Adventures")
-    end
-  end
+  #   @host = host
+  #   @adventures = @host.adventures
 
-  def one_week_last_login_user(user)
+  #   if @adventures.count == 1
+  #     mail(to: @host.email, subject: "[ADVENTURE LOCAL] : Share Your Adventure")
+  #   else
+  #     mail(to: @host.email, subject: "[ADVENTURE LOCAL] : Share Your Adventures")
+  #   end
+  # end
+
+  def market_one_week_last_login_user(user)
     @user = user
 
-    mail(to: @user.email, subject: "[ADVENTURE LOCAL] : We Miss You")
+    mail(to: @user.email, subject: "[ADVENTURE LOCAL] : We Miss You") do |format|
+      format.html { render layout: 'marketing_advlo_mail' }
+      format.text
+    end
   end
 
 end
