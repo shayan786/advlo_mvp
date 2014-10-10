@@ -23,19 +23,19 @@
             %td
               - adventure = Adventure.find(154)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px;'}
+                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 %strong{style: 'margin-left: -25px;'}= adventure.location
             %td
               - adventure = Adventure.find(119)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px;'}
+                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 %strong{style: 'margin-left: -25px;'}= adventure.location
             %td
               - adventure = Adventure.find(165)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px;'}
+                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 %strong{style: 'margin-left: -25px;'}= adventure.location
 
