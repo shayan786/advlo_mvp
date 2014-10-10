@@ -11,9 +11,37 @@
       .text-left
         %span= "We have been busy since our launch and we are excited to say we have onboarded #{Adventure.approved.count}" 
         %a{href: "#{root_url}/adventures"} adventures
-        in over 17 countries. We will keep you updated with awesome new adventures in your area (but we promise not to bug you). Please feel free to send us feedback about the platform, cool ideas, or just say hello.
+        in over 17 countries. We will keep you updated with awesome new adventures in your area (but we promise not to bug you). Please feel free to send us feedback about the platform, cool ideas, or just say hello. Simply reply to this email.
 
-        %p Simply reply to this email.
+        %br
+        %br
+        .divider.divider-border
+
+        %p.text-center Here are a few of our favorites so far
+        %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "600px"}
+          %tr
+            %td
+              - adventure = Adventure.find(154)
+              %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
+                %img{alt: adventure.title, height: "200px", src: adventure.attachment.url(:medium), width: "30%"}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
+                %strong{style: 'margin-left: -25px;'}= adventure.location
+            %td
+              - adventure = Adventure.find(119)
+              %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
+                %img{alt: adventure.title, height: "200px", src: adventure.attachment.url(:medium), width: "30%"}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
+                %strong{style: 'margin-left: -25px;'}= adventure.location
+            %td
+              - adventure = Adventure.find(165)
+              %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
+                %img{alt: adventure.title, height: "200px", src: adventure.attachment.url(:medium), width: "30%"}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
+                %strong{style: 'margin-left: -25px;'}= adventure.location
+
+        .divider.divider-border
+        %br
+        %br
 
       %i Safe travels,
       %br
