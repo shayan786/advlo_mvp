@@ -239,8 +239,25 @@ function wallet_message_validation() {
   })
 }
 
+function wallet_message_read() {
+  $('#conversations tbody tr').click(function() {
+    var message_id = $(this).data('message-id');
+
+    $(this).css({
+      fontWeight: ""
+    })
+
+    $.ajax({
+      url: "/messages/read/" + message_id,
+      dataType: "script",
+      type: "POST"
+    });
+  })
+} 
+
 function wallet_messages_init() {
   wallet_message_validation();
+  wallet_message_read();
 }
 
 function wallet_invite_init() {

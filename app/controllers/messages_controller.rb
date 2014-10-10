@@ -32,6 +32,18 @@ class MessagesController < ApplicationController
 
   end
 
+  def read
+    message = Message.find_by_id(params[:id])
+
+    message.read = true
+
+    if message.save
+      respond_to do |format|
+        format.js {render json: {status: 200}}
+      end
+    end
+  end
+
   def destroy
 
   end  

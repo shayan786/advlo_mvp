@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   #conversations & messages
   post '/conversations/new'          => 'conversations#new'
   post '/messages/new'               => 'messages#new'
+  post '/messages/read/:id'        => 'messages#read'            
 
   root to: 'application#homepage'
 

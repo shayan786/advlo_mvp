@@ -39,7 +39,7 @@
                     - current_user.conversations.order("updated_at DESC").each do |con|
                       - sender = User.find_by_id(con.sender_id)
                       - receiver = User.find_by_id(con.receiver_id)
-                      %tr{href: "#", 'data-toggle' => "modal", 'data-target' => "#conversation_modal_#{con.id}"}
+                      %tr{href: "#", 'data-toggle' => "modal", 'data-target' => "#conversation_modal_#{con.id}", style: "#{'font-weight: bold;' if con.messages.last.read == false}", 'data-message-id'=> con.messages.last.id}
                         %td
                           .pull-left.user_img{style: "background: url('#{sender.get_avatar_url('profile')}') center center no-repeat;"}
                           = sender.email[0..sender.email.rindex('@')]+"..."
