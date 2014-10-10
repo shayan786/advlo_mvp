@@ -206,17 +206,14 @@ function edit_user_form_validator(){
 function host_contact_validator() {
   $('#contact_host_form').bootstrapValidator({
     fields: {
-      'contact_host[email]': {
+      'conversation[subject]': {
         validators: {
           notEmpty: {
-            message: "Email cannot be empty"
-          },
-          emailAddress: {
-            message: "Not a valid email address"
+            message: "Subject cannot be empty"
           }
         }
       },
-      'contact_host[message]': {
+      'message[body]': {
         validators: {
           notEmpty: {
             message: "Message cannot be empty"
@@ -346,22 +343,6 @@ function user_adv_rating_show() {
     rating = $(adv_rating_value_id).data('rating');
     $(adv_rating_show_id).rating('update', rating);
   }
-}
-
-function contact_form_validator() {
-  $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
-
-  //request adventure form validation on button
-  $('#contact_host_modal .modal-dialog #contact_message').on('keyup', function() {
-    var details = $.trim($(this).val());
-
-      if (details.length > 6) {
-        $('#contact_host_modal .modal-dialog .contact_btn').removeClass('disabled');
-      }
-      else if (details.length <= 6) {
-        $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
-      }
-  })
 }
 
 function setTravelFundCookie(){

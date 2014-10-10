@@ -14,24 +14,24 @@ class AdvloMailer < ActionMailer::Base
   # USER EMAILS:---------------------------------------------------------------------------------------------------------------------
   def welcome_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Welcome to Adventure Local')
+    mail(to: @user.email, subject: 'Welcome to ADVLO')
   end
 
   # HOST EMAILS:---------------------------------------------------------------------------------------------------------------------
 
   def adventure_publish_request(adventure)
     @adventure = adventure
-    mail(to: 'info@advlo.com', subject: '[ADVENTURE LOCAL] : Adventure Approval Request')
+    mail(to: 'info@advlo.com', subject: '[ADVLO] : Adventure Approval Request')
   end
 
   def adventure_published_submitted(adventure)
     @adventure = adventure
-    mail(to: @adventure.users.first.email, subject: '[ADVENTURE LOCAL] : Your Adventure is submitted for Approval')
+    mail(to: @adventure.users.first.email, subject: '[ADVLO] : Your Adventure is submitted for Approval')
   end
 
   def adventure_approval_accepted(adventure)
     @adventure = adventure
-    mail(to: @adventure.users.first.email, subject: '[ADVENTURE LOCAL] : Your Adventure has been approved!')
+    mail(to: @adventure.users.first.email, subject: '[ADVLO] : Your Adventure has been approved!')
   end
 
   # INFORMATIONAL & REQUESTS:---------------------------------------------------------------------------------------------------------------------
@@ -41,25 +41,25 @@ class AdvloMailer < ActionMailer::Base
     @receiver = receiver
     locations = @request.category.gsub(',',' & ')
 
-    mail(to: @receiver, subject: "[ADVENTURE LOCAL] : Request for #{locations}")
+    mail(to: @receiver, subject: "[ADVLO] : Request for #{locations}")
   end
 
-  # MESSAGING THE HOST FROM ANY USER // 
-  # BCC ON initial mail.. figure out internal messaging
-  def contact_host_email(contact)
-    @contact = contact
-    @host = User.find(@contact.host_id)
-    mail(from: @contact.email, to: @host.email, bcc:'info@advlo.com', subject: "[ADVENTURE LOCAL] : Private message from: #{contact.email}")
-  end
+  # CONVERSATIONS & MESSAGES: ---------------------------------------------------------------------------------------------------------------------
 
-  def contact_traveler_email(reservation, message)
+  def new_message_email(conversation, message)
+    @conversation = conversation
     @message = message
-    @reservation = reservation
-    @user = User.find(reservation.user_id)
-    @host = User.find(reservation.host_id)
-    @adventure = Adventure.find(reservation.adventure_id)
+    @sender = User.find_by_id(message.sender_id)
 
-    mail(from: @host.email, to: @user.email, subject: "[ADVENTURE LOCAL] : Message regarding: #{@adventure.title}")
+    if message.sender_id == conversation.sender_id
+      @receiver = User.find_by_id(conversation.receiver_id)
+    else
+      @receiver = User.find_by_id(conversation.sender_id)
+    end
+
+    puts "@receiver.inspect ======> #{@receiver.inspect}"
+
+    mail(from: 'info@advlo.com', to: @receiver.email, bcc:'info@advlo.com', subject: "Private message from: #{@sender.email[0..@sender.email.rindex('@')]}...")
   end
 
   # -- BOOKING && REQUEST BOOKING EMAILS ------------------------------------------------------------------------------------------------------------ 
@@ -69,7 +69,7 @@ class AdvloMailer < ActionMailer::Base
     @user = user
     @reservation = reservation
 
-    mail(to: @user.email, subject: '[ADVENTURE LOCAL] : booking confirmed')
+    mail(to: @user.email, subject: '[ADVLO] : booking confirmed')
   end
 
   def booking_confirmation_email_host(host, adventure, reservation)
@@ -78,7 +78,7 @@ class AdvloMailer < ActionMailer::Base
     @res_user = User.find_by_id(reservation.user_id)
 
     @reservation = reservation
-    mail(to: @user.email, subject: '[ADVENTURE LOCAL] : booking confirmed')
+    mail(to: @user.email, subject: '[ADVLO] : booking confirmed')
   end
 
   def booking_request_email_user(reservation)
@@ -87,7 +87,11 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
 
+<<<<<<< HEAD
     mail(to: @user.email, bcc: 'info@advlo.com', subject: "[ADVENTURE LOCAL] : You Requested: #{@adventure.title}")
+=======
+    mail(to: @user.email, bcc: 'info@advlo.com', subject: "[ADVLO] :You Requested: #{@adventure.title}")
+>>>>>>> bba687aae7adad7b7ea47d868b1e8d78f0a8d779
   end
 
   def booking_request_email_host(reservation)
@@ -96,7 +100,11 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
 
+<<<<<<< HEAD
     mail(to: @host.email, subject: "[ADVENTURE LOCAL] : Reservation request for: #{@adventure.title}")
+=======
+    mail(to: @host.email, subject: "[ADVLO] :Reservation request for: #{@adventure.title}")
+>>>>>>> bba687aae7adad7b7ea47d868b1e8d78f0a8d779
   end
 
   def booking_request_email_rejection(reservation)
@@ -105,7 +113,11 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
 
+<<<<<<< HEAD
     mail(to: @user.email, subject: "[ADVENTURE LOCAL] : Booking Declined: #{@adventure.title}")
+=======
+    mail(to: @user.email, subject: "[ADVLO] :Booking Declined: #{@adventure.title}")
+>>>>>>> bba687aae7adad7b7ea47d868b1e8d78f0a8d779
   end
 
   # ------ CANCELLATION EMAILS ------------------------------------------------------------------------------------------------------------
@@ -115,7 +127,11 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
 
+<<<<<<< HEAD
     mail(to: @user.email, subject: "[ADVENTURE LOCAL] : Booking cancellation for: #{@adventure.title}")
+=======
+    mail(to: @user.email, subject: "[ADVLO] :Booking cancellation for: #{@adventure.title}")
+>>>>>>> bba687aae7adad7b7ea47d868b1e8d78f0a8d779
   end
 
   def host_cancel_email_to_self(reservation)
@@ -128,7 +144,11 @@ class AdvloMailer < ActionMailer::Base
       @event = Event.find_by_id(reservation.event_id)
     end
 
+<<<<<<< HEAD
     mail(to: @host.email, bcc: "info@advlo.com", subject: "[ADVENTURE LOCAL] : Booking cancellation for: #{@adventure.title}")
+=======
+    mail(to: @host.email, bcc: "info@advlo.com", subject: "[ADVLO] :Booking cancellation for: #{@adventure.title}")
+>>>>>>> bba687aae7adad7b7ea47d868b1e8d78f0a8d779
   end
 
   def user_cancel_email_to_host(reservation)
@@ -137,7 +157,7 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
 
-    mail(to: @host.email, bcc: "info@advlo.com", subject: "[ADVENTURE LOCAL] : Booking cancellation for: #{@adventure.title}")
+    mail(to: @host.email, bcc: "info@advlo.com", subject: "[ADVLO] : Booking cancellation for: #{@adventure.title}")
   end
 
   def user_cancel_email_to_self(reservation)
@@ -152,7 +172,7 @@ class AdvloMailer < ActionMailer::Base
 
   def contact_email(contact_user)
     @contact_user = contact_user
-    mail(reply_to: @contact_user.email, to: 'info@advlo.com', subject: '[ADVENTURE LOCAL] : Advlo Contact-us Submission')
+    mail(reply_to: @contact_user.email, to: 'info@advlo.com', subject: '[ADVLO] : Advlo Contact-us Submission')
   end
 
   # ------ PAYOUT EMAILS ------------------------------------------------------------------------------------------------------------
@@ -161,7 +181,7 @@ class AdvloMailer < ActionMailer::Base
     @payout_user = User.find_by_id(@payout.user_id)
     @payout_reservations = Reservation.where(processed: true).where(host_id: @payout_user.id)
 
-    mail(to: @payout_user.email, subject: "[ADVENTURE LOCAL] : Advlo Payment - Completed")
+    mail(to: @payout_user.email, subject: "[ADVLO] : Advlo Payment - Completed")
   end
 
   def payout_failed_email(payout)
@@ -169,7 +189,7 @@ class AdvloMailer < ActionMailer::Base
     @payout_user = User.find_by_id(payout.user_id)
     @payout_reservations = Reservation.where(processed: true).where(host_id: @payout_user.id)
 
-    mail(to: @payout_user.email, subject: "[ADVENTURE LOCAL] : Advlo Payment - Failed")
+    mail(to: @payout_user.email, subject: "[ADVLO] : Advlo Payment - Failed")
   end
 
   def paypal_payment_email(payment_url)
@@ -185,19 +205,19 @@ class AdvloMailer < ActionMailer::Base
     @user = user
     @referrals = User.where(referrer_id: user.id)
 
-    mail(to: @user.email, subject: "[ADVENTURE LOCAL] : Advlo Team - Your 25$")
+    mail(to: @user.email, subject: "[ADVLO] : Advlo Team - Your 25$")
   end
 
   def send_25_credit(user)
     @user = user
     @referrals = User.where(referrer_id: user.id)
 
-    mail(to: @user.email, subject: "[ADVENTURE LOCAL] : Advlo Team - Your 25$")
+    mail(to: @user.email, subject: "[ADVLO] : Advlo Team - Your 25$")
   end
 
   def marketing_referral(email)
     email = email
-    mail(to: email, subject: "[ADVENTURE LOCAL] : Travel Fund")
+    mail(to: email, subject: "[ADVLO] : Travel Fund")
   end
 
 
@@ -209,7 +229,7 @@ class AdvloMailer < ActionMailer::Base
     customer = Stripe::Customer.retrieve(user_adventure.stripe_customer_id)
     @sub = customer.subscriptions.retrieve(user_adventure.stripe_subscription_id)
 
-    mail(to: @user.email, subject: "[ADVENTURE LOCAL] : Subscription Confirmation")
+    mail(to: @user.email, subject: "[ADVLO] : Subscription Confirmation")
   end
 
   def subscription_cancelled(user_adventure)
@@ -218,7 +238,7 @@ class AdvloMailer < ActionMailer::Base
     customer = Stripe::Customer.retrieve(user_adventure.stripe_customer_id)
     @sub = customer.subscriptions.retrieve(user_adventure.stripe_subscription_id)
 
-    mail(to: @user.email, subject: "[ADVENTURE LOCAL] : Subscription Cancelled")
+    mail(to: @user.email, subject: "[ADVLO] : Subscription Cancelled")
   end
 
 
@@ -226,7 +246,6 @@ class AdvloMailer < ActionMailer::Base
   
   # def market_share_your_adventure(host) 
   #   layout 'marketing_advlo_mail'
-
   #   @host = host
   #   @adventures = @host.adventures
 

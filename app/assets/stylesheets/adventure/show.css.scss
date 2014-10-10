@@ -960,6 +960,76 @@
   }
 }
 
+#sign-in-modal {
+  .modal-dialog {
+    top: 55px;
+  }
+
+  .sign-in-toggle {
+    font-size: 0.7em;
+    color: #fff;
+    font-family: 'nexa_light';
+    padding: 10px 20px 5px 20px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+
+  .sign-up-toggle {
+    @extend .sign-in-toggle;
+  }
+
+  .modal-header {
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: $advlo_orange !important;
+    font-family: 'nexa_light';
+    border-bottom: 1px solid $orange;
+  }
+
+  .sign-in-form {
+    .sign_in_btn {
+      width: 92%; 
+      font-size: 0.6em;
+      background-color: $login_btn_color;
+      border-color: $login_btn_color;
+      margin-top: 10px;
+
+      &:hover {
+        background-color: $login_btn_color_hover;
+        border-color: $login_btn_color_hover;
+      }
+    }
+
+    .fb_btn {
+      width: 92%;
+      color: #FFFFFF !important;
+      font-size: 0.6em;
+      margin-top: 25px;
+      padding-top: 10px;
+
+      .fa {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .sign-up-form {
+    @extend .sign-in-form;
+    .sign_up_btn {
+      width: 92%; 
+      font-size: 0.6em;
+      background-color: $login_btn_color;
+      border-color: $login_btn_color;
+      margin-top: 10px;
+
+      &:hover {
+        background-color: $login_btn_color_hover;
+        border-color: $login_btn_color_hover;
+      }
+    }
+  }
+}
+
 .sign-copy {
   color: #fff;
   font-size: 20px;

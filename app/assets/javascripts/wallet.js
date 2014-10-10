@@ -90,16 +90,16 @@ function host_contact_validation() {
 }
 
 function traveler_contact_validation() {
-  $('#contact_traveler_modal .contact_traveler_form .contact_btn').addClass('disabled');
+  $('#contact_traveler_modal .modal-dialog .contact_btn').addClass('disabled');
 
-  $('#contact_traveler_modal .contact_traveler_form #contact_message').on('keyup', function() {
+  $('#contact_traveler_modal .modal-dialog #message_body').on('keyup', function() {
     var details = $.trim($(this).val());
 
-      if (details.length > 5) {
-          $('#contact_traveler_modal .contact_traveler_form .contact_btn').removeClass('disabled');
+      if (details.length > 6) {
+        $('#contact_traveler_modal .modal-dialog .contact_btn').removeClass('disabled');
       }
-      else if (details.length <= 5) {
-        $('#contact_traveler_modal .contact_traveler_form .contact_btn').addClass('disabled');
+      else if (details.length <= 6) {
+        $('#contact_traveler_modal .modal-dialog .contact_btn').addClass('disabled');
       }
   })
 }
@@ -220,6 +220,44 @@ function invite_social_init(){
 
     window.open("https://twitter.com/share?url=" + invite_url + "&text= Join @Advlo_ and help me receive $25 towards an amazing adventure. %23AdventureLocal", 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
   })
+}
+
+function wallet_message_validation() {
+
+  $('.modal .message_btn').addClass('disabled');
+
+  //request adventure form validation on button
+  $('.modal #message_body').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 6) {
+        $('.modal .message_btn').removeClass('disabled');
+      }
+      else if (details.length <= 6) {
+        $('.modal .message_btn').addClass('disabled');
+      }
+  })
+}
+
+function wallet_message_read() {
+  $('#conversations tbody tr').click(function() {
+    var message_id = $(this).data('message-id');
+
+    $(this).css({
+      fontWeight: ""
+    })
+
+    $.ajax({
+      url: "/messages/read/" + message_id,
+      dataType: "script",
+      type: "POST"
+    });
+  })
+} 
+
+function wallet_messages_init() {
+  wallet_message_validation();
+  wallet_message_read();
 }
 
 function wallet_invite_init() {

@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   
   #user dashboard route
   devise_scope :user do
-    post '/users/contact_host'        => 'users#contact_host'
-    post '/users/contact_traveler'    => 'users#contact_traveler'
     post '/upload/hero_image'         => 'users#hero_image'
     post '/upload/user_avatar_image'  => 'users#update_profile_img'
     post '/upload/waiver'             => 'users#upload_waiver'
@@ -16,6 +14,7 @@ Rails.application.routes.draw do
     get '/users/payouts'              => 'registrations#payouts'
     get '/users/reservations'         => 'registrations#reservations'
     post '/users/phone'               => 'users#edit_phone_number'
+    get '/users/conversations'          => 'registrations#conversations'
 
     #Sign up with referral show page
     get 'travel-fund'                 => 'users#invite' 
@@ -54,7 +53,13 @@ Rails.application.routes.draw do
   post '/reservations/user_cancel'    => 'reservations#user_cancel'
   resources :reservations
 
+  #reviews
   resources :reviews
+
+  #conversations & messages
+  post '/conversations/new'          => 'conversations#new'
+  post '/messages/new'               => 'messages#new'
+  post '/messages/read/:id'        => 'messages#read'            
 
   root to: 'application#homepage'
 

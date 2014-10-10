@@ -17,6 +17,17 @@
               %li
                 %a{href: "/users/payouts"} 
                   Payouts
+              %li
+                %a{href: "/users/conversations"} 
+                  - conversations = Conversation.where('sender_id = ? OR receiver_id = ?',current_user,current_user)
+                  - count = 0
+                  - conversations.each do |con|
+                    - if con.messages.last.read == false
+                      - count = count+1
+                  - if count > 0
+                    = "Messages (#{count})"
+                  - else
+                    Messages
 
 
           - if current_user.credit > 0
@@ -33,7 +44,7 @@
                 .col-md-6.col-md-offset-3
                   .alert.alert-warning.text-center
                     You have no bookings
-                  %a.btn.btn-default.empty_wallet_btn{href: "/"}
+                  %a.btn.btn-default.empty_wallet_btn{href: "/adventures"}
                     START EXPLORING
 
               

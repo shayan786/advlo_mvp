@@ -633,7 +633,7 @@ function contact_form_validator() {
   $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
 
   //request adventure form validation on button
-  $('#contact_host_modal .modal-dialog #contact_message').on('keyup', function() {
+  $('#contact_host_modal .modal-dialog #message_body').on('keyup', function() {
     var details = $.trim($(this).val());
 
       if (details.length > 6) {

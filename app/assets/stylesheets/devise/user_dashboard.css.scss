@@ -181,6 +181,82 @@
 						opacity: 1;
 					}
 				}
+
+				#conversations {
+					.panel {
+
+						margin-top: 10px;
+
+						.panel-heading {
+							background-color: #FFF;
+							border-bottom: none;
+						}
+
+						.no_messages_btn {
+							font-size: 1.4em;
+							background-color: $login_btn_color;
+							border-color: $login_btn_color;
+							padding: 10px 20px;
+							color: #FFF;
+							margin-top: 10px;
+
+							&:hover {
+								background-color: $login_btn_color_hover;
+								border-color: $login_btn_color_hover;
+							}
+						}
+
+						table {
+							tbody{
+								tr {
+									cursor: pointer;
+
+									td {
+										padding-top: 15px;
+									}
+
+									.user_img {
+										height: 30px;
+										width: 30px;
+										background-size: cover !important;
+										border-radius: 50%;
+										margin-right: 10px;
+										margin-top: -5px;
+									}
+								}
+							}
+						}
+					}
+
+					.modal {
+
+						.message_panel {
+
+							.panel-heading {
+								font-family: nexa_light;
+								color: #333333;
+								background-color: whitesmoke;
+								border-color: #dddddd;
+								border-bottom: 1px solid transparent;
+								padding-top: 10px;
+								padding-bottom: 5px;
+
+								.user_img {
+									height: 30px;
+									width: 30px;
+									background-size: cover !important;
+									border-radius: 50%;
+									margin-top: -5px;
+								}
+							}
+
+							.panel-body {
+								min-height: 0px !important;
+							}
+
+						}
+					}
+				}
 			}
 		}
 	}
@@ -266,15 +342,6 @@
 
 	  	#cancel_user_submitted {
 	      @extend #cancel_host_submitted;
-	  	}
-
-	  	#contact_traveler_submitted {
-	  		@extend #cancel_host_submitted;
-
-	  		img {
-	  			width: 150px;
-	      		margin: 10px auto 25px auto;
-	  		}
 	  	}
 
 	  	#adventure_review_submitted {
