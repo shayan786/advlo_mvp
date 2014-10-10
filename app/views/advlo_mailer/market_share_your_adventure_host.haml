@@ -22,11 +22,11 @@
           %tr
             %td
               - @user.adventures.approved.each do |adventure|
-                %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000; width: 35%; float: left;'}
-                  %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium)}
+                %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000; width: 50%; float: left;'}
+                  %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium), style: 'width: 100%;'}
                   
 
-                  .share-links{style: 'width: 65%; float: right;'}
+                  .share-links{style: 'width: 50%; float: right;'}
                     - share_url = "#{root_url}adventures/#{adventure.slug}"
 
                     %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + adventure.title + '&p[summary]=' + adventure.summary[0..50] + '&p[url]=' + share_url}= image_tag "#{root_url}/assets/fb-email-bd69e985af97389bf052774e3531541b.png"
