@@ -15,20 +15,6 @@ class UsersController < ApplicationController
     @reviews = Review.where(host_id: @user.id)
   end
 
-  # Messaging the host through the profile show page
-  def contact_host
-    @contact = ContactHost.create!(contact_host_params)
-    puts "contact_host_params =>>>>>>>>>>>>>>>>  #{contact_host_params}"
-    if @contact.save
-      # Mail the host to be messaged
-      AdvloMailer.contact_host_email(@contact).deliver
-
-      respond_to do |format|
-        format.js {render "contact_host.js", layout: false}
-      end
-    end
-  end 
-
   def update_profile_img
     @user = User.find_by_id(params[:user_id])
     @user.avatar = params[:user][:avatar]
@@ -107,18 +93,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-  # Just email for now
-  def contact_traveler
-    reservation = Reservation.find_by_id(params[:contact_traveler][:res_id])
-
-    # Mail the traveler to be messaged
-    AdvloMailer.delay.contact_traveler_email(reservation, params[:contact_traveler][:message])
-
-    respond_to do |format|
-      format.js {render "contact_traveler.js", layout: false}
-    end
-  end
 
   def hero_image
     HeroImage.where(user_id: hero_image_params[:user_id]).each do |hi|

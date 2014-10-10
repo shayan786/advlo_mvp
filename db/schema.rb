@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008024316) do
+ActiveRecord::Schema.define(version: 20141010002338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20141008024316) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "conversation_id"
+    t.boolean  "read",            default: false
   end
 
   create_table "payouts", force: true do |t|
@@ -196,6 +197,15 @@ ActiveRecord::Schema.define(version: 20141008024316) do
     t.string   "payout_via"
     t.string   "paypal_correlation_id"
     t.text     "message"
+  end
+
+  create_table "polls", force: true do |t|
+    t.string   "name"
+    t.integer  "answer_1",   default: 0
+    t.integer  "answer_2",   default: 0
+    t.integer  "answer_3",   default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "requests", force: true do |t|
@@ -255,12 +265,12 @@ ActiveRecord::Schema.define(version: 20141008024316) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",  null: false
-    t.string   "encrypted_password",     default: "",  null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,   null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -296,8 +306,9 @@ ActiveRecord::Schema.define(version: 20141008024316) do
     t.string   "video_url"
     t.string   "referral_code"
     t.integer  "referrer_id"
-    t.integer  "referral_count",         default: 0,   null: false
-    t.float    "credit",                 default: 0.0, null: false
+    t.integer  "referral_count",         default: 0,    null: false
+    t.float    "credit",                 default: 0.0,  null: false
+    t.boolean  "email_list",             default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

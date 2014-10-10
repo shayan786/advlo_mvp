@@ -3,30 +3,25 @@
   .modal-dialog
     .modal-content
       .modal-header.text-center
-        = "Message - #{traveler.email}"
+        = "Message - #{traveler.email[0..traveler.email.rindex('@')]}..."
       .modal-body
-        .contact_traveler_form
-          %form{"accept-charset" => "UTF-8", action: "/users/contact_traveler", method: "POST", id: "contact_traveler_form", "data-remote" => "true"}
+        .contact_host_form
+          %form{"accept-charset" => "UTF-8", action: "/conversations/new", method: "POST", id: "contact_host_form"}
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            = tag(:input, :type => "hidden", :name => "contact_traveler[res_id]", :value => res.id)
+            = tag(:input, :type => "hidden", :name => "conversation[host_id]", :value => res.host_id)
+            = tag(:input, :type => "hidden", :name => "conversation[user_id]", :value => res.user_id)
+            = tag(:input, :type => "hidden", :name => "conversation[adventure_id]", :value => res.adventure_id)
 
             .form-group.row
               .col-md-4 
-                .form_label.text-right Email *
+                .form_label.text-right.edit-label Subject *
               .col-md-6
-                
-                .form_label= traveler.email
+                %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
 
             .form-group.row
               .col-md-4 
-                .form_label.text-right Message *
+                .form_label.text-right.edit-label Message *
               .col-md-6
-                %textarea.form-control{rows: "5", type: "text", name: "contact_traveler[message]", id: "contact_message", maxlength: "250"}
+                %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
             .row.text-center
               %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
-
-        #contact_traveler_submitted.contact_traveler_submitted
-          .row
-            .col-md-10.col-md-offset-1.text-center
-              = image_tag "icons/request_icon.png", class: "img-responsive"
-              %em= "Your email has been sent to #{traveler.email}"

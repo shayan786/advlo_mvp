@@ -19,7 +19,15 @@
                   Payouts
               %li
                 %a{href: "/users/conversations"} 
-                  Messages
+                  - conversations = Conversation.where('sender_id = ? OR receiver_id = ?',current_user,current_user)
+                  - count = 0
+                  - conversations.each do |con|
+                    - if con.messages.last.read == false
+                      - count = count+1
+                  - if count > 0
+                    = "Messages (#{count})"
+                  - else
+                    Messages
 
 
           - if current_user.credit > 0

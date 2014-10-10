@@ -19,39 +19,84 @@
                   Payouts
               %li.active
                 %a{href: "/users/conversations"} 
-                  Messages
-
-        = render partial: "/adventure_steps/notice"
-
+                  - conversations = Conversation.where('sender_id = ? OR receiver_id = ?',current_user,current_user)
+                  - count = 0
+                  - conversations.each do |con|
+                    - if con.messages.last.read == false
+                      - count = count+1
+                  - if count > 0
+                    = "Messages (#{count})"
+                  - else
+                    Messages
+        .row
+          = render partial: "/adventure_steps/notice"
+          
         #conversations
           .panel.panel-default
-            %h4.panel-heading
-              %ul.nav.nav-tabs
-                %li.active
-                  %a{href: "#"}
-                    Inbox
-
-
             .panel-body
-              - if current_user.conversations.count > 0
+              - if @ordered_conversations.count > 0
                 %table.table.table-hover
                   %thead
                     %tr
                       %th From:
                       %th To:
-                      %th Subject:
+                      %th Subject (Replies):
                       %th Date & Time:
 
                   %tbody
-                    - current_user.conversations.each do |con|
+                    - @ordered_conversations.each do |con|
                       - sender = User.find_by_id(con.sender_id)
                       - receiver = User.find_by_id(con.receiver_id)
-                      %tr
-                        %td= sender.email[0..sender.email.rindex('@')]+"..."
-                        %td= receiver.email[0..receiver.email.rindex('@')]+"..."
-                        %td= con.subject
+                      %tr{href: "#", 'data-toggle' => "modal", 'data-target' => "#conversation_modal_#{con.id}", style: "#{'font-weight: bold;' if con.messages.last.read == false}", 'data-message-id'=> con.messages.last.id}
+                        %td
+                          .pull-left.user_img{style: "background: url('#{sender.get_avatar_url('profile')}') center center no-repeat;"}
+                          = sender.email[0..sender.email.rindex('@')]+"..."
+                        %td
+                          .pull-left.user_img{style: "background: url('#{receiver.get_avatar_url('profile')}') center center no-repeat;"}
+                          = receiver.email[0..receiver.email.rindex('@')]+"..."
+                        %td= con.subject+" (#{con.messages.count})"
                         %td= con.messages.last.created_at.strftime("%A  - %B %d - %l:%M %p")
 
+
+                      .modal.fade{role: "dialog", id: "conversation_modal_#{con.id}"}
+                        .modal-dialog
+                          .modal-content
+                            .modal-header.text-center
+                              = con.subject
+                            .modal-body
+                              - con.messages.each do |mes|
+                                .panel.panel-default.message_panel
+                                  .panel-heading
+                                    - message_sender = User.find_by_id(mes.sender_id)
+                                    .row
+                                      .col-md-1.text-center
+                                        .user_img{style: "background: url('#{message_sender.get_avatar_url('profile')}') center center no-repeat;"}
+                                      .col-md-2= message_sender.email[0..message_sender.email.rindex('@')]+"..."
+                                      .col-md-5
+                                      .col-md-4= mes.created_at.strftime("%B %d - %l:%M %p")
+                                  .panel-body
+                                    = mes.body.gsub(/\n/, '<br/>').html_safe
+
+                              .panel.panel-default.message_panel
+                                .panel-heading
+                                  .row
+                                    .col-md-1.text-center
+                                      .user_img{style: "background: url('#{current_user.get_avatar_url('profile')}') center center no-repeat;"}
+                                    .col-md-2= current_user.email[0..current_user.email.rindex('@')]+"..."
+                                    .col-md-5
+                                    .col-md-4= Time.now.strftime("%B %d - %l:%M %p")
+                                .panel-body
+                                  %form{"accept-charset" => "UTF-8", action: "/messages/new", method: "POST", id: "new_message_form", 'data-remote' => true}
+                                    = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                                    = tag(:input, :type => "hidden", :name => "message[conversation_id]", :value => con.id)
+                                    = tag(:input, :type => "hidden", :name => "message[sender_id]", :value => current_user.id)
+                                    
+                                    %textarea.form-control{rows: "6", type: "text", name: "message[body]", id: "message_body"}
+                                    
+                                    %br
+                                    .text-center
+                                      %input.btn.btn-primary.message_btn{type: 'submit', value: 'Submit'}
+                                
 
               - else
                 %h4.text-center
@@ -59,3 +104,9 @@
                 .text-center
                   %a.btn.btn-default.no_messages_btn{href: "/adventures"}
                     START EXPLORING
+
+:javascript
+  wallet_messages_init();
+
+
+

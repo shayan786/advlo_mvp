@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_many :flags
 
   has_many :conversations, foreign_key: "sender_id"
-  has_many :recipients, through: :conversations, source: :receiver
 
   belongs_to :referrer, :class_name => "User"
   

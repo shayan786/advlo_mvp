@@ -42,6 +42,8 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to '/users/sign_in', notice: "Please sign-in or sign-up to continue"
       return
     end
+
+    @ordered_conversations = Conversation.where('sender_id = ? OR receiver_id = ?',current_user,current_user).order('updated_at DESC')
   end
 
   def wallet_variables

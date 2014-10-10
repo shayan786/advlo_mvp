@@ -16,14 +16,28 @@
       %a.orange-hover{href: "/users/dashboard"} 
         %i.fa.fa-bicycle.header-fa-little{style: 'float: left; margin-right: 10px;'}
         .text Adventures
+
+    %li
+      %a.orange-hover{href: "/users/conversations"} 
+        %i.fa.fa-envelope-o{style: 'float: left; margin-right: 15px;'}
+        - conversations = Conversation.where('sender_id = ? OR receiver_id = ?',current_user,current_user)
+        - count = 0
+        - conversations.each do |con|
+          - if con.messages.last.read == false
+            - count = count+1
         
+        - if count > 0
+          .text= "Messages (#{count})"
+        - else
+          .text Messages
+
     %li
       %a.orange-hover{href: "/users/edit"} 
         %i.fa.fa-user.header-fa{style: 'float: left; margin-right: 10px;'}
         .text Profile
 
     %li
-      %a.orange-hover{href: "/users/wallet"} 
+      %a.orange-hover{href: "/users/wallet"}
         %i.fa.fa-cc-visa.header-fa-little{style: 'float: left; margin-right: 10px;'}
         .text Wallet
 

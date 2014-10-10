@@ -6,33 +6,27 @@
           = "Message - #{user.get_abbreviated_name}"
         .modal-body
           .contact_host_form
-            %form{"accept-charset" => "UTF-8", action: "/users/contact_host", method: "POST", id: "contact_host_form", "data-remote" => "true"}
+            %form{"accept-charset" => "UTF-8", action: "/conversations/new", method: "POST", id: "contact_host_form"}
               = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-              = tag(:input, :type => "hidden", :name => "contact_host[host_id]", :value => user.id)
-              - if current_user
-                = tag(:input, :type => "hidden", :name => "contact_host[user_id]", :value => current_user)
+              = tag(:input, :type => "hidden", :name => "conversation[host_id]", :value => user.id)
+              = tag(:input, :type => "hidden", :name => "conversation[user_id]", :value => current_user.id)
+              - if @adventure
+                = tag(:input, :type => "hidden", :name => "conversation[adventure_id]", :value => @adventure.id)
 
               .form-group.row
                 .col-md-4 
-                  .form_label.text-right.edit-label Email *
+                  .form_label.text-right.edit-label Subject *
                 .col-md-6
-                  %input.form-control{type: "text", name: "contact_host[email]", id: "contact_email", value: current_user ? current_user.email : ''}
+                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
 
               .form-group.row
                 .col-md-4 
                   .form_label.text-right.edit-label Message *
                 .col-md-6
-                  %textarea.form-control{rows: "5", type: "text", name: "contact_host[message]", id: "contact_message"}
+                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
               .row.text-center
                 %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
 
-          #contact_host_submitted.contact_host_submitted
-            .row
-              .col-md-10.col-md-offset-1.text-center
-                = image_tag "icons/request_icon.png", class: "img-responsive"
-                %em= "Your email has been sent to #{user.get_abbreviated_name}"
-                %br
-                %em Please allow the host to reply back within the next 24-48 hrs
 - else
   - if current_user
     #contact_host_modal.modal.fade{role: "dialog"}
@@ -46,13 +40,14 @@
                 = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
                 = tag(:input, :type => "hidden", :name => "conversation[host_id]", :value => user.id)
                 = tag(:input, :type => "hidden", :name => "conversation[user_id]", :value => current_user.id)
-                = tag(:input, :type => "hidden", :name => "conversation[adventure_id]", :value => @adventure.id)
+                - if @adventure
+                  = tag(:input, :type => "hidden", :name => "conversation[adventure_id]", :value => @adventure.id)
 
                 .form-group.row
                   .col-md-4 
                     .form_label.text-right.edit-label Subject *
                   .col-md-6
-                    %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: "#{@adventure.title}"}
+                    %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
 
                 .form-group.row
                   .col-md-4 
@@ -61,14 +56,6 @@
                     %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
                 .row.text-center
                   %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
-
-            #contact_host_submitted.contact_host_submitted
-              .row
-                .col-md-10.col-md-offset-1.text-center
-                  = image_tag "icons/request_icon.png", class: "img-responsive"
-                  %em= "Your email has been sent to #{user.get_abbreviated_name}"
-                  %br
-                  %em Please allow the host to reply back within the next 24-48 hrs
 
   - else
     #sign-in-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "sign-in-modal", role: "dialog"}
