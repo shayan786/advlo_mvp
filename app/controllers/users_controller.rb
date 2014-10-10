@@ -132,7 +132,7 @@ class UsersController < ApplicationController
       user.save
 
       respond_to do |format|
-        format.html {redirect_to '/', notice: 'We are sad to see you go.'}
+        format.html {redirect_to '/', notice: "We are sad to see you go. <br> If you change your mind you can re-subscribe <a href='/users/edit'> in your profile</a>"}
       end
     else
       render text: 'Invalid link.'
