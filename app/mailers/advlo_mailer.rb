@@ -51,7 +51,7 @@ class AdvloMailer < ActionMailer::Base
     @message = message
     @sender = User.find_by_id(message.sender_id)
 
-    if message.sender_id = conversation.sender_id
+    if message.sender_id == conversation.sender_id
       @receiver = User.find_by_id(conversation.receiver_id)
     else
       @receiver = User.find_by_id(conversation.sender_id)
