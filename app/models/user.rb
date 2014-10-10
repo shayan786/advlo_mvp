@@ -251,7 +251,7 @@ class User < ActiveRecord::Base
     else
       "#{id}"
     end
-  end 
+  end
 
   def youtube_embed(youtube_url)
     if youtube_url[/yout\.be\/([^\?]*)/]
