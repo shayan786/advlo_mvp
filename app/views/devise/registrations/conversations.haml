@@ -84,7 +84,7 @@
                                       .user_img{style: "background: url('#{current_user.get_avatar_url('profile')}') center center no-repeat;"}
                                     .col-md-3= current_user.get_abbreviated_name_or_email
                                     .col-md-4
-                                    .col-md-4= Time.now.strftime("%B %d - %l:%M %p")
+                                    .col-md-4= Time.now.utc.strftime("%B %d - %l:%M %p")
                                 .panel-body
                                   %form{"accept-charset" => "UTF-8", action: "/messages/new", method: "POST", id: "new_message_form", 'data-remote' => true}
                                     = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
