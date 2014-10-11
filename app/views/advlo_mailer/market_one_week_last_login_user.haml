@@ -4,12 +4,12 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented.text-center
-      %h2= "Hey #{@user.get_name_or_email}"
+      %h2= "Hey #{@user.get_name_or_email.capitalize},"
 
       .text-left
         %span= "In the past month, we've added #{Adventure.approved.count}" 
         %a{href: "#{root_url}/adventures"} adventures
-        adventures in over 17 countries. We will keep you updated with the best new adventures in your area (but we promise not to bug you more than that). Please feel free to send us feedback, trip requests, or just to say hello! Simply reply to this email. 
+        adventures in over 17 countries. We will keep you updated with the best new adventures in your area (but we promise not to bug you more than that). Please feel free to send us feedback, trip requests, or just say hello! Simply reply to this email. 
 
         %br
         %br
@@ -31,11 +31,12 @@
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 %strong{style: 'margin-left: -25px;'}= adventure.location
             %td
-              - adventure = Adventure.find(165)
+              - adventure = Adventure.find(127)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
                 %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
-                %strong{style: 'margin-left: -25px;'}= adventure.location
+                %strong{style: 'margin-left: -25px;'}= "#{adventure.city}, #{adventure.state}".capitalize
+
 
         .divider.divider-border
         %br

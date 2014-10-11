@@ -227,7 +227,7 @@ class AdvloMailer < ActionMailer::Base
     @user = host
     @adventures = @user.adventures
 
-    mail(to: @user.email, subject: "[ADVLO] : One month since launch") do |format|
+    mail(to: @user.email, subject: "[ADVLO] : Month in Review") do |format|
       format.html { render layout: 'marketing_advlo_mail' }
       format.text
     end
@@ -236,7 +236,7 @@ class AdvloMailer < ActionMailer::Base
   def market_one_week_last_login_user(user)
     @user = user
 
-    mail(to: @user.email, subject: "[ADVLO] : One month since launch") do |format|
+    mail(to: @user.email, subject: "[ADVLO] : Month in Review") do |format|
       format.html { render layout: 'marketing_advlo_mail' }
       format.text
     end
