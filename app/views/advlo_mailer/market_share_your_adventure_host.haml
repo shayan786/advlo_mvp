@@ -33,7 +33,7 @@
 
                     - share_url = "#{root_url}adventures/#{adventure.slug}"
 
-                    %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + adventure.title + '&p[summary]=' + adventure.summary[0..50] + '&p[url]=' + URI.escape(share_url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) }= image_tag "#{root_url}/assets/fb-email-bd69e985af97389bf052774e3531541b.png"
+                    %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + adventure.title + '&p[url]=' + URI.escape(share_url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) }= image_tag "#{root_url}/assets/fb-email-bd69e985af97389bf052774e3531541b.png"
 
                     %a{href:"https://twitter.com/share?url=" + share_url + "&text=" + "Check out my adventure " + adventure.title + ' on Adventure Local'}= image_tag "#{root_url}/assets/twitter-email-f21c89929bcdb0751198c7318d9e7f53.png"
 
