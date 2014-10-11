@@ -4,7 +4,7 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented.text-center
-      %h2= "Hey #{@user.get_name_or_email}"
+      %h2= "Hey #{@user.get_name_or_email.capitalize},"
 
       .text-left
         %p
