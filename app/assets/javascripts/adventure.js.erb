@@ -1401,7 +1401,7 @@ function waiverScripts() {
 
 function signup_cookie(){
   $(document).ready(function(){
-    if $(window).width() > 500 {
+    if ($(window).width() > 400) {
       if((!$.cookie('signup') && (location.pathname != '/users/sign_up' && location.pathname != '/users/sign_in' && location.pathname.indexOf('travel-fund') != 1 ))){
         setTimeout(function(){
           $.cookie('signup', 'visited', { expires: 7, path: '/' });
