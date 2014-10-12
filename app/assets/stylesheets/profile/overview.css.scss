@@ -120,6 +120,27 @@
       }
 		}
 	}
+
+  #sign-in-modal {
+    .sign-in-toggle {
+      font-size: 1.2em !important;
+    }
+
+    .sign_in_form {
+      .sign_in_btn {
+        font-size: 1.2em !important;
+      }
+    }
+
+    .fb_btn {
+      font-size: 1.2em !important;
+      margin-top: 15px !important;
+    }
+  }
+
+  .sign_up_btn {
+    font-size: 1.2em !important;
+  }
 }
 
 #contact_host_modal {
@@ -162,19 +183,6 @@
 
         .checkbox-inline {
           color: #FFF;
-        }
-      }
-
-      #contact_host_submitted {
-        display: none;
-        color: #FFF;
-        font-size: 1.5em;
-        margin-bottom: 20px;
-
-        img {
-          margin: 0px auto 15px auto;
-          width: 150px;
-          height: auto;
         }
       }
 	}
