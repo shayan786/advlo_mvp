@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 
   def set_adventure_host_name
     self.adventures.each do |a|
-      a.host_name = self.get_abbreviated_name
+      a.host_name = self.get_first_name
       a.save
     end
   end

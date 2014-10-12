@@ -47,7 +47,7 @@ class Adventure < ActiveRecord::Base
         obj.country = geo.country
       end
     else
-      AdvloMailer.delay.geocode_limit_hit
+      #AdvloMailer.delay.geocode_limit_hit
     end
   end
 
