@@ -1,7 +1,7 @@
 %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form"}
   =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
   =tag(:input, :type => "hidden", :name => 'mid_purchase', value: true)
-  =tag(:input, :type => "hidden", :name => 'adventure_id', value: adventure.id )
+  =tag(:input, :type => "hidden", :name => 'adventure_id', value: adventure ? adventure.id : nil)
 
   .form-group
     %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
