@@ -69,9 +69,9 @@
                 .btn.btn-success.sign-in-toggle
                   SIGN IN
                 .sign-in.mid-purchase.sign-in-form
-                  = render partial: 'sign_in_form', locals: {adventure: @adventure}
+                  = render partial: 'adventures/sign_in_form', locals: {adventure: @adventure}
               .col-md-6.text-center
                 .btn.btn-success.sign-up-toggle
                   SIGN UP
                 .sign-up.mid-purchase.sign-up-form
-                  = render partial: 'sign_up_form', locals: {adventure: @adventure}
+                  = render partial: 'adventures/sign_up_form', locals: {adventure: @adventure}
