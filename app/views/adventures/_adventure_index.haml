@@ -17,8 +17,8 @@
 
               .location{itemprop: 'description'}= get_display_location(adv)
 
-              %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
-              %input{id: "adv_rating_show_#{i}"}
+              .host_name= "with #{adv.host_name}"
+              
 
             - if adv.price_type == "per_adventure"
               - if adv.price > 999
