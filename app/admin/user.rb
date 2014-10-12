@@ -42,6 +42,7 @@ ActiveAdmin.register User do
       f.input :bio
       f.input :dob
       f.input :short_description
+      f.input :video_url
       f.input :fb_url
       f.input :tw_url
       f.input :ta_url

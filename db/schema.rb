@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010224951) do
+ActiveRecord::Schema.define(version: 20141012185649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20141010224951) do
     t.integer  "waiver_id"
     t.boolean  "featured"
     t.string   "subscription_redirect_url"
+    t.string   "host_name"
   end
 
   create_table "contact_advlos", force: true do |t|

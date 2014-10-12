@@ -1401,18 +1401,19 @@ function waiverScripts() {
 
 function signup_cookie(){
   $(document).ready(function(){
-    if ($(window).width() > 400) {
+    if( $(window).width() > 400 ){
       if((!$.cookie('signup') && (location.pathname != '/users/sign_up' && location.pathname != '/users/sign_in' && location.pathname.indexOf('travel-fund') != 1 ))){
+        
         setTimeout(function(){
           $.cookie('signup', 'visited', { expires: 7, path: '/' });
           $('#signup-please-modal').modal('show')
         }, 9000);
       }
-    }
 
-    $('.close').click(function(){
-      $('#signup-please-modal').modal('hide')
-    })
+      $('.close').click(function(){
+        $('#signup-please-modal').modal('hide')
+      })
+    }
   })
 }
 

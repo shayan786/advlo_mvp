@@ -8,22 +8,27 @@ class User < ActiveRecord::Base
   has_many :payouts
   has_many :flags
   has_many :marketing_emails
-
   has_many :conversations, foreign_key: "sender_id"
-
   belongs_to :referrer, :class_name => "User"
   
   accepts_nested_attributes_for :user_adventures, :allow_destroy => true
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  #Image Magick Config.
+
   has_attached_file :avatar, :styles => { :large => "600x600>", :medium => "300x300>", :profile => "250x250>", :profile_circle => "200x175>", :thumb => "65x65>"}, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   after_create :send_welcome_email
   after_create :generate_referral_code
+  after_update :set_adventure_host_name
+
+
+  def set_adventure_host_name
+    self.adventures.each do |a|
+      a.host_name = self.get_first_name
+      a.save
+    end
+  end
 
   # Access token for a user's unsubscribe link
   def access_token

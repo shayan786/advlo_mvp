@@ -119,8 +119,8 @@
                         - if adv.location
                           .location= "#{adv.city}, #{adv.state}".upcase
                         
-                        %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
-                        %input{id: "adv_rating_show_#{i}"}  
+                        / %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
+                        / %input{id: "adv_rating_show_#{i}"}  
 
                       .price= "$ #{adv.price}"
 
@@ -152,8 +152,11 @@
                                 - if adv.location
                                   .location= "#{adv.city}, #{adv.state}".upcase
 
-                                %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
-                                %input{id: "adv_rating_show_#{i}"}
+
+                                .host_name= "With #{adv.host_name}"
+                                
+                                / %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
+                                / %input{id: "adv_rating_show_#{i}"}
 
                               .user-show-price.price= "$ #{adv.price}"
                               .user-show-copy-container{class: "copy-#{i}"}
