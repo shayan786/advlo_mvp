@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %p= "Hey #{@name}."
+      %p= "I found your email while searching for outdoor guides registered with the A.M.G.A. who are #{@skill} certified. Im a developer with Adventure Local, where we are building a global marketplace for adventure travel guides." 
+
+      %p= "Our platform would give you the ability to upload adventures, customize with travelers, take international transactions, manage bookings, and receive your payments. We are not a reservation / booking platform but a network of adventure travelers looking to change the way people connect with guides"
+      %a{href: 'http://advlo.com/adventures/info'} Adventure Hosting Info
+
+      %p Advlo was started from our personal travel experiences and the gap we saw with connecting directly to a local. We want to bring value to adventure guides around the world and make connecting with travelers simple and effective. 
+      
+      %p
+        If this sounds interesting I encourage you to
+        %a{href: 'http://advlo.com'}click around
+        ="and see what our growing network of guides are already offering. Perhaps it will inspire you to host something in #{@location}."
+
+
+      
+
+
+      %p I look forward to hearing from you.
+
+      %i Safe travels,
+      %br
+      %a{href: "#{root_url}about"} Christopher & the Advlo Team

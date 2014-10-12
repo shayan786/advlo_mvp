@@ -2,6 +2,21 @@
   position: relative;
   padding-top: 80px;
 
+
+  .adv_info_btn {
+    margin-top: 40px;
+    font-size: 1.6em;
+    background-color: transparent;
+    background: rgba(0,0,0,0.2);
+    border-color: $login_btn_color;
+    padding: 15px 20px;
+    border: 5px solid $orange;
+
+    &:hover {
+      border-color: $advlo_orange;
+    }
+  }
+
   .jumbotron {
     min-height: 450px;
   	background-repeat: no-repeat;
@@ -9,21 +24,6 @@
   	background-position: center center;
   	margin-top: -22px;
     min-height: 500px;
-
-
-  	.adv_info_btn {
-  		margin-top: 40px;
-  		font-size: 1.6em;
-      background-color: transparent;
-  		background: rgba(0,0,0,0.2);
-  		border-color: $login_btn_color;
-  		padding: 15px 20px;
-      border: 5px solid $orange;
-
-  		&:hover {
-  			border-color: $advlo_orange;
-  		}
-  	}
 
   	.host_info_text {
       text-shadow: -1px -1px 5px #000;
@@ -34,7 +34,6 @@
   }
 
   .adventure_info_body {
-  	padding-bottom: 20px;
 
     .border {
       border-top: 2px solid $light_gray;

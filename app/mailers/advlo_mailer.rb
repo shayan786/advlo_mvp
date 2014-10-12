@@ -251,4 +251,13 @@ class AdvloMailer < ActionMailer::Base
     end
   end
 
+  def market_host_outreach(skill, name, location, email)
+    @name = name
+    @email = email
+    @skill = skill
+    @location = location
+
+    mail(to: @email, subject: "[ADVLO] : Adventure Guide platform")
+  end
+
 end
