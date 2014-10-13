@@ -57,7 +57,7 @@ class AdvloMailer < ActionMailer::Base
       @receiver = User.find_by_id(conversation.sender_id)
     end
 
-    mail(from: 'info@advlo.com', to: @receiver.email, bcc:'info@advlo.com', subject: "Private message from: #{@sender.get_abbreviated_name_or_email}")
+    mail(from: 'info@advlo.com', to: @receiver.email, bcc:'info@advlo.com', subject: "[ADVLO] : Private message from: #{@sender.get_abbreviated_name_or_email}")
   end
 
   # -- BOOKING && REQUEST BOOKING EMAILS ------------------------------------------------------------------------------------------------------------ 
