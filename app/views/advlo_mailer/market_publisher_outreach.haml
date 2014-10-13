@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %p= "Hello #{@publisher_name}."
+      %p= "My name is Christopher Knight and I’m a developer at Adventure Local. Last month, we launched a global platform for local adventure guides to connect with travelers to organize and book unique activities. I’m writing you to request an assessment of our platform by #{@publisher}, in the hopes that our mission of changing the way people travel will resonate with your readers." 
+
+      %p 
+        In one month we have onboarded
+        %a{href: 'http://advlo.com/adventures', style: 'color: #C35B26;'} 123 bookable adventures 
+        in 19 countries.
+
+      %p 
+        In the growing shared global economy, creating a platform to empower people to employ themselves is the ultimate path to creating more responsible economic exchanges.
+
+      %p
+        We are three focused
+        %a{href: 'http://advlo.com/about', style: 'color: #C35B26;'} adventurers & programmers 
+        who are determined to create the privelege for travelers to connect directly to a local, where their money is legitemetely staying in the community they visit.
+
+      %p
+        If this sounds interesting I encourage you to
+        %a{href: 'http://advlo.com', style: 'color: #C35B26;'}click around
+        ="and see the adventures our growing network of guides are already offering. Perhaps it will inspire"
+        %i you 
+        to Adventure Local.
+  
+
+      %p I look forward to hearing from you and would love to answer any questions.
+
+      %i Safe travels,
+      %br
+      %a{href: "#{root_url}about", style: 'color: #C35B26;'} Christopher & the Advlo Team
+
+
+      .press-images{style: 'width: 100%'}
+        = link_to (image_tag asset_path('advlo_press_pics/homepage.png'), :class => 'press-image'), "#{root_url}assets/advlo_press_pics/homepage.png"
+        = link_to (image_tag asset_path('advlo_press_pics/adventure-page.png'), :class => 'press-image'), "#{root_url}assets/advlo_press_pics/adventure-page.png"
+        
+      .text-center
+        .press-logo
+          %a{href: 'mailto:founders@advlo.com?Subject=So%20Advlo%20sounds%20pretty%20cool.%20Tell%20Me%20More.'} 
+            %img{src: 'http://i.imgur.com/2zAJAVX.png', style: "height: 150px !important; width: 150px !important; max-height: none;"}
+      .press-images{style: 'width: 100%'}
+        = link_to (image_tag asset_path('advlo_press_pics/checkout.png'), :class => 'press-image'), "#{root_url}assets/advlo_press_pics/checkout.png"
+        = link_to (image_tag asset_path('advlo_press_pics/host-profile.png'), :class => 'press-image'), "#{root_url}assets/advlo_press_pics/host-profile.png"
+
+    %p.text-center{style: 'width: 100%; float: left; position: relative;'}
+      %a{href: "https://vimeo.com/103610627", style: 'color: #C35B26;'} Advlo Video Explanation 
