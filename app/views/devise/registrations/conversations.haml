@@ -5,29 +5,6 @@
     .panel.panel-default
       = render partial: "dashboard_header"
       .panel-body
-        #wallet
-          %h2.text-center
-            %ul.nav.nav-tabs
-              %li
-                %a{href: "/users/wallet"}
-                  Bookings
-              %li
-                %a{href: "/users/reservations"}
-                  Reservations
-              %li
-                %a{href: "/users/payouts"} 
-                  Payouts
-              %li.active
-                %a{href: "/users/conversations"} 
-                  - conversations = Conversation.where('sender_id = ? OR receiver_id = ?',current_user,current_user)
-                  - count = 0
-                  - conversations.each do |con|
-                    - if con.messages.last.read == false
-                      - count = count+1
-                  - if count > 0
-                    = "Messages (#{count})"
-                  - else
-                    Messages
         .row
           = render partial: "/adventure_steps/notice"
           
