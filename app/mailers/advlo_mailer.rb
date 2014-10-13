@@ -263,8 +263,8 @@ class AdvloMailer < ActionMailer::Base
 
   def market_publisher_outreach(publisher_name, publisher, email)
     @publisher_name = publisher_name
-    @publisher = publisher
     @email = email
+    @publisher = publisher
 
     mail(to: @email, from: 'christopher@advlo.com',subject: "Travel with Advlo - Adventure with Locals") do |format|
       format.html { render layout: 'publisher' }
