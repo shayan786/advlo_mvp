@@ -79,8 +79,12 @@ class RegistrationsController < Devise::RegistrationsController
       # update_without_password doesn't know how to ignore it
     params[:user].delete(:current_password)
     puts "account_update_params ******************* #{account_update_params}"
+    @user.category = params[:category].join(",")
+    @user.save
+    
     @user.update_without_password(account_update_params)
     #end
+
 
     #if successfully_updated
     flash[:notice] = 'You updated your account successfully'
@@ -125,7 +129,7 @@ class RegistrationsController < Devise::RegistrationsController
  
   # Customize User Profile Update Devise Params
   def account_update_params
-    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :ta_url, :video_url, :email_list, :is_guide)
+    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :ta_url, :video_url, :email_list, :is_guide, :category => [])
   end
 
   # devise override requireing password for update

@@ -101,6 +101,15 @@
 					padding-top: 7px;
 				}
 
+				.checkbox-inline.no_indent {
+					margin-left: 0;
+  					margin-right: 10px;
+				}
+
+				.checkbox-inline.no_indent:last-child {
+					margin-right: 0;
+				}
+
 				.update_btn {
 					font-size: 1.4em;
 					background-color: $login_btn_color;
