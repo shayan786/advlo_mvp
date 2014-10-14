@@ -263,7 +263,7 @@ class AdventuresController < ApplicationController
         redirect_to '/users/sign_in'
       end
     elsif user_signed_in? && !current_user.is_guide?(current_user.id)
-      redirect_to '/users/edit', notice: "Please complete your profile so travelers know more about their host"
+      redirect_to '/users/edit', notice: "Become a host so travelers know more about you"
     else 
       redirect_to '/adventures/new'
     end
@@ -273,7 +273,7 @@ class AdventuresController < ApplicationController
   def new
     #add another check...before actually showing the form
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
-      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host"
+      redirect_to '/adventures/create_prefill', notice: "Become a host so travelers know more about you"
     end
 
     @adventure = Adventure.new
@@ -283,7 +283,7 @@ class AdventuresController < ApplicationController
   def create
     #add another check...before actually showing the form
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
-      redirect_to '/adventures/create_prefill', notice: "Please complete your profile so travelers know more about their host"
+      redirect_to '/adventures/create_prefill', notice: "Become a host so travelers know more about you"
     end
 
     # Hook for banner image upload

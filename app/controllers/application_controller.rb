@@ -54,12 +54,8 @@ class ApplicationController < ActionController::Base
     if request.path == '/admin/login' 
       return
     end
-    
-    if cookies[:referral] == 'travel-fund'
-      session[:previous_url] || '/users/edit'
-    else
-      '/travel-fund'
-    end
+
+    '/users/edit'
   end
 
   def after_sign_out_path_for(resource)

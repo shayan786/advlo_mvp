@@ -58,6 +58,18 @@ class RegistrationsController < Devise::RegistrationsController
     @cancelled_reservations = Reservation.where(user_id: current_user.id).where(cancelled: true).order('event_start_time')
   end
 
+  def inital_signin_check
+    @user = User.find(current_user.id)
+    @user.is_guide = params[:type]
+    @user.save
+
+    puts "@user.inspect =====> #{@user.inspect}"
+
+    respond_to do |format|
+      format.js {render "initial_signin_check.js", layout: false}
+    end
+  end
+
   def update
     @user = User.find(current_user.id)
     #successfully_updated = if needs_password?(@user, params)
@@ -66,6 +78,7 @@ class RegistrationsController < Devise::RegistrationsController
       # remove the virtual current_password attribute
       # update_without_password doesn't know how to ignore it
     params[:user].delete(:current_password)
+    puts "account_update_params ******************* #{account_update_params}"
     @user.update_without_password(account_update_params)
     #end
 
@@ -101,7 +114,9 @@ class RegistrationsController < Devise::RegistrationsController
       session[:referrer_id] = nil
     end
 
-    '/travel-fund'
+    # devise yml => signed_up: "<a href='/travel-fund'> Invite friends </a> or <a href='/adventures'> start exploring </a>"
+
+    '/users/edit'
   end
   # Customize Signing Up Devise Params
   #def sign_up_params
@@ -110,7 +125,7 @@ class RegistrationsController < Devise::RegistrationsController
  
   # Customize User Profile Update Devise Params
   def account_update_params
-    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :ta_url, :video_url, :email_list)
+    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :ta_url, :video_url, :email_list, :is_guide)
   end
 
   # devise override requireing password for update

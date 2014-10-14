@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     get '/users/payouts'              => 'registrations#payouts'
     get '/users/reservations'         => 'registrations#reservations'
     post '/users/phone'               => 'users#edit_phone_number'
-    get '/users/conversations'          => 'registrations#conversations'
+    get '/users/conversations'        => 'registrations#conversations'
+
+    get '/users/initial/:type'        => 'registrations#inital_signin_check'
 
     #Sign up with referral show page
     get 'travel-fund'                 => 'users#invite' 

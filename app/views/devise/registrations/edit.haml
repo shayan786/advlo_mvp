@@ -8,212 +8,36 @@
       - if notice
         .col-md-6.col-md-offset-3.text-center
           .update_notice.alert.alert-warning
+            %button.close{"data-dismiss" => "alert", type: "button"}
+              %span{"aria-hidden" => "true"} ×
+              %span.sr-only Close
             = notice.html_safe
-      .panel-body
-        .col-md-6
-          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_edit_form", enctype: "multipart/form-data"}
-            = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Name
-              .col-md-8
-                %input.form-control{placeholder: "Name", type: "text", name: "user[name]", id: "user_name", value: "#{current_user.name}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Display Name"}}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Email
-              .col-md-8
-                %input.form-control{placeholder: "Email Address", type: "email", name: "user[email]", id: "user_email", value: "#{current_user.email}"}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Short Description
-              .col-md-8
-                %input.form-control.show_ml{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", maxlength: "35", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! Ex: Climber, Hiker"}}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Location
-              .col-md-8
-                %input.form-control{placeholder: "Location", type: "text", name: "user[location]", id: "user_location", value: "#{current_user.location}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Current Location"}}
-            .row
-              .col-md-4
-              .col-md-8
-                .location_map
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Sex
-              .col-md-3
-                - if current_user.sex
-                  %select.form-control{name: "user[sex]", id: "user_sex"}
-                    - if current_user.sex == 'Male'
-                      %option{selected: true} Male
-                      %option Female
-                      %option Couple
-                    - elsif current_user.sex == 'Female'
-                      %option{selected: true} Male
-                      %option Male
-                      %option{selected: true} Female
-                      %option Couple
-                    - else
-                      %option
-                      %option Male
-                      %option Female
-                      %option{selected: true} Couple
-                - else
-                  %select.form-control{name: "user[sex]", id: "user_sex"}
-                    %option
-                    %option Male
-                    %option Female
-                    %option Couple
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Date of Birth
-              .col-md-4
-                - if current_user.dob
-                  .prefill_input= current_user.dob.strftime("%m/%d/%Y")
-                - else 
-                  %input.form-control{type: "text", name: "user[dob]", id: "user_dob"}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Biography
-              .col-md-8
-                %textarea.form-control.show_ml{rows: "8", name: "user[bio]", id: "user_bio", placeholder: "What's your story?", maxlength: "1000", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you by sharing your story"}}
-                  - if !current_user.bio.nil?
-                    #{current_user.bio}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Languages
-              .col-md-8
-                %input.form-control.show_ml{placeholder: "Languages", type: "text", name: "user[language]", id: "user_language", value: "#{current_user.language}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Languages spoken, seperate by a comma (,) (Ex: English, French)"}}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Skills / Certifications
-              .col-md-8
-                %textarea.form-control.show_ml{rows: "7", name: "user[skillset]", id: "user_skillset", placeholder: "Ex: Certified Scuba Diver, Wilderness First Responder", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Do you have any skills or certifications which qualify you as an adventure guide? Separate each by a comma (,)"}}
-                  - if !current_user.skillset.nil?
-                    #{current_user.skillset}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Youtube or Vimeo video url
-              .col-md-8
-                %input.form-control.show_ml{type: "text", name: "user[video_url]", placeholder: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',id: "user_video_url", value: "#{@current_user.video_url}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Input a Youtube or Vimeo video URL that describes you"}}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Facebook URL
-              .col-md-8
-                %input.form-control{placeholder: "https://www.facebook.com/myname", type: "text", name: "user[fb_url]", id: "user_fb_url", value: "#{current_user.fb_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Twitter URL
-              .col-md-8
-                %input.form-control{placeholder: "https://www.twitter.com/myname", type: "text", name: "user[tw_url]", id: "user_tw_url", value: "#{current_user.tw_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label TripAdvisor URL
-              .col-md-8
-                %input.form-control{placeholder: "https://www.tripadvisor.com/members/myname", type: "text", name: "user[ta_url]", id: "user_ta_url", value: "#{current_user.ta_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
-            .form-group.row
-              .col-md-4
-                .form_label.edit-label Advlo Emails
-              .col-md-8
-                .btn-group{"data-toggle" => "buttons"}
-                  - if current_user.email_list == true
-                    %label.btn.btn-default.active
-                      %input#option1{:checked => "checked", :name => "options", :type => "radio", value: 'true', name: "user[email_list]"}
-                      Yes please
-                    %label.btn.btn-default
-                      %input#option2{:name => "options", :type => "radio", value: 'false', name: "user[email_list]"}
-                      No thanks
-                  - else
-                    %label.btn.btn-default
-                      %input#option1{:name => "options", :type => "radio", value: 'true', name: "user[email_list]"}
-                      Yes please
-                    %label.btn.btn-default.active
-                      %input#option2{:name => "options", :type => "radio", value: 'false', name: "user[email_list]"}
-                      No thanks
+      .panel-body#user-form-wrapper
+        - if current_user.is_guide == nil
+          #pre-check
+            %a.btn.btn-default.pre-check#travel{href: '/users/initial/false', 'data-remote' => 'true'}
+              %p I want to travel
+            %a.btn.btn-default.pre-check#host{href: '/users/initial/true', 'data-remote' => 'true'}
+              %p I want to host
 
-
-            .text-center
-              %input.btn.btn-primary.update_btn{name: "commit", type: "submit", value: "UPDATE"}
-
-
-        .col-md-6.text-center
-
-          - if check_if_advlo(current_user)
-            .switch_users
-              = switch_user_select
-
-          // profile image upload
-          %a.btn.btn-default.preview_profile_btn{href: "#{current_user.to_param}", target: "_blank"}
-            %i.fa.fa-eye
-            VIEW PROFILE
-
-          .profile_avatar_img.row{style: 'margin-top: 30px'}
-            - if !current_user.avatar_file_name.nil?
-              = image_tag "#{current_user.avatar.url(:profile)}", :class => "img-thumbnail img-responsive"
-            - elsif !current_user.avatar_url.nil?
-              = image_tag "#{current_user.avatar_url}?type=square&height=150&width=150", :class => "img-thumbnail img-responsive"
-            - else 
-              = image_tag 'missing.png', :class => "img-thumbnail img-responsive"
-
-          %form{"accept-charset" => "UTF-8", action: "/upload/user_avatar_image", method: "post", id: "user_img_edit_form", enctype: "multipart/form-data", "data-remote" => "true"}
-            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            = tag(:input, :type => "hidden", :id => "user_id", :name => "user_id", :value => current_user.id)
-            .row.form-group
-              %input{type: "file", name: "user[avatar]", id: "user_avatar"}
-            %input{type: "submit", style: "display: none"}
-
-
-          // banner image upload
-          .profile_banner_img.row
-            - if HeroImage.find_by_user_id(current_user.id)
-              = image_tag HeroImage.find_by_user_id(current_user.id).attachment.url(:thumb), :class => "img-thumbnail img-responsive img-banner"
-            - else 
-              = image_tag "missing_banner.jpg", :class => "img-thumbnail img-responsive img-banner"
-
-          %form{"accept-charset" => "UTF-8", action: "/upload/hero_image", method: "post", id: "user_profile_edit_form", enctype: "multipart/form-data", "data-remote" => "true"}
-            = tag(:input, :type => "hidden", :value => "post", :name => "_method")
-            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            = tag(:input, :type => "hidden", :name => 'hero_image[user_id]', :value => current_user.id)
-            .row.form-group
-              %input{type: "file", name: "hero_image[attachment]", id: "banner_image"}
-
-
-            - if !current_user.is_guide?(current_user.id)
-              .row
-                .col-md-6.col-md-offset-3
-                  .panel.panel-default
-                    .panel-heading.panel-title.be_host_title Want to be a host?
-                    .panel-body.text-left
-                      %b Please fill in the following:
-                      - if current_user.avatar.url == "/images/original/missing.png" && current_user.avatar_url == nil
-                        %li Profile Image
-                      - if current_user.name.nil? || current_user.name.empty?
-                        %li Name
-                      - if current_user.short_description.nil? || current_user.short_description.empty?
-                        %li Short Description
-                      - if current_user.location.nil? || current_user.location.empty?
-                        %li Location
-                      - if current_user.sex.nil? || current_user.sex.empty?
-                        %li Sex
-                      - if current_user.dob.nil?
-                        %li Date of Birth
-                      - if current_user.bio.nil? || current_user.bio.empty?
-                        %li Biography
-                      - if current_user.language.nil? || current_user.language.empty?
-                        %li Languages
-                      - if current_user.skillset.nil? || current_user.skillset.empty?
-                        %li Skills / Certifications
-            - else
-              .row
-                .col-md-6.col-md-offset-3
-                  .panel.panel-default
-                    .panel-heading.panel-title.be_host_title You're ready to host!
-                    .panel-body.text-left.text-center
-                      Your profile is complete
-                .col-md-6.col-md-offset-3                  
-                  %a.btn.btn-primary.update_btn{href: "/adventures/new"}
-                    HOST AN ADVENTURE
+        - else
+          = render partial: 'post_check.haml'
 
 
 :javascript
   usersInit()
+
+  $('#host').click(function(){
+    $('.traveler-only-form').hide()
+    $('.host-only-form').show()
+    $('.basic-form').show()
+    $('.host-checklist').show()
+
+  })
+  $('#traveler').click(function(){
+    $('.traveler-only-form').show()
+    $('.host-only-form').hide()
+    $('.basic-form').show()
+    $('.host-checklist').hide()    
+  })
+

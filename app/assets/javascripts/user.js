@@ -345,12 +345,6 @@ function user_adv_rating_show() {
   }
 }
 
-function setTravelFundCookie(){
-  $(document).ready(function(){  
-    $.cookie('referral', 'travel-fund', { expires: 4, path: '/' });
-  });
-}
-
 
 function copyPasteCode(){
   $(document).ready(function() {
@@ -359,6 +353,7 @@ function copyPasteCode(){
 
   $("#clear-test").on("click", function(){
     $("#testarea").val("");
+    alert('Copied to clipoard - Share Your travel-fund link')
   });
 
   $('.fa-file-text').hover(function(){
@@ -392,5 +387,4 @@ function usersShowInit(){
 function travelFundInit(){
   standalone_invite_init();
   copyPasteCode();
-  setTravelFundCookie();
 }

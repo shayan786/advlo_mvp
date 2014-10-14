@@ -11,6 +11,67 @@
 	}
 	.container {
 
+
+		.profile_avatar_img {
+			width: 200px;
+			margin: 0 auto;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+
+		.update-user-btn {
+			width: 100%;
+			margin-top: 25px;
+			margin-bottom: 10px;
+		}
+
+		#pre-check {
+			text-align: center;
+			margin-bottom: 300px;
+			position: relative;
+			float: left;
+			width: 100%;
+			margin-top: 50px;
+
+			.pre-check {
+				width: 175px;
+				height: 50px;
+				margin: 10px;
+				color: #fff;
+
+				p {	
+					margin-top: 6px;
+					font-family: 'bebas_neue' !important;
+					font-size: 20px;
+					letter-spacing: 2px;
+				}
+			}
+			.pre-check:hover {
+				opacity: 0.6;
+			}
+
+			#travel {
+				background-color: $advlo_orange;
+			}
+			#host {
+				background-color: $advlo_green;
+			}
+		}
+
+		.travel-toggle {
+			width: 50%;
+		}
+
+    .basic-form {
+			display: none;
+    }
+		.host-only-form {
+			display: none;
+		}
+		.traveler-only-form {
+			display: none;
+		}
+
 		.panel {
 
 			h2 {

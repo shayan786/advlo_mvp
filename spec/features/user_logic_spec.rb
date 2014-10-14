@@ -30,7 +30,7 @@ feature "user logic for adventure flow", :js => true do
     expect(page).to have_content('HOST AN ADVENTURE')
 
     visit '/adventures/create_prefill'
-    expect(page).to have_content('Please complete your profile so travelers know more about their host')
+    expect(page).to have_content('Become a host so travelers know more about you')
     fill_in 'Name', with: 'Topher'
     fill_in 'Short Description', with: 'Anthropologist programmer'
     fill_in 'Location', with: 'Denver, Co'

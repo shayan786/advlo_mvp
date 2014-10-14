@@ -29,9 +29,14 @@ class UsersController < ApplicationController
   end 
 
   def update_profile_img
+
     @user = User.find_by_id(params[:user_id])
+    puts "@user.inspect =====> #{@user.inspect}"
+
     @user.avatar = params[:user][:avatar]
     @user.save
+
+    puts "params[:user][:avatar] =====> #{params[:user][:avatar]}"
 
     respond_to do |format|
       format.js {render 'update_user_avatar_image.js', layout: false}
