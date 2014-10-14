@@ -24,9 +24,11 @@ class User < ActiveRecord::Base
 
 
   def set_adventure_host_name
-    self.adventures.each do |a|
-      a.host_name = self.get_first_name
-      a.save
+    if self.name_changed?
+      self.adventures.each do |a|
+        a.host_name = self.get_first_name
+        a.save
+      end
     end
   end
 

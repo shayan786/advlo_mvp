@@ -136,10 +136,10 @@ $(document).ready(function(){
 
         //menus
         $('#locations-menu').animate({
-          top: '57px'
+          top: '55px'
         }, 200)
         $('.logged_in_dropdown_menu, .logged_out_dropdown_menu').animate({
-          top: '57px'
+          top: '55px'
         }, 200)
 
         flag = 0;
