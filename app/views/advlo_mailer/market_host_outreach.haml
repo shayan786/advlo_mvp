@@ -3,26 +3,22 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
-    .indented
-      %p= "Hey #{@name}."
-      %p= "I found your email while searching for outdoor guides registered with the A.M.G.A. who are #{@skill} certified. Im a developer with Adventure Local, where we are building a global marketplace for adventure travel guides." 
-
-      %p= "Our platform would give you the ability to upload adventures, customize them with travelers, take international payments, manage bookings, and receive your payouts. We are not a reservation / booking platform but a network of adventure travelers looking to change the way people connect with guides."
-      %a{href: 'http://advlo.com/adventures/info'} Adventure Hosting Info
-
-      %p Advlo was started from our personal travel experiences and the gaps we saw with connecting directly with a local. We want to bring value to adventure guides around the world and make connecting with travelers simple and effective. 
-      
+    %p
+      = "Hello #{@name}."
       %p
-        If this sounds interesting I encourage you to
-        %a{href: 'http://advlo.com'}click around
-        ="and see the adventures our growing network of guides are already offering. Perhaps it will inspire you to host something in #{@location}."
+        = "I found your email while searching for outdoor guides registered with the A.M.G.A. who are #{@skill} certified." 
 
+      %p
+        Im one of the founders of Adventure Local. We are building a global community marketplace for adventure travel guides.
 
+      %p
+      %a{href:"http://advlo.com"} http://advlo.com
+
+      %p
+        Our platform would give you the ability to upload adventures, customize them with travelers, take international payments, manage bookings, and receive your payouts. We are not trying to be an up-seller platform - but a tool to help travelers connect and customize adventure trips with local certified guides. 
+        If this sounds interesting I encourage you to click around and see the types of adventures & guides we are already helping to get more visibility. Perhaps it will inspire you to host something in
+        = "#{@location}."
+      %p
+        I look forward to hearing from you and would love to answer any questions.
       
-
-
-      %p I look forward to hearing from you and would love to answer any questions.
-
-      %i Safe travels,
-      %br
-      %a{href: "#{root_url}about"} Christopher & the Advlo Team
+      

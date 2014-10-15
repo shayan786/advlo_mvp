@@ -257,7 +257,10 @@ class AdvloMailer < ActionMailer::Base
     @skill = skill
     @location = location
 
-    mail(to: @email, subject: "[ADVLO] : Adventure Guide platform")
+    mail(to: @email, from: 'christopher@advlo.com', subject: "[ADVLO] : Adventure Guide platform", bcc: 'christopher@advlo.com') do |format|
+      format.html { render layout: 'simple' }
+      format.text
+    end
   end
 
 
