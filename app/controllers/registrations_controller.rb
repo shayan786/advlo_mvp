@@ -79,8 +79,11 @@ class RegistrationsController < Devise::RegistrationsController
       # update_without_password doesn't know how to ignore it
     params[:user].delete(:current_password)
     puts "account_update_params ******************* #{account_update_params}"
-    @user.category = params[:category].join(",")
-    @user.save
+    
+    if params[:category]
+      @user.category = params[:category].join(",")
+      @user.save
+    end
     
     @user.update_without_password(account_update_params)
     #end
