@@ -1,2 +1,2 @@
-$('#adventure_iten_no_<%= @adv_iten_item.id%> #iten_headline').val('<%= @adv_iten_item.headline %>');
-$('#adventure_iten_no_<%= @adv_iten_item.id%> #iten_description').val('<%= @adv_iten_item.description %>');
+$('#adventure_iten_no_<%= @adv_iten_item.id%> #iten_headline').val('<%= escape_javascript(@adv_iten_item.headline.html_safe) %>');
+$('#adventure_iten_no_<%= @adv_iten_item.id%> #iten_description').val('<%= escape_javascript(@adv_iten_item.description.html_safe) %>');
