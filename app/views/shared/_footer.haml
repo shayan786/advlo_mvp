@@ -47,7 +47,7 @@
 
 
             .form-wrapper
-              - total_answers = total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f
+              - total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f
               .poll-answers{'data-total' => total_answers}
                 .answer-1.btn.btn-primary.answer.disabled
                   .poll-count= @poll.answer_1
