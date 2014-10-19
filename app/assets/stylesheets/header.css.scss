@@ -1,5 +1,6 @@
 //NAVBAR CUSTOMIZATIONS
 .navbar {
+	height: 55px;
 	font-family: cabin_bold;
 	background: $header_background_color;
 	opacity: $header_opacity;
@@ -221,22 +222,21 @@
 	width: 650px;
 	font-family: 'nexa_light';
 	text-transform: capitalize;
-	top: 57px;
-	right: 305px;
-	font-size: 13.5px;
-	position: fixed;
-	padding-left: 15px;
+	position: relative;
+	height: 464px;
+	top: 0px;
+	float: right;
+	right: 23%;
+	display: none;
 
 	.main-location {
 		position: relative;
 		float: left;
 		text-align: left;
 		width: 26%;
-		margin-top: 2.5%;
 		font-size: 13px;
-		margin-left: 20px;
-		margin-right: 25px;
 		font-weight: bold;
+		margin: 15px;
 
 		a {
 			border-bottom: 1px solid #fff;

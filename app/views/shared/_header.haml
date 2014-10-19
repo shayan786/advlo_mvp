@@ -17,19 +17,9 @@
     #header-navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right.login-right
         %li.dropdown.header-button
-          %button.btn.btn-default.navbar-btn{"data-toggle" => "dropdown", href: "#"}
+          %button.btn.btn-default.navbar-btn#find-adventures
             FIND
             %b.caret
-          %ul.dropdown-menu#locations-menu{role: "menu"}
-            - adv_regions.each_with_index do |r, i|
-              - if adv_count(r) > 0
-                .main-location
-                  = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
-                  - get_countries(r).each do |l|
-                    .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
-                    - get_cities(l[0]).each do |l|
-                      .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
-
       
         %li
           %form
@@ -65,11 +55,28 @@
         - else
           = render partial: 'logged_out_dropdown'
 
+  #locations-menu
+    - adv_regions.each_with_index do |r, i|
+      - if adv_count(r) > 0
+        .main-location
+          = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
+          - get_countries(r).each do |l|
+            .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
+            - get_cities(l[0]).each do |l|
+              .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
+
 
 :javascript 
-  $('#travel-fund-signup').click(function(e){
-    e.preventDefault()
-    $('#signup-please-modal').modal('show')  
-    $('#network').html('<h4>'+'Join our community to start adding to your travel fund.'+'</h4>')
+  var $container = $('#locations-menu');
+  var loaded = 0;
+
+  $('#find-adventures').click(function(){
+    $('#locations-menu').toggle()
+    // initialize
+    if(loaded == 0){
+      loaded = 1
+      $container.masonry({
+        itemSelector: '.main-location'
+      });
+    }
   })
-  
