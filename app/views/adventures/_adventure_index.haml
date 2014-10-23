@@ -8,7 +8,7 @@
           - else
             - adv_img = adv.attachment.url(:hero)
           .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
-          .image-wrapper{style: "background: url(#{adv_img}) no-repeat center center;"}
+          .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
             .copy{id: "#{i}"}
               - if adv.title.length > 38
                 .title{itemprop: 'name'}= "#{adv.title[0..36]}..."

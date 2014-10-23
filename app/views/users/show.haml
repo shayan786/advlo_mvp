@@ -19,7 +19,7 @@
               - else
                 - profile_img = "#{@user.avatar_url}?type=large"
 
-              .profile-image{style: "background: url(#{profile_img}) no-repeat center center;"}
+              .profile-image{style: "background: url('#{profile_img}') no-repeat center center;"}
               .rich-image{style: 'display:none;', itemprop: 'image', src: profile_img}
               
               .banner_name{itemprop: 'name'}= @user.get_abbreviated_name
@@ -108,7 +108,7 @@
                       - adv_img = adv.attachment.url(:large)
                     - else
                       - adv_img = adv.attachment.url(:hero)
-                    .image-wrapper{style: "background: url(#{adv_img}) no-repeat center center;"}
+                    .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
 
                       .copy{id: "#{i}"}
                         - if adv.title.length > 38
@@ -142,7 +142,7 @@
                               - adv_img_show = adv.attachment.url(:large)
                             - else
                               - adv_img_show = adv.attachment.url(:hero)
-                            .image-wrapper{style: "background: url(#{adv_img_show}) no-repeat center center;"}
+                            .image-wrapper{style: "background: url('#{adv_img_show}') no-repeat center center;"}
                               .copy{id: "#{i}"}
                                 - if adv.title.length > 38
                                   .title.profile-page-title= "#{adv.title[0..36]}..."

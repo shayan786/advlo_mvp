@@ -1,7 +1,7 @@
 .review{id: review.id, :itemscope => true, :itemtype => "http://schema.org/Review"}
   .reviewer-image-wrapper
     - if review.user.get_avatar_url(:profile_circle) != "missing.png"
-      .image-wrapper{style: "background: url(#{review.user.get_avatar_url("medium")}) no-repeat center center;"}
+      .image-wrapper{style: "background: url('#{review.user.get_avatar_url("medium")}') no-repeat center center;"}
     - else 
       = image_tag 'missing.png'
   .review-text
