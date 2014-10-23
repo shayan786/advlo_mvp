@@ -5,27 +5,27 @@ class StripeHooksController < ApplicationController
   def receiver 
     receiving_data = JSON.parse request.body.read
 
-
-    case receiving_data['type']
-    when 'transfer.failed'
+    if receiving_data['type'] == "transfer.failed"
       update_payout(receiving_data)
+
       respond_to do |format|
         format.json {render json: {status: 200}}
       end 
-
-    when 'transfer.paid'
+    elsif receiving_data['type'] == "transfer.paid"
       update_payout(receiving_data)
+
       respond_to do |format|
         format.json {render json: {status: 200}}
       end 
-
-    when 'customer.subscription.deleted'
+    elsif receiving_data['type'] == "customer.subscription.deleted"
       update_user_adventure(receiving_data)
+
       respond_to do |format|
         format.json {render json: {status: 200}}
       end 
 
-    when 'invoice.payment_succeeded'
+    elsif receiving_data['type'] == "invoice.payment_succeeded"
+      puts "receiving_data=========>#{receiving_data}"
       sub_id = receiving_data['data']['object']['id']
       user_adventure = UserAdventure.find_by_stripe_subscription_id(sub_id)
       AdvloMailer.send_monthly_subscription_email(user_adventure.user_id, user_adventure.adventure_id).deliver
@@ -40,6 +40,7 @@ class StripeHooksController < ApplicationController
       end 
     end
   end
+
 
   def update_payout(receiving_data)
     # Puts for logs
