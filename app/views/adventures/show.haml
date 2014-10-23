@@ -4,7 +4,9 @@
   #adventure-title
     .rich-snippet{itemprop: 'image', src: @adventure.attachment.url(:thumb)}
     .rich-snippet{itemprop: 'url', href: "http://advlo.com/adventures/#{@adventure.slug}"}
-    %a#main_image{src: @adventure.attachment.url(:hero)}
+
+    #main_image{style: "background-image: url('#{@adventure.attachment.url(:hero)}')"}
+
 
   .col-md-3.adventure-show-infographic
     -if @current_guide
