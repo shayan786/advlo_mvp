@@ -220,6 +220,13 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: "[ADVLO] : Subscription Cancelled")
   end
 
+  def send_monthly_subscription_email(user_id, adventure_id)
+    @user = User.find(user_id)
+    @adventure = Adventure.find(adventure_id)
+    
+    mail(to: @user.email, cc: 'info@advlo.com', subject: "[ADVLO] : Adventure Subscription")
+  end
+
 
   # ----------- MARKETING EMAILS --------------------------------------------------------------------------------------------------
   

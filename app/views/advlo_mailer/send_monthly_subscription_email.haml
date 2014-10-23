@@ -1,17 +1,38 @@
-!!!
+<!DOCTYPE html>
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented
       %h3.text-left
-        Awesome! - Your adventure has been approved
+        = "Subscription Invoice" 
+
+
+
+      %table#main{border: "0", cellpadding: "0", cellspacing: "10", width: "400"}
+        %tr
+          %th.text-left Adventure
+          %th.text-left Month
+          %th.text-left Charge
+
+        %tr
+          %td.divider{bgcolor: "#555555", colspan: "10", height: "2"}
+
+        %tr
+          %td.text-left= @adventure.title
+          %td.text-left= "#{Date::MONTHNAMES[Date.today.month]} #{Date::MONTHNAMES[Date.today.day]}"
+          %td.text-left $10
+
+      
+      %p
+        %i 
+          Please 
+          %a{href: "#{root_url}about"}contact us
+          if you wish to receive your page specific analytics.
 
       %p
-        = link_to "Your profile","#{root_url}#{user_path(@adventure.users.first)}" 
-        is now active, and your 
-        = link_to "adventure can be booked", "#{root_url}adventures/#{@adventure.slug}"  
-
+        * You can manage your adventure subscription at anytime
+        %a{href: "#{root_url}adventure_steps/payment?adventure_id=#{@adventure.id}"}here
 
     %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tr
@@ -24,7 +45,7 @@
               %td
                 .adventure-wrapper{style: 'position: relative; float: left; width: 100%; height: 225px;'}
                   .adventure{style: 'position: relative; width: 50%; float: left; margin-right: 25px;'}
-                    %a{href: "#{root_url}admin/adventures/#{@adventure.id}/edit", style: 'text-decoration: none; color: #000;'}
+                    %a{href: "#{root_url}adventures/#{@adventure.slug}", style: 'text-decoration: none; color: #000;'}
                       %img{alt: @adventure.title, height: "auto", src: @adventure.attachment.url(:medium), style: 'width: 100%;'}
 
                   .share-links{style: 'position: relative; width: 40%; float: right;'}
@@ -41,12 +62,3 @@
 
 
                     .divider-high
-
-                
-            %tr
-              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
-
-    %h6.text-center
-      %a{href: "#{root_url}adventures/info"}Hosting Information
-      &
-      %a{href: "#{root_url}terms"}Terms of Service
