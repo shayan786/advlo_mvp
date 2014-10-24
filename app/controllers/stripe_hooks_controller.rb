@@ -25,15 +25,12 @@ class StripeHooksController < ApplicationController
       end 
 
     elsif receiving_data['type'] == "invoice.payment_succeeded"
-      puts "receiving_data=========>#{receiving_data}"
-
       sub_id = receiving_data['data']['object']['lines']['data'][0]['id']
-      puts "SUB - ID =========>#{receiving_data['data']['object']['lines']['data'][0]['id']}"
-      
       user_adventure = UserAdventure.find_by_stripe_subscription_id(sub_id)
-      puts "user_adventure =========>#{user_adventure}"
-
-      AdvloMailer.send_monthly_subscription_email(user_adventure.user_id, user_adventure.adventure_id).deliver
+      puts "user_adventure=> #{user_adventure} should be nil"
+      puts "sub_id=> #{sub_id} should be sub_50w0ehGp0TUlyV"
+      # AdvloMailer.send_monthly_subscription_email(user_adventure.user_id, user_adventure.adventure_id).deliver
+      AdvloMailer.send_monthly_subscription_email(UserAdventure.first.user_id, UserAdventure.first.adventure_id).deliver
 
       respond_to do |format|
         format.json {render json: {status: 200}}
