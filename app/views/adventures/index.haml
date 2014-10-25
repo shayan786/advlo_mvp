@@ -2,7 +2,7 @@
 - set_meta_tags(get_meta_tags(@location,"Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure",@location))
 
 .adventure-page-container
-  - if !params[:state].present? && !params[:city].present? && !params[:country].present? || params[:country] == 'United States'
+  - if !params[:state].present? && !params[:city].present? && !params[:country].present? || params[:country] == 'United States' || params[:country] == 'United-States'
     #region_map
     #legend
       = image_tag 'icons/map_icon2.png', class: 'pull-left'
@@ -11,7 +11,7 @@
         %br
         Adventures
         %br
-        - if params[:country] == 'United States'
+        - if params[:country] == 'United States' || params[:country] == 'United-States'
           (Click to see state)
         - else  
           (Click to see country)
@@ -191,7 +191,7 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     }
 
-- elsif params[:country].present? && params[:country] == 'United States'
+- elsif params[:country].present? && (params[:country] == 'United States' || params[:country] == 'United-States')
   :javascript
     $('#hero_image_wrapper').remove();
 
