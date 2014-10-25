@@ -159,6 +159,33 @@ module ApplicationHelper
     return latlong
   end
 
+  def get_latlong_states
+    states = ["Alaska","Alabama","Arkansas","American Samoa","Arizona","California","Colorado","Connecticut","District of Columbia","Delaware","Florida","Georgia","Hawaii","Iowa","Idaho","Illinois","Indiana","Kansas","Kentucky","Louisiana","Massachusetts","Maryland","Maine","Michigan","Minnesota","Missouri","Northern Mariana Islands","Mississippi","Montana","North Carolina","North Dakota","New England","New Hampshire","New Jersey","New Mexico","Nevada","New York","Ohio","Oklahoma","Oregon","Pennsylvania","Puerto Rico","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Virginia","Virgin Islands","Vermont","Washington","Wisconsin","West Virginia","Wyoming"]
+    lat = [52,32.7990,34.9513,14.2417,33.7712,36.1700,39.0646,41.5834,38.8964,39.3498,27.8333,32.9866,25,42.0046,44.2394,40.3363,39.8647,38.5111,37.6690,31.1801,42.2373,39.0724,44.6074,43.3504,45.7326,38.4623,14.8058,32.7673,46.9048,35.6411,47.5362,41.1289,43.4108,40.3140,34.8375,38.4199,42.1497,40.3736,35.5376,44.5672,40.5773,18.2766,41.6772,33.8191,44.2853,35.7449,31.1060,40.1135,37.7680,18.0001,44.0407,47.3917,44.2563,38.4680,42.7475]
+    long = [-137.7462,-86.8073,-92.3809,-170.7197,-111.3877,-119.7462,-105.3272,-72.7622,-77.0262,-75.5148,-81.7170,-83.6487,-145,-93.2140,-114.5103,-89.0022,-86.2604,-96.8005,-84.6514,-91.8749,-71.5314,-76.7902,-69.3977,-84.5603,-93.9196,-92.3020,145.5505,-89.6812,-110.3261,-79.8431,-99.7930,-98.2883,-71.5653,-74.5089,-106.2371,-117.1219,-74.9384,-82.7755,-96.9247,-122.1269,-77.2640,-66.3350,-71.5101,-80.9066,-99.4632,-86.7489,-97.6475,-111.8535,-78.2057,-64.8199,-72.7093,-121.5708,-89.6385,-80.9696,-107.2085]
+  
+    adv_states = []
+    latlong = {}
+
+    # Find all states uniq in our adventures
+    Adventure.approved.where('state IS NOT NULL').each do |adv|
+      if adv.country == 'United States'
+        adv_states << adv.state
+      end
+    end
+
+    # Get unit countires
+    adv_states.uniq.each do |state|
+      states.each_with_index do |s,i|
+        if s == state 
+          latlong["#{s}"] = {'lat'=>lat[i],'long'=>long[i]}
+        end
+      end
+    end
+
+    return latlong
+  end
+
   def default_meta_tags
     {
       :title          => 'Advlo - Adventure Local',
