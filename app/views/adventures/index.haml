@@ -2,7 +2,7 @@
 - set_meta_tags(get_meta_tags(@location,"Advlo is a peer to peer marketplace to connect local hosts with travelers seeking to have an adventure",@location))
 
 .adventure-page-container
-  - if !params[:state].present? && !params[:city].present? && !params[:country].present?
+  - if !params[:state].present? && !params[:city].present? && !params[:country].present? || params[:country] == 'United States' || params[:country] == 'United-States'
     #region_map
     #legend
       = image_tag 'icons/map_icon2.png', class: 'pull-left'
@@ -11,7 +11,10 @@
         %br
         Adventures
         %br
-        (Click to see country)
+        - if params[:country] == 'United States' || params[:country] == 'United-States'
+          (Click to see state)
+        - else  
+          (Click to see country)
 
   #hero_image_wrapper
     - if @hero_image
@@ -127,17 +130,13 @@
 
 
         var map = new google.maps.Map(document.getElementById("region_map"), mapOptions);
-
         
         var image = {
           url: "#{image_path 'icons/map_icon2.png'}",
           size: new google.maps.Size(50,50),
           origin: new google.maps.Point(0,0),
           anchor: new google.maps.Point(17,50)
-        };
-
-        console.log(image)
-        
+        };        
 
         function getMarkerTitle(marker){
           return function() {
@@ -158,18 +157,6 @@
             icon: image,
             title: region[country].title
           });
-
-          /*
-          if (region[country].count != "0") {
-            var mapLabel = new MapLabel({
-              text: region[country].count,
-              position: region[country].label_center,
-              map: map,
-              fontSize: 16,
-              align: 'center'
-            });
-          }
-          */
 
           google.maps.event.addListener(marker[i], 'click', getMarkerTitle(marker[i]))
 
@@ -203,6 +190,77 @@
       // LOAD MAP
       google.maps.event.addDomListener(window, 'load', initialize);
     }
+
+- elsif params[:country].present? && (params[:country] == 'United States' || params[:country] == 'United-States')
+  :javascript
+    $('#hero_image_wrapper').remove();
+
+    if ($(window).width() > 767) {
+      var latlong = #{get_latlong_states.to_json};
+
+      // CREATE STRUCT FOR REGION
+      var state_struct = {};
+
+      for (var state in latlong) {
+        state_struct[state.replace(" ", "-")] = {
+          title: state,
+          center: new google.maps.LatLng(latlong[state]['lat'], latlong[state]['long'])
+        };
+      }
+
+      var mapOptions = {
+        center: new google.maps.LatLng(41.210262, -98.926994),
+        zoom: 4,
+        panControl: false,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        overviewMapControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
+        draggable: false
+      };
+
+      var map = new google.maps.Map(document.getElementById("region_map"), mapOptions);
+
+      map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('legend'));
+
+      var image = {
+        url: "#{image_path 'icons/map_icon2.png'}",
+        size: new google.maps.Size(50,50),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(17,50)
+      };        
+
+      function getMarkerTitle(marker){
+        return function() {
+          var state = marker.getTitle().replace(" ", "-");
+
+          window.location.href = "#{root_url}adventures?state="+state
+        }
+      }
+
+      var i = 0;
+      var marker = [];
+      // CONSTRUCT ICONS & NUMBERS FOR EACH STATE
+      for (var state_variable in state_struct) {
+        marker[i] = new google.maps.Marker({
+          position: state_struct[state_variable].center,
+          map: map,
+          icon: image,
+          title: state_struct[state_variable].title
+        });
+
+        google.maps.event.addListener(marker[i], 'click', getMarkerTitle(marker[i]))
+
+        i++;
+      }
+
+      // LOAD MAP
+      google.maps.event.addDomListener(window, 'load', initialize);
+    }
+
 
 - else
   :javascript
