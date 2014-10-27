@@ -5,11 +5,11 @@
   %body
     .indented
       %p= "Hello #{@publisher_name}."
-      %p= "My name is Christopher Knight and I’m a developer and founder at Adventure Local. Last month, we launched a global platform for local adventure guides to connect with travelers to organize and book unique activities. I’m writing you to request an assessment of our platform by #{@publisher}, in the hopes that our mission of changing the way people travel will resonate with your readers." 
+      %p= "My name is Christopher Knight and I’m a developer and founder at Adventure Local. Last month, we launched a global platform for local adventure guides to connect with travelers to organize and book unique activities. I’m writing you in the hopes that our mission of changing the way people travel will resonate with your readers." 
 
       %p 
-        In one month we have on-boarded
-        %a{href: 'http://advlo.com/adventures', style: 'color: #C35B26;'} 123 bookable adventures 
+        Since our August 30th launch we have on-boarded
+        %a{href: 'http://advlo.com/adventures', style: 'color: #C35B26;'}="#{Adventure.approved.count} bookable adventures"
         in 19 countries.
 
       %p 
