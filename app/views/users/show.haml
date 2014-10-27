@@ -98,7 +98,7 @@
           %span.header_sub 
             %span= "( #{@user.adventures.count} )"
 
-        - if @user.adventures.count >= 1
+        - if @user.adventures.approved.count >= 1
           #mobile-user-adventures
             .adventure-container 
               .brick-wrapper.masonry.js-masonry
