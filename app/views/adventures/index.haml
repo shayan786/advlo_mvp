@@ -193,7 +193,12 @@
 
 - elsif params[:country].present? && (params[:country] == 'United States' || params[:country] == 'United-States')
   :javascript
-    $('#hero_image_wrapper').remove();
+    if ($(window).width() <= 767) {
+      $('#region_map').remove();
+      $('#legend').remove();
+    } else {
+      $('#hero_image_wrapper').remove()
+    }
 
     if ($(window).width() > 767) {
       var latlong = #{get_latlong_states.to_json};
