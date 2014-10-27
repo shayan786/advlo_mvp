@@ -127,7 +127,7 @@ class UsersController < ApplicationController
 
   def invite
     if !user_signed_in?
-      redirect_to '/travel-fund/04ca4b'
+      redirect_to '/travel-fund/0b96c3'
     end
   end
 
