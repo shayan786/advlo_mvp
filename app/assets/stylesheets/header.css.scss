@@ -332,13 +332,13 @@
 #mobile-navbar { 
 	background-color: $header_background_color;
 	opacity: $header_opacity;
-	padding-top: 5px;
+	padding: 5px 10px;
 	display: none;
 	
 	position: relative;
 	float: left;
-	width: 100%;
-	margin-left: -10px;
+	width: 115%;
+	margin-left: -25px;
 
 	a {
 		text-decoration: none;
@@ -462,7 +462,7 @@
 	}
 }
 
-@media only screen and (max-width: 802px) and (min-width: 780px) {
+@media only screen and (max-width: 802px) and (min-width: 781px) {
 	.header-button {
 		margin-right: 10px !important;
 	}
@@ -481,6 +481,10 @@
 	}
 	.navbar-header {
 		width: 102% !important;
+	}
+
+	#mobile-navbar {
+		width: 106% !important;
 	}
 }
 
