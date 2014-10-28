@@ -1,28 +1,83 @@
 .jumbotron {
 	margin-bottom: 0px;
 
+  .low-opacity {
+    opacity: 0.7;
+  }
 	.homepage_adventure_link {
-		margin-top: 30px;
+		position: absolute;
+    bottom: 0px;
+    width: 100%;
+
 		font-family: nexa_light;
 		font-weight: bold;
 		text-decoration: none;
 		color: #FFF;
-		opacity: 0.7;
+    text-shadow: 1px 1px #000;
+	}&:hover {
+    opacity: 1;
+  }
 
-		&:hover {
-			text-decoration: none;
-			opacity: 1;
-		}
+  .mobile_adventure_link {
+    display: none;
+    text-align: center;
+    position: relative; 
 
-		.host_img {
-			border-radius: 50%;
-			width: 40px;
-			height: 40px;
-			margin-right: 10px;
-			background-size: cover !important;
-		}
-	}
+    max-width: 400px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 30px;
+
+    font-family: nexa_light;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    text-shadow: 1px 1px #000;
+  }
 }
+
+.content-link-wrapper {
+  bottom: 20px;
+  width: 100%;
+  cursor: regular;
+
+  .host_img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    background-size: cover !important;
+    float: left;
+  }
+
+  .adv_copy {
+    float: left;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 991px){
+  .mobile_adventure_link {
+    display: none;
+  }
+
+  .homepage_adventure_link {
+    display: block !important;
+  }
+}
+
+
+@media screen and (max-width: 991px){
+  .mobile_adventure_link {
+    display: block !important;
+  }
+
+  .homepage_adventure_link {
+    display: none;
+  }
+}
+
+
 .jumbotron_fix {
 	padding-top: 12%;
   	min-height: 800px;
@@ -60,32 +115,22 @@
 	width: 100%;
 	margin-top: 50px;
 
-  .adventure-link {
-    position: absolute;
-    bottom: -20px;
-    left: 30px;
-  }
-
+  
   .row {
     margin: 0 auto;
     margin-bottom: 0;
-
     a {
       	text-decoration: none;
-
-	      &:hover {
-	        .panel {
-	        	background: rgba(0,0,0,0.45);
-	        	box-shadow: 0 0 5px #000;
-	        	-webkit-box-shadow: 0 0 5px #000;
-
-	        	.panel-heading {
-	        		font-weight: bold;
-	        	}
+      &:hover {
+        .panel {
+        	background: rgba(0,0,0,0.45);
+        	box-shadow: 0 0 5px #000;
+        	-webkit-box-shadow: 0 0 5px #000;
+      	.panel-heading {
+      		font-weight: bold;
+      	}
 			}
-		  }
-
-  	    
+	  }
 	}
 
 		.panel {
@@ -274,7 +319,7 @@
   #homepage-text {
     position: absolute;
     width: 100%;
-    top: 200px;
+    top: 150px;
     left: 0px;
   }
 
