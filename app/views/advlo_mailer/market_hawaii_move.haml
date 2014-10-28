@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented.text-center
+      %h2= "Hey #{@user.get_name_or_email.capitalize},"
+
+      .text-left
+        We wanted to let the Advlo community know that we in 
+        %a{href: "#{root_url}adventures?state=Hawaii"} Hawaii!
+        Our focus remains on continuing to provide unique off-the-beaten-path adventures from around the world. 
+
+        %br
+        %br
+        If you're planning a trip, tell us about it! We're looking for story tellers and ways to feature your travels, so lookout for some amazing travel tips and stories in the future!
+
+
+        %br
+        %br
+        As always, feel free to send us feedback, trip requests, or just say aloha! Simply reply to this email.
+
+        %br
+        %br
+        .divider.divider-border
+
+        %h3.text-center If you're deciding to visit Hawaii, check out our local favorites
+        %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "100%"}
+          %tr
+            %td
+              - adventure = Adventure.find(244)
+              %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
+                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
+                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
+            %td
+              - adventure = Adventure.find(219)
+              %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
+                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
+                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
+            %td
+              - adventure = Adventure.find(257)
+              %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
+                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
+                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
+
+
+        .divider.divider-border
+        %br
+        %br
+
+      %i Safe travels,
+      %br
+      %a{href: "#{root_url}about"} The Advlo Team

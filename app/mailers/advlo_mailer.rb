@@ -249,6 +249,15 @@ class AdvloMailer < ActionMailer::Base
     end
   end
 
+  def market_hawaii_move(user)
+    @user = user
+
+    mail(to: @user.email, subject: "[ADVLO] : Advlo's In Hawaii") do |format|
+      format.html { render layout: 'marketing_advlo_mail' }
+      format.text
+    end
+  end
+
   def market_new_feature_messages(user)
     @user = user
 
