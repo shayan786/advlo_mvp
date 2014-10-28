@@ -199,7 +199,12 @@
 		@extend #signup-please-modal;
 
 		.advlo_img {
-			width: 200px;
+			width: 160px;
+			margin: -5px auto;
+
+			img {
+				cursor: default !important;
+			}
 		}
 
 		.modal-dialog .modal-content {
@@ -221,10 +226,25 @@
 		}
 
 		.sign_up_toggle_btn {
+<<<<<<< HEAD
 			width: 60%;
 		}
 		.fb_btn {
 			width: 60%;
+=======
+			padding-top: 8px;
+			font-family: nexa_light;
+			font-weight: bold;
+			letter-spacing: 2px;
+			width: 69%;
+		}
+		.fb_btn {
+			padding-top: 8px;
+			font-family: nexa_light;
+			font-weight: bold;
+			letter-spacing: 2px;
+			width: 69%;
+>>>>>>> 1b09d4fda44c8b46d188dcc1b0cbb10dbac1bdf8
 		}
 	}
 
