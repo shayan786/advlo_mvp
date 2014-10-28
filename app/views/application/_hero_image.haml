@@ -1,4 +1,14 @@
-- image = @hero_image ? @hero_image.attachment.url(:hero) : "background/biklo_darken.jpg"
+- # image = @hero_image ? @hero_image.attachment.url(:hero) : "background/biklo_darken.jpg"
+
+- image_array = Array.new
+- image_array[0] = "background/biklo_darken.jpg"
+- image_array[1] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814"
+- image_array[2] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826"
+- image_array[3] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204"
+- image_array[4] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894"
+
+- image = image_array[rand(5)]
+
 .jumbotron.jumbotron_fix{:style => "background-image: url(#{image_path image})"}
   #homepage-text
     .text-center
