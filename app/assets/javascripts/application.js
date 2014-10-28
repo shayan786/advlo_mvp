@@ -247,8 +247,8 @@ function footerInit(){
     }
   })
 
-  $('#signup-please-modal .sign_up_toggle_btn').click(function(){
-    $('#signup-please-modal #signup_modal').fadeIn();
+  $('.sign_up_toggle_btn').click(function(){
+    $('#signup_modal').fadeIn();
     $(this).hide();
   })
 

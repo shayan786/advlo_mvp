@@ -42,7 +42,6 @@
 	}
 
 	#signup-please-modal {
-
 		.sign_up_btn {
 			width: 57%;
 			margin-bottom: 25px;
@@ -190,6 +189,46 @@
 		}
 	}
 
+	#member-modal {
+
+		.back-text a:hover {
+			text-decoration: none;
+			opacity: 1.0 !important;
+		}
+
+		@extend #signup-please-modal;
+
+		.advlo_img {
+			width: 200px;
+		}
+
+
+		.modal-dialog #network {
+			width: 100%;
+			margin-top: 20px;
+			margin-bottom: 15px;
+			p {
+				font-family: 'bebas_neue' !important;
+				font-size: 17px;
+				letter-spacing: 1px;
+
+				width: 65%;
+				margin: 0 auto;
+			}
+
+			.modal-content {
+				max-width: 400px;
+			}
+		}
+
+		.sign_up_toggle_btn {
+			width: 69%;
+		}
+		.fb_btn {
+			width: 69%;
+		}
+	}
+
 	#contact_form_modal {
 		.modal-dialog {
 			margin: 65px auto 0 auto;
@@ -222,17 +261,17 @@
 		}
 
 		#contact_submitted {
-	      display: none;
-	      color: #FFF;
-	      font-size: 1.8em;
-	      margin-bottom: 20px;
+      display: none;
+      color: #FFF;
+      font-size: 1.8em;
+      margin-bottom: 20px;
 
-	      .fa {
-	        font-size: 2.2em;
-	        margin-bottom: 25px;
-	        margin-top: 25px;
-	      }
-	  	}
+      .fa {
+        font-size: 2.2em;
+        margin-bottom: 25px;
+        margin-top: 25px;
+      }
+  	}
 	}
 }
 
