@@ -37,11 +37,11 @@
               .region-text
                 Latin America
 
-          %a{href: '/adventures?country=United States'}  
+          %a{href: '/adventures?country=North America'}  
             .region 
-              = image_tag HeroImage.where(region: 'United States').first.attachment.url(:hero), alt: "United States"
+              = image_tag HeroImage.where(region: 'North America').first.attachment.url(:hero), alt: "North America"
               .region-text
-                United States
+                North America
 
           / - @regions.each do |r|
           /   %a{href: "/adventures?location=#{r[0]}"}
