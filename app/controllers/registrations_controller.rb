@@ -121,9 +121,7 @@ class RegistrationsController < Devise::RegistrationsController
       session[:referrer_id] = nil
     end
 
-    # devise yml => signed_up: "<a href='/travel-fund'> Invite friends </a> or <a href='/adventures'> start exploring </a>"
-
-    '/users/edit'
+    session[:previous_url]
   end
   # Customize Signing Up Devise Params
   #def sign_up_params

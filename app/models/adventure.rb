@@ -33,6 +33,7 @@ class Adventure < ActiveRecord::Base
   after_validation :geocode, :on => :update
   after_validation :reverse_geocode, :on => :update
   after_validation :set_slug, :on => :update
+  after_update :set_host_name
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if results.first
@@ -48,6 +49,13 @@ class Adventure < ActiveRecord::Base
       end
     else
       AdvloMailer.delay.geocode_limit_hit
+    end
+  end
+
+  def set_host_name
+    if self.host_name == nil || self.host_name == ''
+      self.host_name = User.find(self.user_adventures.first.user_id).name
+      self.save
     end
   end
 

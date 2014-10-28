@@ -75,9 +75,12 @@
 	li {
 		.dropdown-menu, .right-side {
 			padding: 12px 0px 10px 0px;
-			@include border_radius(3px);
+			
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+			border-bottom-left-radius: 10px;
+			border-top-left-radius: 0px;
 			background: rgba(0, 0, 0, 1);
-			margin-top: 1.5px;
 
 			a {
 				text-align: center;
@@ -201,7 +204,7 @@
 }
 .logged_out_dropdown_menu {
 	position: fixed;
-	top: 55px;
+	top: 53px;
 	right: 0px;
 }
 

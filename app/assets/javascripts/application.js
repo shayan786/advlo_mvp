@@ -106,7 +106,7 @@ $(document).ready(function(){
         }, 200)
 
         $('.logged_in_dropdown_menu, .logged_out_dropdown_menu').animate({
-          top: '-4px'
+          top: '50px'
         }, 200)
 
         flag = 1;
@@ -139,7 +139,7 @@ $(document).ready(function(){
           top: '4px'
         }, 200)
         $('.logged_in_dropdown_menu, .logged_out_dropdown_menu').animate({
-          top: '4px'
+          top: '58px'
         }, 200)
 
         flag = 0;

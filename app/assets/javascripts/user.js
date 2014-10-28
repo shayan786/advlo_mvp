@@ -353,13 +353,16 @@ function copyPasteCode(){
 
   $("#clear-test").on("click", function(){
     $("#testarea").val("");
-    alert('Copied to clipoard - Share Your travel-fund link')
   });
 
   $('.fa-file-text').hover(function(){
     $(this).css('opacity','0.5');
   },function(){
     $(this).css('opacity','1');
+  })
+
+  $('.fa-file-text').click(function(){
+    alert('Copied - Share to Earn!')
   })
 }
 
