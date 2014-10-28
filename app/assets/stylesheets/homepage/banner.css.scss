@@ -1,9 +1,31 @@
 .jumbotron {
 	margin-bottom: 0px;
+
+	.homepage_adventure_link {
+		margin-top: 30px;
+		font-family: nexa_light;
+		font-weight: bold;
+		text-decoration: none;
+		color: #FFF;
+		opacity: 0.7;
+
+		&:hover {
+			text-decoration: none;
+			opacity: 1;
+		}
+
+		.host_img {
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			margin-right: 10px;
+			background-size: cover !important;
+		}
+	}
 }
 .jumbotron_fix {
 	padding-top: 12%;
-  min-height: 800px;
+  	min-height: 800px;
 
   
 	background-repeat: no-repeat;
@@ -36,7 +58,7 @@
 #how_it_works_panels {
 	position: relative;
 	width: 100%;
-	margin-top: 55px;
+	margin-top: 50px;
 
   .adventure-link {
     position: absolute;
