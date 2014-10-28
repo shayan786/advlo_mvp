@@ -1,14 +1,9 @@
-- # image = @hero_image ? @hero_image.attachment.url(:hero) : "background/biklo_darken.jpg"
-
-- image_array = Array.new
-- image_array[0] = "background/biklo_darken.jpg"
-- image_array[1] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814"
-- image_array[2] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826"
-- image_array[3] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204"
-- image_array[4] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894"
-
+- image_array = ["background/biklo_darken.jpg","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894"]
 - rand_num = rand(5)
 - image = image_array[rand_num]
+- adv_array = [0,154,256,120,68]
+- if rand_num != 0
+  - adv = Adventure.find(adv_array[rand_num])
 
 .jumbotron.jumbotron_fix{:style => "background-image: url(#{image_path image})"}
   #homepage-text
@@ -16,6 +11,16 @@
       %span.large_text ADVENTURE
       %span.small_text WITH
       %span.large_text LOCALS
+
+    - if adv
+      %a.mobile_adventure_link{href: "/adventures/#{adv.slug}"}
+        .content-link-wrapper.low-opacity
+          .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
+          .adv_copy
+            = adv.title
+            %br
+            with
+            = adv.users.first.get_first_name
       
   - if notice
     .col-md-6.col-md-offset-3 
@@ -26,7 +31,7 @@
         = notice.html_safe
 
   #how_it_works_panels
-    .row.text-center.adventure-link
+    .row.text-center
       .col-md-4.col-md-offset-1
         %a.find-adventures{href: "/adventures"}
           .panel.panel-default
@@ -47,24 +52,28 @@
               .small_text
               .col-md-10.col-md-offset-1
                 Sell and lead the adventures you create
+
+
+  - if adv
+    %a.homepage_adventure_link{href: "/adventures/#{adv.slug}"}
+      .content-link-wrapper.low-opacity{style: 'position: absolute;'}
+        .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
+        .adv_copy
+          = adv.title
+          %br
+          with
+          = adv.users.first.get_first_name
+    
+
+
+:javascript
+  $('.host_img, .adv_copy').hover(function(){
+    $(this).parent().css('opacity','1.0')
+  },function(){
+    $(this).parent().css('opacity','0.7')
+  })
+
+  $(document).ready(function(){
+    $('.mobile_adventure_link').width($('.adv_copy').width() + 111)
+  })
   
-  - adv_array = Array.new
-  - adv_array[0] = 0
-  - adv_array[1] = 154
-  - adv_array[2] = 256
-  - adv_array[3] = 120
-  - adv_array[4] = 68
-
-  - if rand_num != 0
-    - adv = Adventure.find(adv_array[rand_num])
-
-    .text-left{style: "margin-top: 20px;"}
-      %a.homepage_adventure_link{href: "/adventures/#{adv.slug}"}
-        .pull-left.host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-        = adv.title
-        %br
-        with
-        = adv.users.first.get_first_name
-  
-
-
