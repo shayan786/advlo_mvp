@@ -11,9 +11,10 @@
         .row
           %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
             %i.fa.fa-facebook
-            CONNECT WITH FACEBOOK
+            FACEBOOK
 
-        %hr
+        .text-center{style: "font-family: bebas_neue; font-size: 1.2em; margin: 10px 0"}
+          OR
 
         %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal'}
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -28,7 +29,7 @@
 
         .row
           .btn.btn-success.sign_up_toggle_btn
-            CONNECT WITH EMAIL
+            EMAIL
 
 
         .back-text

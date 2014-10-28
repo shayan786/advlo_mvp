@@ -199,7 +199,12 @@
 		@extend #signup-please-modal;
 
 		.advlo_img {
-			width: 200px;
+			width: 160px;
+			margin: -5px auto;
+
+			img {
+				cursor: default !important;
+			}
 		}
 
 		.modal-dialog .modal-content {
@@ -221,9 +226,17 @@
 		}
 
 		.sign_up_toggle_btn {
+			padding-top: 8px;
+			font-family: nexa_light;
+			font-weight: bold;
+			letter-spacing: 2px;
 			width: 69%;
 		}
 		.fb_btn {
+			padding-top: 8px;
+			font-family: nexa_light;
+			font-weight: bold;
+			letter-spacing: 2px;
 			width: 69%;
 		}
 	}
