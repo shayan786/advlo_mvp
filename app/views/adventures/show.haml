@@ -172,7 +172,6 @@
           .item
             %span additional info
 
-    
 
 :javascript
   adventureShow();
@@ -186,3 +185,7 @@
     sizeSidebar();
     resizeAdventureShowImage();
   })
+
+- if !current_user
+  :javascript
+    member_modal_show();

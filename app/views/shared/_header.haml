@@ -55,23 +55,34 @@
         - else
           = render partial: 'logged_out_dropdown'
 
-  #locations-menu
-    - adv_regions.each_with_index do |r, i|
-      - if adv_count(r) > 0
-        .main-location
-          = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
-          - get_countries(r).each do |l|
-            .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
-            - get_cities(l[0]).each do |l|
-              .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
+  #locations-menu-wrapper{style: "display: none;"}
+    #locations-menu
+      - adv_regions.each_with_index do |r, i|
+        - if adv_count(r) > 0
+          .main-location
+            = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
+            - get_countries(r).each do |l|
+              .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
+              - get_cities(l[0]).each do |l|
+                .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
+  
 
 
 :javascript 
   var $container = $('#locations-menu');
   var loaded = 0;
 
+  $('html').click(function(e){
+    if (e.target.id && e.target.id == "find-adventures") {
+      return;
+    }
+    else {
+      $('#locations-menu-wrapper').hide()
+    }
+  })
+
   $('#find-adventures').click(function(){
-    $('#locations-menu').toggle()
+    $('#locations-menu-wrapper').toggle()
     // initialize
     if(loaded == 0){
       loaded = 1

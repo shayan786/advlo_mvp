@@ -50,6 +50,11 @@
     }
   })
 
+- if !current_user
+  :javascript
+    member_modal_show();
+
+
 - if params[:region].present?
   :javascript
     if ($(window).width() <= 767) {
@@ -76,15 +81,6 @@
           };
 
         }
-
-        /*
-        region['UnitedStates'] = {
-          title: 'United States',
-          center: new google.maps.LatLng(38.210262, -98.926994),
-          label_center: new google.maps.LatLng(39, -99.326994),
-          count: "#{Adventure.approved.where(country: 'United States').count}"
-        };
-        */
 
         switch("#{params[:region]}") {
           case "North-America":
