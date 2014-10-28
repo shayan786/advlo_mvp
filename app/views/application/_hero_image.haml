@@ -7,7 +7,8 @@
 - image_array[3] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204"
 - image_array[4] = "http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894"
 
-- image = image_array[rand(5)]
+- rand_num = rand(5)
+- image = image_array[rand_num]
 
 .jumbotron.jumbotron_fix{:style => "background-image: url(#{image_path image})"}
   #homepage-text
@@ -46,15 +47,24 @@
               .small_text
               .col-md-10.col-md-offset-1
                 Sell and lead the adventures you create
-      / .col-md-4        
-      /   %a{href: "/adventures/request"}
-      /     .panel.panel-default
-      /       .panel-heading
-      /         REQUEST
-      /       .panel-body
-      /         .request_icon
-      /         .col-md-10.col-md-offset-1
-      /           Tell us about the adventure you're seeking and we'll find someone awesome to host it
+  
+  - adv_array = Array.new
+  - adv_array[0] = 0
+  - adv_array[1] = 154
+  - adv_array[2] = 256
+  - adv_array[3] = 120
+  - adv_array[4] = 68
+
+  - if rand_num != 0
+    - adv = Adventure.find(adv_array[rand_num])
+
+    .text-left{style: "margin-top: 20px;"}
+      %a.homepage_adventure_link{href: "/adventures/#{adv.slug}"}
+        .pull-left.host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
+        = adv.title
+        %br
+        with
+        = adv.users.first.get_first_name
   
 
 
