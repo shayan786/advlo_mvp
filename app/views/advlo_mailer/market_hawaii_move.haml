@@ -31,21 +31,21 @@
             %td
               - adventure = Adventure.find(244)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
-                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
-                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
+                .adv_img{style: "background: url('#{adventure.attachment.url(:medium)}') center center no-repeat; background-size: cover; width: 150px; height: 125px; margin-left: -25px; margin-right: 20px; margin-bottom: 10px;"}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 150px; margin-left: -25px; font-weight: bold;'}= adventure.title[0..23]
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px; font-style: italic;'}= "with #{adventure.users.first.get_first_name}"
             %td
               - adventure = Adventure.find(256)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
-                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 140px; margin-left: -25px;'}= adventure.title
-                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
+                .adv_img{style: "background: url('#{adventure.attachment.url(:medium)}') center center no-repeat; background-size: cover; width: 150px; height: 125px; margin-left: -25px; margin-right: 20px; margin-bottom: 10px;"}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 150px; margin-left: -25px; font-weight: bold;'}= adventure.title[0..23]
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px; font-style: italic;'}= "with #{adventure.users.first.get_first_name}"
             %td
               - adventure = Adventure.find(257)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
-                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
-                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
+                .adv_img{style: "background: url('#{adventure.attachment.url(:medium)}') center center no-repeat; background-size: cover; width: 150px; height: 125px; margin-left: -25px; margin-bottom: 10px;"}
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 150px; margin-left: -25px; font-weight: bold;'}= adventure.title[0..23]
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px; font-style: italic;'}= "with #{adventure.users.first.get_first_name}"
 
 
         .divider.divider-border
