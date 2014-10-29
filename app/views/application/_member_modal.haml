@@ -39,10 +39,23 @@
 
         .text-center.maybe_later
           MAYBE LATER
+        .text-center.sign_in
+          SIGN IN
 
 :javascript 
   $('.maybe_later').click(function(){
     $('#member-modal').modal('hide');
+  })
+
+  $('.sign_in').click(function(){
+    console.log('hi')
+    if ($(window).width() > 780) {
+      $('#member-modal').modal('hide');
+      $('.logged_out_dropdown_menu').show();          
+    }
+    else {
+      window.location.replace("/users/sign_in");
+    }
   })
         
           
