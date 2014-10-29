@@ -7,8 +7,9 @@
       %h2= "Hey #{@user.get_name_or_email.capitalize},"
 
       .text-left
-        We wanted to let the Advlo community know that we in 
-        %a{href: "#{root_url}adventures?state=Hawaii"} Hawaii to grow our community!
+        We wanted to let the Advlo community know that we're in 
+        %a{href: "#{root_url}adventures?state=Hawaii"} Hawaii
+        to grow our community!
         Our focus remains on continuing to provide unique off-the-beaten-path adventures from all around the world.
 
         %br
@@ -32,19 +33,19 @@
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
                 %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
-                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
             %td
-              - adventure = Adventure.find(219)
+              - adventure = Adventure.find(256)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
                 %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
-                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
-                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 140px; margin-left: -25px;'}= adventure.title
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
             %td
               - adventure = Adventure.find(257)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
                 %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:medium), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
-                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
+                .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
 
 
         .divider.divider-border

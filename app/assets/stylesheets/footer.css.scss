@@ -223,6 +223,11 @@
 			}
 		}
 
+		.sign_in {
+			@extend .maybe_later;
+			margin-top: 10px;
+		}
+
 		#signup_modal {
 			margin-top: 0px !important;
 
