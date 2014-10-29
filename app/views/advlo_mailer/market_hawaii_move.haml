@@ -34,21 +34,18 @@
                 %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:thumb), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
-                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
             %td
               - adventure = Adventure.find(256)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
                 %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:thumb), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 140px; margin-left: -25px;'}= adventure.title
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
-                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
             %td
               - adventure = Adventure.find(257)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
                 %img{alt: adventure.title, height: "100px", src: adventure.attachment.url(:thumb), width: "auto", style: 'margin-left: -25px; margin-right: 10px;'}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= adventure.title
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px;'}= "with #{adventure.users.first.get_first_name}"
-                %strong{style: 'margin-left: -25px;'}= "#{adventure.city.capitalize}, #{adventure.state.capitalize}"
 
 
         .divider.divider-border
