@@ -131,13 +131,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def unsubscribe 
+  def unsubscribe
+    signature = params[:signature]
+
+    respond_to do |format|
+      format.html {redirect_to '/', notice: %Q( Are you sure ? <a href="/unsubscriber/#{signature}">YES leave me alone</a> / <a href="/about">NO heres some feedback.</a> )  }
+    end
+  end
+
+  def unsubscribe_email_list
+
     if user = User.read_access_token(params[:signature])
       user.email_list = false
       user.save
 
       respond_to do |format|
-        format.html {redirect_to '/', notice: "We are sad to see you go. <br> If you change your mind you can re-subscribe <a href='/users/edit'> in your profile</a>"}
+        format.html {redirect_to '/', notice: "If you change your mind you can fix it<a href='/users/edit'> in your profile</a>"}
       end
     else
       render text: 'Invalid link.'

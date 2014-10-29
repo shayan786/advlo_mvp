@@ -30,6 +30,21 @@ function headerLoginToggle(){
     $('#user_password').fadeIn()
     $('.login-form-submit').fadeIn()
   })
+
+
+  $('.host_img, .adv_copy').hover(function(){
+    $(this).parent().css('opacity','1.0')
+  },function(){
+    $(this).parent().css('opacity','0.7')
+  })
+
+  $(document).ready(function(){
+    $('.mobile_adventure_link').width($('.adv_copy').width() + 111)
+  })
+  
+  $(window).resize(function(){
+    $('.mobile_adventure_link').width($('.adv_copy').width() + 111)
+  })
 }
 
 function mobileHeaderLoginToggle(){
