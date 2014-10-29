@@ -1,27 +1,31 @@
 #footer
   .container.text-center
     .footer_text
-      .col-md-3
-        %a{href:"http://www.facebook.com/advlo", target: "_blank"}
-          %i.fa.fa-facebook
-        %a{href:"http://www.twitter.com/advlo_", target: "_blank"}
-          %i.fa.fa-twitter
-        %a{href:"http://www.instagram.com/advlo", target: "_blank"}
-          %i.fa.fa-instagram
-        %a{href:"http://plus.google.com/+Advlo-Adventure-Local", target: "_blank"}
-          %i.fa.fa-google-plus
-      .col-md-6
-        %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_form_modal'}
-          CONTACT US
-        .dash= " - " 
-        %a{href: "http://blog.advlo.com/", target: "_blank"}
-          BLOG
-        .dash= " - " 
-        %a{href: "/terms"}
-          TERMS & PRIVACY
-        .dash= " - " 
-        %a{href: "/about"}
-          ABOUT
+      .row
+        .col-md-12.footer-text
+          %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_form_modal'}
+            CONTACT US
+          .dash= " - " 
+          %a{href: "http://blog.advlo.com/", target: "_blank"}
+            BLOG
+          .dash= " - " 
+          %a{href: "/terms"}
+            TERMS & PRIVACY
+          .dash= " - " 
+          %a{href: "/about"}
+            ABOUT
+
+      .row
+        .col-md-12.social-row
+          %a{href: "http://www.facebook.com/advlo", target: "_blank"}
+            = image_tag asset_path('facebook.png')
+          %a{href: "http://www.twitter.com/advlo_", target: "_blank"}
+            = image_tag asset_path('twitter.png')
+          %a{href: "http://www.instagram.com/advlo", target: "_blank"}
+            = image_tag asset_path('googleplus.png')
+          %a{href: "http://www.instagram.com/advlo", target: "_blank"}
+            = image_tag asset_path('instagram.png')
+        
 
   - unless current_user
     //= render partial: 'application/sign_upl_please.haml'

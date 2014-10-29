@@ -53,10 +53,10 @@ class Adventure < ActiveRecord::Base
   end
 
   def set_host_name
-    if self.host_name == nil || self.host_name == ''
-      self.host_name = User.find(self.user_adventures.first.user_id).name
-      self.save
-    end
+    # if self.host_name == nil || self.host_name == ''
+    #   self.host_name = current_user.get_first_name
+    #   self.save
+    # end
   end
 
   def set_slug
