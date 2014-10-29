@@ -41,7 +41,7 @@
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 150px; margin-left: -25px; font-weight: bold;'}= adventure.title[0..23]
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 120px; margin-left: -25px; font-style: italic;'}= "with #{adventure.users.first.get_first_name}"
             %td
-              - adventure = Adventure.find(257)
+              - adventure = Adventure.find(264)
               %a{href: "#{root_url}adventures/#{adventure.slug}", style: 'text-decoration: none; color: #000;'}
                 .adv_img{style: "background: url('#{adventure.attachment.url(:medium)}') center center no-repeat; background-size: cover; width: 150px; height: 125px; margin-left: -25px; margin-bottom: 10px;"}
                 .text-left{style: 'word-wrap: break-word; font-size: 12px; width: 150px; margin-left: -25px; font-weight: bold;'}= adventure.title[0..23]

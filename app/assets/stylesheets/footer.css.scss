@@ -280,6 +280,21 @@
 		}
 	}
 
+
+	.footer-text {
+		font-family: 'nexa_light';
+		font-size: 18px;
+	}
+
+	.social-row {
+		margin-top: 20px;
+		margin-bottom: 20px;
+
+		a:hover {
+			opacity: 0.6;
+		}
+	}
+
 	#contact_form_modal {
 		.modal-dialog {
 			margin: 65px auto 0 auto;
