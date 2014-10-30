@@ -1,8 +1,32 @@
 - set_meta_tags(get_meta_tags("About Us","About the Advlo Team","Christopher Knight, Shayan Dhanani, Jonathan Maser, Advlo Founders"))
 
 #about
-  - image = "background/advlo_about.jpg"
-  .jumbotron{:style => "background-image: url(#{image_path image})"}
+  - image_chris = "background/about_chris.jpg"
+  - image_jon = "background/about_jon.jpg"
+  - image_shayan = "background/about_shayan.jpg"
+
+  .row
+    .col-md-4
+      .personal_img{style: "background: url(#{image_path image_chris}) center center no-repeat"}
+
+      .row.text-center 
+        %h3 CHRISTOPHER
+        %h4 The Anthropologist Programmer
+
+    .col-md-4
+      .personal_img{style: "background: url(#{image_path image_jon}) center center no-repeat"}
+
+      .row.text-center
+        %h3 JON
+        %h4 The Entreprenuerial Thrillseeker
+    .col-md-4
+      .personal_img{style: "background: url(#{image_path image_shayan}) center center no-repeat"}
+
+      .row.text-center
+        %h3 SHAYAN
+        %h4 The Exploring Scientist
+
+
   .border
   .border
 
@@ -41,30 +65,28 @@
   .white_background.container-fluid.about-bio-brick
     .col-md-4
       .row.text-center 
-        %h3 CHRISTOPHER
-        %h4 The Anthropologist Programmer
-
         .text-brick.self-bio
           When I think about my experiences from traveling my fondest memories are not about what I did, but from the people I adventured with. Travel is a luxury that most of the world's people never get to experience. However, the ability to immerse yourself into a foreign culture has been the greatest learning experience I have ever had.
+          %p{style: "color: #C35B26; margin-top: 10px;"}
+            = "- CHRISTOPHER"
+
           
 
     .col-md-4
       .row.text-center
-        %h3 JON
-        %h4 The Entreprenuerial Thrillseeker
-
         .text-brick.self-bio
           Connection stems from shared experiences. 
           After traveling around the world, experiencing diverse cultures and meeting some of the most genuine locals, I wanted to make connecting travelers to amazing adventurers an easier process. If you love travel, people and unique experiences as much as I do, you're going to love Advlo.
+          %p{style: "color: #C35B26; margin-top: 10px;"}
+            = "- JON"
 
 
     .col-md-4
       .row.text-center
-        %h3 SHAYAN
-        %h4 The Exploring Scientist
-
         .text-brick.self-bio
           The world is an extremely diverse place, and I truly believe that the only way to experience and learn about what it has to offer is by interacting with those whom have spent a majority of their life there. Every person's experience is different when they travel, for me the cultural exchange along with learning from the locals will have me traveling for a while.
+          %p{style: "color: #C35B26; margin-top: 10px;"}
+            = "- SHAYAN"
 
 
 
