@@ -1,7 +1,7 @@
-- image_array = ["background/biklo_darken.jpg","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894"]
-- rand_num = rand(5)
+- image_array = ["background/biklo_darken.jpg","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/183/hero/2013_02_17_CA_Soboba_f_JeanNoelMichel.jpg?1411836712"]
+- rand_num = rand(6)
 - image = image_array[rand_num]
-- adv_array = [0,154,256,120,68]
+- adv_array = [0,154,256,120,68,183]
 - if rand_num != 0
   - adv = Adventure.find(adv_array[rand_num])
 
