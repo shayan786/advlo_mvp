@@ -10,11 +10,17 @@ class AdventureStepsController < ApplicationController
     else
       @adventure = Adventure.find_by_id(session[:adventure_id])
     end
-    unless current_user.email == 'chrisknight.mail@gmail.com' || current_user.email == 'shayan@advlo.com' || current_user.email == 'jemaser@syr.edu'
-      if !current_user || @adventure.users.first != current_user
-        redirect_to '/', notice: "Looks like you wandered where you dont belong"
-        return
+
+    if current_user
+      unless current_user.email == 'chrisknight.mail@gmail.com' || current_user.email == 'shayan@advlo.com' || current_user.email == 'jemaser@syr.edu'
+        if !current_user || @adventure.users.first != current_user
+            redirect_to '/', notice: "Looks like you wandered where you dont belong - <a href='/users/sign_in'>sign in here</a>"
+          return
+        end
       end
+    else
+      redirect_to '/', notice: "Looks like you wandered where you dont belong - <a href='/users/sign_in'>sign in here</a>"
+      return
     end
       
     @adventure ? session[:adventure_id] = @adventure.id : nil

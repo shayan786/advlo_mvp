@@ -6,7 +6,7 @@
           = image_tag 'logos/advlo_words_only.png'
 
         #network
-          %p Join to access our global adventure travel marketplace
+          %p Join the global network for adventurers 
 
         .row
           %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
@@ -16,7 +16,7 @@
         .text-center{style: "font-family: bebas_neue; font-size: 1.2em; margin: 10px 0 5px 0"}
           OR
 
-        %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal'}
+        %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'popup_login_form'}
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           .form-group
             %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
@@ -28,7 +28,7 @@
             %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "SIGN UP"}
 
         .row
-          .btn.btn-success.sign_up_toggle_btn
+          .btn.btn-success.sign_up_toggle_btn.popup_login
             EMAIL
 
 
@@ -41,21 +41,3 @@
           MAYBE LATER
         .text-center.sign_in
           SIGN IN
-
-:javascript 
-  $('.maybe_later').click(function(){
-    $('#member-modal').modal('hide');
-  })
-
-  $('.sign_in').click(function(){
-    console.log('hi')
-    if ($(window).width() > 780) {
-      $('#member-modal').modal('hide');
-      $('.logged_out_dropdown_menu').show();          
-    }
-    else {
-      window.location.replace("/users/sign_in");
-    }
-  })
-        
-          

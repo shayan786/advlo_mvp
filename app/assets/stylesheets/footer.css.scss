@@ -67,9 +67,29 @@
 		}
 
 		.advlo_img {
-			height: auto;
-			width: 130px;
-			margin: 15px auto;
+			width: 155px;
+			margin: -5px auto;
+
+			img {
+				cursor: default !important;
+			}
+		}
+
+
+		.modal-dialog #network {
+			width: 100%;
+			margin-top: 20px;
+			margin-bottom: 15px;
+			width: 65%;
+			margin: 0 auto;
+			
+			p {
+				font-family: 'bebas_neue_book' !important;
+				font-size: 15px;
+				letter-spacing: 1.5px;
+				margin-top: 10px;
+				margin-bottom: 15px;
+			}
 		}
 
 		hr {
@@ -80,10 +100,15 @@
 			font-family: 'nexa_light' !important;
 			font-weight: bold !important;
 		}
+
 		h4 {
-			font-family: 'nexa_light' !important;
-			font-weight: bold;
 			line-height: 20px;
+			font-family: 'bebas_neue_book' !important;
+			letter-spacing: 1.5px;
+			font-size: 20px;
+
+			float: left;
+			width: 100%;
 		}
 
 		.close {
@@ -104,7 +129,7 @@
 			color: #fff;
 
 			.modal-content {
-				max-width: 535px;
+				max-width: 450px;
 				margin: 0 auto;
 				background-image: asset-url('cartographer_small.png');
 
@@ -114,12 +139,13 @@
 						border: none;
 					}
 					.question {
-						margin: 20px;
+						margin: 10px;
 						opacity: 0.8;
 						p {
 							font-family: 'bebas_neue' !important;
 							font-size: 20px;
-							margin-top: 11px;
+							margin-top: 3px;
+							margin-bottom: 0px;
 							letter-spacing: 1px;
 						}
 					}
@@ -129,14 +155,27 @@
 					}
 				}
 
-				.answer {
-					width: 20%;
-					margin: 20px;
-					font-family: 'bebas_neue' !important;
-					font-size: 15px;
-					font-weight: bold;
-				}
+				.poll-answers {
+					opacity: 0.7;
 
+					position: relative;
+					float: left;
+					width: 100%;
+
+					.answer {
+						width: 25%;
+						margin: 0 auto;
+						font-family: 'bebas_neue' !important;
+						font-size: 15px;
+						font-weight: bold;
+						margin-top: 20px;
+						margin-bottom: 20px;
+						margin-right: 10px;
+						margin-left: 10px;
+					}
+
+					
+				}
 				.answer-1 {
 					border: none;
 					background-color: $advlo_orange;
@@ -151,7 +190,6 @@
 					border: none;
 					background-color: $light_gray;
 				}
-				
 
 				.form-wrapper{
 					display: none;
@@ -159,13 +197,24 @@
 			}
 
 			#network {
-				width: 75%;
+				width: 100%;
 				margin: 0 auto;
 			}
 
 			#signup_modal {
-				margin-top: 30px;
 				display: none;
+				margin-top: 0px !important;
+
+				.form-control {
+					width: 65%;
+				}
+
+				.sign_up_btn {
+					width: 60%;
+					font-family: bebas_neue;
+					font-weight: bold;
+					font-size: 1.1em;
+				}
 			}
 
 			.form-group {
@@ -189,78 +238,28 @@
 		}
 	}
 
-	#member-modal {
+	.back-text {
+		font-family: 'bebas_neue_book' !important;
+		font-size: 13px;
+		letter-spacing: 1.5px;
 
-		.back-text {
-			font-size: 0.85em;
-
-			a:hover {
-				text-decoration: none;
-				opacity: 1.0 !important;
-			}
+		a:hover {
+			text-decoration: none;
+			opacity: 1.0 !important;
 		}
+	}
+
+	#member-modal {
 
 		@extend #signup-please-modal;
 
-		.advlo_img {
-			width: 155px;
-			margin: -5px auto;
-
-			img {
-				cursor: default !important;
-			}
-		}
-
-		.maybe_later {
-			margin-top: 15px;
-			opacity: 0.7;
-			cursor: pointer;
-			font-family: 'bebas_neue';
-			letter-spacing: 1px;
-
-			&:hover {
-				opacity: 1;
-			}
-		}
-
-		.sign_in {
-			@extend .maybe_later;
-			margin-top: 10px;
-		}
-
-		#signup_modal {
-			margin-top: 0px !important;
-
-			.form-control {
-				width: 65%;
-			}
-
-			.sign_up_btn {
-				width: 60%;
-				font-family: bebas_neue;
-				font-weight: bold;
-				font-size: 1.1em;
-			}
-		}
 
 		.modal-dialog .modal-content {
 			width: 400px;
 			max-width: 100%;
 		}
 
-		.modal-dialog #network {
-			width: 100%;
-			margin-top: 20px;
-			margin-bottom: 15px;
-			p {
-				font-family: 'bebas_neue' !important;
-				font-size: 17px;
-				letter-spacing: 1px;
 
-			width: 65%;
-				margin: 0 auto;
-			}
-	}
 
 		.sign_up_toggle_btn {
 			width: 60%;
@@ -278,6 +277,23 @@
 			letter-spacing: 1px;
 			font-size: 1.3em;
 		}
+	}
+
+	.maybe_later {
+		margin-top: 15px;
+		opacity: 0.7;
+		cursor: pointer;
+		font-family: 'bebas_neue';
+		letter-spacing: 1px;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	.sign_in {
+		@extend .maybe_later;
+		margin-top: 10px;
 	}
 
 
