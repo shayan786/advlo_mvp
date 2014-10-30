@@ -37,3 +37,15 @@
     animated: 'fade'
   });
 
+
+- if @adventure.users.first.stripe_recipient_id || @adventure.users.first.paypal_email
+  :javascript
+    $('.payout_options_btns .option_btn_1').click();
+  - if @adventure.users.first.stripe_recipient_id
+    :javascript
+      $('.payout_options_btns .option_1_well #add-bank').click();
+  - else
+    :javascript
+      $('.payout_options_btns .option_1_well #add-paypal').click();
+
+
