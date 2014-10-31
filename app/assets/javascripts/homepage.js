@@ -138,6 +138,41 @@ function submitAboutUsContact(){
     $('#about_us_contact_form').submit()
   })
 }
+
+function how_it_works_hovers(){
+  $('#how_it_works a').mouseover(function(){
+      $(this).find('.dot').css({
+        backgroundColor: '#699967'
+      });
+      $(this).next().find('.dot_copy').css({
+        color: '#699967'
+      });
+
+      $(this).find('.dot_copy').css({
+        color: '#699967'
+      });
+      $(this).prev().find('.dot').css({
+        backgroundColor: '#699967'
+      });
+  })
+
+  $('#how_it_works a').mouseout(function(){
+      $(this).find('.dot').css({
+        backgroundColor: '#E6E6E6'
+      })
+      $(this).next().find('.dot_copy').css({
+        color: '#E6E6E6'
+      });
+
+      $(this).find('.dot_copy').css({
+        color: '#E6E6E6'
+      });
+      $(this).prev().find('.dot').css({
+        backgroundColor: '#E6E6E6'
+      });
+  })
+
+}
   
 homepageInit = function() {
   adventureHover();
@@ -147,6 +182,7 @@ homepageInit = function() {
   request_form_validator();
   request_form_geocomplete();
   request_form_maxlength();
+  how_it_works_hovers();
 }
 
 aboutPageInit = function() {

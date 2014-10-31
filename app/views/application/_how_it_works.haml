@@ -1,10 +1,54 @@
 #how_it_works
   .container
-    %h1.text-center
-    .embed-container
+    .embed-container{style: "display: none"}
       %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/103610627", :webkitallowfullscreen => ""}
 
-.google_plus{style: "display:none"}
-  %a{href:"https://plus.google.com/103480915155892531074", rel: "publisher"}
-    Google+
+    .row.text-center.title
+      FIND A UNIQUE EXPERIENCE
+
+    .row.dotted_row_1
+      .col-md-4
+        %a{href: "/adventures"}
+          .dot
+        %a{href: "/adventures"}
+          .dot_copy.text-center
+            Search by location and activity
+
+      .line
+      .col-md-4
+        %a{href: "/adventures"}
+          .dot
+        %a{href: "/adventures"}
+          .dot_copy.text-center
+            Customize and book an adventure
+      .col-md-4
+        %a{href: "/adventures"}
+          .dot
+        %a{href: "/adventures"}
+          .dot_copy.text-center
+            Go and have an fucking awesome time
+
+    .row.text-center.title{style: "margin-top: 60px;"}
+      CREATE AND SELL YOUR ADVENTURES
+
+    .row.dotted_row_2
+      .col-md-4
+        %a{href: "/users/edit"}
+          .dot
+        %a{href: "/users/edit"}
+          .dot_copy.text-center
+            Complete the host profile
+      .line
+      .col-md-4
+        %a{href: "/adventures/create_prefill"}
+          .dot
+        %a{href: "/adventures/create_prefill"}
+          .dot_copy.text-center
+            Create and publish the adventure
+      .col-md-4
+        %a{href: "/users/dashboard"}
+          .dot
+        %a{href: "/users/dashboard"}
+          .dot_copy.text-center
+            Share what you love doing with the world
 
