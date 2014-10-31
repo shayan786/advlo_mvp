@@ -88,19 +88,20 @@
 
 	.dot {
 		border-radius: 50%;
-		width: 60px;
-		height: 60px;
+		//border: 5px solid $lighter_gray;
+		width: 55px;
+		height: 55px;
 		background-color: $lighter_gray;
 		margin: 25px auto;
 
 		.advlo_img {
 			position: relative;
-			top: 8px;
-			left: 8px;
+			top: 7px;
+			left: 7px;
 			background: url('logos/advlo_main_white.png') center center no-repeat;
 			background-size: cover !important;
-			height: 45px;
-			width: 45px;
+			height: 42px;
+			width: 42px;
 			display: none;
 		}
 	}
