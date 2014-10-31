@@ -257,6 +257,12 @@ function footerInit(){
     $(this).hide();
   })
 
+  $('.homepage_login').click(function(){
+    $('.homepage_login_form').fadeIn();
+    $(this).hide();
+    $('#arrow-wrapper').hide()
+  })
+
 
   $('.question').click(function(){
     $('.question-wrapper').hide()

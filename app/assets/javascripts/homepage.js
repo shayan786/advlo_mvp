@@ -1,23 +1,3 @@
-function homepageTextScroll(){
-  if($(window).width() < 769) {
-    $('.jumbotron').after($('#how_it_works_panels'));
-    $('#how_it_works_panels .panel').css({
-      marginBottom: '10px',
-      border: '1px solid #FFF'
-    })
-
-  }
-
-  $(window).resize(function() {
-    if ($(this).width() < 769){
-      $('.jumbotron').after($('#how_it_works_panels'));
-    }
-    else if ($(this).width() >= 769) {
-      $('.jumbotron').append($('#how_it_works_panels'));
-    }   
-  })
-}
-
 function headerLoginToggle(){
   $('#user_email_login').hide()
   $('#user_password').hide()
@@ -36,14 +16,6 @@ function headerLoginToggle(){
     $(this).parent().css('opacity','1.0')
   },function(){
     $(this).parent().css('opacity','0.7')
-  })
-
-  $(document).ready(function(){
-    $('.mobile_adventure_link').width($('.adv_copy').width() + 111)
-  })
-  
-  $(window).resize(function(){
-    $('.mobile_adventure_link').width($('.adv_copy').width() + 111)
   })
 }
 
@@ -142,7 +114,6 @@ function submitAboutUsContact(){
 homepageInit = function() {
   adventureHover();
   centerGuideImage();
-  homepageTextScroll();
   overall_rating_show();
   request_form_validator();
   request_form_geocomplete();

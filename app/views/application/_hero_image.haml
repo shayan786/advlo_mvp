@@ -1,67 +1,105 @@
-- image_array = ["background/biklo_darken.jpg","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/183/hero/2013_02_17_CA_Soboba_f_JeanNoelMichel.jpg?1411836712"]
-- rand_num = rand(6)
+- image_array = ["http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/183/hero/2013_02_17_CA_Soboba_f_JeanNoelMichel.jpg?1411836712"]
+- rand_num = rand(5)
 - image = image_array[rand_num]
-- adv_array = [0,154,256,120,68,183]
-- if rand_num != 0
-  - adv = Adventure.find(adv_array[rand_num])
+- adv_array = [154,256,120,68,183]
+- adv = Adventure.find(adv_array[rand_num])
 
-.jumbotron.jumbotron_fix{:style => "background-image: url(#{image_path image})"}
-  #homepage-text
-    .text-center
-      %span.large_text ADVENTURE
-      %span.small_text WITH
-      %span.large_text LOCALS
+.homepage-photo.jumbotron.jumbotron_fix{:style => "background-image: url(#{image_path image})"}
 
-    - if adv
-      %a.mobile_adventure_link{href: "/adventures/#{adv.slug}"}
-        .content-link-wrapper.low-opacity
-          .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-          .adv_copy
-            = adv.title
-            %br
-            with
-            = adv.users.first.get_first_name
-      
-  - if notice
-    .col-md-6.col-md-offset-3 
-      .alert.alert-warning.text-center
-        %button.close{"data-dismiss" => "alert", type: "button"}
-          %span{"aria-hidden" => "true"} ×
-          %span.sr-only Close
-        = notice.html_safe
-
-  #how_it_works_panels
-    .row.text-center
-      .col-md-4.col-md-offset-1
-        %a.find-adventures{href: "/adventures"}
-          .panel.panel-default
-            .panel-heading
-              FIND
-            .panel-body
-              .find_icon
-              .col-md-10.col-md-offset-1
-                Search for adventures and connect with locals
-      .col-md-2
-      .col-md-4
-        %a{href: "/adventures/info"}
-          .panel.panel-default
-            .panel-heading
-              HOST
-            .panel-body
-              .host_icon
-              .small_text
-              .col-md-10.col-md-offset-1
-                Sell and lead the adventures you create
+.scroll-slow
+  %a.adventure-link-wrapper{href: "/adventures/#{adv.slug}"}
+    .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
+    .adv_copy
+      = adv.title
+      %br
+      with
+      = adv.users.first.get_first_name
+  #homepage-text    
+    .logo= image_tag 'logos/logo_white.png'
 
 
-  - if adv
-    %a.homepage_adventure_link{href: "/adventures/#{adv.slug}"}
-      .content-link-wrapper.low-opacity{style: 'position: absolute;'}
-        .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-        .adv_copy
-          = adv.title
-          %br
-          with
-          = adv.users.first.get_first_name
+    #explanation
+      Connect with local hosts to create and book unique travel experiences
+
+
+    - if notice
+      .col-md-6.col-md-offset-3 
+        .alert.alert-warning.text-center
+          %button.close{"data-dismiss" => "alert", type: "button"}
+            %span{"aria-hidden" => "true"} ×
+            %span.sr-only Close
+          = notice.html_safe
+
+
+  .text-center.explanation-row
     
+    .col-md-12.signup-row
+      .advlo-signup
+        .row
+          %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
+            %i.fa.fa-facebook-square
+            connect
+            
 
+        %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form'}
+          =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          .form-group
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+          .form-group
+            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
+          .form-group
+            %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
+          .row
+            %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "CONNECT"}
+
+        .row
+          .homepage_login.homepage_email_btn
+            email
+
+    #arrow-wrapper
+      %a
+        .bottom
+
+  %a.mobile-content-link-wrapper{href: "/adventures/#{adv.slug}"}
+    .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
+    .adv_copy
+      = adv.title
+      %br
+      with
+      = adv.users.first.get_first_name
+
+
+:javascript
+  
+  $('#arrow-wrapper').click(function(){
+    $('html, body').animate({
+       scrollTop: $("#arrow-wrapper").offset().top
+     }, 1000);
+  })
+  
+  $('.homepage_fb_btn').hover(function(){
+    $(this).css('background','rgba(40, 94, 142, 1)')
+  },function(){
+    $(this).css('background','rgba(40, 94, 142, 0.8)')
+  })
+  $('.homepage_email_btn').hover(function(){
+    $(this).css('background','rgba(195, 91, 38, 1)')
+  },function(){
+    $(this).css('background','rgba(195, 91, 38, 0.8)')
+  })
+
+  $('.sign_up_btn').hover(function(){
+    $(this).css('background','rgba(195, 91, 38, 1)')
+  },function(){
+    $(this).css('background','rgba(195, 91, 38, 0.8)')
+  })
+
+  
+
+  function adventureScroll(){
+    var hero = $('#main_image');
+      $(window).scroll(function(){
+      var s = $(window).scrollTop();
+      hero.css('-webkit-transform','translateY(' + (s/1.3) + 'px');    
+    })
+  }
