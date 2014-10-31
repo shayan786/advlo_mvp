@@ -1,10 +1,67 @@
-/ #how_it_works
-/   .container
-/     %h1.text-center
-/     .embed-container
-/       %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/103610627", :webkitallowfullscreen => ""}
+#how_it_works
+  .container
+    .row.text-center.title
+      ADVENTURE WITH A LOCAL
 
-/ .google_plus{style: "display:none"}
-/   %a{href:"https://plus.google.com/103480915155892531074", rel: "publisher"}
-/     Google+
+    .row.dotted_row_1
+      .col-md-4
+        %a{href: "/adventures"}
+          .dot
+            .advlo_img
+        %a{href: "/adventures"}
+          .dot_copy.text-center
+            Search by where you want to go
+      .line
+      .col-md-4
+        %a{href: "/adventures"}
+          .dot
+            .advlo_img
+        %a{href: "/adventures"}
+          .dot_copy.text-center
+            Find existing adventures & connect with locals
+      .col-md-4
+        %a{href: "/adventures"}
+          .dot
+            .advlo_img
+        %a{href: "/adventures"}
+          .dot_copy.text-center
+            Book and go on your unique adventures
 
+    .row
+      .advlo_connection_img{'data-toggle' => "modal", 'data-target' => '#video-modal'}
+      .video_copy.text-center{'data-toggle' => "modal", 'data-target' => '#video-modal'}
+        WATCH VIDEO
+
+    .row.text-center.title
+      CREATE AND SELL YOUR ADVENTURES
+
+    .row.dotted_row_2
+      .col-md-4
+        %a{href: "/users/edit"}
+          .dot
+            .advlo_img
+        %a{href: "/users/edit"}
+          .dot_copy.text-center
+            Complete your host profile
+      .line
+      .col-md-4
+        %a{href: "/adventures/create_prefill"}
+          .dot
+            .advlo_img
+        %a{href: "/adventures/create_prefill"}
+          .dot_copy.text-center
+            Create and publish the adventure
+      .col-md-4
+        %a{href: "/users/dashboard"}
+          .dot
+            .advlo_img
+        %a{href: "/users/dashboard"}
+          .dot_copy.text-center
+            Share what you love doing with the world
+
+  #video-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "video-modal", role: "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          .embed-container
+            %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/103610627?title=0&portrait=0&byline=0&badge=0", :webkitallowfullscreen => ""}
