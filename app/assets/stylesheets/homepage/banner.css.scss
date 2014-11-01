@@ -241,7 +241,8 @@
     display: none;
   }
   .mobile-content-link-wrapper {
-    display: block
+    display: block;
+    bottom: 90px;
   }
 }
 
@@ -249,7 +250,7 @@
 @media screen and (max-width: 500px){
   .scroll-slow #homepage-text {
     position: relative;
-    top: 20px;
+    top: 100px;
     font-size: 75%;
   }
 
