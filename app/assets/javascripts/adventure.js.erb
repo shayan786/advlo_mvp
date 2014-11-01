@@ -1405,37 +1405,21 @@ function signup_cookie(){
   $(document).ready(function(){
 
     if( $(window).width() > 400 ){
-      if ($.cookie('maybe_later') == 'maybe'){
-        if((!$.cookie('signup') && (location.pathname != '/users/sign_up' && location.pathname != '/users/sign_in' && location.pathname.indexOf('travel-fund') != 1 ))){
+      if((!$.cookie('signup') && (location.pathname != '/users/sign_up' && location.pathname != '/users/sign_in' && location.pathname.indexOf('travel-fund') != 1 ))){
 
-          setTimeout(function(){
-            $.cookie('signup', 'visited', { expires: 3, path: '/' });
-            $('#signup-please-modal').modal('show')
-          }, 13500);
-        }
-
-        $('.close').click(function(){
-          $('#signup-please-modal').modal('hide')
-        })
+        setTimeout(function(){
+          $.cookie('signup', 'visited', { expires: 3, path: '/' });
+          $('#signup-please-modal').modal('show')
+        }, 13500);
       }
+
+      $('.close').click(function(){
+        $('#signup-please-modal').modal('hide')
+      })
     }
   })
 }
 
-
-function member_modal_show(){
-  signinClick();
-
-  if(!$.cookie('maybe_later')){
-    $('#member-modal').modal('show');
-
-    $('.maybe_later').click(function(){
-      $('#member-modal').modal('hide');
-      $.cookie('maybe_later', 'maybe', { expires: 3, path: '/' });
-
-    })
-  }
-}
 
 
 function signinClick(){

@@ -3,14 +3,7 @@
     .modal-content
       .modal-body
         - if @all_adventure_events.empty?
-          .text-center
-            %em.tab_header
-              Instant Reservations
-            .no_ib_text
-              There are no instant reservations for this adventure. 
-              %br
-              Try requesting one!
-
+          
         - else
           .upcoming
             .row.text-center
@@ -26,6 +19,8 @@
         .row.text-center
           %em.tab_header
             Request a Reservation
+          %br
+          %p{style: 'color:#fff;'}= "Pick a date and time that works for you, and #{@current_guide.get_first_name} will follow-up with you"
         = render partial: 'request_time_form', locals: {adventure: @adventure}
 
 #reservations-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-modal", role: "dialog"}

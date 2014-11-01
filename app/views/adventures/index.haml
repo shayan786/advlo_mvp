@@ -50,13 +50,6 @@
     }
   })
 
-- if !current_user
-  :javascript
-    $(document).ready(function(){
-      member_modal_show();
-    })
-
-
 - if params[:region].present?
   :javascript
     if ($(window).width() <= 767) {

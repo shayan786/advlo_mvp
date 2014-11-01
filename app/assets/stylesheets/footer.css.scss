@@ -103,7 +103,7 @@
 
 		h4 {
 			line-height: 20px;
-			font-family: 'bebas_neue_book' !important;
+			font-family: 'cabin_regular' !important;
 			letter-spacing: 1.5px;
 			font-size: 20px;
 
@@ -214,6 +214,17 @@
 					font-family: bebas_neue;
 					font-weight: bold;
 					font-size: 1.1em;
+
+					&:hover {
+						background-color: $advlo_orange;
+						border-color: $advlo_orange;
+						opacity: 0.8;
+					}
+				}
+
+				.btn-primary {
+					background-color: $advlo_orange;
+					border-color: $advlo_orange;
 				}
 			}
 
@@ -268,6 +279,12 @@
 			font-weight: bold;
 			letter-spacing: 1px;
 			font-size: 1.3em;
+
+			&:hover {
+				background-color: $advlo_orange;
+				border-color: $advlo_orange;
+				opacity: 0.8;
+			}
 		}
 		.fb_btn {
 			width: 60%;
