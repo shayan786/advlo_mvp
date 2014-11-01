@@ -1,6 +1,13 @@
 #destination-block {
   padding-top: 30px;
-  background: rgba(0, 0, 0, 0.6);
+
+  h1 {
+  	font-family: bebas_neue !important;
+	font-size: 2.8em;
+	color: $advlo_orange;
+	letter-spacing: 2px;
+	font-weight: bold;
+  }
 
   #advlo-location {
   	text-align: center;
@@ -50,6 +57,7 @@
 }
 
 #how_it_works {
+	background: rgba(0,0,0,0.6);
 	padding-bottom: 45px;
 	padding-top: 45px;
 
@@ -116,7 +124,6 @@
 		margin: 0 auto;
 		font-size: 1.2em;
 		color: $lighter_gray;
-		font-family: nexa_light;
 		font-weight: bold;
 		width: 70%;
 	}
@@ -124,7 +131,7 @@
 	.line {
 		float: left;
 		position: absolute;
-		border: 3px solid $lighter_gray;
+		border: 2px solid $lighter_gray;
 		width: 57%;
 		margin-left: 15%;
 		margin-top: 51px;
@@ -178,9 +185,21 @@
 	}
 }
 
+@media screen and (min-width: 1447px) and (max-width: 1582px) {
+	#how_it_works .line {
+		width: 49% !important;
+	}
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1446px) {
+	#how_it_works .line {
+		width: 55% !important;
+	}
+}
+
 @media screen and (min-width: 1249px) and (max-width: 1351px) {
 	#how_it_works .line {
-		width: 60% !important;
+		width: 61% !important;
 	}
 }
 
