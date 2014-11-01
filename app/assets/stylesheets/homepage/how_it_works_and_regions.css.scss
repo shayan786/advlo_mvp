@@ -1,6 +1,13 @@
 #destination-block {
   padding-top: 30px;
-  background: rgba(0, 0, 0, 0.6);
+
+  h1 {
+  	font-family: bebas_neue !important;
+	font-size: 2.8em;
+	color: $advlo_orange;
+	letter-spacing: 2px;
+	font-weight: bold;
+  }
 
   #advlo-location {
   	text-align: center;
@@ -50,6 +57,7 @@
 }
 
 #how_it_works {
+	background: rgba(0,0,0,0.6);
 	padding-bottom: 45px;
 	padding-top: 45px;
 
@@ -75,15 +83,16 @@
 		font-size: 1.4em;
 		color: $advlo_orange;
 		letter-spacing: 1px;
-		margin-bottom: 30px;
+		margin-top: -85px;
+		margin-bottom: 60px;
 		cursor: pointer;
 	}
 
 	.title {
 		font-family: bebas_neue;
-		font-size: 2.4em;
+		font-size: 2.8em;
 		color: $advlo_orange;
-		letter-spacing: 1px;
+		letter-spacing: 2px;
 		font-weight: bold;
 	}
 
@@ -113,19 +122,17 @@
 
 	.dot_copy {
 		margin: 0 auto;
-		font-size: 1.2em;
+		font-size: 1.4em;
 		color: $lighter_gray;
-		font-family: nexa_light;
-		font-weight: bold;
 		width: 60%;
 	}
 
 	.line {
 		float: left;
 		position: absolute;
-		border: 3px solid $lighter_gray;
-		width: 60%;
-		margin-left: 17%;
+		border: 2px solid $lighter_gray;
+		width: 57%;
+		margin-left: 15%;
 		margin-top: 51px;
 		z-index: -1;
 	}
@@ -177,7 +184,25 @@
 	}
 }
 
-@media screen and (min-width: 501px) and (max-width: 800px) {
+@media screen and (min-width: 1447px) and (max-width: 1582px) {
+	#how_it_works .line {
+		width: 49% !important;
+	}
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1446px) {
+	#how_it_works .line {
+		width: 55% !important;
+	}
+}
+
+@media screen and (min-width: 1249px) and (max-width: 1351px) {
+	#how_it_works .line {
+		width: 61% !important;
+	}
+}
+
+@media screen and (min-width: 501px) and (max-width: 1248px) {
 	#how_it_works .dotted_row_1 .line {
 		display: none !important;
 	}

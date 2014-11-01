@@ -1,7 +1,7 @@
 #how_it_works
   .container
     .row.text-center.title
-      ADVENTURE WITH A LOCAL
+      HOW ADVLO WORKS
 
     .row.dotted_row_1
       .col-md-4
@@ -10,7 +10,7 @@
             .advlo_img
         %a{href: "/adventures"}
           .dot_copy.text-center
-            Search by where you want to go
+            Pick your adventure destinations
       .line
       .col-md-4
         %a{href: "/adventures"}
@@ -18,46 +18,20 @@
             .advlo_img
         %a{href: "/adventures"}
           .dot_copy.text-center
-            Find adventures & connect with locals
+            Explore what locals have to offer
+
       .col-md-4
         %a{href: "/adventures"}
           .dot
             .advlo_img
         %a{href: "/adventures"}
           .dot_copy.text-center
-            Book and go on your unique adventures
+            Connect with the host and book the adventure
 
     .row
       .advlo_connection_img{'data-toggle' => "modal", 'data-target' => '#video-modal'}
       .video_copy.text-center{'data-toggle' => "modal", 'data-target' => '#video-modal'}
-        WATCH VIDEO
-
-    .row.text-center.title
-      CREATE AND SELL YOUR ADVENTURES
-
-    .row.dotted_row_2
-      .col-md-4
-        %a{href: "/users/edit"}
-          .dot
-            .advlo_img
-        %a{href: "/users/edit"}
-          .dot_copy.text-center
-            Complete your host profile
-      .line
-      .col-md-4
-        %a{href: "/adventures/create_prefill"}
-          .dot
-            .advlo_img
-        %a{href: "/adventures/create_prefill"}
-          .dot_copy.text-center
-            Create and publish the adventure
-      .col-md-4
-        %a{href: "/users/dashboard"}
-          .dot
-            .advlo_img
-        %a{href: "/users/dashboard"}
-          .dot_copy.text-center
-            Share what you love doing with the world
+        VIDEO
 
   #video-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "video-modal", role: "dialog"}
     .modal-dialog
