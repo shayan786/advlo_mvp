@@ -70,7 +70,7 @@
 	}
 
 	.advlo_connection_img {
-		background: url('icons/advlo_connection.png') center center no-repeat;
+		background: asset-url('icons/advlo_connection.png') center center no-repeat;
 		background-size: cover !important;
 		width: 145px;
 		height: 145px;
@@ -110,7 +110,7 @@
 			position: relative;
 			top: 7px;
 			left: 7px;
-			background: url('logos/advlo_main_white.png') center center no-repeat;
+			background: asset-url('logos/advlo_main_white.png') center center no-repeat;
 			background-size: cover !important;
 			height: 42px;
 			width: 42px;
