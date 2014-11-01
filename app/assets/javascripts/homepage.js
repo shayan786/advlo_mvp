@@ -148,7 +148,23 @@ function how_it_works_hovers(){
 
       $(this).prev().find('.dot').find('.advlo_img').hide();
   })
+}
 
+function video_modal_play_stop() {
+  var start_src = "https://player.vimeo.com/video/103610627?title=0&portrait=0&byline=0&badge=0&autoplay=1";
+  var stop_src = ""
+
+  // On show play video
+  $('#video-modal').on('show.bs.modal', function(e) {
+    console.log('show')
+    $(this).find('iframe').attr('src',start_src);
+  })
+
+  // On hide stop video
+  $('#video-modal').on('hide.bs.modal', function(e) {
+    console.log('hide')
+    $(this).find('iframe').attr('src',stop_src);
+  })
 }
   
 homepageInit = function() {
@@ -159,6 +175,7 @@ homepageInit = function() {
   request_form_geocomplete();
   request_form_maxlength();
   how_it_works_hovers();
+  video_modal_play_stop();
 }
 
 aboutPageInit = function() {

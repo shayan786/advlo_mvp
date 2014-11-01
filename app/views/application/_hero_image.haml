@@ -74,7 +74,6 @@
 
 
 :javascript
-  
   $('#arrow-wrapper').click(function(){
     $('html, body').animate({
        scrollTop: $("#arrow-wrapper").offset().top + 90
@@ -97,7 +96,6 @@
   },function(){
     $(this).css('background','rgba(195, 91, 38, 0.8)')
   })
-
   
 
   $(document).ready(function(){
@@ -114,16 +112,5 @@
         hero.css({'opacity' : (1 - s/1500)});
       })
     }
-    
-    $("#homepage-explore").click(function(){
-      $('#locations-menu-wrapper').toggle()
-      // initialize
-      if(loaded == 0){
-        loaded = 1
-        $container.masonry({
-          itemSelector: '.main-location'
-        });
-      }
-    })
 
   });

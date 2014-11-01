@@ -31,6 +31,8 @@
     .row
       .advlo_connection_img{'data-toggle' => "modal", 'data-target' => '#video-modal'}
       .video_copy.text-center{'data-toggle' => "modal", 'data-target' => '#video-modal'}
+        WATCH
+        %br
         VIDEO
 
   #video-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "video-modal", role: "dialog"}
@@ -38,4 +40,4 @@
       .modal-content
         .modal-body
           .embed-container
-            %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/103610627?title=0&portrait=0&byline=0&badge=0", :webkitallowfullscreen => ""}
+            %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "", :webkitallowfullscreen => ""}

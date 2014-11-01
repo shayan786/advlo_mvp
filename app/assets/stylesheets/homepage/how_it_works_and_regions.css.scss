@@ -80,12 +80,14 @@
 
 	.video_copy {
 		font-family: bebas_neue;
-		font-size: 1.4em;
-		color: $advlo_orange;
+		font-size: 1.2em;
+		color: #FFF;
+		opacity: 0.8;
 		letter-spacing: 1px;
-		margin-top: -85px;
+		margin-top: -90px;
 		margin-bottom: 60px;
 		cursor: pointer;
+		line-height: 20px;
 	}
 
 	.title {
