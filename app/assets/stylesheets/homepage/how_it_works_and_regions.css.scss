@@ -75,15 +75,16 @@
 		font-size: 1.4em;
 		color: $advlo_orange;
 		letter-spacing: 1px;
-		margin-bottom: 30px;
+		margin-top: -85px;
+		margin-bottom: 60px;
 		cursor: pointer;
 	}
 
 	.title {
 		font-family: bebas_neue;
-		font-size: 2.4em;
+		font-size: 2.8em;
 		color: $advlo_orange;
-		letter-spacing: 1px;
+		letter-spacing: 2px;
 		font-weight: bold;
 	}
 
@@ -117,15 +118,15 @@
 		color: $lighter_gray;
 		font-family: nexa_light;
 		font-weight: bold;
-		width: 60%;
+		width: 70%;
 	}
 
 	.line {
 		float: left;
 		position: absolute;
 		border: 3px solid $lighter_gray;
-		width: 60%;
-		margin-left: 17%;
+		width: 57%;
+		margin-left: 15%;
 		margin-top: 51px;
 		z-index: -1;
 	}
@@ -174,6 +175,12 @@
 @media screen and (max-width: 1145px){
 	#destination-block .region-container .region-wrapper .region {
 		margin: 25px;
+	}
+}
+
+@media screen and (min-width: 1249px) and (max-width: 1351px) {
+	#how_it_works .line {
+		width: 60% !important;
 	}
 }
 
