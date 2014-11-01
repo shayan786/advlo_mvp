@@ -189,7 +189,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       :title          => 'Advlo - Adventure Local',
-      :description    => 'Advlo is a peer-to-peer adventure travel marketplace where locals can create and sell unique adventure activities',
+      :description    => 'Connect with local hosts to create and book unique adventure travel experiences',
       :keywords       => 'Adventure, Adventure Travel, Adventure Local, Adventure with Locals, travel, tourism, booking, trip'
     }
   end
@@ -199,7 +199,7 @@ module ApplicationHelper
       :title          => 'Advlo - Adventure Local',
       :type           => 'website',
       :url            => "#{root_url}",
-      :description    => 'Advlo is a peer-to-peer adventure travel marketplace where locals can create and sell unique adventure activities',
+      :description    => 'Connect with local hosts to create and book unique adventure travel experiences',
       :image          => 'http://i.imgur.com/a6L0hYB.png'
     }
   end
@@ -209,7 +209,7 @@ module ApplicationHelper
       :card           => 'summary',
       :site           => '@advlo_',
       :title          => 'Advlo - Adventure Local',
-      :description    => 'Advlo is a peer-to-peer adventure travel marketplace where locals can create and sell unique adventure activities',
+      :description    => 'Connect with local hosts to create and book unique adventure travel experiences',
       :image          => {
                           :_ => 'http://i.imgur.com/a6L0hYB.png'
                         }
