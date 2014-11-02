@@ -52,8 +52,7 @@
 
 .jumbotron_fix {
 	min-height: 900px;
-	background-repeat: no-repeat;
-	background-size: cover; 
+	background-size: cover !important; 
 }
 
 .scroll-slow {
@@ -113,6 +112,14 @@
     position: relative;
     float: left;
     width: 100%;
+
+    #homepage-explore {
+      margin-top: 20px;
+      font-family: bebas_neue;
+      font-weight: bold;
+      font-size: 1.6em;
+      padding: 11px 16px 7px 16px;
+    }
 
     .advlo-signup {
       position: relative;
@@ -234,7 +241,8 @@
     display: none;
   }
   .mobile-content-link-wrapper {
-    display: block
+    display: block;
+    bottom: 90px;
   }
 }
 
@@ -242,7 +250,7 @@
 @media screen and (max-width: 500px){
   .scroll-slow #homepage-text {
     position: relative;
-    top: 20px;
+    top: 100px;
     font-size: 75%;
   }
 

@@ -1,10 +1,11 @@
-- image_array = ["http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/120/hero/IMG_0172.JPG?1409846204","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/068/hero/P1120477.jpg?1409258894","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/183/hero/2013_02_17_CA_Soboba_f_JeanNoelMichel.jpg?1411836712"]
+- image_array = ["http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/269/hero/080614leepump4.png?1414786626","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/104/hero/G0010003.JPG?1409491469","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/183/hero/2013_02_17_CA_Soboba_f_JeanNoelMichel.jpg?1411836712"]
+
 - rand_num = rand(5)
 - image = image_array[rand_num]
-- adv_array = [154,256,120,68,183]
+- adv_array = [154,256,269,105,183]
 - adv = Adventure.find(adv_array[rand_num])
 
-.homepage-photo.jumbotron.jumbotron_fix{:style => "background-image: url(#{image_path image})"}
+.homepage-photo.jumbotron.jumbotron_fix{:style => "background: url('#{image_path image}') center center no-repeat"}
 
 .scroll-slow
   %a.adventure-link-wrapper{href: "/adventures/#{adv.slug}"}
@@ -19,7 +20,7 @@
 
 
     #explanation
-      Advlo is a platform for adventure seekers to connect directly with local travel guides
+      Connect with local hosts to create and book unique adventure travel experiences
 
 
     - if notice
@@ -74,11 +75,10 @@
 
 
 :javascript
-  
   $('#arrow-wrapper').click(function(){
     $('html, body').animate({
-       scrollTop: $("#arrow-wrapper").offset().top + 90
-     }, 800);
+       scrollTop: $("#how_it_works").offset().top}, 800
+    )
   })
   
   $('.homepage_fb_btn').hover(function(){
@@ -97,7 +97,6 @@
   },function(){
     $(this).css('background','rgba(195, 91, 38, 0.8)')
   })
-
   
 
   $(document).ready(function(){
@@ -114,16 +113,9 @@
         hero.css({'opacity' : (1 - s/1500)});
       })
     }
-    
-    $("#homepage-explore").click(function(){
-      $('#locations-menu-wrapper').toggle()
-      // initialize
-      if(loaded == 0){
-        loaded = 1
-        $container.masonry({
-          itemSelector: '.main-location'
-        });
-      }
-    })
+
+    if($(window).width() < 780){
+      $('#homepage-explore').hide();
+    }
 
   });

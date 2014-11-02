@@ -70,7 +70,7 @@
 	}
 
 	.advlo_connection_img {
-		background: url('icons/advlo_connection.png') center center no-repeat;
+		background: asset-url('icons/advlo_connection.png') center center no-repeat;
 		background-size: cover !important;
 		width: 145px;
 		height: 145px;
@@ -80,12 +80,14 @@
 
 	.video_copy {
 		font-family: bebas_neue;
-		font-size: 1.4em;
-		color: $advlo_orange;
+		font-size: 1.2em;
+		color: #FFF;
+		opacity: 0.8;
 		letter-spacing: 1px;
-		margin-top: -85px;
+		margin-top: -90px;
 		margin-bottom: 60px;
 		cursor: pointer;
+		line-height: 20px;
 	}
 
 	.title {
@@ -108,7 +110,7 @@
 			position: relative;
 			top: 7px;
 			left: 7px;
-			background: url('logos/advlo_main_white.png') center center no-repeat;
+			background: asset-url('logos/advlo_main_white.png') center center no-repeat;
 			background-size: cover !important;
 			height: 42px;
 			width: 42px;
@@ -243,7 +245,6 @@
 		border-radius: 3px;
 		padding: 5px 10px;
 		width: 70%;
-		background: rgba(195,91,38,0.75);
 	}
 
 	#how_it_works .dot {

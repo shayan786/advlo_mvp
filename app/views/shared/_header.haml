@@ -17,7 +17,7 @@
       / Collect the nav links, forms, and other content for toggling
       #header-navbar.collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right.login-right
-          %li.dropdown.header-button
+          %li.header-button
             %button.btn.btn-default.navbar-btn#find-adventures
               FIND
               %b.caret
@@ -57,7 +57,7 @@
           - else
             = render partial: 'logged_out_dropdown'
 
-    #locations-menu-wrapper{style: "display: none;"}
+    #locations-menu-wrapper.locations-menu-wrapper{style: "display: none;"}
       #locations-menu
         - adv_regions.each_with_index do |r, i|
           - if adv_count(r) > 0
@@ -79,7 +79,11 @@
   var loaded = 0;
 
   $('html').click(function(e){
-    if (e.target.id && e.target.id == "find-adventures") {
+    if ((e.target.id && e.target.id == "find-adventures") || e.target.id == "homepage-explore") {
+      if (e.target.id == "homepage-explore") {
+        $('#find-adventures').click();
+      }
+
       return;
     }
     else {
@@ -89,6 +93,7 @@
 
   $('#find-adventures').click(function(){
     $('#locations-menu-wrapper').toggle()
+
     // initialize
     if(loaded == 0){
       loaded = 1
