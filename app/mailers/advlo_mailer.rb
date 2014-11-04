@@ -267,13 +267,13 @@ class AdvloMailer < ActionMailer::Base
     end
   end
 
-  def market_host_outreach(skill, name, location, email)
+  def market_host_outreach(name, location, email, cert)
     @name = name
     @email = email
-    @skill = skill
     @location = location
+    @cert = cert
 
-    mail(to: @email, from: 'christopher@advlo.com', subject: "[ADVLO] : Adventure Guide platform", bcc: 'christopher@advlo.com') do |format|
+    mail(to: @email, from: 'founders@advlo.com', subject: "[ADVLO] : Adventure Guide platform") do |format|
       format.html { render layout: 'simple' }
       format.text
     end
