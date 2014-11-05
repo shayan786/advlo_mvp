@@ -20,7 +20,10 @@
 
 
     #explanation
-      Connect with local hosts to create and book unique adventure travel experiences
+      Travel with Advlo, Adventure with Locals
+      %hr
+      .small
+        Connect to unique local adventures or host your own travel experiences
 
 
     - if notice
@@ -36,6 +39,8 @@
     
     - if current_user
       .btn.btn-success#homepage-explore Explore
+      %a.btn.btn-success#homepage-explore-mobile{href: "/adventures/#{Adventure.approved.last.slug}"} Explore
+
 
 
     - else  
@@ -65,37 +70,29 @@
       %a
         .bottom
 
-  %a.mobile-content-link-wrapper{href: "/adventures/#{adv.slug}"}
-    .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-    .adv_copy
-      = adv.title
-      %br
-      with
-      = adv.users.first.get_first_name
+  - if current_user
+    %a.mobile-content-link-wrapper-logged-in{href: "/adventures/#{adv.slug}"}
+      .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
+      .adv_copy
+        = adv.title
+        %br
+        with
+        = adv.users.first.get_first_name
+  - else
+    %a.mobile-content-link-wrapper{href: "/adventures/#{adv.slug}"}
+      .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
+      .adv_copy
+        = adv.title
+        %br
+        with
+        = adv.users.first.get_first_name
 
 
 :javascript
   $('#arrow-wrapper').click(function(){
     $('html, body').animate({
-       scrollTop: $("#how_it_works").offset().top}, 800
+       scrollTop: $("#how_it_works").offset().top + 5}, 800
     )
-  })
-  
-  $('.homepage_fb_btn').hover(function(){
-    $(this).css('background','rgba(40, 94, 142, 1)')
-  },function(){
-    $(this).css('background','rgba(40, 94, 142, 0.8)')
-  })
-  $('.homepage_email_btn').hover(function(){
-    $(this).css('background','rgba(195, 91, 38, 1)')
-  },function(){
-    $(this).css('background','rgba(195, 91, 38, 0.8)')
-  })
-
-  $('.sign_up_btn').hover(function(){
-    $(this).css('background','rgba(195, 91, 38, 1)')
-  },function(){
-    $(this).css('background','rgba(195, 91, 38, 0.8)')
   })
   
 
@@ -112,10 +109,6 @@
         hero.css('-webkit-transform','translateY(' + (s/6) + 'px');    
         hero.css({'opacity' : (1 - s/1500)});
       })
-    }
-
-    if($(window).width() < 780){
-      $('#homepage-explore').hide();
     }
 
   });

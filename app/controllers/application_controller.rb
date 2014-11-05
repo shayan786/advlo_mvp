@@ -55,6 +55,7 @@ class ApplicationController < ActionController::Base
       return
     end
 
+    
     session[:previous_url]
   end
 

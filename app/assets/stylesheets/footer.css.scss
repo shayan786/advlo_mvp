@@ -103,10 +103,11 @@
 
 		h4 {
 			line-height: 20px;
-			font-family: 'cabin_regular' !important;
-			letter-spacing: 1.5px;
-			font-size: 20px;
-
+			font-family: 'bebas_neue' !important;
+			letter-spacing: 3px;
+			font-size: 17px;
+			float: left;
+			width: 100%;
 			float: left;
 			width: 100%;
 		}
@@ -321,8 +322,8 @@
 	}
 
 	.social-row {
-		margin-top: 5px;
-		margin-bottom: 5px;
+		margin-top: 10px;
+		margin-bottom: 10px;
 
 		a:hover {
 			opacity: 0.6;

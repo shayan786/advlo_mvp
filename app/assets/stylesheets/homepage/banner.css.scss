@@ -82,6 +82,10 @@
       color: #FFF;
       margin-top: 50px !important;
       margin-bottom: 15px;
+
+      .small {
+        font-size: 66%;
+      }
     }
   }
 
@@ -120,6 +124,12 @@
       font-size: 1.6em;
       padding: 11px 16px 7px 16px;
     }
+    #homepage-explore-mobile {
+      @extend #homepage-explore;
+      display: none;
+      width: 150px;
+      margin: 0 auto;
+    }
 
     .advlo-signup {
       position: relative;
@@ -137,7 +147,6 @@
         width: 40%;
         max-width: 300px;
         min-width: 250px;
-        border: 1px solid #fff;
       }
 
       .homepage_email_btn, .sign_up_btn {
@@ -219,7 +228,7 @@
   }
 }
 
-.mobile-content-link-wrapper {
+.mobile-content-link-wrapper, .mobile-content-link-wrapper-logged-in {
   @extend .adventure-link-wrapper;
 
   display: none;
@@ -242,6 +251,11 @@
   }
   .mobile-content-link-wrapper {
     display: block;
+    bottom: 20px;
+  }
+
+  .mobile-content-link-wrapper-logged-in {
+    display: block;
     bottom: 90px;
   }
 }
@@ -250,12 +264,12 @@
 @media screen and (max-width: 500px){
   .scroll-slow #homepage-text {
     position: relative;
-    top: 100px;
+    top: 20px;
     font-size: 75%;
   }
 
   #arrow-wrapper {
-    margin-top: 85px;
+    margin-top: 25px;
   }
 
   .explanation-row {
@@ -372,6 +386,14 @@
 }
 
 @media screen and (max-width: 768px){
+
+  .scroll-slow .explanation-row #homepage-explore-mobile {
+    display: block !important;
+  }
+
+  .scroll-slow .explanation-row #homepage-explore {
+    display: none;
+  }
 
   .jumbotron_fix span.large_text {
     font-size: 2.8em !important;

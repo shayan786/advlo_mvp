@@ -1,0 +1,104 @@
+#bottom-login
+  .container.join-text.text-center
+    JOIN ADVLO AS A
+
+  #pre-check-homepage
+    - if current_user
+      %a.btn.btn-default.pre-check#travel{href: '/users/edit'}
+        %p Traveler
+
+      %a.btn.btn-default.pre-check#host{href: '/adventures/info'}
+        %p Partner
+
+    - else
+
+      .btn.btn-default.pre-check#travel.travel-signup-toggle
+        %p Traveler
+      .btn.btn-default.pre-check#host.host-signup-toggle
+        %p Partner
+
+
+    .block.block-travel
+      .bottom-signup-text
+        Build Advlo's community of travelers and
+        %br
+        get updates on your favorite adventures
+
+      .advlo-signup-bottom
+        %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
+          %i.fa.fa-facebook-square
+          connect
+            
+
+        %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form_travel'}
+          = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => false)
+          .form-group
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+          .form-group
+            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
+          .form-group
+            %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
+          %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "JOIN"}
+
+        .row
+          .homepage_login_bottom_travel.homepage_email_btn
+            email
+
+    .block.block-partner
+      .bottom-signup-text
+        Join for free and start hosting
+        %br
+        the Adventures you create
+
+      .advlo-signup-bottom
+        %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
+          %i.fa.fa-facebook-square
+          connect
+            
+
+        %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal_traveler', class: 'homepage_login_form_host'}
+          = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => false)
+          .form-group
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+          .form-group
+            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
+          .form-group
+            %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
+          %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "JOIN"}
+
+        .row
+          .homepage_login_bottom_host.homepage_email_btn
+            email
+
+      .advlo-signup-bottom
+        %a.btn.btn-host{href: "/adventures/info"}
+          %i.fa.fa-area-chart
+          Learn More
+
+      
+
+:javascript
+  $('.travel-signup-toggle').click(function(){
+    $('.block-partner').hide()
+    $('.block-travel').fadeIn()
+    $(this).addClass('active')
+    $('#host').removeClass('active')
+  })
+
+  $('.host-signup-toggle').click(function(){
+    $(this).addClass('active')
+    $('#travel').removeClass('active')
+    $('.block-travel').hide()
+    $('.block-partner').fadeIn()
+  })
+
+  $('.homepage_login_bottom_travel').click(function(){
+    $('.homepage_login_form_travel').fadeIn();
+    $(this).hide();
+  })
+  $('.homepage_login_bottom_host').click(function(){
+    $('.homepage_login_form_host').fadeIn();
+    $(this).hide();
+  })

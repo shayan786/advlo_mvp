@@ -263,6 +263,30 @@ function footerInit(){
     $('#arrow-wrapper').hide()
   })
 
+  $('.homepage_login_bottom').click(function(){
+    $('.homepage_login_form_bottom').fadeIn();
+    $(this).hide();
+    $('#arrow-wrapper').hide()
+  })
+
+
+  $('.homepage_fb_btn').hover(function(){
+    $(this).css('background','rgba(40, 94, 142, 1)')
+  },function(){
+    $(this).css('background','rgba(40, 94, 142, 0.8)')
+  })
+  $('.homepage_email_btn').hover(function(){
+    $(this).css('background','rgba(195, 91, 38, 1)')
+  },function(){
+    $(this).css('background','rgba(195, 91, 38, 0.8)')
+  })
+
+  $('.sign_up_btn').hover(function(){
+    $(this).css('background','rgba(195, 91, 38, 1)')
+  },function(){
+    $(this).css('background','rgba(195, 91, 38, 0.8)')
+  })
+
 
   $('.question').click(function(){
     $('.question-wrapper').hide()

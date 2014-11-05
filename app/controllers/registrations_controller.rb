@@ -113,15 +113,22 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
+
     @user.referrer_id = session[:referrer_id]
     @user.save
+
+    if params[:user][:is_guide]
+      @user.is_guide = params[:user][:is_guide]
+      @user.save
+    end
 
     if session[:referrer_id]
       User.find(session[:referrer_id]).update_referral_count
       session[:referrer_id] = nil
     end
 
-    session[:previous_url]
+    # session[:previous_url]
+    '/users/edit'
   end
   # Customize Signing Up Devise Params
   #def sign_up_params

@@ -18,3 +18,181 @@ h1 {
 }
 
 
+.join-text {
+  font-family: 'bebas_neue' !important;
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 6px;
+  margin-top: 15px;
+  float: left;
+  text-align: center;
+  width: 100%;
+  text-shadow: 1px 1px 3px #fff;
+}
+
+.block {
+  display: none;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+#bottom-login {
+  background-image: asset-url("background/advlo_beach.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  float: left;
+  width: 100%;
+
+
+  .advlo-signup-bottom {
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+
+
+    .homepage_fb_btn {
+      margin-top: 25px;
+      font-size: 1.6em;
+      background-color: transparent;
+      background: rgba(40, 94, 142, 0.8);
+      font-family: 'bebas_neue_book';
+      letter-spacing: 2px;
+      width: 40%;
+      padding-top: 15px;
+      max-width: 300px;
+      min-width: 250px;
+    }
+
+    .homepage_email_btn, .sign_up_btn {
+      border-radius: 3px;
+      cursor: pointer;
+      background-color: transparent;
+      background: rgba(0, 0, 0, 0.3);
+
+      background: rgba(195, 91, 38, 0.8);
+      border-color: rgba(195, 91, 38, 1);
+      border: 1px solid rgba(195, 91, 38, 1);
+      margin: 0 auto;
+      margin-top: 10px;
+
+      height: 35px;
+      color: #fff;
+      font-family: 'bebas_neue_book';
+      font-size: 17px;
+      letter-spacing: 4px;
+      padding-top: 5px;
+      width: 40%;
+      max-width: 300px;
+      min-width: 250px;
+    }
+
+    .sign_up_btn {
+      max-width: 300px;
+      width: 100%;
+      font-family: 'bebas_neue_book' !important;
+      font-size: 17px; 
+    }
+  }
+
+  .homepage_login_form_host, .homepage_login_form_travel {
+    display: none;
+    opacity: 0.8;
+    width: 40%;
+    max-width: 300px;
+    min-width: 250px;
+    margin: 0 auto;
+    margin-top: 15px;
+
+    .sign_up_btn {
+      max-width: 300px;
+      min-width: 250px;
+    }
+  }
+
+  .bottom-signup-text {
+    width: 100%;
+    margin: 0 auto;
+    text-shadow: -1px -1px 5px #fff;
+    font-size: 1em;
+    color: #333333;
+    margin-bottom: 5px;
+    float: left;
+    text-align: center;
+  }
+
+
+  #pre-check-homepage {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+
+    .btn {
+      border: none;
+    }
+
+    .pre-check {
+      width: 175px;
+      height: 50px;
+      margin: 10px;
+      color: #fff;
+
+      p { 
+        margin-top: 6px;
+        font-family: 'bebas_neue' !important;
+        font-size: 20px;
+        letter-spacing: 2px;
+      }
+    }
+    .pre-check:hover {
+      opacity: 0.6;
+    }
+
+    #travel {
+      background: transparent;
+      border: 2px solid $advlo_orange;
+      color: #000;
+    }
+    #host {
+      background: transparent;
+      border: 2px solid $advlo_green;
+      color: #000;
+    }
+  }
+
+  .block-partner {
+    .btn-host{
+      margin-top: 25px;
+      font-size: 1.6em;
+      background: transparent;
+      padding: 10px;
+      font-family: 'bebas_neue_book';
+      letter-spacing: 2px;
+      width: 200px;
+      color: #333333;
+      padding-top: 15px;
+      text-shadow: -1px -1px 9px #fff;
+    }
+    a {
+      color: #fff;
+      &:hover {
+        color: #333333;
+        opacity: 0.8;
+        text-shadow: -1px -1px 4px #fff;
+      }   
+    }
+  }
+
+  .active {
+    opacity: 0.6;
+  }
+}
