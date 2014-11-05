@@ -270,11 +270,7 @@ function footerInit(){
   })
 
 
-  $('.homepage_fb_btn').hover(function(){
-    $(this).css('background','rgba(40, 94, 142, 1)')
-  },function(){
-    $(this).css('background','rgba(40, 94, 142, 0.8)')
-  })
+  
   $('.homepage_email_btn').hover(function(){
     $(this).css('background','rgba(195, 91, 38, 1)')
   },function(){

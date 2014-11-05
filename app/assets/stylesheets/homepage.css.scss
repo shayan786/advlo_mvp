@@ -158,12 +158,12 @@ h1 {
     }
 
     #travel {
-      background: transparent;
+      background: rgba(255,255,255, 0.3);
       border: 2px solid $advlo_orange;
       color: #000;
     }
     #host {
-      background: transparent;
+      background: rgba(255,255,255, 0.3);
       border: 2px solid $advlo_green;
       color: #000;
     }
@@ -181,14 +181,6 @@ h1 {
       color: #333333;
       padding-top: 15px;
       text-shadow: -1px -1px 9px #fff;
-    }
-    a {
-      color: #fff;
-      &:hover {
-        color: #333333;
-        opacity: 0.8;
-        text-shadow: -1px -1px 4px #fff;
-      }   
     }
   }
 
