@@ -25,7 +25,7 @@ en:
         subject: "Unlock Instructions"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Welcome to Advlo <br> Earn credit by <a href='/travel-fund'> inviting </a> and update your <a href='/users/edit'> adventure preferences </a>"
+      success: "Welcome to Adventure Local: <br> update your <a href='/users/edit'> click here to begin </a>"
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
