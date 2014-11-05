@@ -21,9 +21,10 @@
 
     #explanation
       Connect with locals to find unique adventure travel experiences
-      %hr
-      .small
-        Join for free and explore local adventures
+      - if !current_user
+        %hr
+        .small
+          Join for free and explore local adventures
 
         
 
@@ -96,6 +97,14 @@
        scrollTop: $("#how_it_works").offset().top + 5}, 800
     )
   })
+
+  $('.homepage_fb_btn').on('click', function() {
+    ga('send', 'event', 'button', 'click', 'homepage-facebook-signup');
+  });
+
+  $('.homepage_email_btn').on('click', function() {
+    ga('send', 'event', 'button', 'click', 'homepage-email-signup');
+  });
   
 
   $(document).ready(function(){
@@ -112,5 +121,5 @@
         hero.css({'opacity' : (1 - s/1500)});
       })
     }
-
   });
+

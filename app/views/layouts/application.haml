@@ -2,6 +2,8 @@
 %html
   %head
     %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}
+    - if Rails.env.production?
+      = render partial: 'shared/google_analytics'
     = display_meta_tags
     = favicon_link_tag 'advlo_favicon.ico'  
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
@@ -23,8 +25,7 @@
       = yield
     = render partial: 'shared/footer'
 
-    - if Rails.env.production?
-      = render partial: 'shared/google_analytics'
+
 
 
 :javascript
