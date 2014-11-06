@@ -1,77 +1,78 @@
-#footer
-  .container.text-center
-    .footer_text
-      .row
-        .col-md-12.footer-text
-          %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_form_modal'}
-            CONTACT US
-          .dash= " - " 
-          %a{href: "http://blog.advlo.com/", target: "_blank"}
-            BLOG
-          .dash= " - " 
-          %a{href: "/terms"}
-            TERMS & PRIVACY
-          .dash= " - " 
-          %a{href: "/about"}
-            ABOUT
-          .dash= " - " 
-          %a{href: "/adventures/info"}
-            PARTNER WITH ADVLO
+- if action_name != 'partner_invite'
+  #footer
+    .container.text-center
+      .footer_text
+        .row
+          .col-md-12.footer-text
+            %a{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_form_modal'}
+              CONTACT US
+            .dash= " - " 
+            %a{href: "http://blog.advlo.com/", target: "_blank"}
+              BLOG
+            .dash= " - " 
+            %a{href: "/terms"}
+              TERMS & PRIVACY
+            .dash= " - " 
+            %a{href: "/about"}
+              ABOUT
+            .dash= " - " 
+            %a{href: "/adventures/info"}
+              PARTNER WITH ADVLO
 
-      .row
-        .col-md-12.social-row
-          %a{href: "http://www.facebook.com/advlo", target: "_blank"}
-            = image_tag asset_path('facebook.png')
-          %a{href: "http://www.twitter.com/advlo_", target: "_blank"}
-            = image_tag asset_path('twitter.png')
-          %a{href: "https://plus.google.com/+Advlo-Adventure-Local", target: "_blank"}
-            = image_tag asset_path('googleplus.png')
-          %a{href: "http://www.instagram.com/advlo", target: "_blank"}
-            = image_tag asset_path('instagram.png')
-        
+        .row
+          .col-md-12.social-row
+            %a{href: "http://www.facebook.com/advlo", target: "_blank"}
+              = image_tag asset_path('facebook.png')
+            %a{href: "http://www.twitter.com/advlo_", target: "_blank"}
+              = image_tag asset_path('twitter.png')
+            %a{href: "https://plus.google.com/+Advlo-Adventure-Local", target: "_blank"}
+              = image_tag asset_path('googleplus.png')
+            %a{href: "http://www.instagram.com/advlo", target: "_blank"}
+              = image_tag asset_path('instagram.png')
+          
 
-  - unless current_user
-    = render partial: 'application/sign_up_please.haml'
-    = render partial: 'application/member_modal.haml'
-
-
-  #contact_form_modal.modal.fade{role: "dialog"}
-    .modal-dialog
-      .modal-content
-        .modal-header.text-center
-          Contact Advlo
-        .modal-body
-          %form{"accept-charset" => "UTF-8", action: "/contact", method: "POST", id: "contact_form", "data-remote" => "true"}
-            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            - if current_user
-              = tag(:input, :type => "hidden", :name => "contact[user_id]", :value => current_user.id)
-
-            .form-group.row
-              .col-md-4 
-                .form_label.text-right Email *
-              .col-md-6
-                %input.form-control{type: "text", name: "contact[email]", id: "contact_email", class: "email-field", value: current_user ? current_user.email : ''}
-
-            .form-group.row
-              .col-md-4 
-                .form_label.text-right Message *  
-              .col-md-6
-                %textarea.form-control{rows: "7", type: "text", name: "contact[comments]", id: "contact_comments"}
-            #honeypot
-              %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
-              
-            .row.text-center
-              .btn.btn-primary.contact_btn
-                SUBMIT
+    - unless current_user
+      = render partial: 'application/sign_up_please.haml'
+      = render partial: 'application/member_modal.haml'
 
 
-          #contact_submitted
-            .row.text-center
-              .col-md-10.col-md-offset-1
-                %i.fa.fa-envelope-o
-                %p{style: 'font-size: 20px;'}
-                  %br
-                  Thanks for reaching out to us.
-                  %br
-                  We will get back to you as soon as we can!
-  
+    #contact_form_modal.modal.fade{role: "dialog"}
+      .modal-dialog
+        .modal-content
+          .modal-header.text-center
+            Contact Advlo
+          .modal-body
+            %form{"accept-charset" => "UTF-8", action: "/contact", method: "POST", id: "contact_form", "data-remote" => "true"}
+              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+              - if current_user
+                = tag(:input, :type => "hidden", :name => "contact[user_id]", :value => current_user.id)
+
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right Email *
+                .col-md-6
+                  %input.form-control{type: "text", name: "contact[email]", id: "contact_email", class: "email-field", value: current_user ? current_user.email : ''}
+
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right Message *  
+                .col-md-6
+                  %textarea.form-control{rows: "7", type: "text", name: "contact[comments]", id: "contact_comments"}
+              #honeypot
+                %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
+                
+              .row.text-center
+                .btn.btn-primary.contact_btn
+                  SUBMIT
+
+
+            #contact_submitted
+              .row.text-center
+                .col-md-10.col-md-offset-1
+                  %i.fa.fa-envelope-o
+                  %p{style: 'font-size: 20px;'}
+                    %br
+                    Thanks for reaching out to us.
+                    %br
+                    We will get back to you as soon as we can!
+    

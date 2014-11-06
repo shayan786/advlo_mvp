@@ -127,9 +127,10 @@ class UsersController < ApplicationController
 
   def invite
     if !user_signed_in?
-      redirect_to '/travel-fund/0b96c3'
+      redirect_to '/travel-fund/04ca4b'
     end
   end
+
 
   def unsubscribe
     signature = params[:signature]

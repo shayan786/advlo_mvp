@@ -97,10 +97,23 @@ class RegistrationsController < Devise::RegistrationsController
     redirect_to "/users/edit"
   end
 
+  def partner_invite
+    if user_signed_in?
+      redirect_to '/', notice: "<a href='/travel-fund'> Logged in: Invite partners to Advlo to earn money</a>" 
+    else
+      @referrer = User.find_by_email('founders@advlo.com')
+      session[:referrer_id] = @referrer.id if @referrer
+
+      build_resource({})
+      respond_with self.resource
+    end
+
+  end
+
   def referral_sign_up
     # Make sure user is not signed up
     if user_signed_in?
-      redirect_to '/', notice: "<a href='/travel-fund'>Now you can invite your friends and add to your own travel fund!</a>" 
+      redirect_to '/', notice: "<a href='/travel-fund'> Logged in: Invite friends to Advlo to earn money</a>" 
     else
       @referrer = User.find_by_referral_code(params[:referral_code])
       session[:referrer_id] = @referrer.id if @referrer

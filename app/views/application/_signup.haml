@@ -85,20 +85,22 @@
     $('.block-travel').fadeIn()
     $(this).addClass('active')
     $('#host').removeClass('active')
+    window.scrollTo(0, $(document).height());
   })
 
-  $('.host-signup-toggle').click(function(){
+  $('.host-signup-toggle').click(function(){    
     $(this).addClass('active')
     $('#travel').removeClass('active')
     $('.block-travel').hide()
     $('.block-partner').fadeIn()
+    window.scrollTo(0, $(document).height());
   })
 
   $('.homepage_login_bottom_travel').click(function(){
     $('.homepage_login_form_travel').fadeIn();
     $(this).hide();
   })
-  
+
   $('.homepage_login_bottom_host').click(function(){
     $('.homepage_login_form_host').fadeIn();
     $(this).hide();

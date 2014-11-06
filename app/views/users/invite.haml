@@ -11,16 +11,9 @@
   .container
     .panel.panel-default
       .panel-body
-        .invite_profit_container
-          .btn.btn-default.number_btn
-            Invite
-          %i.fa.fa-long-arrow-right
-          .btn.btn-default.number_btn
-            Profit
-        
         .row
           .col-md-8.col-md-offset-2.text-center.number_1_text
-            Share your personal travel-fund link with your friends
+            Share your personal invite link and be rewarded
 
         .row
           .col-md-6.col-md-offset-3.text-center.referral_link
@@ -54,7 +47,7 @@
               - elsif (5-referral_count) == 5
                 If any
                 = 5 - referral_count
-                friends sign-up, you get:
+                referrals sign-up, you get:
               - else
                 = 5 - referral_count
                 more referral sign-ups till you get:
