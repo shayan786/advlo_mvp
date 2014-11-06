@@ -8,7 +8,7 @@
 .homepage-photo.jumbotron.jumbotron_fix{:style => "background: url('#{image_path image}') center center no-repeat"}
 
 .scroll-slow
-  %a.adventure-link-wrapper{href: "/adventures/#{adv.slug}"}
+  %a.adventure-link-wrapper#featured-homepage-adventure{href: "/adventures/#{adv.slug}"}
     .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
     .adv_copy
       = adv.title
@@ -50,7 +50,7 @@
       .col-md-12.signup-row
         .advlo-signup
           .row
-            %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
+            %a.btn.btn-primary.homepage_fb_btn#fb-top-signup{href: "/users/auth/facebook"}
               %i.fa.fa-facebook-square
               connect
               
@@ -63,10 +63,10 @@
               %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
             .form-group
               %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
-            %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "JOIN"}
+            %input.btn.btn-primary.sign_up_btn#submit-email-login{name: "sign_up", type: "submit", value: "JOIN"}
 
           .row
-            .homepage_login.homepage_email_btn
+            .homepage_login.homepage_email_btn#email-login
               email
 
     #arrow-wrapper
@@ -97,14 +97,6 @@
        scrollTop: $("#how_it_works").offset().top + 5}, 800
     )
   })
-
-  $('.homepage_fb_btn').on('click', function() {
-    ga('send', 'event', 'button', 'click', 'homepage-facebook-signup');
-  });
-
-  $('.homepage_email_btn').on('click', function() {
-    ga('send', 'event', 'button', 'click', 'homepage-email-signup');
-  });
   
 
   $(document).ready(function(){

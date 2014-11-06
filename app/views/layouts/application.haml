@@ -2,8 +2,6 @@
 %html
   %head
     %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}
-    - if Rails.env.production?
-      = render partial: 'shared/google_analytics'
     = display_meta_tags
     = favicon_link_tag 'advlo_favicon.ico'  
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
@@ -12,9 +10,10 @@
     = tag :meta, :name => 'stripe-key', :content => Rails.configuration.stripe[:publishable_key]
     = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false'
     = javascript_include_tag 'http://google-maps-utility-library-v3.googlecode.com/svn/trunk/maplabel/src/maplabel.js'
-    //= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=#{AIzaSyDvMH_tfRIWDvPXyox3M6mtMrc2mqVNOKE}'
-
     = csrf_meta_tags
+
+    - if Rails.env.production?
+      = render partial: 'shared/google_analytics'
 
   %body
     #wrapper
@@ -25,6 +24,12 @@
       = yield
     = render partial: 'shared/footer'
 
+
+    - if Rails.env.production?
+      :javascript 
+        $(document).ready(function(){
+          homepageGoogleTracking();
+        })
 
 
 
@@ -37,4 +42,5 @@
 
     signup_cookie()
   }); 
+
 

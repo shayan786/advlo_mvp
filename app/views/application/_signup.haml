@@ -80,14 +80,6 @@
       
 
 :javascript
-  $('.travel-signup-toggle').on('click', function() {
-    ga('send', 'event', 'button', 'click', 'travel-signup');
-  });
-
-  $('.host-signup-toggle').on('click', function() {
-    ga('send', 'event', 'button', 'click', 'host-signup');
-  });
-
   $('.travel-signup-toggle').click(function(){
     $('.block-partner').hide()
     $('.block-travel').fadeIn()
@@ -106,6 +98,7 @@
     $('.homepage_login_form_travel').fadeIn();
     $(this).hide();
   })
+  
   $('.homepage_login_bottom_host').click(function(){
     $('.homepage_login_form_host').fadeIn();
     $(this).hide();
