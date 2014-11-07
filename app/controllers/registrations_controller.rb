@@ -107,7 +107,18 @@ class RegistrationsController < Devise::RegistrationsController
       build_resource({})
       respond_with self.resource
     end
+  end
 
+  def hostel_invite
+    if user_signed_in?
+      redirect_to '/', notice: "<a href='/travel-fund'> Logged in: Invite partners to Advlo to earn money</a>" 
+    else
+      @referrer = User.find_by_email('jon@advlo.com')
+      session[:referrer_id] = @referrer.id if @referrer
+
+      build_resource({})
+      respond_with self.resource
+    end
   end
 
   def referral_sign_up

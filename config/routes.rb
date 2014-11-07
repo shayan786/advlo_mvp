@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     #Sign up with referral show page
     get 'travel-fund'                 => 'users#invite' 
+    get 'hostel'                      => 'registrations#hostel_invite' 
     get 'partner'                     => 'registrations#partner_invite' 
     get '/travel-fund/:referral_code' => 'registrations#referral_sign_up'
   end

@@ -19,6 +19,7 @@
   }
 
   .adventure_info_body {
+
   	padding-bottom: 20px;
 
     .border {
@@ -36,7 +37,9 @@
   	}
 
   	h2 {
-  		margin-top: 30px;
+      margin-top: 20px;
+  		margin-bottom: 20px;
+
   		font-family: cabin_bold !important;
   		font-size: 3.2em;
       text-align: center;
@@ -106,6 +109,10 @@
     width: 65%;
     margin: 0 auto;
     margin-top: 30px;
+  }
+
+  .matrix_content {
+    width: 100%;
   }
 } 
 

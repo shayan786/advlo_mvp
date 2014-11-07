@@ -6,23 +6,65 @@
     .container
       .row.text-center
         .col-md-8.host_info_text.col-md-offset-2
-          Connect with travelers, promote your trips and sell the adventures you create
+          Connect with travelers, promote your trips, and sell the adventures you create
       .row.text-center
         .col-md-6.col-md-offset-3
           %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill"} HOST AN ADVENTURE
   .adventure_info_body
     .white_background
+      %h2
+        WHY BE AN ADVLO HOST?
+      .body_content
+        .why-container
+          = "Sell adventure activities & receive global payments"
+        .why-container
+          = "Promote yourself & your adventures through custom webpages"
+        .why-container
+          = "Access Advlo's global network of travelers"
+        .why-container
+
+    .gray_background
       .container
-
         %h2
-          HOW IT WORKS
+          HOSTS HAVE ACCESS TO:
 
-        .body_content
-          All Advlo adventures include two of these three aspects: 
-          %br
-          physical activity, interaction with nature, and cultural learning or exchange.
-          %br
+        .col-md-8.col-md-offset-2
+          .row.matrix_header
+            RESERVATION SYSTEM
+          .row.matrix_content
+            Accept global credit card payments through
+            %a{href: 'https://stripe.com/global'}
+              Stripe's
+            secure processing framework, which is completely
+            %a{href: 'https://stripe.com/us/features'} PCI compliant.
+            Receive payments through direct deposit to a bank account if you live in a
+            %a{href: 'https://stripe.com/global'} 
+              Stripe supported country,
+            or choose to recieve payouts via
+            %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide'} PayPal.
 
+
+        .col-md-8.col-md-offset-2
+          .row.matrix_header
+            MARKETING & PROMOTION
+          .row.matrix_content
+            We'll create custom web pages for you and each of your adventures with high resolution gallery images & videos, itineraries, maps, and booking information. Easily promote & share your pages on social media, email, or your exisiting website. 
+         
+
+        .col-md-8.col-md-offset-2
+          .row.matrix_header
+            ADDITIONAL TOOLS
+          .row.matrix_content
+            Message directly with travelers, receive booking requests, and customize adventures.
+            Easily manage & edit your adventures and let us handle SEO & website hosting.
+
+      .gray_background
+        #how_it_works
+          .container
+            .embed-container
+              %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/104138173", :webkitallowfullscreen => ""}
+
+      .gray_background
         .row
           .col-md-4.col-md-offset-1
             .matrix_header HOST FOR FREE
@@ -42,93 +84,31 @@
               PER ADVENTURE / MONTH
               %br
               NO COMMISSION
-
-    .gray_background
-      #how_it_works
-        .container
-          .embed-container
-            %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/104138173", :webkitallowfullscreen => ""}
+        
 
 
     .border
-    .white_background
-      .container
-        %h2
-          WHY BE A HOST
-        .col-md-4.col-md-offset-1
-          .row.matrix_header
-            MEET AMAZING PEOPLE
-          .row.matrix_content
-            Connect with like-minded people 
-            %br
-            from all over the world, and find out about local adventure activities before travelling 
-            %br
-            to a new destination.
-
-          .row.matrix_header
-            SHARE WHAT YOU LOVE
-          .row.matrix_content
-            Expose travelers to more than just tourist spots. Help shape how travelers experience and perceive your community and culture.
-
-        .col-md-2
-
-        .col-md-4
-          .row.matrix_header
-            RECEIVE PAYMENTS
-          .row.matrix_content
-            Whether you’re an avid kayaker, 
-            %br
-            climber or biker, you can earn money by putting your passion and skills to use and doing what you love.
-
-          .row.matrix_header
-            RESPOND TO REQUESTS
-          .row.matrix_content
-            Receive requests from Travelers who are coming to your town and customize adventures. Offer your services and determine your compensation.
-    
-    .border
     .gray_background
       .container
-        %h2
-          HOSTS HAVE ACCESS TO
-        .col-md-4.col-md-offset-1
-          .row.matrix_header
-            GLOBAL TRANSACTIONS
-          .row.matrix_content
-            We accept global credit card payments through
-            %a{href: 'https://stripe.com/global'}
-              Stripe's
-            secure processing framework, and are completely
-            %a{href: 'https://stripe.com/us/features'} PCI compliant.
-            
-
-            
-
-          .row.matrix_header
-            MARKETING & PROMOTION
-          .row.matrix_content
-            Connect with the right adventure travel audiences by letting us handle SEO. Become a featured Host and easily promote & share your page through social media.
-
-        .col-md-2
-
-        .col-md-4
-          .row.matrix_header
-            DIRECT PAYMENTS
-          .row.matrix_content
-            Choose direct deposit to a bank account
-            if you live in a 
-            %a{href: 'https://stripe.com/global'} 
-              Stripe supported country,
-            or choose to recieve payouts via paypal
-            in a
-            %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide'} PayPal supported country.
-            
-
-          .row.matrix_header
-            FLEXIBLE SCHEDULE
-          .row.matrix_content
-            With our simple scheduling and booking process, you decide when to offer your adventures and when to accept a request. Set your own schedule. Be your own boss.
+  
 
     .white_background{style: 'border-bottom: 2px solid #666666;'}
       .row.text-center
         .col-md-6.col-md-offset-3
           %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: 'margin-bottom: 15px;'} HOST AN ADVENTURE
+
+:javascript 
+  var start_src = "https://player.vimeo.com/video/104138173?title=0&portrait=0&byline=0&badge=0&autoplay=1";
+  var stop_src = ""
+
+  // On show play video
+  $('#video-modal').on('show.bs.modal', function(e) {
+    console.log('show')
+    $(this).find('iframe').attr('src',start_src);
+  })
+
+  // On hide stop video
+  $('#video-modal').on('hide.bs.modal', function(e) {
+    console.log('hide')
+    $(this).find('iframe').attr('src',stop_src);
+  })

@@ -14,7 +14,7 @@ class AdvloMailer < ActionMailer::Base
   # USER EMAILS:---------------------------------------------------------------------------------------------------------------------
   def welcome_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Welcome to ADVLO')
+    mail(to: @user.email, subject: 'Welcome to ADVLO', from: "founders@advlo.com")
   end
 
   # HOST EMAILS:---------------------------------------------------------------------------------------------------------------------

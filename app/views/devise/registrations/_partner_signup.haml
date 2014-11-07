@@ -1,0 +1,22 @@
+.panel-body.text-center
+  .d_error_msgs= devise_error_messages!
+  %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form"}
+    %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook?referrer_id=#{@referrer.id}"}
+      %i.fa.fa-facebook
+      Sign Up with Facebook
+    =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+    =tag(:input, :type => "hidden", :name => "user[referrer_id]", :value => @referrer.id)
+    =tag(:input, :type => "hidden", :name => "user[is_guide]", :value => true)
+    .partner-email-signup-toggle.btn.btn-primary.sign_up_btn 
+      %i.fa.fa-keyboard-o{style: 'margin-right: 10px;'}
+      Sign Up with Email
+
+    .partner-email-signup
+      .form-group
+        %input.form-control{placeholder: "Partner Email", type: "email", required: "required", name: "user[email]", id: "user_email"}
+      .form-group
+        %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
+      .form-group
+        %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
+      %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "Sign Up"}
+  %a.partner-homepage-link{href: '/', style: 'color: #fff;', target: '_blank'} EXPLORE ADVLO

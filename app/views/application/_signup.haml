@@ -25,7 +25,7 @@
         get updates on your favorite adventures
 
       .advlo-signup-bottom
-        %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
+        %a.btn.btn-primary.homepage_fb_btn#bottom_traveler_fb_signup{href: "/users/auth/facebook"}
           %i.fa.fa-facebook-square
           connect
             
@@ -39,7 +39,7 @@
             %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
           .form-group
             %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
-          %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "JOIN"}
+          %input.btn.btn-primary.sign_up_btn#travel_email_signup{name: "sign_up", type: "submit", value: "JOIN"}
 
         .row
           .homepage_login_bottom_travel.homepage_email_btn
@@ -52,7 +52,7 @@
         the Adventures you create
 
       .advlo-signup-bottom
-        %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
+        %a.btn.btn-primary.homepage_fb_btn#bottom_host_fb_signup{href: "/users/auth/facebook"}
           %i.fa.fa-facebook-square
           connect
             
@@ -66,7 +66,7 @@
             %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
           .form-group
             %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
-          %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "JOIN"}
+          %input.btn.btn-primary.sign_up_btn#host_email_signup{name: "sign_up", type: "submit", value: "JOIN"}
 
         .row
           .homepage_login_bottom_host.homepage_email_btn
@@ -104,4 +104,10 @@
   $('.homepage_login_bottom_host').click(function(){
     $('.homepage_login_form_host').fadeIn();
     $(this).hide();
+  })
+
+  $('.advlo-signup-bottom .homepage_fb_btn').hover(function(){
+    $(this).css('background-color','rgba(40, 94, 142, 1.0)')
+  },function(){
+    $(this).css('background-color','rgba(40, 94, 142, 0.8)')
   })

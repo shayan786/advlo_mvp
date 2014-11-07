@@ -77,10 +77,17 @@
 
   	.body_content {
   		font-size: 1.6em;
-  		padding-bottom: 30px;
+      padding-bottom: 20px;
+  		padding-top: 20px;
       color: white;
       opacity: 0.8;
       text-align: center;
+
+      .why-container {
+        margin: 10px;
+        color: #fff;
+        letter-spacing: 2px;
+      }
   	}
 
   	.body_list {
@@ -88,8 +95,9 @@
   	}
 
   	.matrix_header {
-  		font-family: nexa_light;
-  		font-size: 1.8em;
+  		font-family: bebas_neue;
+  		font-size: 2.8em;
+      letter-spacing: 2px;
   		margin-top: 15px;
   		margin-bottom: 5px;
       text-align: center;
@@ -108,10 +116,11 @@
   	.matrix_content {
   		font-size: 1.4em;
       margin-top: 10px;
+      margin-bottom: 10px;
       color: white;
       opacity: 0.8;
       text-align: center;
-      min-height: 170px;
+      min-height: 120px;
 
       .display_percent {
         font-size: 2.6em;
