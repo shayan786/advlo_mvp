@@ -12,6 +12,7 @@
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
             = tag(:input, :type => "hidden", :name => "adventure[region]", id: "adv_region", "data-geo" => "country_short")
             = tag(:input, :type => "hidden", :name => "adventure_id", id: "adv_id")
+
             .form-group.row
               .col-md-4
                 .form_label.edit-label Title *

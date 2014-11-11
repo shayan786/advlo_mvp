@@ -315,6 +315,9 @@ class AdventuresController < ApplicationController
         @useradventure = @adventure.user_adventures.build(user_id: current_user.id, adventure_id: @adventure.id)
         @useradventure.save
 
+        @adventure.set_host_name
+        @adventure.save
+
         # For updating the region
         continent = get_continent(params[:adventure][:region])
         @adventure.update(region: continent)
