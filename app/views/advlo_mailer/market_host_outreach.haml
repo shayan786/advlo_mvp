@@ -4,20 +4,23 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     %p
-      = "Hello #{@name}."
+      = "Hey #{@name}."
       %p
-        = "I found your email while searching for outdoor guides registered with the A.M.G.A. who are #{@cert} certified. <br> I'm one of the founders of Adventure Local - a global marketplace for adventure travelers.".html_safe
+        = "I found your contact while searching for outdoor guides registered with the A.M.G.A. who are #{@cert} certified. <br> I'm one of the founders of Adventure Local and I thought we may be able to benefit each other.".html_safe
 
+
+      %p  
+        More information here:
+        %a{href:"http://advlo.com/adventures/info"} http://advlo.com/adventures/info
 
       %p
-      %a{href:"http://advlo.com"} http://advlo.com
+        Our platform gives outdoor professionals the ability to upload adventure activities and directly connect with travelers. Our goal is not to be an up-seller platform - but a tool to help make online visibility, international transactions, and creating a global reach easier for local certified guides such as yourself. 
 
       %p
-        Our platform would give you the ability to upload adventure activities and directly connect with travelers. Our goal is not to be an up-seller platform - but a tool to help make online visibility, international transactions, and creating a global reach easier for local certified guides such as yourself. If this sounds interesting I encourage you to join the network so you can click around and see the types of adventures & guides we are already helping to get more visibility. My intention is that it will inspire you to host something in
-        = "#{@location}."
+        If you are interested I'd like to invite you to become a partner
+        
+        = link_to "http://www.advlo.com/partner","http://www.advlo.com/partner"
       %p
-        I look forward to hearing from you, as we are a startup and individual feedback is hugely valuable. Here is an information page to explain Advlo a bit more.
-        = link_to "http://www.advlo.com/adventures/info","http://www.advlo.com/adventures/info"
+        My intention is that it will inspire you to host something in
+        = "#{@location} :)"
 
-
-      
