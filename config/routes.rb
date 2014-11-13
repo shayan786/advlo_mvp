@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
   
   get 'invite/:invite'               => 'adventures#hosting_info'
+  get 'partner'                      => 'adventures#hosting_info'
 
   #contact
   post '/contact'                     => 'application#contact'
