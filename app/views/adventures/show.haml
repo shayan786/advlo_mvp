@@ -80,7 +80,7 @@
   .adventure-copy-wrapper
     - flash.each do |key, value|
       .alert-warning.adv-show-alert.text-center
-        %button.close{"data-dismiss" => "alert", type: "button", style: "left: 50px; position: absolute; font-size: 2.5em;"}
+        %button.close{"data-dismiss" => "alert", type: "button", style: "left: 50px; position: absolute; font-size: 2.5em; top: 3px;"}
           %span{"aria-hidden" => "true"} ×
           %span.sr-only Close
         = value.html_safe
