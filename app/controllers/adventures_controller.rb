@@ -218,6 +218,15 @@ class AdventuresController < ApplicationController
   
   # info page for creating a new adventure
   def hosting_info
+    if params[:invite] == 'partner'
+
+      @referrer = User.find_by_email('founders@advlo.com')
+
+    elsif params[:invite] == 'hostel'
+
+      @referrer = User.find_by_email('jon@advlo.com')
+    end
+
     @hero_image = HeroImage.where(region: 'info').first
   end
 

@@ -7,6 +7,11 @@
 	border-color: $advlo_orange;
 }
 
+.sign_up_btn_bottom {
+	@extend .sign_up_btn;
+	width: 100%;
+}
+
 .sign_up_toggle_btn {
 	@extend .sign_up_btn;
 }
@@ -23,6 +28,8 @@
 }
 
 .partner-email-signup {
+	width: 57%;
+	margin: 0 auto;
 	display: none;
 }
 

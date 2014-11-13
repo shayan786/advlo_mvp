@@ -20,7 +20,7 @@ h1 {
 
 .join-text {
   font-family: 'bebas_neue' !important;
-  color: #000;
+  color: #fff;
   text-align: center;
   font-size: 3em;
   letter-spacing: 6px;
@@ -28,8 +28,15 @@ h1 {
   float: left;
   text-align: center;
   width: 100%;
-  text-shadow: 1px 1px 3px #fff;
+  text-shadow: 1px 1px 6px #000;
 }
+
+@media screen and (max-width: 600px){
+  .join-text {
+    font-size: 1.5em;
+  }
+}
+
 
 .block {
   display: none;

@@ -21,12 +21,6 @@
         ="- Promote your hostel to a global network of travelers"
 
 
+      = render partial: "partner_signup", locals: {referrer: @referrer}
+      
 
-      = render partial: "partner_signup"
-
-
-:javascript
-  $('.partner-email-signup-toggle').click(function(){
-    $(this).hide()
-    $('.partner-email-signup').fadeIn()
-  })

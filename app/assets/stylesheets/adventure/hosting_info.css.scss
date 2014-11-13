@@ -3,6 +3,18 @@
   padding-top: 80px;
 
 
+  #host-signup-bottom {
+    background-image: asset-url("background/advlo_beach.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    float: left;
+    width: 100%;
+    min-height: 150px;
+  }
+  
   .adv_info_btn {
     margin-top: 40px;
     font-size: 1.6em;
@@ -17,12 +29,18 @@
     }
   }
 
+  .invited-by {
+    font-size: 22px;
+    color: #fff;
+    text-shadow: 3px 3px 4px #000;
+  }
+
   .jumbotron {
     min-height: 450px;
   	background-repeat: no-repeat;
   	background-size: cover;
   	background-position: center center;
-  	margin-top: -22px;
+  	margin-top: -25px;
     min-height: 500px;
 
   	.host_info_text {
