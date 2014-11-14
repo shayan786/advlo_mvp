@@ -273,7 +273,7 @@ class AdvloMailer < ActionMailer::Base
     @location = location
     @cert = cert
 
-    mail(to: @email, from: 'founders@advlo.com', subject: "Adventure Travel Marketplace - #{@location} partner") do |format|
+    mail(to: @email, from: 'christopher@advlo.com', subject: "#{@location} partner - Adventure Travel Marketplace") do |format|
       format.html { render layout: 'simple' }
       format.text
     end
