@@ -14,7 +14,15 @@ class AdvloMailer < ActionMailer::Base
   # USER EMAILS:---------------------------------------------------------------------------------------------------------------------
   def welcome_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Welcome to ADVLO', from: "founders@advlo.com")
+    mail(to: @user.email, subject: 'Welcome to Adventure Local', from: "founders@advlo.com")
+  end
+
+  def one_week_email(user)
+    @user = user
+    mail(to: @user.email, from: 'christopher@advlo.com', subject: "Hey #{@user.get_name_or_email} - just checking in") do |format|
+      format.html { render layout: 'simple' }
+      format.text
+    end
   end
 
   # HOST EMAILS:---------------------------------------------------------------------------------------------------------------------

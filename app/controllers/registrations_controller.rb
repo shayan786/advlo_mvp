@@ -123,6 +123,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def referral_sign_up
     # Make sure user is not signed up
+    session[:referrer_id] = @referrer.id if @referrer
+    
     if user_signed_in?
       redirect_to '/', notice: "<a href='/travel-fund'> Logged in: Invite friends to Advlo to earn money</a>" 
     else
@@ -140,6 +142,11 @@ class RegistrationsController < Devise::RegistrationsController
 
     @user.referrer_id = session[:referrer_id]
     @user.save
+
+    if params[:user][:credit]
+      @user.credit = params[:user][:credit]
+      @user.save
+    end
 
     if params[:user][:is_guide]
       @user.is_guide = params[:user][:is_guide]
@@ -161,7 +168,7 @@ class RegistrationsController < Devise::RegistrationsController
  
   # Customize User Profile Update Devise Params
   def account_update_params
-    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :ta_url, :video_url, :email_list, :is_guide, :category => [])
+    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :ta_url, :video_url, :email_list, :is_guide, :credit, :category => [])
   end
 
   # devise override requireing password for update

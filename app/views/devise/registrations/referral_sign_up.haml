@@ -7,7 +7,12 @@
       .referrer_text.text-center
         Invited by:
         %em
-          = @referrer.email
+          = @referrer.get_abbreviated_name_or_email
+      .travel-fund-credit
+        Get 
+        %span= "$5"
+        for joining
+
       .panel-body
         .d_error_msgs= devise_error_messages!
         %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form"}
@@ -16,6 +21,7 @@
             Sign Up with Facebook
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           =tag(:input, :type => "hidden", :name => "user[referrer_id]", :value => @referrer.id)
+          =tag(:input, :type => "hidden", :name => "user[credit]", :value => 5.0)
           .form-group
             %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
           .form-group

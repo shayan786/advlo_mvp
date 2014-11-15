@@ -1,3 +1,22 @@
+.travel-fund-credit {
+	position: relative;
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin-top: 15px;
+	font-family: 'nexa_light';
+	font-size: 25px;
+	margin-bottom: 5px;
+	
+  span {
+  	color: $advlo_green;
+  	font-weight: bold;
+  }
+  i {
+  	font-size: 15px;
+  }
+}
+
 #d_user_dashboard {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -5,19 +24,6 @@
 	padding-top: 155px;
 	color: $profile_font_color;
 
-	.travel-fund-credit {
-	  text-align: center;
-	  margin-top: 30px;
-	  font-family: 'nexa_light';
-	  font-size: 25px;
-	  span {
-	  	color: $advlo_green;
-	  	font-weight: bold;
-	  }
-	  i {
-	  	font-size: 15px;
-	  }
-	}
 
 	.container {
 

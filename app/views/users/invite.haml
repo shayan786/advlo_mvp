@@ -19,16 +19,17 @@
           .col-md-6.col-md-offset-3.text-center.referral_link
             #fe_text= "#{root_url}travel-fund/#{current_user.referral_code}"
             .fa.fa-file-text#d_clip_button.my_clip_button{"data-clipboard-target" => "fe_text", "data-clipboard-text" => "#{root_url}travel-fund/#{current_user.referral_code}"}
-                 
+          
 
         .row.text-center.social_btns
           - invite_url = "#{root_url}travel-fund/#{current_user.referral_code}"
-          %a.btn.btn-default.social_btn.fb{href: "#{invite_url}", "data-title" => "Help #{current_user.name? ? current_user.get_first_name : "your friend"} Adventure Local", "data-desc" => "Join Advlo to help #{current_user.name? ? current_user.get_first_name : "your friend"} receive $25", "data-image" => "http://i.imgur.com/a6L0hYB.png", style: "margin-right: 25px;"}
+          %a.btn.btn-default.social_btn.fb{href: "#{invite_url}", "data-title" => "Get 5$ #{current_user.name? ? current_user.get_first_name : "your friend"} towards an adventure", "data-desc" => "#{current_user.name? ? current_user.get_first_name : "your friend"} is giving you 5$ to join Adventure Local", "data-image" => "http://i.imgur.com/a6L0hYB.png", style: "margin-right: 25px;"}
             %i.fa.fa-facebook
           .btn.btn-default.social_btn.twitter{style: "margin-right: 25px;", "data-invite-url" => "#{invite_url}"}
             %i.fa.fa-twitter
-          %a.btn.btn-default.social_btn.email{href: "mailto:?subject=Advlo%20-%20Travel%20Fund&body=Hey%2C%0A%0AHelp%20me%20earn%20%2425%20towards%20an%20adventure%20on%20Advlo%20by%20signing-up%20here%3A%0A%0A#{invite_url}%0A%0AThanks%2C%0A#{current_user.name ? current_user.get_abbreviated_name : ''}"}
+          %a.btn.btn-default.social_btn.email{href: "mailto:?subject=Advlo%20-%20Travel%20Fund&body=Hey%20friend!%0A%0AJoin%20Adventure%20Local%20and%20get%20five%20bucks%20on%20sign%20up%3A%0A%0A#{invite_url}%0A%0AThanks%2C%0A#{current_user.name ? current_user.get_abbreviated_name : ''}"}
             %i.fa.fa-envelope-o
+
 
         .border
 
@@ -58,6 +59,17 @@
           .row
             .col-md-8.col-md-offset-2.text-center.number_2_credit
               TRAVEL CREDIT
+
+          .row       
+            .col-md-8.col-md-offset-2.text-center.number_1_text
+              Each referral gets:
+            .col-md-8.col-md-offset-2.text-center.number_2_money
+              $5
+          .row
+            .col-md-8.col-md-offset-2.text-center.number_2_credit
+              TRAVEL CREDIT
+        
+
 
 
         - else

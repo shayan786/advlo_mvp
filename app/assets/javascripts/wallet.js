@@ -218,7 +218,7 @@ function invite_social_init(){
     height = $(window).height();
     width = $(window).width();
 
-    window.open("https://twitter.com/share?url=" + invite_url + "&text= Join @Advlo_ and help me receive $25 towards an amazing adventure. %23AdventureLocal", 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
+    window.open("https://twitter.com/share?url=" + invite_url + "&text= Join @Advlo_ and get $5 towards an %23adventure", 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
   })
 }
 
