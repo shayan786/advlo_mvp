@@ -124,6 +124,7 @@ class RegistrationsController < Devise::RegistrationsController
   def referral_sign_up
     # Make sure user is not signed up
     session[:referrer_id] = @referrer.id if @referrer
+    session[:user_credit] = 5.0
     
     if user_signed_in?
       redirect_to '/', notice: "<a href='/travel-fund'> Logged in: Invite friends to Advlo to earn money</a>" 

@@ -8,6 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
      if session[:user_credit]
        @user.credit = session[:user_credit]
        @user.save
+       session[:user_credit] = 0.0
      end
    
      if @user.persisted?       
