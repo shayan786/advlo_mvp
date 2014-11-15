@@ -6,8 +6,12 @@
       %h2.text-center Join Advlo
       .referrer_text.text-center
         Invited by:
-        %em
-          = @referrer.get_abbreviated_name_or_email
+        - if @referrer.id == 257
+          %em
+            Advlo Founders
+        - else
+          %em
+            = @referrer.get_abbreviated_name_or_email
       .travel-fund-credit
         Get 
         %span= "$5"
