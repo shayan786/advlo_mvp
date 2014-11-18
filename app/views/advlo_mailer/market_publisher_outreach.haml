@@ -5,42 +5,20 @@
   %body
     .indented
       %p= "Hello #{@publisher_name}."
-      %p= "My name is Christopher Knight and I’m a developer and founder at Adventure Local. Last month, we launched a global platform for local adventure guides to connect with travelers to organize and book unique activities. I’m writing you in the hopes that our mission of changing the way people travel will resonate with your readers." 
-
-      %p 
-        Since our August 30th launch we have on-boarded
-        %a{href: 'http://advlo.com/adventures', style: 'color: #C35B26;'}="#{Adventure.approved.count} bookable adventures"
-        in 19 countries.
-
-      %p 
-        In the growing shared global economy, creating a platform to empower people to employ themselves is the ultimate path to creating more responsible economic exchanges.
-
       %p
-        We are three focused
-        %a{href: 'http://advlo.com/about', style: 'color: #C35B26;'} adventurers & programmers 
-        who are determined to create the privilege for travelers to connect directly to a local, where their money is legitimately staying in the community they visit.
+        I'm one of 3 founders at Adventure Local:
+        %a{href: "#{root_url}", style: 'color: #C35B26;'} http://advlo.com
+      %p
+        Advlo is a platform for travelers to directly connect with local adventure guides. 
+        %br
+        During each of our own travels we always saw local guides being outcompeted by foreign companies with fancy websites & international marketing budgets. 
+        %br
+        We wanted to build a platform to empower the local, as well as give access to the best cultural experience for the traveler. 
+        %br
+        %br
+        You seem like someone who believes in making travel more authentic, so I figured you’d be up for checking it out. 
 
-
-      %p I look forward to hearing from you and would love to answer any questions.
-
-      %a{href: "#{root_url}", style: 'color: #C35B26;'} http://advlo.com
-      %br
-      %i Safe travels,
-      %br
-      %a{href: "#{root_url}about", style: 'color: #C35B26;'} Christopher & the Advlo Team
-
-
-      .press-images{style: 'width: 100%'}
-        = link_to (image_tag asset_path('http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/201/thumb/homepage.png?1413192912'), :class => 'press-image'), "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/201/hero/homepage.png?1413192912"
-        = link_to (image_tag 'http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/thumb/adventure-page.png?1413192886', :class => 'press-image'), "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192886"
-        
-      .text-center
-        .press-logo
-          %a{href: 'mailto:founders@advlo.com?Subject=So%20Advlo%20sounds%20pretty%20cool.%20Tell%20Me%20More.'} 
-            %img{src: 'http://i.imgur.com/2zAJAVX.png', style: "height: 150px !important; width: 150px !important; max-height: none;"}
-      .press-images{style: 'width: 100%'}
-        = link_to (image_tag asset_path('http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/thumb/checkout.png?1413192930'), :class => 'press-image'), "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192930"
-        = link_to (image_tag asset_path('http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/202/thumb/host-profile.png?1413192924'), :class => 'press-image'), "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/202/hero/host-profile.png?1413192924"
-
-    %p.text-center{style: 'width: 100%; float: left; position: relative;'}
-      %a{href: "https://vimeo.com/99599469", style: 'color: #C35B26;'} Advlo Video Explanation 
+      %p 
+        If you are interested in working with us we are definitely open to sponsoring blogposts,
+        %br
+        or sending you on an adventure if you find something you like :)
