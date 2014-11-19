@@ -298,10 +298,3 @@ class AdvloMailer < ActionMailer::Base
     end
   end
 end
-
-
-bloggers.each do |u|
-  AdvloMailer.market_publisher_outreach(u[0], u[1]).deliver
-  puts 'sending email *****************************************'
-  MarketingEmail.create(title: 'script blog outreach', email: u[1])
-end
