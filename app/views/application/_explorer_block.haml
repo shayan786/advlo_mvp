@@ -1,6 +1,6 @@
 #destination-block.destination-block
   .container.homepage-container.text-center
-    %h1 TOP LOCATIONS
+    %h1 POPULAR DESTINATIONS
 
   .row.text-center
     .container
@@ -24,24 +24,24 @@
               .region-text
                 Ecuador
 
-          %a{href: '/adventures?region=Asia'}  
+          %a{href: '/adventures?state=Colorado'}  
             .region 
-              = image_tag HeroImage.where(region: 'Asia').first.attachment.url(:hero), alt: "Asia"
+              = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero), alt: "California"
               .region-text
-                Asia
+                California
 
 
-          %a{href: '/adventures?region=Latin-America'}  
+          %a{href: '/adventures?state=California'}  
             .region 
-              = image_tag HeroImage.where(region: 'Bolivia').first.attachment.url(:hero), alt: "Latin America"
+              = image_tag HeroImage.where(region: 'California').first.attachment.url(:hero), alt: "California"
               .region-text
-                Latin America
+                California
 
-          %a{href: '/adventures?region=North-America'}  
+          %a{href: '/adventures?state=Oregon'}  
             .region 
-              = image_tag HeroImage.where(region: 'North America').first.attachment.url(:hero), alt: "North America"
+              = image_tag HeroImage.where(region: 'Oregon').first.attachment.url(:hero), alt: "Oregon"
               .region-text
-                North America
+                Oregon
 
           / - @regions.each do |r|
           /   %a{href: "/adventures?location=#{r[0]}"}
