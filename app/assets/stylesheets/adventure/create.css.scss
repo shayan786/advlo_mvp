@@ -223,6 +223,17 @@
 				font-family: nexa_light;
 				font-weight: bold;
 			}
+			.text-half {
+				width: 45%; 
+				float: left;
+			}
+			.and-sign {
+				width: 4%;
+				position: relative;
+				float: left;
+				top: 24px;
+				font-size: 16px;
+			}
 		}
 
 		.or_text {
@@ -232,6 +243,7 @@
 			letter-spacing: 3px;
 			font-weight: bold;
 		}
+
 
 		.subscribe_btn_1, .subscribe_btn_2 {
 			margin-top: 30px !important;

@@ -65,7 +65,7 @@
 
         .row.text-center
           .col-md-6.col-md-offset-3
-            %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill"} HOST AN ADVENTURE
+            %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill"} LIST YOUR ADVENTURE
 
     .adventure_info_body
       .white_background
@@ -124,24 +124,19 @@
 
       .gray_background
         .row
+          .matrix_header PRICING
           .col-md-4.col-md-offset-1
-            .matrix_header HOST FOR FREE
             .matrix_content
-              .display_percent 15%
-              ADVLO COMMISSION
-              %br
-              IF BOOKED
+              .display_percent $0 + 15% 
+              PER BOOKING
 
           .col-md-2.text-center
-            .or_text
+            .or_text{style: 'margin-top: 45px;'}
               OR
           .col-md-4
-            .matrix_header SUBSCRIBE
             .matrix_content
-              .display_percent $10
-              PER ADVENTURE / MONTH
-              %br
-              NO COMMISSION
+              .display_percent $10 + 0%
+              PER MONTH
         
 
 
@@ -157,7 +152,7 @@
             .join-text Become a partner
             = render partial: 'devise/registrations/partner_signup', locals: {referrer: @referrer }
           - else
-            %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: 'margin-bottom: 15px;'} HOST AN ADVENTURE
+            %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: 'margin-bottom: 15px;'} LIST YOUR ADVENTURE
 
 
 :javascript 

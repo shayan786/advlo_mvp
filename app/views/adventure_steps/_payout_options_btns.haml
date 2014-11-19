@@ -1,22 +1,30 @@
 .row.payout-buttons-row
   .btn.btn-default.col-md-3.col-md-offset-2.option_btn_1
-    .percent
-      FREE
-    .text
-      15% ADVLO COMMISSION
-      %br
-      IF BOOKED
+    .percent.text-half
+      $0
+    .and-sign
+      &
+    .percent.text-half
+      15%
+    .text.text-half
+      Per Month
+    .text.text-half
+      Per booking
 
   .or_text.col-md-2.text-center
     OR
 
   .btn.btn-default.col-md-3.option_btn_2
-    .percent
+    .percent.text-half
       $10
-    .text
-      PER MONTH
-      %br
-      NO ADVLO COMMISSION
+    .and-sign
+      &
+    .percent.text-half
+      0%
+    .text.text-half
+      Per Month
+    .text.text-half
+      Per booking
 
   .col-md-6.col-md-offset-3
     #commission-tree= render partial: 'commission_tree'
