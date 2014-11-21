@@ -104,14 +104,5 @@
       $('.scroll-slow').css('top','75px');
       $('#arrow-wrapper').hide();
     }
-
-    if($(window).width() >= 780){
-      var hero = $('.scroll-slow');
-        $(window).scroll(function(){
-        var s = $(window).scrollTop();
-        hero.css('-webkit-transform','translateY(' + (s/6) + 'px');    
-        hero.css({'opacity' : (1 - s/1500)});
-      })
-    }
   });
 
