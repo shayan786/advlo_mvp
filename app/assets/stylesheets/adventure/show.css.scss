@@ -343,47 +343,6 @@
         padding-top: 15px;
         padding-bottom: 25px;
 
-        .itinerary-brick {
-          margin-bottom: 5px !important;
-          margin-top: 3px !important;
-          cursor: pointer;
-          width: 99%;
-          border-bottom: 1px solid #666;
-        }
-        .last-brick {
-          border-bottom: none;
-        }
-        .fa {
-          color: #666;
-          font-size: 16px;
-          margin: 14px;
-          float: left;
-        }
-        .fa-minus {
-          display: none;
-        }
-        .headline { 
-          font-family: 'nexa_light';
-          text-transform: uppercase;
-          font-size: 18px;
-          color: #fff;
-          color: #fff;
-          margin-top: 10px;
-          margin-left: 40px;
-          margin-bottom: 10px;
-          word-wrap: break-word;
-        }
-        .description {
-          margin-left: 60px;
-          margin-right: 40px;
-          margin-top: 10px;
-          margin-bottom: 15px;
-          line-height: 25px;
-          color: #fff;
-          font-family: 'cabin_regular';
-          font-size: 20px;
-          display: none;
-        }
       }
 
       #gallery {
@@ -740,6 +699,51 @@
         padding-bottom: 5px;
       }
     }
+  }
+}
+
+.itinerary-wrapper{
+  
+  .itinerary-brick {
+    margin-bottom: 5px !important;
+    margin-top: 3px !important;
+    cursor: pointer;
+    width: 99%;
+    border-bottom: 1px solid #666;
+  }
+  .last-brick {
+    border-bottom: none;
+  }
+  .fa {
+    color: #666;
+    font-size: 16px;
+    margin: 14px;
+    float: left;
+  }
+  .fa-minus {
+    display: none;
+  }
+  .headline { 
+    font-family: 'nexa_light';
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #fff;
+    color: #fff;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+  }
+  .description {
+    margin-left: 60px;
+    margin-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    line-height: 25px;
+    color: #fff;
+    font-family: 'cabin_regular';
+    font-size: 20px;
+    display: none;
   }
 }
 

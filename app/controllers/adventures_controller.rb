@@ -218,6 +218,11 @@ class AdventuresController < ApplicationController
   
   # info page for creating a new adventure
   def hosting_info
+    @adventures = [] 
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('essential-mountain-bike-skills')
+    @adventures << Adventure.find_by_slug('the-pearl-islands-adventure')
+
     if params[:invite] == 'partner'
 
       @referrer = User.find_by_email('founders@advlo.com')
@@ -273,7 +278,7 @@ class AdventuresController < ApplicationController
       if request.path == '/adventures/info'
         redirect_to '/adventures/info'
       else
-        redirect_to '/users/sign_in'
+        redirect_to '/users/sign_up'
       end
     elsif user_signed_in? && !current_user.is_guide?(current_user.id)
       redirect_to '/users/edit', notice: "Become a host so travelers know more about you"

@@ -96,13 +96,13 @@
         .text-center.nexa-light
           MY ADVENTURES
           %span.header_sub 
-            %span= "( #{@user.adventures.count} )"
+            %span= "( #{@active_adventures.count} )"
 
-        - if @user.adventures.approved.count >= 1
+        - if @active_adventures.count >= 1
           #mobile-user-adventures
             .adventure-container 
               .brick-wrapper.masonry.js-masonry
-                - @user.adventures.approved.each_with_index do |adv, i|
+                - @active_adventures.approved.each_with_index do |adv, i|
                   %a.adventure-brick{href: adventure_path(adv.slug)}
                     - if adv.attachment.height(:large) >= 295
                       - adv_img = adv.attachment.url(:large)
@@ -131,12 +131,12 @@
               %i.prev.fa.fa-chevron-left#profile-prev
               %i.next.fa.fa-chevron-right#profile-next
 
-              - if @user.adventures
+              - if @active_adventures
                 .adventure-container
                   .brick-wrapper
                     .swiper-container
                       .swiper-wrapper
-                        - @user.adventures.each_with_index do |adv, i|
+                        - @active_adventures.each_with_index do |adv, i|
                           %a.adventure-brick.swiper-slide{href: adventure_path(adv.slug)}
                             - if adv.attachment.height(:large) >= 295
                               - adv_img_show = adv.attachment.url(:large)
@@ -180,20 +180,17 @@
             .user-video-wrapper.text-center
               = raw(@user.embed(@user.video_url))
 
-  #p_reviews
-    .container
-      .row
-        .col-md-12
-          .review_header
-            .text-center.nexa-light
-              REVIEWS
-            - if @reviews.count > 0
+  - if @reviews.count > 0
+    #p_reviews
+      .container
+        .row
+          .col-md-12
+            .review_header
+              .text-center.nexa-light
+                REVIEWS
               .copy-brick.container-fluid#reviews
                 - @reviews.each do |review|
                   = render partial: '/shared/review_brick', locals: {review: review}
-            - else 
-              .no_reviews_text.text-center
-                There are no reviews for this host yet.
         
 
 :javascript

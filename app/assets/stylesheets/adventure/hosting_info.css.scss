@@ -53,8 +53,22 @@
 
   .adventure_info_body {
 
+    .price-title {
+      font-size: 2.5em !important;
+      margin-top: 0px !important;
+    }
+
     .border {
       border-top: 2px solid $light_gray;
+    }
+
+    .video-container {
+      background-image: url(/assets/background/advlo_beach.png); 
+      padding-bottom: 45px; 
+      padding-top: 5px; 
+      background-size: 100%; 
+      background-position: center center; 
+      background-repeat: no-repeat;
     }
 
   	.gray_background {
@@ -112,9 +126,105 @@
   		font-size: 0.8em !important;
   	}
 
+    .access-block {
+      width: 20%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      float: left;
+
+      .matrix_header {
+        text-align: left;
+      }
+
+      .matrix_content {
+        text-align: left;
+        width: 95%;
+      }
+    }
+
+    .host_header {
+      font-family: 'nexa_light';
+      font-weight: bold;
+      font-size: 3em;
+      letter-spacing: 3px;
+      margin-top: 35px;
+      margin-bottom: 5px;
+      margin-right: 35px;
+      margin-left: 35px;
+      text-align: center;
+      color: #fff;
+      text-transform: uppercase;
+
+    }
+
+    .host_type {
+      font-size: 22px;
+      color: #fff;
+      width: 65%;
+      text-align: center;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      margin: 0 auto;
+      font-family: 'cabin_regular';
+    }
+
+    .adv-info-wrapper {
+      position: relative;
+      width: 30%;
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      float: left;
+      .copy {
+        left: 0px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .adventure-brick {
+        height: 300px;
+        width: 375px;
+        float: none;
+        overflow: hidden;
+        margin-top: 10px;
+        background-color: #000;
+        margin: 0 auto;
+      }
+
+      .view-profile {
+        text-align: center;
+        margin-top: 21px;
+        font-family: bebas_neue_book;
+        font-size: 20px;
+        letter-spacing: 2px;
+
+        a {
+          color: #fff;
+          text-decoration: underline;
+        }
+        a:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+
+
+    .hosting_info_itineraries {
+      margin-bottom: 50px;
+      margin-top: 10px;
+      .fa {
+        margin-top: 4px;
+      }
+    }
+
+    .pricing-row {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
   	.matrix_header {
   		font-family: bebas_neue;
-  		font-size: 2.8em;
+  		font-size: 1.5em;
       letter-spacing: 2px;
   		margin-top: 15px;
   		margin-bottom: 5px;
@@ -132,11 +242,11 @@
     }
 
   	.matrix_content {
-  		font-size: 1.4em;
+  		font-size: 15px;
       margin-top: 10px;
       margin-bottom: 10px;
       color: white;
-      opacity: 0.8;
+      opacity: 1;
       text-align: center;
       min-height: 120px;
 
@@ -146,9 +256,15 @@
   	}
   }
 }
+@media screen and (max-width: 1210px){
+  #adventure_info .adventure_info_body .adv-info-wrapper {
+    width: 100%;
+  }
+}
+
+
 
 @media screen and (max-width: 800px){
-
   .matrix_content {
     width: 70%;
     margin: 0 auto;
@@ -160,9 +276,36 @@
   .or_text {
     margin-top: 10px !important;
   }
+
+  #adventure_info .adventure_info_body .video-container { 
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .host_header {
+      display: none;
+    }
+  }
+  #adventure_info .adventure_info_body .host_header {
+    font-size: 2em;
+  }
 }
 
+@media screen and (max-width: 991px){
+  #adventure_info .adventure_info_body .access-block {
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    float: left;
+  }
+}
+
+
 @media screen and (max-width: 675px){
+  
+  #adventure_info .adventure_info_body .host_type {
+    width: 92%;
+  }
+
 	#adventure_info {
 	  .host_info_text {
 	  		font-size: 2.2em !important;
@@ -181,5 +324,34 @@
 
   .adventure-container .brick-wrapper .adventure-brick {
     margin: 10px;
+  }
+}
+
+
+@media screen and (max-width: 450px){
+
+  #adventure_info .adventure_info_body .access-block {
+    width: 100%;
+  }
+
+  #adventure_info .adventure_info_body .adv-info-wrapper {
+    margin: 0 auto !important;
+    margin-top: 35px !important;
+  }
+  #adventure_info .adv_info_btn {
+    padding: 5px;
+  }
+
+  #adventure_info .jumbotron {
+    min-height: 330px;
+  }
+  #adventure_info .adventure_info_body .access-block .matrix_content {
+    width: 84%;
+    float: left;
+  }
+
+  .adventure_info_body .itinerary-wrapper .description {
+    margin-left: 40px;
+    margin-right: 10px;
   }
 }

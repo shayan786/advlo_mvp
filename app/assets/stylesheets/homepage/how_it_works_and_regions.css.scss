@@ -43,13 +43,14 @@
 			  	position: absolute;
 			  	bottom: 0px;
 			  	width: 100%;
-			  	font-size: 18px;
+			  	font-size: 24px;
 			  	color: #fff;
 			  	background-color: rgba(0,0,0,0.8);
 			  	font-family: 'nexa_light';
 			  	text-transform: uppercase;
 			  	letter-spacing: 2px;
-			  	padding: 10px;
+			  	padding: 5px;
+			  	font-weight: bold;
 			  }
 		  }
 	  }
@@ -57,7 +58,7 @@
 }
 
 #how_it_works {
-	background: rgba(0,0,0,0.6);
+	background: rgba(0, 0, 0, 0.6);
 	padding-bottom: 45px;
 	padding-top: 45px;
 
