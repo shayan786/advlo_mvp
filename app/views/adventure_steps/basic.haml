@@ -126,11 +126,11 @@
               .col-md-6
                 - if !@adventure.attachment.nil?
                   %input.filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
-                  %em Please choose one high quality, large photo (.png or .jpg)
+                  %em Please choose one high quality, large square photo (.png or .jpg)
                   = image_tag @adventure.attachment.url(:large), class: "img-responsive img-square", style: "margin: 15px auto;"
                 - else 
                   %input.filestyle{type: "file", name: "adventure[attachment]", id: "adventure_attachment"}
-                  %em Please choose one high quality, large photo (.png or .jpg)
+                  %em Please choose one high quality, large square photo (.png or .jpg)
 
         .panel-footer.text-center
           .row

@@ -1,30 +1,77 @@
 .row.payout-buttons-row
   .btn.btn-default.col-md-3.col-md-offset-2.option_btn_1
-    .percent.text-half
-      $0
-    .and-sign
-      &
-    .percent.text-half
-      15%
-    .text.text-half
-      Per Month
-    .text.text-half
-      Per booking
+    .pricing-top
+      .pricing-title commission
+      .prices $0 / 15%
+      .price-type
+        Month / per booking
+
+    .pricing-bottom   
+      %ul.feature-list
+        %li.fa.fa-check
+          Transaction system
+        %li.fa.fa-check
+          Weekly Payouts
+        %li.fa.fa-check
+          Backend tools
+        %li.fa.fa-check
+          SEO & Marketing
+
+
+      .price-calculator
+        .divider-wrapper
+          .divider
+        .calc-title
+          Commission Calculator
+        .calc
+          Your Adventure:
+        .answer="$ #{(@adventure.price).to_f}"
+        .calc
+          15% Commission:
+        .answer.strong="$ #{(@adventure.price * 0.15).to_f}"
+        .divider-wrapper
+          .divider
+        .calc
+          You receive:
+        .answer= "$ #{(@adventure.price * 0.85).to_f}"
+
+
+      .learn-more
+        %a{href: '/adventures/info', target: '_blank'} Read more about our features
 
   .or_text.col-md-2.text-center
-    OR
 
   .btn.btn-default.col-md-3.option_btn_2
-    .percent.text-half
-      $10
-    .and-sign
-      &
-    .percent.text-half
-      0%
-    .text.text-half
-      Per Month
-    .text.text-half
-      Per booking
+    .pricing-top
+      .pricing-title membership
+      .prices $49 / 0%
+      .price-type
+        Month / per booking
+        
+
+    .pricing-bottom  
+      %ul.feature-list
+        %li.fa.fa-check
+          Transaction system
+        %li.fa.fa-check
+          Weekly Payouts
+        %li.fa.fa-check
+          Backend tools
+        %li.fa.fa-check
+          SEO & Marketing
+        %li.fa.fa-check.extra
+          Sell Unlimited Adventures
+        %li.fa.fa-check.extra
+          Higher listing positions
+        %li.fa.fa-check.extra
+          0% bookings commission
+        %li.fa.fa-check.extra
+          Optional to re-direct
+
+
+      .learn-more
+        = mail_to "founders@advlo.com", 'Contact us with any questions', subject: 'Annual subscription information request'
+
 
   .col-md-6.col-md-offset-3
     #commission-tree= render partial: 'commission_tree'
