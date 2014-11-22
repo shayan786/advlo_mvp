@@ -5,24 +5,7 @@
   %body
     .indented
       %h3.text-left
-        = "Subscription Invoice" 
-
-
-
-      %table#main{border: "0", cellpadding: "0", cellspacing: "10", width: "400"}
-        %tr
-          %th.text-left Adventure
-          %th.text-left Month
-          %th.text-left Charge
-
-        %tr
-          %td.divider{bgcolor: "#555555", colspan: "10", height: "2"}
-
-        %tr
-          %td.text-left= @adventure.title
-          %td.text-left= "#{Date::MONTHNAMES[Date.today.month]} #{Date::MONTHNAMES[Date.today.day]}"
-          %td.text-left $10
-
+        = "Subscription Invoice"
       
       %p
         %i 
@@ -32,33 +15,4 @@
 
       %p
         * You can manage your adventure subscription at anytime
-        %a{href: "#{root_url}adventure_steps/payment?adventure_id=#{@adventure.id}"}here
-
-    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
-      %tr
-        %td{align: "center", valign: "top"}
-          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
-            %tr
-              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
-            
-            %tr
-              %td
-                .adventure-wrapper{style: 'position: relative; float: left; width: 100%; height: 225px;'}
-                  .adventure{style: 'position: relative; width: 50%; float: left; margin-right: 25px;'}
-                    %a{href: "#{root_url}adventures/#{@adventure.slug}", style: 'text-decoration: none; color: #000;'}
-                      %img{alt: @adventure.title, height: "auto", src: @adventure.attachment.url(:medium), style: 'width: 100%;'}
-
-                  .share-links{style: 'position: relative; width: 40%; float: right;'}
-                    %h2= "#{@adventure.title[0..25]}..."
-                    %p= "#{@adventure.summary[0..50]}..."
-
-                    - share_url = "#{root_url}adventures/#{@adventure.slug}"
-
-                    %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + @adventure.title + '&p[url]=' + URI.escape(share_url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) }= image_tag "#{root_url}/assets/fb-email-bd69e985af97389bf052774e3531541b.png"
-
-                    %a{href:"https://twitter.com/share?url=" + share_url + "&text=" + "Check out my adventure " + @adventure.title + ' on Adventure Local'}= image_tag "#{root_url}/assets/twitter-email-f21c89929bcdb0751198c7318d9e7f53.png"
-
-                    %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}"}= image_tag "#{root_url}/assets/gplus-email-5b11f1098ffab2a77fbae3f5f519811b.png"
-
-
-                    .divider-high
+        %a{href: "#{root_url}users/dashboard"}here
