@@ -74,15 +74,16 @@ class StripeHooksController < ApplicationController
 
   def update_user_adventure(receiving_data)
     sub_id = receiving_data['data']['object']['id']
-    user_adventure = UserAdventure.find_by_stripe_subscription_id(sub_id)
-    adventure = Adventure.find(user_adventure.adventure_id)
+    user = User.find_by_stripe_subscription_id(sub_id)
+    
+    user.adventures.each do |adv|
+      adv.redirect_url = nil
+      adv.save
+    end
 
-    user_adventure.charge_type = nil
-    user_adventure.stripe_subscription_id = nil
-    adventure.redirect_url = nil
+    user.stripe_subscription_id = nil
 
-    user_adventure.save
-    adventure.save
+    user.save
 
     # Send Emails?
   end

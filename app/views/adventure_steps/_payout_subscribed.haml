@@ -3,11 +3,11 @@
 - # 2) SUBSCRIBED BUT CANCELLED & STILL WITHIN SUBSCRIPTION PERIOD
 - # OTHER CASES WILL BE HANDLED MANUALLY FOR NOW
 
-- stripe_subscription_obj = Stripe::Customer.retrieve(user_adventure.stripe_customer_id).subscriptions.retrieve(user_adventure.stripe_subscription_id)
+- stripe_subscription_obj = Stripe::Customer.retrieve(current_user.stripe_customer_id).subscriptions.retrieve(current_user.stripe_subscription_id)
 
 .well.subscribed_well.text-center.col-md-6.col-md-offset-3
   .subscription_text
-    SUBSCRIPTION
+    ADVLO MEMBER
 
   %br
   RENEWAL DATE:
@@ -19,21 +19,20 @@
   %br
 
 
-
   - if stripe_subscription_obj.cancel_at_period_end == false
     %a.cancel_link
-      Cancel your subscription?
+      Cancel your membership?
     .btn.btn-danger.cancel_subscription_btn{"data-adventure-id" => "#{@adventure.id}", "data-host-id" => "#{@adventure.users.first.id}"}
       %i.fa.fa-times
-      CANCEL SUBSCRIPTION
+      CANCEL MEMBERSHIP
   - elsif Time.now < Time.at(stripe_subscription_obj.current_period_end)
-    THIS SUBSCRIPTION HAS BEEN CANCELLED BUT IS STILL ACTIVE UNTIL
+    YOUR MEMBERSHIP HAS BEEN CANCELLED BUT IS STILL ACTIVE UNTIL
     %br
     %b= Time.at(stripe_subscription_obj.current_period_end).strftime("%m-%d-%Y")
 
   %br
   %br
-  To modify this subscription or if you have any questions, please contact us at: 
+  To modify this membership or if you have any questions, please contact us at: 
   = mail_to 'support@advlo.com'
 
   %br

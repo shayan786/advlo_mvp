@@ -5,36 +5,16 @@
   %body
     .indented
       %h2.text-center= "We are sad to see you go #{@user.name.split(' ').first}"
-      %h4.text-center= "Your subscription for #{@adventure.title} has been cancelled"
       
       %p
         %i= "Your adventure will still be live until #{Time.at(@sub.current_period_end).strftime("%m-%d-%Y")}"
 
       %p
-        * You can re-activate your adventure anytime
-        %a{href: "#{root_url}adventure_steps/payment?adventure_id=#{@adventure.id}"}here
+        * You can re-activate your membership anytime
+        %a{href: "#{root_url}users/dashboard"}here
         %br
         %br
         %i.text-center
           Please 
           %a{href: "#{root_url}about"}contact us
           if you have any feedback about your experience with Adventure Local
-
-    %table#background{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
-      %tr
-        %td{align: "center", valign: "top"}
-          %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
-            %tr
-              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
-            
-            %tr
-              %td
-                %a{href: "#{root_url}/adventures/#{@adventure.slug}"}
-                  %img{alt: @adventure.title, height: "200", src: @adventure.attachment.url(:medium), width: "300"}
-
-              %td{valign: "top"}
-                %h2= @adventure.title
-                %h4= "#{@adventure.summary[0..800]}..."
-
-            %tr
-              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}

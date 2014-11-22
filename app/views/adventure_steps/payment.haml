@@ -7,10 +7,8 @@
         .panel-heading.text-center.section_header
           PAYOUT OPTIONS
         .panel-body
-          - user_adventure = UserAdventure.find_by_adventure_id(@adventure.id)
-
-          - if user_adventure.charge_type == "subscription" 
-            = render partial: "payout_subscribed", locals: {user_adventure: user_adventure}
+          - if current_user.stripe_subscription_id
+            = render partial: "payout_subscribed"
 
           - else
             .payout_options_btns
