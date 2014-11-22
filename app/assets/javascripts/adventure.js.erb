@@ -1449,6 +1449,11 @@ function payment_options_btns() {
 
     $('#commission-tree').fadeToggle();
     $('#subscription-tree').hide();
+
+    if($(window).width() < 500){
+      $(this).find('.pricing-bottom').slideToggle()
+      $('.pricing-bottom').last().hide()
+    }
   })
   
   //SUBSCRIBE OPTION
@@ -1459,6 +1464,18 @@ function payment_options_btns() {
 
     $('#commission-tree').hide();
     $('#subscription-tree').fadeToggle();
+
+    if($(window).width() < 500){
+      $(this).find('.pricing-bottom').slideToggle()
+      $('.pricing-bottom').first().hide()
+    }
+  })
+
+
+  $('.btn').hover(function(){
+    $(this).find('.pricing-top').css('background','rgba(0,0,0,1)')
+  },function(){
+    $(this).find('.pricing-top').css('background','rgba(0,0,0,0.9)')
   })
 }
 

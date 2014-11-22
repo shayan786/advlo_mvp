@@ -15,6 +15,10 @@
 				}
 			}
 
+			li {
+				float: left;
+			}
+
 			.section_header {
 				font-size: 2.2em;
 				background-color: $lighter_gray
@@ -28,9 +32,86 @@
 				padding-top: 15px;
 				padding-left: 15px;
 				padding-right: 15px;
-				color: $light_gray;
+			}
+			
+			.pricing-bottom {
+				position: relative;
+				float: left;
+				width: 100%;
+
+				.price-calculator {
+					position: relative;
+					float: left;
+					width: 100%;
+					margin-top: 10px;
+
+					.calc {
+						width: 50%;
+						text-align: right;
+						float: left;
+					}
+
+					.calc-title {
+						float: left;
+						width: 100%;
+						font-weight: bold;
+					}
+
+					.answer {
+						width: 47%;
+						text-align: left;
+						float: right;
+						margin-left: 3%;
+					}
+				}
+
+				.feature-list {
+					position: relative;
+					float: left;
+					padding-left: 25px;
+					padding-top: 5px;
+
+					.fa {
+						padding-left: 0px;
+					}
+
+					.fa-check:before {
+						margin-right: 10px;
+						color: $advlo_orange;
+						opacity: 0.7;					
+					}
+
+					.extra:before {
+						color: $advlo_green;
+						opacity: 1.0;
+					}
+				}
 			}
 
+			.divider-wrapper {
+				position: relative;
+				float: left;
+				width: 100%;
+
+				.divider {
+					position: relative;
+					width: 80%;
+					margin: 0 auto;
+					height: 1px; 
+					margin-top: 5px;
+					margin-bottom: 5px;
+					background-color: rgba(0,0,0,0.3);
+				}
+			}
+
+			.learn-more {
+				position: relative;
+				float: left;
+				width: 100%;
+				text-align: center;
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
 			.form_label {
 				padding-top: 5px;
 				font-size: 1.2em;
@@ -210,18 +291,42 @@
 
 		.option_btn_1, .option_btn_2 {
 			margin-top: 20px;
-			padding-top: 25px;
-			padding-bottom: 25px;
+			padding: 0px;
 
 			.percent {
 				font-family: bebas_neue_book;
-				font-size: 4.0em;	
+				font-size: 1.6em;	
 				letter-spacing: 3px;
+			}
+
+
+			.pricing-top {
+				position: relative;
+				float: left;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.9);
+				color: #fff;
+
+				.pricing-title {
+					font-family: bebas_neue_book;
+					font-size: 1.7em;	
+					margin-top: 20px;
+				}
+
+				.prices {
+					font-family: bebas_neue_book;
+					font-size: 3.5em;	
+				}
+				.price-type {
+					margin-bottom: 10px;
+				}
 			}
 
 			.text {
 				font-family: nexa_light;
 				font-weight: bold;
+				font-size: 18px;
 			}
 			.text-half {
 				width: 45%; 
@@ -237,7 +342,7 @@
 		}
 
 		.or_text {
-			margin-top: 75px;
+			margin-top: 200px;
 			font-size: 2.8em;
 			font-family: bebas_neue_book;
 			letter-spacing: 3px;
@@ -254,10 +359,11 @@
 			img {
 				position: relative;
 				width: 75px;
-				margin-top: -4px;
+				margin-top: 20px;
 			}
 
 			.fa-share-square-o {
+				margin-top: 15px;
 				font-size: 50px !important;
 				color: #545454 !important;
 			}
@@ -397,6 +503,7 @@
 		.fa-university{
 			color: #000 !important;
 			font-size: 32px !important;
+			margin-top: 30px;
 		}
 		.fa-paypal {
 			@extend .fa-university;
@@ -440,12 +547,10 @@
 
 		#existing-paypal {
 			display: none;
-			margin-top: 35px;
 		}
 
 		#add_paypal_form {
 			display: none;
-			margin-top: 35px;
 		}
 
 		#update_paypal_form {
@@ -675,4 +780,11 @@
 			text-align: center !important;
 		}
 	}
+}
+
+@media screen and (max-width: 500px){ 
+	.pricing-bottom {
+		display: none;
+	}
+
 }
