@@ -273,21 +273,19 @@ class AdvloMailer < ActionMailer::Base
     end
   end
 
-  def market_host_outreach(name, location, email, cert)
-    @name = name
+  def market_host_outreach(email, reference)
+    @reference = reference
     @email = email
-    @location = location
-    @cert = cert
 
-    mail(to: @email, from: 'christopher@advlo.com', subject: "#{@location} partner - Adventure Travel Marketplace") do |format|
+    mail(to: @email, from: 'christopher@advlo.com', subject: "Partnership - Adventure Travel Marketplace") do |format|
       format.html { render layout: 'simple' }
       format.text
     end
   end
 
 
-  def market_publisher_outreach(publisher_name, email)
-    @publisher_name = publisher_name
+  def market_publisher_outreach(email, reference)
+    @reference = reference
     @email = email
 
     mail(to: @email, from: 'christopher@advlo.com',subject: "Adventure Local - partnership", cc: @cc, bcc: @bcc) do |format|
