@@ -7,11 +7,9 @@
       %h2.text-center= "Thanks for signing up with Adventure Local"
       We are excited to help you connect with more travelers
       %h5
-        Your adventure is accessible at: 
-        = link_to @adventure.title, "#{root_url}adventures/#{@adventure.slug}"
+        Thanks for joining Adventure Local. Your membership is now active.
         %br
-        while your profile is accessible at:
-        = link_to @adventure.users.first.name,"#{root_url}#{user_path(@adventure.users.first)}" 
+        You can now upload unlimited adventures and have access to our complete platform.
       
       %p
         %i= "Your subscription started on #{Time.at(@sub.current_period_start).strftime("%m-%d-%Y")} and will be renewed on #{Time.at(@sub.current_period_end).strftime("%m-%d-%Y")}"
