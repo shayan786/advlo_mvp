@@ -18,7 +18,7 @@ class StripeHooksController < ApplicationController
         format.json {render json: {status: 200}}
       end 
     elsif receiving_data['type'] == "customer.subscription.deleted"
-      update_user_adventure(receiving_data)
+      update_subscription(receiving_data)
 
       respond_to do |format|
         format.json {render json: {status: 200}}
@@ -26,8 +26,8 @@ class StripeHooksController < ApplicationController
 
     elsif receiving_data['type'] == "invoice.payment_succeeded"
       sub_id = receiving_data['data']['object']['lines']['data'][0]['id']
-      user_adventure = UserAdventure.find_by_stripe_subscription_id(sub_id)
-      AdvloMailer.send_monthly_subscription_email(user_adventure.user_id, user_adventure.adventure_id).deliver
+      user = User.find_by_stripe_subscription_id(sub_id)
+      AdvloMailer.send_monthly_subscription_email(user.user_id).deliver
 
       respond_to do |format|
         format.json {render json: {status: 200}}
@@ -72,8 +72,8 @@ class StripeHooksController < ApplicationController
     end
   end
 
-  def update_user_adventure(receiving_data)
-    sub_id = receiving_data['data']['object']['id']
+  def update_subscription(receiving_data)
+    sub_id = receiving_data['data']['object']['lines']['data'][0]['id']
     user = User.find_by_stripe_subscription_id(sub_id)
     
     user.adventures.each do |adv|

@@ -19,14 +19,6 @@
   .prefill_label.col-md-6.text-left
     ********
     = recipient_info.active_account.last4
-.row
-  .form_label.col-md-4.col-md-offset-1.edit-label
-    Verified:
-  .prefill_label.col-md-6.text-left
-    - if recipient_info.active_account.verified
-      VERIFIED
-    - else
-      PENDING
 .row.text-center
   %button.btn.btn-primary.bank_change_btn
     CHANGE
