@@ -8,7 +8,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    background-size: cover;
     position: relative;
     float: left;
     width: 100%;
@@ -63,10 +62,10 @@
     }
 
     .video-container {
-      background-image: url(/assets/background/advlo_beach.png); 
+      background-image: asset-url("background/advlo_beach.png");
       padding-bottom: 45px; 
       padding-top: 5px; 
-      background-size: 100%; 
+      background-size: cover !important; 
       background-position: center center; 
       background-repeat: no-repeat;
     }
@@ -134,12 +133,29 @@
 
       .matrix_header {
         text-align: left;
+        
+        .fa {
+          margin-right: 8px;
+        }
+
+        .fa-mobile {
+          font-size: 1.3em;
+        }
       }
 
       .matrix_content {
         text-align: left;
         width: 95%;
       }
+    }
+
+    .with_membership_features {
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-bottom: 25px;
+      border: 1px solid #FFF;
+      border-radius: 10px;
+      padding-top: 25px;
     }
 
     .host_header {
@@ -155,6 +171,15 @@
       color: #fff;
       text-transform: uppercase;
 
+    }
+
+    .host_sub_header {
+      font-family: 'nexa_light';
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 1.4em;
+      color: #fff;
+      margin-bottom: 10px;
     }
 
     .host_type {

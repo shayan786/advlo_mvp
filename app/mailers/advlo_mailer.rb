@@ -210,20 +210,18 @@ class AdvloMailer < ActionMailer::Base
 
   # ----------- SUBSCRIPTION EMAILS -------------------------------------------------------------------------------------------------
 
-  def subscription_created(user_adventure)
-    @user = User.find(user_adventure.user_id)
-    @adventure = Adventure.find(user_adventure.adventure_id)
-    customer = Stripe::Customer.retrieve(user_adventure.stripe_customer_id)
-    @sub = customer.subscriptions.retrieve(user_adventure.stripe_subscription_id)
+  def subscription_created(user)
+    @user = user
+    customer = Stripe::Customer.retrieve(user.stripe_customer_id)
+    @sub = customer.subscriptions.retrieve(user.stripe_subscription_id)
 
     mail(to: @user.email, subject: "[ADVLO] : Subscription Confirmation")
   end
 
-  def subscription_cancelled(user_adventure)
-    @user = User.find(user_adventure.user_id)
-    @adventure = Adventure.find(user_adventure.adventure_id)
-    customer = Stripe::Customer.retrieve(user_adventure.stripe_customer_id)
-    @sub = customer.subscriptions.retrieve(user_adventure.stripe_subscription_id)
+  def subscription_cancelled(user)
+    @user = user
+    customer = Stripe::Customer.retrieve(user.stripe_customer_id)
+    @sub = customer.subscriptions.retrieve(user.stripe_subscription_id)
 
     mail(to: @user.email, subject: "[ADVLO] : Subscription Cancelled")
   end

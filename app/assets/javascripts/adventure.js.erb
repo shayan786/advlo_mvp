@@ -1606,17 +1606,20 @@ function cancel_subscription() {
     var adv_id = $(this).data('adventure-id');
     var host_id = $(this).data('host-id');
 
-    var ans = confirm("Are you sure you want to cancel your subscription?");
-
-    if (ans == true) {
+    swal({     
+      title: "Are you sure you want to cancel your subscription?",  
+      showCancelButton: true,
+      imageUrl: "http://i.imgur.com/a6L0hYB.png"
+    }, 
+    function() {
       $.ajax({
         url: "/adventure_steps/payment",
         dataType: "script",
         data: {subscription: "1", adventure_id: adv_id, host_id: host_id, cancel_subscription: true},
         type: "POST",
         method: "PUT"
-      });
-    }
+      })
+    });
 
   })
 }

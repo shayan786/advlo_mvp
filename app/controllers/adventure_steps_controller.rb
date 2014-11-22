@@ -242,105 +242,60 @@ class AdventureStepsController < ApplicationController
 
     # Hook for subscription
     elsif params[:subscription] == "1"
-      user_adventure = UserAdventure.where(user_id: params[:host_id]).where(adventure_id: params[:adventure_id]).first
-
       # Check if its a cancellation request
       if params[:cancel_subscription]
 
         # Get stripe customer id
-        stripe_customer_id = user_adventure.stripe_customer_id
+        stripe_customer_id = current_user.stripe_customer_id
 
         # Update stripe to cancel their subscription on next pay cycle
         customer = Stripe::Customer.retrieve(stripe_customer_id)
 
         # Delete that subscription
-        customer.subscriptions.retrieve(user_adventure.stripe_subscription_id).delete(:at_period_end => true)
+        customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete(:at_period_end => true)
 
-        AdvloMailer.subscription_cancelled(user_adventure).deliver
+        AdvloMailer.subscription_cancelled(current_user).deliver
 
         respond_to do |format|
           format.js {render "subscription_charged.js", layout: false}
         end
 
       else
-        # Need to check if that person already has an adventure on subscription...i.e. already is a stripe customer
-        existing_subscription_adventures = UserAdventure.where(user_id: user_adventure.user_id).where('adventure_id <> ?',user_adventure.adventure_id).where('stripe_customer_id IS NOT NULL')
+        # Create stripe customer
+        customer = Stripe::Customer.create(
+          :card => params[:stripe_token],
+          :email => current_user.email,
+          :description => params[:credit_card_name]
+        )
 
-        if existing_subscription_adventures.count > 0
-          existing_stripe_customer_id = existing_subscription_adventures.first.stripe_customer_id
-          existing_stripe_customer = Stripe::Customer.retrieve(existing_stripe_customer_id)
+        # Enroll them in a subscription via stripe
+        new_subscription = customer.subscriptions.create(:plan => 2)
 
-          # Create another subscription
-          new_subscription = existing_stripe_customer.subscriptions.create(:plan => 1)
+        # Store stripe customer id in the user model
+        current_user.stripe_customer_id = customer.id
 
-          # Store stripe customer id in the UserAdventure model
-          user_adventure.stripe_customer_id = existing_stripe_customer.id
-
-          # Update their charge type in the UserAdventure model
-          user_adventure.charge_type = "subscription"
-
-          # Update their subscription id in the UserAdventure model
-          user_adventure.stripe_subscription_id = new_subscription.id
-
-          # Update redirect url if that option is selected
-          if params[:redirect_url]
-            adventure = Adventure.find_by_id(user_adventure.adventure_id)
-
-            adventure.subscription_redirect_url = params[:redirect_url]
-
-            adventure.save
-          end
-
-          # Respond back
-          if user_adventure.save
-            AdvloMailer.subscription_created(user_adventure).deliver
-
-            respond_to do |format|
-              format.js {render "subscription_charged.js", layout: false}
-            end
-          end
-
-        else
-          user = User.find(params[:host_id])
-
-          # Create stripe customer
-          customer = Stripe::Customer.create(
-            :card => params[:stripe_token],
-            :email => user.email,
-            :description => params[:credit_card_name]
-          )
-
-          # Enroll them in a subscription via stripe
-          new_subscription = customer.subscriptions.create(:plan => 1)
-
-          # Store stripe customer id in the UserAdventure model
-          user_adventure.stripe_customer_id = customer.id
-
-          # Update their charge type in the UserAdventure model
-          user_adventure.charge_type = "subscription"
-
-          # Update their subscription id in the UserAdventure model
-          user_adventure.stripe_subscription_id = new_subscription.id
+        # Update their subscription id in the user model
+        current_user.stripe_subscription_id = new_subscription.id
 
 
-          # Update redirect url if that option is selected
-          if params[:redirect_url]
-            adventure = Adventure.find_by_id(user_adventure.adventure_id)
+        # Update redirect url if that option is selected
+        if params[:redirect_url]
+          adventure = Adventure.find_by_id(params[:adventure_id])
 
-            adventure.subscription_redirect_url = params[:redirect_url]
+          adventure.subscription_redirect_url = params[:redirect_url]
 
-            adventure.save
-          end
+          adventure.save
+        end
 
-          # Respond back
-          if user_adventure.save
-            AdvloMailer.subscription_created(user_adventure).deliver
+        # Respond back
+        if current_user.save
+          AdvloMailer.subscription_created(current_user).deliver
 
-            respond_to do |format|
-              format.js {render "subscription_charged.js", layout: false}
-            end
+          respond_to do |format|
+            format.js {render "subscription_charged.js", layout: false}
           end
         end
+        
       end
 
 
