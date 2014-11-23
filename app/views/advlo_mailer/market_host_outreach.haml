@@ -4,16 +4,18 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     %p
-      = "Hey #{@name}."
+      %p 
+        Hello. I'm one of 3 founders at Adventure Local:
+        %a{href: "#{root_url}", style: 'color: #C35B26;'} http://advlo.com
+
       %p
-        = "I found your contact while searching for outdoor guides registered with the A.M.G.A. who are #{@cert} certified. <br> I'm one of the founders of Adventure Local and I thought we may be able to benefit each other.".html_safe
+        = "I found your contact from your work with #{@reference}."
+
       %p
-        Our platform gives outdoor professionals the ability to upload adventure activities and directly connect with travelers. Our goal is not to be an up-seller platform - but a tool to help make online visibility, international transactions, and creating a global reach easier for local certified guides such as yourself. 
+        Our platform gives outdoor professionals the ability to upload adventure activities and directly connect with travelers. 
+        %br
+        Our goal is not to be an up-seller platform - but a tool to help make online visibility, international transactions, and creating a global reach easier for local certified guides such as yourself. 
 
       %p  
-        If you are interested I'd like to invite you to become a partner:
+        If you are interested in partnering i'd love for you to check out our page
         %a{href:"http://www.advlo.com/invite/partner"} http://www.advlo.com/invite/partner
-        %br
-        My intention is that it will inspire you to host something in
-        = "#{@location} :)"
-
