@@ -182,6 +182,10 @@
 
       .dark_gray_background {
         background-color: $dark_gray;
+
+        #adventure {
+          background: none !important;
+        }
       }
 
       #overview {
