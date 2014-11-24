@@ -148,6 +148,7 @@ function video_modal_play_stop() {
     $(this).find('iframe').attr('src',stop_src);
   })
 }
+
   
 homepageInit = function() {
   adventureHover();
@@ -164,4 +165,10 @@ aboutPageInit = function() {
   aboutContactValidator();
   contactToggle();
   submitAboutUsContact();
+}
+
+investPageInit = function() {
+  aboutContactValidator();
+  contactToggle();
+  submitAboutUsContact()
 }
