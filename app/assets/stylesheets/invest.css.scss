@@ -26,7 +26,7 @@
 		color: #000;
 		opacity: 0.9;
 		font-weight: bold;
-		padding-bottom: 30px !important;
+		padding-bottom: 35px !important;
 		margin-top: 15px;
 
 		.market_sub_header {
@@ -54,7 +54,15 @@
 		}
 	}
 
+	.background_market {
+		padding-top: 20px;
+		padding-bottom: 40px;
+	}
+
 	.solution {
+		padding-top: 0px;
+		padding-bottom: 30px;
+
 		.find_icon {
 			width: 150px;
 			height: 150px;
@@ -75,6 +83,9 @@
 	}
 
 	.management {
+		padding-top: 15px;
+		padding-bottom: 15px;
+
 		.personal_img {
 		    margin: 20px auto 10px auto;
 		    border-radius: 50%;

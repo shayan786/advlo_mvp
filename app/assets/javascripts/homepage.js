@@ -95,6 +95,21 @@ function aboutContactValidator(){
         }
       }
     })
+
+    $('#invest #about_us_contact_form #about-us-contact').addClass('disabled');
+
+    $('#invest #about_us_contact_form #contact_comments').on('keyup', function() {
+      var details = $.trim($(this).val());
+
+        if (details.length > 5) {
+          $('#invest #about_us_contact_form #about-us-contact').removeClass('disabled');
+        }
+        else if (details.length <= 4) {
+          $('#invest #about_us_contact_form #about-us-contact').addClass('disabled');
+        }
+    })
+
+
   })
 }
 
