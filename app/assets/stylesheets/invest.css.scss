@@ -80,6 +80,47 @@
 			@extend .find_icon;
 			background-image: asset-url('icons/request_icon.png');
 		}
+
+		.adv-info-wrapper {
+	      position: relative;
+	      width: 30%;
+	      margin-left: 1.5%;
+	      margin-right: 1.5%;
+	      margin-top: 10px;
+	      float: left;
+	      .copy {
+	        left: 0px;
+	        width: 100%;
+	        text-align: center;
+	      }
+
+	      .adventure-brick {
+	        height: 300px;
+	        width: 375px;
+	        float: none;
+	        overflow: hidden;
+	        margin-top: 10px;
+	        background-color: #000;
+	        margin: 0 auto;
+	      }
+
+	      .view-profile {
+	      	width: 375px;
+	        text-align: center;
+	        margin-top: 21px;
+	        font-family: bebas_neue_book;
+	        font-size: 20px;
+	        letter-spacing: 2px;
+
+	        a {
+	          color: #fff;
+	          text-decoration: underline;
+	        }
+	        a:hover {
+	          opacity: 0.75;
+	        }
+	      }
+	    }
 	}
 
 	.management {
@@ -211,4 +252,10 @@
 	    }
 
 	}
+}
+
+@media screen and (max-width: 1210px){
+  .adventure-container .adv-info-wrapper {
+    width: 100% !important;
+  }
 }
