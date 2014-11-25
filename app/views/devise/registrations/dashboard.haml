@@ -58,7 +58,11 @@
                       EDIT
                     .btn.btn-danger.edit_btn.delete_btn{"data-adv-id" => "#{adv.id}"}
                       %i.fa.fa-times
-                        DELETE
+                      DELETE
+                    - if adv.approved && adv.published
+                      .btn.btn-info.edit_btn.embed_btn{"data-adv-url" => "http://www.advlo.com/adventures/#{adv.slug}"}
+                        %i.fa.fa-code
+                        EMBED
                   - if adv.approved && adv.published
                     %br
                     .row
@@ -78,6 +82,7 @@
 
 :javascript
   social_init();
+  embedly_init()
 
   $(document).ready(function() {
     swal_delete_adventure();

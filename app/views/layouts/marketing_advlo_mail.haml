@@ -74,6 +74,18 @@
         line-height: 21px;
       }
 
+      .embed_btn {
+        font-family: Verdana;
+        padding: 10px 15px;
+        font-size: 1.0em;
+        background-color: #C35B26;
+        border-radius: 5px;
+        border-color: #C35B26;
+        color: #FFF;
+        width: 70px;
+        text-decoration: none;
+      }
+
       h1 {
         font-family: Verdana;
         color: #000;
@@ -166,11 +178,13 @@
                   %br
                   %br
                   %a{href: "http://www.facebook.com/advlo"}
-                    %img{src: "http://www.advlo.com/assets/icons/facebook-a86fadd25f4c8740a8f04d3e3f16165f.png", style: 'width="50" height="50"'}
+                    %img{src: "http://www.advlo.com/assets/facebook-a86fadd25f4c8740a8f04d3e3f16165f.png", style: 'width="50" height="50"'}
                   %a{href: "http://www.twitter.com/advlo_"}
-                    %img{src: "http://www.advlo.com/assets/icons/twitter-f6d1be7d910ca451e4bcd6af6a8768a1.png", style: 'width="50" height="50"'}
+                    %img{src: "http://www.advlo.com/assets/twitter-f6d1be7d910ca451e4bcd6af6a8768a1.png", style: 'width="50" height="50"'}
+                  %a{href: "https://plus.google.com/+Advlo-Adventure-Local"}
+                    %img{src: "http://www.advlo.com/assets/googleplus-86a88bcd8157cc81833d73453802381d.png", style: 'width="50" height="50"'}
                   %a{href: "http://www.instagram.com/advlo"}
-                    %img{src: "http://www.advlo.com/assets/icons/instagram-a68ff616afe63c1079707d70593186d5.png", style: 'width="50" height="50"'}
+                    %img{src: "http://www.advlo.com/assets/instagram-a68ff616afe63c1079707d70593186d5.png", style: 'width="50" height="50"'}
 
                 = link_to 'unsubscribe from emails', "#{root_url}/users/unsubscribe/#{@user.access_token}"
 

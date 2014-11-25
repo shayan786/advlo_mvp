@@ -255,6 +255,26 @@ function wallet_message_read() {
   })
 } 
 
+function embedly_init()  {
+  (function(w, d){
+   var id='embedly-platform', n = 'script';
+   if (!d.getElementById(id)){
+     w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
+     var e = d.createElement(n); e.id = id; e.async=1;
+     e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
+     var s = d.getElementsByTagName(n)[0];
+     s.parentNode.insertBefore(e, s);
+   }
+  })(window, document);
+
+  $('#d_user_dashboard .embed_btn').click(function(){
+    var url = $(this).data('adv-url');
+
+    embedly('modal', url);
+  })
+
+}
+
 function wallet_messages_init() {
   wallet_message_validation();
   wallet_message_read();

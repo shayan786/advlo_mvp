@@ -29,6 +29,13 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def invest
+    @adventures = [] 
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('essential-mountain-bike-skills')
+    @adventures << Adventure.find_by_slug('the-pearl-islands-adventure')
+  end
+
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get? 

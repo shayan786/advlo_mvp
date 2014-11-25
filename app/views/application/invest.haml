@@ -1,0 +1,213 @@
+- set_meta_tags(default_meta_tags)
+
+#invest
+  .text_block.text-center.light_background{style: "padding-top: 75px; font-size: 1.4em;"}
+    Adventure Local is a marketplace for the $263B+ adventure travel industry; which allows guides and small tour operators the ability to create, promote and sell travel experiences – online or from a mobile phone.
+
+  .background_market.dark_background
+    .row
+      .col-md-6
+        .header.text-center
+          BACKGROUND
+        .text_block{style: "color: #FFF; font-weight: normal; padding: 0px 25px;"}
+          After sailing and backpacking through Asia, Africa, Europe and South America, our founder’s best travel experiences stemmed from traveling with locals. Without a direct method to connect with local guides and their experiences online, Advlo was born.
+          %br
+          %br
+          Advlo.com was launched August 31st and has seen consistent growth in users, revenue and bookings since.
+          %br
+          %br
+          Advlo has won national competitions, held offices in NY, CO and HI, and is now part of Blue Startups Cohort #4 in Honolulu until Feb.
+
+      .col-md-6
+        .header.text-center
+          MARKET
+        .text_block{style: "color: #FFF; font-weight: normal; padding: 0px 25px;"}
+          Valued at 
+          %b $89B
+          in 2009 and 
+          %b $263B
+          in 2012, the adventure travel industry demonstrated a 65% annual growth rate. 
+
+          %br
+          %br
+
+          %u Target Market: 
+          Individual guides and small tour operators who don’t have a reservation system or sufficient online visibility.
+
+          .market_sub_header.text-center
+            Latin America (fastest growing region) where:
+
+            .col-md-4.text-center
+              .percentage
+                70% 
+              .text_under_percentage
+                of bookings are from the U.S. &  Europe
+            .col-md-4.text-center
+              .percentage
+                80%
+              .text_under_percentage
+                of travelers book online before departure
+            .col-md-4.text-center
+              .percentage
+                66% 
+              .text_under_percentage
+                of guides don’t have a booking system
+  }
+        
+  .solution
+    .header.text-center
+      SOLUTION
+    .text_block.text-center{style: "color: #FFF; font-weight: normal; padding: 0px 25px;"}
+      %b A global platform 
+      where travelers can connect with individual guides and local operators who can 
+      %b create, sell 
+      and 
+      %b customize 
+      their adventure travel experiences
+
+      .row 
+        .col-md-1
+        .col-md-3
+          .find_icon
+        .col-md-4
+          .create_icon
+        .col-md-3
+          .customize_icon
+        .col-md-1
+
+      %b ADVLO
+      is unique in that we’re not solely a reservation system. We tailor to customers who don’t currently have a web presence as well as established guides who want a new innovative approach to promoting their trips.
+
+      Check out some of our 
+      %a{href: "/invite/partner"}
+        current solutions 
+      and, if interested, we’d be happy to share some of the many features and tools we’ll be releasing in the upcoming months.
+
+      .header.text-center{style: "font-size: 1.2em; margin-top: 25px; margin-bottom: 5px;"}
+        EXAMPLE LOCAL ADVENTURES
+
+      .row{style: "margin-top: 20px;"}
+        .adventure-container.adventure-container-homepage
+          .brick-wrapper
+            - @adventures.each_with_index do |adv, i|
+              .adv-info-wrapper
+                %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing",}
+                  %a{href: adventure_path(adv.slug), itemprop: 'url'}
+                    - if adv.attachment.height(:large) >= 300
+                      - adv_img = adv.attachment.url(:large)
+                    - else
+                      - adv_img = adv.attachment.url(:hero)
+                    .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
+                    .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
+                      .copy{id: "#{i}"}
+                        - if adv.title.length > 38
+                          .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
+                        -else
+                          .title{itemprop: 'name'}= adv.title
+
+                        .location{itemprop: 'description'}= get_display_location(adv)
+                        
+                        .host_name= "With #{adv.host_name}"
+
+                      .hover-block{id: i}
+                        .guide-image
+                          .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
+                        
+                      .copy-container{class: "copy-#{i}"}
+      
+                .view-profile
+                  =link_to "View #{adv.host_name}'s profile", user_path(adv.users.first.to_param)
+
+
+  .management.dark_background
+    .header.text-center
+      MANAGEMENT
+
+    - image_chris = "background/about_chris.jpg"
+    - image_jon = "background/about_jon.jpg"
+    - image_shayan = "background/about_shayan.jpg"
+
+    .row
+      .col-md-4
+        .personal_img{style: "background: url(#{image_path image_chris}) center center no-repeat"}
+
+        .row.text-center 
+          %h3 CHRISTOPHER
+          %h4 Developer & Designer
+
+      .col-md-4
+        .personal_img{style: "background: url(#{image_path image_jon}) center center no-repeat"}
+
+        .row.text-center
+          %h3 JON
+          %h4 CEO & Founder
+      .col-md-4
+        .personal_img{style: "background: url(#{image_path image_shayan}) center center no-repeat"}
+
+        .row.text-center
+          %h3 SHAYAN
+          %h4 Developer & Designer
+
+
+    .row
+      .text-center
+        #contact-us
+          #leave-a-note
+            %p LEAVE US A NOTE
+
+    .row
+      .col-md-4.col-md-offset-4.text-center#contact-advlo
+        %form{"accept-charset" => "UTF-8", action: "/contact", method: "POST", id: "about_us_contact_form", "data-remote" => "true"}
+          = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          = tag(:input, :type => "hidden", :name => "about_us", :value => true)
+
+          - if current_user
+            = tag(:input, :type => "hidden", :name => "contact[user_id]", :value => current_user.id)
+
+          .row
+            .form-group
+              %input.form-control{type: "text", name: "contact[email]", id: "contact_email", placeholder: 'Email Address', class: "email-field", value: current_user ? current_user.email : ''}
+
+          .row
+            .form-group
+              %textarea.form-control{rows: "7", type: "text", name: "contact[comments]", id: "contact_comments", placeholder: 'We would love to hear from you.'}
+
+          #honeypot
+            %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
+            
+          .row.text-center
+            .btn.btn-primary#about-us-contact Submit
+
+
+  .col.md-12.text-center.press
+    .container
+      %h3 FEATURED IN
+      .row
+        .col-md-2
+          %a{href: "http://www.tnooz.com/article/startup-pitch-advlo-connects-adventure-seekers-locals/", target: "_blank"}
+            .mention.tnooz= image_tag 'icons/press/tnooz.png'
+        .col-md-2
+          %a{href: "http://adventuretravel.about.com/od/Adventure-Travel-General/fl/New-Online-Marketplace-Invites-Travelers-to-Adventure-with-Locals.htm", target: "_blank"}
+            .mention.about= image_tag 'icons/press/about.png'
+        .col-md-2
+          %a{href: "http://www.tetonsports.com/adventureblog/lets-change-way-travel-adventure-locals/", target: "_blank"}
+            .mention.teton= image_tag 'icons/press/teton.png'
+        .col-md-2
+          %a{href: "http://skift.com/2014/06/09/5-new-travel-startups-that-help-tourist-explore-the-outdoors/#3", target: "_blank"}
+            .mention.skift= image_tag 'icons/press/skift.png'
+        .col-md-2
+          %a{href: "http://clapway.tv/needs-tour-guides-advlo-helps-adventure-locals/", target: "_blank"}
+            .mention.clapway= image_tag 'icons/press/clapway.png'
+        .col-md-2
+          %a{href: "http://tech.co/advlo-launches-adventure-travel-platform-2014-09", target: "_blank"}
+            .mention.techco= image_tag 'icons/press/techco.png'
+    
+:javascript
+  investPageInit()
+
+  $('.view-profile a').hover(function(){
+    $(this).parent().parent().find($('.hover-block')).fadeIn()
+  }, function(){
+    $(this).parent().parent().find($('.hover-block')).fadeOut()
+  })
+    

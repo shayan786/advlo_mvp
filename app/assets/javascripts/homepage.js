@@ -95,6 +95,21 @@ function aboutContactValidator(){
         }
       }
     })
+
+    $('#invest #about_us_contact_form #about-us-contact').addClass('disabled');
+
+    $('#invest #about_us_contact_form #contact_comments').on('keyup', function() {
+      var details = $.trim($(this).val());
+
+        if (details.length > 5) {
+          $('#invest #about_us_contact_form #about-us-contact').removeClass('disabled');
+        }
+        else if (details.length <= 4) {
+          $('#invest #about_us_contact_form #about-us-contact').addClass('disabled');
+        }
+    })
+
+
   })
 }
 
@@ -148,6 +163,7 @@ function video_modal_play_stop() {
     $(this).find('iframe').attr('src',stop_src);
   })
 }
+
   
 homepageInit = function() {
   adventureHover();
@@ -164,4 +180,10 @@ aboutPageInit = function() {
   aboutContactValidator();
   contactToggle();
   submitAboutUsContact();
+}
+
+investPageInit = function() {
+  aboutContactValidator();
+  contactToggle();
+  submitAboutUsContact()
 }

@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   get '/terms'                        => 'application#terms'
   get '/about'                        => 'application#about'
 
+  #investors
+  get '/invest'                       => 'application#invest'
+
   #profile show route
   resources :users, :only => [:show]
 
