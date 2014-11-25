@@ -24,6 +24,7 @@
 	  	position: relative;
 	  	width: 100%; 
 	  	margin: 0 auto;
+
 		  .region {
 		    width: 290px;
 		    height: 225px;
@@ -52,6 +53,17 @@
 			  	padding: 10px;
 			  }
 		  }
+
+		  .others_region {
+	  	  	@extend .region;
+	  	  	background: asset-url('background/other_regions_image.jpg') center center no-repeat;
+	  	  	background-size: cover !important;
+	  	  	width: 93%;
+
+	  	  	&:hover {
+	  	  		opacity: 0.8;
+	  	  	}
+	  	  }
 	  }
   }
 }

@@ -43,6 +43,12 @@
               .region-text
                 Oregon
 
+          %a{href: '/adventures'}  
+            .others_region 
+              .region-text
+                Other Regions
+
+
           / - @regions.each do |r|
           /   %a{href: "/adventures?location=#{r[0]}"}
           /     .region
@@ -62,5 +68,5 @@
 :javascript
   $('#destination-block .region-wrapper').masonry({
     isFitWidth: true,
-    itemSelector: '.region'
+    itemSelector: '.region, .others_region'
   })
