@@ -289,7 +289,6 @@
 }
 
 
-
 @media screen and (max-width: 800px){
   .matrix_content {
     width: 70%;
@@ -316,12 +315,21 @@
   }
 }
 
+.access-block-membership {
+  margin-right: 9% !important;
+}
+
 @media screen and (max-width: 991px){
   #adventure_info .adventure_info_body .access-block {
     width: 40%;
     margin-left: 5%;
     margin-right: 5%;
     float: left;
+  }
+
+  #adventure_info .adventure_info_body .access-block-membership {
+    margin-right: 0%;
+    width: 75% !important;
   }
 }
 
