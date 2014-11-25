@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented.text-center
+      %h2= "Hey #{@user.get_name_or_email}!"
+      
+      .text-left
+        %p Have your own website? We just made it easier to show your amazing bookable adventures.
+        %p 
+          Introducing the new 
+          %b embed
+          feature!
+
+        %p
+          1. Click 
+          %a{href: "#{root_url}users/dashboard"} here
+          to view your live adventures.
+          %br
+          2. Select 'EMBED' on the adventure you want to add on your site.
+          %br
+          3. Paste the code into your existing site.
+
+      %br
+      .text-center
+        %a.embed_btn{href: "#{root_url}users/dashboard"}
+          EMBED
+      %br
+
+      .text-left
+        %p If you have any questions or need help embedding Advlo on your website, shoot us an email by simply replying to this email. We're glad to help!
+
+      %i Thanks,
+      %br
+      %a{href: "#{root_url}about"} The Advlo Team

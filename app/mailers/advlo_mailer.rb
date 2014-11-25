@@ -272,6 +272,15 @@ class AdvloMailer < ActionMailer::Base
     end
   end
 
+  def market_embed_feature(user)
+    @user = user
+
+    mail(to: @user.email, subject: "[ADVLO] : New Embed Feature") do |format|
+      format.html { render layout: 'marketing_advlo_mail' }
+      format.text
+    end
+  end
+
   def market_host_outreach(email, reference)
     @reference = reference
     @email = email
