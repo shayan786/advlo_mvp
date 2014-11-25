@@ -137,7 +137,7 @@ class UsersController < ApplicationController
     signature = params[:signature]
 
     respond_to do |format|
-      format.html {redirect_to '/', notice: %Q( Are you sure ? <a href="/unsubscriber/#{signature}">Yes</a> / <a href="/about">No</a> )  }
+      format.html {redirect_to '/', notice: %Q( Unsubscribe from all emails ?  <a href="/unsubscriber/#{signature}">Yes</a> / <a href="/about">No</a> )  }
     end
   end
 
