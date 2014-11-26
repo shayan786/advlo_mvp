@@ -14,7 +14,7 @@
 
       .btn.btn-default.pre-check#travel.travel-signup-toggle
         %p Traveler
-      .btn.btn-default.pre-check#host.host-signup-toggle
+      %a.btn.btn-default.pre-check#host{href: '/invite/partner'}
         %p Partner
 
 
@@ -45,38 +45,6 @@
           .homepage_login_bottom_travel.homepage_email_btn
             email
 
-    .block.block-partner
-      .bottom-signup-text
-        Join for free and start hosting
-        %br
-        the Adventures you create
-
-      .advlo-signup-bottom
-        %a.btn.btn-primary.homepage_fb_btn#bottom_host_fb_signup{href: "/users/auth/facebook"}
-          %i.fa.fa-facebook-square
-          connect
-            
-
-        %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal_traveler', class: 'homepage_login_form_host'}
-          = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-          = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => false)
-          .form-group
-            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
-          .form-group
-            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
-          .form-group
-            %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
-          %input.btn.btn-primary.sign_up_btn#host_email_signup{name: "sign_up", type: "submit", value: "JOIN"}
-
-        .row
-          .homepage_login_bottom_host.homepage_email_btn
-            email
-
-      .advlo-signup-bottom
-        %a.btn.btn-host{href: "/adventures/info"}
-          %i.fa.fa-area-chart
-          Learn More
-
       
 
 :javascript
@@ -88,13 +56,6 @@
     window.scrollTo(0, $(document).height());
   })
 
-  $('.host-signup-toggle').click(function(){    
-    $(this).addClass('active')
-    $('#travel').removeClass('active')
-    $('.block-travel').hide()
-    $('.block-partner').fadeIn()
-    window.scrollTo(0, $(document).height());
-  })
 
   $('.homepage_login_bottom_travel').click(function(){
     $('.homepage_login_form_travel').fadeIn();

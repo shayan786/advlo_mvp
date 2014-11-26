@@ -285,7 +285,7 @@ class AdvloMailer < ActionMailer::Base
     @reference = reference
     @email = email
 
-    mail(to: @email, from: 'christopher@advlo.com', subject: "Partnership - Adventure Travel Marketplace") do |format|
+    mail(to: @email, from: 'christopher@advlo.com', subject: "Adventure Marketplace") do |format|
       format.html { render layout: 'simple' }
       format.text
     end
