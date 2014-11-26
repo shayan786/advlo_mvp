@@ -102,9 +102,21 @@ class AdventureStepsController < ApplicationController
       AdvloMailer.delay.adventure_publish_request(@adventure)
       AdvloMailer.delay.adventure_published_submitted(@adventure)
 
+    elsif params[:published] == '3'
+
+      @adventure.published = true
+      @adventure.save
+
+      AdvloMailer.delay.adventure_publish_request(@adventure)
+      AdvloMailer.delay.adventure_published_submitted(@adventure)
+
+      respond_to do |format|
+        format.html {redirect_to "/adventures/new", notice: "Awesome - Your adventure has been published!"}
+        format.js {}
+      end
+
     elsif params[:published] == '2'
     # Un-Publish an Adventure
-
       @adventure.published = false
       render_wizard @adventure
 
@@ -330,7 +342,7 @@ class AdventureStepsController < ApplicationController
   # can specialize this method with per-user checking of permissible attributes.
   
   def redirect_to_finish_wizard(options = nil)
-    redirect_to "/adventures/#{@adventure.slug}", notice: "PENDING APPROVAL: We’ll notify you when it goes live"
+    redirect_to "/adventures/#{@adventure.slug}", notice: "PENDING APPROVAL: <a href='/adventures/new'> Click to add another adventure </a> "
   end
 
   def adventure_params

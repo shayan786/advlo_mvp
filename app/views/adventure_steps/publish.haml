@@ -82,17 +82,28 @@
                   %input.btn.btn-primary.preview_btn{type: 'submit', value: 'UNPUBLISH'}
 
             - else
-              .col-md-2.col-md-offset-4
+              #preview.complete-button
                 %a.btn.btn-default.view_btn{href: "/adventures/#{@adventure.slug}", target: '_blank'}
                   %i.fa.fa-eye
                   PREVIEW
-              .col-md-2
+
+              #publish-new.complete-button
+                %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_iten_form"}
+                  = tag(:input, :type => "hidden", :value => "put", :name => "_method")
+                  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                  = tag(:input, :type => "hidden", :name => "published", :value => "3")
+                  = tag(:input, :type => "hidden", :name => "adventure_id", :value => @adventure.id)
+                  %input.btn.btn-primary.preview_btn.publish-adventure.disabled{type: 'submit', value: 'PUBLISH / Add New'}
+
+              #publish-continue.complete-button
                 %form{"accept-charset" => "UTF-8", action: wizard_path, method: "POST", id: "adventure_iten_form"}
                   = tag(:input, :type => "hidden", :value => "put", :name => "_method")
                   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
                   = tag(:input, :type => "hidden", :name => "published", :value => "1")
                   = tag(:input, :type => "hidden", :name => "adventure_id", :value => @adventure.id)
-                  %input.btn.btn-primary.preview_btn.publish-adventure.disabled{type: 'submit', value: 'PUBLISH'}
+                  %input.btn.btn-default.btn-lg.disabled.publish-adventure{type: 'submit', value: 'PUBLISH'}
+
+              
 
 :javascript
   adventureCreate();

@@ -18,11 +18,7 @@ class AdventuresController < ApplicationController
       state = params[:state]
       filter_index('state'.to_sym,state)
     else
-      if current_user
-        @adventures = Adventure.all.approved
-      else
-        @adventures = Adventure.all.approved.limit(17)
-      end
+      @adventures = Adventure.all.approved.limit(17).order('created_at DESC')
       @hero_image = HeroImage.where(region: "all").first
     end
   end

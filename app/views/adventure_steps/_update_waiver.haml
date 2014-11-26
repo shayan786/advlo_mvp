@@ -13,7 +13,7 @@
         .prefill_label= Waiver.find(@adventure.waiver_id).file_file_name
 
       .row
-        .paypal_update_notice.waiver-alert.alert.alert-warning.text-center{style: "display: none; margin-top: 10px; margin-bottom: 0px;"}
+        = render partial: "adventure_steps/notice"
 
       .waiver-btn-row
         %form{"accept-charset" => "UTF-8", action: '/delete/waiver', method: "POST", id: "delete_wavier", 'data-remote' => true}

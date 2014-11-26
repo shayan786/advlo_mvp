@@ -8,6 +8,8 @@
         .panel-heading.text-center.section_header
           BASICS
         .panel-body
+          = render partial: "adventure_steps/notice"
+
           %form{"accept-charset" => "UTF-8", action: "/adventures", method: "post", id: "adventure_edit_form", enctype: "multipart/form-data"}
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
             = tag(:input, :type => "hidden", :name => "adventure[region]", id: "adv_region", "data-geo" => "country_short")

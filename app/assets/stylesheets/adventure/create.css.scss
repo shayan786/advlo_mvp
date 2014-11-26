@@ -655,6 +655,24 @@
 			}
 		}
 	}
+	.complete-button{
+		width: 33%;
+		float: left;
+	}
+
+	#preview {
+		text-align: right;
+	}
+	#publish-new {
+		text-align: center;
+	}
+
+	#publish-continue {
+		text-align: left;
+	}
+	.publish-adventure {
+		font-size: 25px;
+	}
 }
 
 .waiver-view-wrapper {
@@ -698,6 +716,18 @@
 	.payout-buttons-row  {
 		width: 100%;
 		margin: 0 auto;
+	}
+
+	#adventure_create .complete-button {
+		width: 100%;
+		text-align: center !important;
+	}
+
+	#publish-continue {	
+		margin-top: 15px;
+	}
+	#publish-new {	
+		margin-top: 15px;
 	}
 
 	.option_btn_1 {
@@ -771,7 +801,12 @@
 		text-align: center;
 	}
 
-
+	#preview {	
+		margin-bottom: -15px !important;
+	}
+	.publish-adventure {
+		font-size: 15px !important; 
+	}
 
 	#adventure_create #adv_payment #existing-paypal {
 		text-align: center;
