@@ -18,7 +18,23 @@
               .location{itemprop: 'description'}= get_display_location(adv)
               
               .host_name= "With #{adv.host_name}"
-              
+            
+            - if adv.price_type == "per_adventure"
+              - if adv.price > 999
+                .btn.btn-info.disabled.per_adventure_btn{style: "right: 75px !important;"}
+                  PER GROUP
+              - elsif adv.price > 99
+                .btn.btn-info.disabled.per_adventure_btn{style: "right: 65px !important;"}
+                  PER GROUP
+              - else
+                .btn.btn-info.disabled.per_adventure_btn
+                  PER GROUP
+
+            - if adv.duration_type == 'Days' && adv.duration_num > 1
+              .btn.btn-info.disabled.days_duration_btn
+                = adv.duration_num
+                %br
+                DAYS
 
             .price= "$ #{adv.price}"
 
