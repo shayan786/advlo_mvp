@@ -31,6 +31,12 @@
                 .btn.btn-info.disabled.per_adventure_btn
                   PER GROUP
 
+            - if adv.duration_type == 'Days' && adv.duration_num > 1
+              .btn.btn-info.disabled.days_duration_btn
+                = adv.duration_num
+                %br
+                DAYS
+
             .price= "$ #{adv.price}"
 
             .hover-block{id: i}
