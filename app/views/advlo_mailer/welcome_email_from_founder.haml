@@ -27,7 +27,7 @@ I just wanted to personally thank you for signing up for Advlo yesterday.
   %br
   I really want to make your Adventure Local experience as beneficial as I can. Please feel free to send any questions or feedback our way. 
 
-  - if @user.is_guide?(@user.id)
+  - if !@user.is_guide?(@user.id)
     %p
       Make sure you complete
       %a{href:"#{root_url}users/edit"} your profile
