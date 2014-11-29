@@ -41,4 +41,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = { :address => "127.0.0.1", :port => 1025 }
 
   config.serve_static_assets = true
+
+  ENV['INSTAGRAM_CLIENT_ID'] = "04e45daeb59e403cba7e0a3a833695f8"
+  ENV['INSTAGRAM_SECRET'] = "5cfacc6f2a6d4e199396677deab2b76b"
 end

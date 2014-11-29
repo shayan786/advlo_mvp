@@ -17,6 +17,18 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Welcome to Adventure Local', from: "founders@advlo.com")
   end
 
+  def welcome_email_from_founder(user)
+    @user = user
+    mail(to: @user.email, subject: '', from: "jon@advlo.com")
+
+    @subject = @user.get_first_name
+    mail(to: @user.email, from: 'jon@advlo.com', subject: "Hey #{@subject} - thanks for joining") do |format|
+      format.html { render layout: 'simple_jon' }
+      format.text
+    end
+  end
+
+
   def one_week_email(user)
     @user = user
     mail(to: @user.email, from: 'christopher@advlo.com', subject: "Hey #{@user.get_name_or_email} - just checking in") do |format|

@@ -90,7 +90,8 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_email
-    AdvloMailer.welcome_email(self).deliver
+    AdvloMailer.delay.welcome_email(self)
+    AdvloMailer.delay(run_at: 1.day.from_now).welcome_email_from_founder(self)
   end
 
   def is_guide?(user_id)

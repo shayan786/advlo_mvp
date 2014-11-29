@@ -34,6 +34,11 @@ Rails.application.routes.draw do
   #investors
   get '/invest'                       => 'application#invest'
 
+  #blog
+  get '/blog'                       => 'blogpost#index'
+  get '/blog/:post'                 => 'blogpost#show'
+
+
   #profile show route
   resources :users, :only => [:show]
 

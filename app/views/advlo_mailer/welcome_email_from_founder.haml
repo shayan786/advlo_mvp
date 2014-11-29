@@ -1,0 +1,42 @@
+- if @subject
+  ="Hey #{@subject},"
+- else
+  ="Hey,"
+
+
+I just wanted to personally thank you for signing up for Advlo yesterday. 
+%p
+
+- if !@user.is_guide 
+
+  Our goal here is simple, to help you create better travel memories through authentic cultural connection & unique adventures. When we travel it is so easy to get wrapped up into traditional tourism channels. 
+  %br 
+  Those days are changing, and we want to be the ones to create that difference. Please feel free to send any questions or feedback our way. 
+
+  - if @user.category.nil?
+    %p
+      Make sure you update 
+      %a{href:"#{root_url}users/edit"} your interests 
+      so we can let you know about awesome new local adventures!
+      
+
+
+- else
+    
+  Our goal here is simple, to help you connect with a more travelers looking for local adventure experiences while providing a simple way for you to manage your bookings, and get paid each week.
+  %br
+  I really want to make your Adventure Local experience as beneficial as I can. Please feel free to send any questions or feedback our way. 
+
+  - if @user.is_guide?(@user.id)
+    %p
+      Make sure you complete
+      %a{href:"#{root_url}users/edit"} your profile
+      so you can start uploading your own adventures and connect with a network of international travelers.
+
+
+
+
+- if @user.is_guide
+  Looking forward to helping you adventure with locals!
+- else
+  Looking forward to helping you connect with more travelers!
