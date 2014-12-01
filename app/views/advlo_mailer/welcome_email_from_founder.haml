@@ -15,20 +15,20 @@ I just wanted to personally thank you for signing up for Advlo yesterday.
 
 - if !@user.is_guide 
 
-  Our goal here is simple, to help you create better travel memories through authentic cultural connection & unique adventures. The days of traditional cookie-cutter itineraries are changing, and we want to be the ones to create that difference. Please feel free to send any questions or feedback our way. 
+  Our goal here is simple, to help you create better travel memories through authentic cultural connection & unique adventures. Please feel free to send any questions or feedback our way. 
 
   - if @user.category.nil?
     %p
       Make sure you update 
       %a{href:"#{root_url}users/edit"} your interests 
-      so we can let you know about awesome new local adventures!
+      so we can let you know about new adventures in your area.
       
 
 
 - else
   Our goal here is simple, to help you connect with more travelers looking for local adventure experiences while providing a seamless way for you to manage your bookings, payments and customer relations each week.
   %br
-  I really want to make your Adventure Local experience as beneficial as I can. Please feel free to send any questions or feedback our way. 
+  I really want to make your Adventure Local experience as beneficial as I can. Please feel free to send any questions or feedback my way. 
 
   - if !@user.is_guide?(@user.id)
     %p
@@ -40,6 +40,6 @@ I just wanted to personally thank you for signing up for Advlo yesterday.
 
 
 - if @user.is_guide
-  Looking forward to helping you adventure with locals!
-- else
   Looking forward to helping you connect with more travelers!
+- else
+  Looking forward to helping you adventure with locals!
