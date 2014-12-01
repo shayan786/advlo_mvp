@@ -1,4 +1,4 @@
-#blog-wrapper
+#blog-index-wrapper
   .row
     .col.col-md-2#left-sidebar-container
       .left-wrapper
@@ -16,11 +16,12 @@
     .col.col-md-8.blogpost-container
       - @blogposts.each do |bp|
         .blogpost
-          .blog-image= image_tag bp.attachment(:large)
+          %a{href: "/blog/#{bp.permalink}"}
+            .blog-image= image_tag bp.attachment(:large)
 
-          .blog-preview
-            .title= bp.title
-            .excerpt= bp.body[0..100]
+            .blog-preview
+              .title= bp.title
+              .excerpt= ActionView::Base.full_sanitizer.sanitize( bp.body[0..250] )
 
           .share-block
             = render_shareable :url=> "http://advlo.com/blog/#{bp.permalink}"
