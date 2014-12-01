@@ -37,23 +37,6 @@ GIT
       xpath (~> 2.0)
 
 GIT
-  remote: git://github.com/stefanoverna/activeadmin-dragonfly.git
-  revision: 89a47f9124b1c4ee4ae79f6c32aa999d2566c5d1
-  specs:
-    activeadmin-dragonfly (0.0.2)
-      activeadmin
-      dragonfly (= 0.9.15)
-      rack-cache
-
-GIT
-  remote: git://github.com/stefanoverna/activeadmin-wysihtml5.git
-  revision: 35d1a9411a1c0af61882ef04dcb7cd10600fbdb5
-  specs:
-    activeadmin-wysihtml5 (1.0.0)
-      activeadmin
-      activeadmin-dragonfly
-
-GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: e8c1dc8a26183cf10e5eac7fb29eb7bdcf51d01f
   specs:
@@ -85,6 +68,26 @@ GEM
       activesupport (= 4.1.0)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_admin_editor (1.1.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      activeadmin (>= 0.4.0)
+      ejs
+      rails (>= 3.0.0)
     activemodel (4.1.0)
       activesupport (= 4.1.0)
       builder (~> 3.1)
@@ -158,9 +161,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    dragonfly (0.9.15)
-      multi_json (~> 1.0)
-      rack
+    ejs (1.1.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
@@ -257,8 +258,6 @@ GEM
       activerecord (>= 3.0)
     polyglot (0.3.5)
     rack (1.5.2)
-    rack-cache (1.2)
-      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.0)
@@ -382,9 +381,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_editor
   activeadmin!
-  activeadmin-dragonfly!
-  activeadmin-wysihtml5!
   aws-sdk
   better_errors
   binding_of_caller
