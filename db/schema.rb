@@ -154,13 +154,6 @@ ActiveRecord::Schema.define(version: 20141127042830) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "emails", force: true do |t|
-    t.string   "subject",    default: "[ADVLO]"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "events", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
