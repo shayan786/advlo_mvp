@@ -13,11 +13,13 @@ class BlogpostController < ApplicationController
   def show
     @blogpost = Blogpost.find_by(permalink: params[:permalink])
     @blogpost.view_count = ((@blogpost.view_count.nil?) ? 0 : @blogpost.view_count) + 1
+    # @most_read_blogposts = Blogpost.published.order('view_count').reverse
+  
     @blogpost.save
   end
 
   def index
-    @blogposts = Blogpost.all
+    @blogposts = Blogpost.order('created_at DESC')
     @photos = Instagram.user_recent_media(847673197, {:count => 10})
   end
 

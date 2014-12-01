@@ -1,4 +1,4 @@
-#blog-wrapper {
+#blog-index-wrapper {
   position: relative;
   float: left; 
   width: 100%;
@@ -52,14 +52,14 @@
           font-size: 18px;
         }
       }
-      .share-block {
-        position: relative;
-        float: left;
-        width: 100%;
-        margin-bottom: 5px;
-        margin-left: 23px;
-      }
     }
+  }
+  .share-block {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-left: 23px;
   }
 
   #right-sidebar-container {
@@ -99,7 +99,7 @@
     display: none;
   }
 
-  #blog-wrapper .blogpost-container .blogpost .blog-image {
+  #blog-index-wrapper .blogpost-container .blogpost .blog-image {
     width: 90%;
     margin: 0 auto;
     margin-top: 10px;
@@ -107,18 +107,44 @@
     float: none;
   }
 
-  #blog-wrapper .blogpost-container .blogpost .blog-preview {
+  #blog-index-wrapper .blogpost-container .blogpost .blog-preview {
     width: 90%;
     margin: 0 auto;
     float: none;
   }
 
-  #blog-wrapper .blogpost-container .blogpost .share-block {
+  #blog-index-wrapper .blogpost-container .blogpost .share-block {
     position: relative;
     float: left;
     width: 88%;
     margin-bottom: 8px;
     margin-left: 23px;
     margin-top: 12px;
+  }
+}
+
+
+
+#blog-show-wrapper {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-top: 55px;
+  margin-bottom: 25px;
+  background: whitesmoke;  
+
+  .post-wrapper {
+
+    .blog-title {
+      position: relative;
+      float: left;
+      width: 100%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 3em;
+      font-family: 'bebas_neue';
+      letter-spacing: 1px;
+    }
   }
 }
