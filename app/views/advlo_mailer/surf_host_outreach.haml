@@ -6,18 +6,15 @@
     %p
       %p 
         Hey there.
-        = "My name is Christopher. I'm one of the founders of Adventure Local ( advlo.com )" 
-
+        = "My name is Christopher. I'm one of the founders of Adventure Local: #{ActionView::Base.full_sanitizer.sanitize( 'advlo.com' )}" 
         %br
-        We built a platform to change the way people connect with local adventure guides. 
         %br
-        I found your contact while searching for surf guides, so I figured you would be up for checking it out.
+        We built a platform to change the way people connect with local adventurers when they travel. 
+        %br
+        I found your contact during my search for surf guides, so I figured you would be up for checking it out.
 
         %p
-          Here is a page with all the details on the platform. We are looking for for guides who can offer awesome local adventures, 
-          %br
-          to join our global community of adventure travelers. 
+          We are looking for people who can offer awesome local adventures in their area.
           %a{href:"http://www.advlo.com/invite/partner"} http://www.advlo.com/invite/partner
           %br
-        %p
-          Email me back if you’re interested, I would be more than happy to answer questions.
+          Email me back if you’re interested or know someone who might be. I would be more than happy to answer questions.
