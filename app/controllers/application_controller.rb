@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   after_filter :store_location
   before_filter :get_poll
+  before_filter :load_based_on_location
+
+  def load_based_on_location
+    puts "!!!!!!!!!!!!!!!!\n\n\n#{request.location.inspect}\n\n\n!!!!!!!!!!!!!!!!!"
+  end
+
 
   def get_poll
     @poll = Poll.find_by_name('What kind of adventurer are you?')

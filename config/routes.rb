@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     get '/travel-fund/:referral_code' => 'registrations#referral_sign_up'
   end
   
-  get 'invite/:invite'               => 'adventures#hosting_info'
-  get 'partner'                      => 'adventures#hosting_info'
+  get 'invite/:invite'                => 'adventures#hosting_info'
+  get 'partner'                       => 'adventures#hosting_info'
 
   #contact
   post '/contact'                     => 'application#contact'
@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   get '/invest'                       => 'application#invest'
 
   #blog
-  get '/blog'                       => 'blogpost#index'
-  get '/blog/:post'                 => 'blogpost#show'
+  get '/blog'                         => 'blogpost#index'
+  get '/blog/:permalink'              => 'blogpost#show'
 
 
   #profile show route
@@ -69,7 +69,7 @@ Rails.application.routes.draw do
   #conversations & messages
   post '/conversations/new'          => 'conversations#new'
   post '/messages/new'               => 'messages#new'
-  post '/messages/read/:id'        => 'messages#read'            
+  post '/messages/read/:id'          => 'messages#read'            
 
   root to: 'application#homepage'
 
