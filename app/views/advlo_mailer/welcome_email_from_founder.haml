@@ -3,20 +3,17 @@
 - else
   ="Hey,"
 
-I just wanted to personally thank you for signing up for Advlo yesterday. 
+I just wanted to personally thank you for joining Advlo yesterday.
 %p
 
 - if !@user.is_guide 
-
-  Our goal here is simple, to help you create better travel memories through authentic cultural connection & unique adventures. Please feel free to send any questions or feedback our way. 
+  Our goal here is simple, to help you connect with local guides to experience more authentic and unique travel adventures. Please feel free to send any questions or feedback my way.
 
   - if @user.category.nil?
     %p
       Make sure you update 
-      %a{href:"#{root_url}users/edit"} your interests 
-      so we can let you know about new adventures in your area.
-      
-
+      %a{href:"#{root_url}users/edit"} your location & adventure interests 
+      so we can personalize results and let you know about new adventures you’d like in your area.
 
 - else
   Our goal here is simple, to help you connect with more travelers looking for local adventure experiences while providing a seamless way for you to manage your bookings, payments and customer relations each week.

@@ -1,4 +1,4 @@
-#blog-show-wrapper
+.blog-show-wrapper
   .row
     .col.col-md-2#left-sidebar-container
       .left-wrapper
@@ -19,9 +19,10 @@
         .blog-body
           = @blogpost.body.html_safe
 
-
+           
       .share-block
         = render_shareable
+
       #disqus_thread
         :javascript
           /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -37,4 +38,11 @@
           Please enable JavaScript to view the
           %a{:href => "http://disqus.com/?ref_noscript"} comments powered by Disqus.          
 
-    .col.col-md-2#right-sidebar-container
+    .col.col-md-2#related-adventures-container
+      #adventures-container
+        - @related_adventures.each do |adv|
+          %a{href: "/adventures/#{adv.slug}", target: '_blank'}
+            .insta-post
+              .photo
+                %img{itemprop: 'image', src: adv.attachment.url(:thumb)}
+              .title= "#{adv.title}.."

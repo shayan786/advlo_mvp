@@ -18,19 +18,29 @@
         .blogpost
           %a{href: "/blog/#{bp.permalink}"}
             .blog-image= image_tag bp.attachment(:large)
-
             .blog-preview
               .title= bp.title
-              .excerpt= ActionView::Base.full_sanitizer.sanitize( bp.body[0..250] )
+              .excerpt= ActionView::Base.full_sanitizer.sanitize( bp.body[0..250] )+ "..."
+              .read-more
+            .read-more-text
+              Read More
 
           .share-block
-            = render_shareable :url=> "http://advlo.com/blog/#{bp.permalink}"
+            = render_shareable buttons: ["facebook", "twitter", "pinterest", "google_plus"], :url=> "http://advlo.com/blog/#{bp.permalink}"
 
 
 
     .col.col-md-2#right-sidebar-container
       #instagram-container
         - @photos.each do |photo|
-          .insta-post
-            .photo
-              = link_to (image_tag photo.images.standard_resolution.url), photo.link, target: '_blank'
+          %a{href: photo.link, target: '_blank'}
+            .insta-post
+              .photo
+                = image_tag photo.images.standard_resolution.url
+              .title= "#{photo.caption.text[0..80]}.."
+              
+        - @tweets.each_with_index do |tweet, i|
+          .tweet{id: i}
+            %br
+            = link_to tweet.text.html_safe, "#{tweet.url}"
+            %br

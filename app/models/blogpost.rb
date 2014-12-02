@@ -5,5 +5,10 @@ class Blogpost < ActiveRecord::Base
   validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
 
   scope :published, where('state = ?', 'Published').order('published_at DESC').limit(25)
+  after_save :update_asset_name
 
+
+  def update_asset_name
+    
+  end
 end
