@@ -30,7 +30,7 @@ ActiveAdmin.register Blogpost do
       f.input :author
       f.input :permalink
       f.input :state, include_blank: false, as: :select, collection: Blogpost::STATE
-      f.input :body, as: :wysihtml5, commands: [:bold, :italic, :underline, :ul, :ol, :outdent, :indent, :link, :image, :video, :source]
+      f.input :body, as: :html_editor
       f.input :video_url, placeholder: 'http://www.youtube.com/watch?v=F7RzbUX2GjM || https://vimeo.com/48024809'
       f.input :attachment, as: :file
     end

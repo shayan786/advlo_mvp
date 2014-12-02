@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201003544) do
+ActiveRecord::Schema.define(version: 20141202002430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,20 +95,6 @@ ActiveRecord::Schema.define(version: 20141201003544) do
     t.boolean  "featured"
     t.string   "subscription_redirect_url"
     t.string   "host_name"
-  end
-
-  create_table "assets", force: true do |t|
-    t.string   "storage_uid"
-    t.string   "storage_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "storage_width"
-    t.integer  "storage_height"
-    t.float    "storage_aspect_ratio"
-    t.integer  "storage_depth"
-    t.string   "storage_format"
-    t.string   "storage_mime_type"
-    t.string   "storage_size"
   end
 
   create_table "blogposts", force: true do |t|
