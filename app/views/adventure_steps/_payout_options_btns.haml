@@ -33,7 +33,7 @@
           .divider
         .calc
           You receive:
-        .answer= "$ #{(@adventure.price * 0.85).to_f}"
+        .answer= "$ #{(@adventure.price * 0.85).to_f.round(2)}"
 
 
       .learn-more
@@ -66,7 +66,7 @@
         %li.fa.fa-check.extra
           0% bookings commission
         %li.fa.fa-check.extra
-          Optional to re-direct
+          Option to re-direct transaction
 
 
       .learn-more
