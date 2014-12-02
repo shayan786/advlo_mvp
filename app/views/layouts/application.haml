@@ -13,6 +13,10 @@
     = csrf_meta_tags
 
     - if Rails.env.production?
+      - #FB Conversion Stuff
+      - if content_for? :for_head
+        - yield :for_head
+
       = render partial: 'shared/google_analytics'
 
   %body
