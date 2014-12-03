@@ -304,8 +304,10 @@ class AdvloMailer < ActionMailer::Base
     end
   end
 
-  def shayan_market_host_outreach(email)
+  def shayan_market_host_outreach(email, category = nil, location)
     @email = email
+    @category = category
+    @location = location
 
     mail(to: @email, from: 'shayan@advlo.com', subject: "Adventure Marketplace") do |format|
       format.html { render layout: 'simple_shayan' }
