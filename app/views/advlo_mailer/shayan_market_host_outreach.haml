@@ -11,7 +11,19 @@
         My name is Shayan. I'm one of the founders of Adventure Local ( advlo.com ).
         %br
         %br
-        I found you on TripAdvisor under Vietnam (Activities) with some amazing reviews and thought you might up for checking out Advlo.
+        I found you on TripAdvisor
+
+        - if @category
+          = "while looking for #{@category} trips"
+
+        - if @location && !@category
+          = "under #{@location} (Adventures)" 
+        - elsif @location
+          = "in #{@location} (Adventures)" 
+        - else
+          under Adventures
+
+        with some amazing reviews and thought you might up for checking out Advlo.
 
         %p
           We are looking for people who can offer awesome local adventures in their area =>
