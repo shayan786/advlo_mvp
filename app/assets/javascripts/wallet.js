@@ -267,10 +267,16 @@ function embedly_init()  {
    }
   })(window, document);
 
+  // This is the important line. You will need to insert your API KEY here.
+  embedly('analytics', {key: 'f3c4399efeeb4801b07b7c1344ea499a'});
+
+
   $('#d_user_dashboard .embed_btn').click(function(){
     var url = $(this).data('adv-url');
 
     embedly('modal', url);
+
+    $('.card .action').hide();
   })
 
 }
