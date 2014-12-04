@@ -1,7 +1,7 @@
 #blog-index-wrapper
-  .row
-    .col.col-md-2#left-sidebar-container
-      .left-wrapper
+  .static-leftbar
+    .left-wrapper
+      .blogpost-title-container
         .social-container
           .follow
             %a{href: "http://www.facebook.com/advlo", target: "_blank"}
@@ -16,16 +16,31 @@
             %a{href: "http://www.instagram.com/advlo", target: "_blank"}
               = image_tag asset_url('instagram.png')
 
-        .blogpost-title-container
-          #blogpage-title
-            Recent posts
-          - @blogposts.each do |bp|
-            %a{href:"http://advlo.com/blog/#{bp.permalink}"}
-              .blog-link
-                = bp.title
+        .blogpage-title
+          Recent Blogs
+        - @blogposts.each do |bp|
+          %a{href:"http://advlo.com/blog/#{bp.permalink}"}
+            .blog-link
+              = bp.title
+
+  .row
+    .col.col-md-2#left-sidebar-container
+      .left-wrapper
+        .blogpage-title
+          Newest adventures
+
+        .recent-adventure-wrapper
+          - @recent_adventures.each do |adv|
+            %a.adventure{href: "adventures/#{adv.slug}"}
+              .photo
+                = image_tag adv.attachment.url(:thumb)
+              .title= "#{adv.title[0..25]}.."
+
 
 
     .col.col-md-8.blogpost-container
+      .blog-header-title
+        = "- Advlo Travel Journal -"
       - @blogposts.each do |bp|
         .blogpost
           %a{href: "/blog/#{bp.permalink}"}
@@ -43,6 +58,9 @@
 
 
     .col.col-md-2#right-sidebar-container
+      .blogpage-title{style: 'margin-right: 10px;'}
+        Instagram & Twitter
+
       #instagram-container
         - @photos.each do |photo|
           %a{href: photo.link, target: '_blank'}

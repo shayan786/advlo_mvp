@@ -12,7 +12,7 @@ class AdventureStepsController < ApplicationController
     end
 
     if current_user
-      unless current_user.email == 'chrisknight.mail@gmail.com' || current_user.email == 'shayan@advlo.com' || current_user.email == 'jemaser@syr.edu'
+      unless check_if_advlo(current_user)
         if !current_user || @adventure.users.first != current_user
             redirect_to '/', notice: "Looks like you wandered where you dont belong - <a href='/users/sign_in'>sign in here</a>"
           return
