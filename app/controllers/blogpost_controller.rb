@@ -23,6 +23,7 @@ class BlogpostController < ApplicationController
   def index
     @blogposts = Blogpost.order('created_at DESC').limit(7)
     @photos = Instagram.user_recent_media(847673197, {:count => 10})
+    @recent_adventures = Adventure.approved.take(6)
 
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = "p84FKXgsg1UjvK1x3UcxGptFJ"

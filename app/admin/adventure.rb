@@ -18,7 +18,7 @@ ActiveAdmin.register Adventure do
   end
 
   index do
-    column :title
+    column :slug
     column :published
     column :approved
     column :featured
