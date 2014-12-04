@@ -275,6 +275,8 @@ function embedly_init()  {
     var url = $(this).data('adv-url');
 
     embedly('modal', url);
+
+    $('.card .action').hide();
   })
 
 }
