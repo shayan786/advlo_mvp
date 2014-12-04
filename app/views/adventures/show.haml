@@ -131,11 +131,10 @@
         = render partial: 'gallery'
 
       
-      - if @adventure.video_url
+      - if @adventure.video_url != nil && @adventure.video_url != ''
         .col-md-7.offset-13
           .adventure-video-wrapper
-            - if @adventure.video_url
-              = raw(@adventure.embed(@adventure.video_url))
+            = raw(@adventure.embed(@adventure.video_url))
       
       = render partial: 'payment_modal'
               
