@@ -54,6 +54,19 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @adventure.users.first.email, subject: '[ADVLO] : Your Adventure has been approved!')
   end
 
+  def unpublished_adventure_email(adventure)
+    @user = adventure.users.first
+    @adventure = adventure
+
+    # Only send the email if the adventure is not published
+    if !@adventure.published && @adventure.title && @adventure.title != ''
+      mail(to: @user.email, from: 'shayan@advlo.com', subject: "[ADVLO] : Publish your adventure!") do |format|
+        format.html { render layout: 'simple_shayan' }
+        format.text
+      end
+    end
+  end
+
   # INFORMATIONAL & REQUESTS:---------------------------------------------------------------------------------------------------------------------
 
   def request_adventure_email(request, receiver)
@@ -199,7 +212,6 @@ class AdvloMailer < ActionMailer::Base
 
 
   # ---------- REFERRAL EMAIL ------------------------------------------------------------------------------------------------------
-
   def send_referral_congrats(user)
     @user = user
     @referrals = User.where(referrer_id: user.id)

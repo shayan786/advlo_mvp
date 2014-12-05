@@ -183,7 +183,11 @@
     }
     else {
       region = "all";
+      if (#{params[:state].present?}) {
+        var state = "#{params[:state]}"
+      }
     }
+
 
     //Toggle the active state
     $('#filter_nav ul.sort_by_ul li').removeClass('active');
@@ -196,20 +200,40 @@
     $(this).prepend(check_icon);
 
     e.preventDefault();
-    $.ajax({
-      url: "/adventures/filter",
-      dataType: "script",
-      data: {
-        region_one_up: region_one_up,
-        region_type: region_type,
-        region: region,
-        category: categories,
-        sort_by: sort_by
-      },
-      type: "GET",
-      beforeSend: function() {
-      }
-    });
+
+    if (state) {
+      $.ajax({
+        url: "/adventures/filter",
+        dataType: "script",
+        data: {
+          region_one_up: region_one_up,
+          region_type: region_type,
+          region: region,
+          state: state,
+          category: categories,
+          sort_by: sort_by
+        },
+        type: "GET",
+        beforeSend: function() {
+        }
+      });
+    }
+    else {
+      $.ajax({
+        url: "/adventures/filter",
+        dataType: "script",
+        data: {
+          region_one_up: region_one_up,
+          region_type: region_type,
+          region: region,
+          category: categories,
+          sort_by: sort_by
+        },
+        type: "GET",
+        beforeSend: function() {
+        }
+      });
+    }
 
   });
 

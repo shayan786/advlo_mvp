@@ -1,0 +1,18 @@
+="Hey #{@user.name},"
+
+%p
+  It looks like
+  %a{href:"#{root_url}users/dashboard"}= @adventure.title
+  is waiting to be published!
+
+%p
+  Completing the adventure only involves 
+  %a{href:"#{root_url}adventure_steps/basic?adventure_id=#{@adventure.id}"}= "six easy steps,"
+  after which your adventure will be available to view in the Advlo community.
+
+%p
+  If you have any questions or concerns, please let us know. We are here to help you get your adventure up and running. 
+
+%p
+  Looking forward to helping you connect with more travelers!
+
