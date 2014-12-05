@@ -269,7 +269,7 @@ module ApplicationHelper
 
   # Return array to be used for adventure categories
   def adv_categories
-    return ['AIR', 'BIKING', 'CAMPING', 'MOTOR', 'CLIMBING', 'HIKING', 'SNOW', 'WATER', 'OTHER']
+    return ['AIR', 'BIKING', 'CULTURAL', 'CAMPING', 'MOTOR', 'CLIMBING', 'HIKING', 'SNOW', 'WATER', 'OTHER']
   end
 
   def adv_regions
