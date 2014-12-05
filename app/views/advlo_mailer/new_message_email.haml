@@ -18,8 +18,9 @@
 
             %tr
               %td.text-center
+                - message_user = User.find(@conversation.messages[-2].sender_id)
                 %b
-                  %i="#{@sender.get_abbreviated_name_or_email}"
+                  %i="#{message_user.get_abbreviated_name_or_email}"
 
             %tr
               %td.text-center{valign: "top"}
@@ -27,7 +28,13 @@
 
             %tr
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
-
+            
+            %tr
+              %td.text-center
+                - message_user = User.find(@message.sender_id)
+                %b
+                  %i="#{message_user.get_abbreviated_name_or_email}"
+            
             %tr
               %td.text-center{valign: "top"}
                 %span= @message.body
