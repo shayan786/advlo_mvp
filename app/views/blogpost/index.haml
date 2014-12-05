@@ -1,4 +1,4 @@
-#blog-index-wrapper
+.blog-page-wrapper
   .static-leftbar
     .left-wrapper
       .blogpost-title-container
@@ -17,33 +17,37 @@
               = image_tag asset_url('instagram.png')
 
         .blogpage-title
-          Recent Blogs
+          Recent Posts
         - @blogposts.each do |bp|
           %a{href:"http://advlo.com/blog/#{bp.permalink}"}
             .blog-link
               = bp.title
 
   .row
-    .col.col-md-2#left-sidebar-container
-      .left-wrapper
-        .blogpage-title
-          Newest adventures
-
-        .recent-adventure-wrapper
-          - @recent_adventures.each do |adv|
-            %a.adventure{href: "adventures/#{adv.slug}"}
-              .photo
-                = image_tag adv.attachment.url(:thumb)
-              .title= "#{adv.title[0..25]}.."
-
+    .col.col-md-2
 
 
     .col.col-md-8.blogpost-container
       .blog-header-title
         = "- Advlo Travel Journal -"
+      .mobile-blog-list
+        .social-container
+          .follow
+            %a{href: "http://www.facebook.com/advlo", target: "_blank"}
+              = image_tag asset_url('facebook.png')
+          .follow
+            %a{href: "http://www.twitter.com/advlo_", target: "_blank"}
+              = image_tag asset_url('twitter.png')
+          .follow
+            %a{href: "https://plus.google.com/+Advlo-Adventure-Local", target: "_blank"}
+              = image_tag asset_url('googleplus.png')
+          .follow
+            %a{href: "http://www.instagram.com/advlo", target: "_blank"}
+              = image_tag asset_url('instagram.png')
+
       - @blogposts.each do |bp|
-        .blogpost
-          %a{href: "/blog/#{bp.permalink}"}
+        %a{href: "/blog/#{bp.permalink}"}
+          .blogpost
             .blog-image= image_tag bp.attachment(:large)
             .blog-preview
               .title= bp.title
@@ -52,25 +56,64 @@
             .read-more-text
               Read More
 
-          .share-block
-            = render_shareable buttons: ["facebook", "twitter", "pinterest", "google_plus"], :url=> "http://advlo.com/blog/#{bp.permalink}"
+          / .share-block
+          /   = render_shareable buttons: ["facebook", "twitter", "pinterest", "google_plus"], :url=> "http://advlo.com/blog/#{bp.permalink}"
 
 
 
     .col.col-md-2#right-sidebar-container
       .blogpage-title{style: 'margin-right: 10px;'}
-        Instagram & Twitter
+        Locations & Adventures
 
-      #instagram-container
-        - @photos.each do |photo|
-          %a{href: photo.link, target: '_blank'}
-            .insta-post
-              .photo
-                = image_tag photo.images.standard_resolution.url
-              .title= "#{photo.caption.text[0..80]}.."
+      #right-content-container
+        / - block = @photos.zip(@tweets).flatten.compact
+        / - block.each do |item|
+        /   .divider
+        /   - if item.class == Hashie::Mash
+        /     %a{href: item.link, target: '_blank', class: 'side-brick'}
+        /       .side-brick
+        /         .photo
+        /           = image_tag item.images.standard_resolution.url
+        /         .title= "#{item.caption.text[0..80]}.."
               
-        - @tweets.each_with_index do |tweet, i|
-          .tweet{id: i}
-            %br
-            = link_to tweet.text.html_safe, "#{tweet.url}"
-            %br
+        /   - elsif item.class == Twitter::Tweet
+        /     %a{href: item.url, target: "_blank", class: 'tweet-link'}
+        /       .side-item
+        /         = item.text.html_safe
+        - block = @adventures.zip(@locations).flatten.compact
+        - block.each do |item|
+          - if item.class == Adventure
+            %a{href: "/adventures/#{item.slug}", target: '_blank', class: 'side-brick'}
+              .side-brick
+                .photo
+                  = image_tag item.attachment.url(:medium)
+                .title= "#{item.title[0..65]}.."
+                .location= get_display_location(item)
+            .divider
+              
+          - else
+            %a{href: item, target: "_blank", class: 'side-brick'}
+              .side-brick
+                - a = HeroImage.where(region: item).last
+                .photo
+                  = image_tag a.attachment.url(:thumb)
+                .location-name= item
+            .divider
+
+
+
+:javascript
+  $(window).scroll(function(){
+     var s = $(window).scrollTop();
+    $('#right-sidebar-container').css('-webkit-transform','translateY(' + (s/2) + 'px');
+
+    if ($(window).scrollTop() > 100 ){
+      $('#blog-index-wrapper .static-leftbar').css({
+        top: '55px'
+      })
+    } else {
+      $('#blog-index-wrapper .static-leftbar').css({
+        top: '65px'
+      })
+    }
+  });
