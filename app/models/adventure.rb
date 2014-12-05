@@ -34,6 +34,8 @@ class Adventure < ActiveRecord::Base
   after_validation :reverse_geocode, :on => :update
   after_validation :set_slug, :on => :update
 
+  after_create :check_if_adventure_unpublished
+
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if results.first
       if results.first.city == nil
@@ -77,6 +79,10 @@ class Adventure < ActiveRecord::Base
     else
       return
     end
+  end
+
+  def check_if_adventure_unpublished
+    AdvloMailer.delay(run_at: 1.day.from_now).unpublished_adventure_email(self)
   end
 
   def calculate_rating 
