@@ -6,9 +6,6 @@
     .text-center
       %h1 You've Received A New Message
       %h4 
-        From:
-        %p= "#{@sender.get_abbreviated_name_or_email}"
-      %h4 
         Subject:
         %p= "#{@conversation.subject}"
         
@@ -18,7 +15,19 @@
           %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "650"}
             %tr
               %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
-            
+
+            %tr
+              %td.text-center
+                %b
+                  %i="#{@sender.get_abbreviated_name_or_email}"
+
+            %tr
+              %td.text-center{valign: "top"}
+                %span= @conversation.messages[-2].body
+
+            %tr
+              %td.divider{bgcolor: "#555555", colspan: "2", height: "2"}
+
             %tr
               %td.text-center{valign: "top"}
                 %span= @message.body
