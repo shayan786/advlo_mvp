@@ -120,11 +120,11 @@ class User < ActiveRecord::Base
               end
             end
 
-            nearby_adventures = Adventure.near([lat,long],100).approved.order('RANDOM()').where(category_sql_string).limit(3)
+            nearby_adventures = Adventure.near([lat,long],100).approved.limit(10).order('RANDOM()').where(category_sql_string).limit(3)
 
           else
             # Find nearby adventures 75 miles randomly
-            nearby_adventures = Adventure.near([lat,long],100).approved.order('RANDOM()').limit(3)
+            nearby_adventures = Adventure.near([lat,long],100).approved.limit(10).order('RANDOM()').limit(3)
           end
 
           # If there any, then send the email
