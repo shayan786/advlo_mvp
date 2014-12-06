@@ -129,7 +129,7 @@ class User < ActiveRecord::Base
 
           # If there any, then send the email
           if nearby_adventures.length > 0
-            AdvloMailer.delay.market_nearby_adventures(user,nearby_adventures)
+            AdvloMailer.market_nearby_adventures(user,nearby_adventures).deliver
             puts "*** SENT MAIL TO -> #{user.email} ***"
           end
         end
