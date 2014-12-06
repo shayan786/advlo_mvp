@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
 
     all_users.each do |user|
       if user.email_list == true
-        if !is_guide?(user.id)
+        if !user.is_guide?(user.id)
           # Get location through IP
           geocode_obj = Geocoder.search(user.current_sign_in_ip)
 
