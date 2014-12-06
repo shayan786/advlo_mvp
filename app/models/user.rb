@@ -120,17 +120,16 @@ class User < ActiveRecord::Base
               end
             end
 
-            nearby_category_adventures = Adventure.near([lat,long],100).approved.order('RANDOM()').where(category_sql_string).limit(3)
+            nearby_adventures = Adventure.near([lat,long],100).approved.order('RANDOM()').where(category_sql_string).limit(3)
 
           else
             # Find nearby adventures 75 miles randomly
             nearby_adventures = Adventure.near([lat,long],100).approved.order('RANDOM()').limit(3)
-
           end
 
           # If there any, then send the email
-          if near_by_adventures.count > 0
-            AdvloMailer.delay.market_nearby_adventures(user,nearby_adventures)
+          if nearby_adventures.length > 0
+            AdvloMailer.market_nearby_adventures(user,nearby_adventures).deliver
           end
         end
       end
