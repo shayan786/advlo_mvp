@@ -107,8 +107,26 @@ class User < ActiveRecord::Base
           lat = geocode_obj[0].data['latitude']
           long = geocode_obj[0].data['longitude']
 
-          # Find nearby adventures 75 miles
-          nearby_adventures = Adventure.near([lat,long],70).approved.order('updated_at DESC').limit(3)
+          # Other option, if that traveler has specific the categories 'liked' find those then randomly select 3
+          if user.category && user.category != ''
+            user_pref_categories = user.category.split(',')
+
+            category_sql_string = ''
+            user_pref_categories.each_with_index do |cat,i|
+              if (i==0)
+                category_sql_string = "category LIKE '%#{cat}%'"
+              elsif (i > 0)
+                category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
+              end
+            end
+
+            nearby_category_adventures = Adventure.near([lat,long],100).approved.order('RANDOM()').where(category_sql_string).limit(3)
+
+          else
+            # Find nearby adventures 75 miles randomly
+            nearby_adventures = Adventure.near([lat,long],100).approved.order('RANDOM()').limit(3)
+
+          end
 
           # If there any, then send the email
           if near_by_adventures.count > 0

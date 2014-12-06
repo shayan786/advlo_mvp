@@ -10,13 +10,22 @@
         %p 
           We've been growing and have be working hard to find unique 
           %a{href: "#{root_url}adventures"}= "adventures"
-          from all around the world. We found some amazing adventures nearby, and thought
+          from all around the world. 
+          - if @user.category && @user.category != ''
+            Based on your
+            %a{href: "#{root_url}users/edit"}
+              preferences
+            we
+          - else
+            We
+
+          found some amazing adventures nearby, and thought
           %b 
             you
           might be interested in checking them out.
 
         %p
-          As always, want to see something different or have any questions / comments? Feel free to reach to us and reply to this email.
+          As always, want to see something different or have any questions / comments? Feel free to reach out to us and reply to this email.
 
         %i Thanks,
         %br
