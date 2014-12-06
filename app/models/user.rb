@@ -94,6 +94,32 @@ class User < ActiveRecord::Base
     AdvloMailer.delay(run_at: 1.day.from_now).welcome_email_from_founder(self)
   end
 
+  def self.send_nearby_adventures_email
+    # Find all subscribed travelers
+    all_users = User.all
+
+    all_users.each do |user|
+      if user.email_list == true
+        if !is_guide?(user.id)
+          # Get location through IP
+          geocode_obj = Geocoder.search(user.current_sign_in_ip)
+
+          lat = geocode_obj[0].data['latitude']
+          long = geocode_obj[0].data['longitude']
+
+          # Find nearby adventures 75 miles
+          nearby_adventures = Adventure.near([lat,long],70).approved.order('updated_at DESC').limit(3)
+
+          # If there any, then send the email
+          if near_by_adventures.count > 0
+            AdvloMailer.delay.market_nearby_adventures(user,nearby_adventures)
+          end
+        end
+      end
+    end
+
+  end
+
   def is_guide?(user_id)
     @user = User.find_by!(:id => user_id)
     
