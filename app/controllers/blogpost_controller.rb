@@ -18,7 +18,7 @@ class BlogpostController < ApplicationController
     @featured_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
 
 
-    get_featured_locations(['Central America','Asia'])
+    get_featured_locations(['Costa Rica','United States','Vietnam','Ecuador','Nicaragua'])
     @adventures = Adventure.where(featured: true).limit(2)
 
     @blogpost.save
@@ -31,7 +31,7 @@ class BlogpostController < ApplicationController
         @locations << HeroImage.where(region: a).last 
       end
     end
-    
+
     return @locations
   end
 
@@ -39,7 +39,7 @@ class BlogpostController < ApplicationController
     @blogposts = Blogpost.order('created_at DESC')
 
     @adventures = Adventure.approved.take(6)
-    get_featured_locations(['Costa Rica','Hawaii','Ecuador','Colorado','California','Oregon'])
+    get_featured_locations(['Costa Rica','United States','Vietnam','Ecuador','Nicaragua'])
 
 
     # @photos = Instagram.user_recent_media(847673197, {:count => 5})
