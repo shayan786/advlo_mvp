@@ -70,7 +70,7 @@
         / - block.each do |item|
         /   .divider
         /   - if item.class == Hashie::Mash
-        /     %a{href: item.link, target: '_blank', class: 'side-brick'}
+        /     %a{href: item.link, target: '_blank'}
         /       .side-brick
         /         .photo
         /           = image_tag item.images.standard_resolution.url
@@ -83,37 +83,18 @@
         - block = @adventures.zip(@locations).flatten.compact
         - block.each do |item|
           - if item.class == Adventure
-            %a{href: "/adventures/#{item.slug}", target: '_blank', class: 'side-brick'}
+            %a{href: "/adventures/#{item.slug}", target: '_blank'}
               .side-brick
                 .photo
                   = image_tag item.attachment.url(:medium)
                 .title= "#{item.title[0..65]}.."
-                .location= get_display_location(item)
+                
             .divider
               
-          - else
-            %a{href: item, target: "_blank", class: 'side-brick'}
+          - elsif item
+            %a{href: item, target: "_blank"}
               .side-brick
-                - a = HeroImage.where(region: item).last
                 .photo
-                  = image_tag a.attachment.url(:thumb)
-                .location-name= item
+                  = image_tag item.attachment.url(:thumb)
+                .location-name= item.location ? item.location.capitalize : item.region
             .divider
-
-
-
-:javascript
-  $(window).scroll(function(){
-     var s = $(window).scrollTop();
-    $('#right-sidebar-container').css('-webkit-transform','translateY(' + (s/2) + 'px');
-
-    if ($(window).scrollTop() > 100 ){
-      $('#blog-index-wrapper .static-leftbar').css({
-        top: '55px'
-      })
-    } else {
-      $('#blog-index-wrapper .static-leftbar').css({
-        top: '65px'
-      })
-    }
-  });

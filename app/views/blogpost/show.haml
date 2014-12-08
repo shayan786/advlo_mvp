@@ -31,6 +31,10 @@
         .blog-body
           = @blogpost.body.html_safe
 
+        - if @blogpost.video_url
+          .blog-video-wrapper
+            = raw(@blogpost.embed(@blogpost.video_url))
+
            
         .share-block
           = render_shareable
@@ -55,20 +59,18 @@
         - block = @adventures.zip(@locations).flatten.compact
         - block.each do |item|
           - if item.class == Adventure
-            %a{href: "/adventures/#{item.slug}", target: '_blank', class: 'side-brick'}
+            %a{href: "/adventures/#{item.slug}", target: '_blank'}
               .side-brick
                 .photo
                   = image_tag item.attachment.url(:medium)
                 .title= "#{item.title[0..65]}.."
-                .location= get_display_location(item)
+                
             .divider
               
           - elsif item
-            %a{href: item, target: "_blank", class: 'side-brick'}
-              - a = HeroImage.where(region: item).last
-              - if a
-                .side-brick
-                  .photo
-                    = image_tag a.attachment.url(:thumb)
-                  .location-name= item
-              .divider
+            %a{href: item, target: "_blank"}
+              .side-brick
+                .photo
+                  = image_tag item.attachment.url(:thumb)
+                .location-name= item.location ? item.location.capitalize : item.region
+            .divider

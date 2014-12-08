@@ -9,6 +9,9 @@
   .divider {
     border: 1px solid $lighter_gray;
     margin: 20px 0;
+    position: relative; 
+    float: left;
+    width: 100%;
   }
 
   .blogpage-title {
@@ -58,6 +61,7 @@
   a{
     color: #000;
   }
+
   a:hover {
     text-decoration: none;
   }
@@ -115,6 +119,8 @@
       margin-bottom: 10px;
 
       .blog-image {
+        max-height: 350px;
+        overflow: hidden;
         position: relative;
         float: left;
         width: 45%;
@@ -251,7 +257,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
   position: relative;
   float: left;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 40px;
   margin-left: 23px;
 }
 
@@ -293,6 +299,9 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
 }
 
 .side-brick {
+  position: relative;
+  float: left;
+
   .photo {
     margin: 10px 10px 10px 0px;
 
@@ -306,15 +315,15 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
     font-size: 18px;
     font-family: 'bebas_neue';
     letter-spacing: 6px;
+    position: relative;
+    background: rgba(0,0,0,0.65);
+    margin-right: 10px;
+    color: #fff;
   }
   .title {
     font-size: 13px;
-    font-family: 'nexa_light';
-    font-weight: bold;
-  }
-  .location {
-    font-size: 13px;
-    color: $advlo_orange;
+    font-family: bebas_neue;
+    letter-spacing: 1px;
   }
 }
 
@@ -426,11 +435,34 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       position: relative;
       float: left;
       margin-bottom: 30px;
+
+      p {
+        line-height: 25px;
+      }
+
+      a {
+        color: $advlo_orange;
+        letter-spacing: 1px;
+      }
+      a:hover {
+        opacity: 0.7;
+      }
     
       img {
         max-width: 400px;
         float: left;
         margin: 20px;
+      }
+
+    }
+    .blog-video-wrapper { 
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      iframe { 
+        margin: 0 auto;
+        width: 100%;
+        max-width: 850px;
       }
     }
   }

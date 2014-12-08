@@ -3,5 +3,5 @@ class HeroImage < ActiveRecord::Base
   validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
   process_in_background :attachment, :only_process => [:hero]
   belongs_to :user
-  
+
 end

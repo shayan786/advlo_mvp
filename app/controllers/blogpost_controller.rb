@@ -17,17 +17,29 @@ class BlogpostController < ApplicationController
     # @most_read_blogposts = Blogpost.published.order('view_count').reverse
     @featured_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
 
+
+    get_featured_locations(['Central America','Asia'])
     @adventures = Adventure.where(featured: true).limit(2)
-    @locations = ['Central America','Asia']
 
     @blogpost.save
+  end
+
+  def get_featured_locations(places)
+    @locations = []
+    places.each do |a|
+      if HeroImage.where(region: a).count > 0
+        @locations << HeroImage.where(region: a).last 
+      end
+    end
+    
+    return @locations
   end
 
   def index
     @blogposts = Blogpost.order('created_at DESC')
 
     @adventures = Adventure.approved.take(6)
-    @locations = ['Costa Rica','Hawaii','Ecuador','Colorado','California','Oregon']
+    get_featured_locations(['Costa Rica','Hawaii','Ecuador','Colorado','California','Oregon'])
 
 
     # @photos = Instagram.user_recent_media(847673197, {:count => 5})
