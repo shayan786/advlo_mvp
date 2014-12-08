@@ -305,6 +305,17 @@ class AdvloMailer < ActionMailer::Base
     end
   end
 
+  def market_nearby_adventures(user, nearby_adventures)
+    @user = user
+    @nearby_adventures = nearby_adventures
+
+    mail(to: @user.email, subject: "[ADVLO] : Adventures Near You") do |format|
+      format.html { render layout: 'marketing_advlo_mail' }
+      format.text
+    end
+
+  end
+
   #--------------------- OUTREACH EMAILS -----------------------------------------
 
   def market_host_outreach(email, reference=nil)
