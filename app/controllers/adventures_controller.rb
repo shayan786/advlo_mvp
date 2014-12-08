@@ -239,7 +239,7 @@ class AdventuresController < ApplicationController
   
   # Request Adventure
   def requests 
-    if params[:honeypot] == ''
+    if params[:honeypot] == '' || params[:honeypot] == nil
       @request = Request.create!(request_params)
       @request.category = params[:request_category] ? params[:request_category].join(',') : 'No category selected'
 

@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
 
 
   def contact
-    if params[:honeypot] == ''
+    if params[:honeypot] == '' || params[:honeypot] == nil
       @contact = ContactAdvlo.create!(contact_params)
       AdvloMailer.delay.contact_email(@contact)
       if @contact.save
