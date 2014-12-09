@@ -17,6 +17,7 @@ class BlogpostController < ApplicationController
     # @most_read_blogposts = Blogpost.published.order('view_count').reverse
     @featured_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
 
+    @blog_images = @blogpost.blog_images
 
     get_featured_locations(['Costa Rica','United States','Vietnam','Ecuador','Nicaragua'])
     @adventures = Adventure.where(featured: true).limit(2)
@@ -54,7 +55,7 @@ class BlogpostController < ApplicationController
   private
 
     def blogpost_params
-      params.require(:blogpost).permit(:title, :author, :body, :attachment, :video_url, :featured)
+      params.require(:blogpost).permit(:title, :author, :body, :attachment, :video_url, :featured, :blog_images)
     end
 
     def get_panel_content

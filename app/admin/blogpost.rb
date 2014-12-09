@@ -33,6 +33,15 @@ ActiveAdmin.register Blogpost do
       f.input :body, as: :html_editor
       f.input :video_url, placeholder: 'http://www.youtube.com/watch?v=F7RzbUX2GjM || https://vimeo.com/48024809'
       f.input :attachment, as: :file
+      f.has_many :blog_images do |photo|
+        photo.inputs do
+          photo.input :caption
+          photo.input :link
+          photo.input :excerpt
+          photo.input :attachment, :as => :file 
+          photo.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
+        end
+      end
     end
     f.actions
   end

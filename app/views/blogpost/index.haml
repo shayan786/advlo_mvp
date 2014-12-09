@@ -96,5 +96,5 @@
               .side-brick
                 .photo
                   = image_tag item.attachment.url(:thumb)
-                .location-name= item.location ? item.location.capitalize : item.region
+                .title= item.location ? item.location.capitalize : item.region
             .divider

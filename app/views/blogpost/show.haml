@@ -31,9 +31,22 @@
         .blog-body
           = @blogpost.body.html_safe
 
+        - if @blog_images.count > 0
+          - @blog_images.each do |bi|
+            %a{href: bi.link }
+              .blog-image-wrapper
+                .blog-image
+                  = image_tag bi.attachment.url(:medium)
+                .blog-image-title
+                  = bi.caption
+                .blog-image-excerpt
+                  = bi.excerpt
+
+
         - if @blogpost.video_url
           .blog-video-wrapper
             = raw(@blogpost.embed(@blogpost.video_url))
+
 
            
         .share-block
@@ -72,5 +85,5 @@
               .side-brick
                 .photo
                   = image_tag item.attachment.url(:thumb)
-                .location-name= item.location ? item.location.capitalize : item.region
+                .title= item.location ? item.location.capitalize : item.region
             .divider
