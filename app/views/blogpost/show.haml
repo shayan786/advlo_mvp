@@ -68,7 +68,7 @@
             .divider
               
           - elsif item
-            %a{href: "/adventures?country#{item.region}", target: "_blank"}
+            %a{href: "/adventures?country=#{item.region}", target: "_blank"}
               .side-brick
                 .photo
                   = image_tag item.attachment.url(:thumb)
