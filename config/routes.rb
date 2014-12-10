@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   #contact
   post '/contact'                     => 'application#contact'
 
+  #affiliate marketing
+  get '/affiliate'                   => 'application#affiliate'
+
   #terms/conditions/privacy
   get '/terms'                        => 'application#terms'
   get '/about'                        => 'application#about'

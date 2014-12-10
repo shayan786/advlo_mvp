@@ -1,0 +1,97 @@
+- set_meta_tags(get_meta_tags("Become An Affiliate","Become an Advlo affiliate to earn money by posting to your own blog or website","Advlo, Affiliate, Bloggers, Travel Blog"))
+
+#affiliate
+  .jumbotron{:style => "background-image: url(#{image_path 'background/cam.jpg'})"}
+    .container
+      .row.text-center
+        .col-md-8.affiliate_text.col-md-offset-2
+          Become an affiliate and earn money by posting or sharing Advlo on your blog or website
+
+  .affiliate_info
+    .dark_background
+      .container
+        .body_content{style: "margin-top: 30px;"}
+          Make money from your blog or site! We make it easy to make money by simply integrating the code generated below into your blog or site. When someone signs-up or makes a booking, we pay you.
+
+        .row
+          .col-md-4.col-md-offset-1
+            .matrix_header 
+              PER SIGN-UP
+            .matrix_content
+              .display_percent 
+                $ 1
+              FOR EVERY USER 
+              %br
+              THAT SIGNS UP
+
+          .col-md-4.col-md-offset-2
+            .matrix_header 
+              PER BOOKING
+            .matrix_content
+              .display_percent 
+                5 %
+              FOR EVERY RESERVATION 
+              %br
+              THAT OCCURS
+
+    .transparent_background
+      .container
+        %h2 
+          BECOME AN AFFILIATE
+        .body_content
+          .row
+            .col-md-2.col-md-offset-1
+              .steps_header
+                STEP
+              .btn.number_btn.disabled
+                1
+            .col-md-6
+              .steps_header
+                DETAILS
+              .steps_content
+                CREATE AN ACCOUNT
+            .col-md-2
+              .steps_header
+                TO DO
+              - if current_user
+                %i.fa.fa-check-square-o
+              - else
+                %i.fa.fa-square-o
+              
+
+
+
+          .row
+            .col-md-2.col-md-offset-1
+              .btn.number_btn.disabled{style: "padding-left: 15px;"}
+                2
+            .col-md-6
+              .steps_content
+                GENERATE CODE
+            .col-md-2
+              - if current_user
+                %i.fa.fa-check-square-o
+              - else
+                %i.fa.fa-square-o
+
+          .row
+            .col-md-2.col-md-offset-1
+              .btn.number_btn.disabled{style: "padding-left: 15px;"}
+                3
+            .col-md-6
+              .steps_content
+                COPY AND PASTE INTO YOUR SITE
+            .col-md-2
+              - if current_user
+                %i.fa.fa-check-square-o
+              - else
+                %i.fa.fa-square-o
+
+    .dark_background
+      .container
+        %h2 
+          QUESTIONS OR HAVING TROUBLE?
+
+
+        
+  

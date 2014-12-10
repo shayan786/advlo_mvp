@@ -97,6 +97,20 @@ ActiveRecord::Schema.define(version: 20141209234235) do
     t.string   "host_name"
   end
 
+  create_table "assets", force: true do |t|
+    t.string   "storage_uid"
+    t.string   "storage_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "storage_width"
+    t.integer  "storage_height"
+    t.float    "storage_aspect_ratio"
+    t.integer  "storage_depth"
+    t.string   "storage_format"
+    t.string   "storage_mime_type"
+    t.string   "storage_size"
+  end
+
   create_table "blog_images", force: true do |t|
     t.string   "caption"
     t.string   "link"
