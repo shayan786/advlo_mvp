@@ -30,20 +30,7 @@
       .modal-body
         - if current_user && @current_guide
           = render partial: "/reservations/new", locals: {reservation: @reservation}
-        - else
-          .adventure-login-title= @adventure.title
-          .row
-            .col-md-6.text-center
-              .btn.btn-success.sign-in-toggle
-                SIGN IN
-              .sign-in.mid-purchase.sign-in-form
-                = render partial: 'sign_in_form', locals: {adventure: @adventure}
-            .col-md-6.text-center
-              .btn.btn-success.sign-up-toggle
-                SIGN UP
-              .sign-up.mid-purchase.sign-up-form
-                = render partial: 'sign_up_form', locals: {adventure: @adventure}
-
+        
 
 #reservations-request-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "reservations-request-modal", role: "dialog"}
   .modal-dialog.payment-modal-wrapper
@@ -51,21 +38,4 @@
       .modal-body
         - if current_user && @current_guide
           = render partial: "/reservations/request", locals: {reservation: @reservation}
-        - else
-          .adventure-login-title= @adventure.title
-          .row
-            .col-md-6.text-center
-              .btn.btn-success.sign-in-toggle
-                SIGN IN
-              .sign-in.mid-purchase.sign-in-form
-                = render partial: 'sign_in_form', locals: {adventure: @adventure}
-            .col-md-6.text-center
-              .btn.btn-success.sign-up-toggle
-                SIGN UP
-              .sign-up.mid-purchase.sign-up-form
-                = render partial: 'sign_up_form', locals: {adventure: @adventure}
-
-
-  
-
-
+        

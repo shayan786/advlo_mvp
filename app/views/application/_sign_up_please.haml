@@ -83,18 +83,17 @@
           /   SIGN IN
 
 :javascript
-   $('#email_list').bootstrapValidator({
+  $('#email_list').bootstrapValidator({
     fields: {
       '#email_list': {
         validators: {
           notEmpty: {
             mesage: "Email cannot be empty"
           },
-          stringLength: {
-            message: "Name must include atleast 3 characters",
-            min: 3,
-            max: 40
+          emailAddress: {
+            message: 'Not a valid email address'
           }
         }
       }
-    })
+    }
+  })

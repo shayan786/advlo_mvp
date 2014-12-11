@@ -383,7 +383,7 @@ class AdvloMailer < ActionMailer::Base
       cat = 'adrenaline'
     end
 
-    mail(to: @email.email, subject: "So you like #{cat} adventures") do |format|
+    mail(to: @email.email, subject: "[ADVLO] #{@email.category} - adventure") do |format|
       format.html { render layout: 'email_list_advlo_mail' }
       format.text
     end

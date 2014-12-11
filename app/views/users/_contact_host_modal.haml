@@ -57,21 +57,4 @@
                 .row.text-center
                   %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
 
-  - else
-    #sign-in-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "sign-in-modal", role: "dialog"}
-      .modal-dialog
-        .modal-content
-          .modal-header.text-center
-            = "Message - #{user.get_abbreviated_name}"
-          .modal-body
-            .row
-              .col-md-6.text-center{style: 'margin-bottom:20px;'}
-                .btn.btn-success.sign-in-toggle
-                  SIGN IN
-                .sign-in.mid-purchase.sign-in-form
-                  = render partial: 'adventures/sign_in_form', locals: {adventure: @adventure}
-              .col-md-6.text-center
-                .btn.btn-success.sign-up-toggle
-                  SIGN UP
-                .sign-up.mid-purchase.sign-up-form
-                  = render partial: 'adventures/sign_up_form', locals: {adventure: @adventure}
+  
