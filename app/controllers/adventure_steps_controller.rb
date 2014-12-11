@@ -307,7 +307,6 @@ class AdventureStepsController < ApplicationController
             format.js {render "subscription_charged.js", layout: false}
           end
         end
-        
       end
 
 

@@ -114,11 +114,8 @@
 
 		h4 {
 			line-height: 20px;
-			font-family: 'bebas_neue' !important;
-			letter-spacing: 3px;
+			letter-spacing: 1px;
 			font-size: 17px;
-			float: left;
-			width: 100%;
 			float: left;
 			width: 100%;
 		}
@@ -151,7 +148,7 @@
 						border: none;
 					}
 					.question {
-						margin: 10px;
+						margin: 30px;
 						opacity: 0.8;
 						p {
 							font-family: 'bebas_neue' !important;
@@ -165,6 +162,30 @@
 					.question:hover {
 						opacity: 1;
 					}
+				}
+
+
+				#email_list {
+					box-shadow: 0 6px 5px rgba(0, 0, 0, 0.6) !important;
+					-webkit-box-shadow: 0 6px 5px rgba(0, 0, 0, 0.6) !important;
+					width: 70%;
+					float: left;
+					border-radius: 10px 0 0 10px;
+					text-align: center;
+				}
+
+				#email_list_button {
+					width: 30%;
+					color: #ffffff !important;
+					box-shadow:  0 6px 5px rgba(0, 0, 0, 0.6) !important;
+					-webkit-box-shadow: 0 6px 5px rgba(0, 0, 0, 0.6) !important;
+					border-radius: 0 10px 10px 0;
+				}
+
+				#email_list_button:hover {
+					box-shadow:  0 4px 5px rgba(0, 0, 0, 0.6) !important;
+					-webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6) !important;
+					opacity: 0.9;
 				}
 
 				.poll-answers {
@@ -203,7 +224,7 @@
 					background-color: $light_gray;
 				}
 
-				.form-wrapper{
+				.form-wrapper {
 					display: none;
 				}
 			}
@@ -211,6 +232,35 @@
 			#network {
 				width: 100%;
 				margin: 0 auto;
+				position: relative;
+				float: left;
+				margin-bottom: 20px;
+			}
+
+			#secret-gift {
+				font-weight: bold;
+				margin-bottom: 20px;
+				font-family: 'nexa_light' !important;
+				font-size: 13px;
+				span {
+					color: $advlo_green;
+				}
+			}
+
+			#sign-up {
+				margin-top: 15px;
+				font-size: 15px;
+				font-family: 'bebas_neue_book';
+				letter-spacing: 1px;
+
+				a {
+					color: #fff;
+				}
+			}
+
+			.thanks-div {
+				font-size: 17px;
+				letter-spacing: 1px;
 			}
 
 			#signup_modal {
@@ -244,6 +294,10 @@
 				.form-control {
 					width: 60%;
 					margin: 0 auto;
+
+					.form-control {
+						border-radius: 0px;
+					}
 				}
 			}
 

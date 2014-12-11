@@ -5,26 +5,29 @@
   %body
     %h1.center Welcome to Adventure Local
 
-    %h3.center   
-      = "Your account email is: #{@user.email}"
-    .indented.text-center
-      You can now 
-      %a{href: "#{root_url}"} book
-      awesome local adventures or become an Advlo guide by completing 
-
-      %a{href: '#{root_url}users/edit'} your profile
-
-      and 
-
-      %a{href: "#{root_url}adventures/info"} creating
-
-      an adventure.
-
+    .indented.text-left
+      .text-center= "#{@user.get_name_or_email}.capitalize, thanks for joining."
       %br
-        %h4.center
-          Excited to have you on board, feel free to reach out to us at anytime.
-        %p
-          Safe travels,
-          %br
+      We are building a community where travelers from around the world
+      can connect directly with local guides, and you are now part of this evolution of global travel.
+
+      %p
+        Make sure to 
+        - if !@user.is_guide 
+
+          %a{href: '#{root_url}users/edit'} complete your profile
+          so we know what kind of traveler you are.
+
+        - else
+
+          %a{href: '#{root_url}users/edit'} complete your profile
+          so you can upload your own adventures to the platform.
+
+      %p
+        Excited to have you on board. If you have ideas or feedback, please do not hesitate to reach out.
+      %p
+        Safe travels,
+        %br
+        %a{href: "#{root_url}about"}
           The Advlo Team
 

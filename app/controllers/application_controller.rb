@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_poll
 
 
+
   def get_poll
     @poll = Poll.find_by_name('What kind of adventurer are you?')
   end

@@ -123,13 +123,20 @@ class RegistrationsController < Devise::RegistrationsController
 
   def referral_sign_up
     # Make sure user is not signed up
-    session[:referrer_id] = @referrer.id if @referrer
-    session[:user_credit] = 5.0
+    if params[:referral_code] == 'secret'
+      @referrer = User.find_by_email('founders@advlo.com')
+
+      session[:referrer_id] = @referrer.id if @referrer
+      session[:user_credit] = 20.0
+    else
+      session[:referrer_id] = @referrer.id if @referrer
+      session[:user_credit] = 5.0
+    end
     
     if user_signed_in?
       redirect_to '/', notice: "<a href='/travel-fund'> Logged in: Invite friends to Advlo to earn money</a>" 
     else
-      @referrer = User.find_by_referral_code(params[:referral_code])
+      @referrer ||= User.find_by_referral_code(params[:referral_code])
       session[:referrer_id] = @referrer.id if @referrer
 
       build_resource({})

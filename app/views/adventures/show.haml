@@ -50,7 +50,7 @@
               %em= "#{review_count} Reviews"
 
         #adventure-price
-          - if current_user && current_user.credit > 0 && @adventure.price >= 30
+          - if current_user && current_user.credit > 0 && @adventure.price >= 50
             %span.old_price{style: "text-decoration: line-through;"}= "$ #{@adventure.price}"
             %span.new_price= "$ #{(@adventure.price - current_user.credit).to_i}"
           - else
