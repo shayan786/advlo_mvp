@@ -33,3 +33,9 @@
           .form-group
             %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
           %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "Sign Up"}
+
+- if @referrer.affiliate
+  :javascript
+    affliate_cookie_setup(#{@referrer.id});
+    update_affiliate_click_count(#{@referrer.id});
+

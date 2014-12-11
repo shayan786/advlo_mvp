@@ -112,6 +112,56 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_paypal_email
+    user = User.find(params[:user_id])
+
+    # Verify paypal account
+    @api = PayPal::SDK::AdaptiveAccounts::API.new
+
+    @get_verified_status = @api.build_get_verified_status({
+      :emailAddress => "#{params[:paypal_email]}",
+      :matchCriteria => "NAME",
+      :firstName => "#{params[:paypal_first_name]}",
+      :lastName => "#{params[:paypal_last_name]}" 
+    })
+
+    @get_verified_status_response = @api.get_verified_status(@get_verified_status)
+
+    if @get_verified_status_response.success?
+      user.update(paypal_email: params[:paypal_email])
+
+      respond_to do |format|
+        if params[:paypal_update] == "1"
+          format.js {render "paypal_update.js", layout: false}
+        else
+          format.js {render "paypal.js", layout: false}
+        end
+      end
+    else
+      respond_to do |format|
+        if params[:paypal_update] == "1"
+          format.js {render "paypal_email_fail.js", layout: false}
+        else
+          format.js {render "paypal_email_fail.js", layout: false}
+        end
+      end
+    end
+  end
+
+  def update_affiliate_referral_click_count
+    if @affiliate_tracker = AffiliateTracker.find_by_referrer_id(params[:referrer_id])
+      @affiliate_tracker.clicks = @affiliate_tracker.clicks + 1
+      @affiliate_tracker.save
+    else
+      @affiliate_tracker = AffiliateTracker.create(referrer_id: params[:referrer_id])
+      @affiliate_tracker.clicks = @affiliate_tracker.clicks + 1
+      @affiliate_tracker.save
+    end
+
+    respond_to do |format|
+      format.js {render json: {status: 200}}
+    end
+  end
 
   def hero_image
     HeroImage.where(user_id: hero_image_params[:user_id]).each do |hi|
