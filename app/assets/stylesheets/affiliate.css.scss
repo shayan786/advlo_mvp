@@ -270,16 +270,16 @@
         margin-top: 10px;
         margin-bottom: 15px;
 
-        .transparent_bg_btn, .white_bg_btn, .black_bg_btn {
-          @extend .logo_option_btn;
-          width: 90%;
-          margin-bottom: 15px;
-        }
-
         .well {
           .logo_with_link_code_to_copy, .link_code_to_copy {
             color: #000;
             font-size: 0.6em
+          }
+
+          .transparent_bg_btn, .white_bg_btn, .black_bg_btn {
+            @extend .logo_option_btn;
+            width: 100%;
+            margin-bottom: 15px;
           }
 
         }
@@ -332,6 +332,24 @@
         font-family: bebas_neue;
 
       }
+    }
+
+    .total_clicks_box {
+      margin-top: 20px;
+      @extend .total_earned_box;
+
+      .header {
+        margin-top: 5px;
+        font-size: 1.4em;
+      }
+
+      .fa {
+        margin-right: 5px;
+      }
+    }
+
+    .total_sign_ups_box {
+      @extend .total_clicks_box;
     }
 
     .not_member_warning {

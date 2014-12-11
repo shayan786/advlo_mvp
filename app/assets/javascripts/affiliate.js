@@ -28,13 +28,19 @@ function code_plugin_btn_toggles() {
 	})
 
 	$('#affiliate .affiliate_info .code_plugin_box .logo_option_btn').click(function(){
+		$('#affiliate .affiliate_info .code_plugin_box .logo_option_btn').addClass('active');
+		$('#affiliate .affiliate_info .code_plugin_box .link_option_btn').removeClass('active');
+
 		$('#affiliate .affiliate_info .code_plugin_box .link_option_code').fadeOut();
-		$('#affiliate .affiliate_info .code_plugin_box .logo_option_code').delay(500).fadeIn();
+		$('#affiliate .affiliate_info .code_plugin_box .logo_option_code').delay(400).fadeIn();
 	})
 
 	$('#affiliate .affiliate_info .code_plugin_box .link_option_btn').click(function(){
+		$('#affiliate .affiliate_info .code_plugin_box .link_option_btn').addClass('active');
+		$('#affiliate .affiliate_info .code_plugin_box .logo_option_btn').removeClass('active');
+
 		$('#affiliate .affiliate_info .code_plugin_box .logo_option_code').fadeOut();
-		$('#affiliate .affiliate_info .code_plugin_box .link_option_code').delay(500).fadeIn();
+		$('#affiliate .affiliate_info .code_plugin_box .link_option_code').delay(400).fadeIn();
 	})
 
 

@@ -203,21 +203,24 @@
                           LINK ONLY
 
                   .row.logo_option_code
-                    .col-md-4.col-md-offset-1.text-center
-                      .btn.btn-default.transparent_bg_btn
-                        TRANSPARENT
-                    .col-md-3.text-center
-                      .btn.btn-default.white_bg_btn.active
-                        WHITE
-                    .col-md-3.text-center
-                      .btn.btn-default.black_bg_btn
-                        BLACK
                     - code_to_copy = "<a href='#{root_url}affiliate/#{current_user.referral_code}' target='_blank' style='float: left; width: 310px; height: 140px;'> <div class='logo_with_link' style='background: url(#{asset_url("affiliate/advlo_affiliate.png")}) center center no-repeat; height: 140px; width: 310px; background-size: contain !important; background-color: #FFF; padding: 0px 5px; border: 2px solid #699967; border-radius: 3px; box-shadow: 1px 1px 1px #699967;'></div></a>"
                     .col-md-10.col-md-offset-1
                       .well
-                        .logo_with_link
-                        .logo_with_link_code_to_copy
-                          = code_to_copy
+                        .row
+                          .col-md-4.col-md-offset-1.text-center
+                            .btn.btn-info.transparent_bg_btn
+                              TRANSPARENT
+                          .col-md-3.text-center
+                            .btn.btn-info.white_bg_btn.active
+                              WHITE
+                          .col-md-3.text-center
+                            .btn.btn-info.black_bg_btn
+                              BLACK
+                        .row
+                          .logo_with_link
+                        .row
+                          .logo_with_link_code_to_copy
+                            = code_to_copy
 
 
                       .text-center
@@ -251,19 +254,48 @@
           TRACK IT
 
         - if current_user && current_user.affiliate && current_user.paypal_email
-          .col-md-2.col-md-offset-5
-            .total_earned_box
-              .header
-                TOTAL EARNED
-              .amount.text-center
-                - if AffiliateTracker.find_by_referrer_id(current_user.id)
-                  - earned_from_signups = AffiliateTracker.find_by_referrer_id(current_user.id).sign_ups
-                - else 
-                  - earned_from_signups = 0
+          .row
+            .col-md-2.col-md-offset-5
+              .total_earned_box
+                .header
+                  TOTAL EARNED
+                .amount.text-center
+                  - if AffiliateTracker.find_by_referrer_id(current_user.id)
+                    - earned_from_signups = AffiliateTracker.find_by_referrer_id(current_user.id).sign_ups
+                  - else 
+                    - earned_from_signups = 0
 
-                - earned_from_reservations = 0
+                  - earned_from_reservations = 0
 
-                = "$ #{sprintf('%.2f',earned_from_signups + earned_from_reservations)}"
+                  = "$ #{sprintf('%.2f',earned_from_signups + earned_from_reservations)}"
+
+          .row
+            .col-md-2.col-md-offset-3
+              .total_clicks_box
+                .header
+                  %i.fa.fa-eye
+                  CLICKS
+                .amount.text-center
+                  - if AffiliateTracker.find_by_referrer_id(current_user.id)
+                    - total_clicks = AffiliateTracker.find_by_referrer_id(current_user.id).clicks
+                  - else
+                    - total_clicks = 0
+
+                  = total_clicks
+
+            .col-md-2.col-md-offset-2
+              .total_sign_ups_box
+                .header
+                  %i.fa.fa-users
+                  SIGN-UPS
+                .amount.text-center
+                  - if AffiliateTracker.find_by_referrer_id(current_user.id)
+                    - total_sign_ups = AffiliateTracker.find_by_referrer_id(current_user.id).sign_ups
+                  - else
+                    - total_sign_ups = 0
+
+                  = total_sign_ups
+
 
         - else
           .text-center
