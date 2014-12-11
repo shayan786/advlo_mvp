@@ -11,9 +11,14 @@
             %i.fa.fa-envelope-o
             CONTACT HOST
         - else
-          .btn.btn-primary.contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#sign-in-modal'}
+          .btn.btn-primary.contact_btn
             %i.fa.fa-envelope-o
             CONTACT HOST
+
+          :javascript
+            $('.contact_btn').click(function(){
+              $('#member-modal').modal('show');
+            })
 
         %br
         - fb_share_url = "#{root_url}adventures/#{@adventure.slug}"

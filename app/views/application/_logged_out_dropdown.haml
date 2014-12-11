@@ -22,10 +22,10 @@
         = link_to "New to Advlo? Sign Up", new_user_registration_path
 %li
   %form
-    .btn.btn-primary.navbar-btn.login_in_sign_up_btn#new-account{style: "margin-right: 10px; font-weight: bold;"}
+    .btn.btn-primary.navbar-btn.login_in_sign_up_btn.new-account{style: "margin-right: 10px; font-weight: bold;"}
       SIGN-UP
 
 :javascript
-  $('#new-account').click(function(){
+  $('.new-account').click(function(){
     $('#member-modal').modal('show');
   })

@@ -1405,7 +1405,7 @@ function signup_cookie(){
   $(document).ready(function(){
 
     if( $(window).width() > 400 ){
-      if((!$.cookie('signup') && location.pathname != '/' && (location.pathname != '/users/sign_up' && location.pathname != '/users/sign_in' && location.pathname.indexOf('travel-fund') != 1 ))){
+      if((!$.cookie('signup') && location.pathname.indexOf('adventures') == 1 || location.pathname.indexOf('blog') == 1 )){
 
         setTimeout(function(){
           $.cookie('signup', 'visited', { expires: 3, path: '/' });
