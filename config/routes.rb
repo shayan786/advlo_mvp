@@ -15,10 +15,15 @@ Rails.application.routes.draw do
     get '/users/reservations'         => 'registrations#reservations'
     post '/users/phone'               => 'users#edit_phone_number'
     get '/users/conversations'        => 'registrations#conversations'
+    post '/users/update_paypal_email' => 'users#update_paypal_email'
+
+    # Affiliate related tracking
+    post '/users/update_affiliate_referral_click_count' => 'users#update_affiliate_referral_click_count'
 
     get '/users/initial/:type'        => 'registrations#inital_signin_check'
     get 'travel-fund'                 => 'users#invite' 
     get '/travel-fund/:referral_code' => 'registrations#referral_sign_up'
+    get '/affiliate/:referral_code'   => 'registrations#referral_sign_up'
   end
   
   get 'invite/:invite'                => 'adventures#hosting_info'
@@ -26,6 +31,9 @@ Rails.application.routes.draw do
 
   #contact
   post '/contact'                     => 'application#contact'
+
+  #affiliate marketing
+  get '/affiliate'                   => 'application#affiliate'
 
   #terms/conditions/privacy
   get '/terms'                        => 'application#terms'

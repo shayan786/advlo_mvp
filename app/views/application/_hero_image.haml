@@ -58,6 +58,7 @@
 
           %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form'}
             =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            =tag(:input, :type => "hidden", :id => "referrer_id", :name => "user[referrer_id]", :value => nil)
             .form-group
               %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
             .form-group
@@ -93,6 +94,11 @@
 
 
 :javascript
+  if ($.cookie('referrer_id')) {
+    homepage_new_user_set_referrer_id($.cookie('referrer_id'));
+  }
+
+
   $('#arrow-wrapper').click(function(){
     $('html, body').animate({
        scrollTop: $("#how_it_works").offset().top + 5}, 800
@@ -106,4 +112,6 @@
       $('#arrow-wrapper').hide();
     }
   });
+
+
 

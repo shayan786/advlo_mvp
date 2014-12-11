@@ -1,0 +1,12 @@
+$('.paypal_update_notice').empty();
+$('.paypal_update_notice').html('Your paypal email address has been updated');
+$('.paypal_update_notice').show();
+
+$('#affiliate .affiliate_info .paypal_checkbox').find('.fa-square-o').fadeOut();
+$('#affiliate .affiliate_info .paypal_checkbox').find('.fa-check-square-o').delay(500).fadeIn();
+
+$('#affiliate .affiliate_info .add_paypal_btn').empty();
+$('#affiliate .affiliate_info .add_paypal_btn').html('PAYPAL EMAIL ON-FILE');
+
+
+$('#affiliate .affiliate_info .code_plugin_box').fadeToggle();

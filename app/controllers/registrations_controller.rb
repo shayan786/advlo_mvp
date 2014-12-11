@@ -86,8 +86,6 @@ class RegistrationsController < Devise::RegistrationsController
     end
     
     @user.update_without_password(account_update_params)
-    #end
-
 
     #if successfully_updated
     flash[:notice] = 'You updated your account successfully'
@@ -161,6 +159,29 @@ class RegistrationsController < Devise::RegistrationsController
       @user.save
     end
 
+    if params[:user][:affiliate] == "true"
+      @user.affiliate = true
+      @user.save
+
+      return '/affiliate#become_affiliate'
+    end
+
+    # For affiliate redirect where user does not sign up through the referral_sign_up page
+    # but instead signs up through regular sign_up page
+    if params[:user][:referrer_id] != nil
+      @user.referrer_id = params[:user][:referrer_id]
+      @user.save
+
+      if @affiliate_tracker = AffiliateTracker.find_by_referrer_id(params[:user][:referrer_id])
+        @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
+        @affiliate_tracker.save
+      else
+        @affiliate_tracker = AffiliateTracker.create(referrer_id: params[:user][:referrer_id])
+        @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
+        @affiliate_tracker.save
+      end
+    end
+
     if session[:referrer_id]
       User.find(session[:referrer_id]).update_referral_count
       session[:referrer_id] = nil
@@ -176,7 +197,7 @@ class RegistrationsController < Devise::RegistrationsController
  
   # Customize User Profile Update Devise Params
   def account_update_params
-    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :ta_url, :video_url, :email_list, :is_guide, :credit, :category => [])
+    params.require(:user).permit(:name, :email, :location, :sex, :dob, :bio, :language, :skillset, :password, :password_confirmation, :avatar, :short_description, :tw_url, :fb_url, :ta_url, :video_url, :email_list, :is_guide, :credit, :affiliate, :category => [])
   end
 
   # devise override requireing password for update

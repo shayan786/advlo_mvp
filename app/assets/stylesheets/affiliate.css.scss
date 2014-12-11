@@ -1,0 +1,366 @@
+#affiliate {
+  position: relative;
+  padding-top: 80px;
+
+  .jumbotron {
+  	min-height: 450px;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	background-position: right;
+  	margin-top: -30px;
+
+
+  	.affiliate_text {
+      margin-top: 10%;
+      text-shadow: -1px -1px 5px #000;
+  		font-size: 2.6em;
+  		color: #FFF;
+  	}
+  }
+
+  .affiliate_info {
+
+    .border {
+      border-top: 2px solid $light_gray;
+    }
+
+    .transparent_background {
+      background: transparent;
+    }
+
+    .dark_background {
+      background: rgba(0,0,0,0.5);
+      border-top: 2px solid $light_gray;
+      padding-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      font-family: cabin_bold !important;
+      font-size: 3.2em;
+      text-align: center;
+      color: white;
+    }
+
+    .body_content {
+      font-size: 1.6em;
+      padding-bottom: 30px;
+      color: white;
+      opacity: 0.8;
+      text-align: center;
+    }
+
+    .matrix_header {
+      font-family: bebas_neue;
+      font-size: 1.8em;
+      letter-spacing: 2px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      text-align: center;
+      border-bottom: 1px solid $advlo_orange;
+      color: $orange;
+    }
+
+    .matrix_content {
+      font-size: 1.2em;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      color: white;
+      opacity: 1;
+      text-align: center;
+      min-height: 120px;
+
+      .display_percent {
+          font-size: 2.8em;
+      }
+    }
+
+    .number_btn {
+      height: 75px;
+      width: 75px;
+      border-radius: 50%;
+      border-color: $advlo_orange;
+      background-color: $advlo_orange;
+      opacity: 1;
+
+      margin-top: 25px;
+      padding-top: 13px;
+      font-size: 1.8em;
+      font-family: bebas_neue;
+      font-weight: bold;
+    }
+
+    .steps_header {
+      @extend .matrix_header;
+      font-size: 1.4em;
+    }
+
+    .steps_content {
+      padding-top: 45px;
+    }
+
+    .fa-square-o, .fa-check-square-o {
+      font-size: 1.8em;
+      padding-top: 40px;
+    }
+
+    .orange_btn {
+      border-color: $advlo_orange;
+      background-color: $advlo_orange;
+      width: 100%;
+      padding-top: 20px;
+      padding-bottom: 11px;
+      font-size: 1.2em;
+      margin-top: 25px;
+      font-family: bebas_neue;
+      letter-spacing: 2px;
+
+      &:hover {
+        border-color: $orange;
+        background-color: $orange;
+      }
+    }
+
+    .create_account_box {
+      display: none;
+
+      margin-top: 15px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      border: 2px solid $advlo_orange;
+      border-radius: 5px;
+      background: rgba(0,0,0,0.7);
+
+
+      .fb_btn {
+        font-size: 1em;
+        padding-top: 15px;
+        padding-bottom: 5px;
+        background: rgba(40, 94, 142, 0.8);
+        font-family: 'bebas_neue_book';
+        letter-spacing: 2px;
+        width: 60%;
+
+        .fa {
+          margin-right: 10px;
+        }
+      }
+
+      .or {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-family: 'bebas_neue_book';
+        color: $advlo_orange;
+        font-size: 1em;
+      }
+
+      .login_form {
+        width: 63%;
+        margin: 0 auto;
+
+        .help-block {
+          font-size: 0.5em;
+        }
+
+        .sign_up_btn {
+          border-radius: 3px;
+          cursor: pointer;
+          background-color: transparent;
+          background: rgba(0, 0, 0, 0.3);
+
+          background: rgba(195, 91, 38, 0.8);
+          border-color: rgba(195, 91, 38, 1);
+          border: 1px solid rgba(195, 91, 38, 1);
+          margin: 10px auto;
+
+          height: 35px;
+          color: #fff;
+          font-family: 'bebas_neue_book';
+          font-size: 17px;
+          letter-spacing: 2px;
+          padding-top: 5px;
+          width: 100%;
+        }
+      }
+    
+
+    }
+
+    .add_paypal_box {
+      display: none;
+
+      margin-top: 15px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      border: 2px solid $advlo_orange;
+      border-radius: 5px;
+      background: rgba(0,0,0,0.7);
+
+      #add_paypal_form {
+        margin-top: 10px;
+
+        #add_paypal_btn {
+          margin-top: 10px;
+          .fa {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      #update_paypal_form {
+        margin-top: 15px;
+        display: none;
+
+        #update_paypal_btn {
+          margin-top: 10px;
+          .fa {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .form_label {
+        padding-top: 7px;
+        font-size: 0.7em;
+      }
+
+      .prefill_label {
+        text-align: left;
+        padding-top: 7px;
+        font-size: 0.7em;
+      }
+
+      #change_paypal_btn {
+        margin-top: 20px;
+        margin-bottom: 10px;
+
+        .fa {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .code_plugin_box {
+      display: none;
+
+      margin-top: 15px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      border: 2px solid $advlo_orange;
+      border-radius: 5px;
+      background: rgba(0,0,0,0.7);
+
+      .logo_option_btn, .link_option_btn{
+        padding-top: 10px;
+        font-size: 0.7em;
+        font-family: bebas_neue;
+        letter-spacing: 2px;
+        width: 50%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .logo_option_code, .link_option_code {
+        display: none;
+        margin-top: 10px;
+        margin-bottom: 15px;
+
+        .transparent_bg_btn, .white_bg_btn, .black_bg_btn {
+          @extend .logo_option_btn;
+          width: 90%;
+          margin-bottom: 15px;
+        }
+
+        .well {
+          .logo_with_link_code_to_copy, .link_code_to_copy {
+            color: #000;
+            font-size: 0.6em
+          }
+
+        }
+
+        .logo_with_link {
+          height: 140px;
+          width: 310px;
+          background: asset-url('affiliate/advlo_affiliate.png') center center no-repeat;
+          background-size: contain !important;
+          background-color: #FFF;
+          margin: 10px auto 20px auto;
+          padding: 0px 5px;
+
+          border: 2px solid $advlo_green;
+          border-radius: 3px;
+          box-shadow: 1px 1px 1px $advlo_green;
+        }
+
+        .copy_code_btn {
+          padding-top: 10px;
+          font-size: 0.7em;
+          font-family: bebas_neue;
+          letter-spacing: 2px;
+
+          .fa {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    .total_earned_box {
+      border: 2px solid $advlo_orange;
+      border-radius: 5px;
+
+      .header {
+        font-family: bebas_neue;
+        font-size: 1.8em;
+        letter-spacing: 2px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        text-align: center;
+        border-bottom: 1px solid $advlo_orange;
+        color: $orange;
+      }
+
+      .amount {
+        color: #FFF;
+        font-size: 1.8em;
+        font-family: bebas_neue;
+
+      }
+    }
+
+    .not_member_warning {
+      color: $advlo_orange;
+      font-family: bebas_neue;
+      letter-spacing: 2px;
+      font-size: 1.4em;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+  }
+}
+
+@media screen and (max-width: 800px){
+  #affiliate .jumbotron .affiliate_text {
+    margin-top: 13%;
+  }
+} 
+
+@media screen and (max-width: 675px){
+	#affiliate {
+	  .affiliate_text {
+      font-size: 2em !important; 
+	  }
+	}
+
+  #affiliate .jumbotron .affiliate_text {
+    margin-top: 35%;
+  }
+}
+

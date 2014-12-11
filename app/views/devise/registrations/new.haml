@@ -30,6 +30,8 @@
             %i.fa.fa-facebook
             Sign Up with Facebook
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          =tag(:input, :type => "hidden", :id => "referrer_id", :name => "user[referrer_id]", :value => nil)
+
           .form-group
             %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
           .form-group
@@ -37,3 +39,11 @@
           .form-group
             %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
           %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "Sign Up"}
+
+:javascript
+  if ($.cookie('referrer_id')) {
+    new_user_set_referrer_id($.cookie('referrer_id'));
+  }
+
+
+

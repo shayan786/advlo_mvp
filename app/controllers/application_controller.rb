@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     @adventures << Adventure.find_by_slug('the-pearl-islands-adventure')
   end
 
+  def affiliate 
+
+  end
+
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get? 

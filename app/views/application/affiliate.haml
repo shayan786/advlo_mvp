@@ -1,0 +1,283 @@
+- set_meta_tags(get_meta_tags("Become An Affiliate","Become an Advlo affiliate to earn money by posting to your own blog or website","Advlo, Affiliate, Bloggers, Travel Blog"))
+
+#affiliate
+  .jumbotron{:style => "background-image: url(#{image_path 'background/cam.jpg'})"}
+    .container
+      .row.text-center
+        .col-md-8.affiliate_text.col-md-offset-2
+          Become an affiliate and earn money by posting or sharing Advlo on your blog or website
+
+
+  .affiliate_info
+    .dark_background
+      .container
+        .body_content{style: "margin-top: 30px;"}
+          Make money from your blog or site! We make it easy to make money by simply integrating the code generated below into your blog or site. When someone signs-up or makes a booking, we pay you.
+
+        .row
+          .col-md-4.col-md-offset-1
+            .matrix_header 
+              PER SIGN-UP
+            .matrix_content
+              .display_percent 
+                $ 1
+              FOR EVERY USER 
+              %br
+              THAT SIGNS UP
+
+          .col-md-4.col-md-offset-2
+            .matrix_header 
+              PER BOOKING
+            .matrix_content
+              .display_percent 
+                5 %
+              FOR EVERY RESERVATION 
+              %br
+              THAT OCCURS
+
+    #become_affiliate.transparent_background{style: "padding-bottom: 20px;"}
+      .container
+        %h2 
+          BECOME AN AFFILIATE
+        .body_content
+          .row
+            .col-md-2.col-md-offset-1
+              .steps_header
+                STEP
+              .btn.number_btn.disabled
+                1
+            .col-md-6
+              .steps_header
+                DETAILS
+              - if current_user
+                .btn.btn-primary.orange_btn.disabled
+                  ACCOUNT ALREADY CREATED
+              - else
+                .btn.btn-primary.orange_btn.create_account_btn
+                  CREATE AN ACCOUNT
+
+                .create_account_box
+                  .row
+                    %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook?affiliate=true"}
+                      %i.fa.fa-facebook-square
+                      connect
+
+                  .row
+                    .or.text-center
+                      OR
+
+                      
+                  %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", class: 'login_form'}
+                    =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                    =tag(:input, :type => "hidden", :name => "user[affiliate]", :value => true)
+                    .form-group
+                      %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+                    .form-group
+                      %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
+                    .form-group
+                      %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
+                    %input.btn.btn-primary.sign_up_btn#submit-email-login{name: "sign_up", type: "submit", value: "JOIN"}
+
+            .col-md-2
+              .steps_header
+                TO DO
+              - if current_user
+                %i.fa.fa-check-square-o
+              - else
+                %i.fa.fa-square-o
+
+          .row
+            .col-md-2.col-md-offset-1
+              .btn.number_btn.disabled{style: "padding-left: 15px;"}
+                2
+            .col-md-6
+              - if current_user && current_user.affiliate
+                - if current_user.paypal_email && current_user.paypal_email != ''
+                  .btn.btn-primary.orange_btn.add_paypal_btn
+                    PAYPAL EMAIL ON-FILE
+
+                  .add_paypal_box
+                    .row
+                      .col-md-10.col-md-offset-1.paypal_update_notice.alert.alert-warning.text-center{style: "display: none; margin-top: 15px;"}
+
+                    #existing-paypal
+                      .row
+                        .col-md-5
+                          .form_label.edit-label Paypal Email
+                        .prefill_label.col-md-6
+                          = current_user.paypal_email
+                      .row
+                        .btn.btn-primary{id: "change_paypal_btn"}
+                          %i.fa.fa-paypal
+                          Change
+
+                    %form{"accept-charset" => "UTF-8", action: '/users/update_paypal_email', method: "POST", id: "update_paypal_form", "data-remote" => "true"}
+                      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                      %input{type: 'hidden', name: 'user_id', value: "#{current_user.id}"}
+                      %input{type: 'hidden', name: 'paypal_update', value: "1"}
+
+                      .form-group.row
+                        .col-md-5
+                          .form_label.edit-label Paypal Email
+                        .col-md-6
+                          %input.form-control{type: "text", placeholder: current_user.email, name: "paypal_email", id: "paypal_email"}
+                      .form-group.row
+                        .col-md-5
+                          .form_label.edit-label First Name
+                        .col-md-6
+                          %input.form-control{type: "text", name: "paypal_first_name", id: "paypal_first_name"}
+                      .form-group.row  
+                        .col-md-5
+                          .form_label.edit-label Last Name
+                        .col-md-6
+                          %input.form-control{type: "text", name: "paypal_last_name", id: "paypal_email"}
+                      .form-group.row.save
+                        .btn.btn-primary{id: "update_paypal_btn"}
+                          %i.fa.fa-paypal
+                          Update
+
+                - else
+                  .btn.btn-primary.orange_btn.add_paypal_btn
+                    PAYPAL EMAIL ON-FILE
+
+                  .add_paypal_box
+                    .row
+                      .col-md-10.col-md-offset-1.paypal_update_notice.alert.alert-warning.text-center{style: "display: none; margin-top: 15px;"}
+
+                    %form{"accept-charset" => "UTF-8", action: '/users/update_paypal_email', method: "POST", id: "add_paypal_form", "data-remote" => "true"}
+                      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                      %input{type: 'hidden', name: 'user_id', value: "#{current_user.id}"}
+
+                      .form-group.row
+                        .col-md-4
+                          .form_label.edit-label Paypal Email
+                        .col-md-7
+                          %input.form-control{type: "text", placeholder: current_user.email, name: "paypal_email", id: "paypal_email"}
+                      .form-group.row
+                        .col-md-4
+                          .form_label.edit-label First Name
+                        .col-md-7
+                          %input.form-control{type: "text", name: "paypal_first_name", id: "paypal_first_name"}
+                      .form-group.row  
+                        .col-md-4
+                          .form_label.edit-label Last Name
+                        .col-md-7
+                          %input.form-control{type: "text", name: "paypal_last_name", id: "paypal_email"}
+                      .form-group.row.save
+                        .btn.btn-primary{id: "add_paypal_btn"}
+                          %i.fa.fa-paypal
+                          Add Paypal
+
+
+              - else
+                .btn.btn-primary.orange_btn.disabled
+                  ADD PAYPAL EMAIL
+
+                    
+                  
+            .paypal_checkbox.col-md-2
+              - if current_user && current_user.paypal_email && current_user.paypal_email != ''
+                %i.fa.fa-check-square-o
+                %i.fa.fa-square-o{style: "display:none;"}
+              - else
+                %i.fa.fa-check-square-o{style: "display:none;"}
+                %i.fa.fa-square-o
+
+          .row
+            .col-md-2.col-md-offset-1
+              .btn.number_btn.disabled{style: "padding-left: 15px;"}
+                3
+            .col-md-6
+              - if current_user && current_user.affiliate
+                .btn.btn-primary.orange_btn.code_plugin_btn
+                  COPY & PASTE CODE INTO YOUR BLOG / SITE
+
+                .code_plugin_box
+                  .row
+                    .code_option_row
+                      .col-md-6.text-center
+                        .btn.btn-default.logo_option_btn
+                          LOGO WITH LINK
+                      .col-md-6.text-center
+                        .btn.btn-default.link_option_btn
+                          LINK ONLY
+
+                  .row.logo_option_code
+                    .col-md-4.col-md-offset-1.text-center
+                      .btn.btn-default.transparent_bg_btn
+                        TRANSPARENT
+                    .col-md-3.text-center
+                      .btn.btn-default.white_bg_btn.active
+                        WHITE
+                    .col-md-3.text-center
+                      .btn.btn-default.black_bg_btn
+                        BLACK
+                    - code_to_copy = "<a href='#{root_url}affiliate/#{current_user.referral_code}' target='_blank'> <div class='logo_with_link' style='background: #{asset_url("affiliate/advlo_affiliate.png")} center center no-repeat; height: 140px; width: 300px background-size: contain !important; background-color: #FFF; padding: 0px 5px; border: 2px solid #699967; border-radius: 3px; box-shadow: 1px 1px 1px #699967;'></div></a>"
+                    .col-md-10.col-md-offset-1
+                      .well
+                        .logo_with_link
+                        .logo_with_link_code_to_copy
+                          = code_to_copy
+
+
+                      .text-center
+                        .btn.btn-default.copy_code_btn{"data-clipboard-text" => "#{code_to_copy}"}
+                          %i.fa.fa-clipboard
+                          COPY
+
+                  .row.link_option_code
+                    - code_to_copy = "<a href='#{root_url}affiliate/#{current_user.referral_code}' target='_blank'>Travel with Advlo, Adventure with Locals</a>"
+                    .col-md-10.col-md-offset-1
+                      .well
+                        .link_code_to_copy
+                          = code_to_copy
+                      .text-center
+                        .btn.btn-default.copy_code_btn{"data-clipboard-text" => "#{code_to_copy}"}
+                          %i.fa.fa-clipboard
+                          COPY
+
+              - else
+                .btn.btn-primary.orange_btn.disabled
+                  COPY & PASTE CODE INTO YOUR BLOG / SITE
+            .col-md-2
+              .copy_code_checkbox
+                %i.fa.fa-check-square-o{style: "display:none"}
+                %i.fa.fa-square-o
+    }
+
+    .dark_background{style: "padding-bottom: 30px;"}
+      .container
+        %h2
+          TRACK IT
+        %a{:href => "http://localhost:3000/affiliate/824c9a", :target => "_blank"}
+          .logo_with_link{:style => "background: http://localhost:3000/assets/affiliate/advlo_affiliate.png center center no-repeat; height: 140px; width: 300px background-size: contain !important; background-color: #FFF; padding: 0px 5px; border: 2px solid #699967; border-radius: 3px; box-shadow: 1px 1px 1px #699967;"}
+
+        - if current_user && current_user.affiliate && current_user.paypal_email
+          .col-md-2.col-md-offset-5
+            .total_earned_box
+              .header
+                TOTAL EARNED
+              .amount.text-center
+                - if AffiliateTracker.find_by_referrer_id(current_user.id)
+                  - earned_from_signups = AffiliateTracker.find_by_referrer_id(current_user.id).sign_ups
+                - else 
+                  - earned_from_signups = 0
+
+                - earned_from_reservations = 0
+
+                = "$ #{sprintf('%.2f',earned_from_signups + earned_from_reservations)}"
+
+        - else
+          .text-center
+            %i.not_member_warning
+              BECOME AN AFFILIATE ABOVE TO START TRACKING HOW MUCH YOU'VE EARNED
+              %br
+              YOU CAN VIEW YOUR WEEKLY METRICS (CLICKS, SIGN-UPS, AND BOOKINGS) HERE ALONG WITH WEEKLY PAYOUTS DETAILS
+
+
+
+:javascript
+  affiliate_init();
+
+        
+  
