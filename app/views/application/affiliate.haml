@@ -203,21 +203,24 @@
                           LINK ONLY
 
                   .row.logo_option_code
-                    .col-md-4.col-md-offset-1.text-center
-                      .btn.btn-default.transparent_bg_btn
-                        TRANSPARENT
-                    .col-md-3.text-center
-                      .btn.btn-default.white_bg_btn.active
-                        WHITE
-                    .col-md-3.text-center
-                      .btn.btn-default.black_bg_btn
-                        BLACK
                     - code_to_copy = "<a href='#{root_url}affiliate/#{current_user.referral_code}' target='_blank' style='float: left; width: 310px; height: 140px;'> <div class='logo_with_link' style='background: url(#{asset_url("affiliate/advlo_affiliate.png")}) center center no-repeat; height: 140px; width: 310px; background-size: contain !important; background-color: #FFF; padding: 0px 5px; border: 2px solid #699967; border-radius: 3px; box-shadow: 1px 1px 1px #699967;'></div></a>"
                     .col-md-10.col-md-offset-1
                       .well
-                        .logo_with_link
-                        .logo_with_link_code_to_copy
-                          = code_to_copy
+                        .row
+                          .col-md-4.col-md-offset-1.text-center
+                            .btn.btn-info.transparent_bg_btn
+                              TRANSPARENT
+                          .col-md-3.text-center
+                            .btn.btn-info.white_bg_btn.active
+                              WHITE
+                          .col-md-3.text-center
+                            .btn.btn-info.black_bg_btn
+                              BLACK
+                        .row
+                          .logo_with_link
+                        .row
+                          .logo_with_link_code_to_copy
+                            = code_to_copy
 
 
                       .text-center
