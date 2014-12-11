@@ -254,19 +254,48 @@
           TRACK IT
 
         - if current_user && current_user.affiliate && current_user.paypal_email
-          .col-md-2.col-md-offset-5
-            .total_earned_box
-              .header
-                TOTAL EARNED
-              .amount.text-center
-                - if AffiliateTracker.find_by_referrer_id(current_user.id)
-                  - earned_from_signups = AffiliateTracker.find_by_referrer_id(current_user.id).sign_ups
-                - else 
-                  - earned_from_signups = 0
+          .row
+            .col-md-2.col-md-offset-5
+              .total_earned_box
+                .header
+                  TOTAL EARNED
+                .amount.text-center
+                  - if AffiliateTracker.find_by_referrer_id(current_user.id)
+                    - earned_from_signups = AffiliateTracker.find_by_referrer_id(current_user.id).sign_ups
+                  - else 
+                    - earned_from_signups = 0
 
-                - earned_from_reservations = 0
+                  - earned_from_reservations = 0
 
-                = "$ #{sprintf('%.2f',earned_from_signups + earned_from_reservations)}"
+                  = "$ #{sprintf('%.2f',earned_from_signups + earned_from_reservations)}"
+
+          .row
+            .col-md-2.col-md-offset-3
+              .total_clicks_box
+                .header
+                  %i.fa.fa-eye
+                  CLICKS
+                .amount.text-center
+                  - if AffiliateTracker.find_by_referrer_id(current_user.id)
+                    - total_clicks = AffiliateTracker.find_by_referrer_id(current_user.id).clicks
+                  - else
+                    - total_clicks = 0
+
+                  = total_clicks
+
+            .col-md-2.col-md-offset-2
+              .total_sign_ups_box
+                .header
+                  %i.fa.fa-users
+                  SIGN-UPS
+                .amount.text-center
+                  - if AffiliateTracker.find_by_referrer_id(current_user.id)
+                    - total_sign_ups = AffiliateTracker.find_by_referrer_id(current_user.id).sign_ups
+                  - else
+                    - total_sign_ups = 0
+
+                  = total_sign_ups
+
 
         - else
           .text-center

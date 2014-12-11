@@ -334,6 +334,24 @@
       }
     }
 
+    .total_clicks_box {
+      margin-top: 20px;
+      @extend .total_earned_box;
+
+      .header {
+        margin-top: 5px;
+        font-size: 1.4em;
+      }
+
+      .fa {
+        margin-right: 5px;
+      }
+    }
+
+    .total_sign_ups_box {
+      @extend .total_clicks_box;
+    }
+
     .not_member_warning {
       color: $advlo_orange;
       font-family: bebas_neue;
