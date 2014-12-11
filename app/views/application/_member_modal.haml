@@ -15,6 +15,7 @@
 
         %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'popup_login_form'}
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          =tag(:input, :type => "hidden", :id => "referrer_id", :name => "user[referrer_id]", :value => nil)
           .form-group
             %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
           .form-group
@@ -33,3 +34,8 @@
           By signing up, you agree to Advlo's
           %a{href: "/terms", target: "_blank"}
             Terms of Service
+
+:javascript
+  if ($.cookie('referrer_id')) {
+    modal_new_user_set_referrer_id($.cookie('referrer_id'));
+  }
