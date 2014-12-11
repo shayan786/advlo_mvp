@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     post '/users/phone'               => 'users#edit_phone_number'
     get '/users/conversations'        => 'registrations#conversations'
     post '/users/update_paypal_email' => 'users#update_paypal_email'
+    post '/users/become_an_affiliate'  => 'users#become_an_affiliate'
 
     # Affiliate related tracking
     post '/users/update_affiliate_referral_click_count' => 'users#update_affiliate_referral_click_count'

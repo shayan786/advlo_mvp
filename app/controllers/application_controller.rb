@@ -39,6 +39,32 @@ class ApplicationController < ActionController::Base
   end
 
   def affiliate 
+    @total_sign_ups = 0
+    @total_clicks = 0
+    @total_reservations = 0
+    @total_earned_reservations = 0
+
+    if current_user
+      if AffiliateTracker.find_by_referrer_id(current_user.id)
+        @total_sign_ups = AffiliateTracker.find_by_referrer_id(current_user.id).sign_ups
+      end
+
+      if AffiliateTracker.find_by_referrer_id(current_user.id)
+        @total_clicks = AffiliateTracker.find_by_referrer_id(current_user.id).clicks
+      end
+
+
+      all_reservations = Reservation.where(cancelled: false).where(processed: true)
+
+      all_reservations.each do |res|
+        traveler = User.find(res.user_id)
+
+        if current_user.id == traveler.referrer_id
+          @total_earned_reservations = @total_earned_reservations + ((res.total_price - res.user_fee)*0.05)
+          @total_reservations = @total_reservations + 1
+        end
+      end
+    end
 
   end
 
