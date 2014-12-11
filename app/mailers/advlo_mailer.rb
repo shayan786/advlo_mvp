@@ -263,7 +263,7 @@ class AdvloMailer < ActionMailer::Base
     @user = host
     @adventures = @user.adventures
 
-    mail(to: @user.email, subject: "[ADVLO] : Month in Review") do |format|
+    mail(to: @user.email, subject: "[ADVLO] : Sharing your adventures") do |format|
       format.html { render layout: 'marketing_advlo_mail' }
       format.text
     end
@@ -313,7 +313,6 @@ class AdvloMailer < ActionMailer::Base
       format.html { render layout: 'marketing_advlo_mail' }
       format.text
     end
-
   end
 
   #--------------------- OUTREACH EMAILS -----------------------------------------
@@ -356,6 +355,36 @@ class AdvloMailer < ActionMailer::Base
 
     mail(to: @email, from: 'christopher@advlo.com',subject: "Adventure Local - partnership", cc: @cc, bcc: @bcc) do |format|
       format.html { render layout: 'simple' }
+      format.text
+    end
+  end
+
+  #----------------------- newsletter-signups ----------------------
+
+  def newsletter_welcome_invite(email)
+    @email = email
+
+    if @email.latitude != 0.0
+      @adventures = Adventure.near([@email.latitude, @email.longitude],250).approved.limit(3).order('RANDOM()')
+    end
+
+      @latest_blogs = Blogpost.where(state: "Published").order('created_at DESC').limit(2)
+
+    if !@adventures
+      @adventures = Adventure.approved.where(featured: true).limit(3)
+    end
+
+    case @email.category
+    when 'culturalist'
+      cat = 'cultural'
+    when 'vacationist'
+      cat = 'leisurly'
+    when 'thrillseeker'
+      cat = 'adrenaline'
+    end
+
+    mail(to: @email.email, subject: "So you like #{cat} adventures") do |format|
+      format.html { render layout: 'email_list_advlo_mail' }
       format.text
     end
   end

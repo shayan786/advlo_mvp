@@ -74,6 +74,8 @@ class Adventure < ActiveRecord::Base
     if self.approved == true && self.published == true && self.sent_approval_email == false
       @adventure = self
       AdvloMailer.delay.adventure_approval_accepted(@adventure)
+      AdvloMailer.delay(run_at: 1.day.from_now).market_share_your_adventure_host(@adventure.users.first)
+
       self.sent_approval_email = true
       self.save
     else

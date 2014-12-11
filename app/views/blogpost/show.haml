@@ -40,7 +40,7 @@
                 .blog-image-title
                   = bi.caption
                 .blog-image-excerpt
-                  = bi.excerpt
+                  = bi.excerpt.html_safe
 
 
         - if @blogpost.video_url

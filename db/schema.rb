@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210195747) do
+ActiveRecord::Schema.define(version: 20141211044335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,24 +99,10 @@ ActiveRecord::Schema.define(version: 20141210195747) do
 
   create_table "affiliate_trackers", force: true do |t|
     t.integer  "referrer_id"
-    t.integer  "clicks"
-    t.integer  "sign_ups"
+    t.integer  "clicks",      default: 0
+    t.integer  "sign_ups",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "assets", force: true do |t|
-    t.string   "storage_uid"
-    t.string   "storage_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "storage_width"
-    t.integer  "storage_height"
-    t.float    "storage_aspect_ratio"
-    t.integer  "storage_depth"
-    t.string   "storage_format"
-    t.string   "storage_mime_type"
-    t.string   "storage_size"
   end
 
   create_table "blog_images", force: true do |t|
@@ -189,6 +175,15 @@ ActiveRecord::Schema.define(version: 20141210195747) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "emails", force: true do |t|
+    t.string   "email"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "category"
+  end
 
   create_table "events", force: true do |t|
     t.datetime "created_at"

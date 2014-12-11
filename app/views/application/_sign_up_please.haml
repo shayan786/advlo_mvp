@@ -1,4 +1,4 @@
-#signup-please-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "signup-please-modal", role: "dialog"}
+#signup-please-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "signup-please-modal", "data-backdrop" => "static", role: "dialog"}
   .modal-dialog
     .modal-content
       %button.close#close-signup-modal
@@ -12,54 +12,89 @@
 
         .question-wrapper
           %h4 What kind of adventurer are you?
-          %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> 'Looks like your in the right place..', 'data-poll' => 'thrillseeker', 'data-answer' => 'answer-1'}
+          %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> "Join our free newsletter and learn about epic adventure packages only on Advlo..", 'data-poll' => 'thrillseeker', 'data-answer' => 'answer-1'}
             %p Thrillseeker
-          %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'Cultural experience is our middle name..', 'data-poll' => 'culturalist', 'data-answer' => 'answer-2'}
-            %p Culturalist
-          %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "It's time we connected you with a local..", 'data-poll' => 'vacationist', 'data-answer' => 'answer-3'}
+          %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "Join our free newsletter and learn about unique, family friendly adventures only on Advlo..", 'data-poll' => 'vacationist', 'data-answer' => 'answer-3'}
             %p Vacationist
+          %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'Join our free newsletter and learn about cultural expedition adventures only on Advlo..', 'data-poll' => 'culturalist', 'data-answer' => 'answer-2'}
+            %p Culturalist
 
         .form-wrapper
           - total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f
           .poll-answers{'data-total' => total_answers}
-            .answer-1.btn.btn-primary.answer.disabled
+            .answer-1.btn.btn-primary.answer
               .poll-count= @poll.answer_1
-            .answer-2.btn.btn-success.answer.disabled
+
+            .answer-2.btn.btn-success.answer
               .poll-count= @poll.answer_2
-            .answer-3.btn.btn-info.answer.disabled
+
+            .answer-3.btn.btn-info.answer
               .poll-count= @poll.answer_3
 
           #network
             %h4
+          #secret-gift
+            Get an exclusive member invite -
+            %span $$$
+            off first adventure
+          %form{"accept-charset" => "UTF-8", action: "/email-list", method: "post", roll: "form","data-remote" => "true"}
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+            = tag(:input, :type => "hidden", :name => 'email[category]', id: 'newsletter_category')
 
-          .row
-            %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
-              %i.fa.fa-facebook
-              FACEBOOK
-
-          .text-center{style: "font-family: bebas_neue; font-size: 1.2em; margin: 10px 0 5px 0"}
-            OR
-
-          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'popup_login_form'}
-            =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            .form-group
-              %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
-            .form-group
-              %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]"}
-            .form-group
-              %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
-            .row
-              %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "SIGN UP"}
-
-          .row
-            .btn.btn-primary.sign_up_btn.popup_login
-              EMAIL
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", id: "email_list", name: "email[address]"}
+            %input.btn{name: "sign_up", type: "submit", value: "CLICK", id: 'email_list_button'}
 
 
-          .back-text
-            By signing up, you agree to Advlo's
-            %a{href: "/terms", target: "_blank"}
-              Terms of Service
+          #sign-up
+            = link_to "Or Sign Up", new_user_registration_path
 
-          .text-center.sign_in
-            SIGN IN
+        .thanks-div
+
+          / .row
+          /   %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
+          /     %i.fa.fa-facebook
+          /     FACEBOOK
+
+          / .text-center{style: "font-family: bebas_neue; font-size: 1.2em; margin: 10px 0 5px 0"}
+          /   OR
+
+          / %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'popup_login_form'}
+          /   =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          /   .form-group
+          /     %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+          /   .form-group
+          /     %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]"}
+          /   .form-group
+          /     %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
+          /   .row
+          /     %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "SIGN UP"}
+
+          / .row
+          /   .btn.btn-primary.sign_up_btn.popup_login
+          /     EMAIL
+
+
+          / .back-text
+          /   By signing up, you agree to Advlo's
+          /   %a{href: "/terms", target: "_blank"}
+          /     Terms of Service
+
+          / .text-center.sign_in
+          /   SIGN IN
+
+:javascript
+   $('#email_list').bootstrapValidator({
+    fields: {
+      '#email_list': {
+        validators: {
+          notEmpty: {
+            mesage: "Email cannot be empty"
+          },
+          stringLength: {
+            message: "Name must include atleast 3 characters",
+            min: 3,
+            max: 40
+          }
+        }
+      }
+    })

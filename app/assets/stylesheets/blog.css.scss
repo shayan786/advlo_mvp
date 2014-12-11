@@ -183,6 +183,7 @@
     height: 100%;
     background: whitesmoke;
     margin-top: 100px;
+    float: left;
 
     #adventures-container {
       position: relative;
@@ -345,7 +346,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
 
   #disqus_thread {
     position: relative;
-    float: none;
+    float: left;
     width: 85%;
     margin: 0 auto;
   }
@@ -391,6 +392,9 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
     display: none;
   }
 
+  .blog-show-wrapper .post-wrapper .blog-image-wrapper {
+    width: 90% !important;
+  }
 }
 
 
@@ -454,7 +458,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       margin-bottom: 30px;
 
       .blog-image {
-        height: 200px;
+        max-height: 200px;
         overflow: hidden;
 
         img {

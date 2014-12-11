@@ -1,20 +1,20 @@
 - set_meta_tags(default_meta_tags)
 
+- if params[:referral_code] =='secret'
+  - value = 20.0
+- else
+  - value = 5.0
+
 #d_sign_up
   .container
     .panel.col-md-4.col-md-offset-4
       %h2.text-center Join Advlo
       .referrer_text.text-center
         Invited by:
-        - if @referrer.id == 257
-          %em
-            Advlo Founders
-        - else
-          %em
-            = @referrer.get_abbreviated_name_or_email
+        = @referrer.get_abbreviated_name_or_email
       .travel-fund-credit
         Get 
-        %span= "$5"
+        %span= "$#{value}"
         for joining
 
       .panel-body
@@ -25,7 +25,7 @@
             Sign Up with Facebook
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           =tag(:input, :type => "hidden", :name => "user[referrer_id]", :value => @referrer.id)
-          =tag(:input, :type => "hidden", :name => "user[credit]", :value => 5.0)
+          =tag(:input, :type => "hidden", :name => "user[credit]", :value => value)
           .form-group
             %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
           .form-group

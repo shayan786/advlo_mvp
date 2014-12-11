@@ -291,7 +291,11 @@ function footerInit(){
     $('.form-wrapper').fadeIn(2000)
     $('#network h4').text($(this).data('text'))
 
-    $('.'+$(this).data('answer')).css('border','2px solid #fff')
+    $('.'+$(this).data('answer')).css('border','3px solid #fff')
+
+    $('#newsletter_category').val($(this).data('poll'))
+
+
 
     console.log(  parseInt($('.'+$(this).data('answer')).last().children().html()) + 1  )
     var totalPolls = parseInt($('.poll-answers').data('total'))
@@ -300,7 +304,6 @@ function footerInit(){
     $('.answer-1').last().children().html( ((parseInt($('.answer-1').last().children().html() ) / totalPolls) * 100).toString().substring(0,4) + '%' )
     $('.answer-1').last().prepend($('.answer-1').first().data('poll'))
     
-
     $('.answer-2').last().children().html( ((parseInt($('.answer-2').last().children().html() ) / totalPolls) * 100).toString().substring(0,4) + '%' )
     $('.answer-2').last().prepend($('.answer-2').first().data('poll'))
 
@@ -308,5 +311,7 @@ function footerInit(){
     $('.answer-3').last().prepend($('.answer-3').first().data('poll'))
 
 
+    var btnColor = $('.'+$(this).data('answer')).css('background-color')
+    $('#email_list_button').css('background-color', btnColor)
   }) 
 }
