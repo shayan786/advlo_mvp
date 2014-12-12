@@ -6,7 +6,6 @@ class AdvloMailer < ActionMailer::Base
 
 
   # error emails 
-
   def geocode_limit_hit
     mail(to: 'info@advlo.com', subject: 'Geocode limit hit')
   end
@@ -229,6 +228,13 @@ class AdvloMailer < ActionMailer::Base
   def marketing_referral(email)
     email = email
     mail(to: email, subject: "[ADVLO] : Travel Fund")
+  end
+
+  # ---------- AFFILIATE EMAILS ------------------------------------------------------------------------------------------------------
+  def new_affiliate_email(user)
+    @user = user
+
+    mail(to: @user.email, subject: "[ADVLO] : Affiliate Program")
   end
 
 

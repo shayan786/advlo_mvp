@@ -25,6 +25,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.affiliate = true
       @user.save
 
+      AdvloMailer.delay.new_affiliate_email(@user)
+
       '/affiliate#become_affiliate'
     elsif request.env['omniauth.params']['affiliate_referral'] == "true"
       if @affiliate_tracker = AffiliateTracker.find_by_referrer_id(request.env['omniauto.params']['referrer_id'])

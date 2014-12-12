@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented.text-center
+      %h2= "Hey #{@user.get_name_or_email}!"
+      
+      .text-left
+        %p 
+          Thanks for signing up to be Advlo affiliate. We're excited to see you share us with your followers.
+        %p 
+          If you haven't already, please remember to enter and keep your 
+          %a{href: "#{root_url}affiliate#become_affiliate"} Paypal email 
+          upto date for payouts without interruptions.
+
+        %p 
+          %b 
+            %u Some important information regarding the affiliate program:
+          %br
+          1. Access your embeddable code and metrics 
+          %a{href: "#{root_url}affiliate"} here
+          %br
+          2. Payouts are only initiated when you've accumulated a minimum of $20
+          %br
+          3. If you're having trouble embedding or have any questions, reach out to us at support@advlo.com
+
+      %i Happy Earning,
+      %br
+      %a{href: "#{root_url}about"} The Advlo Team
