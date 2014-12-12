@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
       when 'answer_3' then @poll.answer_3 += 1
     end
     @poll.save
+    
+    respond_to do |format|
+      format.js {render "calculate_poll.js", layout: false}
+    end
   end
 
   def terms

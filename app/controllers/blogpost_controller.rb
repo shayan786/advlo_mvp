@@ -18,7 +18,7 @@ class BlogpostController < ApplicationController
     @blog_images = @blogpost.blog_images
 
     get_featured_locations(['Costa Rica','United States','Vietnam','Ecuador','Nicaragua'])
-    @adventures = Adventure.where(featured: true).sample(3)
+    @adventures = Adventure.approved.sample(3)
 
     @blogpost.save
   end
@@ -35,11 +35,9 @@ class BlogpostController < ApplicationController
   end
 
   def index
-    @blogposts = Blogpost.order('created_at DESC')
-
-    @adventures = Adventure.approved.take(6)
+    @blogposts = Blogpost.where(state: "Published").order('created_at DESC')
+    @adventures = Adventure.approved.sample(6)
     get_featured_locations(['Costa Rica','United States','Vietnam','Ecuador','Nicaragua'])
-
 
     # @photos = Instagram.user_recent_media(847673197, {:count => 5})
 

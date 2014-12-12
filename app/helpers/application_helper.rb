@@ -46,7 +46,7 @@ module ApplicationHelper
   end
 
   def get_regions
-    all_cities = []
+    all_cities ||= []
     region_count = Hash.new 0
     Adventure.approved.each do |a|
       all_cities << a.city
@@ -54,7 +54,7 @@ module ApplicationHelper
     all_cities.compact.each do |elem|    
       region_count[elem] += 1
     end
-    @regions =[]
+    @regions ||= []
     regions = region_count.sort_by {|key, value| key}.sort_by{|key, v| v }.reverse.take(6)
 
     regions.each do |r|
@@ -69,7 +69,7 @@ module ApplicationHelper
   end
 
   def get_explorer_regions
-    all_places = []
+    all_places ||= []
 
     Adventure.approved.each do |a|
       all_places << a.city
@@ -81,7 +81,7 @@ module ApplicationHelper
   end
 
   def get_cities(region)
-    all_cities = []
+    all_cities ||= []
 
     Adventure.approved.where(country: region).each do |a|
       all_cities << a.city
@@ -98,7 +98,7 @@ module ApplicationHelper
   end
 
   def get_countries(region)
-    all_countries = []
+    all_countries ||= []
     Adventure.approved.where(region: region).each do |a|
       all_countries << a.country
     end

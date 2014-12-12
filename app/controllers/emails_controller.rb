@@ -8,14 +8,14 @@ class EmailsController < ApplicationController
 
     @email = Email.create(email: params[:email][:address])
     @email.category = params[:email][:category]
-    
+
     # @email.latitude = ip.latitude if ip.latitude
     # @email.longitude = ip.longitude if ip.longitude
     @email.save
     
     if @email.save
       MarketingEmail.create(email: @email.email, title: "#{@email.email} => #{@email.category} signup")
-      AdvloMailer.newsletter_welcome_invite(@email).deliver
+      AdvloMailer.delay(run_at: 15.minutes.from_now).newsletter_welcome_invite(@email)
 
       respond_to do |format|
         format.js { render action: 'email_list.js', layout: false}
