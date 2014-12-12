@@ -388,6 +388,23 @@
 	  .affiliate_text {
       font-size: 2em !important; 
 	  }
+
+    .affiliate_info .number_btn {
+      padding-top: 10px !important;
+      font-size: 1.8em !important;
+    }
+
+    .affiliate_info .steps_header { 
+      display: none;
+    }
+
+    .affiliate_info .fa {
+      display: none;
+    }
+
+    .affiliate_info .code_plugin_btn {
+      font-size: 0.8em;
+    }
 	}
 
   #affiliate .jumbotron .affiliate_text {
