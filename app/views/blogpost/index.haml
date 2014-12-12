@@ -106,5 +106,5 @@
             %a{href: "/adventures?country=#{item.region}", target: "_blank"}
               .side-brick
                 .photo{style: "background: url('#{item.attachment.url(:thumb)}') center center no-repeat"}
-                .title.text-center= item.location ? item.location.capitalize : item.region
+                .title.text-center= item.location ? item.location.split.map(&:capitalize).join(' ') : item.region
             .divider
