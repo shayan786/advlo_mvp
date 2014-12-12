@@ -216,7 +216,7 @@ class AdventuresController < ApplicationController
   def hosting_info
     @adventures = [] 
     @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
-    @adventures << Adventure.find_by_slug('essential-mountain-bike-skills')
+    @adventures << Adventure.find_by_slug('private-surf-lessons')
     @adventures << Adventure.find_by_slug('the-pearl-islands-adventure')
 
     if params[:invite] == 'partner'

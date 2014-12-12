@@ -74,6 +74,8 @@
             %a{:href => "http://disqus.com/?ref_noscript"} comments powered by Disqus.          
 
     .col.col-md-2#related-adventures-container
+      .blogpage-title{style: 'margin-right: 10px;'}
+        Locations & Adventures
       #right-content-container
         - block = @adventures.zip(@locations).flatten.compact
         - block.each do |item|
