@@ -46,7 +46,6 @@
     margin-bottom: 30px;
     margin-left: 5px;
     padding-right: 15px;
-    
   }
   .blog-link {
     margin-left: 10px;
@@ -458,12 +457,26 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       float: left;
       width: 100%;
       margin-top: 30px;
-      margin-bottom: 30px;
+      margin-bottom: 5px;
       text-align: center;
       font-size: 3em;
       font-family: 'bebas_neue';
       letter-spacing: 1px;
     }
+
+    .blog-author {
+
+    }
+
+    .blog-date {
+      margin-top: 1px;
+      margin-bottom: 15px; 
+      font-style: italic;
+      border: none;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $dark_gray;
+    }
+
     .fa-arrow-circle-left {
       font-size: 30px;
       position: absolute;

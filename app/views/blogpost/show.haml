@@ -1,4 +1,4 @@
-- set_meta_tags(get_meta_tags("#{@blogpost.title} by #{@blogpost.author}","Advlo travel journal and blog. Find travel trips, guest posts, and details on the Advlo platform here.","Advlo, Blog, Journal, #{@blogpost.author}"))
+- set_meta_tags(get_meta_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}","Advlo travel journal and blog. Find travel trips, guest posts, and details on the Advlo platform here.","Advlo, Blog, Journal, #{@blogpost.author}"))
 
 .blog-page-wrapper.blog-show-wrapper
   .row
@@ -32,6 +32,8 @@
     .col.col-md-8{style: "border-left: 1px solid #333333;border-right: 1px solid #333333; "}
       .post-wrapper
         .blog-title= @blogpost.title
+        .blog-author.text-center= "by #{@blogpost.author}"
+        .blog-date.text-center= @blogpost.created_at.strftime("%b. %e, %G")
         - if @blogpost.previous
           %a.fa.fa-arrow-circle-left{href: "/blog/#{@blogpost.previous.permalink}" }
 
