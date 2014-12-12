@@ -221,10 +221,17 @@ function paypal_email_validation() {
   })
 }
 
+function become_an_affiliate_form_submit() {
+	$('#affiliate .affiliate_info .become_affiliate_btn').click(function(){
+		$('#affiliate .affiliate_info .become_an_affiliate_form').submit();
+	})
+}
+
 function affiliate_init() {
 	create_account_validation();
 	create_account_btn_toggles();
 	paypal_email_validation();
 	add_paypal_btn_toggles();
 	code_plugin_btn_toggles();
+	become_an_affiliate_form_submit();
 }

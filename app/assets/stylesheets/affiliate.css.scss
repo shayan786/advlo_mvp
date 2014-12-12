@@ -312,6 +312,7 @@
     }
 
     .total_earned_box {
+      margin-top: 10px;
       border: 2px solid $advlo_orange;
       border-radius: 5px;
 
@@ -332,6 +333,13 @@
         font-family: bebas_neue;
 
       }
+    }
+
+    .divider {
+      border: 2px solid $advlo_orange;
+      border-radius: 5px;
+      margin-top: 25px;
+      margin-bottom: 10px;
     }
 
     .total_clicks_box {
@@ -359,6 +367,11 @@
       font-size: 1.4em;
       margin-top: 20px;
       margin-bottom: 20px;
+    }
+
+    .payout_warning {
+      @extend .not_member_warning;
+      font-size: 1em;
     }
 
   }

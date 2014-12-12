@@ -167,6 +167,8 @@ class RegistrationsController < Devise::RegistrationsController
       @user.affiliate = true
       @user.save
 
+      AdvloMailer.delay.new_affiliate_email(@user)
+
       return '/affiliate#become_affiliate'
     end
 

@@ -163,6 +163,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def become_an_affiliate
+    user = User.find(params[:user_id])
+
+    user.affiliate = true
+    user.save
+
+    redirect_to '/affiliate#become_affiliate'
+  end
+
   def hero_image
     HeroImage.where(user_id: hero_image_params[:user_id]).each do |hi|
       hi.destroy
