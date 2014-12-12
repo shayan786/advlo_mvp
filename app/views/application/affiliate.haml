@@ -20,7 +20,7 @@
               PER SIGN-UP
             .matrix_content
               .display_percent 
-                $ 1
+                $ 0.50
               FOR EVERY USER 
               %br
               THAT SIGNS UP
@@ -268,7 +268,7 @@
                 .header
                   TOTAL EARNED
                 .amount.text-center
-                  = "$ #{sprintf('%.2f',@total_sign_ups + @total_earned_reservations)}"
+                  = "$ #{sprintf('%.2f',@total_sign_ups*0.5 + @total_earned_reservations)}"
 
           .row.text-center
             %br  

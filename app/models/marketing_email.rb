@@ -1,7 +1,6 @@
 class MarketingEmail < ActiveRecord::Base
   belongs_to :user
 
-
   def self.send_email_to_list(list, location, by_category)
     puts "***** ORIGINAL COUNT: #{list.count} *******"
 
@@ -65,6 +64,15 @@ class MarketingEmail < ActiveRecord::Base
       end
     end
 
+  end
+
+  def self.send_email_to_bloggers_about_affiliate_program
+    bloggers_name = ['Seth','Matthew','Cam & Nicole','Kate','Gary','Devin','Audrey','Sam & Zab','Andi','Amanda','Fran','Shalee','Stephanie','Traci','Tiffiny','Pavel','Benjamin','Matt','Katie','Landon','Paul']
+    bloggers_email = ['sethandtana@gmail.com','matt@expertvagabond.com','cam@travelingcanucks.com','kate@adventurouskate.com','gary@everything-everywhere.com', 'new@devinthorpe.com','bergner.audrey@gmail.com','indefiniteadventure@gmail.com','AndiPerullo@aol.com','TheAmandaWoods@gmail.com','fran@franreisner.com','shaleewanders@gmail.com','justcherishedblog@gmail.com','Traci@walksimply.com','turbotiffiny@gmail.com','pavel.gospodinov@me.com','benjamin@adventuresauce.com','xpatmatt@gmail.com','katie@adventure-inspired.com','landonbfaulkner@gmail.com','paul.osborn@theoutdooradventure.net']
+
+    bloggers_name.each_with_index do |b,i|
+      AdvloMailer.blogger_affiliate_outreach(bloggers_email[i],b).deliver
+    end
   end
 
 end
