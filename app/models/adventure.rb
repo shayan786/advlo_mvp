@@ -23,6 +23,7 @@ class Adventure < ActiveRecord::Base
   process_in_background :attachment, :only_process => [:hero, :medium, :thumb]
 
   validates_uniqueness_of :title, :on => :update
+  validates_uniqueness_of :slug
   validates_presence_of :attachment
   validates_numericality_of :price, :on => :update
   validates_numericality_of :cap_min, :on => :update
