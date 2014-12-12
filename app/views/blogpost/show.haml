@@ -26,8 +26,10 @@
               %a{href:"http://advlo.com/blog/#{bp.permalink}"}
                 .blog-link
                   = bp.title
+                .blog-date
+                  = bp.created_at.strftime("%b. %e, %G")
 
-    .col.col-md-8
+    .col.col-md-8{style: "border-left: 1px solid #333333;border-right: 1px solid #333333; "}
       .post-wrapper
         .blog-title= @blogpost.title
         - if @blogpost.previous
@@ -84,16 +86,18 @@
           - if item.class == Adventure
             %a{href: "/adventures/#{item.slug}", target: '_blank'}
               .side-brick
-                .photo
-                  = image_tag item.attachment.url(:medium)
-                .title= "#{item.title[0..65]}.."
+                .photo{style: "background: url('#{item.attachment.url(:medium)}') center center no-repeat"}
+                .title.text-center
+                  = "#{item.title[0..65]}.."
+                  %br
+                  %i{style: "font-size: 0.8em;"}
+                    = "with #{item.host_name}"
                 
             .divider
               
           - elsif item
             %a{href: "/adventures?country=#{item.region}", target: "_blank"}
               .side-brick
-                .photo
-                  = image_tag item.attachment.url(:thumb)
-                .title= item.location ? item.location.capitalize : item.region
+                .photo{style: "background: url('#{item.attachment.url(:thumb)}') center center no-repeat"}
+                .title.text-center= item.location ? item.location.split.map(&:capitalize).join(' ') : item.region
             .divider

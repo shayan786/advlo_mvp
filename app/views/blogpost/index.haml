@@ -1,4 +1,4 @@
-- set_meta_tags(get_meta_tags("Advlo Travel Journal","Advlo travel journal and blog. Find travel trips, guest posts, and details on the Advlo platform here.","Advlo, Blog, Journal"))
+- set_meta_tags(get_meta_tags("Travel Journal","Advlo travel journal and blog. Find travel trips, guest posts, and details on the Advlo platform here.","Advlo, Blog, Journal"))
 
 .blog-page-wrapper
   .static-leftbar
@@ -24,6 +24,8 @@
           %a{href:"http://advlo.com/blog/#{bp.permalink}"}
             .blog-link
               = bp.title
+            .blog-date
+              = bp.created_at.strftime("%b. %e, %G")
 
   .row
     .col.col-md-2
@@ -85,21 +87,24 @@
         /     %a{href: item.url, target: "_blank", class: 'tweet-link'}
         /       .side-item
         /         = item.text.html_safe
+
         - block = @adventures.zip(@locations).flatten.compact
         - block.each do |item|
           - if item.class == Adventure
             %a{href: "/adventures/#{item.slug}", target: '_blank'}
               .side-brick
-                .photo
-                  = image_tag item.attachment.url(:medium)
-                .title= "#{item.title[0..65]}.."
+                .photo{style: "background: url('#{item.attachment.url(:medium)}') center center no-repeat"}
+                .title.text-center
+                  = "#{item.title[0..65]}.."
+                  %br
+                  %i{style: "font-size: 0.8em;"}
+                    = "with #{item.host_name}"
                 
             .divider
               
           - elsif item
             %a{href: "/adventures?country=#{item.region}", target: "_blank"}
               .side-brick
-                .photo
-                  = image_tag item.attachment.url(:thumb)
-                .title= item.location ? item.location.capitalize : item.region
+                .photo{style: "background: url('#{item.attachment.url(:thumb)}') center center no-repeat"}
+                .title.text-center= item.location ? item.location.split.map(&:capitalize).join(' ') : item.region
             .divider

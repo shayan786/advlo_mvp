@@ -55,6 +55,13 @@
     font-size: 13px;
     text-transform: capitalize;
     font-family: cabin_regular;
+  }
+
+  .blog-date {
+    font-style: italic;
+    font-size: 0.8em;
+    margin-left: 10px;
+    margin-top: -5px;
     border-bottom: 1px solid #000;
   }
 
@@ -154,10 +161,11 @@
           font-size: 0.9em;
         }
         .excerpt {
-          font-family: 'nexa_light';
-          font-size: 18px;
-          margin-top: 15px;
+          font-family: 'cabin_regular';
+          font-size: 16px;
+          margin-top: 10px;
           line-height: 22px;
+          padding-right: 15px;
         }
       }
 
@@ -184,7 +192,7 @@
         color: #000;
         font-family: 'bebas_neue';
         letter-spacing: 1px;
-        margin-top: 5px;
+        margin-top: 15px;
       }
 
       .blog-post-date {
@@ -202,6 +210,7 @@
   #related-adventures-container {
     height: 100%;
     background: whitesmoke;
+    margin-top: 5px;
     float: left;
     position: relative;
 
@@ -315,11 +324,11 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
   float: left;
 
   .photo {
-    margin: 10px 10px 10px 0px;
+    margin: 5px 10px 10px 0px;
+    width: 170px;
+    height: 110px;
 
-    img {
-      width: 100%;
-    }
+    background-size: cover !important;
   }
 
   .location-name {
@@ -431,15 +440,13 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
   }
 }
 
-
-
 .blog-show-wrapper {
 
   position: relative;
   float: left;
   width: 100%;
   margin-top: 55px;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
   background: whitesmoke;  
 
   .post-wrapper {
