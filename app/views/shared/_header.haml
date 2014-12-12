@@ -36,16 +36,10 @@
           /     %a.btn.btn-default.navbar-btn.header-button{href: "/blog"}
           /       Stories
 
-          - if current_user
-            %li
-              %form
-                %a.btn.btn-default.navbar-btn.header-button{href: "/travel-fund"}
-                  Invite Friends
-          - else
-            %li
-              %form
-                %a.btn.btn-default.navbar-btn.header-button#travel-fund-signup{href: "/travel-fund"}
-                  Invite Friends
+          %li
+            %form
+              %a.btn.btn-default.navbar-btn.header-button{href: "/blog"}
+                Blog
           
           - if current_user && count = action_required(current_user)
             %li
