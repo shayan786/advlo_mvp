@@ -397,8 +397,11 @@
 	}
 
 	#contact_form_modal {
+	
 		.modal-dialog {
 			margin: 65px auto 0 auto;
+			background-image: asset-url('cartographer_small.png');
+			
 		}
 
 		.modal-header {
