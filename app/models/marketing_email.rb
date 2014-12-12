@@ -67,9 +67,12 @@ class MarketingEmail < ActiveRecord::Base
   end
 
   def self.send_email_to_bloggers_about_affiliate_program
-    bloggers_email = ['Seth Yates','Matthew Karsten','Cam & Nicole Wears','Kate McCulley','Gary Arntd','Devin Thorpe','Audrey Bergner','Sam & Zab','Andi','Amanda','Fran Reisner','Shalee Blackmer','Stephanie','Traci Lehman','Tiffiny Costello','Pavel Gospodinov','Benjamin Jenks','Matt Gibson','Katie Levy','Landon Faulkner','Paul Osborn']
-    bloggers_name = ['sethandtana@gmail.com','matt@expertvagabond.com','cam@travelingcanucks.com','kate@adventurouskate.com','gary@everything-everywhere.com', 'new@devinthorpe.com','indefiniteadventure@gmail.com','AndiPerullo@aol.com','TheAmandaWoods@gmail.com','fran@franreisner.com','shaleewanders@gmail.com','justcherishedblog@gmail.com','Traci@walksimply.com','turbotiffiny@gmail.com','pavel.gospodinov@me.com','benjamin@adventuresauce.com','xpatmatt@gmail.com','katie@adventure-inspired.com','landonbfaulkner@gmail.com','paul.osborn@theoutdooradventure.net']
+    bloggers_name = ['Seth','Matthew','Cam & Nicole','Kate','Gary','Devin','Audrey','Sam & Zab','Andi','Amanda','Fran','Shalee','Stephanie','Traci','Tiffiny','Pavel','Benjamin','Matt','Katie','Landon','Paul']
+    bloggers_email = ['sethandtana@gmail.com','matt@expertvagabond.com','cam@travelingcanucks.com','kate@adventurouskate.com','gary@everything-everywhere.com', 'new@devinthorpe.com','bergner.audrey@gmail.com','indefiniteadventure@gmail.com','AndiPerullo@aol.com','TheAmandaWoods@gmail.com','fran@franreisner.com','shaleewanders@gmail.com','justcherishedblog@gmail.com','Traci@walksimply.com','turbotiffiny@gmail.com','pavel.gospodinov@me.com','benjamin@adventuresauce.com','xpatmatt@gmail.com','katie@adventure-inspired.com','landonbfaulkner@gmail.com','paul.osborn@theoutdooradventure.net']
 
+    bloggers_name.each_with_index do |b,i|
+      AdvloMailer.blogger_affiliate_outreach(bloggers_email[i],b).deliver
+    end
   end
 
 end

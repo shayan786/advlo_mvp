@@ -237,6 +237,14 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: "[ADVLO] : Affiliate Program")
   end
 
+  def blogger_affiliate_outreach(email,name)
+    @name = name
+
+    mail(to: email, from: 'shayan@advlo.com', subject: "Advlo Affiliate Program") do |format|
+      format.html { render layout: 'simple_shayan' }
+      format.text
+    end
+  end
 
   # ----------- SUBSCRIPTION EMAILS -------------------------------------------------------------------------------------------------
 
