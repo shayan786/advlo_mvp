@@ -53,6 +53,7 @@
             .blog-image= image_tag bp.attachment(:large)
             .blog-preview
               .title= bp.title
+              .author= "by #{bp.author}"
               .excerpt= ActionView::Base.full_sanitizer.sanitize( bp.body[0..240] )+ "..."
               .read-more
               .read-more-text
