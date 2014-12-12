@@ -270,6 +270,15 @@
                 .amount.text-center
                   = "$ #{sprintf('%.2f',@total_sign_ups + @total_earned_reservations)}"
 
+          .row.text-center
+            %br  
+            %i.payout_warning
+              Payouts are only initiated once a minimum of $20 is earned
+
+          .row
+            .divider
+
+
           .row
             .col-md-2.col-md-offset-2
               .total_clicks_box
