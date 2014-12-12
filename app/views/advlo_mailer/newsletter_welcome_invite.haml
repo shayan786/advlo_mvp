@@ -9,9 +9,9 @@
       ="Hey #{@email.email},"
       awesome you decided to join us. 
       %p
-        We 
-        %i won't 
-        spam you - but we 
+        We promise not to
+        %i spam you
+        but we 
         %i will 
         keep you updated with nearby adventures & epic stories about crazy travel experiences around the world.
       %p
@@ -26,17 +26,28 @@
     .content
       %h1
         Stories
-      - @latest_blogs.each do |blog|
-        %a{href: "#{root_url}blog/#{blog.permalink}", style: 'text-decoration: none; color: #000;'}
-          .email_brick{style: "width: 100%; height: 250px;"}
-            .brick-bopy{style: "width: 50%; float: left;"}
-              %h3
-                = "#{blog.title[0..50]}.."
-              %p
-                = ActionView::Base.full_sanitizer.sanitize( blog.body[0..250] )+ "..."
+      %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "100%"}
+        %tr
+          %td
+            - @latest_blogs.each do |adventure|
+              .adventure-wrapper{style: 'position: relative; float: left; width: 100%; height: 225px;'}
+                .adventure{style: 'position: relative; width: 50%; float: left; margin-right: 25px;'}
+                  %a{href: "#{root_url}blog/#{adventure.permalink}", style: 'text-decoration: none; color: #000;'}
+                    %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium), style: 'width: 100%;'}
 
-            .brick-img{style: 'width: 45%; float: right; overflow: hidden'}
-              = image_tag blog.attachment(:medium)
+                .share-links{style: 'position: relative; width: 40%; float: right;'}
+                  %h2= link_to "#{adventure.title[0..40]}...","#{root_url}blog/#{adventure.permalink}"
+                  %p= "#{adventure.body[0..50]}..."
+
+                  - share_url = "#{root_url}blog/#{adventure.permalink}"
+
+                  %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + adventure.title + '&p[url]=' + URI.escape(share_url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) }= image_tag "#{root_url}/assets/fb-email-bd69e985af97389bf052774e3531541b.png"
+
+                  %a{href:"https://twitter.com/share?url=" + share_url + "&text=" + "@advlo_ blogpost " + adventure.title + ' on Adventure Local'}= image_tag "#{root_url}/assets/twitter-email-f21c89929bcdb0751198c7318d9e7f53.png"
+
+                  %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}"}= image_tag "#{root_url}/assets/gplus-email-5b11f1098ffab2a77fbae3f5f519811b.png"
+
+                  .divider-high
 
       %h1
         Adventures
@@ -50,7 +61,7 @@
                     %img{alt: adventure.title, height: "auto", src: adventure.attachment.url(:medium), style: 'width: 100%;'}
 
                 .share-links{style: 'position: relative; width: 40%; float: right;'}
-                  %h2= "#{adventure.title[0..40]}..."
+                  %h2= link_to "#{adventure.title[0..40]}...","#{root_url}adventures/#{adventure.slug}"
                   %p= "#{adventure.summary[0..50]}..."
 
                   - share_url = "#{root_url}adventures/#{adventure.slug}"
@@ -96,7 +107,7 @@
         
 
 
-      %p
+      .travel-safe
         Safe travels,
         %br
         %a{href: "#{root_url}about"}
