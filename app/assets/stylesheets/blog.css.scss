@@ -186,7 +186,17 @@
         letter-spacing: 1px;
         margin-top: 5px;
       }
+
+      .blog-post-date {
+        font-style: italic;
+        font-size: 0.9em;
+        float: right;
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+      }
     }
+
   }
 
   #related-adventures-container {

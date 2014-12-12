@@ -58,6 +58,8 @@
               .read-more
               .read-more-text
                 Read More
+            .blog-post-date
+              = bp.created_at.strftime("%A - %b. %e, %G")
 
           / .share-block
           /   = render_shareable buttons: ["facebook", "twitter", "pinterest", "google_plus"], :url=> "http://advlo.com/blog/#{bp.permalink}"
