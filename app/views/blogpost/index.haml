@@ -17,7 +17,7 @@
               = image_tag asset_url('instagram.png')
 
         .blogpage-title
-          Recent Posts
+          Advlo Blog
         - @blogposts.each do |bp|
           %a{href:"http://advlo.com/blog/#{bp.permalink}"}
             .blog-link
@@ -51,10 +51,10 @@
             .blog-image= image_tag bp.attachment(:large)
             .blog-preview
               .title= bp.title
-              .excerpt= ActionView::Base.full_sanitizer.sanitize( bp.body[0..250] )+ "..."
+              .excerpt= ActionView::Base.full_sanitizer.sanitize( bp.body[0..240] )+ "..."
               .read-more
-            .read-more-text
-              Read More
+              .read-more-text
+                Read More
 
           / .share-block
           /   = render_shareable buttons: ["facebook", "twitter", "pinterest", "google_plus"], :url=> "http://advlo.com/blog/#{bp.permalink}"

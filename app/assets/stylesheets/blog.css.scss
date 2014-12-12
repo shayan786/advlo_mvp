@@ -144,6 +144,7 @@
         .title {
           font-family: 'bebas_neue_book';
           font-size: 30px;
+          margin-top: 5px;
         }
         .excerpt {
           font-family: 'nexa_light';
@@ -184,6 +185,7 @@
     background: whitesmoke;
     margin-top: 100px;
     float: left;
+    position: relative;
 
     #adventures-container {
       position: relative;
@@ -323,6 +325,20 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
     display: none;
   }
 
+  .blog-page-wrapper .divider {
+    display: none !important;
+  }
+  .side-brick {
+    position: relative !important;
+    float: left !important;
+    width: 45% !important;
+    margin: 2.5% !important;
+  }
+  .blog-page-wrapper #related-adventures-container {
+    margin-top: 0px;
+    width: 100%;
+  }
+
   .blog-page-wrapper .social-container .follow {
     margin-top: 7px;
   }
@@ -424,6 +440,20 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       font-family: 'bebas_neue';
       letter-spacing: 1px;
     }
+    .fa-arrow-circle-left {
+      font-size: 30px;
+      position: absolute;
+      top: 45px;
+      left: 0px;
+      cursor: pointer;
+    }
+    .fa-arrow-circle-right {
+      font-size: 30px;
+      position: absolute;
+      top: 45px;
+      right: 0px;
+      cursor: pointer;
+    }
 
     .blog-body {
       position: relative;
@@ -475,9 +505,16 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       }
       .blog-image-excerpt {
         font-family: 'nexa_light';
-        font-size: 14px;
+        font-size: 14.5px;
         width: 90%;
-        margin-left: 2%;
+        color: #000;
+
+        a {
+          text-decoration: underline;
+        }
+        a:hover {
+          text-decoration: none;
+        }
       }
     }
 

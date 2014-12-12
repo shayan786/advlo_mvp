@@ -247,11 +247,12 @@
 				}
 			}
 
-			#sign-up {
+			.sign-up-link {
 				margin-top: 15px;
 				font-size: 15px;
 				font-family: 'bebas_neue_book';
 				letter-spacing: 1px;
+				cursor: pointer;
 
 				a {
 					color: #fff;

@@ -149,8 +149,12 @@ class RegistrationsController < Devise::RegistrationsController
     @user.referrer_id = session[:referrer_id]
     @user.save
 
-    if params[:user][:credit]
-      @user.credit = params[:user][:credit]
+    credit_amount = params[:user][:credit]
+    if credit_amount
+      if credit_amount.to_i > 20.0
+        credit_amount = 20.0
+      end
+      @user.credit = credit_amount
       @user.save
     end
 
