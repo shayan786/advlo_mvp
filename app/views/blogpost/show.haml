@@ -45,7 +45,7 @@
           - @blog_images.each do |bi|
             .blog-image-wrapper
               %a{href: bi.link }
-                .blog-image{style: "background: url('#{bi.attachment.url(:medium)}' center center no-repeat)"}
+                .blog-image{style: "background: url('#{bi.attachment.url(:medium)}') center center no-repeat"}
                 .blog-image-title
                   = bi.caption
               .blog-image-excerpt
