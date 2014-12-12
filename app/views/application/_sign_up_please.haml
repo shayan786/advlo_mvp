@@ -45,8 +45,8 @@
             %input.btn{name: "sign_up", type: "submit", value: "CLICK", id: 'email_list_button'}
 
 
-          #sign-up
-            = link_to "Or Sign Up", new_user_registration_path
+          .sign-up-link#show-signup-modal
+            Or Sign Up
 
         .thanks-div
 
@@ -96,4 +96,10 @@
         }
       }
     }
+  })
+
+
+  $('#show-signup-modal').click(function(){
+    $('#signup-please-modal').modal('hide');
+    $('#member-modal').modal('show');
   })

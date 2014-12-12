@@ -380,15 +380,6 @@ class AdvloMailer < ActionMailer::Base
       @adventures = Adventure.approved.where(featured: true).limit(3)
     end
 
-    case @email.category
-    when 'culturalist'
-      cat = 'cultural'
-    when 'vacationist'
-      cat = 'leisurly'
-    when 'thrillseeker'
-      cat = 'adrenaline'
-    end
-
     mail(to: @email.email, subject: "[ADVLO] #{@email.category} - adventure") do |format|
       format.html { render layout: 'email_list_advlo_mail' }
       format.text

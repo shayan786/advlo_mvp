@@ -11,6 +11,14 @@ class Blogpost < ActiveRecord::Base
   STATE = %w(Draft Published)
   scope :published, where('state = ?', 'Published').order('published_at DESC').limit(25)
 
+  def next
+    self.class.unscoped.where("created_at <= ? AND id != ?", created_at, id).order("created_at DESC").first
+  end
+
+  def previous
+    self.class.unscoped.where("created_at >= ? AND id != ?", created_at, id).order("created_at ASC").first
+  end
+
 
   def youtube_embed(youtube_url)
     if youtube_url[/yout\.be\/([^\?]*)/]

@@ -13,7 +13,7 @@
         %i won't 
         spam you - but we 
         %i will 
-        keep you updated with adventures nearby & epic stories about crazy travel experiences around the world.
+        keep you updated with nearby adventures & epic stories about crazy travel experiences around the world.
       %p
         BUT before we forget..
         You deserve that 
@@ -63,28 +63,34 @@
 
                   .divider-high
       %h1
-        Locations
+        Destinations
       .region-wrapper
-        %a{href: "#{root_url}/adventures?country=Costa Rica"}          
+        %a{href: "#{root_url}adventures?country=United States"}          
           .region 
             = image_tag HeroImage.where(region: 'United States').first.attachment.url(:thumb)
             .region-text
               United States
 
-        %a{href: "#{root_url}/adventures?state=Hawaii"}  
-          .region 
-            = image_tag HeroImage.where(region: 'Latin America').first.attachment.url(:thumb)
-            .region-text
-              Latin America
-
-        %a{href: "#{root_url}/adventures?country=Ecuador"}  
+        %a{href: "#{root_url}adventures?region=Asia"}  
           .region 
             = image_tag HeroImage.where(region: 'Asia').first.attachment.url(:thumb)
             .region-text
               Asia
 
-        %a{href: "#{root_url}/adventures"}  
-          .others_region{style: "background: asset-url('background/other_regions_image.jpg') center center no-repeat;"}
+        %a{href: "#{root_url}adventures?country=Costa Rica"}  
+          .region 
+            = image_tag HeroImage.where(region: 'Costa Rica').first.attachment.url(:thumb)
+            .region-text
+              Costa Rica
+
+        %a{href: "#{root_url}adventures?country=Ecuador"}  
+          .region 
+            = image_tag HeroImage.where(region: 'Ecuador').first.attachment.url(:thumb)
+            .region-text
+              Ecuador
+
+        %a{href: "#{root_url}adventures"}  
+          .others_region
             .region-text
               All Locations
         

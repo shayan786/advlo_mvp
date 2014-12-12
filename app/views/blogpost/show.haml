@@ -21,7 +21,7 @@
                   = image_tag asset_url('instagram.png')
 
             .blogpage-title
-              Recent Posts
+              %a{href:'/blog'} Advlo Blog
             - @blogposts.each do |bp|
               %a{href:"http://advlo.com/blog/#{bp.permalink}"}
                 .blog-link
@@ -30,19 +30,25 @@
     .col.col-md-8
       .post-wrapper
         .blog-title= @blogpost.title
+        - if @blogpost.previous
+          %a.fa.fa-arrow-circle-left{href: "/blog/#{@blogpost.previous.permalink}" }
+
+        - if @blogpost.next
+          %a.fa.fa-arrow-circle-right{href: "/blog/#{@blogpost.next.permalink}" }
+
         .blog-body
           = @blogpost.body.html_safe
 
         - if @blog_images.count > 0
           - @blog_images.each do |bi|
-            %a{href: bi.link }
-              .blog-image-wrapper
+            .blog-image-wrapper
+              %a{href: bi.link }
                 .blog-image
                   = image_tag bi.attachment.url(:medium)
                 .blog-image-title
                   = bi.caption
-                .blog-image-excerpt
-                  = bi.excerpt.html_safe
+              .blog-image-excerpt
+                = bi.excerpt.html_safe
 
 
         - if @blogpost.video_url

@@ -14,13 +14,11 @@ class BlogpostController < ApplicationController
     @blogposts = Blogpost.order('created_at DESC')
     @blogpost = Blogpost.find_by(permalink: params[:permalink])
     @blogpost.view_count = ((@blogpost.view_count.nil?) ? 0 : @blogpost.view_count) + 1
-    # @most_read_blogposts = Blogpost.published.order('view_count').reverse
-    @featured_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
-
+    
     @blog_images = @blogpost.blog_images
 
     get_featured_locations(['Costa Rica','United States','Vietnam','Ecuador','Nicaragua'])
-    @adventures = Adventure.where(featured: true).limit(2)
+    @adventures = Adventure.where(featured: true).sample(3)
 
     @blogpost.save
   end

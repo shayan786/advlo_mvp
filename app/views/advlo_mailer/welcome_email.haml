@@ -6,21 +6,21 @@
     %h1.center Welcome to Adventure Local
 
     .indented.text-left
-      .text-center= "#{@user.get_name_or_email}.capitalize, thanks for joining."
+      .text-center= "#{@user.get_name_or_email.capitalize}, thanks for joining."
       %br
       We are building a community where travelers from around the world
-      can connect directly with local guides, and you are now part of this evolution of global travel.
+      can connect directly with local guides, to evololve the ways of global travel.
 
       %p
         Make sure to 
         - if !@user.is_guide 
 
-          %a{href: '#{root_url}users/edit'} complete your profile
+          %a{href: "#{root_url}users/edit"} complete your profile
           so we know what kind of traveler you are.
 
         - else
 
-          %a{href: '#{root_url}users/edit'} complete your profile
+          %a{href: "#{root_url}users/edit"} complete your profile
           so you can upload your own adventures to the platform.
 
       %p

@@ -1405,12 +1405,12 @@ function signup_cookie(){
   $(document).ready(function(){
 
     if( $(window).width() > 400 ){
-      if((!$.cookie('signup') && location.pathname.indexOf('adventures') == 1 || location.pathname.indexOf('blog') == 1 )){
+      if((!$.cookie('signup') && (location.pathname.indexOf('adventures') == 1 || location.pathname.indexOf('blog') == 1) )){
 
         setTimeout(function(){
           $.cookie('signup', 'visited', { expires: 3, path: '/' });
           $('#signup-please-modal').modal('show')
-        }, 1);
+        }, 13500);
       }
 
       $('.close').click(function(){
