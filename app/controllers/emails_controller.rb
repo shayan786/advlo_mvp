@@ -1,8 +1,10 @@
 class EmailsController < ApplicationController
 
   def create
+    puts "request ===> #{request}"
+    puts "ip / request.location ===> #{request.location}"
+    
     ip = request.location
-    puts "ip ==>>>>>> #{ip}"
     @email = Email.create(email: params[:email][:address])
     @email.category = params[:email][:category]
     @email.latitude = ip.latitude if ip.latitude
