@@ -378,15 +378,15 @@ class AdvloMailer < ActionMailer::Base
   def newsletter_welcome_invite(email)
     @email = email
 
-    if @email.latitude != 0.0
-      @adventures = Adventure.near([@email.latitude, @email.longitude],250).approved.limit(3).order('RANDOM()')
-    end
+    # if @email.latitude != 0.0
+    #   @adventures = Adventure.near([@email.latitude, @email.longitude],250).approved.limit(3).order('RANDOM()')
+    # end
 
-      @latest_blogs = Blogpost.where(state: "Published").order('created_at DESC').limit(2)
+    @latest_blogs = Blogpost.where(state: "Published").order('created_at DESC').limit(2)
 
-    if !@adventures
-      @adventures = Adventure.approved.where(featured: true).limit(3)
-    end
+    # if !@adventures
+    @adventures = Adventure.approved.where(featured: true).sample(2)
+    # end
 
     mail(to: @email.email, subject: "[ADVLO] #{@email.category} - adventure") do |format|
       format.html { render layout: 'email_list_advlo_mail' }
