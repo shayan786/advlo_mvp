@@ -131,6 +131,16 @@ function code_plugin_btn_toggles() {
 	})
 }
 
+function toggle_code_plugin_box_on_load() {
+	$('#affiliate .affiliate_info .code_plugin_box').show();
+	$('#affiliate .affiliate_info .copy_code_checkbox .fa-square-o').hide();
+	$('#affiliate .affiliate_info .copy_code_checkbox .fa-check-square-o').show();
+
+	$(document).ready(function(){
+		$('#affiliate .affiliate_info .code_plugin_box .logo_option_btn').click();
+	})
+}
+
 function affliate_cookie_setup(referrer_id) {
     $.cookie('referrer_id', referrer_id, { expires: 1, path: '/' });
 

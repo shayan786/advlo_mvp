@@ -179,7 +179,7 @@
 
               - else
                 .btn.btn-primary.orange_btn.disabled
-                  ADD PAYPAL EMAIL
+                  ENTER YOUR PAYPAL EMAIL
 
                     
                   
@@ -313,6 +313,9 @@
               YOU CAN VIEW YOUR WEEKLY METRICS (CLICKS, SIGN-UPS, AND BOOKINGS) HERE ALONG WITH WEEKLY PAYOUTS DETAILS
 
 
+- if current_user && current_user.affiliate && current_user.paypal_email && current_user.paypal_email != ''
+  :javascript
+    toggle_code_plugin_box_on_load();
 
 :javascript
   affiliate_init();
