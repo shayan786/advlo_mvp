@@ -43,7 +43,7 @@
           - fb_share_url = "#{root_url}blog/#{@blogpost.permalink}"
           %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}", "data-desc" => "#{@blogpost.body[0..175]}...", "data-image" => "#{@blogpost.attachment.url(:medium)}", style: "margin-right: 5px;"}
             %i.fa.fa-facebook
-          .btn.btn-default.social_btn.twitter_blog{style: "margin-right: 5px;"}
+          .btn.btn-default.social_btn.twitter{style: "margin-right: 5px;"}
             %i.fa.fa-twitter
           %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{fb_share_url}", onclick: "javascript:window.open(this.href,
     '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"}
@@ -120,7 +120,27 @@
             .divider
 
 :javascript
-  social_init();
+  window.fbAsyncInit = function(){
+    FB.init({
+      appId: '210802829129036', status: true, cookie: true, xfbml: true }); 
+  };
+  
+  (function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];if   (d.getElementById(id)) {return;}js = d.createElement('script'); js.id = id; js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
+  
+  function postToFeed(title, desc, url, image){
+  var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
+  
+  function callback(response){}
+    FB.ui(obj, callback);
+  }
+
+  $('.fb').click(function(e) {
+    e.preventDefault();
+
+    elem = $(this);
+
+    postToFeed(elem.data('title'), elem.data('desc'), elem.prop('href'), elem.data('image'))
+  })
 
   $('.twitter_blog').click(function(){
     var encodedUrl = encodeURIComponent(document.URL);
