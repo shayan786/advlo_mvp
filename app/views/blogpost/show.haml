@@ -1,4 +1,8 @@
-- set_meta_tags(get_meta_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}","#{@blogpost.body[150]}...","Advlo, Blog, Journal, #{@blogpost.author}"))
+- set_meta_tags(get_meta_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}","#{@blogpost.body[0..150]}...","Advlo, Blog, Journal, #{@blogpost.author}"))
+
+- set_meta_tags :og => get_og_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}", "#{root_url}blog/#{@blogpost.permalink}", "#{@blogpost.body[0..150]}...", @blogpost.attachment.url(:medium))
+- set_meta_tags :fb => {:app_id => '210802829129036'}
+- set_meta_tags :twitter => get_twitter_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}", "#{@blogpost.body[0..150]}...", @blogpost.attachment.url(:medium))
 
 .blog-page-wrapper.blog-show-wrapper
   .row
@@ -37,7 +41,7 @@
 
         .social_share_icons.text-center
           - fb_share_url = "#{root_url}blog/#{@blogpost.permalink}"
-          %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}", "data-desc" => "#{@blogpost.body[175]}...", "data-image" => "#{@blogpost.attachment.url(:medium)}", style: "margin-right: 5px;"}
+          %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}", "data-desc" => "#{@blogpost.body[0..175]}...", "data-image" => "#{@blogpost.attachment.url(:medium)}", style: "margin-right: 5px;"}
             %i.fa.fa-facebook
           .btn.btn-default.social_btn.twitter_blog{style: "margin-right: 5px;"}
             %i.fa.fa-twitter
