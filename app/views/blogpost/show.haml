@@ -1,4 +1,8 @@
-- set_meta_tags(get_meta_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}","Advlo travel journal and blog. Find travel trips, guest posts, and details on the Advlo platform here.","Advlo, Blog, Journal, #{@blogpost.author}"))
+- set_meta_tags(get_meta_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}","#{@blogpost.body[0..150]}...","Advlo, Blog, Journal, #{@blogpost.author}"))
+
+- set_meta_tags :og => get_og_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}", "#{root_url}blog/#{@blogpost.permalink}", "#{@blogpost.body[0..150]}...", @blogpost.attachment.url(:medium))
+- set_meta_tags :fb => {:app_id => '210802829129036'}
+- set_meta_tags :twitter => get_twitter_tags("#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}", "#{@blogpost.body[0..150]}...", @blogpost.attachment.url(:medium))
 
 .blog-page-wrapper.blog-show-wrapper
   .row
@@ -34,6 +38,18 @@
         .blog-title= @blogpost.title
         .blog-author.text-center= "by #{@blogpost.author}"
         .blog-date.text-center= @blogpost.created_at.strftime("%b. %e, %G")
+
+        .social_share_icons.text-center
+          - fb_share_url = "#{root_url}blog/#{@blogpost.permalink}"
+          %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "#{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author}", "data-desc" => "#{@blogpost.body[0..175]}...", "data-image" => "#{@blogpost.attachment.url(:medium)}", style: "margin-right: 5px;"}
+            %i.fa.fa-facebook
+          .btn.btn-default.social_btn.twitter_blog{style: "margin-right: 5px;"}
+            %i.fa.fa-twitter
+          %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{fb_share_url}", onclick: "javascript:window.open(this.href,
+    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"}
+            %i.fa.fa-google-plus
+
+
         - if @blogpost.previous
           %a.fa.fa-arrow-circle-left{href: "/blog/#{@blogpost.previous.permalink}" }
 
@@ -102,3 +118,27 @@
                 .photo{style: "background: url('#{item.attachment.url(:thumb)}') center center no-repeat"}
                 .title.text-center= item.location ? item.location.split.map(&:capitalize).join(' ') : item.region
             .divider
+
+:javascript
+  function postToFeed(title, desc, url, image){
+  var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
+  
+  function callback(response){}
+    FB.ui(obj, callback);
+  }
+
+  $('.fb').click(function(e) {
+    e.preventDefault();
+
+    elem = $(this);
+
+    postToFeed(elem.data('title'), elem.data('desc'), elem.prop('href'), elem.data('image'))
+  })
+
+  $('.twitter_blog').click(function(){
+    var encodedUrl = encodeURIComponent(document.URL);
+    height = $(window).height();
+    width = $(window).width();
+
+    window.open("https://twitter.com/share?url=" + 'www.advlo.com' + "&text=%23AdventureLocal - #{@blogpost.title.split.map(&:capitalize).join(' ')} by #{@blogpost.author} - " + encodeURIComponent(document.URL), 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
+  })

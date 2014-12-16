@@ -178,7 +178,9 @@ class RegistrationsController < Devise::RegistrationsController
       @user.referrer_id = params[:user][:referrer_id]
       @user.save
 
-      if @affiliate_tracker = AffiliateTracker.find_by_referrer_id(params[:user][:referrer_id])
+      @affiliate_tracker = AffiliateTracker.find_by_referrer_id(params[:user][:referrer_id])
+
+      if @affiliate_tracker
         @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
         @affiliate_tracker.save
       else
