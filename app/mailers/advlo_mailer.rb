@@ -331,12 +331,23 @@ class AdvloMailer < ActionMailer::Base
 
   #--------------------- OUTREACH EMAILS -----------------------------------------
 
-  def market_host_outreach(email, name, sender_email, reference=nil)
+  def jon_market_host_outreach(email, name, reference=nil)
     @email = email
     @reference = reference
-    @name = name
+    @ name
 
-    mail(to: @email, from: sender_email, subject: "Adventure Marketplace") do |format|
+    mail(to: @email, from: 'jon@advlo.com', subject: "Adventure Marketplace") do |format|
+      format.html { render layout: 'simple_jon' }
+      format.text
+    end
+  end
+
+  def christopher_market_host_outreach(email, name, reference=nil)
+    @email = email
+    @category = category
+    @location = location
+
+    mail(to: @email, from: 'christopher@advlo.com', subject: "Adventure Marketplace") do |format|
       format.html { render layout: 'simple' }
       format.text
     end
