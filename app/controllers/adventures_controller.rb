@@ -355,7 +355,41 @@ class AdventuresController < ApplicationController
     # 4: Is it a city ()
     # 5: Default use nearby 100 miles
 
-    
+    geocode_type = geocode_obj[0].data['address_components'][0]['types'][0]
+
+    case geocode_type
+    when "continent" || "colloquial_area"
+      @adventures = Adventure.approved.where(region: location).order('RANDOM()')
+
+    when "country"
+      @adventures = Adventure.approved.where(country: location).order('RANDOM()')
+
+    #State
+    when "administration_area_level_1"
+      # Check to see if in the US
+      if geocode_obj[0].data['address_components'][1]['short_name'] == "US"
+        state = geocode_obj[0].data['address_components'][0]['long_name']
+        @adventures = Adventure.approved.where(state: state)
+      else
+        @adventures = Adventure.approved.near(location,100).order('RANDOM()')
+      end
+
+    #City
+    when "locality"
+      city = geocode_obj[0].data['address_components'][0]['long_name']
+
+      city_adv_count = Adventure.approved.where(city: city).length
+
+      # Make sure there are atleast 3
+      if city_adv_count > 2
+        @adventures = Adventure.approved.where(city: city).order('RANDOM()')
+      else
+        @adventures = Adventure.approved.near(location.to_s,100).order('RANDOM()')
+      end
+
+    else
+      @adventures = Adventure.approved.near(location,100).order('RANDOM()')
+    end
 
 
     respond_to do |format|

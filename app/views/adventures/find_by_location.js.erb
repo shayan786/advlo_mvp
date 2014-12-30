@@ -1,1 +1,9 @@
-alert('blah')
+if (<%= @adventures.length %> == 0) {
+	// SHOW NONE FOUND MESSAGE WITH REQUEST?
+	console.log('none exist')
+} 
+
+else {
+	// RENDER ADVENTURES
+	console.log('found some')
+}

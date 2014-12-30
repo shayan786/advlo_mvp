@@ -75,5 +75,29 @@
 	.search_results {
 		margin-top: 40px;
 		min-height: 500px;
+
+		.header {
+			font-family: bebas_neue;
+      font-size: 2.8em;
+      letter-spacing: 2px;
+      padding-top: 25px;
+      margin-bottom: 5px;
+      color: $orange;
+      text-decoration: underline;
+		}
+
+		.no_results {
+			border-radius: 3px;
+			border: 1px solid $advlo_orange;
+			background-color: rgba(0,0,0,0.3);
+			font-family: bebas_neue;
+      font-size: 2em;
+      letter-spacing: 2px;
+      font-style: italic;
+      color: #FFF;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-top: 15px;
+		}
 	}
 }
