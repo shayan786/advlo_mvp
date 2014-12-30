@@ -343,10 +343,10 @@ class AdventuresController < ApplicationController
   end
 
   def find_by_location
-    location = params[:location]
+    @location = params[:location]
 
     # Get geocode obj
-    geocode_obj = Geocoder.search(location)
+    geocode_obj = Geocoder.search(@location)
 
     # SEARCH LOGIC:
     # 1: Is it a continent ()
@@ -356,13 +356,17 @@ class AdventuresController < ApplicationController
     # 5: Default use nearby 100 miles
 
     geocode_type = geocode_obj[0].data['address_components'][0]['types'][0]
+    puts geocode_type
 
     case geocode_type
-    when "continent" || "colloquial_area"
-      @adventures = Adventure.approved.where(region: location).order('RANDOM()')
+    when "continent"
+      @adventures = Adventure.approved.where(region: @location).order('RANDOM()')
+
+    when "colloquial_area"
+      @adventures = Adventure.approved.where(region: @location).order('RANDOM()')
 
     when "country"
-      @adventures = Adventure.approved.where(country: location).order('RANDOM()')
+      @adventures = Adventure.approved.where(country: @location).order('RANDOM()')
 
     #State
     when "administration_area_level_1"
@@ -371,7 +375,7 @@ class AdventuresController < ApplicationController
         state = geocode_obj[0].data['address_components'][0]['long_name']
         @adventures = Adventure.approved.where(state: state)
       else
-        @adventures = Adventure.approved.near(location,100).order('RANDOM()')
+        @adventures = Adventure.approved.near(@location,100).order('RANDOM()')
       end
 
     #City
@@ -381,14 +385,14 @@ class AdventuresController < ApplicationController
       city_adv_count = Adventure.approved.where(city: city).length
 
       # Make sure there are atleast 3
-      if city_adv_count > 2
+      if city_adv_count > 2 
         @adventures = Adventure.approved.where(city: city).order('RANDOM()')
       else
-        @adventures = Adventure.approved.near(location.to_s,100).order('RANDOM()')
+        @adventures = Adventure.approved.near(@location.to_s,100).order('RANDOM()')
       end
 
     else
-      @adventures = Adventure.approved.near(location,100).order('RANDOM()')
+      @adventures = Adventure.approved.near(@location,100).order('RANDOM()')
     end
 
 

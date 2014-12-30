@@ -74,6 +74,7 @@
 
 	.search_results {
 		margin-top: 40px;
+		padding-bottom: 40px;
 		min-height: 500px;
 
 		.header {
@@ -87,6 +88,7 @@
 		}
 
 		.no_results {
+			display: none;
 			border-radius: 3px;
 			border: 1px solid $advlo_orange;
 			background-color: rgba(0,0,0,0.3);
@@ -98,6 +100,180 @@
       padding-top: 15px;
       padding-bottom: 15px;
       margin-top: 15px;
+
+      .location {
+      	font-size: 0.8em;
+      	opacity: 0.7;
+      }
 		}
+
+		.begin_search {
+			@extend .no_results;
+			display: block;
+		}
+
+		.adventure-container {
+	    margin: 15px auto;
+	    width: 95%;
+
+	    .brick-wrapper{
+			  position: relative;
+			  margin: 0 auto;
+
+			  .adventure-brick {
+			    height: 300px;
+			    width: 375px;
+			    float: left;
+			    overflow: hidden;
+			    margin-top: 10px;
+			    margin-right: 5px;
+			    margin-left: 5px;
+			    background-color: #000;
+
+			    #no-adventures {
+			      text-align: center;
+			      img {
+			        width: 100%;
+			        margin-top: -13%;
+			      }
+			    }
+
+			    #no-adv-text {
+			      position: relative;
+			      margin-top: -135px;
+			      text-align: center;
+			      color: #000;
+			      font-family: 'nexa_light';
+			      font-size: 20px;
+			    }
+			    
+			    .guide-image {
+			      position: relative;
+			      top: 10%;
+			      width: 175px;
+			      height: 175px;
+			      text-align: center;
+			      border-radius: 50%;
+			      overflow: hidden;
+			      margin: 0 auto;
+
+			      .image-wrapper {
+			        background-size: cover !important;
+			        height: 100% !important;
+			        width: auto !important;
+			        border-radius: 50% !important;
+			      }
+			    }
+			    
+			    .image-wrapper {
+			      position: relative;
+			      height: 300px;
+			      width: 375px;
+			      margin: 0 auto;
+
+			      .copy{
+			        font-size: 14px;
+			        color: #fff;
+			        bottom: 5px;
+			        position: absolute;
+			        z-index: 100;
+			        left: 15px;
+			        font-family: 'cabin_regular';
+
+
+			        .title {
+			          font-size: 20px;
+			        }
+
+			        .location {
+			          color: #C35B26;
+			          text-transform: uppercase;
+			        }
+
+			        .rating-xs {
+			          font-size: 0.9em;
+			          padding: 0px !important;
+			        }
+
+			        .rating-disabled {
+			          cursor: pointer !important;
+			        }
+			      }
+
+			      .per_adventure_btn {
+			        position: absolute;
+			        bottom: 12px;
+			        right: 55px;
+			        font-size: 8px;
+			        z-index: 100;
+			        padding: 2px 4px;
+			        opacity: 0.8;
+			        background-color: $advlo_orange;
+			        border-color: $advlo_orange;
+			      }
+
+			      .days_duration_btn {
+			        font-family: bebas_neue;
+			        font-weight: bold;
+			        line-height: 14px;
+			        position: absolute;
+			        top: 15px;
+			        right: 15px;
+			        font-size: 13px;
+			        z-index: 100;
+			        padding: 4px 4px 4px 7px;
+			        width: 40px;
+			        height: 40px;
+			        opacity: 0.8;
+			        border-radius: 50%;
+			        /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+			        -webkit-border-radius: 50%; 
+			        /* Firefox 1-3.6 */
+			        -moz-border-radius: 50%; 
+
+			        background-color: $advlo_orange;
+			        border-color: $advlo_orange;
+			      }
+
+			      .price {
+			        font-family: 'bebas_neue';
+			        position: absolute;
+			        bottom: 0px;
+			        right: 10px;
+			        font-size: 28px;
+			        z-index: 10;
+			        opacity: 0.9;
+			        color: #fff;
+			      }
+
+			      .user-show-price {
+			        bottom: -5px;
+			        right: 3px;
+			      }
+			    }
+			  }
+			  .hover-block {
+			    position: absolute;
+			    width: 100%;
+			    height: 225px;
+			    background: rgba(0, 0, 0, 0.75);
+			    display: none;
+			  }
+			  .copy-container {
+			    position: absolute;
+			    bottom: 0px;
+			    height: 75px;
+			    background: rgba(0, 0, 0, 0.75);
+			    width: 100%;
+			  }
+			  .user-show-copy-container {
+			    position: absolute;
+			    bottom: 0px;
+			    height: 75px;
+			    background: rgba(0, 0, 0, 0.75);
+			    width: 100%;
+			  }
+			}
+	  }
 	}
 }
