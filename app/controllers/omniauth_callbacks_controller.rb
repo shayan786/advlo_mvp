@@ -29,13 +29,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       '/affiliate#become_affiliate'
     elsif request.env['omniauth.params']['affiliate_referral'] == "true"
-      if @affiliate_tracker = AffiliateTracker.find_by_referrer_id(request.env['omniauth.params']['referrer_id'])
-        @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
-        @affiliate_tracker.save
-      else
-        @affiliate_tracker = AffiliateTracker.create(referrer_id: request.env['omniauth.params']['referrer_id'])
-        @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
-        @affiliate_tracker.save
+      if @user.sign_in_count == 1
+        if @affiliate_tracker = AffiliateTracker.find_by_referrer_id(request.env['omniauth.params']['referrer_id'])
+          @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
+          @affiliate_tracker.save
+        else
+          @affiliate_tracker = AffiliateTracker.create(referrer_id: request.env['omniauth.params']['referrer_id'])
+          @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
+          @affiliate_tracker.save
+        end
       end
 
       '/users/edit'
