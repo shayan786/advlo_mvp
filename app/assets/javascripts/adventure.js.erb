@@ -1652,6 +1652,35 @@ function find_input_geocomplete() {
   })
 }
 
+function checkbox_highlighting() {
+  $('#find .search_options #find_adventure_activity_form .checkbox-inline').click(function(){
+    if($(this).find('input').is(':checked')) {
+      $(this).css({
+        opacity: '1',
+        border: '1px solid #FFF',
+        borderRadius: '3px',
+        padding: '5px 10px 3px 30px',
+        backgroundColor: 'rgba(195,91,38,0.7)',
+        borderColor: 'rgb(195,91,38)',
+        marginTop: '10px'
+      })
+    }
+    else {
+      $(this).css({
+        opacity: '0.7',
+        border: 'none',
+        borderRadius: '0px',
+        padding: '0',
+        paddingTop: '10px',
+        paddingLeft: '15px',
+        backgroundColor: 'transparent',
+        border: 'none',
+        marginTop: '0'
+      })
+    }
+  })
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1712,4 +1741,5 @@ adventureCreate = function() {
 
 adventureFind = function () {
   find_input_geocomplete();
+  checkbox_highlighting();
 }

@@ -62,12 +62,36 @@
     		box-shadow: none;
     		border-bottom: 2px solid $advlo_orange;
     		border-radius: 0px;
-    		font-size: 18px;
+    		font-size: 22px;
     		color: $advlo_orange;
     		text-align: center;
     		padding: 0;
     	}
 
+    }
+
+    #find_adventure_activity_form {
+    	//display: none;
+			border-radius: 3px;
+			border: 1px solid $advlo_orange;
+			background-color: rgba(0,0,0,0.3);
+			margin-top: 20px;
+			padding: 10px 15px;
+
+			.checkbox-inline {
+				margin-left: 0;
+  			margin-right: 15px;
+  			color: #FFF;
+  			opacity: 0.7;
+  			font-family: bebas_neue;
+  			letter-spacing: 2px;
+  			font-size: 1.1em;
+  			padding-top: 10px;
+			}
+
+			.checkbox-inline:last-child {
+				margin-right: 0;
+			}
     }
 
 	}

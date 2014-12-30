@@ -356,7 +356,6 @@ class AdventuresController < ApplicationController
     # 5: Default use nearby 100 miles
 
     geocode_type = geocode_obj[0].data['address_components'][0]['types'][0]
-    puts geocode_type
 
     case geocode_type
     when "continent"
