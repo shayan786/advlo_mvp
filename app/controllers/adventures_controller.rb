@@ -200,13 +200,6 @@ class AdventuresController < ApplicationController
       end
     end
 
-    # @adventures.each do |adv|
-    #   ind_adv_categories = adv.category.split(',')  
-    #   available_categories += ind_adv_categories
-    # end
-
-    # @uniq_available_categories = available_categories.sort.uniq
-
     respond_to do |format|
       format.js {render :action => '/adventure_filter', :layout => false }
     end

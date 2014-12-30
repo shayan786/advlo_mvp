@@ -25,10 +25,10 @@
           Commission Calculator
         .calc
           Your Adventure:
-        .answer="$ #{(@adventure.price).to_f}"
+        .answer="$ #{(@adventure.price).to_f.round}"
         .calc
           15% Commission:
-        .answer.strong="$ #{(@adventure.price * 0.15).to_f}"
+        .answer.strong="$ #{(@adventure.price * 0.15).to_f.round(2)}"
         .divider-wrapper
           .divider
         .calc

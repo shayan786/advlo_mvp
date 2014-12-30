@@ -152,6 +152,10 @@ class UsersController < ApplicationController
     if @affiliate_tracker = AffiliateTracker.find_by_referrer_id(params[:referrer_id])
       @affiliate_tracker.clicks = @affiliate_tracker.clicks + 1
       @affiliate_tracker.save
+    else
+      @affiliate_tracker = AffiliateTracker.create(referrer_id: params[:referrer_id])
+      @affiliate_tracker.clicks = @affiliate_tracker.clicks + 1
+      @affiliate_tracker.save
     end
 
     respond_to do |format|
