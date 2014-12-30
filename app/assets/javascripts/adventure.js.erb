@@ -1645,6 +1645,13 @@ function swal_delete_adventure() {
   })
 }
 
+function find_input_geocomplete() {
+  $('#find .search_options #location').geocomplete()
+  .bind("geocode:result", function(event, result){
+    $('#find .search_options #find_adventure_form').submit();
+  })
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
@@ -1701,4 +1708,8 @@ adventureCreate = function() {
   paypal_or_bank_toggle();
   subscription_payment_validation();
   cancel_subscription();
+}
+
+adventureFind = function () {
+  find_input_geocomplete();
 }

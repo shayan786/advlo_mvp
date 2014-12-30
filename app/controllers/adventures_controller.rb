@@ -336,6 +336,41 @@ class AdventuresController < ApplicationController
 
   #------------------------HOST LOGIC END-----------------------------
 
+
+  #------------------------SEARCHING METHODS START--------------------
+  def find
+
+  end
+
+  def find_by_location
+    location = params[:location]
+
+    # Get geocode obj
+    geocode_obj = Geocoder.search(location)
+
+    # SEARCH LOGIC:
+    # 1: Is it a continent ()
+    # 2: Is it a country ()
+    # 3: Is it a state, US ONLY ()
+    # 4: Is it a city ()
+    # 5: Default use nearby 100 miles
+
+    
+
+
+    respond_to do |format|
+      format.js {render "find_by_location.js", layout: false}
+    end
+  end
+
+  def find_by_activities
+
+
+  end
+
+  #------------------------SEARCHING METHODS END----------------------  
+
+
   def destroy 
     @adventure = Adventure.find_by_id(params[:id])
 
