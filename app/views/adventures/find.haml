@@ -18,13 +18,17 @@
 
     .row
       .col-md-6.col-md-offset-3.text-center
-        %form{"accept-charset" => "UTF-8", action: "/find/location", method: "post", roll: "form", id: "find_adventure_activity_form", "data-remote" => "true"}
+        %form{"accept-charset" => "UTF-8", action: "/find/activity", method: "post", roll: "form", id: "find_adventure_activity_form", "data-remote" => "true"}
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
 
           - adv_categories.each do |cat|
             %label.checkbox-inline
               %input{type: "checkbox", id: cat, value: cat}
                 = cat
+          .row
+            .btn.btn-primary.search_btn
+              %i.fa.fa-search
+              SEARCH
 
     .row
       %form{"accept-charset" => "UTF-8", action: "/find/location", method: "post", roll: "form", id: "find_adventure_form", "data-remote" => "true"}

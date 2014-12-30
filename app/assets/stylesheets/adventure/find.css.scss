@@ -71,11 +71,11 @@
     }
 
     #find_adventure_activity_form {
-    	//display: none;
+    	display: none;
 			border-radius: 3px;
 			border: 1px solid $advlo_orange;
 			background-color: rgba(0,0,0,0.3);
-			margin-top: 20px;
+			margin-top: 50px;
 			padding: 10px 15px;
 
 			.checkbox-inline {
@@ -91,6 +91,20 @@
 
 			.checkbox-inline:last-child {
 				margin-right: 0;
+			}
+
+			.search_btn {
+				margin-top: 15px;
+				margin-bottom: 10px; 
+				font-family: bebas_neue;
+	      font-size: 1em;
+	      letter-spacing: 2px;
+	      padding-top: 7px;
+	      padding-bottom: 3px;
+
+	      .fa {
+	      	margin-right: 5px;
+	      }
 			}
     }
 
