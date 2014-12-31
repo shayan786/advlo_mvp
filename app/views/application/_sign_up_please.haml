@@ -12,11 +12,11 @@
 
         .question-wrapper
           %h4 What kind of adventurer are you?
-          %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> "Join our free newsletter and learn about epic adventure packages only on Advlo..", 'data-poll' => 'thrillseeker', 'data-answer' => 'answer-1'}
+          %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> "Get updates about epic adventure packages only on Advlo..", 'data-poll' => 'thrillseeker', 'data-answer' => 'answer-1'}
             %p Thrillseeker
-          %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "Join our free newsletter and learn about unique, family friendly adventures only on Advlo..", 'data-poll' => 'vacationist', 'data-answer' => 'answer-3'}
+          %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "Get updates about unique, family friendly adventures only on Advlo..", 'data-poll' => 'vacationist', 'data-answer' => 'answer-3'}
             %p Vacationist
-          %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'Join our free newsletter and learn about cultural expedition adventures only on Advlo..', 'data-poll' => 'culturalist', 'data-answer' => 'answer-2'}
+          %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'Get updates about cultural expedition adventures only on Advlo..', 'data-poll' => 'culturalist', 'data-answer' => 'answer-2'}
             %p Culturalist
 
         .form-wrapper
@@ -34,19 +34,23 @@
           #network
             %h4
           #secret-gift
-            Get an exclusive member invite -
-            %span $$$
-            off first adventure
-          %form{"accept-charset" => "UTF-8", action: "/email-list", method: "post", roll: "form","data-remote" => "true"}
+            Join right now and get 
+            %span 
+              $10
+            towards your first adventure
+
+          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'popup_join'}
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            = tag(:input, :type => "hidden", :name => 'email[category]', id: 'newsletter_category')
 
-            %input.form-control{placeholder: "Email Address", type: "email", required: "required", id: "email_list", name: "email[address]"}
-            %input.btn{name: "sign_up", type: "submit", value: "CLICK", id: 'email_list_button'}
+            = tag(:input, :type => "hidden", :name => 'user[category]', id: 'newsletter_category')
+
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", style: "border-radius: 4px 4px 0 0;"}
+            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]", style: "width: 80% !important;float: left !important;border-radius: 4px 0 0 4px;"}
+            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, id: "user_password_confirmation", name: "user[password_confirmation]")
 
 
-          .sign-up-link#show-signup-modal
-            Or Sign Up
+            %input.btn{name: "sign_up", type: "submit", value: "JOIN", id: 'email_list_button'}
+
 
         .thanks-div
 
@@ -99,7 +103,8 @@
   })
 
 
-  $('#show-signup-modal').click(function(){
-    $('#signup-please-modal').modal('hide');
-    $('#member-modal').modal('show');
+  $('#email_list_button').click(function(e){
+    e.preventDefault();
+    $('#user_password_confirmation').val($('#user_password').val())
+    $('#popup_join').submit();
   })
