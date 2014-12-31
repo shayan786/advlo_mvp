@@ -1,0 +1,33 @@
+.location_filter
+  .row
+    .container
+      .col-md-2.text-center
+        .row
+          .filter_header
+            PRICE
+        .row
+          .btn.btn-default.filter_select_btn
+            %i.fa.fa-caret-down
+          .btn.btn-default.filter_select_btn
+            %i.fa.fa-caret-up
+
+      .col-md-2.text-center
+        .row
+          .filter_header
+            PRICE TYPE
+        .row
+          .btn.btn-default.filter_select_btn
+            IND.
+          .btn.btn-default.filter_select_btn
+            GROUP
+
+      .col-md-7.text-center
+        .row
+          .filter_header
+            CATEGORY
+        .row
+          .btn.btn-default.filter_select_btn.active
+            ALL
+          - adv_categories.each do |cat|
+            .btn.btn-default.filter_select_btn
+              = cat

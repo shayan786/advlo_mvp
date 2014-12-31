@@ -43,6 +43,15 @@
                 %i.fa.fa-search
               %input.form-control{placeholder: "Enter Location", name: "location", id: "location"}
 
+    .row.text-center
+      .show_me_header
+        SHOW ME
+    .row.text-center
+      .btn.btn-default.show_me_select_btn.active
+        ADVENTURES
+      .btn.btn-default.show_me_select_btn
+        LOCALS
+
   .search_results.dark_background
     .header.text-center
       RESULTS
@@ -59,37 +68,12 @@
 
     .row
       .col-md-10.col-md-offset-1
-        .filter
-          .row
-            .container
-              .col-md-2.text-center
-                .row
-                  .filter_header
-                    PRICE
-                .row
-                  .btn.btn-default.filter_select_btn
-                    %i.fa.fa-caret-down
-                  .btn.btn-default.filter_select_btn
-                    %i.fa.fa-caret-up
+        = render partial: 'find_location_filter'
 
-              .col-md-2.text-center
-                .row
-                  .filter_header
-                    PRICE TYPE
-                .row
-                  .btn.btn-default.filter_select_btn
-                    IND.
-                  .btn.btn-default.filter_select_btn
-                    GROUP
+    / .row
+    /   .col-md-10.col-md-offset-1
+    /     = render partial: 'find_category_filter'
 
-              .col-md-7.text-center
-                .row
-                  .filter_header
-                    CATEGORY
-                .row
-                  - adv_categories.each do |cat|
-                    .btn.btn-default.filter_select_btn
-                      = cat
 
     .adventure-container
       #adventure-partial

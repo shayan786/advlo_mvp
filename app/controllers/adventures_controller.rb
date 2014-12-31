@@ -342,6 +342,12 @@ class AdventuresController < ApplicationController
 
   end
 
+  def find_filter
+    price_sort_by = params[:price_sort_by]
+    price_type = params[:price_type]
+    
+  end
+
   def find_by_location
     @location = params[:location]
 
