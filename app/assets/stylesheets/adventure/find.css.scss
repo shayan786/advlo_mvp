@@ -154,6 +154,36 @@
 			display: block;
 		}
 
+		.filter {
+			border-radius: 3px;
+			border: 1px solid $advlo_orange;
+			background-color: rgba(0,0,0,0.3);
+			padding-top: 15px;
+      padding-bottom: 15px;
+      margin-top: 15px;
+
+      .filter_header {
+      	font-family: bebas_neue;
+	      font-size: 1.3em;
+	      letter-spacing: 2px;
+	      margin-bottom: 5px;
+	      color: $orange;
+	      text-decoration: underline;
+      }
+
+      .filter_select_btn {
+      	background-color: rgba(0,0,0,0.5);
+      	border-color: $light_gray;
+      	color: #FFF;
+      }
+
+      .active {
+      	background-color: rgba(195,91,38,0.7);
+      	border-color: rgba(195,91,38,0.7);
+      }
+
+		}
+
 		.adventure-container {
 	    margin: 15px auto;
 	    width: 95%;
