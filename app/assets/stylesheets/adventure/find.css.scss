@@ -27,7 +27,7 @@
 		.orange_btn{
 			border-color: $advlo_orange;
       background-color: $advlo_orange;
-      width: 90%;
+      width: 92%;
       font-size: 1.8em;
       padding-top: 18px;
       padding-bottom: 15px;
@@ -37,6 +37,10 @@
       &:hover {
         border-color: $orange;
         background-color: $orange;
+      }
+
+      .fa {
+      	margin-right: 7px;
       }
     }
 

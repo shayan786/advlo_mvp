@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   #searching an adventure or guide
   get '/find'                         => 'adventures#find'
   post '/find/location'               => 'adventures#find_by_location' 
-  post '/find/activities'             => 'adventures#find_by_activities'             
+  post '/find/category'               => 'adventures#find_by_category'             
 
   #adventure controller routes
   get '/adventures/info'              => 'adventures#hosting_info'

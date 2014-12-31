@@ -400,8 +400,23 @@ class AdventuresController < ApplicationController
     end
   end
 
-  def find_by_activities
+  def find_by_category
+    category_array = params[:category]
 
+    category_sql_string = ''
+    category_array.each_with_index do |cat,i|
+      if (i==0)
+        category_sql_string = "category LIKE '%#{cat}%'"
+      elsif (i > 0)
+        category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
+      end
+    end
+
+    @adventures = Adventure.approved.where(category_sql_string).order('RANDOM()')
+
+    respond_to do |format|
+      format.js {render "find_by_activities.js", layout: false}
+    end
 
   end
 

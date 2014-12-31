@@ -1708,8 +1708,20 @@ function search_form_submits() {
 function activity_search_checkbox_validation() {
   $('#find .search_options #find_adventure_activity_form .search_btn').addClass('disabled');
 
-  $('#find .search_options #find_adventure_activity_form .checkbox-inline').click(function(){
-    
+  $('#find .search_options #find_adventure_activity_form .checkbox-inline input').change(function(){
+    var checked = false;
+    $('#find .search_options #find_adventure_activity_form .checkbox-inline input').each(function(index,value){
+      if ($(this).is(':checked')){
+        checked = true;
+      }
+    })
+
+    if (checked) {
+      $('#find .search_options #find_adventure_activity_form .search_btn').removeClass('disabled');
+    }
+    else {
+     $('#find .search_options #find_adventure_activity_form .search_btn').addClass('disabled'); 
+    }
   })
 }
 
