@@ -343,9 +343,27 @@ class AdventuresController < ApplicationController
   end
 
   def find_filter
+    adventures_id_array = params[:adventure_ids]
     price_sort_by = params[:price_sort_by]
-    price_type = params[:price_type]
-    
+
+    adv_ids_sql_string = ''
+
+    adventures_id_array.each_with_index do |adv_id,i|
+      if (i==0)
+        adv_ids_sql_string = "id = '#{adv_id}'"
+      elsif (i > 0)
+        adv_ids_sql_string = adv_ids_sql_string + " OR id = '#{adv_id}'"
+      end
+    end
+
+    @adventures = Adventure.where(adv_ids_sql_string)
+
+    @adventures = @adventures.order("price #{price_sort_by}")
+    #price_type = params[:price_type]
+
+    respond_to do |format|
+      format.js {render "find_by_location.js", layout: false}
+    end
   end
 
   def find_by_location

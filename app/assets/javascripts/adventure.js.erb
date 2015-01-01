@@ -1725,6 +1725,33 @@ function activity_search_checkbox_validation() {
   })
 }
 
+function find_location_filter_actions(adventure_ids){
+
+  $('#find .search_results .location_filter .price_asc').click(function(){
+    $('#find .search_results .location_filter .price_desc').removeClass('active');
+    $(this).addClass('active');
+
+    $.ajax({
+      url: "/find/filter",
+      dataType: "script",
+      data: {adventure_ids: adventure_ids, price_sort_by: "ASC"},
+      type: "POST"
+    })
+  })
+
+  $('#find .search_results .location_filter .price_desc').click(function(){
+    $('#find .search_results .location_filter .price_asc').removeClass('active');
+    $(this).addClass('active');
+
+    $.ajax({
+      url: "/find/filter",
+      dataType: "script",
+      data: {adventure_ids: adventure_ids, price_sort_by: "DESC"},
+      type: "POST"
+    })
+  })
+}
+
 adventureShow = function() {
   setRatingStars();
   galleryMasonry();
