@@ -175,12 +175,15 @@
 				}
 
 				#email_list_button {
-					width: 30%;
+					width: 20%;
+					float: right;
 					color: #ffffff !important;
 					box-shadow:  0 6px 5px rgba(0, 0, 0, 0.6) !important;
 					-webkit-box-shadow: 0 6px 5px rgba(0, 0, 0, 0.6) !important;
-					border-radius: 0 10px 10px 0;
+					border-radius: 0 0 10px 0;
 				}
+
+
 
 				#email_list_button:hover {
 					box-shadow:  0 4px 5px rgba(0, 0, 0, 0.6) !important;
@@ -226,6 +229,7 @@
 
 				.form-wrapper {
 					display: none;
+					margin-bottom: 35px;
 				}
 			}
 
@@ -244,18 +248,6 @@
 				font-size: 13px;
 				span {
 					color: $advlo_green;
-				}
-			}
-
-			.sign-up-link {
-				margin-top: 15px;
-				font-size: 15px;
-				font-family: 'bebas_neue_book';
-				letter-spacing: 1px;
-				cursor: pointer;
-
-				a {
-					color: #fff;
 				}
 			}
 

@@ -48,9 +48,9 @@ Rails.application.routes.draw do
   get '/blog/:permalink'              => 'blogpost#show'
 
   # email list 
-  post '/email-list'                  => 'emails#create'
-  get '/emails/unsubscribe/:id'       => 'emails#unsubscribe'
-  get '/email-list/unsubscriber/:id'  => 'emails#unsubscribe_email_list'
+  # post '/email-list'                  => 'emails#create'
+  # get '/emails/unsubscribe/:id'       => 'emails#unsubscribe'
+  # get '/email-list/unsubscriber/:id'  => 'emails#unsubscribe_email_list'
 
   #profile show route
   resources :users, :only => [:show]
