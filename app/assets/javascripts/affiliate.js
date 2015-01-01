@@ -141,7 +141,7 @@ function toggle_code_plugin_box_on_load() {
 	})
 }
 
-function affliate_cookie_setup(referrer_id) {
+function affiliate_cookie_setup(referrer_id) {
     $.cookie('referrer_id', referrer_id, { expires: 1, path: '/' });
 
     $('#d_sign_up a.fb_btn').attr('href', "/users/auth/facebook?referrer_id="+referrer_id+"&affiliate_referral=true");
