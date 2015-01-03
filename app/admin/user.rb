@@ -17,7 +17,11 @@ ActiveAdmin.register User do
     column :email
     column :name
     column 'avatar' do |user|
-      image_tag user.get_avatar_url("thumb")
+      if user.avatar_url
+        image_tag user.avatar_url
+      elsif user.avatar
+        image_tag(user.avatar.url(:thumb))
+      end
     end
     column 'referrer' do |user|
       if user.referrer_id
