@@ -23,7 +23,7 @@ ActiveAdmin.register User do
         image_tag(user.avatar.url(:thumb)
       end
     end
-    column 'referrer' do |ref|
+    column 'referrer' do |user|
       if user.referrer_id
         referrer = User.find(user.referrer_id)
         referrer.get_name_or_email
