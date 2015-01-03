@@ -20,7 +20,7 @@ ActiveAdmin.register User do
       if user.avatar_url
         image_tag user.avatar_url
       elsif user.avatar
-        image_tag(user.avatar.url(:thumb)
+        image_tag(user.avatar.url(:thumb))
       end
     end
     column 'referrer' do |user|
