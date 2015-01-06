@@ -32,25 +32,26 @@
               %i.fa.fa-search
               SEARCH
 
-    .row
-      %form{"accept-charset" => "UTF-8", action: "/find/location", method: "post", roll: "form", id: "find_adventure_form", "data-remote" => "true"}
-        =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-
-        .col-md-6.col-md-offset-3
-          .form-group
-            .input-group
-              .input-group-addon
-                %i.fa.fa-search
-              %input.form-control{placeholder: "Enter Location", name: "location", id: "location"}
-
     .row.text-center
       .show_me_header
         SHOW ME
     .row.text-center
-      .btn.btn-default.show_me_select_btn.active
+      .btn.btn-default.show_me_select_btn.show_me_adventures.active
         ADVENTURES
-      .btn.btn-default.show_me_select_btn
+      .btn.btn-default.show_me_select_btn.show_me_locals
         LOCALS
+
+    .row
+      %form{"accept-charset" => "UTF-8", action: "/find/location", method: "post", roll: "form", id: "find_adventure_form", "data-remote" => "true"}
+        =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        =tag(:input, :type => "hidden", :id => "locals" :name => "locals", :value => nil)
+
+        .col-md-6.col-md-offset-3
+          .form-group
+            .input-group
+              %input.form-control{placeholder: "Enter Location", name: "location", id: "location"}
+              .input-group-addon
+                %i.fa.fa-search
 
   .search_results.dark_background
     .header.text-center

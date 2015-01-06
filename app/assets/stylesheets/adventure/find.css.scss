@@ -56,7 +56,7 @@
       margin-bottom: 5px;
       color: $orange;
       text-decoration: underline;
-      margin-top: 15px;
+      margin-top: 25px;
     }
 
     .show_me_select_btn {
@@ -74,7 +74,7 @@
     }
 
     #find_adventure_form {
-    	margin-top: 50px;
+    	margin-top: 35px;
 
     	.input-group-addon {
     		background-color: rgba(0,0,0,0.7);
@@ -185,6 +185,7 @@
 		}
 
 		.location_filter {
+			display: none;
 			border-radius: 3px;
 			border: 1px solid $advlo_orange;
 			background-color: rgba(0,0,0,0.3);

@@ -345,9 +345,14 @@ class AdventuresController < ApplicationController
   def find_filter
     adventures_id_array = params[:adventure_ids]
     price_sort_by = params[:price_sort_by]
+    price_type = params[:price_type]
+
+    # Update Flag for JS
+    if params[:flag]
+      @flag = true
+    end
 
     adv_ids_sql_string = ''
-
     adventures_id_array.each_with_index do |adv_id,i|
       if (i==0)
         adv_ids_sql_string = "id = '#{adv_id}'"
@@ -358,11 +363,53 @@ class AdventuresController < ApplicationController
 
     @adventures = Adventure.where(adv_ids_sql_string)
 
-    @adventures = @adventures.order("price #{price_sort_by}")
-    #price_type = params[:price_type]
+    if price_sort_by == "NONE"
+      category_sql_string = ''
+      if params[:categories].kind_of?(Array)
+        category_array = params[:categories]
+
+        category_array.each_with_index do |cat,i|
+          if (i==0)
+            category_sql_string = "category LIKE '%#{cat}%'"
+          elsif (i > 0)
+            category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
+          end
+        end
+
+        @adventures = @adventures.where(category_sql_string)
+      end
+
+      if price_type != "NONE"
+        @adventures = @adventures.where(price_type: "#{price_type}")
+      end
+
+    else 
+      @adventures = @adventures.order("price #{price_sort_by}")
+
+      category_sql_string = ''
+      if params[:categories].kind_of?(Array)
+        category_array = params[:categories]
+
+        category_array.each_with_index do |cat,i|
+          if (i==0)
+            category_sql_string = "category LIKE '%#{cat}%'"
+          elsif (i > 0)
+            category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
+          end
+        end
+
+        @adventures = @adventures.where(category_sql_string)
+      end
+
+      if price_type != "NONE"
+        @adventures = @adventures.where(price_type: "#{price_type}")
+      end
+
+    end
+
 
     respond_to do |format|
-      format.js {render "find_by_location.js", layout: false}
+      format.js {render "find_filter.js", layout: false}
     end
   end
 
@@ -418,6 +465,18 @@ class AdventuresController < ApplicationController
       @adventures = Adventure.approved.near(@location,100).order('RANDOM()')
     end
 
+    if params[:locals]
+      user_ids_sql_string = ''
+      @adventures.each_with_index do |adv,i|
+        if (i==0)
+          user_ids_sql_string = "id = '#{adv.users.first.id}'"
+        elsif (i > 0)
+          user_ids_sql_string = user_ids_sql_string + " OR id = '#{adv.users.first.id}'"
+        end
+      end
+
+      @locals = User.where(user_ids_sql_string)
+    end
 
     respond_to do |format|
       format.js {render "find_by_location.js", layout: false}

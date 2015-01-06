@@ -14,17 +14,18 @@ else {
 
 	$("#find .search_results .adventure-container #adventure-partial").hide();
 	$("#adventure-partial").html("<%= escape_javascript(render(partial: 'adventure_index', locals:{adventures: @adventures})) %>");
-	$("#find .search_results .location_filter").fadeIn('slow');
-	$("#adventure-partial").fadeIn('slow');
+	$("#adventure-partial").fadeIn('slow')
 
 	masonrySetup();
-
-	// ACQUIRE WHICH ADVENTURE ARE CURRENTLY SHOWN AND FEED IT TO THE FILTER
+	
 	<% adventure_ids = [] %>
 	
 	<% @adventures.each do |adv| %>
 		<% adventure_ids << adv.id %>
 	<% end %>
 
-	find_location_filter_actions(<%= adventure_ids %>);
+	<% if !@flag %>
+		find_location_filter_actions(<%= adventure_ids %>);
+	<% end %>
+	
 }
