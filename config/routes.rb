@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   get 'invite/:invite'                => 'adventures#hosting_info'
   get 'partner'                       => 'adventures#hosting_info'
 
+  get 'giveaway'                      => 'application#giveaway'
+  get 'giveaway/:user_id'             => 'application#update_user_giveaway'
+
   #contact
   post '/contact'                     => 'application#contact'
 

@@ -40,10 +40,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
       end
 
-      '/users/edit'
+      session[:previous_url]
     else
       
-      '/users/edit'
+      session[:previous_url]
     end
   end
 end

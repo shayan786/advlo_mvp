@@ -7,7 +7,19 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   before_filter :get_poll
 
+  def giveaway
 
+  end
+
+  def update_user_giveaway
+    @user = User.find(params[:user_id])
+    @user.sent_promotion = true
+    @user.save
+
+    respond_to do |format|
+      format.js {render "promotion_thanks.js", layout: false}
+    end
+  end
 
   def get_poll
     @poll = Poll.find_by_name('What kind of adventurer are you?')

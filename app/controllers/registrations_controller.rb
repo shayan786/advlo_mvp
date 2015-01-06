@@ -195,8 +195,7 @@ class RegistrationsController < Devise::RegistrationsController
       session[:referrer_id] = nil
     end
 
-    # session[:previous_url]
-    '/users/edit'
+    session[:previous_url]
   end
   # Customize Signing Up Devise Params
   #def sign_up_params

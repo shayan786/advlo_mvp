@@ -1,0 +1,76 @@
+.container#promotion-wrapper
+  .panel.panel-default
+    .panel-body
+      .row
+        %h1.col-md-8.col-md-offset-2.text-center
+          Win
+          %span{style: "color: green;"}
+            $ 1000 
+          at Adventure Local
+
+
+    - if current_user && current_user.sent_promotion == true
+      .row 
+        .col-md-8.col-md-offset-2.text-center
+          You are now Entered to win $1000 credit with Adventure Local! 
+          %br
+          The winner will be picked on
+          %i January 15th
+
+    - elsif current_user
+      .row
+        .col-md-8.col-md-offset-2.text-center
+          Enter to win $1000 towards any Adventure Local trip. 
+          %br
+          The winner will be picked on
+          %i January 15th
+
+      .row.text-center
+        %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}", "data-title" => "#{Adventure.first.title}", "data-desc" => "#{current_user}", "data-image" => "#{Adventure.first.attachment.url(:medium)}", style: "margin-right: 5px;"}
+          Click to Share
+
+        %a{href: "giveaway/#{current_user.id}", "data-remote" => "true"} Blah
+
+    - else
+      .row
+        .col-md-8.col-md-offset-2.text-center
+          Please create an account to enter the giveaway
+
+          %a.btn.btn-success.giveaway-toggle.new-account
+            Connect
+
+:javascript
+  $('.new-account').click(function(){
+    $('#member-modal').modal('show');
+  })
+
+  invite_social_init()
+
+  function postToFeed(title, desc, url, image){
+    var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
+  
+    function callback(response){}
+      FB.ui(obj, callback);
+  }
+
+  $('.giveaway-share').click(function(e) {
+    e.preventDefault();
+    elem = $(this);
+
+    FB.ui(
+      {
+        method: 'feed',
+        name: "Advlo $1000 giveaway",
+        link: "http://advlo.com/giveaway",
+        caption: "I just entered to win $1000 on an epic adventure with a local",
+      },
+      function(response) {
+        if (response && response.post_id) {
+          alert('Post was published.');
+        } else {
+          alert('Post was not published.');
+        }
+      }
+    );
+  })
+
