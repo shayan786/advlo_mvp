@@ -16,7 +16,7 @@
           %br
           The winner will be picked on
           %i January 15th
-
+          
     - elsif current_user
       .row
         .col-md-8.col-md-offset-2.text-center
@@ -28,8 +28,6 @@
       .row.text-center
         %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}", "data-title" => "#{Adventure.first.title}", "data-desc" => "#{current_user}", "data-image" => "#{Adventure.first.attachment.url(:medium)}", style: "margin-right: 5px;"}
           Click to Share
-
-        %a{href: "giveaway/#{current_user.id}", "data-remote" => "true"} Blah
 
     - else
       .row
@@ -66,9 +64,11 @@
       },
       function(response) {
         if (response && response.post_id) {
-          alert('Post was published.');
+          $.ajax({
+            url: "giveaway/#{current_user.id}"
+          })
         } else {
-          alert('Post was not published.');
+          alert('Oops, The giveaway was not published.');
         }
       }
     );
