@@ -45,7 +45,7 @@
               .form_label.col-md-4.text-right
                 Comments:
               .col-md-7
-                %textarea.form-control{rows: '5', maxlength: "250", name: "review[body]", id: "adv_review_comments"}
+                %textarea.form-control{rows: '5', maxlength: "1000", name: "review[body]", id: "adv_review_comments"}
                   - if type == "update"
                     = review.body
             .row.text-center
