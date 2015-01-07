@@ -51,26 +51,32 @@
       FB.ui(obj, callback);
   }
 
-  $('.giveaway-share').click(function(e) {
-    e.preventDefault();
-    elem = $(this);
+- if current_user
+  :javascript
 
-    FB.ui(
-      {
-        method: 'feed',
-        name: "Advlo $1000 giveaway",
-        link: "http://advlo.com/giveaway",
-        caption: "I just entered to win $1000 on an epic adventure with a local",
-      },
-      function(response) {
-        if (response && response.post_id) {
-          $.ajax({
-            url: "giveaway/#{current_user.id}"
-          })
-        } else {
-          alert('Oops, The giveaway post was not published.');
+    $('.giveaway-share').click(function(e) {
+      e.preventDefault();
+      elem = $(this);
+
+      FB.ui(
+        {
+          method: 'feed',
+          name: "Advlo $1000 giveaway",
+          link: "http://advlo.com/giveaway",
+          caption: "I just entered to win $1000 on an epic adventure with a local",
+        },
+        function(response) {
+          if (response && response.post_id) {
+            $.ajax({
+              url: "giveaway/#{current_user.id}"
+            })
+          } else {
+            swal({     
+              title: "Sorry Did not publish",  
+              imageUrl: "http://i.imgur.com/a6L0hYB.png"
+            })
+          }
         }
-      }
-    );
-  })
+      );
+    })
 
