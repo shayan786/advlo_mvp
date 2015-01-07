@@ -342,7 +342,8 @@ class AdventuresController < ApplicationController
 
   end
 
-  def find_filter
+  # Adventures Filter
+  def find_adventure_filter
     adventures_id_array = params[:adventure_ids]
     price_sort_by = params[:price_sort_by]
     price_type = params[:price_type]
@@ -407,9 +408,59 @@ class AdventuresController < ApplicationController
 
     end
 
+    respond_to do |format|
+      format.js {render "find_adventure_filter.js", layout: false}
+    end
+  end
+
+  def find_local_filter 
+    # Update Flag for JS
+    if params[:flag]
+      @flag = true
+    end
+
+    user_ids_array = params[:user_ids]
+
+    user_ids_sql_string = ''
+    user_ids_array.each_with_index do |user_id,i|
+      if (i==0)
+        user_ids_sql_string = "id = '#{user_id}'"
+      elsif (i > 0)
+        user_ids_sql_string = user_ids_sql_string + " OR id = '#{user_id}'"
+      end
+    end
+
+    @locals = User.where(user_ids_sql_string)
+    locals_filtered_array = []
+
+    if params[:categories].kind_of?(Array)
+      @locals.each do |local|
+        local.adventures.each do |adv|
+          params[:categories].each do |cat|
+            if adv.category.include?(cat)
+              locals_filtered_array << local.id
+              break
+            end
+          end
+        end
+      end
+
+      locals_filtered_array = locals_filtered_array.uniq
+    
+      filtered_user_ids_sql_string = ''
+      locals_filtered_array.each_with_index do |local_filtered_id, i|
+        if (i==0)
+          filtered_user_ids_sql_string = "id = '#{local_filtered_id}'"
+        elsif (i > 0)
+          filtered_user_ids_sql_string = filtered_user_ids_sql_string + " OR id = '#{local_filtered_id}'"
+        end
+      end
+
+      @locals = User.where(filtered_user_ids_sql_string)
+    end
 
     respond_to do |format|
-      format.js {render "find_filter.js", layout: false}
+      format.js {render "find_local_filter.js", layout: false}
     end
   end
 
@@ -425,6 +476,7 @@ class AdventuresController < ApplicationController
     # 3: Is it a state, US ONLY ()
     # 4: Is it a city ()
     # 5: Default use nearby 100 miles
+    # 6: Return locals?
 
     geocode_type = geocode_obj[0].data['address_components'][0]['types'][0]
 
@@ -465,7 +517,7 @@ class AdventuresController < ApplicationController
       @adventures = Adventure.approved.near(@location,100).order('RANDOM()')
     end
 
-    if params[:locals]
+    if params[:locals] == "true"
       user_ids_sql_string = ''
       @adventures.each_with_index do |adv,i|
         if (i==0)

@@ -1,0 +1,29 @@
+.find_locals_table
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Location
+          %th Categories
+          %th Adventures
+
+      %tbody
+        - locals.each do |local|
+          %tr
+            %td
+              %a{href: "#{root_url}users/#{local.to_param}", target: "_blank"}
+                = local.get_first_name
+            %td= "#{local.adventures.first.city}, #{local.adventures.first.country}"
+            %td
+              - user_cat_array = local.get_host_adventure_categories
+              - user_cat_array.each do |cat|
+                = cat.capitalize
+                %br
+            %td
+              - local.adventures.each do |adv|
+                %a{href: "#{root_url}adventures/#{adv.slug}", target: "_blank"}
+                  = adv.title
+                %br
+
+

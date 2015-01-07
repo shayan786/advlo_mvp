@@ -184,8 +184,34 @@
 			display: block;
 		}
 
+		.find_locals_table {
+			.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+				padding-left: 25px;
+			}
+
+			.table {
+				background-color: rgba(0,0,0,0.4);
+				border-color: rgba(195,91,38,0.7);
+
+				th {
+					padding-top: 20px;
+					color: $advlo_orange;
+					font-family: bebas_neue;
+					letter-spacing: 2px;
+					font-size: 1.3em;
+					border-color: $advlo_orange;
+				}
+
+				td {
+					vertical-align: middle;
+					color: #FFF;
+					opacity: 0.9;
+					border-color: rgba(255,255,255,0.7);
+				}
+			}
+		}
+
 		.location_filter {
-			display: none;
 			border-radius: 3px;
 			border: 1px solid $advlo_orange;
 			background-color: rgba(0,0,0,0.3);
@@ -216,6 +242,10 @@
       	border-color: rgba(195,91,38,0.7);
       }
 
+		}
+
+		.local_filter {
+			@extend .location_filter;
 		}
 
 		.adventure-container {

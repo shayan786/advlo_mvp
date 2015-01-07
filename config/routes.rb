@@ -59,7 +59,8 @@ Rails.application.routes.draw do
   get '/find'                         => 'adventures#find'
   post '/find/location'               => 'adventures#find_by_location' 
   post '/find/category'               => 'adventures#find_by_category'
-  post '/find/filter'                 => 'adventures#find_filter'             
+  post '/find/filter_adventure'       => 'adventures#find_adventure_filter'
+  post '/find/filter_local'           => 'adventures#find_local_filter'             
 
   #adventure controller routes
   get '/adventures/info'              => 'adventures#hosting_info'

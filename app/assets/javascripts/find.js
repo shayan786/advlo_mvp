@@ -4,6 +4,9 @@ function find_input_geocomplete() {
   	if($('#find .search_options .show_me_locals').hasClass('active')) {
   		$('#find .search_options #find_adventure_form #locals').val(true);
   	}
+  	else {
+  		$('#find .search_options #find_adventure_form #locals').val(false);
+  	}
 
   	$('#find .search_options #find_adventure_form').submit();
   })
@@ -117,22 +120,42 @@ function get_selected_price_type() {
 	}
 }
 
-function get_selected_categories() {
-	// special case for all
-	if ($('#find .search_results .location_filter .cat_call').hasClass('active')){
-		return "ALL"
+function get_selected_categories(local) {
+	if (local) {
+		// special case for all
+		if ($('#find .search_results .local_filter .cat_call').hasClass('active')){
+			return "ALL"
+		}
+		else {
+			var categories = [];
+			var i = 0;
+			$('#find .search_results .local_filter .cat_btn').each(function(index,value){
+				if ($(this).hasClass('active')) {
+					categories[i] = $(this).data('category');
+					i++;
+				}
+			})
+
+			return categories;
+		}
 	}
 	else {
-		var categories = [];
-		var i = 0;
-		$('#find .search_results .location_filter .cat_btn').each(function(index,value){
-			if ($(this).hasClass('active')) {
-				categories[i] = $(this).data('category');
-				i++;
-			}
-		})
+		// special case for all
+		if ($('#find .search_results .location_filter .cat_call').hasClass('active')){
+			return "ALL"
+		}
+		else {
+			var categories = [];
+			var i = 0;
+			$('#find .search_results .location_filter .cat_btn').each(function(index,value){
+				if ($(this).hasClass('active')) {
+					categories[i] = $(this).data('category');
+					i++;
+				}
+			})
 
-		return categories;
+			return categories;
+		}
 	}
 }
 
@@ -140,14 +163,14 @@ function find_location_filter_actions(adventure_ids){
 
 	// PRICE SORTING
   $('#find .search_results .location_filter .price_asc').click(function(){
-  	var categories = get_selected_categories();
+  	var categories = get_selected_categories(false);
   	var price_type = get_selected_price_type();
 
     $('#find .search_results .location_filter .price_desc').removeClass('active');
     $(this).addClass('active');
 
     $.ajax({
-      url: "/find/filter",
+      url: "/find/filter_adventure",
       dataType: "script",
       data: {adventure_ids: adventure_ids, price_sort_by: "ASC", categories: categories, price_type: price_type, flag: false},
       type: "POST"
@@ -155,14 +178,14 @@ function find_location_filter_actions(adventure_ids){
   })
 
   $('#find .search_results .location_filter .price_desc').click(function(){
-  	var categories = get_selected_categories();
+  	var categories = get_selected_categories(false);
   	var price_type = get_selected_price_type();
 
     $('#find .search_results .location_filter .price_asc').removeClass('active');
     $(this).addClass('active');
 
     $.ajax({
-      url: "/find/filter",
+      url: "/find/filter_adventure",
       dataType: "script",
       data: {adventure_ids: adventure_ids, price_sort_by: "DESC", categories: categories, price_type: price_type, flag: false},
       type: "POST"
@@ -178,7 +201,7 @@ function find_location_filter_actions(adventure_ids){
     $(this).addClass('active');
 
     $.ajax({
-      url: "/find/filter",
+      url: "/find/filter_adventure",
       dataType: "script",
       data: {adventure_ids: adventure_ids, price_sort_by: price_sort_by, categories: categories, price_type: "per_person", flag: false},
       type: "POST"
@@ -193,7 +216,7 @@ function find_location_filter_actions(adventure_ids){
     $(this).addClass('active');
 
     $.ajax({
-      url: "/find/filter",
+      url: "/find/filter_adventure",
       dataType: "script",
       data: {adventure_ids: adventure_ids, price_sort_by: price_sort_by, categories: categories, price_type: "per_adventure", flag: false},
       type: "POST"
@@ -204,7 +227,6 @@ function find_location_filter_actions(adventure_ids){
   $('#find .search_results .location_filter .cat_btn').click(function(){
   	var price_sort_by = get_selected_price_sort_by();
   	var price_type = get_selected_price_type();
-		console.log("CLICKED");
 
   	if ($(this).hasClass('cat_all')) {
   		$('#find .search_results .location_filter .cat_btn').each(function(index,value){
@@ -215,7 +237,7 @@ function find_location_filter_actions(adventure_ids){
   		var categories = "ALL";
 
   		$.ajax({
-	      url: "/find/filter",
+	      url: "/find/filter_adventure",
 	      dataType: "script",
 	      data: {adventure_ids: adventure_ids, price_sort_by: price_sort_by, categories: categories, price_type: price_type, flag: false},
 	      type: "POST"
@@ -229,10 +251,10 @@ function find_location_filter_actions(adventure_ids){
 			$(this).addClass('active')
 
 			// get selected categories
-			categories = get_selected_categories();
+			categories = get_selected_categories(false);
 
 			$.ajax({
-	      url: "/find/filter",
+	      url: "/find/filter_adventure",
 	      dataType: "script",
 	      data: {adventure_ids: adventure_ids, price_sort_by: price_sort_by, categories: categories, price_type: price_type, flag: false},
 	      type: "POST"
@@ -240,6 +262,50 @@ function find_location_filter_actions(adventure_ids){
   	}
 
   })
+}
+
+function find_local_filter_actions(user_ids){
+	$('#find .search_results .local_filter .cat_btn').click(function(){
+
+  	if ($(this).hasClass('cat_all')) {
+  		$('#find .search_results .local_filter .cat_btn').each(function(index,value){
+  			$(this).removeClass('active')
+  		})
+
+  		$(this).addClass('active');
+  		var categories = "ALL";
+
+  		$.ajax({
+	      url: "/find/filter_local",
+	      dataType: "script",
+	      data: {user_ids: user_ids, categories: categories, flag: false},
+	      type: "POST"
+	    })
+  	}
+
+  	else {
+  		// other categories
+			var categories = [];
+			$('#find .search_results .local_filter .cat_all').removeClass('active')
+			$(this).addClass('active')
+
+			// get selected categories
+			categories = get_selected_categories(true);
+
+			$.ajax({
+	      url: "/find/filter_local",
+	      dataType: "script",
+	      data: {user_ids: user_ids, categories: categories, flag: false},
+	      type: "POST"
+	    })
+  	}
+  })
+}
+
+function scroll_to_results() {
+	$('html,body').animate({
+	    scrollTop: $('#find .search_results').offset().top-50
+	  }, 800);
 }
 
 

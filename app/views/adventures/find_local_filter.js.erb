@@ -1,0 +1,13 @@
+$("#find .search_results .locals-partial").hide()
+$("#find .search_results .locals-partial").html("<%= escape_javascript(render(partial: 'find_locals_table', locals:{locals: @locals})) %>");
+$("#find .search_results .locals-partial").fadeIn('slow')
+
+<% user_ids = [] %>
+		
+<% @locals.each do |local| %>
+	<% user_ids << local.id %>
+<% end %>
+
+<% if !@flag %>
+	find_local_filter_actions(<%= user_ids %>);
+<% end %>

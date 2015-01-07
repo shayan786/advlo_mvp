@@ -326,6 +326,24 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_host_adventure_categories
+    categories = []
+
+    user = User.find(self.id)
+
+    user.adventures.each do |adv|
+      adv_cat_array = []
+      adv_cat = adv.category
+      adv_cat_array = adv_cat.split(',')
+
+      adv_cat_array.each do |cat|
+        categories << cat
+      end
+    end
+
+    return categories.uniq
+  end
+
   def youtube_embed(youtube_url)
     if youtube_url[/yout\.be\/([^\?]*)/]
       youtube_id = $1
