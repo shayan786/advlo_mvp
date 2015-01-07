@@ -16,7 +16,7 @@
           %br
           The winner will be picked on
           %i January 15th
-          
+
     - elsif current_user
       .row
         .col-md-8.col-md-offset-2.text-center
@@ -26,7 +26,7 @@
           %i January 15th
 
       .row.text-center
-        %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}", "data-title" => "#{Adventure.first.title}", "data-desc" => "#{current_user}", "data-image" => "#{Adventure.first.attachment.url(:medium)}", style: "margin-right: 5px;"}
+        %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}", style: "margin-right: 5px;"}
           Click to Share
 
     - else
@@ -68,7 +68,7 @@
             url: "giveaway/#{current_user.id}"
           })
         } else {
-          alert('Oops, The giveaway was not published.');
+          alert('Oops, The giveaway post was not published.');
         }
       }
     );

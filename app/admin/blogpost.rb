@@ -35,6 +35,7 @@ ActiveAdmin.register Blogpost do
       f.input :attachment, as: :file
       f.has_many :blog_images do |photo|
         photo.inputs do
+          photo.input :order, as: :select, collection: Array(1..10)
           photo.input :caption
           photo.input :link
           photo.input :excerpt

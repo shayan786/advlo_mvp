@@ -16,6 +16,7 @@ ActiveAdmin.register User do
   index do
     column :email
     column :name
+    column :is_guide
     column 'avatar' do |user|
       if user.avatar_url
         image_tag user.avatar_url

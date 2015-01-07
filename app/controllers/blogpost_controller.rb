@@ -15,7 +15,7 @@ class BlogpostController < ApplicationController
     @blogpost = Blogpost.find_by(permalink: params[:permalink])
     @blogpost.view_count = ((@blogpost.view_count.nil?) ? 0 : @blogpost.view_count) + 1
     
-    @blog_images = @blogpost.blog_images
+    @blog_images = @blogpost.blog_images.order(:order)
 
     get_featured_locations(['Costa Rica','United States','Vietnam','Ecuador','Nicaragua'])
     @adventures = Adventure.approved.sample(3)
