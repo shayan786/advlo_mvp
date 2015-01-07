@@ -75,6 +75,21 @@ function search_form_submits() {
   $('#find .search_options #find_adventure_activity_form .search_btn').click(function(){
     $('#find .search_options #find_adventure_activity_form').submit();
   })
+
+  $('#find .search_options #find_adventure_form .input-group-addon').click(function(){
+    var details = $.trim($('#find .search_options #find_adventure_form #location').val());
+
+    if (details.length > 3) {
+      $('#find .search_options #find_adventure_form').submit();
+    }
+    else {
+      swal({
+        title: "Please enter in a location!",
+        imageUrl: "http://i.imgur.com/a6L0hYB.png"
+      });
+      $('#find .search_options #find_adventure_form #location').focus();
+    }
+  })
 }
 
 function activity_search_checkbox_validation() {

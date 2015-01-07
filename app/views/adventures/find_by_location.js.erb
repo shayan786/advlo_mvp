@@ -9,7 +9,11 @@
 
 		scroll_to_results();
 
-		$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_local_filter')) %>")
+		// only show filter if results count > 2
+		<% if @locals.length > 1 %>
+			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_local_filter')) %>")
+		<% end %>
+
 		$("#find .search_results .locals-partial").html("<%= escape_javascript(render(partial: 'find_locals_table', locals:{locals: @locals})) %>");
 		$("#find .search_results .locals-partial").fadeIn('slow')
 
@@ -28,7 +32,11 @@
 
 		scroll_to_results();
 
-		$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_location_filter')) %>")
+		// only show filter if results count > 2
+		<% if @adventures.length > 1 %>
+			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_location_filter')) %>")
+		<% end %>
+
 		$("#adventure-partial").html("<%= escape_javascript(render(partial: 'adventure_index', locals:{adventures: @adventures})) %>");
 		$("#adventure-partial").fadeIn('slow');
 

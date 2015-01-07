@@ -503,11 +503,14 @@ class AdventuresController < ApplicationController
     #City
     when "locality"
       city = geocode_obj[0].data['address_components'][0]['long_name']
+      country = geocode_obj[0].data['address_components'][2]['long_name']
 
       city_adv_count = Adventure.approved.where(city: city).length
 
-      # Make sure there are atleast 3
-      if city_adv_count > 2 
+      # Make sure there are atleast 3 & special cases 
+      if country == "Costa Rica"
+        @adventures = Adventure.approved.where(country: country).order('RANDOM()')
+      elsif city_adv_count > 2 
         @adventures = Adventure.approved.where(city: city).order('RANDOM()')
       else
         @adventures = Adventure.approved.near(@location.to_s,100).order('RANDOM()')
