@@ -18,6 +18,15 @@
           %i.fa.fa-bicycle
           WHICH ADVENTURE?
 
+    .row.text-center
+      .show_me_header
+        SHOW ME
+    .row.text-center
+      .btn.btn-default.show_me_select_btn.show_me_adventures.active
+        ADVENTURES
+      .btn.btn-default.show_me_select_btn.show_me_locals
+        LOCALS
+
     .row
       .col-md-6.col-md-offset-3.text-center
         %form{"accept-charset" => "UTF-8", action: "/find/category", method: "post", roll: "form", id: "find_adventure_activity_form", "data-remote" => "true"}
@@ -31,15 +40,6 @@
             .btn.btn-primary.search_btn
               %i.fa.fa-search
               SEARCH
-
-    .row.text-center
-      .show_me_header
-        SHOW ME
-    .row.text-center
-      .btn.btn-default.show_me_select_btn.show_me_adventures.active
-        ADVENTURES
-      .btn.btn-default.show_me_select_btn.show_me_locals
-        LOCALS
 
     .row
       %form{"accept-charset" => "UTF-8", action: "/find/location", method: "post", roll: "form", id: "find_adventure_form", "data-remote" => "true"}

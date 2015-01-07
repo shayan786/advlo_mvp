@@ -47,6 +47,7 @@ function toggle_search_types() {
     $(this).addClass('active');
 
     $('#find .search_options #find_adventure_activity_form').fadeOut();
+    $('#find .search_options #find_adventure_form').delay(400).fadeIn();
   })
 
   $('#find .search_options .which_adventure_btn').click(function(){
