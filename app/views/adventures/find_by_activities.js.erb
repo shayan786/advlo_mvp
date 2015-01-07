@@ -9,11 +9,6 @@
 
 		scroll_to_results();
 
-		// only show filter if results count > 2
-		<% if @locals.length > 1 %>
-			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_local_filter')) %>")
-		<% end %>
-
 		$("#find .search_results .locals-partial").html("<%= escape_javascript(render(partial: 'find_locals_table', locals:{locals: @locals})) %>");
 		$("#find .search_results .locals-partial").fadeIn('slow')
 

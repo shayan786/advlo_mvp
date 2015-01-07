@@ -552,6 +552,19 @@ class AdventuresController < ApplicationController
 
     @adventures = Adventure.approved.where(category_sql_string).order('RANDOM()')
 
+    if params[:locals] == "true"
+      user_ids_sql_string = ''
+      @adventures.each_with_index do |adv,i|
+        if (i==0)
+          user_ids_sql_string = "id = '#{adv.users.first.id}'"
+        elsif (i > 0)
+          user_ids_sql_string = user_ids_sql_string + " OR id = '#{adv.users.first.id}'"
+        end
+      end
+
+      @locals = User.where(user_ids_sql_string)
+    end
+
     respond_to do |format|
       format.js {render "find_by_activities.js", layout: false}
     end

@@ -14,7 +14,11 @@
             %td
               %a{href: "#{root_url}users/#{local.to_param}", target: "_blank"}
                 = local.get_first_name
-            %td= "#{local.adventures.first.city}, #{local.adventures.first.country}"
+            %td
+              - if local.adventures.first.city && local.adventures.first.city != '' 
+                = "#{local.adventures.first.city}, #{local.adventures.first.country}"
+              - else
+                = local.adventures.first.country
             %td
               - user_cat_array = local.get_host_adventure_categories
               - user_cat_array.each do |cat|

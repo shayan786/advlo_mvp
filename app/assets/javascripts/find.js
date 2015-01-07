@@ -1,13 +1,6 @@
 function find_input_geocomplete() {
   $('#find .search_options #location').geocomplete()
   .bind("geocode:result", function(event, result){
-  	if($('#find .search_options .show_me_locals').hasClass('active')) {
-  		$('#find .search_options #find_adventure_form #locals').val(true);
-  	}
-  	else {
-  		$('#find .search_options #find_adventure_form #locals').val(false);
-  	}
-
   	$('#find .search_options #find_adventure_form').submit();
   })
 }
@@ -63,11 +56,17 @@ function toggle_show_me_types() {
 	$('#find .search_options .show_me_adventures').click(function(){
     $('#find .search_options .show_me_locals').removeClass('active')
     $(this).addClass('active');
+
+    $('#find .search_options #find_adventure_form #locals').val(false);
+    $('#find .search_options #find_adventure_activity_form #locals').val(false);
   })
 
   $('#find .search_options .show_me_locals').click(function(){
     $('#find .search_options .show_me_adventures').removeClass('active')
     $(this).addClass('active');
+
+    $('#find .search_options #find_adventure_form #locals').val(true);
+    $('#find .search_options #find_adventure_activity_form #locals').val(true);
   })
 }
 
