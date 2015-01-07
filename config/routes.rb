@@ -22,16 +22,18 @@ Rails.application.routes.draw do
     post '/users/update_affiliate_referral_click_count' => 'users#update_affiliate_referral_click_count'
 
     get '/users/initial/:type'        => 'registrations#inital_signin_check'
-    get 'travel-fund'                 => 'users#invite' 
-    get '/travel-fund/:referral_code' => 'registrations#referral_sign_up'
     get '/affiliate/:referral_code'   => 'registrations#referral_sign_up'
+
   end
-  
+
   get 'invite/:invite'                => 'adventures#hosting_info'
   get 'partner'                       => 'adventures#hosting_info'
 
+  get 'travel-fund'                   => 'application#giveaway' 
+  get '/travel-fund/:referral_code'   => 'application#giveaway'
+
   get 'giveaway'                      => 'application#giveaway'
-  get 'giveaway/:user_id'             => 'application#update_user_giveaway'
+  post 'giveaway/:user_id'            => 'application#update_user_giveaway'
 
   #contact
   post '/contact'                     => 'application#contact'

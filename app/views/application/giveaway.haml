@@ -68,6 +68,7 @@
         function(response) {
           if (response && response.post_id) {
             $.ajax({
+              method: 'POST',
               url: "giveaway/#{current_user.id}"
             })
           } else {
