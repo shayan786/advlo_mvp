@@ -78,7 +78,7 @@ function search_form_submits() {
   $('#find .search_options #find_adventure_form .input-group-addon').click(function(){
     var details = $.trim($('#find .search_options #find_adventure_form #location').val());
 
-    if (details.length > 3) {
+    if (details.length > 2) {
       $('#find .search_options #find_adventure_form').submit();
     }
     else {

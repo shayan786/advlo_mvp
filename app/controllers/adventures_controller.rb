@@ -488,7 +488,8 @@ class AdventuresController < ApplicationController
       @adventures = Adventure.approved.where(region: @location).order('RANDOM()')
 
     when "country"
-      @adventures = Adventure.approved.where(country: @location).order('RANDOM()')
+      country = geocode_obj[0].data['address_components'][0]['long_name']
+      @adventures = Adventure.approved.where(country: country).order('RANDOM()')
 
     #State
     when "administration_area_level_1"
