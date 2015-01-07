@@ -37,7 +37,7 @@
 			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_location_filter')) %>")
 		<% end %>
 
-		$("#adventure-partial").html("<%= escape_javascript(render(partial: 'adventure_index', locals:{adventures: @adventures})) %>");
+		$("#adventure-partial").html("<%= escape_javascript(render(partial: 'find_adventures', locals:{adventures: @adventures})) %>");
 		$("#adventure-partial").fadeIn('slow');
 
 		masonrySetup();
