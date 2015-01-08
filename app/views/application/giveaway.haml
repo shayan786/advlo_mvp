@@ -24,7 +24,7 @@
             credit with Adventure Local! 
             %br
             The winner will be picked on
-            %b January 15th
+            %b January 23rd
 
     - elsif current_user
       .row
@@ -37,7 +37,7 @@
             towards any Adventure Local trip. 
             %br
             The winner will be picked on
-            %b January 15th
+            %b January 23rd
 
       .row.text-center
         %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
@@ -61,7 +61,9 @@
         .basic_text
           Well, that was easy...here a few more ways to gain entries...
           %br
-          Checkout some of these amazing adventures you could go for on all under $1000
+          Checkout some of these amazing adventures you could go for on all under 
+          %b
+            $1000
       .row{style: "margin-top: 15px;"}
         .col-md-1.col-md-offset-3.text-center
           .btn.btn-primary.number_btn.disabled
@@ -80,7 +82,7 @@
             2
         .col-md-5
           .number_text
-            Every friend that signs-up, you'll get another entry
+            Every friend that signs-up through your unique share link, you'll get another entry
       
       .row
         .col-md-6.col-md-offset-3
@@ -138,33 +140,6 @@
                 %i.fa.fa-twitter
               %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{fb_share_url}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"}
                 %i.fa.fa-google-plus
-
-
-
-
-
-        / .row
-        /   .adventure-container
-        /     .brick-wrapper
-        /       - @adventures.each_with_index do |adv, i|
-        /         .adv-info-wrapper
-        /           %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing"}
-        /             %a{href: adventure_path(adv.slug), itemprop: 'url'}
-        /               - if adv.attachment.height(:large) >= 300
-        /                 - adv_img = adv.attachment.url(:large)
-        /               - else
-        /                 - adv_img = adv.attachment.url(:hero)
-        /               .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
-        /               .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
-        /                 .copy{id: "#{i}"}
-        /                   - if adv.title.length > 38
-        /                     .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
-        /                   -else
-        /                     .title{itemprop: 'name'}= adv.title
-
-        /                   .location{itemprop: 'description'}= get_display_location(adv)
-                          
-        /                   .host_name= "With #{adv.host_name}"
 
 
     .divider

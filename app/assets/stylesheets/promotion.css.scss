@@ -11,7 +11,7 @@
 
   .promotion_header {
   	font-family: bebas_neue;
-  	font-size: 2.5em;
+  	font-size: 3em;
   	color: $advlo_orange;
   	letter-spacing: 2px;
   	background-color: rgba(0,0,0,0.8);
@@ -192,9 +192,9 @@
 	  			width: 325px;
 	  			padding-bottom: 10px;
 	  			padding-top: 10px;
-	  			border-right: 1px solid $advlo_orange;
-	  			border-left: 1px solid $advlo_orange;
-	  			border-bottom: 1px solid $advlo_orange;
+	  			border-right: 1px solid $lighter_gray;
+	  			border-left: 1px solid $lighter_gray;
+	  			border-bottom: 1px solid $lighter_gray;
 	  			border-bottom-right-radius: 2px;
 	  			border-bottom-left-radius: 2px;
 	  			box-shadow: 1px 1px 1px $lighter_gray;
