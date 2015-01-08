@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      - if @user
+        %h2= "Hey #{@user.get_name_or_email}!"
+      - else
+        %h2= "Hey traveler!"
+
+      .text-left
+        %p The new year at Advlo HQ made us want to do something special for all our supporters, so we have decided to give away $1000 to one lucky member on January 31st.
+
+        #other-ways{style:"margin-top: 30px;"}
+          %a{href:"#{root_url}giveway", style: "text-decoration: none;"}
+            .text-center.entries-btn{style: "width: 50%; margin: 0 auto; padding: 10px 19px;font-size: 17px;line-height: 1.471;border-radius: 6px;color: #fff;background-color: #ec7063;border-color: #ec7063;"} Enter Giveaway
+
+      %br
+      .text-left
+        %p Excited to make one lucky traveler's dreams into a reality. 
+
+      %i Thanks,
+      %br
+      Team Advlo

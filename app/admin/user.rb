@@ -55,6 +55,7 @@ ActiveAdmin.register User do
       f.input :fb_url
       f.input :tw_url
       f.input :ta_url
+      f.input :paypal_email
     end
     f.actions
   end

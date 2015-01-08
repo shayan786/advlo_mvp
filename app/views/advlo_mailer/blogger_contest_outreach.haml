@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented
+      %h2= "Hey #{@user.get_name_or_email}!"
+      
+      .text-left
+        %p The new year
+        %p 
+          
+
+        #other-ways{style:"margin-top: 30px;"}
+          %a{href:"#{root_url}giveway", style: "text-decoration: none;"}
+            .text-center.entries-btn{style: "width: 50%; margin: 0 auto; padding: 10px 19px;font-size: 17px;line-height: 1.471;border-radius: 6px;color: #fff;background-color: #ec7063;border-color: #ec7063;"} $1000 giveaway
+
+      %br
+
+      .text-left
+        %p Excited to make one lucky traveler's dreams into a reality. Stay tuned!
+
+      %i Thanks,
+      %br
+      Team Advlo
