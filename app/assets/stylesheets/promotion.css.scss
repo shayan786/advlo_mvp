@@ -1,4 +1,256 @@
-
 #promotion-wrapper {
   margin-top: 75px;
+
+  .panel {
+  	padding-bottom: 30px;
+
+  	.panel-body {
+  		padding-top: 0px;
+  	}
+  }
+
+  .promotion_header {
+  	font-family: bebas_neue;
+  	font-size: 2.5em;
+  	color: $advlo_orange;
+  	letter-spacing: 2px;
+  	background-color: rgba(0,0,0,0.8);
+  	border-bottom: 2px solid $advlo_orange;
+  	padding-top: 20px;
+  	padding-bottom: 20px;
+  	border-top-right-radius: 3px;
+  	border-top-left-radius: 3px;
+
+  	.amount {
+  		font-size: 1.7em;
+  		font-weight: bold;
+  		color: $advlo_orange;
+  		margin-left: 5px;
+  		margin-right: 5px;
+  		text-decoration: underline;
+  	}
+  }
+
+  .divider {
+  	border: 1px solid $lighter_gray;
+  	margin-top: 10px;
+  	margin-bottom: 10px;
+  }
+
+  .basic_text {
+  	margin-top: 20px;
+  	font-size: 1.4em;
+  }
+
+  .new-account {
+  	font-size: 1.6em;
+  	font-family: bebas_neue;
+  	letter-spacing: 2px;
+  	margin-top: 20px;
+  	margin-bottom: 20px;
+  	width: 34%;
+  	padding-top: 17px;
+  	padding-bottom: 13px;
+
+  	background-color: $advlo_orange;
+  	border-color: $advlo_orange;
+
+  	&:hover {
+  		background-color: $orange;
+  		border-color: $orange;
+  	}
+
+  }
+
+  .giveaway-share {
+  	@extend .new-account;
+  	background-color: #3b5998;
+  	border-color: #3b5998;
+  	opacity: 0.9;
+
+  	&:hover {
+  		background-color: #3b5998;
+  		border-color: #3b5998;
+  		opacity: 1;
+  	}
+
+  	.fa {
+  		margin-right: 10px;
+  	}
+  }
+
+  .additional_entries {
+  	.number_btn {
+  		border-radius: 50%;
+  		font-size: 1.2em;
+  		font-family: bebas_neue;
+  		font-weight: bold;
+  		background-color: $advlo_orange;
+  		border-color: $advlo_orange;
+  		padding: 8px 16px 5px 16px;
+  	}
+
+  	.number_text {
+  		padding-top: 7px;
+  		font-size: 1.2em;
+  	}
+
+  	.steps_divider {
+  		width: 100%;
+  		border: 1px solid $advlo_green;
+  		margin-top: 10px;
+  		border-radius: 3px;
+  		opacity: 0.7;
+  	}
+
+  	.entry_tracking_box {
+  		margin-top: 25px;
+  		border: 2px solid $advlo_orange;
+  		border-radius: 2px;
+
+  		.tracking_header {
+  			background-color: rgba(195, 91, 38, 0.9);
+	  		color: #FFF;
+	  		opacity: 0.9;
+  			font-family: bebas_neue;
+  			font-size: 1.4em;
+  			letter-spacing: 2px;
+  			border-bottom: 2px solid $advlo_orange;
+  			padding-top: 10px;
+  			padding-bottom: 8px;
+  		}
+
+  		.tracking_count {
+  			font-family: bebas_neue;
+  			font-size: 1.4em;
+  			letter-spacing: 2px;
+  			padding-top: 10px;
+  			padding-bottom: 8px;
+  		}
+  	}
+
+  	.share_adventures {
+  		margin: 35px auto 25px auto;
+  		width: 95%;
+
+  		.social_share_box {
+  			width: 350px;
+  			margin-bottom: 15px;
+
+	  		.adventure_box {
+	  			margin: 10px auto 0px auto;
+	  			display: inline-block;
+	  			width: 325px;
+	  			height: 250px;
+	  			border: 1px solid $lighter_gray;
+	  			border-radius: 1px;
+	  			box-shadow: 1px 1px 1px $lighter_gray;
+	  			background-size: cover !important;
+
+	  			.adventure_info_box {
+	  				position: relative;
+	  				top: 178px;
+	  				height: 70px;
+	  				width: 100%;
+	  				background-color: rgba(0,0,0,0.8);
+
+	  				.title {
+	  					color: #FFF;
+	  					font-size: 1.1em;
+	  					padding-top: 6px;
+	  					margin-left: 10px;
+	  				}
+
+	  				.location {
+	  					color: $advlo_orange;
+	  					font-size: 0.8em;
+	  					margin-left: 10px;
+	  					padding-top: 2px;
+	  					clear: left;
+	  				}
+
+	  				.host_name {
+	  					@extend .location;
+	  					color: #FFF;
+	  					font-size: 0.9em;
+	  					clear: left;
+	  				}
+
+	  				.price {
+	  					font-family: bebas_neue;
+	  					font-size: 1.9em;
+	  					color: #FFF;
+	  					padding-right: 10px;
+	  					margin-top: -15px;
+	  					clear: none;
+	  				}
+	  			}
+	  		}
+
+	  		.social_share_btns {
+	  			margin: -6px auto 0 auto;
+	  			width: 325px;
+	  			padding-bottom: 10px;
+	  			padding-top: 10px;
+	  			border-right: 1px solid $advlo_orange;
+	  			border-left: 1px solid $advlo_orange;
+	  			border-bottom: 1px solid $advlo_orange;
+	  			border-bottom-right-radius: 2px;
+	  			border-bottom-left-radius: 2px;
+	  			box-shadow: 1px 1px 1px $lighter_gray;
+
+	  			.social_btn {
+		  			width: 30px;
+		        height: 30px;
+		        text-align: center;
+		        padding: 6px 0;
+		        font-size: 12px;
+		        line-height: 1.5;
+		        border-radius: 15px;
+		      }
+
+	  			.fb {
+	  				color: #FFF;
+		        background-color: #3B5998;
+		        border-color: #3B5998;
+
+		        &:hover {
+		          opacity: 0.8;
+		        } 
+	  			}
+
+	  			.twitter_promo {
+	  				color: #FFF;
+		        background-color: #30D8F0;
+		        border-color: #30D8F0;
+
+		        &:hover {
+		          opacity: 0.8;
+		        }
+	  			}
+
+	  			.gp {
+	  				color: #FFF;
+		        background-color: #d34836;
+		        border-color: #d34836;
+
+		        &:hover {
+		          opacity: 0.8;
+		        }
+	  			}
+
+	  		}
+	  	}
+
+  	}
+  }
+
+  .promotion_terms {
+  	margin-top: 10px;
+
+  	.terms_text {
+  		margin-top: 5px;
+  		font-size: 1em;
+  	}
+  }
 }

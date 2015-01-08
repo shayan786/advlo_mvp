@@ -34,6 +34,7 @@
 //= require user.js
 //= require wallet.js
 //= require affiliate.js
+//= require promotion.js
 //= require moment.min
 //= require fullcalendar.min
 //= require jquery.geocomplete.min

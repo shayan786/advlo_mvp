@@ -1,83 +1,197 @@
+- set_meta_tags(get_meta_tags("$1000 Giveaway", "Win $1000 at Adventure Local", "Giveaway, Raffle, Credit, Free, Entry"))
+- set_meta_tags :og => get_og_tags("$1000 Giveaway", "#{root_url}giveaway", "Win $1000 at Adventure Local", "http://i.imgur.com/a6L0hYB.png")
+- set_meta_tags :fb => {:app_id => '210802829129036'}
+- set_meta_tags :twitter => get_twitter_tags("$1000 Giveaway", "Win $1000 at Adventure Local", "http://i.imgur.com/a6L0hYB.png")
+
 .container#promotion-wrapper
   .panel.panel-default
     .panel-body
       .row
-        %h1.col-md-8.col-md-offset-2.text-center
-          Win
-          %span{style: "color: green;"}
-            $ 1000 
+        .promotion_header.text-center
+          Win 
+          %span.amount $1000
           at Adventure Local
 
 
     - if current_user && current_user.sent_promotion == true
       .row 
         .col-md-8.col-md-offset-2.text-center
-          You are now Entered to win $1000 credit with Adventure Local! 
-          %br
-          The winner will be picked on
-          %i January 15th
+          .basic_text
+            You are now Entered to win 
+            %span
+              %b
+                $1000
+            credit with Adventure Local! 
+            %br
+            The winner will be picked on
+            %b January 15th
 
     - elsif current_user
       .row
         .col-md-8.col-md-offset-2.text-center
-          Enter to win $1000 towards any Adventure Local trip. 
-          %br
-          The winner will be picked on
-          %i January 15th
+          .basic_text
+            Enter to win 
+            %span
+              %b
+                $1000
+            towards any Adventure Local trip. 
+            %br
+            The winner will be picked on
+            %b January 15th
 
       .row.text-center
-        %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}", style: "margin-right: 5px;"}
+        %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
+          %i.fa.fa-facebook-square
           Click to Share
 
     - else
       .row
         .col-md-8.col-md-offset-2.text-center
-          Please create an account to enter the giveaway
+          .basic_text
+            Please create an account to enter the giveaway
+      .row.text-center 
+        .btn.btn-primary.giveaway-toggle.new-account
+          JOIN ADVLO
 
-          %a.btn.btn-success.giveaway-toggle.new-account
-            Connect
+
+    .divider
+
+    .additional_entries
+      .row.text-center
+        .basic_text
+          Well, that was easy...here a few more ways to gain entries...
+          %br
+          Checkout some of these amazing adventures you could go for on all under $1000
+      .row{style: "margin-top: 15px;"}
+        .col-md-1.col-md-offset-3.text-center
+          .btn.btn-primary.number_btn.disabled
+            1
+        .col-md-5
+          .number_text
+            Share any of these adventures in your social network
+      
+      .row
+        .col-md-6.col-md-offset-3
+          .steps_divider
+
+      .row{style: "margin-top: 10px;"}
+        .col-md-1.col-md-offset-3.text-center
+          .btn.btn-primary.number_btn.disabled
+            2
+        .col-md-5
+          .number_text
+            Every friend that signs-up, you'll get another entry
+      
+      .row
+        .col-md-6.col-md-offset-3
+          .steps_divider
+
+      .row{style: "margin-top: 10px;"}
+        .col-md-1.col-md-offset-3.text-center
+          .btn.btn-primary.number_btn.disabled
+            3
+        .col-md-5
+          .number_text
+            Track the number of entries below
+
+      .row
+        .col-md-6.col-md-offset-3
+          .steps_divider
+
+      .row
+        .col-md-4.col-md-offset-4.text-center
+          .entry_tracking_box
+            .row
+              .col-md-6{style: "padding-right: 0px;"}
+                .tracking_header
+                  YOUR ENTRIES
+              .col-md-6{style: "padding-left: 0px"}
+                .tracking_header
+                  TOTAL ENTRIES
+            .row
+              .col-md-6{style: "padding-right: 0px; border-right: 1px solid #C35B26"}
+                .tracking_count= @user_entries
+              .col-md-6{style: "padding-left: 0px; border-left: 1px solid #C35B26"}
+                .tracking_count= @total_entries
+
+      .share_adventures.text-center
+        - @adventures.each_with_index do |adv,i|
+          - if adv.attachment.height(:large) >= 300
+            - adv_img = adv.attachment.url(:large)
+          - else
+            - adv_img = adv.attachment.url(:hero)
+          
+          .social_share_box.text-center
+            %a{href: adventure_path(adv.slug), target: "_blank"}
+              .adventure_box{style: "background: url('http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/127/large/2.jpg?1410075768') no-repeat center center;"}
+                .adventure_info_box
+                  .title.pull-left= adv.title.length > 38 ? "#{adv.title[0..36]}..." : adv.title
+                  .location.pull-left= get_display_location(adv)
+                  .host_name.pull-left= "With #{adv.host_name}"
+                  .price.pull-right= "$ #{adv.price}"
+
+            .social_share_btns
+              - fb_share_url = "#{root_url}giveaway/#{current_user.referral_code}"
+              %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "", "data-desc" => "", "data-image" => "", style: "margin-right: 5px;"}
+                %i.fa.fa-facebook
+              .btn.btn-default.social_btn.twitter_promo{style: "margin-right: 5px;"}
+                %i.fa.fa-twitter
+              %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{fb_share_url}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"}
+                %i.fa.fa-google-plus
+
+
+
+
+
+        / .row
+        /   .adventure-container
+        /     .brick-wrapper
+        /       - @adventures.each_with_index do |adv, i|
+        /         .adv-info-wrapper
+        /           %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing"}
+        /             %a{href: adventure_path(adv.slug), itemprop: 'url'}
+        /               - if adv.attachment.height(:large) >= 300
+        /                 - adv_img = adv.attachment.url(:large)
+        /               - else
+        /                 - adv_img = adv.attachment.url(:hero)
+        /               .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
+        /               .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
+        /                 .copy{id: "#{i}"}
+        /                   - if adv.title.length > 38
+        /                     .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
+        /                   -else
+        /                     .title{itemprop: 'name'}= adv.title
+
+        /                   .location{itemprop: 'description'}= get_display_location(adv)
+                          
+        /                   .host_name= "With #{adv.host_name}"
+
+
+    .divider
+
+    .promotion_terms
+      .row.text-center
+        .basic_text
+          %b
+            %u
+              TERMS
+      .row
+        .col-md-8.col-md-offset-2
+          .terms_text
+            Must be 18 years or old to enter.
+
+            One winner will be selected in a random drawing from among all eligible entries. Winner will be notified by email. The winner will then have 48 hours to respond or another winner will be selected.
+           
+            Odds of winning will depend upon the number of eligible entries received. The use of multiple email addresses, Twitter handles, or Facebook Profiles is not permitted and will result in disqualification.
+            
+            Questions or conerns, contact us at:
+            = mail_to 'support@advlo.com:'
+
+
 
 :javascript
-  $('.new-account').click(function(){
-    $('#member-modal').modal('show');
-  })
-
-  invite_social_init()
-
-  function postToFeed(title, desc, url, image){
-    var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
-  
-    function callback(response){}
-      FB.ui(obj, callback);
-  }
+  promotion_init();
 
 - if current_user
   :javascript
-
-    $('.giveaway-share').click(function(e) {
-      e.preventDefault();
-      elem = $(this);
-
-      FB.ui(
-        {
-          method: 'feed',
-          name: "Advlo $1000 giveaway",
-          link: "http://advlo.com/giveaway",
-          caption: "I just entered to win $1000 on an epic adventure with a local",
-        },
-        function(response) {
-          if (response && response.post_id) {
-            $.ajax({
-              method: 'POST',
-              url: "giveaway/#{current_user.id}"
-            })
-          } else {
-            swal({     
-              title: "Sorry Did not publish",  
-              imageUrl: "http://i.imgur.com/a6L0hYB.png"
-            })
-          }
-        }
-      );
-    })
 

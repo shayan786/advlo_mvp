@@ -8,7 +8,37 @@ class ApplicationController < ActionController::Base
   before_filter :get_poll
 
   def giveaway
+    @adventures = [] 
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
 
+    # Number of user entries
+    if current_user
+      current_user.sent_promotion ? @user_entries+=1 : @user_entries = 0
+
+      # get referral sign ups
+      user_referral_sign_ups = User.where(referrer_id: current_user.id).count
+
+      @user_entries+=user_referral_sign_ups
+    else
+      @user_entries = 0
+    end
+
+    # Total entries
+    @total_entries = User.where(sent_promotion: true).count
+
+    all_users = User.all
+
+    all_users.each do |user|
+      @total_entries+=User.where(referrer_id: user.id).count
+    end
   end
 
   def update_user_giveaway
