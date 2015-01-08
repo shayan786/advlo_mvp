@@ -5,6 +5,10 @@
 = render partial: 'feat_adventures'
 = render partial: 'signup'
 
+- if notice
+  :javascript
+    remove_notice(3);
+
 :javascript
   homepageInit();
   masonrySetup();

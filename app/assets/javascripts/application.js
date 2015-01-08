@@ -316,3 +316,11 @@ function footerInit(){
     $('#email_list_button').css('background-color', btnColor)
   }) 
 }
+
+function remove_notice(seconds) {
+  var time = seconds*1000;
+
+  setTimeout(function() {
+    $('.alert').fadeOut('slow');
+  }, time);
+}

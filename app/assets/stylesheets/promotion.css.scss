@@ -2,7 +2,7 @@
   margin-top: 75px;
 
   .panel {
-  	padding-bottom: 30px;
+  	padding-bottom: 50px;
 
   	.panel-body {
   		padding-top: 0px;
@@ -47,7 +47,7 @@
   	font-family: bebas_neue;
   	letter-spacing: 2px;
   	margin-top: 20px;
-  	margin-bottom: 20px;
+  	margin-bottom: 30px;
   	width: 34%;
   	padding-top: 17px;
   	padding-bottom: 13px;
@@ -81,13 +81,16 @@
 
   .additional_entries {
   	.number_btn {
+  		width: 35px;
+  		height: 35px;
   		border-radius: 50%;
   		font-size: 1.2em;
   		font-family: bebas_neue;
   		font-weight: bold;
   		background-color: $advlo_orange;
   		border-color: $advlo_orange;
-  		padding: 8px 16px 5px 16px;
+  		text-align: center;
+  		padding: 6px 0 0 2px;
   	}
 
   	.number_text {
