@@ -4,8 +4,16 @@ function sign_up_modal_toggle() {
   })
 }
 
-function initial_share_fb_init(){
-	$('.giveaway-share').click(function(e) {
+function initial_share_fb_init(current_user_id){
+	window.fbAsyncInit = function(){
+    FB.init({
+      appId: '210802829129036', status: true, cookie: true, xfbml: true }); 
+  };
+  
+  (function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];if   (d.getElementById(id)) {return;}js = d.createElement('script'); js.id = id; js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
+
+
+	$('#promotion-wrapper .giveaway-share').click(function(e) {
     e.preventDefault();
     elem = $(this);
 
@@ -15,33 +23,23 @@ function initial_share_fb_init(){
         name: "Advlo $1000 Giveaway",
         link: "http://advlo.com/giveaway",
         caption: "I just entered to win $1000 on an epic adventure with a local",
+        picture: "http://i.imgur.com/a6L0hYB.png"
       },
       function(response) {
         if (response && response.post_id) {
           $.ajax({
             method: 'POST',
-            url: "giveaway/#{current_user.id}"
+            url: "giveaway/"+current_user_id
           })
         } else {
           swal({     
-            title: "Sorry Did Not Publish",  
+            title: "Share it later?",  
             imageUrl: "http://i.imgur.com/a6L0hYB.png"
           })
         }
       }
     );
   })
-}
-
-function temp() {
-	invite_social_init()
-
-	function postToFeed(title, desc, url, image){
-	  var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
-
-	  function callback(response){}
-	    FB.ui(obj, callback);
-	}
 }
 
 function masonry_init(){

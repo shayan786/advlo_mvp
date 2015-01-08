@@ -11,7 +11,7 @@ class BlogpostController < ApplicationController
   end
 
   def show
-    @blogposts = Blogpost.order('created_at DESC')
+    @blogposts = Blogpost.where(state: "Published").order('created_at DESC')
     @blogpost = Blogpost.find_by(permalink: params[:permalink])
     @blogpost.view_count = ((@blogpost.view_count.nil?) ? 0 : @blogpost.view_count) + 1
     
