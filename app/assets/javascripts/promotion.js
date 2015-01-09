@@ -23,7 +23,7 @@ function initial_share_fb_init(current_user_id){
         name: "Advlo $1000 Giveaway",
         link: "http://advlo.com/giveaway",
         description: "I just entered to win $1000 on an epic adventure with a local",
-        caption: "ADVENTURE LOCAL - WWW.ADVLO.COM",
+        caption: "Adventure Local - www.advlo.com",
         picture: "http://i.imgur.com/a6L0hYB.png"
       },
       function(response) {
@@ -62,7 +62,7 @@ function adv_share_social() {
         name: $(this).data('title'),
         link: $(this).attr('href'),
         description: $(this).data('desc'),
-        caption: "ADVENTURE LOCAL - WWW.ADVLO.COM",
+        caption: "Adventure Local - www.advlo.com",
         picture: $(this).data('image')
       }
     );
@@ -77,6 +77,14 @@ function adv_share_social() {
     window.open("https://twitter.com/share?url=" + url + "&text=%23AdventureLocal - Adventure local is giving away $1000 towards any trip. " + url, 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
   })
 
+}
+
+function slow_scroll_on_load() {
+	$(document).ready(function(){
+		$('html,body').animate({
+			scrollTop: $('#promotion-wrapper .additional_entries').offset().top-40
+			}, 1000);
+	})
 }
 
 function masonry_init(){
