@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
       nearby_adventures = Adventure.near([user_geocode_info[:lat],user_geocode_info[:long]],250).where("price > '49'").approved.order('RANDOM()')
 
-      if nearby_adventures.count > 5
+      if nearby_adventures.length > 5
         @adventures = nearby_adventures
       else
         @adventures = default_adventures
