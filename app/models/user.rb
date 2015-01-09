@@ -142,6 +142,7 @@ class User < ActiveRecord::Base
   def get_user_geocode_info
     user_geocode_info = Hash.new
 
+    Geocoder.configure(:timeout => 10000)
     geocode_obj = Geocoder.search(current_sign_in_ip)
 
     user_geocode_info["lat"] = geocode_obj[0].data['latitude']
