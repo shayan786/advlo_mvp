@@ -81,9 +81,9 @@ function adv_share_social() {
 
 function slow_scroll_on_load() {
 	$(document).ready(function(){
-		$('html,body').animate({
-			scrollTop: $('#promotion-wrapper .additional_entries').offset().top-40
-			}, 400);
+    setTimeout(function(){
+      $('html,body').animate({scrollTop: $('#promotion-wrapper .additional_entries').offset().top-60});
+    }, 1500)
 	})
 }
 
