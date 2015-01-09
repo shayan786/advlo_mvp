@@ -22,7 +22,8 @@ function initial_share_fb_init(current_user_id){
         method: 'feed',
         name: "Advlo $1000 Giveaway",
         link: "http://advlo.com/giveaway",
-        caption: "I just entered to win $1000 on an epic adventure with a local",
+        description: "I just entered to win $1000 on an epic adventure with a local",
+        caption: "ADVENTURE LOCAL - WWW.ADVLO.COM",
         picture: "http://i.imgur.com/a6L0hYB.png"
       },
       function(response) {
@@ -60,7 +61,8 @@ function adv_share_social() {
         method: 'feed',
         name: $(this).data('title'),
         link: $(this).attr('href'),
-        caption: $(this).data('desc'),
+        description: $(this).data('desc'),
+        caption: "ADVENTURE LOCAL - WWW.ADVLO.COM",
         picture: $(this).data('image')
       }
     );
