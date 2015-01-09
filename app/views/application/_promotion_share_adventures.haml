@@ -1,0 +1,84 @@
+
+.row.text-center
+  .basic_text
+    Well, that was easy...here a few more ways to gain entries...
+    %br
+    Checkout some of these amazing adventures you could go for on all under 
+    %b
+      $1000
+.row{style: "margin-top: 15px;"}
+  .col-md-1.col-md-offset-3.text-center
+    .btn.btn-primary.number_btn.disabled
+      1
+  .col-md-5
+    .number_text
+      Share any of these adventures in your social network
+
+.row
+  .col-md-6.col-md-offset-3
+    .steps_divider
+
+.row{style: "margin-top: 10px;"}
+  .col-md-1.col-md-offset-3.text-center
+    .btn.btn-primary.number_btn.disabled
+      2
+  .col-md-5
+    .number_text
+      Every friend that signs-up through your unique share link, you'll get another entry
+
+.row
+  .col-md-6.col-md-offset-3
+    .steps_divider
+
+.row{style: "margin-top: 10px;"}
+  .col-md-1.col-md-offset-3.text-center
+    .btn.btn-primary.number_btn.disabled
+      3
+  .col-md-5
+    .number_text
+      Track the number of entries below
+
+.row
+  .col-md-6.col-md-offset-3
+    .steps_divider
+
+.row
+  .col-md-4.col-md-offset-4.text-center
+    .entry_tracking_box
+      .row
+        .col-md-6{style: "padding-right: 0px;"}
+          .tracking_header
+            YOUR ENTRIES
+        .col-md-6{style: "padding-left: 0px"}
+          .tracking_header
+            TOTAL ENTRIES
+      .row
+        .col-md-6{style: "padding-right: 0px; border-right: 1px solid #C35B26"}
+          .tracking_count= @user_entries
+        .col-md-6{style: "padding-left: 0px; border-left: 1px solid #C35B26"}
+          .tracking_count= @total_entries
+
+.share_adventures.text-center
+  - @adventures.each_with_index do |adv,i|
+    - if adv.attachment.height(:large) >= 300
+      - adv_img = adv.attachment.url(:large)
+    - else
+      - adv_img = adv.attachment.url(:hero)
+    
+    .social_share_box.text-center
+      %a{href: adventure_path(adv.slug), target: "_blank"}
+        .adventure_box{style: "background: url('http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/127/large/2.jpg?1410075768') no-repeat center center;"}
+          .adventure_info_box
+            .title.pull-left= adv.title.length > 38 ? "#{adv.title[0..36]}..." : adv.title
+            .location.pull-left= get_display_location(adv)
+            .host_name.pull-left= "With #{adv.host_name}"
+            .price.pull-right= "$ #{adv.price}"
+
+      .social_share_btns
+        - fb_share_url = "#{root_url}giveaway/#{current_user.referral_code}"
+        %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "Advlo $1000 Giveaway", "data-desc" => "Adventure local is giving away $1000 towards any trip. Click this post to help me earn $1000 so I can go on adventures like this #{root_url}adventures/#{adv.slug}", "data-image" => adv.attachment.url(:medium), style: "margin-right: 5px;"}
+          %i.fa.fa-facebook
+        .btn.btn-default.social_btn.twitter_promo{style: "margin-right: 5px;", "data-url" => "www.advlo.com/giveaway/#{current_user.referral_code}"}
+          %i.fa.fa-twitter
+
+.divider
