@@ -29,7 +29,7 @@
       .divider
 
       .additional_entries
-        = render partial: 'promotion_share_adventures', locals:{adventures: @adventures, total_entries: @total_entries, user_entries = @user_entries}
+        = render partial: 'promotion_share_adventures', locals: {adventures: @adventures, total_entries: @total_entries, user_entries: @user_entries}
 
     - elsif current_user
       .initial_entry_box
@@ -61,7 +61,7 @@
             %br
             The winner will be picked on
             %b January 23rd
-            
+
       .additional_entires
 
     - else
