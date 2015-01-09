@@ -27,7 +27,7 @@ class StripeHooksController < ApplicationController
     elsif receiving_data['type'] == "invoice.payment_succeeded"
       sub_id = receiving_data['data']['object']['lines']['data'][0]['id']
       user = User.find_by_stripe_subscription_id(sub_id)
-      AdvloMailer.send_monthly_subscription_email(user.user_id).deliver
+      AdvloMailer.send_monthly_subscription_email(user.id).deliver
 
       respond_to do |format|
         format.json {render json: {status: 200}}
