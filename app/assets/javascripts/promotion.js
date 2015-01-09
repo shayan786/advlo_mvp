@@ -83,7 +83,7 @@ function slow_scroll_on_load() {
 	$(document).ready(function(){
 		$('html,body').animate({
 			scrollTop: $('#promotion-wrapper .additional_entries').offset().top-40
-			}, 1000);
+			}, 400);
 	})
 }
 
