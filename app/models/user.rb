@@ -147,7 +147,7 @@ class User < ActiveRecord::Base
     user_geocode_info["lat"] = geocode_obj[0].data['latitude']
     user_geocode_info["long"] = geocode_obj[0].data['longitude']
 
-    return geocode_obj
+    return user_geocode_info
   end
 
   def is_guide?(user_id)
