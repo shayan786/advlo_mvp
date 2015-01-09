@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     if current_user
       user_geocode_info = current_user.get_user_geocode_info
 
-      nearby_adventures = Adventure.near([user_geocode_info[:lat],user_geocode_info[:long]],250).where("price > ?",49.to_i).approved.order('RANDOM()')
+      nearby_adventures = Adventure.near([user_geocode_info['lat'],user_geocode_info['long']],250).where("price > ?",49.to_i).approved.order('RANDOM()')
 
       if nearby_adventures.length > 5
         @adventures = nearby_adventures
