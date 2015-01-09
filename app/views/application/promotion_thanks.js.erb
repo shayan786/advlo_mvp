@@ -1,6 +1,8 @@
 $('#promotion-wrapper .initial_entry_box').fadeOut();
 $('#promotion-wrapper .success_initial_entry').delay(200).fadeIn();
 
+$('.divider').insertAfter('#promotion-wrapper .success_initial_entry');
+
 $('html,body').animate({
 	scrollTop: $('#promotion-wrapper .success_initial_entry').offset().top-40
 	}, 1000);
