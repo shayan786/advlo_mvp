@@ -22,26 +22,25 @@ class ApplicationController < ActionController::Base
     default_adventures << Adventure.find_by_slug('speedflying-basic-pilot')
 
     # ENABLE ON PRODUCTION
-    # if current_user
-    #   user_geocode_info = current_user.get_user_geocode_info
+    if current_user
+      user_geocode_info = current_user.get_user_geocode_info
 
-    #   nearby_adventures = Adventure.near([user_geocode_info[:lat],user_geocode_info[:long]],250).where("price > '49'").approved.order('RANDOM()')
+      nearby_adventures = Adventure.near([user_geocode_info[:lat],user_geocode_info[:long]],250).where("price > '49'").approved.order('RANDOM()')
 
-    #   if nearby_adventures.count > 5
-    #     @adventures = nearby_adventures
-    #   else
-    #     @adventures = default_adventures
-    #   end
-    # else
-    #   @adventures = default_adventures
-    # end
+      if nearby_adventures.count > 5
+        @adventures = nearby_adventures
+      else
+        @adventures = default_adventures
+      end
+    else
+      @adventures = default_adventures
+    end
 
     @adventures = default_adventures
 
     # Number of user entries
-    if current_user
-      current_user.sent_promotion ? @user_entries+=1 : @user_entries = 0
-
+    if current_user && current_user.sent_promotion
+      @user_entries = 1
       # get referral sign ups
       user_referral_sign_ups = User.where(referrer_id: current_user.id).count
 

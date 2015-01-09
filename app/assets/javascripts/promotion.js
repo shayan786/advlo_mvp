@@ -33,7 +33,7 @@ function initial_share_fb_init(current_user_id){
           })
         } else {
           swal({     
-            title: "Share it later?",  
+            title: "Enter giveaway later?",
             imageUrl: "http://i.imgur.com/a6L0hYB.png"
           })
         }
@@ -66,6 +66,7 @@ function adv_share_social() {
     );
   })
 
+  //TWITTER
   $('#promotion-wrapper .share_adventures .social_share_box .social_share_btns .twitter_promo').click(function(){
     var url = $(this).data('url');
     height = $(window).height();

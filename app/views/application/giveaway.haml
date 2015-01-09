@@ -27,22 +27,35 @@
             %b January 23rd
 
     - elsif current_user
-      .row
+      .initial_entry_box
+        .row
+          .col-md-8.col-md-offset-2.text-center
+            .basic_text
+              Enter to win 
+              %span
+                %b
+                  $1000
+              towards any Adventure Local trip. 
+              %br
+              The winner will be picked on
+              %b January 23rd
+
+        .row.text-center
+          %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
+            %i.fa.fa-facebook-square
+            Click to Share
+
+      .row.success_initial_entry{style: "display: none;"} 
         .col-md-8.col-md-offset-2.text-center
           .basic_text
-            Enter to win 
+            You are now Entered to win 
             %span
               %b
                 $1000
-            towards any Adventure Local trip. 
+            credit with Adventure Local! 
             %br
             The winner will be picked on
             %b January 23rd
-
-      .row.text-center
-        %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
-          %i.fa.fa-facebook-square
-          Click to Share
 
     - else
       .row
