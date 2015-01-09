@@ -64,6 +64,52 @@ class ApplicationController < ActionController::Base
     @user.sent_promotion = true
     @user.save
 
+    # DEFAULT ADVENTURES
+    default_adventures = [] 
+    default_adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    default_adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    default_adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    default_adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    default_adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    default_adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+
+    # ENABLE ON PRODUCTION
+    if current_user
+      user_geocode_info = current_user.get_user_geocode_info
+
+      nearby_adventures = Adventure.near([user_geocode_info['lat'],user_geocode_info['long']],250).where("price > ?",49.to_i).approved.order('RANDOM()')
+
+      if nearby_adventures.length > 5
+        @adventures = nearby_adventures
+      else
+        @adventures = default_adventures
+      end
+    else
+      @adventures = default_adventures
+    end
+
+    @adventures = default_adventures
+
+    # Number of user entries
+    if current_user && current_user.sent_promotion
+      @user_entries = 1
+      # get referral sign ups
+      user_referral_sign_ups = User.where(referrer_id: current_user.id).count
+
+      @user_entries+=user_referral_sign_ups
+    else
+      @user_entries = 0
+    end
+
+    # Total entries
+    @total_entries = User.where(sent_promotion: true).count
+
+    all_users = User.all
+
+    all_users.each do |user|
+      @total_entries+=User.where(referrer_id: user.id).count
+    end
+
     respond_to do |format|
       format.js {render "promotion_thanks.js", layout: false}
     end

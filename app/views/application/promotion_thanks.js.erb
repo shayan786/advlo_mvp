@@ -7,4 +7,4 @@ $('html,body').animate({
 	scrollTop: $('#promotion-wrapper .success_initial_entry').offset().top-40
 	}, 1000);
 
-$('#promotion-wrapper .additional_entries').html("<%= escape_javascript(render(partial: 'promotion_share_adventures')) %>")
+$('#promotion-wrapper .additional_entries').html("<%= escape_javascript(render(partial: 'promotion_share_adventures', locals:{adventures: @adventures, total_entries: @total_entries, user_entries = @user_entries})) %>")

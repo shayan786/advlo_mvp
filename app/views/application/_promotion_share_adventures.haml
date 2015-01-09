@@ -1,4 +1,3 @@
-
 .row.text-center
   .basic_text
     Well, that was easy...here a few more ways to gain entries...
@@ -54,12 +53,12 @@
             TOTAL ENTRIES
       .row
         .col-md-6{style: "padding-right: 0px; border-right: 1px solid #C35B26"}
-          .tracking_count= @user_entries
+          .tracking_count= user_entries
         .col-md-6{style: "padding-left: 0px; border-left: 1px solid #C35B26"}
-          .tracking_count= @total_entries
+          .tracking_count= total_entries
 
 .share_adventures.text-center
-  - @adventures.each_with_index do |adv,i|
+  - adventures.each_with_index do |adv,i|
     - if adv.attachment.height(:large) >= 300
       - adv_img = adv.attachment.url(:large)
     - else
