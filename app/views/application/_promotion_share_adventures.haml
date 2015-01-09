@@ -66,7 +66,7 @@
     
     .social_share_box.text-center
       %a{href: adventure_path(adv.slug), target: "_blank"}
-        .adventure_box{style: "background: url('http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/127/large/2.jpg?1410075768') no-repeat center center;"}
+        .adventure_box{style: "background: url('#{adv_img}') no-repeat center center;"}
           .adventure_info_box
             .title.pull-left= adv.title.length > 38 ? "#{adv.title[0..36]}..." : adv.title
             .location.pull-left= get_display_location(adv)
