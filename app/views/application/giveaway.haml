@@ -102,9 +102,12 @@
 :javascript
   promotion_init();
 
-  $(document).ready(function(){
-    modal_new_user_from_promotion(#{@referrer_id});
-  })
+
+- if params[:promo_code]
+  :javascript
+    $(document).ready(function(){
+      modal_new_user_from_promotion(#{@referrer_id});
+    })
 
 - if current_user && current_user.sent_promotion == true
   :javascript
