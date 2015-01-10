@@ -59,12 +59,12 @@ class User < ActiveRecord::Base
     self.referral_count += 1
     self.save
 
-    if self.referral_count == 5
-      puts "************************ WE HaV3 A WiNnEr ************************"
-      self.credit = 25.0
-      self.save
-      AdvloMailer.send_referral_congrats(self).deliver
-    end
+    # if self.referral_count == 5
+    #   puts "************************ WE HaV3 A WiNnEr ************************"
+    #   self.credit = 25.0
+    #   self.save
+    #   AdvloMailer.send_referral_congrats(self).deliver
+    # end
   end
 
 

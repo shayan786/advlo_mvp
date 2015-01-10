@@ -194,11 +194,9 @@ class ApplicationController < ActionController::Base
 
     # Number of user entries
     if current_user && current_user.sent_promotion
-      @user_entries = 1
-      # get referral sign ups
-      user_referral_sign_ups = User.where(referrer_id: current_user.id).count
 
-      @user_entries+=user_referral_sign_ups
+      @user_entries = current_user.referral_count + 1
+
     else
       @user_entries = 0
     end
