@@ -42,6 +42,22 @@
   	font-size: 1.4em;
   }
 
+  .promo-img-wrapper {
+    width: 100%; 
+    text-align: center; 
+    cursor: pointer;
+
+    img {
+      width: 75%;
+      margin-top: 20px; 
+      margin-bottom: 30px;
+    }
+  }
+
+  .promo-img-wrapper:hover {
+    opacity: 0.8;
+  }
+
   .new-account {
   	font-size: 1.6em;
   	font-family: bebas_neue;
@@ -247,10 +263,15 @@
   	}
   }
 
+  .terms-toggle {
+    cursor: pointer;
+  }
+  
   .promotion_terms {
   	margin-top: 10px;
 
   	.terms_text {
+      display: none;
   		margin-top: 5px;
   		font-size: 1em;
   	}

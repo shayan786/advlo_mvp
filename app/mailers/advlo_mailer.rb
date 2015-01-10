@@ -419,7 +419,6 @@ class AdvloMailer < ActionMailer::Base
   end
 
   def external_contest_email(email)
-
     mail(to: email, subject: "Adventure Local Giveaway")
   end
 end

@@ -2,6 +2,13 @@ function sign_up_modal_toggle() {
 	$('#promotion-wrapper .new-account').click(function(){
     $('#member-modal').modal('show');
   })
+
+}
+
+function terms_init() {
+  $('.terms-toggle').click(function(){
+    $('.terms_text').slideToggle();
+  })
 }
 
 function initial_share_fb_init(current_user_id){
@@ -97,4 +104,5 @@ function masonry_init(){
 function promotion_init() {
 	sign_up_modal_toggle();
 	masonry_init();
+  terms_init();
 }

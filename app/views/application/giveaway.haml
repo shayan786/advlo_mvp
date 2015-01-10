@@ -12,7 +12,6 @@
           %span.amount $1000
           at Adventure Local
 
-
       - if current_user && current_user.sent_promotion == true
         .row 
           .col-md-8.col-md-offset-2.text-center
@@ -46,9 +45,9 @@
                 %b January 26th
 
           .row.text-center
-            %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
+            %a.col-md-4.col-md-offset-4.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
               %i.fa.fa-facebook-square
-              Click to Share
+              Share to Enter
 
         .row.success_initial_entry{style: "display: none;"} 
           .col-md-8.col-md-offset-2.text-center
@@ -70,19 +69,24 @@
             .basic_text
               %b
                 Please create an account to enter the giveaway
+
         .row.text-center 
           .col-md-4.col-md-offset-4.btn.btn-primary.giveaway-toggle.new-account
             ENTER GIVEAWAY
+
 
 
       .divider
 
       .promotion_terms
         .row.text-center
-          .basic_text
+          .basic_text.terms-toggle
             %b
               %u
                 TERMS
+              %i.fa.fa-caret-right
+          
+
         .row
           .col-md-8.col-md-offset-2
             .terms_text
@@ -93,7 +97,7 @@
               Odds of winning will depend upon the number of eligible entries received. The use of multiple email addresses, Twitter handles, or Facebook Profiles is not permitted and will result in disqualification.
               %br
               Questions or conerns, contact us at:
-              = mail_to 'support@advlo.com:'
+              = mail_to 'support@advlo.com'
 
 
 
@@ -108,5 +112,4 @@
     initial_share_fb_init(#{current_user.id});
     adv_share_social();
   
-
 

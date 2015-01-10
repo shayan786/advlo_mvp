@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
     @user.sent_promotion = true
     @user.save
 
+    AdvloMailer.delay(run_at: 1.hour.from_now).after_contest_entry(@user)
+
     giveaway_get_adventures_and_entries
 
     respond_to do |format|
