@@ -27,7 +27,7 @@ function initial_share_fb_init(current_user_id){
     FB.ui(
       {
         method: 'feed',
-        name: "Advlo $1000 Giveaway",
+        name: "$1000 Adventure Trip Giveaway",
         link: "http://advlo.com/giveaway",
         description: "I just entered to win $1000 on an epic adventure with a local",
         caption: "Adventure Local - www.advlo.com",
