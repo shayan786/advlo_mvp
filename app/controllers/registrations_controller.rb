@@ -204,10 +204,10 @@ class RegistrationsController < Devise::RegistrationsController
       session[:referrer_id] = nil
     end
 
-    '/giveaway'    
+    #'/giveaway'    
     
     # commented out for giveaway
-    # session[:previous_url]
+    session[:previous_url]
   end
   # Customize Signing Up Devise Params
   #def sign_up_params
