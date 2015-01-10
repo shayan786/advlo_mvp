@@ -174,7 +174,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     # For affiliate redirect where user does not sign up through the referral_sign_up page
     # but instead signs up through regular sign_up page
-    if params[:user][:referrer_id] != nil
+    if params[:user][:referrer_id] && params[:user][:referrer_id] != ''
       @user.referrer_id = params[:user][:referrer_id]
       @user.save
 
@@ -188,7 +188,16 @@ class RegistrationsController < Devise::RegistrationsController
         @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
         @affiliate_tracker.save
       end
+    elsif params[:promo][:referrer_id] && params[:promo][:referrer_id] != ''
+
+      referrer = User.find(params[:promo][:referrer_id])
+      referrer.referral_count += 1
+      referrer.save
+
+      @user.referrer_id = referrer.id
+      @user.save
     end
+      
 
     if session[:referrer_id]
       User.find(session[:referrer_id]).update_referral_count

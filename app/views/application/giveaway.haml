@@ -99,10 +99,12 @@
               Questions or conerns, contact us at:
               = mail_to 'support@advlo.com'
 
-
-
 :javascript
   promotion_init();
+
+  $(document).ready(function(){
+    modal_new_user_from_promotion(#{@referrer_id});
+  })
 
 - if current_user && current_user.sent_promotion == true
   :javascript

@@ -162,6 +162,11 @@ function modal_new_user_set_referrer_id(referrer_id) {
   $('#member-modal .fb_btn').attr('href', "/users/auth/facebook?referrer_id="+referrer_id+"&affiliate_referral=true");
 }
 
+function modal_new_user_from_promotion(referrer_id) {
+  $('#member-modal #signup_modal #promo_id').val(referrer_id);
+  $('#member-modal .fb_btn').attr('href', "/users/auth/facebook?referrer_id="+referrer_id+"&promo_referral=true");
+}
+
 function update_affiliate_click_count(referrer_id) {
 	$.ajax({
 	    url: "/users/update_affiliate_referral_click_count",

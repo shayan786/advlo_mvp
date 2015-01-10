@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   before_filter :get_poll
 
   def giveaway
+    if params[:promo_code]
+      @referrer_id = User.find_by_referral_code(params[:promo_code]).id
+    end
     giveaway_get_adventures_and_entries
   end
 

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'travel-fund'                   => 'application#giveaway' 
   get '/travel-fund/:referral_code'   => 'application#giveaway'
 
+  get 'giveaway/:promo_code'          => 'application#giveaway'
   get 'giveaway'                      => 'application#giveaway'
   post 'giveaway/:user_id'            => 'application#update_user_giveaway'
 

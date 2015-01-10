@@ -41,8 +41,19 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
 
       session[:previous_url]
+    elsif request.env['omniauth.params']['promo_referral'] == "true" && request.env['omniauth.params']['referrer_id'] && request.env['omniauth.params']['referrer_id'] != ''
+     
+      referrer = User.find(request.env['omniauth.params']['referrer_id'])
+      referrer.referral_count += 1
+      referrer.save
+
+      puts "REFERRER ******** #{referrer}"
+
+      @user.referrer_id = referrer.id
+      @user.save
+
+      '/giveaway'
     else
-      
       '/giveaway'
       #commented for giveaway
       #session[:previous_url]
