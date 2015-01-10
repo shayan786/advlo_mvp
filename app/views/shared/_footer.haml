@@ -79,13 +79,13 @@
                     %br
                     We will get back to you as soon as we can!
     
-#contest-link 
-  %a{href: '/giveaway'}
-    - if current_user && current_user.sent_promotion
-      More entries: 
-      %span $1000
-      Giveaway
-    - else
-      Enter the 
-      %span $1000
-      Giveaway
+/ #contest-link 
+/   %a{href: '/giveaway'}
+/     - if current_user && current_user.sent_promotion
+/       More entries: 
+/       %span $1000
+/       Giveaway
+/     - else
+/       Enter the 
+/       %span $1000
+/       Giveaway
