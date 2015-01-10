@@ -75,7 +75,7 @@
 
       .social_share_btns
         - fb_share_url = "#{root_url}giveaway/#{current_user.referral_code}"
-        %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "Advlo $1000 Giveaway", "data-desc" => "Adventure local is giving away $1000 towards any trip. Click this post to help me earn $1000 so I can go on adventures like this #{root_url}adventures/#{adv.slug}", "data-image" => adv.attachment.url(:medium), style: "margin-right: 5px;"}
+        %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "$1000 Adventure Trip Giveaway", "data-desc" => "Adventure local is giving away $1000 towards any trip. Click this post to help me earn $1000 so I can go on adventures like this #{root_url}adventures/#{adv.slug}", "data-image" => adv.attachment.url(:medium), style: "margin-right: 5px;"}
           %i.fa.fa-facebook
         .btn.btn-default.social_btn.twitter_promo{style: "margin-right: 5px;", "data-url" => "www.advlo.com/giveaway/#{current_user.referral_code}"}
           %i.fa.fa-twitter

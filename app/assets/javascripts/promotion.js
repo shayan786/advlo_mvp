@@ -31,7 +31,7 @@ function initial_share_fb_init(current_user_id){
         link: "http://advlo.com/giveaway",
         description: "I just entered to win $1000 on an epic adventure with a local",
         caption: "Adventure Local - www.advlo.com",
-        picture: "http://i.imgur.com/a6L0hYB.png"
+        picture: "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/461/hero/advlo_giveaway_surf.jpg?1420861194"
       },
       function(response) {
         if (response && response.post_id) {
