@@ -43,7 +43,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session[:previous_url]
     else
       
-      session[:previous_url]
+      '/giveaway'
+      #commented for giveaway
+      #session[:previous_url]
     end
   end
 end

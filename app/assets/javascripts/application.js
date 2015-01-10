@@ -296,6 +296,10 @@ function footerInit(){
     $('.form-wrapper').fadeIn(2000)
     $('#network h4').text($(this).data('text'))
 
+    console.log("$(this).data('link')=> " +$(this).data('link'))
+
+    $('.poll-link').attr('href', $(this).data('link'))
+
     $('.'+$(this).data('answer')).css('border','3px solid #fff')
 
     $('#newsletter_category').val($(this).data('poll'))
@@ -317,6 +321,8 @@ function footerInit(){
 
 
     var btnColor = $('.'+$(this).data('answer')).css('background-color')
+
+    $('#email_list_toggle').css('background-color', btnColor)
     $('#email_list_button').css('background-color', btnColor)
   }) 
 }

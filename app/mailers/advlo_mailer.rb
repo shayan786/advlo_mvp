@@ -420,10 +420,7 @@ class AdvloMailer < ActionMailer::Base
 
   def external_contest_email(email)
 
-    mail(to: email, subject: "Adventure Local Giveaway") do |format|
-      format.html { render layout: 'simple' }
-      format.text
-    end
+    mail(to: email, subject: "Adventure Local Giveaway")
   end
 end
 

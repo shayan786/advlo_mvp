@@ -81,6 +81,11 @@
     
 #contest-link 
   %a{href: '/giveaway'}
-    Enter the 
-    %span $1000
-    Giveaway
+    - if current_user && current_user.sent_promotion
+      More entries: 
+      %span $1000
+      Giveaway
+    - else
+      Enter the 
+      %span $1000
+      Giveaway

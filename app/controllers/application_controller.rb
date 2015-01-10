@@ -22,11 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def get_poll
-    @poll = Poll.find_by_name('What kind of adventurer are you?')
+    @poll = Poll.last
   end
 
   def calculate_poll
-    @poll = Poll.find_by_name('What kind of adventurer are you?')
+    @poll = Poll.last
     case params[:answer]
       when 'answer_1' then @poll.answer_1 += 1
       when 'answer_2' then @poll.answer_2 += 1
@@ -109,8 +109,10 @@ class ApplicationController < ActionController::Base
       return
     end
 
+    '/giveaway'    
     
-    session[:previous_url]
+    # commented out for giveaway
+    # session[:previous_url]
   end
 
   def after_sign_out_path_for(resource)

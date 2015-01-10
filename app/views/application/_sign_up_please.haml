@@ -11,13 +11,15 @@
           = image_tag 'logos/advlo_words_only.png'
 
         .question-wrapper
-          %h4 What kind of adventurer are you?
-          %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> "Get updates about epic adventure packages only on Advlo..", 'data-poll' => 'thrillseeker', 'data-answer' => 'answer-1'}
-            %p Thrillseeker
-          %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "Get updates about unique, family friendly adventures only on Advlo..", 'data-poll' => 'vacationist', 'data-answer' => 'answer-3'}
-            %p Vacationist
-          %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'Get updates about cultural expedition adventures only on Advlo..', 'data-poll' => 'culturalist', 'data-answer' => 'answer-2'}
-            %p Culturalist
+          %h4= @poll.name
+          %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> "14 Days Kitesurfing in South Africa ( $799 )", "data-link" => "http://www.advlo.com/adventures/kitesurfing-in-south-africa", 'data-poll' => 'Kite Surfer', 'data-answer' => 'answer-1'}
+            %p Kitesurfing
+
+          %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "5 days of speedflying lessons in Oregon ( $950 )", 'data-link' => "http://www.advlo.com/adventures/speedflying-basic-pilot", 'data-poll' => 'Parachutes', 'data-answer' => 'answer-3'}
+            %p Parachuting
+
+          %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> '5 day 14 scubadives on liveabord in Burma ( $900 )', 'data-link' => 'http://www.advlo.com/adventures/5-day---14-dives-in-burma','data-poll' => 'Scuba Diver', 'data-answer' => 'answer-2'}
+            %p scubadiving
 
         .form-wrapper
           - total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f
@@ -31,29 +33,34 @@
             .answer-3.btn.btn-info.answer
               .poll-count= @poll.answer_3
 
-          #network
-            %h4
-          #secret-gift
-            Join right now and get 
-            %span 
-              $10
-            towards your first adventure
+            %a.poll-link{href:''}
+              #network
+                %h4
 
-          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'popup_join'}
+          #secret-gift
+            Join the 
+            %span 
+              $1000
+            giveaway:
+
+          
+          #email_list_toggle.btn{style: "width: 150px; color: #fff;"}
+            Via Account
+
+          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'popup_join', style: 'display: none;'}
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
 
             = tag(:input, :type => "hidden", :name => 'user[category]', id: 'newsletter_category')
 
             %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", style: "border-radius: 4px 4px 0 0;"}
-            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]", style: "width: 80% !important;float: left !important;border-radius: 4px 0 0 4px;"}
-            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, id: "user_password_confirmation", name: "user[password_confirmation]")
-
+            %input.form-control{placeholder: "password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]"}
+            %input.form-control{placeholder: "password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password_confirmation]", style: "width: 80% !important;float: left !important;border-radius: 4px 0 0 4px;"}
 
             %input.btn{name: "sign_up", type: "submit", value: "JOIN", id: 'email_list_button'}
           %br
-          %a.btn.btn-primary.homepage_fb_btn#fb-top-signup{href: "/users/auth/facebook", style: 'margin-top: 15px;'}
+          %a.btn.btn-primary.homepage_fb_btn#fb-top-signup{href: "/users/auth/facebook", style: 'margin-top: 15px; width: 150px;'}
             %i.fa.fa-facebook-square
-            or connect
+            Via Facebook
 
 
         .thanks-div
@@ -107,8 +114,7 @@
   })
 
 
-  $('#email_list_button').click(function(e){
-    e.preventDefault();
-    $('#user_password_confirmation').val($('#user_password').val())
-    $('#popup_join').submit();
+  $('#email_list_toggle').click(function(){
+    $(this).hide()
+    $('#popup_join').fadeIn();
   })

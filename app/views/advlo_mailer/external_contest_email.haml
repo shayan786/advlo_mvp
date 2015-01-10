@@ -1,38 +1,40 @@
-Hello from Adventure Local. 
-%p
-  I am writing to invite you to participate in our $1000 giveaway. 
-  %br
-  I have emailed you before - but I figured serious adventuring money would interest you more.
-  %br
-  To enter simply share a facebook post. The drawing will be January 31st, so I encourage you to check it out before. Good Luck!
-%p
-  Here are just a couple things you can do with that kind of money on Adventure Local.
-  %br
-  %ul
-    %li
-      = link_to "2 days Freediving ( for 3 )", "http://www.advlo.com/adventures/freediving-level-1-course", style: 'text-decoration: none;'
-    %br
-    %li
-      = link_to "5 day Burma Liveaboard", "http://www.advlo.com/adventures/5-day---14-dives-in-burma", style: 'text-decoration: none;'
-    %br
-    %li
-      = link_to "5 day Speedflying lessons", "http://www.advlo.com/adventures/speed-flying-intro-course", style: 'text-decoration: none;'
-    %br
-    %li
-      = link_to "8 day Ecuador Multisport adventure", "http://www.advlo.com/adventures/andes-&-amazon-multisport-%288-days%29", style: 'text-decoration: none;'
-    %br
-    %li
-      = link_to "2 weeks Kitesurfing in South Africa", "http://www.advlo.com/adventures/kitesurfing-in-south-africa", style: 'text-decoration: none;'
+<!DOCTYPE html>
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .indented.text-center
+      Hello from Adventure Local!
+      %p
+        We wanted to let you know about a chance at $1000 bucks on our site!
+        %br
       
+      %a{href:"#{root_url}giveway", style: "text-decoration: none;"}
+        = image_tag 'advlo-promo/advlo_giveaway_more_entries.jpg',style: "position: relative;float: left;width: 100%;"
+
+      .text-center
+        %hr
+        %h4=link_to "$1000 on Advlo gets you...", 'http://advlo.com/blog/100-dollar-giveaway'
+        %hr
+
+        %br
+          %a{href: "http://www.advlo.com/adventures/freediving-level-1-course", style: 'text-decoration: none; color: #000;'}
+          .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/017/medium/Screen_Shot_2015-01-06_at_3.27.31_PM.png?1420594938') center center no-repeat; height: 150px;"}
+            .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} Freediving in Costa Rica
+        %a{href: "http://www.advlo.com/adventures/5-day---14-dives-in-burma", style: 'text-decoration: none; color: #000;'}
+          .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/022/medium/burma-whale-credit.jpg?1420612282') center center no-repeat; height: 150px;"}
+            .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} Scuba diving in Burma
+        %a{href: "http://www.advlo.com/adventures/andes-&-amazon-multisport-%288-days%29", style: 'text-decoration: none; color: #000;'}
+          .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/023/medium/multi.jpeg?1420612499') center center no-repeat; height: 150px;"}
+            .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} Multisport adventure in Ecuador
+        
+        %a{href: "http://www.advlo.com/adventures/kitesurfing-in-south-africa", style: 'text-decoration: none; color: #000;'}
+          .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/020/medium/kites.jpg?1420596713') center center no-repeat; height: 150px;"}
+            .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} Kitesurfing in South Africa
 
 
-%p
-  %a{href:"#{root_url}giveway", style: "text-decoration: none; color: #fff"}
-    .text-center.entries-btn{style: "width: 200px; float: left; margin: 0 auto; padding: 10px 19px;font-size: 17px;line-height: 1.471;border-radius: 6px;color: #fff;background-color: #ec7063;border-color: #ec7063;"} Enter Giveaway
-
-%br
-%br
-%br
-%br
-
-
+      %p.text-center{style: 'text-align: center;margin-top: 15px;position: relative;float: left;width: 100%;'}
+        Entering is as easy as clicking a single button :)
+      #other-ways{style:"margin-top: 10px; position: relative;float: left;width: 100%;"}
+        %a{href:"#{root_url}giveway", style: "text-decoration: none;"}
+          .text-center.entries-btn{style: "width: 50%; margin: 0 auto; padding: 10px 19px;font-size: 17px;line-height: 1.471;border-radius: 6px;color: #fff;background-color: #ec7063;border-color: #ec7063;"} Enter Giveaway
