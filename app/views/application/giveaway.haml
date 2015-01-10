@@ -13,87 +13,87 @@
           at Adventure Local
 
 
-    - if current_user && current_user.sent_promotion == true
-      .row 
-        .col-md-8.col-md-offset-2.text-center
-          .basic_text
-            You have already been entered to win 
-            %span
-              %b
-                $1000
-            credit with Adventure Local! 
-            %br
-            The winner will be picked on
-            %b January 23rd
-
-      .divider
-
-      .additional_entries
-        = render partial: 'promotion_share_adventures', locals: {adventures: @adventures, total_entries: @total_entries, user_entries: @user_entries}
-
-    - elsif current_user
-      .initial_entry_box
-        .row
+      - if current_user && current_user.sent_promotion == true
+        .row 
           .col-md-8.col-md-offset-2.text-center
             .basic_text
-              Enter to win 
+              You have already been entered to win 
               %span
                 %b
                   $1000
-              towards any Adventure Local trip. 
+              credit with Adventure Local! 
               %br
               The winner will be picked on
               %b January 23rd
 
-        .row.text-center
-          %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
-            %i.fa.fa-facebook-square
-            Click to Share
+        .divider
 
-      .row.success_initial_entry{style: "display: none;"} 
-        .col-md-8.col-md-offset-2.text-center
-          .basic_text
-            You are now Entered to win 
-            %span
+        .additional_entries
+          = render partial: 'promotion_share_adventures', locals: {adventures: @adventures, total_entries: @total_entries, user_entries: @user_entries}
+
+      - elsif current_user
+        .initial_entry_box
+          .row
+            .col-md-8.col-md-offset-2.text-center
+              .basic_text
+                Enter to win 
+                %span
+                  %b
+                    $1000
+                towards any Adventure Local trip. 
+                %br
+                The winner will be picked on
+                %b January 23rd
+
+          .row.text-center
+            %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
+              %i.fa.fa-facebook-square
+              Click to Share
+
+        .row.success_initial_entry{style: "display: none;"} 
+          .col-md-8.col-md-offset-2.text-center
+            .basic_text
+              You are now Entered to win 
+              %span
+                %b
+                  $1000
+              credit with Adventure Local! 
+              %br
+              The winner will be picked on
+              %b January 23rd
+
+        .additional_entries
+
+      - else
+        .row
+          .col-md-8.col-md-offset-2.text-center
+            .basic_text
               %b
-                $1000
-            credit with Adventure Local! 
-            %br
-            The winner will be picked on
-            %b January 23rd
+                Please create an account to enter the giveaway
+        .row.text-center 
+          .col-md-4.col-md-offset-4.btn.btn-primary.giveaway-toggle.new-account
+            ENTER GIVEAWAY
 
-      .additional_entries
 
-    - else
-      .row
-        .col-md-8.col-md-offset-2.text-center
+      .divider
+
+      .promotion_terms
+        .row.text-center
           .basic_text
             %b
-              Please create an account to enter the giveaway
-      .row.text-center 
-        .btn.btn-primary.giveaway-toggle.new-account
-          JOIN ADVLO
+              %u
+                TERMS
+        .row
+          .col-md-8.col-md-offset-2
+            .terms_text
+              Must be 18 years or old to enter.
 
-
-    .divider
-
-    .promotion_terms
-      .row.text-center
-        .basic_text
-          %b
-            %u
-              TERMS
-      .row
-        .col-md-8.col-md-offset-2
-          .terms_text
-            Must be 18 years or old to enter.
-
-            One winner will be selected in a random drawing from among all eligible entries. Winner will be notified by email. The winner will then have 48 hours to respond or another winner will be selected.
-           
-            Odds of winning will depend upon the number of eligible entries received. The use of multiple email addresses, Twitter handles, or Facebook Profiles is not permitted and will result in disqualification.
-            
-            Questions or conerns, contact us at:
-            = mail_to 'support@advlo.com:'
+              One winner will be selected in a random drawing from among all eligible entries. Winner will be notified by email. The winner will then have 48 hours to respond or another winner will be selected.
+             
+              Odds of winning will depend upon the number of eligible entries received. The use of multiple email addresses, Twitter handles, or Facebook Profiles is not permitted and will result in disqualification.
+              
+              Questions or conerns, contact us at:
+              = mail_to 'support@advlo.com:'
 
 
 

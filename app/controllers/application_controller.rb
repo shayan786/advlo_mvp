@@ -207,7 +207,7 @@ class ApplicationController < ActionController::Base
     all_users = User.all
 
     all_users.each do |user|
-      @total_entries+=User.where(referrer_id: user.id).count
+      @total_entries+=user.referral_count
     end
   end
 end
