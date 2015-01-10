@@ -172,11 +172,11 @@ class ApplicationController < ActionController::Base
     # DEFAULT ADVENTURES
     default_adventures = [] 
     default_adventures << Adventure.find_by_slug('speedflying-basic-pilot')
-    default_adventures << Adventure.find_by_slug('the-pearl-islands-adventure')
-    default_adventures << Adventure.find_by_slug('essential-mountain-bike-skills')
-    default_adventures << Adventure.find_by_slug('surfing-adventure-day')
     default_adventures << Adventure.find_by_slug('spearfishing-in-hawaii')
-    default_adventures << Adventure.find_by_slug('sailing-snorkeling-&-diving-adventures')
+    default_adventures << Adventure.find_by_slug('speed-flying-intro-course')
+    default_adventures << Adventure.find_by_slug('montanita-custom-5-day-surf-lesson')
+    default_adventures << Adventure.find_by_slug('andes-&-amazon-multisport-8-days')
+    default_adventures << Adventure.find_by_slug('kitesurfing-in-south-africa')
 
     # ENABLE ON PRODUCTION
     if current_user

@@ -1,17 +1,14 @@
 .row.text-center
   .basic_text
-    Well, that was easy...here a few more ways to gain entries...
+    Well, that was easy... Here a few more ways to gain entries...
     %br
-    Checkout some of these amazing adventures you could go on for all under 
-    %b
-      $1000
 .row{style: "margin-top: 15px;"}
   .col-md-1.col-md-offset-3.text-center
     .btn.btn-primary.number_btn.disabled
       1
   .col-md-5
     .number_text
-      Share any of these adventures in your social network
+      Share any of these adventures in your social networks
 
 .row
   .col-md-6.col-md-offset-3
@@ -23,7 +20,7 @@
       2
   .col-md-5
     .number_text
-      Every friend that signs-up through your unique share link, you'll get another entry
+      Every sign-up through your link - you'll get another entry
 
 .row
   .col-md-6.col-md-offset-3
@@ -35,7 +32,7 @@
       3
   .col-md-5
     .number_text
-      Track the number of entries below
+      Track your chances of winning
 
 .row
   .col-md-6.col-md-offset-3
@@ -72,6 +69,14 @@
             .location.pull-left= get_display_location(adv)
             .host_name.pull-left= "With #{adv.host_name}"
             .price.pull-right= "$ #{adv.price}"
+
+          - num_ppl = 1000.0 / adv.price.to_f
+          - if num_ppl.round > 1
+            .btn.btn-info.disabled.days_duration_btn.friend_count
+              = num_ppl.round
+              %br
+              friends
+
 
       .social_share_btns
         - fb_share_url = "#{root_url}giveaway/#{current_user.referral_code}"
