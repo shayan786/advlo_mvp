@@ -5,7 +5,9 @@ $('.divider').insertAfter('#promotion-wrapper .success_initial_entry');
 
 $('#promotion-wrapper .additional_entries').html("<%= escape_javascript(render(partial: 'promotion_share_adventures', locals:{adventures: @adventures, total_entries: @total_entries, user_entries: @user_entries})) %>")
 
-$('html,body').delay(300).animate({scrollTop: $('#promotion-wrapper .success_initial_entry').offset().top-60})
+setTimeout({
+	$('html,body').animate({scrollTop: $('#promotion-wrapper .success_initial_entry').offset().top-60})
+}, 2000)
 
 masonry_init();
 adv_share_social();
