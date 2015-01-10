@@ -112,6 +112,7 @@
 - if current_user && current_user.sent_promotion == true
   :javascript
     slow_scroll_on_load();
+    adv_share_social();
 - elsif current_user
   :javascript
     initial_share_fb_init(#{current_user.id});
