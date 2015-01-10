@@ -1,83 +1,112 @@
+- set_meta_tags(get_meta_tags("$1000 Giveaway", "Win $1000 at Adventure Local", "Giveaway, Raffle, Credit, Free, Entry"))
+- set_meta_tags :og => get_og_tags("$1000 Giveaway", "#{root_url}giveaway", "Win $1000 at Adventure Local", "http://i.imgur.com/a6L0hYB.png")
+- set_meta_tags :fb => {:app_id => '210802829129036'}
+- set_meta_tags :twitter => get_twitter_tags("$1000 Giveaway", "Win $1000 at Adventure Local", "http://i.imgur.com/a6L0hYB.png")
+
 .container#promotion-wrapper
   .panel.panel-default
     .panel-body
       .row
-        %h1.col-md-8.col-md-offset-2.text-center
-          Win
-          %span{style: "color: green;"}
-            $ 1000 
+        .promotion_header.text-center
+          Win 
+          %span.amount $1000
           at Adventure Local
 
 
-    - if current_user && current_user.sent_promotion == true
-      .row 
-        .col-md-8.col-md-offset-2.text-center
-          You are now Entered to win $1000 credit with Adventure Local! 
-          %br
-          The winner will be picked on
-          %i January 15th
+      - if current_user && current_user.sent_promotion == true
+        .row 
+          .col-md-8.col-md-offset-2.text-center
+            .basic_text
+              You have already been entered to win 
+              %span
+                %b
+                  $1000
+              credit with Adventure Local! 
+              %br
+              The winner will be picked on
+              %b January 23rd
 
-    - elsif current_user
-      .row
-        .col-md-8.col-md-offset-2.text-center
-          Enter to win $1000 towards any Adventure Local trip. 
-          %br
-          The winner will be picked on
-          %i January 15th
+        .divider
 
-      .row.text-center
-        %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}", style: "margin-right: 5px;"}
-          Click to Share
+        .additional_entries
+          = render partial: 'promotion_share_adventures', locals: {adventures: @adventures, total_entries: @total_entries, user_entries: @user_entries}
 
-    - else
-      .row
-        .col-md-8.col-md-offset-2.text-center
-          Please create an account to enter the giveaway
+      - elsif current_user
+        .initial_entry_box
+          .row
+            .col-md-8.col-md-offset-2.text-center
+              .basic_text
+                Enter to win 
+                %span
+                  %b
+                    $1000
+                towards any Adventure Local trip. 
+                %br
+                The winner will be picked on
+                %b January 23rd
 
-          %a.btn.btn-success.giveaway-toggle.new-account
-            Connect
+          .row.text-center
+            %a.btn.btn-success.social_btn.giveaway-share{href: "giveaway/#{current_user.id}"}
+              %i.fa.fa-facebook-square
+              Click to Share
+
+        .row.success_initial_entry{style: "display: none;"} 
+          .col-md-8.col-md-offset-2.text-center
+            .basic_text
+              You are now Entered to win 
+              %span
+                %b
+                  $1000
+              credit with Adventure Local! 
+              %br
+              The winner will be picked on
+              %b January 23rd
+
+        .additional_entries
+
+      - else
+        .row
+          .col-md-8.col-md-offset-2.text-center
+            .basic_text
+              %b
+                Please create an account to enter the giveaway
+        .row.text-center 
+          .col-md-4.col-md-offset-4.btn.btn-primary.giveaway-toggle.new-account
+            ENTER GIVEAWAY
+
+
+      .divider
+
+      .promotion_terms
+        .row.text-center
+          .basic_text
+            %b
+              %u
+                TERMS
+        .row
+          .col-md-8.col-md-offset-2
+            .terms_text
+              Must be 18 years or old to enter.
+
+              One winner will be selected in a random drawing from among all eligible entries. Winner will be notified by email. The winner will then have 48 hours to respond or another winner will be selected.
+             
+              Odds of winning will depend upon the number of eligible entries received. The use of multiple email addresses, Twitter handles, or Facebook Profiles is not permitted and will result in disqualification.
+              
+              Questions or conerns, contact us at:
+              = mail_to 'support@advlo.com:'
+
+
 
 :javascript
-  $('.new-account').click(function(){
-    $('#member-modal').modal('show');
-  })
+  promotion_init();
 
-  invite_social_init()
-
-  function postToFeed(title, desc, url, image){
-    var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
-  
-    function callback(response){}
-      FB.ui(obj, callback);
-  }
-
-- if current_user
+- if current_user && current_user.sent_promotion == true
   :javascript
+    slow_scroll_on_load();
+- elsif current_user
+  :javascript
+    initial_share_fb_init(#{current_user.id});
+    adv_share_social();
+  
 
-    $('.giveaway-share').click(function(e) {
-      e.preventDefault();
-      elem = $(this);
-
-      FB.ui(
-        {
-          method: 'feed',
-          name: "Advlo $1000 giveaway",
-          link: "http://advlo.com/giveaway",
-          caption: "I just entered to win $1000 on an epic adventure with a local",
-        },
-        function(response) {
-          if (response && response.post_id) {
-            $.ajax({
-              method: 'POST',
-              url: "giveaway/#{current_user.id}"
-            })
-          } else {
-            swal({     
-              title: "Sorry Did not publish",  
-              imageUrl: "http://i.imgur.com/a6L0hYB.png"
-            })
-          }
-        }
-      );
-    })
 

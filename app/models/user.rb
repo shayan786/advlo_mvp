@@ -138,6 +138,18 @@ class User < ActiveRecord::Base
 
   end
 
+  # Returns lat/long for now
+  def get_user_geocode_info
+    user_geocode_info = Hash.new
+    
+    geocode_obj = Geocoder.search(current_sign_in_ip)
+
+    user_geocode_info["lat"] = geocode_obj[0].data['latitude']
+    user_geocode_info["long"] = geocode_obj[0].data['longitude']
+
+    return user_geocode_info
+  end
+
   def is_guide?(user_id)
     @user = User.find_by!(:id => user_id)
     

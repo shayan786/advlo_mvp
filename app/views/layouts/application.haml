@@ -29,6 +29,7 @@
         
       = render partial: 'shared/header'
       = yield
+
     = render partial: 'shared/footer'
 
 
@@ -38,8 +39,6 @@
           homepageGoogleTracking();
           footerGoogleTracking();
         })
-
-
 
 :javascript
   // we need a callback url for FB

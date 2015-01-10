@@ -34,6 +34,7 @@
 //= require user.js
 //= require wallet.js
 //= require affiliate.js
+//= require promotion.js
 //= require moment.min
 //= require fullcalendar.min
 //= require jquery.geocomplete.min
@@ -325,4 +326,12 @@ function footerInit(){
     $('#email_list_toggle').css('background-color', btnColor)
     $('#email_list_button').css('background-color', btnColor)
   }) 
+}
+
+function remove_notice(seconds) {
+  var time = seconds*1000;
+
+  setTimeout(function() {
+    $('.alert').fadeOut('slow');
+  }, time);
 }
