@@ -2,14 +2,7 @@
   .col-md-9
     .panel.panel-default
       .panel-body
-        - if @all_adventure_events.empty?
-          .text-center
-            %em.tab_header
-            .no_ib_text
-              %br
-              %p{style: 'color:#fff;'}= "Pick a date and time that works for you, and #{@current_guide.get_first_name} will get back to you."
-
-        - else
+        - if !@all_adventure_events.empty?
           .upcoming
             .row.text-center
               %em.tab_header
@@ -19,13 +12,12 @@
                 = render partial: 'event_partial', locals: {event: event}
 
                 
-      .panel-footer
-        .row.text-center
-          %em.tab_header
-            Request a Reservation
-        = render partial: 'request_time_form'
+      .row.text-center
+        %em.tab_header
+          Request a Reservation
+      = render partial: 'request_time_form'
 
 
-        
+      
 
 

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   # get 'giveaway/:promo_code'          => 'application#giveaway'
   # get 'giveaway'                      => 'application#giveaway'
   # post 'giveaway/:user_id'            => 'application#update_user_giveaway'
+  get 'giveaway'                      => 'application#homepage'
 
   #contact
   post '/contact'                     => 'application#contact'
