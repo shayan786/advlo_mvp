@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   before_filter :get_poll
 
+  def render_error
+    @feat_adventures = Adventure.approved.order('created_at DESC').take(6)
+
+    render :status => 404
+  end
+
   def giveaway
     if params[:promo_code]
       @referrer_id = User.find_by_referral_code(params[:promo_code]).id
