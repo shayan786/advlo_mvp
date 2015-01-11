@@ -29,13 +29,15 @@ Rails.application.routes.draw do
   get 'invite/:invite'                => 'adventures#hosting_info'
   get 'partner'                       => 'adventures#hosting_info'
 
-  get 'travel-fund'                   => 'application#giveaway' 
-  get '/travel-fund/:referral_code'   => 'application#giveaway'
 
   # shy wants to hide you from the world
+  # get 'travel-fund'                   => 'application#giveaway' 
+  # get '/travel-fund/:referral_code'   => 'application#giveaway'
+
   # get 'giveaway/:promo_code'          => 'application#giveaway'
   # get 'giveaway'                      => 'application#giveaway'
   # post 'giveaway/:user_id'            => 'application#update_user_giveaway'
+  get 'travel-fund'                   => 'application#homepage'
   get 'giveaway'                      => 'application#homepage'
 
   #contact
