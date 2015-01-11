@@ -188,7 +188,7 @@ class RegistrationsController < Devise::RegistrationsController
         @affiliate_tracker.sign_ups = @affiliate_tracker.sign_ups + 1
         @affiliate_tracker.save
       end
-    elsif params[:promo][:referrer_id] && params[:promo][:referrer_id] != ''
+    elsif params[:promo] != nil && params[:promo][:referrer_id] && params[:promo][:referrer_id] != ''
 
       referrer = User.find(params[:promo][:referrer_id])
       referrer.referral_count += 1
