@@ -1,8 +1,8 @@
-- image_array = ["http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/269/hero/080614leepump4.png?1414786626","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/104/hero/G0010003.JPG?1409491469","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/183/hero/2013_02_17_CA_Soboba_f_JeanNoelMichel.jpg?1411836712"]
+- image_array = ["http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/154/hero/6142769488_0824da5ff3_o.jpg?1410848814","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/256/hero/IMG_0080.JPG?1414194826","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/401/hero/QUINN_day_1_5.JPG?1417888028","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/104/hero/G0010003.JPG?1409491469","http://s3-us-west-2.amazonaws.com/advlo/adventures/attachments/000/000/183/hero/2013_02_17_CA_Soboba_f_JeanNoelMichel.jpg?1411836712"]
 
 - rand_num = rand(5)
 - image = image_array[rand_num]
-- adv_array = [154,256,269,105,183]
+- adv_array = [154,256,401,105,183]
 - adv = Adventure.find(adv_array[rand_num])
 
 .homepage-photo.jumbotron.jumbotron_fix{:style => "background: url('#{image_path image}') center center no-repeat"}
