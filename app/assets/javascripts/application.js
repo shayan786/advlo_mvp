@@ -54,9 +54,11 @@ $(document).ready(function(){
   $('.modal-dialog').height($('.modal-body').last().css('height'))
 
 
-  setTimeout(function(){
-    $('#contest-link').slideToggle()
-  }, 3500);
+  if( location.pathname.indexOf('giveaway') != 1 ){
+    setTimeout(function(){
+      $('#contest-link').slideToggle()
+    }, 3500);
+  }
 })
 
 
