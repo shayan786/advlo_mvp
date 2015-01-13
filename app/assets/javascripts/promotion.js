@@ -62,7 +62,7 @@ function initial_share_fb_init(current_user_id){
     $('#promotion-wrapper .giveaway-share').click(function(e){
       e.preventDefault();
 
-      window.open('https://www.facebook.com/dialog/feed?app_id=210802829129036&display=popup&caption='encodeURIComponent(caption)+'&link='+encodeURIComponent(link)+'&description='+encodeURIComponent(description)+'&picture='+encodeURIComponent(picture)+'&redirect_uri=http://www.advlo.com/giveaway/mobile/'+current_user_id,'sharer','toolbar=0,status=0,width=626,height=436');
+      window.open('https://www.facebook.com/dialog/feed?app_id=210802829129036&display=popup&caption='+encodeURIComponent(caption)+'&link='+encodeURIComponent(link)+'&description='+encodeURIComponent(description)+'&picture='+encodeURIComponent(picture)+'&redirect_uri=http://www.advlo.com/giveaway/mobile/'+current_user_id,'sharer','toolbar=0,status=0,width=626,height=436');
     })
   }
 	
@@ -87,7 +87,7 @@ function adv_share_social() {
     var caption = "Adventure Local - www.advlo.com";
     var picture = $(this).data('image');
 
-    if $(window).width() > 700 {
+    if ($(window).width() > 700) {
       FB.ui(
       {
         method: 'feed',
@@ -96,13 +96,13 @@ function adv_share_social() {
         description: description,
         caption: caption,
         picture: picture
-      }
-    })
+      })
+    }
     else {
       $('#promotion-wrapper .share_adventures .social_share_box .social_share_btns .fb').click(function(e){
         e.preventDefault();
 
-        window.open('https://www.facebook.com/dialog/feed?app_id=210802829129036&display=popup&caption='encodeURIComponent(caption)+'&link='+encodeURIComponent(link)+'&description='+encodeURIComponent(description)+'&picture='+encodeURIComponent(picture)+'&redirect_uri=http://www.advlo.com/giveaway','sharer','toolbar=0,status=0,width=626,height=436');
+        window.open('https://www.facebook.com/dialog/feed?app_id=210802829129036&display=popup&caption='+encodeURIComponent(caption)+'&link='+encodeURIComponent(link)+'&description='+encodeURIComponent(description)+'&picture='+encodeURIComponent(picture)+'&redirect_uri=http://www.advlo.com/giveaway','sharer','toolbar=0,status=0,width=626,height=436');
       })
     }
   })
