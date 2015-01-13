@@ -222,7 +222,7 @@ class AdventuresController < ApplicationController
 
     elsif params[:invite] == 'hostel'
 
-      @referrer = User.find_by_email('jon@advlo.com')
+      @referrer = User.find_by_email('christopher@advlo.com')
     end
 
     @hero_image = HeroImage.where(region: 'info').first

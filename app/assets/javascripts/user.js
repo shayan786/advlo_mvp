@@ -362,7 +362,10 @@ function copyPasteCode(){
   })
 
   $('.fa-file-text').click(function(){
-    alert('Copied - Share to Earn!')
+    swal({     
+      title: "Copied - Share for more entries!",  
+      imageUrl: "http://i.imgur.com/a6L0hYB.png"
+    })
   })
 }
 

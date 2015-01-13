@@ -64,44 +64,46 @@
         .additional_entries
 
       - else
-        .row
-          .col-md-8.col-md-offset-2.text-center
-            .basic_text
-              %b
-                Please create an account to enter the giveaway
+        .divider
+        .giveaway-background
+          .giveaway-text.top-text
+            Adventure Local's 
+            %b
+              $1000 
+            giveway
 
-        .row.text-center 
-          .col-md-4.col-md-offset-4.btn.btn-primary.giveaway-toggle.new-account
-            ENTER GIVEAWAY
+          .row.text-center 
+            .col-md-4.col-md-offset-4.btn.btn-primary.giveaway-toggle.new-account
+              ENTER
 
-
+          .giveaway-text
+            For a chance at an adventure of a lifetime. 
 
       .divider
 
-      .promotion_terms
-        .row.text-center
-          .basic_text.terms-toggle
-            %b
-              %i.fa.fa-caret-right
-              %u
-                TERMS
-          
+  .promotion_terms
+    .row.text-center
+      .basic_text.terms-toggle
+        %b
+          %i.fa.fa-caret-right
+          %u
+            TERMS
+      
 
-        .row
-          .col-md-8.col-md-offset-2
-            .terms_text
-              Must be 18 years or old to enter.
+    .row
+      .col-md-8.col-md-offset-2
+        .terms_text
+          Must be 18 years or old to enter.
 
-              One winner will be selected in a random drawing january 27th from among all eligible entries. Winner will be notified by email. The winner will then have 48 hours to respond or another winner will be selected.
-             
-              Odds of winning will depend upon the number of eligible entries received. The use of multiple email addresses, Twitter handles, or Facebook Profiles is not permitted and will result in disqualification.
-              %br
-              Questions or conerns, contact us at:
-              = mail_to 'support@advlo.com'
+          One winner will be selected in a random drawing january 27th from among all eligible entries. Winner will be notified by email. The winner will then have 48 hours to respond or another winner will be selected.
+         
+          Odds of winning will depend upon the number of eligible entries received. The use of multiple email addresses, Twitter handles, or Facebook Profiles is not permitted and will result in disqualification. Credit must be redeemed within one year of January 27th.
+          %br
+          Questions or concerns, contact us at:
+          = mail_to 'support@advlo.com'
 
 :javascript
   promotion_init();
-
 
 - if params[:promo_code]
   :javascript
@@ -113,9 +115,11 @@
   :javascript
     slow_scroll_on_load();
     adv_share_social();
+    copyPasteCode();
+
 - elsif current_user
   :javascript
     initial_share_fb_init(#{current_user.id});
     adv_share_social();
-  
+    
 

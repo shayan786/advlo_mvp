@@ -3,7 +3,6 @@
 
   .panel {
   	.panel-body {
-  		padding-bottom: 50px;
   		background-color: $lightest_gray;
   		padding-top: 0px;
   	}
@@ -40,6 +39,9 @@
   .basic_text {
   	margin-top: 20px;
   	font-size: 1.4em;
+    font-size: 1.4em;
+    color: #fff;
+    opacity: 0.7;
   }
 
   .promo-img-wrapper {
@@ -58,6 +60,24 @@
     opacity: 0.8;
   }
 
+  .giveaway-background {
+    background-image: asset-url("background/advlo_beach.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+  }
+
+  .giveaway-text {
+    text-align: center;
+    font-size: 23px;
+    font-family: 'bebas_neue_book';
+    letter-spacing: 1px;
+  }
+  .top-text {
+    padding-top: 120px;
+  }
+
   .new-account {
   	font-size: 1.6em;
   	font-family: bebas_neue;
@@ -68,7 +88,7 @@
   	padding-top: 17px;
   	padding-bottom: 13px;
 
-  	background-color: $advlo_green;
+  	background-color: #5cb85c;
   	border-color: $advlo_green;
 
   	&:hover {
@@ -294,6 +314,20 @@
       display: none;
   		margin-top: 5px;
   		font-size: 1em;
+      color: #fff;
+      margin-bottom: 30px;
   	}
+  }
+}
+
+
+@media screen and (max-width: 400px){
+
+  #promotion-wrapper .giveaway-background {
+    height: 375px;
+  }
+
+  #promotion-wrapper .new-account {
+    width: 60%;
   }
 }

@@ -51,8 +51,11 @@
 
         #adventure-price
           - if current_user && current_user.credit > 0 && @adventure.price >= 50
+            - price = (@adventure.price - current_user.credit).to_i
+            - if price < 0
+              - price = 1
             %span.old_price{style: "text-decoration: line-through;"}= "$ #{@adventure.price}"
-            %span.new_price= "$ #{(@adventure.price - current_user.credit).to_i}"
+            %span.new_price= "$ #{price}"
           - else
             %span= "$ #{@adventure.price}"
 

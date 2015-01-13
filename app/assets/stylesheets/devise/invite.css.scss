@@ -75,23 +75,6 @@
 				font-size: 1.8em;
 			}
 
-			.referral_link {
-				font-size: 1.1em;
-				margin-top: 15px;
-				border: 1px solid $lighter_gray;
-				border-radius: 3px;
-				padding-top: 5px;
-				padding-bottom: 5px;
-				height: 40px;
-
-				.fa{
-					position: relative;
-					float: right;
-					cursor: pointer;
-					top: -15px;
-				}
-			}
-
 			.referral_count{
 				@extend .referral_link;
 			}
@@ -109,56 +92,73 @@
 			}
 
 			.social_btn {
-	          width: 50px;
-	          height: 50px;
-	          text-align: center;
-	          padding: 15px 0;
-	          font-size: 20px;
-	          line-height: 1.0;
-	          border-radius: 50%;
-	        }
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 20px;
+        line-height: 1.0;
+        border-radius: 50%;
+      }
 
-	        .fb {
-	          color: #FFF;
-	          background-color: #3B5998;
-	          border-color: #3B5998;
+      .fb {
+        color: #FFF;
+        background-color: #3B5998;
+        border-color: #3B5998;
 
-	          &:hover {
-	            opacity: 0.8;
-	          }          
-	        }
+        &:hover {
+          opacity: 0.8;
+        }          
+      }
 
-	        .twitter {
-	          padding-left: 2px;
-	          color: #FFF;
-	          background-color: #30D8F0;
-	          border-color: #30D8F0;
+      .twitter {
+        padding-left: 2px;
+        color: #FFF;
+        background-color: #30D8F0;
+        border-color: #30D8F0;
 
-	          &:hover {
-	            opacity: 0.8;
-	          }
-	        }
+        &:hover {
+          opacity: 0.8;
+        }
+      }
 
-	        .email {
-	          padding-left: 14px;
-	          color: #FFF;
-	          background-color: $light_orange;
-	          border-color: $light_orange;
+      .email {
+        padding-left: 14px;
+        color: #FFF;
+        background-color: $light_orange;
+        border-color: $light_orange;
 
-	          .fa {
-	          	margin-top: -1px;
-	          }
+        .fa {
+        	margin-top: -1px;
+        }
 
-	          &:hover {
-	            opacity: 0.8;
-	          }
-	        }
+        &:hover {
+          opacity: 0.8;
+        }
+      }
 
-	        .border {
-	        	margin: 20px 0;
-	        	border: 1px solid $light_gray;
-	        }
+      .border {
+      	margin: 20px 0;
+      	border: 1px solid $light_gray;
+      }
 		}
+	}
+}
+
+.referral_link {
+	font-size: 1.1em;
+	margin-top: 15px;
+	border: 1px solid $lighter_gray;
+	border-radius: 3px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 40px;
+
+	.fa{
+		position: relative;
+		float: right;
+		cursor: pointer;
+		top: -15px;
 	}
 }
 

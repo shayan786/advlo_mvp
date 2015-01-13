@@ -408,15 +408,16 @@ class AdvloMailer < ActionMailer::Base
 
   #------------------------ $1000 giveaway -------------------------
 
+  def initial_contest_outreach(user)
+    @user = user
+    mail(to: @user.email, subject: "#{@user.get_first_name}, the Advlo $1000 giveaway is underway")
+  end
+  
   def after_contest_entry(user)
     @user = user
     mail(to: @user.email, subject: "[ADVLO] : Entered in the $1000 giveaway!")
   end
 
-  def initial_contest_outreach(user)
-    @user = user
-    mail(to: @user.email, subject: "#{@user.get_first_name}, the Advlo $1000 giveaway is underway")
-  end
 
   def external_contest_email(email)
     mail(to: email, subject: "Adventure Local Giveaway")

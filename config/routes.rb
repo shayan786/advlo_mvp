@@ -31,12 +31,12 @@ Rails.application.routes.draw do
 
 
   # shy wants to hide you from the world
-  # get 'travel-fund'                   => 'application#giveaway' 
+  get 'travel-fund'                   => 'users#invite' 
   # get '/travel-fund/:referral_code'   => 'application#giveaway'
 
-  # get 'giveaway/:promo_code'          => 'application#giveaway'
-  # get 'giveaway'                      => 'application#giveaway'
-  # post 'giveaway/:user_id'            => 'application#update_user_giveaway'
+  get 'giveaway/:promo_code'          => 'application#giveaway'
+  get 'giveaway'                      => 'application#giveaway'
+  post 'giveaway/:user_id'            => 'application#update_user_giveaway'
   get 'travel-fund'                   => 'application#homepage'
   get 'giveaway'                      => 'application#homepage'
 
@@ -110,7 +110,6 @@ Rails.application.routes.draw do
   # unsubscribe users mailer link
   get '/users/unsubscribe/:signature' => 'users#unsubscribe'
   get '/unsubscriber/:signature' => 'users#unsubscribe_email_list'
-
 
   get '*not_found', to: 'application#render_error'
 end	

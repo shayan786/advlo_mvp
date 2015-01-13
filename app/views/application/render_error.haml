@@ -1,75 +1,15 @@
 #destination-block.destination-block
   .container.homepage-container.text-center
     .sorry{style: "color: #fff;margin-top: 55px;font-family: 'nexa_light' !important;letter-spacing: 3px;font-size: 20px;"} 
-      Sorry, we must have misplaced that page. 
+      Sorry, we must have misplaced that page,
       %br 
-      Here are a few of our favorite spots.
+      Here are some of our newest adventures.
 
   .row.text-center
     .container
       .region-container
         .region-wrapper
-          %a{href: '/adventures?country=Costa Rica'}          
-            .region 
-              = image_tag HeroImage.where(region: 'Costa Rica').first.attachment.url(:hero), alt: "Costa Rica"
-              .region-text
-                Costa Rica
-
-          %a{href: '/adventures?state=Hawaii'}  
-            .region 
-              = image_tag HeroImage.where(region: 'Hawaii').first.attachment.url(:hero), alt: "Hawaii"
-              .region-text
-                Hawaii
-
-          %a{href: '/adventures?country=Ecuador'}  
-            .region 
-              = image_tag HeroImage.where(region: 'Ecuador').first.attachment.url(:hero), alt: "Ecuador"
-              .region-text
-                Ecuador
-
-          %a{href: '/adventures?state=Colorado'}  
-            .region 
-              = image_tag HeroImage.where(region: 'Colorado').first.attachment.url(:hero), alt: "Colorado"
-              .region-text
-                Colorado
-
-
-          %a{href: '/adventures?state=California'}  
-            .region 
-              = image_tag HeroImage.where(region: 'California').first.attachment.url(:hero), alt: "California"
-              .region-text
-                California
-
-          %a{href: '/adventures?state=Oregon'}  
-            .region 
-              = image_tag HeroImage.where(region: 'Oregon').first.attachment.url(:hero), alt: "Oregon"
-              .region-text
-                Oregon
-
           %a{href: '/adventures'}  
             .others_region 
               .region-text
-                All Locations
-
-
-          / - @regions.each do |r|
-          /   %a{href: "/adventures?location=#{r[0]}"}
-          /     .region
-          /       - if r.region == nil
-          /         - r.region = 'default'
-          /       = link_to (image_tag HeroImage.find(r.region).attachment.url(:hero)), "/adventures?city=#{r.place.gsub(' ','-')}"
-          /       - adv_count = Adventure.approved.where(city: r.place).count
-          /       // removed for beta cuz count is sad (#{adv_count})
-          /       - if r.place.length > 14
-          /         .region-text= "#{r[0][0..11]}... #{r.country}"
-          /       - else 
-          /         .region-text= "#{r.place},  #{r.country}"
-
-
-    = render partial: "/adventures/request_modal"
-
-:javascript
-  $('#destination-block .region-wrapper').masonry({
-    isFitWidth: true,
-    itemSelector: '.region, .others_region'
-  })
+                Adventure Local

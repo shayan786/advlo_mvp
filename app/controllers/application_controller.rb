@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   before_filter :get_poll
 
   def render_error
-    @feat_adventures = Adventure.approved.order('created_at DESC').take(6)
-
     render :status => 404
   end
 
@@ -112,7 +110,7 @@ class ApplicationController < ActionController::Base
       if session[:previous_url] != '/users/sign_in' && session[:previous_url] != '/users/sign_up'
         session[:previous_previous_url] = session[:previous_url]
       else
-        session[:previous_url] = '/'
+        session[:previous_url] = '/giveaway'
       end
     end
   end
@@ -122,10 +120,9 @@ class ApplicationController < ActionController::Base
       return
     end
 
-    # '/giveaway'    
-    
+    '/giveaway'    
     # commented out for giveaway
-    session[:previous_url]
+    #session[:previous_url]
   end
 
   def after_sign_out_path_for(resource)
