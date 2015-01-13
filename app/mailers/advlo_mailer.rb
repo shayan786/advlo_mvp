@@ -418,9 +418,8 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: "[ADVLO] : Entered in the $1000 giveaway!")
   end
 
-
   def external_contest_email(email)
-    mail(to: email, subject: "Adventure Local Giveaway")
+    mail(to: email, subject: "Advlo Giveaway is underway")
   end
 end
 

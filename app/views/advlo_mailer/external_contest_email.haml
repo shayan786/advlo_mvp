@@ -4,22 +4,19 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented.text-center
-      Hello from Adventure Local!
+      %h2
+        Hello from Adventure Local!
       %p
-        We wanted to let you know about a chance at $1000 bucks on our site!
-        %br
-      
+        We wanted to let you know about a chance at some serious travel money.
+
       %a{href:"#{root_url}giveway", style: "text-decoration: none;"}
         = image_tag 'http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/461/hero/advlo_giveaway_surf.jpg?1420861194',style: "position: relative;float: left;width: 100%;"
 
-
       .text-center
         %hr
-        %h4=link_to "$1000 on Advlo gets you...", 'http://advlo.com/blog/1000-dollar-giveaway'
+        %h4=link_to "Heres what you could do with $1000 on Adventure Local...", 'http://advlo.com/blog/1000-dollar-giveaway'
         %hr
-
         %br
-
         %a{href: "http://www.advlo.com/adventures/spearfishing-in-hawaii", style: 'text-decoration: none; color: #000;'}
           .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/014/medium/spearz.jpeg?1420519028') center center no-repeat; height: 150px;"}
             .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} Spearfishing in Hawaii (for 6)
@@ -28,14 +25,15 @@
           .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/017/medium/Screen_Shot_2015-01-06_at_3.27.31_PM.png?1420594938') center center no-repeat; height: 150px;"}
             .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} Freediving in Costa Rica (for 3) 
 
-        %a{href: "http://www.advlo.com/adventures/kitesurfing-in-south-africa", style: 'text-decoration: none; color: #000;'}
-          .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/adventure_gallery_images/pictures/000/001/196/large/MSD_print_02(1).jpg?1412581070') center center no-repeat; height: 150px;"}
+        %a{href: "http://www.advlo.com/adventures/padi-open-water-scuba-training", style: 'text-decoration: none; color: #000;'}
+          .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/466/thumb/Screen_Shot_2015-01-12_at_6.52.32_PM.png?1421124861') center center no-repeat; height: 150px;"}
             .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} 4 days Scuba in Phillipines (for 2)
 
         %a{href: "http://www.advlo.com/adventures/5-day---14-dives-in-burma", style: 'text-decoration: none; color: #000;'}
           .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/022/medium/burma-whale-credit.jpg?1420612282') center center no-repeat; height: 150px;"}
             .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} 5 days Scuba diving in Burma
         %a{href: "http://www.advlo.com/adventures/andes-&-amazon-multisport-8-days", style: 'text-decoration: none; color: #000;'}
+        
           .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/023/medium/multi.jpeg?1420612499') center center no-repeat; height: 150px;"}
             .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} Multisport adventure in Ecuador
         
@@ -43,10 +41,12 @@
           .trip{style: "position:relative; float:left; width: 45%; margin: 2.5%; background: url('http://s3-us-west-2.amazonaws.com/advlo/blog_images/attachments/000/000/020/medium/kites.jpg?1420596713') center center no-repeat; height: 150px;"}
             .title{style: "background-color: rgba(0,0,0,0.5);margin-top: 110px;color: #fff;font-size: 13px;height: 31px;padding-top: 9px;"} Kitesurfing in South Africa
 
-
-
-      %p.text-center{style: 'text-align: center;margin-top: 15px;position: relative;float: left;width: 100%;'}
-        Entering is as easy as clicking a single button :)
-      #other-ways{style:"margin-top: 10px; position: relative;float: left;width: 100%;"}
+      #other-ways{style:"margin-top: 10px; margin-bottom: 20px; position: relative;float: left;width: 100%;"}
         %a{href:"#{root_url}giveway", style: "text-decoration: none;"}
           .text-center.entries-btn{style: "width: 50%; margin: 0 auto; padding: 10px 19px;font-size: 17px;line-height: 1.471;border-radius: 6px;color: #fff;background-color: #ec7063;border-color: #ec7063;"} Enter Giveaway
+
+      %hr
+      .text-center
+        %i We are rooting for you!
+        %br
+        Team Advlo

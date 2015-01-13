@@ -3,26 +3,21 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
-    .indented
+    .indented.text-center
       %h2= "Hey #{@user.get_name_or_email}!"
       
-      .text-left
-        %p 
-          You are now entered to win $1000 on Advlo January 27th.
+      %p 
+        You are now entered to win $1000 on Advlo January 27th.Track your chance of winning & get more entries
+        %a{href: 'http://advlo.com/giveaway'} here.
 
-        %p 
-          Track your chance of winning & get more entries
-          %a{href: 'http://advlo.com/giveaway'} here.
+      %a{href:"http://advlo.com/giveaway", style: "text-decoration: none;"}
+        = image_tag 'http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/460/hero/advlo_giveaway_more_entries.jpg?1420860469',style: "position: relative;float: left;width: 100%;"
+      %hr
+      %br
 
-        %a{href:"http://advlo.com/giveaway", style: "text-decoration: none;"}
-          = image_tag 'http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/460/hero/advlo_giveaway_more_entries.jpg?1420860469',style: "position: relative;float: left;width: 100%;"
-        %hr
-        %br
-
-      .text-center
-        %hr
-        %h4=link_to "Every friend that enters gets you another entry.", 'http://advlo.com/giveaway'
-        %hr
+      %hr
+      %h4=link_to "Every friend that enters gets you another entry.", 'http://advlo.com/giveaway'
+      %hr
 
       %p{style: "position: relative; float: left;"}
         %i Thanks & good luck!
