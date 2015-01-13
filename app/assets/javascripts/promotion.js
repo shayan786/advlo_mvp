@@ -116,15 +116,6 @@ function adv_share_social() {
 
     window.open("https://twitter.com/share?url=" + url + "&text=%23AdventureLocal - Adventure local is giving away $1000 towards any trip. " + url, 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
   })
-
-}
-
-function slow_scroll_on_load() {
-	$(document).ready(function(){
-    setTimeout(function(){
-      $('html,body').animate({scrollTop: $('#promotion-wrapper .additional_entries').offset().top-60});
-    }, 1500)
-	})
 }
 
 function masonry_init(){
