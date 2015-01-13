@@ -410,7 +410,12 @@ class AdvloMailer < ActionMailer::Base
 
   def initial_contest_outreach(user)
     @user = user
-    mail(to: @user.email, subject: "#{@user.get_first_name}, the Advlo $1000 giveaway is underway")
+
+    if @user.get_first_name
+      mail(to: @user.email, subject: "#{@user.get_first_name.capitalize}, the Advlo $1000 giveaway is underway!")
+    else
+      mail(to: @user.email, subject: "The Advlo $1000 giveaway is underway!")
+    end
   end
   
   def after_contest_entry(user)

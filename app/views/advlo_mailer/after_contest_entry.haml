@@ -7,7 +7,9 @@
       %h2= "Hey #{@user.get_name_or_email}!"
       
       %p 
-        You are now entered to win $1000 on Advlo January 27th.Track your chance of winning & get more entries
+        You are now entered to win $1000 on Advlo January 27th.
+        %br
+        Track your chance of winning & get more entries
         %a{href: 'http://advlo.com/giveaway'} here.
 
       %a{href:"http://advlo.com/giveaway", style: "text-decoration: none;"}
@@ -19,7 +21,7 @@
       %h4=link_to "Every friend that enters gets you another entry.", 'http://advlo.com/giveaway'
       %hr
 
-      %p{style: "position: relative; float: left;"}
+      %p.text-center
         %i Thanks & good luck!
         %br
         Team Advlo
