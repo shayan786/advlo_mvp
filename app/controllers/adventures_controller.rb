@@ -475,7 +475,7 @@ class AdventuresController < ApplicationController
     # 2: Is it a country ()
     # 3: Is it a state, US ONLY ()
     # 4: Is it a city ()
-    # 5: Default use nearby 100 miles
+    # 5: Default use nearby 200 miles
     # 6: Return locals?
 
     geocode_type = geocode_obj[0].data['address_components'][0]['types'][0]
@@ -498,7 +498,7 @@ class AdventuresController < ApplicationController
         state = geocode_obj[0].data['address_components'][0]['long_name']
         @adventures = Adventure.approved.where(state: state)
       else
-        @adventures = Adventure.approved.near(@location,100).order('RANDOM()')
+        @adventures = Adventure.approved.near(@location,200).order('RANDOM()')
       end
 
     #City
@@ -514,11 +514,11 @@ class AdventuresController < ApplicationController
       elsif city_adv_count > 2 
         @adventures = Adventure.approved.where(city: city).order('RANDOM()')
       else
-        @adventures = Adventure.approved.near(@location.to_s,100).order('RANDOM()')
+        @adventures = Adventure.approved.near(@location.to_s,200).order('RANDOM()')
       end
 
     else
-      @adventures = Adventure.approved.near(@location,100).order('RANDOM()')
+      @adventures = Adventure.approved.near(@location,200).order('RANDOM()')
     end
 
     if params[:locals] == "true"
