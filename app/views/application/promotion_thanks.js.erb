@@ -1,13 +1,9 @@
-$('#promotion-wrapper .initial_entry_box').fadeOut();
-$('#promotion-wrapper .success_initial_entry').delay(200).fadeIn();
+$('#promotion-wrapper .initial_entry_box').hide();
+$('#promotion-wrapper .success_initial_entry').fadeIn('slow');
 
 $('.divider').insertAfter('#promotion-wrapper .success_initial_entry');
 
 $('#promotion-wrapper .additional_entries').html("<%= escape_javascript(render(partial: 'promotion_share_adventures', locals:{adventures: @adventures, total_entries: @total_entries, user_entries: @user_entries})) %>")
-
-setTimeout({
-	$('html,body').animate({scrollTop: $('#promotion-wrapper .success_initial_entry').offset().top-60})
-}, 2000)
 
 masonry_init();
 adv_share_social();

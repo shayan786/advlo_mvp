@@ -40,9 +40,9 @@ function initial_share_fb_init(current_user_id){
             url: "giveaway/"+current_user_id
           })
         } else {
-          swal({     
-            title: "Enter giveaway later?",
-            imageUrl: "http://i.imgur.com/a6L0hYB.png"
+          $.ajax({
+            method: 'POST',
+            url: "giveaway/"+current_user_id
           })
         }
       }
@@ -81,9 +81,10 @@ function adv_share_social() {
     height = $(window).height();
     width = $(window).width();
 
-    window.open("https://twitter.com/share?url=" + url + "&text= Adventure local is giving away $1000 towards any trip. " + url, 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
+    window.open("https://twitter.com/share?url=" + url + "&text=%23AdventureLocal - Adventure local is giving away $1000 towards any trip. " + url, 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
   })
 }
+
 
 function masonry_init(){
   $('#promotion-wrapper .additional_entries .share_adventures').masonry({
