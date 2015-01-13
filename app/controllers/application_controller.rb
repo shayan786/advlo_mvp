@@ -27,8 +27,13 @@ class ApplicationController < ActionController::Base
 
     giveaway_get_adventures_and_entries
 
-    respond_to do |format|
-      format.js {render "promotion_thanks.js", layout: false}
+    # mobile callback
+    if params[:post_id]
+      redirect_to '/giveaway'
+    else
+      respond_to do |format|
+        format.js {render "promotion_thanks.js", layout: false}
+      end
     end
   end
 
