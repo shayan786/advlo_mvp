@@ -354,4 +354,21 @@
   #promotion-wrapper .additional_entries .share_adventures .social_share_box .social_share_btns {
     width: 100%;
   }
+
+  #promotion-wrapper .additional_entries .number_btn {
+    display: none;
+  }
+
+  #promotion-wrapper .additional_entries .number_text {
+    text-align: center;
+  }
+
+  #promotion-wrapper .entry_tracking_box .col-md-6 {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  #promotion-wrapper .entry_tracking_box .tracking_count {
+    border: none !important;
+  }
 }
