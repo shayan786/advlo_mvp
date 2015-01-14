@@ -50,7 +50,7 @@ function initial_share_fb_init(current_user_id){
           if (response && response.post_id) {
             $.ajax({
               method: 'POST',
-              url: "giveaway/"+current_user_id
+              url: "/giveaway/"+current_user_id
             })
           } else {
             swal({     
