@@ -412,9 +412,9 @@ class AdvloMailer < ActionMailer::Base
     @user = user
 
     if @user.get_first_name
-      mail(to: @user.email, subject: "#{@user.get_first_name.capitalize}, the Advlo $1000 giveaway is underway!")
+      mail(to: @user.email, subject: "#{@user.get_first_name.capitalize}, the Advlo $1000 giveaway is underway!", from: 'founders@advlo.com')
     else
-      mail(to: @user.email, subject: "The Advlo $1000 giveaway is underway!")
+      mail(to: @user.email, subject: "The Advlo $1000 giveaway is underway!", from: 'founders@advlo.com')
     end
   end
   
