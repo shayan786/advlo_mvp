@@ -411,6 +411,11 @@ class AdvloMailer < ActionMailer::Base
   def initial_contest_outreach(user)
     @user = user
 
+    User.all.each do |u|
+      AdvloMailer.delay.initial_contest_outreach(u)
+      MarketingEmail.create(user_id: u.id, title: 'initial_contest_outreach', email: u.email)
+    end
+
     if @user.get_first_name
       mail(to: @user.email, subject: "#{@user.get_first_name.capitalize}, the Advlo $1000 giveaway is underway!", from: 'founders@advlo.com')
     else

@@ -16,9 +16,9 @@ function imgRandom(imgArr) {
 }
 
 function initial_share_fb_init(current_user_id){
-  var name = "$1000 Adventure Trip Giveaway";
+  var name = "$1,000 Adventure Trip Giveaway";
   var link = "http://advlo.com/giveaway";
-  var description = "I just entered to win $1000 on an epic adventure with a local";
+  var description = "I just entered to win $1,000 on an epic adventure with a local";
   var caption = "Adventure Local - www.advlo.com"
   var picture = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/461/hero/advlo_giveaway_surf.jpg?1420861194","http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/469/hero/advlo_giveaway_kite.jpg?1421189772", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/468/hero/advlo_giveaway_scuba.jpg?1421189760"];
   
