@@ -21,24 +21,13 @@
       2
   .col-md-5
     .number_text
-      %b
-        Each person that signs-up through your link - you'll get another entry
+      You'll get another entry for each person that signs-up through your link below
+      
 
 .row
-  .col-md-6.col-md-offset-3
-    .steps_divider
-
-.row{style: "margin-top: 10px;"}
-  .col-md-1.col-md-offset-3.text-center
-    .btn.btn-primary.number_btn.disabled
-      3
-  .col-md-5
-    .number_text
-      Track your chances of winning
-
-.row
-  .col-md-6.col-md-offset-3
-    .steps_divider
+  .col-md-6.col-md-offset-3.text-center.referral_link
+    #fe_text= "http://advlo.com/giveaway/#{current_user.referral_code}"
+    .fa.fa-file-text#d_clip_button.my_clip_button{"data-clipboard-target" => "fe_text", "data-clipboard-text" => "http://advlo.com/giveaway/#{current_user.referral_code}"}
 
     
 .row
@@ -55,11 +44,6 @@
             TOTAL ENTRIES
           .tracking_count{style: "border-left: 1px solid #C35B26"}
             = total_entries      
-
-.row
-  .col-md-6.col-md-offset-3.text-center.referral_link
-    #fe_text= "http://advlo.com/giveaway/#{current_user.referral_code}"
-    .fa.fa-file-text#d_clip_button.my_clip_button{"data-clipboard-target" => "fe_text", "data-clipboard-text" => "http://advlo.com/giveaway/#{current_user.referral_code}"}
 
 .share_adventures.text-center
   - adventures.each_with_index do |adv,i|
