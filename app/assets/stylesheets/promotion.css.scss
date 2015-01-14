@@ -77,6 +77,15 @@
     padding-top: 120px;
   }
 
+  .more_info_text {
+    font-family: 'bebas_neue';
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-decoration: none;
+    color: $advlo_orange;
+
+  }
+
   .new-account {
   	font-size: 1.6em;
   	font-family: bebas_neue;
@@ -339,6 +348,10 @@
 
   .share_adventures .text-center {
     width: 100%;
+  }
+
+  #promotion-wrapper .promotion_header {
+    text-decoration: none !important;
   }
 
   #promotion-wrapper .additional_entries .share_adventures .social_share_box .adventure_box {
