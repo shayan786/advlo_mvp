@@ -107,7 +107,7 @@ function adv_share_social() {
       $('#promotion-wrapper .share_adventures .social_share_box .social_share_btns .fb').click(function(e){
         e.preventDefault();
 
-        window.open('https://www.facebook.com/dialog/feed?app_id=210802829129036&display=popup&caption='+encodeURIComponent(caption)+'&link='+encodeURIComponent(link)+'&description='+encodeURIComponent(description)+'&picture='+encodeURIComponent(picture)+'&redirect_uri=http://www.advlo.com/giveaway','sharer','toolbar=0,status=0,width=626,height=436');
+        window.open('https://www.facebook.com/dialog/feed?app_id=210802829129036&display=popup&caption='+encodeURIComponent(caption)+'&link='+encodeURIComponent(link)+'&description='+encodeURIComponent(description)+'&name='+name+'&picture='+encodeURIComponent(picture)+'&redirect_uri=http://www.advlo.com/giveaway','sharer','toolbar=0,status=0,width=626,height=436');
       })
     }
   })
