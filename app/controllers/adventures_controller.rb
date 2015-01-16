@@ -81,8 +81,10 @@ class AdventuresController < ApplicationController
     else
       related << Adventure.approved.where('category LIKE ?',"%#{@adventure.category}%").limit(1) 
     end
-    @adventure.nearbys(50).limit(3).each do |adv|
-      related <<  adv if adv.approved && adv.published
+    if @adventure.nearbys(50)
+      @adventure.nearbys(50).limit(3).each do |adv|
+        related <<  adv if adv.approved && adv.published
+      end
     end
     related = related.flatten.uniq
     related = related - [@adventure]
