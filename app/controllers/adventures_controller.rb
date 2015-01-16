@@ -58,10 +58,6 @@ class AdventuresController < ApplicationController
     else  
       render '/error_404'
     end
-
-
-  rescue Exception => e
-    redirect_to '/*'
   end
 
   def adventure_show_variables
