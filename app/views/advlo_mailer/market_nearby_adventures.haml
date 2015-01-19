@@ -26,6 +26,7 @@
         %p
           As always, want to see something different or have any questions / comments? Feel free to reach out to us and reply to this email.
 
+      .text-center  
         %i Thanks,
         %br
         %a{href: "#{root_url}about"} The Advlo Team
@@ -57,7 +58,7 @@
 
             %a{href:"http://www.facebook.com/sharer.php?s=100&p[title]=" + adv.title + '&p[url]=' + URI.escape(share_url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), style: "margin-top: -5px" }= image_tag "#{root_url}/assets/fb-email-bd69e985af97389bf052774e3531541b.png"
 
-            %a{href:"https://twitter.com/share?url=" + share_url + "&text=" + "Check out my adventure " + adv.title + ' on Adventure Local'}= image_tag "#{root_url}/assets/twitter-email-f21c89929bcdb0751198c7318d9e7f53.png"
+            %a{href:"https://twitter.com/share?url=" + share_url + "&text= Check out " + adv.title + ' on Adventure Local'}= image_tag "#{root_url}/assets/twitter-email-f21c89929bcdb0751198c7318d9e7f53.png"
 
             %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}"}= image_tag "#{root_url}/assets/gplus-email-5b11f1098ffab2a77fbae3f5f519811b.png"
 

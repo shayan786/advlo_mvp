@@ -92,50 +92,7 @@ class User < ActiveRecord::Base
   def send_welcome_email
     AdvloMailer.delay.welcome_email(self)
     AdvloMailer.delay(run_at: 1.day.from_now).welcome_email_from_founder(self)
-  end
-
-  def self.send_nearby_adventures_email
-    # Find all subscribed travelers
-    all_users = User.all
-
-    all_users.each do |user|
-      if user.email_list == true
-        if !user.is_guide?(user.id)
-          # Get location through IP
-          geocode_obj = Geocoder.search(user.current_sign_in_ip)
-
-          lat = geocode_obj[0].data['latitude']
-          long = geocode_obj[0].data['longitude']
-
-          # Other option, if that traveler has specific the categories 'liked' find those then randomly select 3
-          if user.category && user.category != ''
-            user_pref_categories = user.category.split(',')
-
-            category_sql_string = ''
-            user_pref_categories.each_with_index do |cat,i|
-              if (i==0)
-                category_sql_string = "category LIKE '%#{cat}%'"
-              elsif (i > 0)
-                category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
-              end
-            end
-
-            nearby_adventures = Adventure.near([lat,long],100).approved.limit(10).order('RANDOM()').where(category_sql_string).limit(3)
-
-          else
-            # Find nearby adventures 75 miles randomly
-            nearby_adventures = Adventure.near([lat,long],100).approved.limit(10).order('RANDOM()').limit(3)
-          end
-
-          # If there any, then send the email
-          if nearby_adventures.length > 0
-            AdvloMailer.market_nearby_adventures(user,nearby_adventures).deliver
-            puts "*** SENT MAIL TO -> #{user.email} ***"
-          end
-        end
-      end
-    end
-
+    AdvloMailer.delay(run_at: 2.day.from_now).market_nearby_adventures(self)
   end
 
   # Returns lat/long for now
