@@ -4,10 +4,8 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
     .indented.text-center
-      %h2
-        Hello from Adventure Local!
-      %p
-        We wanted to let you know about a chance at some serious travel money.
+      %p= "Hello #{@reference}"
+
 
       %a{href:"#{root_url}giveway", style: "text-decoration: none;"}
         = image_tag 'http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/461/hero/advlo_giveaway_surf.jpg?1420861194',style: "position: relative;float: left;width: 100%;"
