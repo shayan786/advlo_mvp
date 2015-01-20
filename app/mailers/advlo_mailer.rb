@@ -463,7 +463,7 @@ class AdvloMailer < ActionMailer::Base
     mail(to: @user.email, subject: "[ADVLO] : Entered in the $1000 giveaway!")
   end
 
-  def external_contest_email(email)
+  def external_contest_email(email, reference=nil)
     mail(to: email, subject: "Advlo Giveaway is underway")
   end
 end
