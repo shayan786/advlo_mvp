@@ -9,9 +9,9 @@
 
 		scroll_to_results();
 
-		// only show filter if results count > 2
+		// only show filter if results count > 1
 		<% if @locals.length > 1 %>
-			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_local_filter')) %>")
+			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_local_filter', locals:{filter_categories: @filter_categories})) %>")
 		<% end %>
 
 		$("#find .search_results .locals-partial").html("<%= escape_javascript(render(partial: 'find_locals_table', locals:{locals: @locals})) %>");
@@ -34,7 +34,7 @@
 
 		// only show filter if results count > 2
 		<% if @adventures.length > 1 %>
-			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_location_filter')) %>")
+			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_location_filter', locals:{filter_categories: @filter_categories})) %>")
 		<% end %>
 
 		$("#adventure-partial").html("<%= escape_javascript(render(partial: 'find_adventures', locals:{adventures: @adventures})) %>");

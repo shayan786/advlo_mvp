@@ -358,7 +358,7 @@ class AdventuresController < ApplicationController
       if (i==0)
         adv_ids_sql_string = "id = '#{adv_id}'"
       elsif (i > 0)
-        adv_ids_sql_string = adv_ids_sql_string + " OR id = '#{adv_id}'"
+        adv_ids_sql_string += " OR id = '#{adv_id}'"
       end
     end
 
@@ -373,7 +373,7 @@ class AdventuresController < ApplicationController
           if (i==0)
             category_sql_string = "category LIKE '%#{cat}%'"
           elsif (i > 0)
-            category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
+            category_sql_string += " OR category LIKE '%#{cat}%'"
           end
         end
 
@@ -395,7 +395,7 @@ class AdventuresController < ApplicationController
           if (i==0)
             category_sql_string = "category LIKE '%#{cat}%'"
           elsif (i > 0)
-            category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
+            category_sql_string += " OR category LIKE '%#{cat}%'"
           end
         end
 
@@ -426,7 +426,7 @@ class AdventuresController < ApplicationController
       if (i==0)
         user_ids_sql_string = "id = '#{user_id}'"
       elsif (i > 0)
-        user_ids_sql_string = user_ids_sql_string + " OR id = '#{user_id}'"
+        user_ids_sql_string += " OR id = '#{user_id}'"
       end
     end
 
@@ -452,7 +452,7 @@ class AdventuresController < ApplicationController
         if (i==0)
           filtered_user_ids_sql_string = "id = '#{local_filtered_id}'"
         elsif (i > 0)
-          filtered_user_ids_sql_string = filtered_user_ids_sql_string + " OR id = '#{local_filtered_id}'"
+          filtered_user_ids_sql_string += " OR id = '#{local_filtered_id}'"
         end
       end
 
@@ -509,7 +509,7 @@ class AdventuresController < ApplicationController
       city_adv_count = Adventure.approved.where(city: city).length
 
       # Make sure there are atleast 3 & special cases 
-      if country == "Costa Rica"
+      if country == "Costa Rica" || country == "Ecuador"
         @adventures = Adventure.approved.where(country: country).order('RANDOM()')
       elsif city_adv_count > 2 
         @adventures = Adventure.approved.where(city: city).order('RANDOM()')
@@ -520,6 +520,15 @@ class AdventuresController < ApplicationController
     else
       @adventures = Adventure.approved.near(@location,200).order('RANDOM()')
     end
+
+    filter_categories = []
+    @adventures.each do |adv|
+      adv.category.split(",").each do |cat|
+        filter_categories << cat
+      end
+    end
+
+    @filter_categories = filter_categories.uniq.sort_by{|cat| cat.downcase}
 
     if params[:locals] == "true"
       user_ids_sql_string = ''
@@ -532,6 +541,19 @@ class AdventuresController < ApplicationController
       end
 
       @locals = User.where(user_ids_sql_string)
+
+      # For filter, only display categories that are displayed under all
+      filter_categories = []
+
+      @locals.each do |local|
+        local.adventures.each do |adv|
+          adv.category.split(",").each do |cat|
+            filter_categories << cat
+          end
+        end
+      end
+
+      @filter_categories = filter_categories.uniq.sort_by{|cat| cat.downcase}
     end
 
     respond_to do |format|
@@ -564,6 +586,19 @@ class AdventuresController < ApplicationController
       end
 
       @locals = User.where(user_ids_sql_string)
+
+      # For filter, only display categories that are displayed under all
+      filter_categories = []
+
+      @locals.each do |local|
+        local.adventures.each do |adv|
+          adv.category.split(",").each do |cat|
+            filter_categories << cat
+          end
+        end
+      end
+
+      @filter_categories = filter_categories.uniq.sort_by{|cat| cat.downcase}
     end
 
     respond_to do |format|

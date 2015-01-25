@@ -21,13 +21,13 @@
           .btn.btn-default.filter_select_btn.price_type_group
             GROUP
 
-      .col-md-7.text-center
+      .col-md-8.text-center
         .row
           .filter_header
             CATEGORY
         .row
           .btn.btn-default.filter_select_btn.cat_btn.cat_all.active
             ALL
-          - adv_categories.each do |cat|
+          - filter_categories.each do |cat|
             .btn.btn-default.filter_select_btn.cat_btn{"data-category" => "#{cat.downcase}"}
-              = cat            
+              = cat.upcase           

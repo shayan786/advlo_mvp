@@ -29,7 +29,7 @@
 
 		// only show filter if results count > 2
 		<% if @adventures.length > 1 %>
-			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_location_filter')) %>")
+			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_location_filter', locals:{filter_categories: @filter_categories})) %>")
 		<% end %>
 
 		$("#adventure-partial").html("<%= escape_javascript(render(partial: 'find_adventures', locals:{adventures: @adventures})) %>");
