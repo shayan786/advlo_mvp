@@ -492,7 +492,7 @@ class AdventuresController < ApplicationController
       @adventures = Adventure.approved.where(country: country).order('RANDOM()')
 
     #State
-    when "administration_area_level_1"
+    when "administrative_area_level_1"
       # Check to see if in the US
       if geocode_obj[0].data['address_components'][1]['short_name'] == "US"
         state = geocode_obj[0].data['address_components'][0]['long_name']
