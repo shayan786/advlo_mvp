@@ -341,6 +341,266 @@ class AdventuresController < ApplicationController
 
   #------------------------HOST LOGIC END-----------------------------
 
+
+  #------------------------SEARCHING METHODS START--------------------
+  def find
+
+  end
+
+  # Adventures Filter
+  def find_adventure_filter
+    adventures_id_array = params[:adventure_ids]
+    price_sort_by = params[:price_sort_by]
+    price_type = params[:price_type]
+
+    # Update Flag for JS
+    if params[:flag]
+      @flag = true
+    end
+
+    adv_ids_sql_string = ''
+    adventures_id_array.each_with_index do |adv_id,i|
+      if (i==0)
+        adv_ids_sql_string = "id = '#{adv_id}'"
+      elsif (i > 0)
+        adv_ids_sql_string += " OR id = '#{adv_id}'"
+      end
+    end
+
+    @adventures = Adventure.where(adv_ids_sql_string)
+
+    if price_sort_by == "NONE"
+      category_sql_string = ''
+      if params[:categories].kind_of?(Array)
+        category_array = params[:categories]
+
+        category_array.each_with_index do |cat,i|
+          if (i==0)
+            category_sql_string = "category LIKE '%#{cat}%'"
+          elsif (i > 0)
+            category_sql_string += " OR category LIKE '%#{cat}%'"
+          end
+        end
+
+        @adventures = @adventures.where(category_sql_string)
+      end
+
+      if price_type != "NONE"
+        @adventures = @adventures.where(price_type: "#{price_type}")
+      end
+
+    else 
+      @adventures = @adventures.order("price #{price_sort_by}")
+
+      category_sql_string = ''
+      if params[:categories].kind_of?(Array)
+        category_array = params[:categories]
+
+        category_array.each_with_index do |cat,i|
+          if (i==0)
+            category_sql_string = "category LIKE '%#{cat}%'"
+          elsif (i > 0)
+            category_sql_string += " OR category LIKE '%#{cat}%'"
+          end
+        end
+
+        @adventures = @adventures.where(category_sql_string)
+      end
+
+      if price_type != "NONE"
+        @adventures = @adventures.where(price_type: "#{price_type}")
+      end
+
+    end
+
+    respond_to do |format|
+      format.js {render "find_adventure_filter.js", layout: false}
+    end
+  end
+
+  def find_local_filter 
+    # Update Flag for JS
+    if params[:flag]
+      @flag = true
+    end
+
+    user_ids_array = params[:user_ids]
+
+    user_ids_sql_string = ''
+    user_ids_array.each_with_index do |user_id,i|
+      if (i==0)
+        user_ids_sql_string = "id = '#{user_id}'"
+      elsif (i > 0)
+        user_ids_sql_string += " OR id = '#{user_id}'"
+      end
+    end
+
+    @locals = User.where(user_ids_sql_string)
+    locals_filtered_array = []
+
+    if params[:categories].kind_of?(Array)
+      @locals.each do |local|
+        local.adventures.each do |adv|
+          params[:categories].each do |cat|
+            if adv.category.include?(cat)
+              locals_filtered_array << local.id
+              break
+            end
+          end
+        end
+      end
+
+      locals_filtered_array = locals_filtered_array.uniq
+    
+      filtered_user_ids_sql_string = ''
+      locals_filtered_array.each_with_index do |local_filtered_id, i|
+        if (i==0)
+          filtered_user_ids_sql_string = "id = '#{local_filtered_id}'"
+        elsif (i > 0)
+          filtered_user_ids_sql_string += " OR id = '#{local_filtered_id}'"
+        end
+      end
+
+      @locals = User.where(filtered_user_ids_sql_string).sort_by{|local| local.name.downcase}
+    end
+
+    respond_to do |format|
+      format.js {render "find_local_filter.js", layout: false}
+    end
+  end
+
+  def find_by_location
+    @location = params[:location]
+
+    # Get geocode obj
+    geocode_obj = Geocoder.search(@location)
+
+    # SEARCH LOGIC:
+    # 1: Is it a continent ()
+    # 2: Is it a country ()
+    # 3: Is it a state, US ONLY ()
+    # 4: Is it a city ()
+    # 5: Default use nearby 200 miles
+    # 6: Return locals?
+
+    geocode_type = geocode_obj[0].data['address_components'][0]['types'][0]
+
+    case geocode_type
+    when "continent"
+      @adventures = Adventure.approved.where(region: @location).order('RANDOM()')
+
+    when "colloquial_area"
+      @adventures = Adventure.approved.where(region: @location).order('RANDOM()')
+
+    when "country"
+      country = geocode_obj[0].data['address_components'][0]['long_name']
+      @adventures = Adventure.approved.where(country: country).order('RANDOM()')
+
+    #State
+    when "administrative_area_level_1"
+      # Check to see if in the US
+      if geocode_obj[0].data['address_components'][1]['short_name'] == "US"
+        state = geocode_obj[0].data['address_components'][0]['long_name']
+        @adventures = Adventure.approved.where(state: state)
+      else
+        @adventures = Adventure.approved.near(@location,200).order('RANDOM()')
+      end
+
+    #City
+    when "locality"
+      city = geocode_obj[0].data['address_components'][0]['long_name']
+      country = geocode_obj[0].data['address_components'][2]['long_name']
+
+      city_adv_count = Adventure.approved.where(city: city).length
+
+      # Make sure there are atleast 3 & special cases 
+      if country == "Costa Rica" || country == "Ecuador"
+        @adventures = Adventure.approved.where(country: country).order('RANDOM()')
+      elsif city_adv_count > 2 
+        @adventures = Adventure.approved.where(city: city).order('RANDOM()')
+      else
+        @adventures = Adventure.approved.near(@location.to_s,200).order('RANDOM()')
+      end
+
+    else
+      @adventures = Adventure.approved.near(@location,200).order('RANDOM()')
+    end
+
+    filter_categories = []
+    @adventures.each do |adv|
+      adv.category.split(",").each do |cat|
+        filter_categories << cat
+      end
+    end
+
+    @filter_categories = filter_categories.uniq.sort_by{|cat| cat.downcase}
+
+    if params[:locals] == "true"
+      user_ids_sql_string = ''
+      @adventures.each_with_index do |adv,i|
+        if (i==0)
+          user_ids_sql_string = "id = '#{adv.users.first.id}'"
+        elsif (i > 0)
+          user_ids_sql_string = user_ids_sql_string + " OR id = '#{adv.users.first.id}'"
+        end
+      end
+
+      @locals = User.where(user_ids_sql_string).sort_by{|local| local.name.downcase}
+
+      # For filter, only display categories that are displayed under all
+      filter_categories = []
+
+      @locals.each do |local|
+        local.get_host_adventure_categories.each do |cat|
+          filter_categories << cat
+        end
+      end
+
+      @filter_categories = filter_categories.uniq.sort_by{|cat| cat.downcase}
+    end
+
+    respond_to do |format|
+      format.js {render "find_by_location.js", layout: false}
+    end
+  end
+
+  def find_by_category
+    category_array = params[:category]
+    @categories = params[:category]
+
+    category_sql_string = ''
+    category_array.each_with_index do |cat,i|
+      if (i==0)
+        category_sql_string = "category LIKE '%#{cat}%'"
+      elsif (i > 0)
+        category_sql_string = category_sql_string + " OR category LIKE '%#{cat}%'"
+      end
+    end
+
+    @adventures = Adventure.approved.where(category_sql_string).order('RANDOM()')
+
+    if params[:locals] == "true"
+      user_ids_sql_string = ''
+      @adventures.each_with_index do |adv,i|
+        if (i==0)
+          user_ids_sql_string = "id = '#{adv.users.first.id}'"
+        elsif (i > 0)
+          user_ids_sql_string = user_ids_sql_string + " OR id = '#{adv.users.first.id}'"
+        end
+      end
+
+      @locals = User.where(user_ids_sql_string).sort_by{|local| local.name.downcase}
+    end
+
+    respond_to do |format|
+      format.js {render "find_by_activities.js", layout: false}
+    end
+
+  end
+
+  #------------------------SEARCHING METHODS END----------------------  
+
+
   def destroy 
     @adventure = Adventure.find_by_id(params[:id])
 
