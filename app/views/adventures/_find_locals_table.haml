@@ -14,7 +14,7 @@
             %td.text-center
               %a{href: "#{root_url}users/#{local.to_param}", target: "_blank"}
                 .local_img{style: "background: url('#{local.get_avatar_url("medium")}') center center no-repeat"}
-                .local_name.text-center= local.get_first_name
+                .local_name.text-center= local.get_first_name.length > 12 ? "#{local.get_first_name[0..11]}.." : local.get_first_name
             %td
               - if local.adventures.first.city && local.adventures.first.city != '' 
                 = "#{local.adventures.first.city}, #{local.adventures.first.country}"
