@@ -26,8 +26,14 @@
           .filter_header
             CATEGORY
         .row
-          .btn.btn-default.filter_select_btn.cat_btn.cat_all.active
-            ALL
-          - filter_categories.each do |cat|
-            .btn.btn-default.filter_select_btn.cat_btn{"data-category" => "#{cat.downcase}"}
-              = cat.upcase
+          - if filter_categories
+            .btn.btn-default.filter_select_btn.cat_btn.cat_all.active
+              ALL
+            - filter_categories.each do |cat|
+              .btn.btn-default.filter_select_btn.cat_btn{"data-category" => "#{cat.downcase}"}
+                = cat.upcase
+          - else
+            - @categories.each do |cat|
+              .btn.btn-default.filter_select_btn.cat_btn.disabled.active{"data-category" => "#{cat.downcase}"}
+                = cat.upcase
+

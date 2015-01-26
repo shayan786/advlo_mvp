@@ -3,7 +3,7 @@
     %table.table
       %thead
         %tr
-          %th Name
+          %th.text-center Name
           %th Location
           %th Categories
           %th Adventures
@@ -11,9 +11,10 @@
       %tbody
         - locals.each do |local|
           %tr
-            %td
+            %td.text-center
               %a{href: "#{root_url}users/#{local.to_param}", target: "_blank"}
-                = local.get_first_name
+                .local_img{style: "background: url('#{local.get_avatar_url("medium")}') center center no-repeat"}
+                .local_name.text-center= local.get_first_name
             %td
               - if local.adventures.first.city && local.adventures.first.city != '' 
                 = "#{local.adventures.first.city}, #{local.adventures.first.country}"

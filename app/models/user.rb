@@ -341,7 +341,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    return categories.uniq
+    return categories.uniq.sort_by{|cat| cat.downcase}
   end
 
   def youtube_embed(youtube_url)

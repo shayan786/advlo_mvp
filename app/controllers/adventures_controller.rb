@@ -561,6 +561,7 @@ class AdventuresController < ApplicationController
 
   def find_by_category
     category_array = params[:category]
+    @categories = params[:category]
 
     category_sql_string = ''
     category_array.each_with_index do |cat,i|
@@ -584,17 +585,6 @@ class AdventuresController < ApplicationController
       end
 
       @locals = User.where(user_ids_sql_string).sort_by{|local| local.name.downcase}
-
-      # For filter, only display categories that are displayed under all
-      filter_categories = []
-
-      @locals.each do |local|
-        local.get_host_adventure_categories.each do |cat|
-          filter_categories << cat
-        end
-      end
-
-      @filter_categories = filter_categories.uniq.sort_by{|cat| cat.downcase}
     end
 
     respond_to do |format|
