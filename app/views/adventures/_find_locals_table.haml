@@ -22,8 +22,8 @@
             %td
               - user_cat_array = local.get_host_adventure_categories
               - user_cat_array.each do |cat|
-                = cat.capitalize
-                %br
+                .cat_circle
+                  = get_category_acronym(cat)
             %td
               - local.adventures.each do |adv|
                 %a{href: "#{root_url}adventures/#{adv.slug}", target: "_blank"}

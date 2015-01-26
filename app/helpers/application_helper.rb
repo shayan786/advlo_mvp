@@ -271,6 +271,23 @@ module ApplicationHelper
     return ['AIR', 'BIKING', 'CULTURAL', 'CAMPING', 'MOTOR', 'CLIMBING', 'HIKING', 'SNOW', 'WATER', 'OTHER']
   end
 
+  def get_category_acronym(category)
+    categories = {
+      "AIR" => "AIR",
+      "BIKING" => "BKG",
+      "CULTURAL" => "CTL",
+      "CAMPING" => "CPG",
+      "MOTOR" => "MTR",
+      "CLIMBING" => "CLG",
+      "HIKING" => "HKG",
+      "SNOW" => "SNW",
+      "WATER" => "WTR",
+      "OTHER" => "OTR"
+    }
+
+    return categories[category.upcase]
+  end
+
   def adv_regions
     return ["North America", "Oceania", "Latin America", "Asia", "Europe", "Africa"]
   end

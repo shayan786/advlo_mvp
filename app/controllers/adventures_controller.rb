@@ -456,7 +456,7 @@ class AdventuresController < ApplicationController
         end
       end
 
-      @locals = User.where(filtered_user_ids_sql_string)
+      @locals = User.where(filtered_user_ids_sql_string).sort_by{|local| local.name.downcase}
     end
 
     respond_to do |format|
@@ -540,16 +540,14 @@ class AdventuresController < ApplicationController
         end
       end
 
-      @locals = User.where(user_ids_sql_string)
+      @locals = User.where(user_ids_sql_string).sort_by{|local| local.name.downcase}
 
       # For filter, only display categories that are displayed under all
       filter_categories = []
 
       @locals.each do |local|
-        local.adventures.each do |adv|
-          adv.category.split(",").each do |cat|
-            filter_categories << cat
-          end
+        local.get_host_adventure_categories.each do |cat|
+          filter_categories << cat
         end
       end
 
@@ -585,16 +583,14 @@ class AdventuresController < ApplicationController
         end
       end
 
-      @locals = User.where(user_ids_sql_string)
+      @locals = User.where(user_ids_sql_string).sort_by{|local| local.name.downcase}
 
       # For filter, only display categories that are displayed under all
       filter_categories = []
 
       @locals.each do |local|
-        local.adventures.each do |adv|
-          adv.category.split(",").each do |cat|
-            filter_categories << cat
-          end
+        local.get_host_adventure_categories.each do |cat|
+          filter_categories << cat
         end
       end
 

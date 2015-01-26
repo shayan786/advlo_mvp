@@ -199,6 +199,28 @@
 					color: #FFF;
 					opacity: 0.9;
 					border-color: rgba(255,255,255,0.7);
+
+					.cat_circle {
+						display: inline-block;
+						background-color: rgba(105,153,103,0.7);
+						width: 40px;
+						height: 40px;
+						border-radius: 50%;
+						color: #FFF;
+						margin-right: 5px;
+
+						text-align: center;
+						padding-top: 11px;
+						padding-left: 2px;
+						font-family: bebas_neue_bold;
+						letter-spacing: 2px;
+						font-size: 1.1em;
+
+					}
+
+					.cat_circle:last-child {
+						margin-right: 0px;
+					}
 				}
 			}
 		}
