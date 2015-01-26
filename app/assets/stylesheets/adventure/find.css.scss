@@ -202,7 +202,7 @@
 					border-color: rgba(255,255,255,0.7);
 
 					.local_img {
-						width: 100%;
+						width: 100px;
 						height: 70px;
 						border: 1px solid $light_gray;
 						border-bottom: none;
@@ -216,8 +216,9 @@
 						letter-spacing: 1px;
 						color: #FFF;
 						padding: 3px 0 0 0;
-						width: 100%;
+						width: 100px;
 						border: 1px solid $light_gray;
+						margin: 0 auto;
 					}
 
 					.cat_circle {
