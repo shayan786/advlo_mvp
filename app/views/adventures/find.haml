@@ -1,0 +1,86 @@
+- set_meta_tags(get_meta_tags("Find An Adventure", "Search our network of local adventure guides to book your next experience", "Find, Search, Guides, Local Adventure, Experience, Local Experience"))
+- set_meta_tags :og => get_og_tags("Find An Adventure", "#{root_url}find", "Search our network of local adventure guides to book your next experience", "http://i.imgur.com/a6L0hYB.png")
+- set_meta_tags :fb => {:app_id => '210802829129036'}
+- set_meta_tags :twitter => get_twitter_tags("Find An Adventure", "Search our network of local adventure guides to book your next experience", "http://i.imgur.com/a6L0hYB.png")
+
+#find
+  .search_options
+    .row
+      .col-md-3.col-md-offset-2.text-center
+        .btn.btn-primary.where_to_btn.orange_btn.active
+          %i.fa.fa-map-marker
+          WHERE TO?
+      .col-md-2.text-center
+        .or
+          OR
+      .col-md-3.text-center
+        .btn.btn-primary.which_adventure_btn.orange_btn
+          %i.fa.fa-bicycle
+          ADVENTURE TYPE?
+
+    .row.text-center
+      .show_me_header
+        SHOW ME
+    .row.text-center
+      .btn.btn-default.show_me_select_btn.show_me_adventures.active
+        ADVENTURES
+      .btn.btn-default.show_me_select_btn.show_me_locals
+        LOCALS
+
+    .row
+      .col-md-6.col-md-offset-3.text-center
+        %form{"accept-charset" => "UTF-8", action: "/find/category", method: "post", roll: "form", id: "find_adventure_activity_form", "data-remote" => "true"}
+          =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          =tag(:input, :type => "hidden", :id => "locals", :name => "locals", :value => false)
+
+          - adv_categories.each do |cat|
+            %label.checkbox-inline
+              %input{type: "checkbox", id: cat.downcase, value: cat.downcase, name: 'category[]'}
+                = cat
+          .row
+            .btn.btn-primary.search_btn
+              %i.fa.fa-search
+              SEARCH
+
+    .row
+      %form{"accept-charset" => "UTF-8", action: "/find/location", method: "post", roll: "form", id: "find_adventure_form", "data-remote" => "true"}
+        =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        =tag(:input, :type => "hidden", :id => "locals", :name => "locals", :value => false)
+
+        .col-md-6.col-md-offset-3
+          .form-group
+            .input-group
+              %input.form-control{placeholder: "Enter Location", name: "location", id: "location"}
+              .input-group-addon
+                %i.fa.fa-search
+
+  .search_results.dark_background
+    .header.text-center
+      RESULTS
+    .row
+      .col-md-8.col-md-offset-2
+        .begin_search.text-center
+          BEGIN YOUR SEARCH ABOVE
+
+    .row
+      .col-md-8.col-md-offset-2
+        .no_results.text-center
+          SORRY, NO ADVENTURES WERE FOUND IN
+          .location
+
+    .row
+      .col-md-10.col-md-offset-1
+        .filter
+
+    .adventure-container
+      #adventure-partial
+
+    .row
+      .col-md-10.col-md-offset-1
+        .locals-partial
+
+:javascript
+  adventureFind();
+
+
+

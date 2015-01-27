@@ -29,6 +29,7 @@
 //= require masonry.pkgd.min.js
 //= require imagesloaded.pkgd.min.js
 //= require adventure.js
+//= require find.js
 //= require homepage.js
 //= require reservation.js
 //= require user.js

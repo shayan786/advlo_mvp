@@ -145,6 +145,20 @@ class ApplicationController < ActionController::Base
     @feat_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
     @new_adventures = Adventure.approved.order('CREATED_AT desc').limit(3)
     get_regions
+
+    if current_user
+     conversations = Conversation.where('sender_id = ? OR receiver_id = ?',current_user.id,current_user.id)
+     count = 0
+
+      conversations.each do |con|
+        if con.messages.last.read == false
+          count += 1
+        end
+      end
+
+      @messages_count = count
+    end
+
   end
 
 

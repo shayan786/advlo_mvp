@@ -1,0 +1,31 @@
+if (<%= @adventures.length %> == 0) {
+	// SHOW NONE FOUND MESSAGE WITH REQUEST?
+	$('#find .search_results .begin_search').hide();
+	$("#find .search_results .adventure-container #adventure-partial").hide();
+	$('#find .search_results .no_results .location').empty();
+	$('#find .search_results .no_results .location').text('<%= @location %>');
+	$('#find .search_results .no_results').show();
+} 
+
+else {
+	// RENDER ADVENTURES
+	$('#find .search_results .begin_search').hide();
+	$('#find .search_results .no_results').hide();
+
+	$("#find .search_results .adventure-container #adventure-partial").hide();
+	$("#adventure-partial").html("<%= escape_javascript(render(partial: 'adventure_index', locals:{adventures: @adventures})) %>");
+	$("#adventure-partial").fadeIn('slow')
+
+	masonrySetup();
+	
+	<% adventure_ids = [] %>
+	
+	<% @adventures.each do |adv| %>
+		<% adventure_ids << adv.id %>
+	<% end %>
+
+	<% if !@flag %>
+		find_location_filter_actions(<%= adventure_ids %>);
+	<% end %>
+	
+}
