@@ -7,21 +7,27 @@
       %h2= "Hey #{@user.get_name_or_email}!"
       
       %p 
-        You are now entered to win $1000 on Advlo January 27th.
+        There's still one more day to increase your entries for 
         %br
-        Track your chance of winning & get more entries
-        %a{href: 'http://advlo.com/giveaway'} here.
+        %a{href: 'http://advlo.com/giveaway'} 
+          $1,000 worth of local adventures.
+      %br
+
 
       %a{href:"http://advlo.com/giveaway", style: "text-decoration: none;"}
-        = image_tag 'http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/460/hero/advlo_giveaway_more_entries.jpg?1420860469',style: "position: relative;float: left;width: 100%;"
+        = image_tag 'http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/518/hero/advlo_giveaway_paraglide_fb_1.jpg?1422326810',style: "position: relative;float: left;width: 100%;"
       %hr
       %br
 
       %hr
-      %h4=link_to "Every friend that enters gets you another entry.", 'http://advlo.com/giveaway'
+      %h4=link_to "Click me for your link!", 'http://advlo.com/giveaway'
       %hr
 
       %p.text-center
-        %i Thanks & good luck!
+        %i Thanks & good luck tomorrow night 
+        %br
+        %strong
+          January 27th @ midnight 
+        %i when we will contact our winner!
         %br
         Team Advlo
