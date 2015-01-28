@@ -12,14 +12,14 @@
 
         .question-wrapper
           %h4= @poll.name
-          %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> "14 Days Kitesurfing in South Africa ( $799 )", "data-link" => "http://advlo.com/adventures?region=Asia", 'data-poll' => 'Asia', 'data-answer' => 'answer-1'}
-            %p Asia
+          %a.question.btn.btn-primary.answer-1{href: '/update-poll/answer_1', 'data-remote' => 'true', 'data-text'=> "Adventures in Asia", "data-link" => "http://advlo.com/adventures?region=Asia", 'data-poll' => 'Asia', 'data-answer' => 'answer-1'}
+            %p SouthEast Asia
 
-          %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "5 days of speedflying lessons in Oregon ( $950 )", 'data-link' => "http://www.advlo.com/adventures/speedflying-basic-pilot", 'data-poll' => 'Central America', 'data-answer' => 'answer-3'}
-            %p Central America
+          %a.question.btn.btn-info.answer-3{href: '/update-poll/answer_3', 'data-remote' => 'true', 'data-text'=> "Adventures in Central & South America", 'data-link' => "http://advlo.com/adventures?region=Latin-America", 'data-poll' => 'Latin America', 'data-answer' => 'answer-3'}
+            %p Latin America
 
-          %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> '5 day 14 scubadives on liveabord in Burma ( $900 )', 'data-link' => 'http://www.advlo.com/adventures/5-day---14-dives-in-burma','data-poll' => 'Scuba Diver', 'data-answer' => 'answer-2'}
-            %p scubadiving
+          %a.question.btn.btn-success.answer-2{href: '/update-poll/answer_2', 'data-remote' => 'true', 'data-text'=> 'Adventures in the U.S.A.', 'data-link' => 'http://advlo.com/adventures?region=United States','data-poll' => 'United States', 'data-answer' => 'answer-2'}
+            %p United States
 
         .form-wrapper
           - total_answers = (@poll.answer_1 + @poll.answer_2 + @poll.answer_3).to_f

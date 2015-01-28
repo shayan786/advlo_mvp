@@ -7,9 +7,6 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   before_filter :get_poll
 
-  def render_error
-    render :status => 404
-  end
 
   def giveaway
     if params[:promo_code]

@@ -123,5 +123,5 @@ Rails.application.routes.draw do
   get '/users/unsubscribe/:signature' => 'users#unsubscribe'
   get '/unsubscriber/:signature' => 'users#unsubscribe_email_list'
 
-  get '*not_found', to: 'application#render_error'
+  get '*not_found', to: 'application#homepage'
 end	
