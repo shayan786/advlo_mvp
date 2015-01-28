@@ -115,7 +115,7 @@ class ApplicationController < ActionController::Base
       if session[:previous_url] != '/users/sign_in' && session[:previous_url] != '/users/sign_up'
         session[:previous_previous_url] = session[:previous_url]
       else
-        session[:previous_url] = '/giveaway'
+        session[:previous_url] = '/'
       end
     end
   end
@@ -125,9 +125,7 @@ class ApplicationController < ActionController::Base
       return
     end
 
-    '/giveaway'    
-    # commented out for giveaway
-    #session[:previous_url]
+    session[:previous_url]
   end
 
   def after_sign_out_path_for(resource)

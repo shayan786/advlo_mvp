@@ -52,12 +52,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.referrer_id = referrer.id
       @user.save
 
-      '/giveaway'
-      # session[:previous_url]
+      session[:previous_url]
     else
-      '/giveaway'
-      # commented for giveaway
-      # session[:previous_url]
+      session[:previous_url]
     end
   end
 end

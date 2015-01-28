@@ -12,77 +12,76 @@
           %span.amount $1,000
           at Adventure Local
 
-      - if current_user && current_user.sent_promotion == true
-        .row
-          .col-md-8.col-md-offset-2.text-center
-            .basic_text
-              You have been entered to win 
-              %span
-                %b
-                  $1,000
-              credit with Adventure Local! 
-              %br
-              The winner will be picked on
-              %b January 27th
 
-        .divider
 
-        .additional_entries
-          = render partial: 'promotion_share_adventures', locals: {adventures: @adventures, total_entries: @total_entries, user_entries: @user_entries}
+      / - if current_user && current_user.sent_promotion == true
+      /   .row
+      /     .col-md-8.col-md-offset-2.text-center
+      /       .basic_text
+      /         You have been entered to win 
+      /         %span
+      /           %b
+      /             $1,000
+      /         credit with Adventure Local! 
+      /         %br
+      /         The winner will be picked on
+      /         %b January 27th
 
-      - elsif current_user
-        .initial_entry_box
-          .row
-            .col-md-8.col-md-offset-2.text-center
-              .basic_text
-                Enter to win 
-                %span
-                  %b
-                    $1,000
-                towards any Adventure Local trip. 
-                %br
-                The winner will be picked on
-                %b January 27th
+      /   .divider
 
-          .row.text-center
-            %a.col-md-4.col-md-offset-4.btn.btn-success.social_btn.giveaway-share{href: "/giveaway/#{current_user.id}"}
-              %i.fa.fa-facebook-square
-              Share to Enter
+      /   .additional_entries
+      /     = render partial: 'promotion_share_adventures', locals: {adventures: @adventures, total_entries: @total_entries, user_entries: @user_entries}
 
-        .row.success_initial_entry{style: "display: none;"} 
-          .col-md-8.col-md-offset-2.text-center
-            .basic_text
-              You are now Entered to win 
-              %span
-                %b
-                  $1,000
-              credit with Adventure Local! 
-              %br
-              The winner will be picked on
-              %b January 27th
+      / - elsif current_user
+      /   .initial_entry_box
+      /     .row
+      /       .col-md-8.col-md-offset-2.text-center
+      /         .basic_text
+      /           Enter to win 
+      /           %span
+      /             %b
+      /               $1,000
+      /           towards any Adventure Local trip. 
+      /           %br
+      /           The winner will be picked on
+      /           %b January 27th
 
-        .additional_entries
+      /     .row.text-center
+      /       %a.col-md-4.col-md-offset-4.btn.btn-success.social_btn.giveaway-share{href: "/giveaway/#{current_user.id}"}
+      /         %i.fa.fa-facebook-square
+      /         Share to Enter
 
-      - else
-        .divider
-        .giveaway-background
+      /   .row.success_initial_entry{style: "display: none;"} 
+      /     .col-md-8.col-md-offset-2.text-center
+      /       .basic_text
+      /         You are now Entered to win 
+      /         %span
+      /           %b
+      /             $1,000
+      /         credit with Adventure Local! 
+      /         %br
+      /         The winner will be picked on
+      /         %b January 27th
+
+      /   .additional_entries
+
+      / - else
+      .giveaway-background
+        .thanks{style: 'width: 45%; margin: 0 auto; font-size: 17px; color: #000;'}
           .giveaway-text.top-text
-            Adventure Local's 
+            ="- Entry to Adventure Local's "
             %b
               $1,000 
-            giveway
-
-          .row.text-center 
-            .col-md-4.col-md-offset-4.btn.btn-primary.giveaway-toggle.new-account
-              ENTER
+            ="giveway is closed -"
 
           
           .giveaway-text.text-center
-            For a chance at an adventure of a lifetime.
+            The winner will be notified and be given 24 hours to respond. We will announce the winner when they respond. Thanks for joining!
 
-          .row.text-center{style: "margin-top: 10px;"}
-            %a.more_info_text{href: "/blog/1000-dollar-giveaway", target: "_blank"}
-              FIND OUT MORE 
+
+      .row.text-center{style: "margin-top: 10px;"}
+        %a.more_info_text{href: "/blog/1000-dollar-giveaway", target: "_blank"}
+          FIND OUT MORE 
 
       .divider
 

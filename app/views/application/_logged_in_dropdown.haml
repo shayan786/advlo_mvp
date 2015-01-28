@@ -22,7 +22,7 @@
         %i.fa.fa-envelope-o{style: 'float: left; margin-right: 15px;'}
         
         - if @messages_count && @messages_count > 0
-          .text= "Messages (#{count})"
+          .text= "Messages (#{@messages_count})"
         - else
           .text Messages
 
