@@ -347,7 +347,7 @@ class AdvloMailer < ActionMailer::Base
 
         else
           # Find nearby adventures 150 miles randomly
-          nearby_adventures = Adventure.near([lat,long],150).approved.limit(10).order('RANDOM()').limit(3)
+          nearby_adventures = Adventure.near([lat,long],300).approved.limit(10).order('RANDOM()').limit(3)
         end
 
         @nearby_adventures = nearby_adventures
