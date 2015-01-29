@@ -68,7 +68,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:show]
 
   #searching an adventure or guide
-  get '/find'                          => 'adventures#index'
+  get '/find'                           => 'adventures#index'
   # get '/find'                         => 'adventures#find'
   # post '/find/location'               => 'adventures#find_by_location' 
   # post '/find/category'               => 'adventures#find_by_category'
