@@ -201,6 +201,11 @@ select {
 
 
 @media only screen and (max-width: 991px) {
+  #loader-spinner{
+    top: 35%;
+    left: 35%;
+  }
+
   .edit-label {
     text-align: left !important;
   }
