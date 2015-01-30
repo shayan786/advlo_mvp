@@ -153,13 +153,11 @@ function video_modal_play_stop() {
 
   // On show play video
   $('#video-modal').on('show.bs.modal', function(e) {
-    console.log('show')
     $(this).find('iframe').attr('src',start_src);
   })
 
   // On hide stop video
   $('#video-modal').on('hide.bs.modal', function(e) {
-    console.log('hide')
     $(this).find('iframe').attr('src',stop_src);
   })
 }
