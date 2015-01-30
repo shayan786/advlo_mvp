@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_filter :store_location
-  before_filter :get_poll
+  #before_filter :get_poll
 
 
   def giveaway
@@ -34,23 +34,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_poll
-    @poll = Poll.last
-  end
+  # def get_poll
+  #   @poll = Poll.last
+  # end
 
-  def calculate_poll
-    @poll = Poll.last
-    case params[:answer]
-      when 'answer_1' then @poll.answer_1 += 1
-      when 'answer_2' then @poll.answer_2 += 1
-      when 'answer_3' then @poll.answer_3 += 1
-    end
-    @poll.save
+  # def calculate_poll
+  #   @poll = Poll.last
+  #   case params[:answer]
+  #     when 'answer_1' then @poll.answer_1 += 1
+  #     when 'answer_2' then @poll.answer_2 += 1
+  #     when 'answer_3' then @poll.answer_3 += 1
+  #   end
+  #   @poll.save
     
-    respond_to do |format|
-      format.js {render "calculate_poll.js", layout: false}
-    end
-  end
+  #   respond_to do |format|
+  #     format.js {render "calculate_poll.js", layout: false}
+  #   end
+  # end
 
   def terms
 
