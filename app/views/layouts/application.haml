@@ -37,6 +37,9 @@
           footerGoogleTracking();
         })
 
+%noscript
+  #loader-overlay{style: "display: none !important;"}
+
 :javascript
   // we need a callback url for FB
   $(document).ready(function(e) {
@@ -44,7 +47,8 @@
       window.location.hash = ''
     }
 
-    signup_cookie()
+    //disable polling for now
+    //signup_cookie()
   }); 
 
 

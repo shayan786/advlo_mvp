@@ -63,6 +63,13 @@ $(document).ready(function(){
 })
 
 
+// LOADER RELATED FUNCTIONS
+$(window).load(function() {
+  // Animate loader off screen
+  $("#loader-overlay").fadeOut("slow");
+});
+
+
 $(document).ajaxStart(function(){
   if ($(window).width() <= 767) {
     $('#loader-spinner').css({
