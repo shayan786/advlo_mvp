@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'errors/file_not_found'
+
+  get 'errors/unprocessable'
+
+  get 'errors/internal_server_error'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
   ActiveAdmin.routes(self)
@@ -123,4 +129,9 @@ Rails.application.routes.draw do
   get '/users/unsubscribe/:signature' => 'users#unsubscribe'
   get '/unsubscriber/:signature' => 'users#unsubscribe_email_list'
 
+
+  get '/404', to: 'errors#file_not_found', via: :all
+  get '/422', to: 'errors#unprocessable', via: :all
+  get '/500', to: 'errors#internal_server_error', via: :all
 end	
+

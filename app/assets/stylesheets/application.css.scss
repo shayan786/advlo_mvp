@@ -72,7 +72,7 @@
 }
 
 #loader-overlay {
-  display: none;
+  display: block;
   position: fixed;
   top:0;
   left:0;
@@ -201,6 +201,11 @@ select {
 
 
 @media only screen and (max-width: 991px) {
+  #loader-spinner{
+    top: 35%;
+    left: 35%;
+  }
+
   .edit-label {
     text-align: left !important;
   }
