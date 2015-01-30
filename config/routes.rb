@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'errors/file_not_found'
+
+  get 'errors/unprocessable'
+
+  get 'errors/internal_server_error'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
   ActiveAdmin.routes(self)
@@ -116,12 +122,16 @@ Rails.application.routes.draw do
   #switch user from admin account
   get 'switch_user' => 'switch_user#set_current_user'
 
-  #ajax for poll calculation
-  get '/update-poll/:answer' => 'application#calculate_poll'
+  # ajax for poll calculation
+  # get '/update-poll/:answer' => 'application#calculate_poll'
 
   # unsubscribe users mailer link
   get '/users/unsubscribe/:signature' => 'users#unsubscribe'
   get '/unsubscriber/:signature' => 'users#unsubscribe_email_list'
 
-  get '*not_found', to: 'application#homepage'
+
+  match '/404', to: 'errors#file_not_found', via: :all
+  match '/422', to: 'errors#unprocessable', via: :all
+  match '/500', to: 'errors#internal_server_error', via: :all
 end	
+

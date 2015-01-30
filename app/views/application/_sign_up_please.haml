@@ -36,16 +36,9 @@
             %a.poll-link{href:''}
               #network
                 %h4
-
-          #secret-gift
-            Join the 
-            %span 
-              $1000
-            giveaway:
-
           
           #email_list_toggle.btn{style: "width: 150px; color: #fff;"}
-            Via Account
+            Join via email
 
           %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'popup_join', style: 'display: none;'}
             = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
