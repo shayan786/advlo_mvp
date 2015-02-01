@@ -172,6 +172,7 @@ homepageInit = function() {
   request_form_maxlength();
   how_it_works_hovers();
   video_modal_play_stop();
+  host_index_effects();
 }
 
 aboutPageInit = function() {

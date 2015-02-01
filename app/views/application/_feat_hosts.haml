@@ -12,7 +12,7 @@
           .col-md-5
             .host_adventures.text-center
               - host.adventures.limit(6).each do |adv|
-                .adv_box{style: "background: url('#{adv.attachment.url(:thumb)}') center center no-repeat"}
+                %a.adv_box{href: "#{root_url}adventures/#{adv.slug}", style: "background: url('#{adv.attachment.url(:thumb)}') center center no-repeat", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"#{adv.title.length > 24 ? adv.title[0..24]+'...' : adv.title}"}
 
         .row
           .col-md-2.no_padding_right
@@ -25,4 +25,4 @@
             .btn.btn-primary.host_contact_btn
               %i.fa.fa-envelope-o
               CONTACT
-          
+

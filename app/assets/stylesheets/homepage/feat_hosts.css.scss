@@ -52,18 +52,29 @@
 		}
 
 		.host_adventures {
+			padding-bottom: 10px;
+
 			.adv_box {
+				border-radius: 3px;
 				display: inline-block;
 				width: 95px;
 				height: 65px;
 				margin: 12px 10px 0px 10px;
 				background-size: cover !important;
-				opacity: 0.8;
+				text-decoration: none;
+				-moz-transition:-moz-transform 0.3s ease-in; 
+				-webkit-transition:-webkit-transform 0.3s ease-in; 
+				-o-transition:-o-transform 0.3s ease-in;
+
+				&:hover {
+					text-decoration: none;
+					-moz-transform:scale(1.1); 
+					-webkit-transform:scale(1.1);
+					-o-transform:scale(1.1);
+				}
 			}
 
-			.adv_box:nth-child(4) {
-				margin-bottom: 10px;
-			}
+
 		}
 
 		.host_location {
