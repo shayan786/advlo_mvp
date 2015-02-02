@@ -60,10 +60,19 @@ class RegistrationsController < Devise::RegistrationsController
 
   def inital_signin_check
     @user = User.find(current_user.id)
-    @user.is_guide = params[:type]
-    @user.save
 
-    puts "@user.inspect =====> #{@user.inspect}"
+    case params[:type]
+    when "traveler"
+      @user.is_guide = false
+    when "local"
+      @user.is_guide = true
+      @user.guide_type = 'local'
+    when "business"
+      @user.is_guide = true
+      @user.guide_type = 'business'
+    end
+
+    @user.save
 
     respond_to do |format|
       format.js {render "initial_signin_check.js", layout: false}
@@ -204,10 +213,11 @@ class RegistrationsController < Devise::RegistrationsController
       session[:referrer_id] = nil
     end
 
-    '/giveaway'    
-    
-    # commented out for giveaway
-    # session[:previous_url]
+    if session[:previous_url] == '/invite/partner'
+      '/users/edit'
+    else
+      session[:previous_url]
+    end
   end
   # Customize Signing Up Devise Params
   #def sign_up_params

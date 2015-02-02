@@ -32,34 +32,6 @@
   display:none;
 }
 
-#contest-link {
-  display: none;
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
-  border-radius: 20px 0 0 0;
-  background: rgba(0, 0, 0, 0.9);
-  font-size: 20px;
-  font-family: bebas_neue_book;
-  letter-spacing: 4px;
-  padding: 10px;
-  z-index: 999;
-
-  span {
-    color: #009900;
-  }
-  a {
-    color: #fff;
-  }
-  a:hover {
-    text-decoration: none; 
-    opacity: 0.9;
-  }
-  span:hover {
-    opacity: 0.7;
-  }
-}
-
 #honeypot {
   width: 65%;
   visibility: hidden;

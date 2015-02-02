@@ -23,10 +23,15 @@
       .panel-body#user-form-wrapper
         - if current_user.is_guide == nil
           #pre-check
-            %a.btn.btn-default.pre-check#travel{href: '/users/initial/false', 'data-remote' => 'true'}
-              %p I want to travel
-            %a.btn.btn-default.pre-check#host{href: '/users/initial/true', 'data-remote' => 'true'}
-              %p I want to host
+            %a.btn.btn-default.pre-check#travel{href: '/users/initial/traveler', 'data-remote' => 'true'}
+              Adventure traveler
+
+            %a.btn.btn-default.pre-check#host{href: '/users/initial/local', 'data-remote' => 'true'}
+              Individiual guide
+              
+            %a.btn.btn-default.pre-check#business{href: '/users/initial/business', 'data-remote' => 'true'}
+              Local business
+
 
         - else
           = render partial: 'post_check.haml'
@@ -47,6 +52,3 @@
     $('.basic-form').show()
     $('.host-checklist').hide()    
   })
-
-
-

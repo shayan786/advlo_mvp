@@ -5,7 +5,9 @@
       = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
       .form-group.col-md-offset-4
         .btn-group{"data-toggle" => "buttons", style: 'width: 100%;'}
-          - if @user.is_guide == true
+
+          - if @user.is_guide == true && @user.guide_type == 'local'
+
             :javascript
               $(document).ready(function(){
                 $('.host-only-form').show()
@@ -19,7 +21,10 @@
             %label.btn.btn-default.active#host.travel-toggle
               %input{:type => "radio", value: 'true', name: "user[is_guide]"}
               Host
+
+
           - elsif @user.is_guide == false || @user.is_guide == nil
+
             :javascript
               $(document).ready(function(){
                 $('.traveler-only-form').show()
@@ -148,6 +153,7 @@
             .form_label.edit-label TripAdvisor URL
           .col-md-8
             %input.form-control{placeholder: "https://www.tripadvisor.com/members/myname", type: "text", name: "user[ta_url]", id: "user_ta_url", value: "#{current_user.ta_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
+
       - if current_user.email_list != true
         .form-group.row.basic-form
           .col-md-4
@@ -214,7 +220,7 @@
             .col-md-6.col-md-offset-3
               .panel.panel-default
                 .panel-body.text-left
-                  %b Please fill in the following:
+                  %b To host an adventure, complete:
                   - if current_user.avatar.url == "/images/original/missing.png" && current_user.avatar_url == nil
                     %li Profile Image
                   - if current_user.name.nil? || current_user.name.empty?
@@ -241,4 +247,3 @@
             .col-md-6.col-md-offset-3                  
               %a.btn.btn-primary.update_btn{href: "/adventures/new"}
                 HOST AN ADVENTURE
-

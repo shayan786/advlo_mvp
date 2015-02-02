@@ -53,13 +53,6 @@ $(document).ready(function(){
   mobileHeaderLoginToggle();
   // fixes the bug that you can click right below a modal to close it
   $('.modal-dialog').height($('.modal-body').last().css('height'))
-
-
-  if( location.pathname.indexOf('giveaway') != 1 ){
-    setTimeout(function(){
-      $('#contest-link').slideToggle()
-    }, 3500);
-  }
 })
 
 

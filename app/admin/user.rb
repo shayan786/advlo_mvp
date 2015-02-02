@@ -38,6 +38,7 @@ ActiveAdmin.register User do
   form multipart: true do |f|
     f.inputs do
       f.input :is_guide
+      f.input :guide_type, collection: ['local', 'business']
       f.input :email
       f.input :name
       f.input :rating, collection: ['1','2','3','4','5']
