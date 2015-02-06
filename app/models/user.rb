@@ -119,8 +119,6 @@ class User < ActiveRecord::Base
        @user.skillset.empty? || 
        @user.language.nil? || 
        @user.language.empty? || 
-       @user.sex.nil? || 
-       @user.sex.empty? || 
        @user.bio.nil? || 
        @user.bio.empty? || 
        @user.short_description.nil? || 

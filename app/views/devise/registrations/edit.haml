@@ -22,15 +22,32 @@
 
       .panel-body#user-form-wrapper
         - if current_user.is_guide == nil
-          #pre-check
+          #pre-check.text-center
+            %h2 Account Type: 
             %a.btn.btn-default.pre-check#travel{href: '/users/initial/traveler', 'data-remote' => 'true'}
-              Adventure traveler
+              .type-text 
+                %p adventure traveler
+              .bot-explain
+                You crave unique, off-the-beaten-path 
+                %br
+                experiences when you travel.
 
             %a.btn.btn-default.pre-check#host{href: '/users/initial/local', 'data-remote' => 'true'}
-              Individiual guide
-              
+              .type-text 
+                %p individiual guide
+              .bot-explain
+                You have passion for adventure 
+                %br
+                and sharing it with others.
+
             %a.btn.btn-default.pre-check#business{href: '/users/initial/business', 'data-remote' => 'true'}
-              Local business
+              .type-text 
+                %p local business
+              .bot-explain
+                You have a local adventure operation 
+                %br
+                that values cultural connection.
+              
 
 
         - else
@@ -39,16 +56,16 @@
 :javascript
   usersInit()
 
-  $('#host').click(function(){
-    $('.traveler-only-form').hide()
-    $('.host-only-form').show()
-    $('.basic-form').show()
-    $('.host-checklist').show()
+  // $('#host').click(function(){
+  //   $('.traveler-only-form').hide()
+  //   $('.host-only-form').show()
+  //   $('.basic-form').show()
+  //   $('.host-checklist').show()
 
-  })
-  $('#traveler').click(function(){
-    $('.traveler-only-form').show()
-    $('.host-only-form').hide()
-    $('.basic-form').show()
-    $('.host-checklist').hide()    
-  })
+  // })
+  // $('#traveler').click(function(){
+  //   $('.traveler-only-form').show()
+  //   $('.host-only-form').hide()
+  //   $('.basic-form').show()
+  //   $('.host-checklist').hide()    
+  // })

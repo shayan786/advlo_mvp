@@ -32,11 +32,13 @@ Rails.application.routes.draw do
 
   end
 
+  #hosting info routes
   get 'invite/:invite'                => 'adventures#hosting_info'
   get 'partner'                       => 'adventures#hosting_info'
+  get 'host'                          => 'adventures#hosting_info'
 
 
-  # shy wants to hide you from the world
+
   get 'travel-fund'                   => 'users#invite' 
   # get '/travel-fund/:referral_code'   => 'application#giveaway'
 

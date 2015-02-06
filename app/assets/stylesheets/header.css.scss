@@ -1,31 +1,5 @@
 //NAVBAR CUSTOMIZATIONS
 
-#homepage-header-login {
-	z-index: 999;
-	position: absolute;
-	right: 0px;
-	font-size: 1.5em;
-	font-family: 'bebas_neue_book';
-	top: 10px;
-	right: 15px;
-	letter-spacing: 3px;
-	cursor: pointer;
-	text-shadow: -1px -1px #000;
-
-
-	&:hover{
-		opacity: 0.8;
-	}
-
-	a {
-		color: #fff;
-	}
-	a:hover {
-		color: #fff;
-		text-decoration: none;
-	}
-}
-
 .navbar {
 	height: 55px;
 	font-family: cabin_bold;

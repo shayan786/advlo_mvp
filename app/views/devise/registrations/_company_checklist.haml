@@ -1,0 +1,63 @@
+%b To host an adventure, complete:
+- if current_user.avatar.url == "/images/original/missing.png" && current_user.avatar_url == nil
+  .unchecked
+    %input{:type => "checkbox"}
+    %label Profile Image
+-else
+  .checked
+    %input{:type => "checkbox"}
+    %label Profile Image
+
+- if current_user.name.nil? || current_user.name.empty?
+  .unchecked
+    %input{:type => "checkbox"}
+    %label Company Name
+- else
+  .checked
+    %input{:type => "checkbox"}
+    %label Company Name
+
+- if current_user.short_description.nil? || current_user.short_description.empty?
+  .checked
+    %input{:type => "checkbox"}
+    %label Company Description
+- else
+  .checked
+    %input{:type => "checkbox"}
+    %label Company Description
+
+- if current_user.location.nil? || current_user.location.empty?
+  .unchecked
+    %input{:type => "checkbox"}
+    %label Office Location
+- else
+  .checked
+    %input{:type => "checkbox"}
+    %label Office Location
+
+- if current_user.bio.nil? || current_user.bio.empty?
+  .unchecked
+    %input{:type => "checkbox"}
+    %label Biography
+- else
+  .checked
+    %input{:type => "checkbox"}
+    %label Biography
+
+- if current_user.language.nil? || current_user.language.empty?
+  .unchecked
+    %input{:type => "checkbox"}
+    %label Language
+- else
+  .checked
+    %input{:type => "checkbox"}
+    %label Language
+
+- if current_user.skillset.nil? || current_user.skillset.empty?
+  .unchecked
+    %input{:type => "checkbox"}
+    %label Skillset
+- else
+  .checked
+    %input{:type => "checkbox"}
+    %label Skillset

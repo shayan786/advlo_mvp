@@ -213,11 +213,8 @@ class RegistrationsController < Devise::RegistrationsController
       session[:referrer_id] = nil
     end
 
-    if session[:previous_url] == '/invite/partner'
-      '/users/edit'
-    else
-      session[:previous_url]
-    end
+      # session[:previous_url]
+    '/users/edit'
   end
   # Customize Signing Up Devise Params
   #def sign_up_params

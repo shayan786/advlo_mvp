@@ -1,79 +1,165 @@
-.row.payout-buttons-row
-  .btn.btn-default.col-md-3.col-md-offset-2.option_btn_1
-    .pricing-top
-      .pricing-title commission
-      .prices $0 / 15%
-      .price-type
-        Month / per booking
+- if current_user.guide_type == 'business'
+  .row.payout-buttons-row
+    .btn.btn-default.col-md-3.col-md-offset-2.option_btn_1
+      .pricing-top
+        .pricing-title Basic
+        .prices $49 / 5% 
+        .price-type
+          Month / per booking
 
-    .pricing-bottom   
-      %ul.feature-list
-        %li.fa.fa-check
-          Transaction system
-        %li.fa.fa-check
-          Weekly Payouts
-        %li.fa.fa-check
-          Backend tools
-        %li.fa.fa-check
-          SEO & Marketing
-
-
-      .price-calculator
-        .divider-wrapper
-          .divider
-        .calc-title
-          Commission Calculator
-        .calc
-          Your Adventure:
-        .answer="$ #{(@adventure.price).to_f.round}"
-        .calc
-          15% Commission:
-        .answer.strong="$ #{(@adventure.price * 0.15).to_f.round(2)}"
-        .divider-wrapper
-          .divider
-        .calc
-          You receive:
-        .answer= "$ #{(@adventure.price * 0.85).to_f.round(2)}"
+      .pricing-bottom   
+        %ul.feature-list
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Custom page to beautifully showcase your local business"}
+            Company Profile Page
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Unique listing pages that truly show your experience"}
+            Adventure Pages
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Manage your profile, adventures, & booking requests"}
+            Backend tools
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Built in SEO for each page / paid search marketing"}
+            SEO & Content Marketing
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"To your Bank or Paypal account"}
+            Weekly Payouts
 
 
-      .learn-more
-        %a{href: '/adventures/info', target: '_blank'} Read more about our features
-
-  .or_text.col-md-2.text-center
-
-  .btn.btn-default.col-md-3.option_btn_2
-    .pricing-top
-      .pricing-title membership
-      .prices $49 / 0%
-      .price-type
-        Month / per booking
-        
-
-    .pricing-bottom  
-      %ul.feature-list
-        %li.fa.fa-check
-          Transaction system
-        %li.fa.fa-check
-          Weekly Payouts
-        %li.fa.fa-check
-          Backend tools
-        %li.fa.fa-check
-          SEO & Marketing
-        %li.fa.fa-check.extra
-          Sell Unlimited Adventures
-        %li.fa.fa-check.extra
-          Higher listing positions
-        %li.fa.fa-check.extra
-          0% bookings commission
-        %li.fa.fa-check.extra
-          Option to re-direct transaction
+        .price-calculator
+          .divider-wrapper
+            .divider
+          .calc-title
+            Commission Calculator
+          .calc
+            Your Adventure:
+          .answer="$ #{(@adventure.price).to_f.round}"
+          .calc
+            5% Commission:
+          .answer.strong="$ #{(@adventure.price * 0.05).to_f.round(2)}"
+          .divider-wrapper
+            .divider
+          .calc
+            You receive:
+          .answer= "$ #{(@adventure.price * 0.95).to_f.round(2)}"
 
 
-      .learn-more
-        = mail_to "founders@advlo.com", 'Contact us with any questions', subject: 'Annual subscription information request'
+        .learn-more
+          %a{href: '/adventures/info', target: '_blank'} Read more about our features
+
+    .or_text.col-md-2.text-center
+
+    .btn.btn-default.col-md-3.option_btn_2
+      .pricing-top
+        .pricing-title membership
+        .prices $99 / 0%
+        .price-type
+          Month / per booking
+          
+
+      .pricing-bottom  
+        %ul.feature-list
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Custom page to beautifully showcase your local business"}
+            Company Profile Page
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Unique listing pages that truly show your experience"}
+            Adventure Pages
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Manage your profile, adventures, & booking requests"}
+            Backend tools
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Built in SEO for each page / paid search marketing"}
+            SEO & Content Marketing
+          %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"To your Bank or Paypal account"}
+            Weekly Payouts
+          %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Adventures under membership have first priority"}
+            Higher listing positions
+          %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Access to our transaction system with no commission"}
+            0% bookings commission
+          %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"You can choose to provide a link to re-direct on the 'book it' step"}
+            Option to re-direct transaction
 
 
-  .col-md-6.col-md-offset-3
-    #commission-tree= render partial: 'commission_tree'
-  .col-md-6.col-md-offset-3
-    #subscription-tree= render partial: 'subscription_tree'
+        .learn-more
+          = mail_to "founders@advlo.com", 'Contact us with any questions', subject: 'Membership questions'
+
+
+    .col-md-6.col-md-offset-3
+      #commission-tree= render partial: 'commission_tree'
+    .col-md-6.col-md-offset-3
+      #subscription-tree= render partial: 'subscription_tree'
+
+  
+
+- else
+  .row.payout-buttons-row
+    .btn.btn-default.col-md-3.col-md-offset-2.option_btn_1
+      .pricing-top
+        .pricing-title commission
+        .prices $0 / 15%
+        .price-type
+          Month / per booking
+
+      .pricing-bottom   
+        %ul.feature-list
+          %li.fa.fa-check
+            Transaction system
+          %li.fa.fa-check
+            Weekly Payouts
+          %li.fa.fa-check
+            Backend tools
+          %li.fa.fa-check
+            SEO & Marketing
+
+
+        .price-calculator
+          .divider-wrapper
+            .divider
+          .calc-title
+            Commission Calculator
+          .calc
+            Your Adventure:
+          .answer="$ #{(@adventure.price).to_f.round}"
+          .calc
+            15% Commission:
+          .answer.strong="$ #{(@adventure.price * 0.15).to_f.round(2)}"
+          .divider-wrapper
+            .divider
+          .calc
+            You receive:
+          .answer= "$ #{(@adventure.price * 0.85).to_f.round(2)}"
+
+
+        .learn-more
+          %a{href: '/adventures/info', target: '_blank'} Read more about our features
+
+    .or_text.col-md-2.text-center
+
+    .btn.btn-default.col-md-3.option_btn_2
+      .pricing-top
+        .pricing-title membership
+        .prices $49 / 0%
+        .price-type
+          Month / per booking
+          
+
+      .pricing-bottom  
+        %ul.feature-list
+          %li.fa.fa-check
+            Transaction system
+          %li.fa.fa-check
+            Weekly Payouts
+          %li.fa.fa-check
+            Backend tools
+          %li.fa.fa-check
+            SEO & Marketing
+          %li.fa.fa-check.extra
+            Sell Unlimited Adventures
+          %li.fa.fa-check.extra
+            Higher listing positions
+          %li.fa.fa-check.extra
+            0% bookings commission
+          %li.fa.fa-check.extra
+            Option to re-direct transaction
+
+
+        .learn-more
+          = mail_to "founders@advlo.com", 'Contact us with any questions', subject: 'Membership questions'
+
+
+    .col-md-6.col-md-offset-3
+      #commission-tree= render partial: 'commission_tree'
+    .col-md-6.col-md-offset-3
+      #subscription-tree= render partial: 'subscription_tree'

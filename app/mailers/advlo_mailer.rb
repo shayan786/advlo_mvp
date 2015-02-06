@@ -22,7 +22,7 @@ class AdvloMailer < ActionMailer::Base
 
     @subject = @user.get_first_name
     mail(to: @user.email, from: 'jon@advlo.com', subject: "Hey #{@subject} - thanks for joining") do |format|
-      format.html { render layout: 'simple_jon' }
+      format.html { render layout: 'marketing_advlo_mail' }
       format.text
     end
   end
@@ -99,7 +99,7 @@ class AdvloMailer < ActionMailer::Base
     @user = user
     @reservation = reservation
 
-    mail(to: @user.email, subject: '[ADVLO] : booking confirmed')
+    mail(to: @user.email, bcc: 'info@advlo.com', subject: '[ADVLO] : booking confirmed')
   end
 
   def booking_confirmation_email_host(host, adventure, reservation)
@@ -108,7 +108,7 @@ class AdvloMailer < ActionMailer::Base
     @res_user = User.find_by_id(reservation.user_id)
 
     @reservation = reservation
-    mail(to: @user.email, subject: '[ADVLO] : booking confirmed')
+    mail(to: @user.email, bcc: 'info@advlo.com', subject: '[ADVLO] : booking confirmed')
   end
 
   def booking_request_email_user(reservation)
@@ -127,7 +127,7 @@ class AdvloMailer < ActionMailer::Base
     @host = User.find(reservation.host_id)
     @adventure = Adventure.find(reservation.adventure_id)
 
-    mail(to: @host.email, subject: "[ADVLO] :Reservation request for: #{@adventure.title}")
+    mail(to: @host.email, bcc: 'info@advlo.com', subject: "[ADVLO] :Reservation request for: #{@adventure.title}")
   end
 
   def booking_request_email_rejection(reservation)

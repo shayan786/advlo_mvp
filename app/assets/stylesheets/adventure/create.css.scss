@@ -17,6 +17,7 @@
 
 			li {
 				float: left;
+
 			}
 
 			.section_header {
@@ -33,11 +34,16 @@
 				padding-left: 15px;
 				padding-right: 15px;
 			}
+
+			.tooltip-inner {
+				max-width: none !important;
+			}
 			
 			.pricing-bottom {
 				position: relative;
 				float: left;
 				width: 100%;
+
 
 				.price-calculator {
 					position: relative;
@@ -70,6 +76,11 @@
 					float: left;
 					padding-left: 25px;
 					padding-top: 5px;
+
+					li {
+						margin: 5px;
+						cursor: pointer;
+					}
 
 					.fa {
 						padding-left: 0px;
