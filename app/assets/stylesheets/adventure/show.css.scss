@@ -262,6 +262,7 @@
 
 
         .default-body {
+          line-height: 25px;
 
           .fa-chevron-circle-right {
             color: $gray;
@@ -479,6 +480,7 @@
           margin: 0 auto;
           overflow: hidden;
           border-radius: 50%;
+          background-size: cover !important;
         }
 
         .adventure-block {

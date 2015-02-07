@@ -41,27 +41,14 @@
                             .modal-header.text-center
                               = con.subject
                             .modal-body
-                              - con.messages.each do |mes|
-                                .panel.panel-default.message_panel
-                                  .panel-heading
-                                    - message_sender = User.find_by_id(mes.sender_id)
-                                    .row
-                                      .col-md-1.text-center
-                                        .user_img{style: "background: url('#{message_sender.get_avatar_url('profile')}') center center no-repeat;"}
-                                      %a.col-md-3{href: user_path(message_sender)}= message_sender.get_abbreviated_name_or_email
-                                      .col-md-4
-                                      .col-md-4= mes.created_at.utc.strftime("%B %d - %l:%M %p")
-                                  .panel-body
-                                    = mes.body.gsub(/\n/, '<br/>').html_safe
-
                               .panel.panel-default.message_panel
                                 .panel-heading
                                   .row
                                     .col-md-1.text-center
                                       .user_img{style: "background: url('#{current_user.get_avatar_url('profile')}') center center no-repeat;"}
                                     .col-md-3= current_user.get_abbreviated_name_or_email
-                                    .col-md-4
-                                    .col-md-4= Time.now.utc.strftime("%B %d - %l:%M %p")
+                                    .col-md-3
+                                    .col-md-5.text-right= Time.now.utc.strftime("%B %d - %l:%M %p")
                                 .panel-body
                                   %form{"accept-charset" => "UTF-8", action: "/messages/new", method: "POST", id: "new_message_form", 'data-remote' => true}
                                     = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -73,6 +60,21 @@
                                     %br
                                     .text-center
                                       %input.btn.btn-primary.message_btn{type: 'submit', value: 'Submit'}
+
+                              - con.messages.order('created_at DESC').each do |mes|
+                                .panel.panel-default.message_panel
+                                  .panel-heading
+                                    - message_sender = User.find_by_id(mes.sender_id)
+                                    .row
+                                      .col-md-1.text-center
+                                        .user_img{style: "background: url('#{message_sender.get_avatar_url('profile')}') center center no-repeat;"}
+                                      %a.col-md-3{href: user_path(message_sender)}= message_sender.get_abbreviated_name_or_email
+                                      .col-md-3
+                                      .col-md-5.text-right= mes.created_at.utc.strftime("%B %d - %l:%M %p")
+                                  .panel-body
+                                    = mes.body.gsub(/\n/, '<br/>').html_safe
+
+                              
                                 
 
               - else
@@ -84,7 +86,7 @@
 
 :javascript
   wallet_messages_init();
-  remove_notice(15);
+  remove_notice(12);
 
 
 

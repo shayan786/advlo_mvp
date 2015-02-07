@@ -212,8 +212,9 @@ class RegistrationsController < Devise::RegistrationsController
       User.find(session[:referrer_id]).update_referral_count
       session[:referrer_id] = nil
     end
-
-      # session[:previous_url]
+    
+    # session[:previous_url]
+    # on first sign up kick them to profile
     '/users/edit'
   end
   # Customize Signing Up Devise Params

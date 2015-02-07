@@ -1536,6 +1536,33 @@ function paypal_or_bank_toggle(){
     $('.option_2_well #subscription_payment_form_1').hide();
     $('.option_2_well #subscription_payment_form_2').fadeToggle();
   })
+
+
+
+  $('#paypal-tree-container #update_paypal_btn').addClass('disabled');
+  $('#paypal-tree-container #add_paypal_btn').addClass('disabled');
+
+  $('#paypal-tree-container #update_paypal_form #paypal_email').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 5) {
+        $('#paypal-tree-container #update_paypal_btn').removeClass('disabled');
+      }
+      else if (details.length <= 4) {
+        $('#paypal-tree-container #update_paypal_btn').addClass('disabled');
+      }
+  })
+
+  $('#paypal-tree-container #add_paypal_form #paypal_email').on('keyup', function() {
+    var details = $.trim($(this).val());
+
+      if (details.length > 5) {
+        $('#paypal-tree-container #add_paypal_btn').removeClass('disabled');
+      }
+      else if (details.length <= 4) {
+        $('#paypal-tree-container #add_paypal_btn').addClass('disabled');
+      }
+  })
 }
 
 function getStripeToken_subscription() {
