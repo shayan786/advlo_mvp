@@ -1,5 +1,8 @@
 #post-check
   .col-md-6
+    .row
+      .account-alert.alert.alert-warning.text-center{style: "display: none; margin-top: 10px; margin-bottom: 0px;"}
+
     - if @user.is_guide == true && @user.guide_type == 'business' 
       = render partial: 'business_account'
 

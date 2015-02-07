@@ -18,7 +18,7 @@
     %label name
 
 - if current_user.short_description.nil? || current_user.short_description.empty?
-  .checked
+  .unchecked
     %input{:type => "checkbox"}
     %label Short Description
 - else

@@ -75,7 +75,7 @@ class RegistrationsController < Devise::RegistrationsController
     @user.save
 
     respond_to do |format|
-      format.js {render "initial_signin_check.js", layout: false}
+      format.js {render "initial_signin_check.js", layout: false }
     end
   end
 
@@ -212,7 +212,7 @@ class RegistrationsController < Devise::RegistrationsController
       User.find(session[:referrer_id]).update_referral_count
       session[:referrer_id] = nil
     end
-    
+
     # session[:previous_url]
     # on first sign up kick them to profile
     '/users/edit'

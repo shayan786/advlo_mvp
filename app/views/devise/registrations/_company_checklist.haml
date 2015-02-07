@@ -3,7 +3,7 @@
   .unchecked
     %input{:type => "checkbox"}
     %label Profile Image
--else
+- else
   .checked
     %input{:type => "checkbox"}
     %label Profile Image
@@ -18,7 +18,7 @@
     %label Company Name
 
 - if current_user.short_description.nil? || current_user.short_description.empty?
-  .checked
+  .unchecked
     %input{:type => "checkbox"}
     %label Company Description
 - else
