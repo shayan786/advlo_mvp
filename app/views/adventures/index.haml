@@ -1,5 +1,6 @@
 - @location = @location ? @location.upcase : "Adventures" 
-- set_meta_tags(get_meta_tags(@location,"Connect with local hosts to create and book unique adventure travel experiences",@location))
+- set_meta_tags(get_meta_tags(@location,"Unique adventure activities for vacation in #{@location} - connect with local guides and book adventure travel trips"))
+
 
 .adventure-page-container
   - if !params[:state].present? && !params[:city].present? && !params[:country].present? || params[:country] == 'United States' || params[:country] == 'United-States'
