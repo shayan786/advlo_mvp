@@ -1644,25 +1644,7 @@ function swal_delete_adventure() {
   })
 }
 
-function host_index_effects() {
-  $('.adv_box[data-toggle="tooltip"]').tooltip()
 
-  $('#feat_hosts .host_container').hover(
-    function(){
-      $('#feat_hosts .host_container').stop().animate({
-        "opacity":"0.6"
-      })
-      $(this).stop().animate({
-        "opacity":"1"
-      })
-    },
-    function(){
-      $('#feat_hosts .host_container').stop().animate({
-        "opacity":"1"
-      })
-    }
-  )
-}
 
 adventureShow = function() {
   setRatingStars();

@@ -145,7 +145,6 @@ class ApplicationController < ActionController::Base
       @feat_hosts << adv.users.first
     end
 
-    @new_adventures = Adventure.approved.order('CREATED_AT desc').limit(3)
     get_regions
 
     if current_user

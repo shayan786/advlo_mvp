@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'errors/internal_server_error'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
+  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations", :passwords => "passwords"}
   ActiveAdmin.routes(self)
   
   #user dashboard route
@@ -24,12 +24,15 @@ Rails.application.routes.draw do
     post '/users/update_paypal_email' => 'users#update_paypal_email'
     post '/users/become_an_affiliate'  => 'users#become_an_affiliate'
 
+    # Set password
+    get '/users/set-password/:referral_code'  => 'passwords#set'
+    post '/users/set-password' => 'passwords#set_password'
+
     # Affiliate related tracking
     post '/users/update_affiliate_referral_click_count' => 'users#update_affiliate_referral_click_count'
 
     get '/users/initial/:type'        => 'registrations#inital_signin_check'
     get '/affiliate/:referral_code'   => 'registrations#referral_sign_up'
-
   end
 
   get 'invite/:invite'                => 'adventures#hosting_info'

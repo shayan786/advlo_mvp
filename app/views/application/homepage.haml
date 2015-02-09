@@ -2,7 +2,6 @@
 = render partial: 'hero_image'
 = render partial: 'how_it_works'
 = render partial: 'feat_hosts'
-= render partial: 'explorer_block'
 = render partial: 'feat_adventures'
 = render partial: 'signup'
 
@@ -11,5 +10,15 @@
     remove_notice(4);
 
 :javascript
-  homepageInit();
-  masonrySetup();
+  $(document).ready(function(){
+    homepageInit();
+    masonrySetup();
+  })
+  
+
+- if !current_user
+  :javascript
+    $(document).ready(function(){
+      contact_host_set_values();
+    })  
+  

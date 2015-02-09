@@ -1,10 +1,30 @@
 #feat_hosts {
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+	h1 {
+		font-family: bebas_neue !important;
+    font-size: 2.8em;
+    font-weight: bold;
+    letter-spacing: 2px;
+	}
+
 	.host_container {
-		//height: 184px;
 		border: 1px solid $light_gray;
 		border-radius: 2px;
 		margin: 10px 0;
 		background-color: rgba(0,0,0,0.7);
+
+		-moz-transition:-moz-transform 0.3s ease-in; 
+		-webkit-transition:-webkit-transform 0.3s ease-in; 
+		-o-transition:-o-transform 0.3s ease-in;
+
+		&:hover  {
+			text-decoration: none;
+			-moz-transform:scale(1.03); 
+			-webkit-transform:scale(1.03);
+			-o-transform:scale(1.03);
+		}
 
 		.no_padding_right {
 			padding-right: 0px;
@@ -34,6 +54,17 @@
 			font-size: 1.1em;
 			font-style: italic;
 		}
+
+		.host_bio {
+			@extend .host_tagline;
+			font-size: 0.9em;
+			font-style: normal;
+
+			a {
+				font-family: bebas_neue;
+				letter-spacing: 2px;
+			}
+		}		
 
 		.host_category_circle {
 			margin-top: 10px;

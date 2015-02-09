@@ -1,0 +1,47 @@
+#d_set_pass {
+	background-image: asset-url($banner_image);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: -80px;
+	padding-top: 180px;
+
+	color: #FFFFFF;
+
+	.container {
+		min-height: 90vh;
+
+		.panel {
+			background: rgba(0,0,0,0.75);
+		}
+
+		h2 {
+			font-size: 2.4em;
+			padding-bottom: 15px;
+			border-bottom: 1px solid $lighter_gray;
+		}
+
+		form {
+			margin: 10px auto;
+
+			p {
+				margin-top: -15px;
+				font-size: 1.3em;
+			}
+
+			.set_pass_btn {
+				width: 100%; 
+				font-size: 1.2em;
+				background-color: $login_btn_color;
+				border-color: $login_btn_color;
+				margin-top: 10px;
+				margin-bottom: 5px;
+
+				&:hover {
+					background-color: $login_btn_color_hover;
+					border-color: $login_btn_color_hover;
+				}
+			}
+		}
+	}
+
+}

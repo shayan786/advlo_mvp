@@ -3,9 +3,3 @@
     %h1 FEATURED ADVENTURES
 
   = render partial: '/adventures/adventure_slider_slides', locals: {adventures: @feat_adventures}
-
-
-  .container.homepage-container.text-center.headline-margin
-    %h1 NEWEST ADVENTURES
-
-  = render partial: '/adventures/adventure_slider_slides', locals: {adventures: @new_adventures}
