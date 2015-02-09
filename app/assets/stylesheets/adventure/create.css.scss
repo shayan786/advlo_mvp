@@ -44,33 +44,6 @@
 				float: left;
 				width: 100%;
 
-
-				.price-calculator {
-					position: relative;
-					float: left;
-					width: 100%;
-					margin-top: 10px;
-
-					.calc {
-						width: 50%;
-						text-align: right;
-						float: left;
-					}
-
-					.calc-title {
-						float: left;
-						width: 100%;
-						font-weight: bold;
-					}
-
-					.answer {
-						width: 47%;
-						text-align: left;
-						float: right;
-						margin-left: 3%;
-					}
-				}
-
 				.feature-list {
 					position: relative;
 					float: left;
@@ -84,6 +57,7 @@
 
 					.fa {
 						padding-left: 0px;
+						margin: 5px;
 					}
 
 					.fa-check:before {
@@ -96,6 +70,72 @@
 						color: $advlo_green;
 						opacity: 1.0;
 					}
+				}				
+			}
+
+			.free-trial-box {
+				position: absolute;
+				width: 100%;
+				margin-top: 300px;
+				left: 0px;
+				height: 128px;
+			}
+
+			.all-plans-include {
+				margin-top: 20px;
+				
+
+				p {
+					color: #000;
+				}
+
+				.col-md-6 {
+					width: 46%;
+					margin: 2%;
+				}
+
+				h2 {
+					font-size: 2em;
+					margin-top: 15px;
+					width: 40%;
+					font-family: 'nexa_light' !important;
+					float: left;
+					text-align: center;
+				}
+
+				.right-side-line-gray {
+					border-top: solid 1px #d2d2d2;
+					float: right;
+					width: 30%;
+					margin-top: 30px;
+				}
+				.left-side-line-gray {
+					border-top: solid 1px #d2d2d2;
+					width: 30%;
+					float: left;
+					margin-top: 30px;
+				}
+
+				.feature-text {
+					color: #fefefe;
+					float: left;
+					width: 80%;
+					padding-top: 15px;
+					padding-bottom: 50px;
+				}
+
+				.marketing-package-headlines {
+					color: #000;
+					font-family: 'nexa_light' !important;
+					font-size: 20px;
+				}
+
+				.fa {
+					float: left;
+					font-size: 50px;
+					opacity: 0.9;
+					margin: 10px;
+					padding: 0px;
 				}
 			}
 
@@ -724,6 +764,15 @@
 	z-index: 9999;
 	position: fixed;
 }
+
+@media screen and (max-width: 771px){
+	.all-plans-include {
+		.fa {
+			width: 100%;
+		}
+	}
+}
+
 @media screen and (max-width: 991px){
 	.payout-buttons-row  {
 		width: 100%;
