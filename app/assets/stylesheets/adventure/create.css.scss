@@ -30,7 +30,8 @@
 			}
 
 			.fa {
-				padding-top: 15px;
+				padding-top: 7px;
+				padding-bottom: 7px;
 				padding-left: 15px;
 				padding-right: 15px;
 			}
@@ -75,15 +76,35 @@
 
 			.free-trial-box {
 				position: absolute;
-				width: 100%;
-				margin-top: 300px;
-				left: 0px;
-				height: 128px;
+				width: 265px;
+				margin-top: 450px;
+				height: 121px;
+				text-align: center;
+				margin-left: 14%;
+				font-size: 16px;
+				font-family: ''nexa_light'';
+
+				.price-type {
+					margin-top: 10px;
+				}
+
+				.adventure-checkboxes {
+					cursor: pointer;
+				}
 			}
 
 			.all-plans-include {
-				margin-top: 20px;
-				
+				position: relative;
+				float: left;
+				width: 100%;
+				margin-top: 100px;
+				margin-bottom: 50px;
+				border-bottom: 1px solid #d2d2d2;
+
+
+				.margin-top-20 {
+					margin-top: 20px;
+				}
 
 				p {
 					color: #000;
@@ -120,8 +141,9 @@
 					color: #fefefe;
 					float: left;
 					width: 80%;
-					padding-top: 15px;
+					padding-top: 5px;
 					padding-bottom: 50px;
+					padding-left: 15px;
 				}
 
 				.marketing-package-headlines {
@@ -162,6 +184,10 @@
 				text-align: center;
 				margin-top: 15px;
 				margin-bottom: 15px;
+
+				.btn {
+					width: 150px;
+				}
 			}
 			.form_label {
 				padding-top: 5px;
@@ -365,11 +391,17 @@
 					margin-top: 20px;
 				}
 
+				
+
 				.prices {
 					font-family: bebas_neue_book;
-					font-size: 3.5em;	
+					font-size: 2.1em;	
+					span {	
+						font-size: 15px;
+					}
 				}
 				.price-type {
+					font-size: 1em;	
 					margin-bottom: 10px;
 				}
 			}
@@ -778,6 +810,14 @@
 		width: 100%;
 		margin: 0 auto;
 	}
+
+	#adventure_create .container .panel .free-trial-box {
+		position: relative;
+		width: 100%;
+		float: left;
+		margin-top: 20px;
+		margin-left: 0;
+	}	
 
 	#adventure_create .complete-button {
 		width: 100%;

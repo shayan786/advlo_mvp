@@ -1441,12 +1441,19 @@ function payment_options_btns() {
     $('#add-card-form').fadeToggle();
   });
 
+  $(".learn-more.adventure-checkboxes .unchecked").click(function(){
+    $(this).toggleClass('checked')
+    $(this).toggleClass('unchecked')
+    // toggle free month true to stripe basic
+  })
+
+
   $('.option_btn_1').click(function(){
     $('.option_btn_2').removeClass('active')
     $(this).toggleClass('active')
-    $('#add-paypal').removeClass('active')
-
+    $('#add-paypal').removeClass('active')    
     $('#commission-tree').fadeToggle();
+
     $('#subscription-tree').hide();
 
     if($(window).width() < 500){
@@ -1454,7 +1461,8 @@ function payment_options_btns() {
       $('.pricing-bottom').last().hide()
     }
   })
-  
+
+
   //SUBSCRIBE OPTION
   $('.option_btn_2').click(function(){
     $('.option_btn_1').removeClass('active')

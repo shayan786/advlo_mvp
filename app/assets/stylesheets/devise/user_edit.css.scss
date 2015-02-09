@@ -1,3 +1,24 @@
+.adventure-checkboxes {
+	input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+	input[type=checkbox] + label:before {
+	  font-family: FontAwesome;
+	  display: inline-block;
+	}
+
+	label {
+		font-weight: normal;
+	}
+
+	.checked {
+		input[type=checkbox] + label:before { content: "\f046"; } /* checked icon */
+		input[type=checkbox] + label:before { letter-spacing: 5px; } /* allow space for check mark */
+	}
+	.unchecked {
+		input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
+		input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+	}
+}
+
 #d_user_edit {
 	margin-top: -80px;
 	padding-top: 155px;
@@ -75,26 +96,6 @@
 				color: #fff;
 				font-size: 20px;
 			}
-		}
-		.adventure-checkboxes {
-			input[type=checkbox] { display:none; } /* to hide the checkbox itself */
-			input[type=checkbox] + label:before {
-			  font-family: FontAwesome;
-			  display: inline-block;
-			}
-
-			label {
-				font-weight: normal;
-			}
-		}
-
-		.checked {
-			input[type=checkbox] + label:before { content: "\f046"; } /* checked icon */
-			input[type=checkbox] + label:before { letter-spacing: 5px; } /* allow space for check mark */
-		}
-		.unchecked {
-			input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
-			input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
 		}
 
 		.profile_avatar_img {
