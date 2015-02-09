@@ -4,12 +4,13 @@
   = tag(:input, :type => "hidden", :name => "host_id", :value => "#{current_user.id}")
   = tag(:input, :type => "hidden", :name => "adventure_id", :value => "#{@adventure.id}")
   = tag(:input, :id => "stripe_token", :type => "hidden", :name => "stripe_token")
-  = tag(:input, :type => "hidden", :name => "subscription", :value => "1")
+  = tag(:input, :type => "hidden", :name => "subscription", :value => '1')
+  = tag(:input, :type => "hidden", :name => "subscription_plan", :value => plan[1])
 
   .amount_warning.row.text-center
     %b Charge Amount:
     %span.subscription_cost
-      $49
+      = plan[0]
     %br
     %em
       Cancel your subscription at any time. 

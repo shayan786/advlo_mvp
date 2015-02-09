@@ -97,7 +97,7 @@
 				position: relative;
 				float: left;
 				width: 100%;
-				margin-top: 100px;
+				margin-top: 50px;
 				margin-bottom: 50px;
 				border-bottom: 1px solid #d2d2d2;
 
@@ -438,6 +438,7 @@
 			text-align: center;
 			width: 150px;
 			height: 125px;
+			margin-left: 14%;
 
 			img {
 				position: relative;
@@ -446,8 +447,8 @@
 			}
 
 			.fa-share-square-o {
-				margin-top: 15px;
-				font-size: 50px !important;
+				margin-top: 26px;
+				font-size: 60px !important;
 				color: #545454 !important;
 			}
 
@@ -469,6 +470,7 @@
 			position: relative;
 			float: left;
 			display: none;
+			width: 100%;
 		}
 
 
@@ -496,6 +498,8 @@
 		}
 
 		.option_2_well {
+			width: 100%;
+
 			@extend .option_1_well;
 
 			.dollar {
@@ -805,7 +809,9 @@
 	}
 }
 
+
 @media screen and (max-width: 991px){
+
 	.payout-buttons-row  {
 		width: 100%;
 		margin: 0 auto;
@@ -866,6 +872,7 @@
 			float: left;
 			padding-top: 25px;
 		}
+
 		#add-paypal {
 			width: 50%;
 			float: left;
@@ -874,17 +881,14 @@
 		.subscribe_btn_1 {
 			width: 50%;
 			float: left;
+			margin-left: 0%;
 			margin-top: 25px;
-
-			img {
-				width: 80%;
-				margin-top: 10px;
-			}
 		}
 		.subscribe_btn_2 {
 			width: 50%;
 			float: left;
 			margin-top: 25px;
+			margin-left: 0%;
 		}
 	}
 }

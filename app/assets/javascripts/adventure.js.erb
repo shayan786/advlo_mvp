@@ -1441,7 +1441,13 @@ function payment_options_btns() {
     $('#add-card-form').fadeToggle();
   });
 
-  $(".learn-more.adventure-checkboxes .unchecked").click(function(){
+  $(".learn-more.adventure-checkboxes .business-free-month").click(function(){
+    $(this).toggleClass('checked')
+    $(this).toggleClass('unchecked')
+    // toggle free month true to stripe basic
+  })
+
+  $(".learn-more.adventure-checkboxes .local-free-month").click(function(){
     $(this).toggleClass('checked')
     $(this).toggleClass('unchecked')
     // toggle free month true to stripe basic
@@ -1468,9 +1474,6 @@ function payment_options_btns() {
     $('.option_btn_1').removeClass('active')
     $(this).toggleClass('active')
     $('#add-bank').removeClass('active')
-
-    $('.checked').addClass('unchecked')
-    $('.unchecked').removeClass('checked')
 
     $('#commission-tree').hide();
     $('#subscription-tree').fadeToggle();

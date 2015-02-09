@@ -291,8 +291,10 @@ class AdventureStepsController < ApplicationController
           :description => params[:credit_card_name]
         )
 
+        puts "params[:subscription_plan]====> #{params[:subscription_plan]}"
+        
         # Enroll them in a subscription via stripe
-        new_subscription = customer.subscriptions.create(:plan => 2)
+        new_subscription = customer.subscriptions.create(:plan => params[:subscription_plan])
 
         # Store stripe customer id in the user model
         current_user.stripe_customer_id = customer.id

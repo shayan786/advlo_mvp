@@ -45,7 +45,7 @@
 
   .form-group.row
     .col-md-4
-      .form_label.edit-label Background
+      .form_label.edit-label Biography
     .col-md-8
       %textarea.form-control.show_ml{rows: "8", name: "user[bio]", id: "user_bio", placeholder: "What's your story?", maxlength: "3000", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you by sharing your story"}}
         - if !current_user.bio.nil?
