@@ -1469,6 +1469,9 @@ function payment_options_btns() {
     $(this).toggleClass('active')
     $('#add-bank').removeClass('active')
 
+    $('.checked').addClass('unchecked')
+    $('.unchecked').removeClass('checked')
+
     $('#commission-tree').hide();
     $('#subscription-tree').fadeToggle();
 
