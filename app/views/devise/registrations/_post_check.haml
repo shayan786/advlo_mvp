@@ -6,7 +6,7 @@
     - if @user.is_guide == true && @user.guide_type == 'business' 
       = render partial: 'business_account'
 
-    - elsif @user.is_guide == true && @user.guide_type == 'local'
+    - elsif @user.is_guide == true && @user.guide_type == 'local' || @user.guide_type == ''
       = render partial: 'local_account'
 
     - elsif @user.is_guide == false

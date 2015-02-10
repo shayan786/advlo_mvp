@@ -1,32 +1,69 @@
-.well.option_1_well
-  .row.text-center
-    %strong.header
-      Basic:
+// same jquery flow - but overide commisison option for registered busineses
+
+- if current_user.guide_type == 'business'
+  - plan = ['$49', '2', 'business_basic']
+  .well.option_2_well.text-center
+    .row
+      %strong.header
+        Basic
+      .free-month
+        +1 month trial
     %br
-      Choose your payout method
+      %strong
+        = plan[0]
+      per month
+      %strong
+        no commission cost.
 
-  .btn.btn-default.col-md-4.col-md-offset-1.subscribe_btn_1#add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
-    .fa.fa-university
+    Choose to use Advlo's booking system, or redirect to your own.
 
 
-  .btn.btn-default.col-md-4.col-md-offset-2.subscribe_btn_1#add-paypal.text-center{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add Paypal Email Address"}
-    .fa.fa-paypal
-  
+    .row
+      .btn.btn-default.col-md-4.col-md-offset-1.subscribe_btn_1{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Use Advlo's booking system"}
+        = image_tag 'logos/advlo_header_logo_closed.png'
+        
+      .col-md-2
 
-  .stripe_paypal_payouts
-    = render partial: "notice"
+      .btn.btn-default.col-md-4.subscribe_btn_2{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Redirect to your own link"}
+        .fa.fa-share-square-o
 
-    = render partial: "stripe_payout"
+        
 
-    = render partial: "paypal_payout"
+    = render partial: "subscription_payment_form_1", locals: { plan: plan}
 
-  .row.col-md-12#default-use-bank
-    .text-center
-      %a{href: "https://stripe.com/global", target: '_blank'} 
-        Bank Supported 
-      countries /
-      %a{href: "https://www.paypal.com/webapps/mpp/country-worldwide", target: '_blank'}
-        Paypal supported 
-      countries.
-      %em
-        If both information is provided, bank account will be used as the default payout method.
+    = render partial: "subscription_payment_form_2", locals: { plan: plan}
+
+
+- else
+  .well.option_1_well
+    .row.text-center
+      %strong.header
+        Basic:
+      %br
+        Choose your payout method
+
+    .btn.btn-default.col-md-4.col-md-offset-1.subscribe_btn_1#add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account"}
+      .fa.fa-university
+
+
+    .btn.btn-default.col-md-4.col-md-offset-2.subscribe_btn_1#add-paypal.text-center{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add Paypal Email Address"}
+      .fa.fa-paypal
+    
+
+    .stripe_paypal_payouts
+      = render partial: "notice"
+
+      = render partial: "stripe_payout"
+
+      = render partial: "paypal_payout"
+
+    .row.col-md-12#default-use-bank
+      .text-center
+        %a{href: "https://stripe.com/global", target: '_blank'} 
+          Bank Supported 
+        countries /
+        %a{href: "https://www.paypal.com/webapps/mpp/country-worldwide", target: '_blank'}
+          Paypal supported 
+        countries.
+        %em
+          If both information is provided, bank account will be used as the default payout method.

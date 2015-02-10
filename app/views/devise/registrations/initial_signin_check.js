@@ -7,7 +7,7 @@ usersInit();
 var type = '<%= @user.guide_type %>'
 $('.account-alert').show()
 
-if( type == 'company') {
+if( type == 'business') {
   $('.account-alert').html("Complete your Company profile to upload an adventure.")  
 } else if ( type == 'local' ) {
   $('.account-alert').html("Complete your personal profile to upload an adventure.")

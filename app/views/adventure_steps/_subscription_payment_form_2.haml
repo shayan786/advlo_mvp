@@ -6,6 +6,8 @@
   = tag(:input, :id => "stripe_token", :type => "hidden", :name => "stripe_token")
   = tag(:input, :type => "hidden", :name => "subscription", :value => '1')
   = tag(:input, :type => "hidden", :name => "subscription_plan", :value => plan[1])
+  = tag(:input, :type => "hidden", :name => "trial_end", :class => 'trial_end', :value => 'now')
+
 
   .amount_warning.row.text-center
     %b Charge Amount:
@@ -63,3 +65,4 @@
   .row.text-center
     .btn.btn-success.subscribe_btn
       SUBSCRIBE
+      

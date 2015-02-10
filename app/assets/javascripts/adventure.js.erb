@@ -1442,14 +1442,23 @@ function payment_options_btns() {
   });
 
   $(".learn-more.adventure-checkboxes .business-free-month").click(function(){
-    $(this).toggleClass('checked')
-    $(this).toggleClass('unchecked')
+    $(this).addClass('checked')
+    $(this).removeClass('unchecked')
+
+    $('.free-month').show()
+    $('.trial_end').val('<%= (DateTime.now + 30).to_i %>')
+    $('.trial_end').addClass('trial-added')
     // toggle free month true to stripe basic
   })
 
   $(".learn-more.adventure-checkboxes .local-free-month").click(function(){
-    $(this).toggleClass('checked')
-    $(this).toggleClass('unchecked')
+    $(this).addClass('checked')
+    $(this).removeClass('unchecked')
+
+    $('.free-month').show()
+    $('.trial_end').val('<%= (DateTime.now + 30).to_i %>')
+    $('.trial_end').addClass('trial-added')
+
     // toggle free month true to stripe basic
   })
 

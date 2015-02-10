@@ -36,6 +36,10 @@
 				padding-right: 15px;
 			}
 
+			.checkout-arrows {
+				padding-top: 15px;
+			}
+
 			.tooltip-inner {
 				max-width: none !important;
 			}
@@ -479,6 +483,7 @@
 			position: relative;
 			float: left;
 			display: none;
+			width: 100%;
 		}
 
 		.option_1_well {
@@ -927,4 +932,11 @@
 		display: none;
 	}
 
+}
+
+.free-month {
+	font-family: 'nexa_light';
+	margin-top: 15px;
+	font-size: 17px;
+	display: none;
 }
