@@ -323,6 +323,27 @@ function scroll_to_results() {
 	  }, 800);
 }
 
+function load_adv_by_location(location,locals) {
+  $.ajax({
+    url: '/find/location',
+    dataType: "script",
+    data: {location: location, locals: locals},
+    type: "POST"
+  })
+}
+
+function load_adv_by_categories(categories,locals) {
+  //convert string to array
+  var cat_array = categories.split(",");
+
+  $.ajax({
+    url: '/find/category',
+    dataType: "script",
+    data: {category: cat_array, locals: locals},
+    type: "POST"
+  })
+}
+
 
 adventureFind = function () {
   find_input_geocomplete();

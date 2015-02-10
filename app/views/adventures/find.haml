@@ -30,7 +30,6 @@
     .row
       .col-md-6.col-md-offset-3.text-center
         %form{"accept-charset" => "UTF-8", action: "/find/category", method: "post", roll: "form", id: "find_adventure_activity_form", "data-remote" => "true"}
-          =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           =tag(:input, :type => "hidden", :id => "locals", :name => "locals", :value => false)
 
           - adv_categories.each do |cat|
@@ -44,7 +43,6 @@
 
     .row
       %form{"accept-charset" => "UTF-8", action: "/find/location", method: "post", roll: "form", id: "find_adventure_form", "data-remote" => "true"}
-        =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
         =tag(:input, :type => "hidden", :id => "locals", :name => "locals", :value => false)
 
         .col-md-6.col-md-offset-3
@@ -82,5 +80,9 @@
 :javascript
   adventureFind();
 
-
-
+- if params[:location]
+  :javascript
+    load_adv_by_location("#{params[:location]}","#{params[:locals]}")
+- elsif params[:categories]
+  :javascript
+    load_adv_by_categories("#{params[:categories]}","#{params[:locals]}")

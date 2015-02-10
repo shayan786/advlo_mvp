@@ -167,9 +167,9 @@ function host_index_effects() {
 
   $('.adv_box[data-toggle="tooltip"]').tooltip();
 
-  $('#feat_hosts .host_container').hover(
+  $('.host_container').hover(
     function(){
-      $('#feat_hosts .host_container').stop().animate({
+      $('.host_container').stop().animate({
         "opacity":"0.6"
       })
       $(this).stop().animate({
@@ -177,7 +177,7 @@ function host_index_effects() {
       })
     },
     function(){
-      $('#feat_hosts .host_container').stop().animate({
+      $('.host_container').stop().animate({
         "opacity":"1"
       })
     }
@@ -185,16 +185,12 @@ function host_index_effects() {
 }
 
 function contact_host_set_values() {
-  console.log('hi')
-
-  $('#feat_hosts .host_contact_btn').click(function(){
-    console.log('click')
-
+  $('.host_contact_btn').click(function(){
     var host_name = $(this).data('host-name');
     var host_id = $(this).data('host-id');
 
-    $('#feat_hosts #contact_host_modal .contact_host_form input[name="conversation[host_id]"]').val(host_id);
-    $('#feat_hosts #contact_host_modal .modal-header').text('Message - '+host_name);
+    $('#contact_host_modal .contact_host_form input[name="conversation[host_id]"]').val(host_id);
+    $('#contact_host_modal .modal-header').text('Message - '+host_name);
   })
 }
 
@@ -208,7 +204,6 @@ homepageInit = function() {
   request_form_maxlength();
   how_it_works_hovers();
   video_modal_play_stop();
-  host_index_effects();
 }
 
 aboutPageInit = function() {

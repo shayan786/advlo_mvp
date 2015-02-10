@@ -2,7 +2,13 @@
 	$('#find .search_results .begin_search').hide();
 	$('#find .search_results .no_results').hide();
 
+	var loc = "<%= @location %>";
+
 	<% if @locals %>
+		// SET PARAMS IN URL
+		var url = "?location="+loc+"&locals=true";
+		history.pushState(null,null,url)
+
 		// RENDER LOCALS
 		$("#find .search_results .adventure-container #adventure-partial").hide();
 		$("#find .search_results .locals-partial").hide();
@@ -14,7 +20,7 @@
 			$("#find .search_results .filter").html("<%= escape_javascript(render(partial: 'find_local_filter', locals:{filter_categories: @filter_categories})) %>")
 		<% end %>
 
-		$("#find .search_results .locals-partial").html("<%= escape_javascript(render(partial: 'find_locals_table', locals:{locals: @locals})) %>");
+		$("#find .search_results .locals-partial").html("<%= escape_javascript(render(partial: 'locals_index', locals:{locals: @locals})) %>");
 		$("#find .search_results .locals-partial").fadeIn('slow')
 
 		<% user_ids = [] %>
@@ -26,6 +32,10 @@
 		find_local_filter_actions(<%= user_ids %>);
 
 	<% else %>
+		// SET PARAMS IN URL
+		var url = "?location="+loc+"&locals=false";
+		history.pushState(null,null,url)
+
 		// RENDER ADVENTURES
 		$("#find .search_results .locals-partial").hide();
 		$("#find .search_results .adventure-container #adventure-partial").hide();
