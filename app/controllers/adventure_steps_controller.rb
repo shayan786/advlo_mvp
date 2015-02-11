@@ -284,6 +284,9 @@ class AdventureStepsController < ApplicationController
         end
 
       else
+        puts "params[:trial_end]====> #{params[:trial_end]}"
+        puts "params====> #{params}"
+        
         # Create stripe customer
         customer = Stripe::Customer.create(
           :card => params[:stripe_token],
@@ -291,8 +294,6 @@ class AdventureStepsController < ApplicationController
           :description => params[:credit_card_name]
         )
 
-        puts "params[:trial_end]====> #{params[:trial_end]}"
-        puts "params====> #{params}"
 
         # Enroll them in a subscription via stripe
         new_subscription = customer.subscriptions.create(:plan => params[:subscription_plan], :trial_end => params[:trial_end])

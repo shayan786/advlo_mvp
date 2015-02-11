@@ -38,7 +38,10 @@
 
         .row.text-center
           .col-md-6.col-md-offset-3
-            %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill"} LIST YOUR ADVENTURE
+            - if current_user
+              %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill"} LIST YOUR ADVENTURE
+            - else
+              %a.btn.btn-primary.adv_info_btn.new-account LIST YOUR ADVENTURE
 
     .adventure_info_body
       .white_background
@@ -298,8 +301,10 @@
           - if params[:invite]
             .join-text Become a partner
             = render partial: 'devise/registrations/partner_signup', locals: {referrer: @referrer }
-          - else
+          - elsif current_user
             %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: 'margin-bottom: 15px;'} LIST YOUR ADVENTURE
+          - else
+            %a.btn.btn-primary.adv_info_btn.new-account{style: 'margin-bottom: 15px;'} LIST YOUR ADVENTURE
 
 
 :javascript 

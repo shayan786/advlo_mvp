@@ -7,15 +7,15 @@
       %h2= "Hey #{@user.get_name_or_email.capitalize},"
 
       .text-left
-        %span= "In the past month, we've added #{Adventure.approved.count}" 
+        %span= "We have got more than #{Adventure.approved.count}" 
         %a{href: "#{root_url}/adventures"} adventures
-        adventures in over 17 countries. We will keep you updated with the best new adventures in your area (but we promise not to bug you more than that). Please feel free to send us feedback, trip requests, or just say hello! Simply reply to this email. 
+        all over the world. So what will you do this winter to get out and adventure?
 
         %br
         %br
         .divider.divider-border
 
-        %h3.text-center Here are a few of our favorites since launch
+        %h3.text-center Here are a few of our favorites.
         %table#main{border: "0", cellpadding: "0", cellspacing: "20", width: "100%"}
           %tr
             %td

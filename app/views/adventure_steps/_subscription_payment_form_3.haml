@@ -1,4 +1,4 @@
-%form#subscription_payment_form_2{"accept-charset" => "UTF-8", action: wizard_path, "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
+%form#subscription_payment_form_3{"accept-charset" => "UTF-8", action: wizard_path, "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
   = tag(:input, :type => "hidden", :value => "put", :name => "_method")
   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
   = tag(:input, :type => "hidden", :name => "host_id", :value => "#{current_user.id}")
@@ -15,13 +15,7 @@
       = plan[0]
     %br
     %em
-      Cancel your subscription at any time. 
-
-  .form-group.row
-    .col-md-4
-      .form_label.edit-label Redirect URL
-    .col-md-8
-      %input.form-control{type: "text", name: "redirect_url", type: "text", placeholder: "http://www.your-site.com/adventure-checkout"}
+      Cancel your subscription at any time.
 
   .form-group.row
     .col-md-4

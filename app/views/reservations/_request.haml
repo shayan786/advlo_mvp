@@ -33,7 +33,7 @@
       // other rails controller params 
       %input#adv_price{name: "adv_price", type: "hidden", value: @adventure.price}
       %input#adventure_id{name: "adventure_id", type: "hidden", value: @adventure.id }
-      %input#stripe_token{name: "stripe_token", type: "hidden"}
+      %input.stripe_token{name: "stripe_token", type: "hidden"}
       %input#user_id{name: "user_id", type: "hidden", value: current_user.id}
       %input#price_type{name: "adv_type", type: "hidden", value: @adventure.price_type}
 

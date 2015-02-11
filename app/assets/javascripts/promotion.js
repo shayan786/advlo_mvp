@@ -1,9 +1,3 @@
-function sign_up_modal_toggle() {
-	$('#promotion-wrapper .new-account').click(function(){
-    $('#member-modal').modal('show');
-  })
-
-}
 
 function terms_init() {
   $('.terms-toggle').click(function(){
@@ -131,7 +125,6 @@ function masonry_init(){
 }
 
 function promotion_init() {
-	sign_up_modal_toggle();
 	masonry_init();
   terms_init();
 }
