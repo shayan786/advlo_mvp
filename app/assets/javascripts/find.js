@@ -5,6 +5,33 @@ function find_input_geocomplete() {
   })
 }
 
+function homepage_find_input_geocomplete(){
+  //homepage search bar leading to locals search
+  $('#homepage-text #find_adventure_form #location').geocomplete()
+  .bind("geocode:result", function(event,result){
+    var loc = $(this).val();
+
+    window.location = "/find?location="+loc+"&locals=true"
+  })
+
+  $('#find_adventure_form .input-group-addon').click(function(){
+    var details = $.trim($('#find_adventure_form #location').val());
+
+    if (details.length > 2) {
+      var loc = $('#homepage-text #find_adventure_form #location').val();
+
+      window.location = "/find?location="+loc+"&locals=true"
+    }
+    else {
+      swal({
+        title: "Please enter in a location!",
+        imageUrl: "http://i.imgur.com/a6L0hYB.png"
+      });
+      $('#find_adventure_form #location').focus();
+    }
+  })
+}
+
 function checkbox_highlighting() {
   $('#find .search_options #find_adventure_activity_form .checkbox-inline').click(function(){
     if($(this).find('input').is(':checked')) {
@@ -341,6 +368,36 @@ function load_adv_by_categories(categories,locals) {
     dataType: "script",
     data: {category: cat_array, locals: locals},
     type: "POST"
+  })
+}
+
+function host_index_effects() {
+  $('.adv_box[data-toggle="tooltip"]').tooltip();
+
+  $('.host_container').hover(
+    function(){
+      $('.host_container').stop().animate({
+        "opacity":"0.6"
+      })
+      $(this).stop().animate({
+        "opacity":"1"
+      })
+    },
+    function(){
+      $('.host_container').stop().animate({
+        "opacity":"1"
+      })
+    }
+  )
+}
+
+function contact_host_set_values() {
+  $('.host_contact_btn').click(function(){
+    var host_name = $(this).data('host-name');
+    var host_id = $(this).data('host-id');
+
+    $('#contact_host_modal .contact_host_form input[name="conversation[host_id]"]').val(host_id);
+    $('#contact_host_modal .modal-header').text('Message - '+host_name);
   })
 }
 

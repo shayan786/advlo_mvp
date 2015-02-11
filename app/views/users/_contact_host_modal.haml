@@ -32,12 +32,12 @@
     .modal-dialog
       .modal-content
         .modal-header.text-center
-          = "Message - #{user.get_abbreviated_name}"
+          = "Message"
         .modal-body
           .contact_host_form
             %form{"accept-charset" => "UTF-8", action: "/conversations/new", method: "POST", id: "contact_host_form"}
               = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-              = tag(:input, :type => "hidden", :name => "conversation[host_id]", :value => user.id)
+              = tag(:input, :type => "hidden", :name => "conversation[host_id]")
               = tag(:input, :type => "hidden", :name => "conversation[user_id]", :value => current_user.id)
               - if @adventure
                 = tag(:input, :type => "hidden", :name => "conversation[adventure_id]", :value => @adventure.id)

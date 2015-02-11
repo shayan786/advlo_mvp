@@ -73,13 +73,6 @@
 	padding-bottom: 45px;
 	padding-top: 45px;
 
-	.dotted_row_1 {
-		margin-top: 0px;
-	}
-
-	.dotted_row_2 {
-		margin-top: 0px;
-	}
 
 	.advlo_connection_img {
 		background: asset-url('icons/advlo_connection.png') center center no-repeat;
@@ -88,6 +81,45 @@
 		height: 145px;
 		margin: 35px auto 0px auto;
 		cursor: pointer;
+	}
+
+	.hiw_img {
+		background-size: cover !important;
+		height: 275px;
+		width: 100%;
+		border-radius: 4px;
+		margin-bottom: 10px;
+
+		-moz-transition:-moz-transform 0.3s ease-in; 
+		-webkit-transition:-webkit-transform 0.3s ease-in; 
+		-o-transition:-o-transform 0.3s ease-in;
+
+		&:hover  {
+			text-decoration: none;
+			-moz-transform:scale(1.03); 
+			-webkit-transform:scale(1.03);
+			-o-transform:scale(1.03);
+		}
+
+		.hiw_img_text{
+			background: rgba(0,0,0,0.4);
+			font-family: bebas_neue;
+			font-weight: bold;
+			letter-spacing: 2px;
+			color: #FFF;
+			padding-top: 3px;
+			padding-bottom: 18px;
+
+			.large {
+				font-size: 3.5em;
+			}
+
+			.small {
+				line-height: 0px;
+				font-size: 1.5em;
+			}
+
+		}
 	}
 
 	.video_copy {

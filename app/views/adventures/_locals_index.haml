@@ -26,7 +26,7 @@
           %i.fa.fa-map-marker
           = get_display_location(host.adventures.first)
       .col-md-2.text-center.no_padding_left
-        .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_abbreviated_name}
+        .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
           %i.fa.fa-envelope-o
           CONTACT
 
@@ -35,10 +35,5 @@
 
 :javascript
   host_index_effects();
-
-- if !current_user
-  :javascript
-    $(document).ready(function(){
-      contact_host_set_values();
-    })  
+  contact_host_set_values();
 
