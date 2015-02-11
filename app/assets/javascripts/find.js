@@ -401,6 +401,37 @@ function contact_host_set_values() {
   })
 }
 
+function contact_host_validation(){
+  $('#contact_host_modal #contact_host_form').bootstrapValidator({
+    fields: {
+      'email': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'message[body]': {
+        validators: {
+          notEmpty: {
+            message: 'Body is required and cannot be empty'
+          }
+        }
+      },
+      'conversation[subject]': {
+        validators: {
+          notEmpty: {
+            message: 'Subject is required and cannot be empty'
+          }
+        }
+      }
+    }
+  });
+}
+
 
 adventureFind = function () {
   find_input_geocomplete();
