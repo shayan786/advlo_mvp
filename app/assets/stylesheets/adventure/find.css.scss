@@ -378,3 +378,25 @@
 	  }
 	}
 }
+
+/* tablet */
+@media screen and (min-width: 501px) and (max-width: 800px){ 
+	#find {
+		.search_options {
+			.or {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+
+/* mobile */
+@media screen and (max-width: 500px){ 
+	#find {
+		.search_options {
+			.or {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
