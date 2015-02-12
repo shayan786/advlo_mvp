@@ -33,6 +33,7 @@
 //= require homepage.js
 //= require reservation.js
 //= require user.js
+//= require adv_info.js
 //= require wallet.js
 //= require affiliate.js
 //= require promotion.js

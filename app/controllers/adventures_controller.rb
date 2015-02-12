@@ -226,6 +226,11 @@ class AdventuresController < ApplicationController
     @hero_image = HeroImage.where(region: 'info').first
   end
 
+  def adventure_info
+    render :layout => 'adventure_info'
+
+  end
+
   # info page for requesting a certain adventure
   def request_info
     @hero_image = HeroImage.where(region: 'request').first
