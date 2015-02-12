@@ -11,23 +11,14 @@
           
 
   
-  .row
-    .guide-button.left-local
-    .green-button.right-business.green
+  .row.bottom-25
+    .left-local#individual
+      .guide-button
+        .title Individual Guide
 
-  .row
-    .col-md-12.tab-row
-      
-      %ul.nav.nav-tabs{role: "tablist"}
-        %li#individual
-          %a{href: '#individual-info', role: "tab", "data-toggle"=>"tab"}
-            .title I am an Individual Guide:
-            .explanation You have passion for adventure and sharing it with others.
-        %li#business
-          %a{href: '#business-info', role: "tab", "data-toggle"=>"tab"} 
-            .title I am a Local Business:
-            .explanation You have a local adventure operation that values cultural connection.
-
+    .right-business#business
+      .guide-button.green-button.green
+        .title Local Business
             
 
   .adventure_info_body
