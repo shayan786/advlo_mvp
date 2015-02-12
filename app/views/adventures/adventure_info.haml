@@ -8,9 +8,16 @@
       .row.text-center
         .col-md-8.host_info_text.col-md-offset-2
           Connect with travelers, promote your trips, and sell the adventures you create
+          
+
+  
+  .row
+    .guide-button.left-local
+    .green-button.right-business.green
 
   .row
     .col-md-12.tab-row
+      
       %ul.nav.nav-tabs{role: "tablist"}
         %li#individual
           %a{href: '#individual-info', role: "tab", "data-toggle"=>"tab"}
@@ -20,9 +27,11 @@
           %a{href: '#business-info', role: "tab", "data-toggle"=>"tab"} 
             .title I am a Local Business:
             .explanation You have a local adventure operation that values cultural connection.
+
             
 
   .adventure_info_body
+
     #individual-info
       = render partial: 'info_page', locals: {type: 'local'}
     #business-info      
