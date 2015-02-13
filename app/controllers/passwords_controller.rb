@@ -5,7 +5,7 @@ class PasswordsController < Devise::PasswordsController
       @user = User.find_by_referral_code(params[:referral_code])
 
       # User already has a password
-      if @user.encrypted_password
+      if @user.encrypted_password && @user.encrypted_password != ""
         redirect_to '/users/sign_in'
       end
     else
@@ -19,12 +19,19 @@ class PasswordsController < Devise::PasswordsController
     if @user.update(user_params)
       # Sign in the user by passing validation in case their password changed
       sign_in @user, :bypass => true
-      redirect_to '/users/conversations'
+
+      if @user.conversations.count > 0
+        redirect_to '/users/conversations'
+      else
+        redirect_to '/users/edit'
+      end
     else
       render "set"
     end
 
   end
+
+  private
 
   def user_params
     params.required(:user).permit(:password, :password_confirmation)

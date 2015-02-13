@@ -15,7 +15,6 @@ class ConversationsController < ApplicationController
     else
       user = User.create(:email => user_email)
 
-
       conversation = Conversation.create(
           :sender_id => user.id,
           :receiver_id => params[:conversation][:host_id],
@@ -33,6 +32,10 @@ class ConversationsController < ApplicationController
 
       # Email the host about the initial message
       AdvloMailer.delay.new_message_email(conversation, message)
+
+      respond_to do |format|
+        format.js {render "/messages/message_sent.js", layout: false}
+      end
     end
   end
 

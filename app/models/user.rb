@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
   after_update :set_adventure_host_name
 
 
+  # Overwrite password requirement for new users (i.e. generated through contacting hosts)
+  def password_required?
+    new_record? ? false : super
+  end
+
   def set_adventure_host_name
     if self.name_changed?
       self.adventures.each do |a|

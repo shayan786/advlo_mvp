@@ -22,11 +22,11 @@ Rails.application.routes.draw do
     post '/users/phone'               => 'users#edit_phone_number'
     get '/users/conversations'        => 'registrations#conversations'
     post '/users/update_paypal_email' => 'users#update_paypal_email'
-    post '/users/become_an_affiliate'  => 'users#become_an_affiliate'
+    post '/users/become_an_affiliate' => 'users#become_an_affiliate'
 
     # Set password
     get '/users/set-password/:referral_code'  => 'passwords#set'
-    post '/users/set-password' => 'passwords#set_password'
+    post '/users/set-password'                => 'passwords#set_password'
 
     # Affiliate related tracking
     post '/users/update_affiliate_referral_click_count' => 'users#update_affiliate_referral_click_count'
@@ -111,6 +111,7 @@ Rails.application.routes.draw do
   resources :reviews
 
   #conversations & messages
+  post '/conversations/new_user'    => 'conversations#new_user'
   post '/conversations/new'          => 'conversations#new'
   post '/messages/new'               => 'messages#new'
   post '/messages/read/:id'          => 'messages#read'            

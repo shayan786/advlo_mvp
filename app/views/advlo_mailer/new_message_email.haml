@@ -43,7 +43,7 @@
             %tr
               %td.text-center
                 %br
-                - if @receiver.encrypted_password
+                - if @receiver.encrypted_password && @receiver.encrypted_password != ""
                   %a.respond_btn{href: "#{root_url}users/conversations"}
                     RESPOND
                 - else

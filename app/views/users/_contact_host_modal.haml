@@ -64,7 +64,7 @@
           = "Message"
         .modal-body
           .contact_host_form
-            %form{"accept-charset" => "UTF-8", action: "/conversations/new_user", method: "POST", id: "contact_host_form"}
+            %form{"accept-charset" => "UTF-8", action: "/conversations/new_user", method: "POST", id: "contact_host_form", "data-remote"=>"true"}
               = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
               = tag(:input, :type => "hidden", :name => "conversation[host_id]")
               - if @adventure

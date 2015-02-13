@@ -10,7 +10,7 @@
           - flash.each do |key, value|
             %div{class: flash_class(key)}
               %li= value
-        %form{id: "set_pass_form", "accept-charset" => "UTF-8", action: "/passwords/set_password", method: "post", roll: "form"}
+        %form{id: "set_pass_form", "accept-charset" => "UTF-8", action: "/users/set-password", method: "post", roll: "form"}
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           =tag(:input, :type => "hidden", :id => "referral_code", :name => "referral_code", :value => @user.referral_code)
           .form-group
