@@ -176,76 +176,6 @@
 			display: block;
 		}
 
-		.find_locals_table {
-			.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
-				padding-left: 25px;
-			}
-
-			.table {
-				background-color: rgba(0,0,0,0.4);
-				border-color: rgba(195,91,38,0.7);
-				border: 1px solid $light_gray;
-
-				th {
-					padding-top: 20px;
-					color: $advlo_orange;
-					font-family: bebas_neue;
-					letter-spacing: 2px;
-					font-size: 1.3em;
-					border-color: $advlo_orange;
-				}
-
-				td {
-					vertical-align: middle;
-					color: #FFF;
-					opacity: 0.9;
-					border-color: rgba(255,255,255,0.7);
-
-					.local_img {
-						width: 100px;
-						height: 70px;
-						border: 1px solid $light_gray;
-						border-bottom: none;
-						background-size: cover !important;
-						margin: 0 auto;
-					}
-
-					.local_name {
-						background-color: rgba(0,0,0,0.7);
-						font-family: bebas_neue_bold;
-						letter-spacing: 1px;
-						color: #FFF;
-						padding: 3px 0 0 0;
-						width: 100px;
-						border: 1px solid $light_gray;
-						margin: 0 auto;
-					}
-
-					.cat_circle {
-						display: inline-block;
-						background-color: rgba(105,153,103,0.7);
-						width: 40px;
-						height: 40px;
-						border-radius: 50%;
-						color: #FFF;
-						margin-right: 5px;
-
-						text-align: center;
-						padding-top: 11px;
-						padding-left: 2px;
-						font-family: bebas_neue_bold;
-						letter-spacing: 2px;
-						font-size: 1.1em;
-
-					}
-
-					.cat_circle:last-child {
-						margin-right: 0px;
-					}
-				}
-			}
-		}
-
 		.location_filter {
 			border-radius: 3px;
 			border: 1px solid $advlo_orange;
@@ -446,5 +376,27 @@
 			  }
 			}
 	  }
+	}
+}
+
+/* tablet */
+@media screen and (min-width: 501px) and (max-width: 800px){ 
+	#find {
+		.search_options {
+			.or {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+
+/* mobile */
+@media screen and (max-width: 500px){ 
+	#find {
+		.search_options {
+			.or {
+				margin-bottom: 10px;
+			}
+		}
 	}
 }

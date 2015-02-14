@@ -1,0 +1,28 @@
+- set_meta_tags(get_meta_tags("Set Password","Set your Advlo Password to Continue","Advlo, Sign-Up, Sign Up, Password, Set Password"))
+
+#d_set_pass
+  .container
+    .panel.col-md-4.col-md-offset-4
+      %h2.text-center Set Your Password
+
+      .panel-body
+        .d_error_msgs
+          - flash.each do |key, value|
+            %div{class: flash_class(key)}
+              %li= value
+        %form{id: "set_pass_form", "accept-charset" => "UTF-8", action: "/users/set-password", method: "post", roll: "form"}
+          =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          =tag(:input, :type => "hidden", :id => "referral_code", :name => "referral_code", :value => @user.referral_code)
+          .form-group
+            %p.form-control-static.text-center= @user.email
+
+          .form-group
+            %input.form-control{id: 'user_password', name: 'user[password]', autofocus: true, autocomplete: "off", placeholder: "password", type: "password" }
+        
+          .form-group
+            %input.form-control{id: 'user_password_confirmation', name: 'user[password_confirmation]', autocomplete: "off", placeholder: "password confirmation", type: "password" }
+
+          %input.btn.btn-primary.set_pass_btn{name: "set_pass", type: "submit", value: "Set Password"}
+
+:javascript
+  set_password_form_validator();

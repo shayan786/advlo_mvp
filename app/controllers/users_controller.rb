@@ -37,8 +37,6 @@ class UsersController < ApplicationController
     @user.avatar = params[:user][:avatar]
     @user.save
 
-    puts "params[:user][:avatar] =====> #{params[:user][:avatar]}"
-
     respond_to do |format|
       format.js {render 'update_user_avatar_image.js', layout: false}
     end

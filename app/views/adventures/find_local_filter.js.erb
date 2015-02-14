@@ -1,5 +1,5 @@
 $("#find .search_results .locals-partial").hide()
-$("#find .search_results .locals-partial").html("<%= escape_javascript(render(partial: 'find_locals_table', locals:{locals: @locals})) %>");
+$("#find .search_results .locals-partial").html("<%= escape_javascript(render(partial: 'locals_index', locals:{locals: @locals})) %>");
 $("#find .search_results .locals-partial").fadeIn('slow')
 
 <% user_ids = [] %>

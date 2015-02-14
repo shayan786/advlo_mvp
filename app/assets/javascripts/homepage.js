@@ -127,24 +127,21 @@ function submitAboutUsContact(){
 }
 
 function how_it_works_hovers(){
-  $('#how_it_works a').mouseover(function(){
-      $(this).next().find('.dot_copy').css({
-        color: '#699967'
-      });
-      $(this).find('.dot_copy').css({
-        color: '#699967'
-      });
-  })
-
-  $('#how_it_works a').mouseout(function(){
-      $(this).next().find('.dot_copy').css({
-        color: '#E6E6E6'
-      });
-
-      $(this).find('.dot_copy').css({
-        color: '#E6E6E6'
-      });
-  })
+  $('#how_it_works .hiw_img').hover(
+    function(){
+      $('#how_it_works .hiw_img').stop().animate({
+        "opacity":"0.6"
+      })
+      $(this).stop().animate({
+        "opacity":"1"
+      })
+    },
+    function(){
+      $('#how_it_works .hiw_img').stop().animate({
+        "opacity":"1"
+      })
+    }
+  )
 }
 
 function video_modal_play_stop() {

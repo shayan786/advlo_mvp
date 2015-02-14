@@ -20,12 +20,16 @@
 
     #explanation
       Connect with locals to find unique adventure travel experiences
-      - if !current_user
-        %hr
-        .small
-          Join for free and explore local adventures
 
-        
+
+    .row
+      #find_adventure_form
+        .col-md-6.col-md-offset-3
+          .form-group
+            .input-group
+              %input.form-control{placeholder: "Enter Location", name: "location", id: "location", autofocus: true}
+              .input-group-addon
+                %i.fa.fa-search
 
     - if notice
       .col-md-6.col-md-offset-3 
@@ -37,35 +41,7 @@
 
   .text-center.explanation-row
     
-    - if current_user
-      .btn.btn-success#homepage-explore Explore
-      %a.btn.btn-success#homepage-explore-mobile{href: "/adventures/#{Adventure.approved.last.slug}"} Explore
-
-
-
-    - else  
-      .col-md-12.signup-row
-        .advlo-signup
-          .row
-            %a.btn.btn-primary.homepage_fb_btn#fb-top-signup{href: "/users/auth/facebook"}
-              %i.fa.fa-facebook-square
-              connect
-              
-
-          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form'}
-            =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-            =tag(:input, :type => "hidden", :id => "referrer_id", :name => "user[referrer_id]", :value => nil)
-            .form-group
-              %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
-            .form-group
-              %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
-            .form-group
-              %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
-            %input.btn.btn-primary.sign_up_btn#submit-email-login{name: "sign_up", type: "submit", value: "JOIN"}
-
-          .row
-            .homepage_login.homepage_email_btn#email-login
-              email
+    
 
     #arrow-wrapper
       %a
@@ -103,6 +79,8 @@
   
 
   $(document).ready(function(){
+    homepage_find_input_geocomplete();
+
     if( $('.navbar-fixed-top').is(":visible") ){
       $('.scroll-slow').css('top','75px');
       $('#arrow-wrapper').hide();

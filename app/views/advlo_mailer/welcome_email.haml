@@ -13,7 +13,12 @@
 
       %p
         Make sure to 
-        - if !@user.is_guide 
+        - if !@user.is_guide && (@user.encrypted_password == "" || !@user.encrypted_password)
+
+          %a{href: "#{root_url}users/set-password/#{@user.referral_code}"} set your password
+          if you haven't already.
+
+        - elsif !@user.is_guide
 
           %a{href: "#{root_url}users/edit"} complete your profile
           so we know what kind of traveler you are.

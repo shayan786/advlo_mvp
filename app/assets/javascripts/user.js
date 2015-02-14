@@ -141,6 +141,38 @@ function upload_profile_photo() {
   })
 }
 
+function set_password_form_validator() {
+
+  $('#set_pass_form').bootstrapValidator({
+    fields: {
+      'user[password]': {
+        validators: {
+          notEmpty: {
+            message: "Password cannot be empty"
+          },
+          stringLength: {
+            message: "Password must include atleast 8 characters",
+            min: 8,
+            max: 40
+          }
+        }
+      },
+      'user[password_confirmation]': {
+        validators: {
+          notEmpty: {
+            mesage: "Confirmation cannot be empty"
+          },
+          stringLength: {
+            message: "Confirmation must include atleast 8 characters",
+            min: 8,
+            max: 40
+          }
+        }
+      }
+    }
+  });
+}
+
 function edit_user_form_validator(){
   $('#user_edit_form').bootstrapValidator({
     fields: {

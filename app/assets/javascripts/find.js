@@ -5,6 +5,33 @@ function find_input_geocomplete() {
   })
 }
 
+function homepage_find_input_geocomplete(){
+  //homepage search bar leading to locals search
+  $('#homepage-text #find_adventure_form #location').geocomplete()
+  .bind("geocode:result", function(event,result){
+    var loc = $(this).val();
+
+    window.location = "/find?location="+loc+"&locals=true"
+  })
+
+  $('#find_adventure_form .input-group-addon').click(function(){
+    var details = $.trim($('#find_adventure_form #location').val());
+
+    if (details.length > 2) {
+      var loc = $('#homepage-text #find_adventure_form #location').val();
+
+      window.location = "/find?location="+loc+"&locals=true"
+    }
+    else {
+      swal({
+        title: "Please enter in a location!",
+        imageUrl: "http://i.imgur.com/a6L0hYB.png"
+      });
+      $('#find_adventure_form #location').focus();
+    }
+  })
+}
+
 function checkbox_highlighting() {
   $('#find .search_options #find_adventure_activity_form .checkbox-inline').click(function(){
     if($(this).find('input').is(':checked')) {
@@ -321,6 +348,88 @@ function scroll_to_results() {
 	$('html,body').animate({
 	    scrollTop: $('#find .search_results').offset().top-50
 	  }, 800);
+}
+
+function load_adv_by_location(location,locals) {
+  $.ajax({
+    url: '/find/location',
+    dataType: "script",
+    data: {location: location, locals: locals},
+    type: "POST"
+  })
+}
+
+function load_adv_by_categories(categories,locals) {
+  //convert string to array
+  var cat_array = categories.split(",");
+
+  $.ajax({
+    url: '/find/category',
+    dataType: "script",
+    data: {category: cat_array, locals: locals},
+    type: "POST"
+  })
+}
+
+function host_index_effects() {
+  $('.adv_box[data-toggle="tooltip"]').tooltip();
+
+  $('.host_container').hover(
+    function(){
+      $('.host_container').stop().animate({
+        "opacity":"0.6"
+      })
+      $(this).stop().animate({
+        "opacity":"1"
+      })
+    },
+    function(){
+      $('.host_container').stop().animate({
+        "opacity":"1"
+      })
+    }
+  )
+}
+
+function contact_host_set_values() {
+  $('.host_contact_btn').click(function(){
+    var host_name = $(this).data('host-name');
+    var host_id = $(this).data('host-id');
+
+    $('#contact_host_modal .contact_host_form input[name="conversation[host_id]"]').val(host_id);
+    $('#contact_host_modal .modal-header').text('Message - '+host_name);
+  })
+}
+
+function contact_host_validation(){
+  $('#contact_host_modal #contact_host_form').bootstrapValidator({
+    fields: {
+      'email': {
+        validators: {
+          notEmpty: {
+            message: 'Email is required and cannot be empty'
+          },
+          emailAddress: {
+            message: 'Not a valid email address'
+          }
+        }
+      },
+      'message[body]': {
+        validators: {
+          notEmpty: {
+            message: 'Body is required and cannot be empty'
+          }
+        }
+      },
+      'conversation[subject]': {
+        validators: {
+          notEmpty: {
+            message: 'Subject is required and cannot be empty'
+          }
+        }
+      }
+    }
+  });
 }
 
 

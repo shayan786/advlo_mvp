@@ -1,0 +1,8 @@
+$('#contact_host_modal .contact_host_form').fadeOut();
+
+$('#contact_host_modal .modal-body').html('<h2>Your message has been sent. Most of our hosts reply within 24 hours</h2>')
+
+// If user clicks out of the modal, refresh the page
+$('#contact_host_modal').on('hide.bs.modal', function(e){
+	window.location.reload(true);
+})

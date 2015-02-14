@@ -1,7 +1,7 @@
 - render partial: 'homepage_seo_tags.haml'
 = render partial: 'hero_image'
 = render partial: 'how_it_works'
-= render partial: 'explorer_block'
+= render partial: 'feat_hosts'
 = render partial: 'feat_adventures'
 = render partial: 'signup'
 
@@ -10,5 +10,8 @@
     remove_notice(4);
 
 :javascript
-  homepageInit();
-  masonrySetup();
+  $(document).ready(function(){
+    homepageInit();
+    masonrySetup();
+  })
+  

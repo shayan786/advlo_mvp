@@ -27,34 +27,68 @@
               .row.text-center
                 %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
 
+- elsif current_user
+  #contact_host_modal.modal.fade{role: "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-header.text-center
+          = "Message"
+        .modal-body
+          .contact_host_form
+            %form{"accept-charset" => "UTF-8", action: "/conversations/new", method: "POST", id: "contact_host_form"}
+              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+              = tag(:input, :type => "hidden", :name => "conversation[host_id]")
+              = tag(:input, :type => "hidden", :name => "conversation[user_id]", :value => current_user.id)
+              - if @adventure
+                = tag(:input, :type => "hidden", :name => "conversation[adventure_id]", :value => @adventure.id)
+
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right.edit-label Subject *
+                .col-md-6
+                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right.edit-label Message *
+                .col-md-6
+                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
+              .row.text-center
+                %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
+
 - else
-  - if current_user
-    #contact_host_modal.modal.fade{role: "dialog"}
-      .modal-dialog
-        .modal-content
-          .modal-header.text-center
-            = "Message - #{user.get_abbreviated_name}"
-          .modal-body
-            .contact_host_form
-              %form{"accept-charset" => "UTF-8", action: "/conversations/new", method: "POST", id: "contact_host_form"}
-                = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-                = tag(:input, :type => "hidden", :name => "conversation[host_id]", :value => user.id)
-                = tag(:input, :type => "hidden", :name => "conversation[user_id]", :value => current_user.id)
-                - if @adventure
-                  = tag(:input, :type => "hidden", :name => "conversation[adventure_id]", :value => @adventure.id)
+  #contact_host_modal.modal.fade{role: "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-header.text-center
+          = "Message"
+        .modal-body
+          .contact_host_form
+            %form{"accept-charset" => "UTF-8", action: "/conversations/new_user", method: "POST", id: "contact_host_form", "data-remote"=>"true"}
+              = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+              = tag(:input, :type => "hidden", :name => "conversation[host_id]")
+              - if @adventure
+                = tag(:input, :type => "hidden", :name => "conversation[adventure_id]", :value => @adventure.id)
 
-                .form-group.row
-                  .col-md-4 
-                    .form_label.text-right.edit-label Subject *
-                  .col-md-6
-                    %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right.edit-label Email *
+                .col-md-6
+                  %input.form-control{type: "text", name: "email", id: "conversation_new_user_email"}
 
-                .form-group.row
-                  .col-md-4 
-                    .form_label.text-right.edit-label Message *
-                  .col-md-6
-                    %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
-                .row.text-center
-                  %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right.edit-label Subject *
+                .col-md-6
+                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
 
-  
+              .form-group.row
+                .col-md-4 
+                  .form_label.text-right.edit-label Message *
+                .col-md-6
+                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
+              .row.text-center
+                %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
+
+
+
