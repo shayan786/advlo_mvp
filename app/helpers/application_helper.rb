@@ -219,9 +219,9 @@ module ApplicationHelper
 
   def get_meta_tags(title, description, keywords)
     return {
-      :title          => "#{title} - Advlo",
+      :title          => "#{title} - Adventure Local",
       :description    => "#{description}",
-      :keywords       => "Adventure, Adventure Travel, Adventure Local, Adventure with Locals, travel, tourism, booking, trip, #{keywords}"
+      :keywords       => "Adventure, Travel, Local, tourism, booking, trip, activities, fun, #{keywords}"
     }
   end
 
