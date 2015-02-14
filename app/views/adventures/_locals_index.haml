@@ -15,7 +15,7 @@
       .col-md-5
         .host_adventures.text-center
           - host.adventures.limit(6).each do |adv|
-            %a.adv_box{href: "#{root_url}adventures/#{adv.slug}", style: "background: url('#{adv.attachment.url(:thumb)}') center center no-repeat", "data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>"#{adv.title.length > 24 ? adv.title[0..24]+'...' : adv.title}"}
+            %a.adv_box{href: "#{root_url}adventures/#{adv.slug}", style: "background: url('#{adv.attachment.url(:medium)}') center center no-repeat", "data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>"#{adv.title.length > 24 ? adv.title[0..24]+'...' : adv.title}"}
 
     .row
       %a{href: "#{root_url}users/#{host.to_param}"}
