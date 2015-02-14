@@ -1,4 +1,5 @@
-- set_meta_tags(get_meta_tags("#{@adventure.title} with #{@adventure.users.first.get_abbreviated_name}", @adventure.summary[0..159], "#{@adventure.category},#{@adventure.location.gsub(' ',',')},#{@adventure.location},#{@adventure.users.first.get_abbreviated_name}"))
-- set_meta_tags :og => get_og_tags("#{@adventure.title} with #{@adventure.users.first.get_abbreviated_name}", "#{root_url}adventures/#{@adventure.slug}", @adventure.summary, @adventure.attachment.url(:hero))
+- set_meta_tags(get_meta_tags("#{@adventure.location} local travel adventures - #{@adventure.title} with #{@adventure.users.first.get_abbreviated_name}", @adventure.summary[0..159], "#{@adventure.category},#{@adventure.location.gsub(' ',',')},#{@adventure.location}"))
+
+- set_meta_tags :og => get_og_tags("#{@adventure.location} adventures - #{@adventure.title} with #{@adventure.users.first.get_abbreviated_name}", "#{root_url}adventures/#{@adventure.slug}", @adventure.summary, @adventure.attachment.url(:hero))
 - set_meta_tags :fb => {:app_id => '210802829129036'}
 - set_meta_tags :twitter => get_twitter_tags("#{@adventure.title} with #{@adventure.users.first.get_abbreviated_name}", @adventure.summary, @adventure.attachment.url(:medium))
