@@ -1,0 +1,271 @@
+.business_page {
+
+  .row {
+    margin: 2%;
+    margin-bottom: 30px;
+  }
+
+  h1 {
+    margin-top: 5px;
+  }  
+
+  .btn-default {
+
+    width: 250px;
+  }
+
+  .dark_background {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+
+  .main {
+    line-height: 120%;
+    cursor: pointer;
+    font-size: 26px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    font-family: 'bebas_neue';
+    letter-spacing: 1px;
+  }
+
+
+  .sub {
+    color: #fff;
+    font-family: 'nexa_light';
+  }
+
+  .active {
+    color: $advlo_orange;
+  }
+
+  .sub {
+    font-size: 16px;
+  }
+
+  .gallery {
+
+    #computer {
+      img {
+        max-width: 100%;
+      }
+    }
+    #mobile {
+      max-width: 100%;
+    }
+
+    .swiper-container {
+      position: absolute;
+      top: 28px;
+      height: 81%;
+      width: 71%;
+      margin-left: 12%;
+
+      .swiper-wrapper {
+        height: 100%;
+        width: 100%;
+
+        .swiper-slide {
+          width: 100%;
+          height: 100%;
+
+          .image-wrapper {
+            cursor: pointer;
+            height: 100% !important;
+            width: 100% !important;
+            background-size: 100%;
+          }
+        }
+      }
+    }
+  }
+
+
+  li {
+    list-style: none;
+    text-align: left;
+    color: #fff;
+    font-size: 24px;
+  }
+
+
+  #individual-info {
+    display: none;
+  }
+  #business-info {
+    display: none;
+  }
+}
+
+.guide-button {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  font: normal 20px/2.4 "Open Sans", Helvetica, sans-serif;
+  color: rgba(255,255,255,0.9);
+  text-transform: capitalize;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+
+  background: $advlo_orange;
+  -webkit-box-shadow: 0 5px 0 0 #a65200;
+  box-shadow: 0 5px 0 0 #a65200;
+
+  text-shadow: 0 1px 1px rgba(87,151,180,0.36) ;
+  -webkit-transition: top 50ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: top 50ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: top 50ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: top 50ms cubic-bezier(0.42, 0, 0.58, 1);
+
+
+  .title {
+    color: #fff;
+    text-align: center;
+    font-size: 28px;
+
+    margin-top: 7px;
+    font-family: 'bebas_neue';
+    letter-spacing: 5px;
+    font-size: 40px;
+    text-shadow: -1px -1px grey;
+  }
+}
+
+
+.guide-button:hover {
+  background: #F27935;
+  -webkit-box-shadow: 0 5px 0 0 #a65200;
+  box-shadow: 0 5px 0 0 #a65200;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+.guide-button:active {
+  top: 2px;
+  -webkit-box-shadow: 0 3px 0 0 #a65200;
+  box-shadow: 0 3px 0 0 #a65200;
+}
+
+.guide-button::before {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 50px;
+  position: absolute;
+  content: "";
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  border: 0 solid #018dc4;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  font: normal medium/normal Arial, Helvetica, sans-serif;
+  color: rgba(0,0,0,0.9);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: url("http://enjoycss.com/bg-img/custom/21875-v2clm0.png"), rgba(0,0,0,0.05);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-background-origin: content-box;
+  background-origin: content-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-background-size: 30px auto;
+  background-size: 30px auto;
+  text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+  -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.green-button {
+  background: $advlo_green;
+  -webkit-box-shadow: 0 5px 0 0 #1E824C;
+  box-shadow: 0 5px 0 0 #1E824C;
+}
+
+
+.green-button:hover {
+  background: #90C695;
+  -webkit-box-shadow: 0 5px 0 0 #1E824C;
+  box-shadow: 0 5px 0 0 #1E824C;
+}
+
+.green-button:active {
+  -webkit-box-shadow: 0 3px 0 0 #1E824C;
+  box-shadow: 0 3px 0 0 #1E824C;
+}
+
+
+.left-local {
+  width: 30%;
+  margin-left: 10%;
+  float: left;
+  height: 100px;
+}
+.right-business {
+  width: 30%;
+  margin-right: 10%;
+  float: right;
+  height: 100px;
+}
+
+
+
+@media screen and(max-width: 1315px ){
+  .business_page .sub {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    font-size: 14px;
+  }
+}
+
+@media screen and(max-width: 1100px ){
+  .desktop{
+    margin-top: 10%;
+  }
+}
+
+
+@media screen and(max-width: 991px ){
+
+  .left-local {
+    width: 80%;
+    margin-bottom: 25px;
+    margin-top: 25px;
+  }
+
+  .guide-button {
+    .title {
+      margin-top: 20px;
+      font-size: 30px;
+    }
+  }
+
+
+  .right-business {
+    width: 80%;
+  }
+  
+  #computer {
+    img {
+      visibility: hidden;
+      margin-bottom: 30px;
+    }
+  }
+}

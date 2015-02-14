@@ -1,86 +1,55 @@
 - render partial: 'info_seo_tags'
 
 #adventure_info
-  - if params[:invite] == 'hostel' && !current_user
-    - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/partner.jpg"
-    .jumbotron{:style => "background-image: url(#{image_path image})"}
-      .container
-        .row.text-center
-          .col-md-8.host_info_text.col-md-offset-2
-            Get paid to promote local adventures & get more hostel bookings
+  - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/advlo_surfers2.jpg"
+  .jumbotron{:style => "background-image: url(#{image_path image})"}
+    .container
+      .row.text-center
+        .col-md-8.host_info_text.col-md-offset-2
+          Connect with travelers, promote your trips, and sell the adventures you create
 
-        .row.text-center
-          .col-md-6.col-md-offset-3
-            = render partial: 'devise/registrations/partner_signup', locals: {referrer: @referrer }
-            .invited-by="You have been invited by: #{@referrer.email}"
+      .row.text-center
+        .col-md-6.col-md-offset-3
+          %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill"} LIST YOUR ADVENTURE
 
-    .adventure_info_body
-      .white_background
-        %h2
-          Why become a partner Hostel?
-        .body_content
-          .why-container
-            ="- Sell your hostel's adventure activities"
-          .why-container
-            ="- Earn money by inviting local adventure guides"
-          .why-container
-            ="- Promote your hostel to a global network of travelers"
-          .why-container
-          
-
-  - else  
-    - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/advlo_surfers2.jpg"
-    .jumbotron{:style => "background-image: url(#{image_path image})"}
-      .container
-        .row.text-center
-          .col-md-8.host_info_text.col-md-offset-2
-            Connect with travelers, promote your trips, and sell the adventures you create
-
-        .row.text-center
-          .col-md-6.col-md-offset-3
-            - if current_user
-              %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill"} LIST YOUR ADVENTURE
-            - else
-              %a.btn.btn-primary.adv_info_btn.new-account LIST YOUR ADVENTURE
-
-    .adventure_info_body
-      .white_background
-        .row.host_header
-          WHO WE'RE LOOKING FOR
-        .host_type
-          Advlo Hosts are skilled adventurers, local guides, and outdoor professionals who create unique travel experiences to share with others. Advlo carefully vets all Hosts for quality and safety.
-          
-        .row
-          .adventure-container.adventure-container-homepage
-            .brick-wrapper
-              - @adventures.each_with_index do |adv, i|
-                .adv-info-wrapper
-                  %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing"}
-                    %a{href: adventure_path(adv.slug), itemprop: 'url'}
-                      - if adv.attachment.height(:large) >= 300
-                        - adv_img = adv.attachment.url(:large)
-                      - else
-                        - adv_img = adv.attachment.url(:hero)
-                      .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
-                      .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
-                        .copy{id: "#{i}"}
-                          - if adv.title.length > 38
-                            .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
-                          -else
-                            .title{itemprop: 'name'}= adv.title
-
-                          .location{itemprop: 'description'}= get_display_location(adv)
-                          
-                          .host_name= "With #{adv.host_name}"
-
-                        .hover-block{id: i}
-                          .guide-image
-                            .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
-                          
-                        .copy-container{class: "copy-#{i}"}
+  .adventure_info_body
+    .white_background
+      .row.host_header
+        WHO WE'RE LOOKING FOR
+      .host_type
+        Advlo Hosts are skilled adventurers, local guides, and outdoor professionals who create unique travel experiences to share with others. Advlo carefully vets all Hosts for quality and safety.
         
-                  .view-profile
-                    =link_to "View #{adv.host_name}'s profile", user_path(adv.users.first.to_param)
+      .row
+        .adventure-container.adventure-container-homepage
+          .brick-wrapper
+            - @adventures.each_with_index do |adv, i|
+              .adv-info-wrapper
+                %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing"}
+                  %a{href: adventure_path(adv.slug), itemprop: 'url'}
+                    - if adv.attachment.height(:large) >= 300
+                      - adv_img = adv.attachment.url(:large)
+                    - else
+                      - adv_img = adv.attachment.url(:hero)
+                    .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
+                    .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
+                      .copy{id: "#{i}"}
+                        - if adv.title.length > 38
+                          .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
+                        -else
+                          .title{itemprop: 'name'}= adv.title
+
+                        .location{itemprop: 'description'}= get_display_location(adv)
+                        
+                        .host_name= "With #{adv.host_name}"
+
+                      .hover-block{id: i}
+                        .guide-image
+                          .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
+                        
+                      .copy-container{class: "copy-#{i}"}
+      
+                .view-profile
+                  = link_to "View #{adv.host_name}'s profile", user_path(adv.users.first.to_param)
 
   .adventure_info_body
     .gray_background
@@ -249,10 +218,10 @@
             %a{href: 'https://stripe.com/global', target: '_blank'}
               Stripe's
             secure processing framework which is PCI compliant.
-            Payouts are either direct bank deposit 
+            Payouts can be direct bank deposit to the countries on
             %a{href: "https://stripe.com/global", target: '_blank'}
-              in a country 
-            that supports it, or via
+              this list.
+            Or we payout each week with
             %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal. 
             Payouts will be triggered at the end of each week for all of your completed bookings.
 
@@ -301,10 +270,8 @@
           - if params[:invite]
             .join-text Become a partner
             = render partial: 'devise/registrations/partner_signup', locals: {referrer: @referrer }
-          - elsif current_user
-            %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: 'margin-bottom: 15px;'} LIST YOUR ADVENTURE
           - else
-            %a.btn.btn-primary.adv_info_btn.new-account{style: 'margin-bottom: 15px;'} LIST YOUR ADVENTURE
+            %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: 'margin-bottom: 15px;'} LIST YOUR ADVENTURE
 
 
 :javascript 
@@ -317,4 +284,3 @@
 
   toggleItineraryItemsAndArrows();
   $('.itinerary-brick').first().click()
-  

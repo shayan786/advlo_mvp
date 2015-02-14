@@ -32,7 +32,7 @@
 
   %br
   %br
-  To modify this membership or if you have any questions, please contact us at: 
+  To modify this membership, change your re-direct link, or if you have any questions please contact us at: 
   = mail_to 'support@advlo.com'
 
   %br
@@ -44,6 +44,15 @@
         %em
           %b
             How would you like to get paid?
+
+        .text-center
+          %a{href: "https://stripe.com/global", target: '_blank'} 
+            Bank Supported 
+          countries /
+          %a{href: "https://www.paypal.com/webapps/mpp/country-worldwide", target: '_blank'}
+            Paypal supported 
+          countries.
+
       .btn.btn-default.col-md-4.col-md-offset-2.subscribe_btn_1#add-bank{'data-toggle'=>"tooltip", 'data-placement'=>"top", 'title'=>"Add a Bank account", style: 'margin-bottom: 15px;'}
         .fa.fa-university
 

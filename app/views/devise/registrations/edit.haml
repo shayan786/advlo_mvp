@@ -22,31 +22,36 @@
 
       .panel-body#user-form-wrapper
         - if current_user.is_guide == nil
-          #pre-check
-            %a.btn.btn-default.pre-check#travel{href: '/users/initial/false', 'data-remote' => 'true'}
-              %p I want to travel
-            %a.btn.btn-default.pre-check#host{href: '/users/initial/true', 'data-remote' => 'true'}
-              %p I want to host
+          #pre-check.text-center
+            %h3 What kind of adventurer are you?
+            %a.btn.btn-default.pre-check#travel{href: '/users/initial/traveler', 'data-remote' => 'true'}
+              .type-text 
+                %p adventure traveler
+              .bot-explain
+                You crave unique, off-the-beaten-path 
+                %br
+                experiences when you travel.
+
+            %a.btn.btn-default.pre-check#host{href: '/users/initial/local', 'data-remote' => 'true'}
+              .type-text 
+                %p individiual guide
+              .bot-explain
+                You have passion for adventure 
+                %br
+                and sharing it with others.
+
+            %a.btn.btn-default.pre-check#business{href: '/users/initial/business', 'data-remote' => 'true'}
+              .type-text 
+                %p local business
+              .bot-explain
+                You have a local adventure operation 
+                %br
+                that values cultural connection.
+              
+
 
         - else
           = render partial: 'post_check.haml'
 
 :javascript
   usersInit()
-
-  $('#host').click(function(){
-    $('.traveler-only-form').hide()
-    $('.host-only-form').show()
-    $('.basic-form').show()
-    $('.host-checklist').show()
-
-  })
-  $('#traveler').click(function(){
-    $('.traveler-only-form').show()
-    $('.host-only-form').hide()
-    $('.basic-form').show()
-    $('.host-checklist').hide()    
-  })
-
-
-

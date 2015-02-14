@@ -1,0 +1,51 @@
+.dark_background
+  .host_type
+    Advlo Hosts are skilled adventurers, local guides, and outdoor professionals who create unique travel experiences to share with others. Advlo carefully vets all Hosts for quality and safety.
+  - img_url = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
+  .col.col-md-12.text-center
+    .row
+      .col.col-md-6.desktop
+        .gallery
+          #computer
+            = image_tag 'comp.png'
+            .swiper-container{class: "#{type}-slider"}
+              .swiper-wrapper
+                - img_url.each do |img|
+                  .swiper-slide
+                    .image-wrapper{style: "background-image: url('#{img}')"}
+
+      .col.col-md-6
+        %ul
+          %li 
+            .main.active{class: "#{type}-1"}
+              Custom Pages
+              .sub 
+                Sleek pages to showcase your adventure experiences, and your profile containing your skills, contact info, and aggregate listings.
+
+          %li 
+            .main{class: "#{type}-2"}
+              Direct Messaging
+              .sub 
+                Travelers can contact you directly to customize unique packages based on your initial uploads and your adventure skills.
+
+          %li 
+            .main{class: "#{type}-3"}
+              Mobile Optimization
+              .sub 
+                Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
+
+
+  .col.col-md-12.text-center
+    .row
+      .col.col-md-6
+        %h2 Bookings
+        %ul
+          %li Interesting item
+          %li Interesting item
+          %li Interesting item
+          %li Interesting item
+
+      .col.col-md-6
+        .gallery
+          = image_tag 'mobile.png', id: 'mobile'
+          

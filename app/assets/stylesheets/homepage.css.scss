@@ -164,14 +164,13 @@ h1 {
     }
 
     #travel {
-      background: rgba(255,255,255, 0.3);
-      border: 2px solid $advlo_orange;
-      color: #000;
+      cursor: auto;
+      background: $advlo_green;
     }
+
     #host {
-      background: rgba(255,255,255, 0.3);
-      border: 2px solid $advlo_green;
-      color: #000;
+      cursor: auto;
+      background: $advlo_orange;
     }
   }
 

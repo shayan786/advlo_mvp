@@ -218,15 +218,17 @@ class AdventuresController < ApplicationController
     @adventures << Adventure.find_by_slug('the-pearl-islands-adventure')
 
     if params[:invite] == 'partner'
-
       @referrer = User.find_by_email('founders@advlo.com')
-
     elsif params[:invite] == 'hostel'
-
       @referrer = User.find_by_email('christopher@advlo.com')
     end
 
     @hero_image = HeroImage.where(region: 'info').first
+  end
+
+  def adventure_info
+    render :layout => 'adventure_info'
+
   end
 
   # info page for requesting a certain adventure
@@ -275,7 +277,7 @@ class AdventuresController < ApplicationController
         redirect_to '/users/sign_up'
       end
     elsif user_signed_in? && !current_user.is_guide?(current_user.id)
-      redirect_to '/users/edit', notice: "Become a host so travelers know more about you"
+      redirect_to '/users/edit', notice: "Complete your profile to upload an adventure"
     else 
       redirect_to '/adventures/new'
     end
@@ -285,7 +287,7 @@ class AdventuresController < ApplicationController
   def new
     #add another check...before actually showing the form
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
-      redirect_to '/adventures/create_prefill', notice: "Become a host so travelers know more about you"
+      redirect_to '/adventures/create_prefill', notice: "Complete your profile to upload an adventure"
     end
 
     @adventure = Adventure.new
@@ -295,7 +297,7 @@ class AdventuresController < ApplicationController
   def create
     #add another check...before actually showing the form
     if !user_signed_in? || (user_signed_in? && !current_user.is_guide?(current_user.id))
-      redirect_to '/adventures/create_prefill', notice: "Become a host so travelers know more about you"
+      redirect_to '/adventures/create_prefill', notice: "Complete your profile to upload an adventure"
     end
 
     # Hook for banner image upload

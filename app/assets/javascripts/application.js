@@ -33,6 +33,7 @@
 //= require homepage.js
 //= require reservation.js
 //= require user.js
+//= require adv_info.js
 //= require wallet.js
 //= require affiliate.js
 //= require promotion.js
@@ -54,12 +55,9 @@ $(document).ready(function(){
   // fixes the bug that you can click right below a modal to close it
   $('.modal-dialog').height($('.modal-body').last().css('height'))
 
-
-  if( location.pathname.indexOf('giveaway') != 1 ){
-    setTimeout(function(){
-      $('#contest-link').slideToggle()
-    }, 3500);
-  }
+  $('.new-account').click(function(){
+    $('#member-modal').modal('show');
+  })
 })
 
 
@@ -104,7 +102,7 @@ $(document).ready(function(){
           height: "43px"
         });
         $('nav.navbar .navbar-brand').animate({
-        	marginTop: "4px",
+        	marginTop: "6px",
         	"background-size": "83%"
         });
         $('.logged_in_dropdown_box').animate({
@@ -120,7 +118,7 @@ $(document).ready(function(){
 
         // menus
         $('#locations-menu').animate({
-          top: '-4px'
+          top: '-6px'
         }, 200)
 
         $('.logged_in_dropdown_menu, .logged_out_dropdown_menu').animate({

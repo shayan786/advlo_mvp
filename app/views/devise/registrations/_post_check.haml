@@ -1,169 +1,17 @@
 #post-check
   .col-md-6
-    %form{"accept-charset" => "UTF-8", action: "/users", method: "post", id: "user_edit_form", enctype: "multipart/form-data"}
-      = tag(:input, :type => "hidden", :value => "put", :name => "_method")
-      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-      .form-group.col-md-offset-4
-        .btn-group{"data-toggle" => "buttons", style: 'width: 100%;'}
-          - if @user.is_guide == true
-            :javascript
-              $(document).ready(function(){
-                $('.host-only-form').show()
-                $('.basic-form').show()
-                $('.host-checklist').show()
-              })
+    .row
+      .account-alert.alert.alert-warning.text-center{style: "display: none; margin-top: 10px; margin-bottom: 0px;"}
 
-            %label.btn.btn-default#traveler.travel-toggle
-              %input{ :type => "radio", value: 'false', name: "user[is_guide]"}
-              Traveler
-            %label.btn.btn-default.active#host.travel-toggle
-              %input{:type => "radio", value: 'true', name: "user[is_guide]"}
-              Host
-          - elsif @user.is_guide == false || @user.is_guide == nil
-            :javascript
-              $(document).ready(function(){
-                $('.traveler-only-form').show()
-                $('.basic-form').show()
-                $('.host-checklist').hide()
-              })
+    - if @user.is_guide == true && @user.guide_type == 'business' 
+      = render partial: 'business_account'
 
-            %label.btn.btn-default.active#traveler.travel-toggle
-              %input{:type => "radio", value: 'false', name: "user[is_guide]"}
-              Traveler
-            %label.btn.btn-default#host.travel-toggle
-              %input{:type => "radio", value: 'true', name: "user[is_guide]"}
-              Host
+    - elsif @user.is_guide == true && @user.guide_type == 'local' || @user.guide_type == ''
+      = render partial: 'local_account'
 
+    - elsif @user.is_guide == false
 
-      .form-group.row.basic-form
-        .col-md-4
-          .form_label.edit-label Name
-        .col-md-8
-          %input.form-control{placeholder: "Name", type: "text", name: "user[name]", id: "user_name", value: "#{current_user.name}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Display Name"}}
-      .form-group.row.basic-form
-        .col-md-4
-          .form_label.edit-label Email
-        .col-md-8
-          %input.form-control{placeholder: "Email Address", type: "email", name: "user[email]", id: "user_email", value: "#{current_user.email}"}
-      .form-group.row.basic-form
-        .col-md-4
-          .form_label.edit-label Location
-        .col-md-8
-          %input.form-control{placeholder: "Location", type: "text", name: "user[location]", id: "user_location", value: "#{current_user.location}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Your Current Location"}}
-
-      .traveler-only-form
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Interests
-          .col-md-8
-            - options = adv_categories
-            - options.each do |o|
-              %label.checkbox-inline.no_indent
-                - if @user.category && @user.category.include?(o.downcase)
-                  %input{type: "checkbox", id: o.downcase, value: o.downcase, name: 'category[]', checked: "checked"}
-                - else 
-                  %input{type: "checkbox", id: o.downcase, value: o.downcase, name: 'category[]'}
-                = o
-
-      .host-only-form
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Short Description
-          .col-md-8
-            %input.form-control.show_ml{placeholder: "Short Description", type: "text", name: "user[short_description]", id: "user_short_description", value: "#{current_user.short_description}", maxlength: "35", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Couple words to describe you! Ex: Climber, Hiker"}}
-        .row
-          .col-md-4
-          .col-md-8
-            .location_map
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Sex
-          .col-md-3
-            - if current_user.sex
-              %select.form-control{name: "user[sex]", id: "user_sex"}
-                - if current_user.sex == 'Male'
-                  %option{selected: true} Male
-                  %option Female
-                  %option Couple
-                - elsif current_user.sex == 'Female'
-                  %option{selected: true} Male
-                  %option Male
-                  %option{selected: true} Female
-                  %option Couple
-                - else
-                  %option
-                  %option Male
-                  %option Female
-                  %option{selected: true} Couple
-            - else
-              %select.form-control{name: "user[sex]", id: "user_sex"}
-                %option
-                %option Male
-                %option Female
-                %option Couple
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Date of Birth
-          .col-md-4
-            - if current_user.dob
-              .prefill_input= current_user.dob.strftime("%m/%d/%Y")
-            - else 
-              %input.form-control{type: "text", name: "user[dob]", id: "user_dob"}
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Biography
-          .col-md-8
-            %textarea.form-control.show_ml{rows: "8", name: "user[bio]", id: "user_bio", placeholder: "What's your story?", maxlength: "3000", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Help the adventurers know you by sharing your story"}}
-              - if !current_user.bio.nil?
-                #{current_user.bio}
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Languages
-          .col-md-8
-            %input.form-control.show_ml{placeholder: "Languages", type: "text", name: "user[language]", id: "user_language", value: "#{current_user.language}", maxlength: "40", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Languages spoken, seperate by a comma (,) (Ex: English, French)"}}
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Skills / Certifications
-          .col-md-8
-            %textarea.form-control.show_ml{rows: "7", name: "user[skillset]", id: "user_skillset", placeholder: "Ex: Certified Scuba Diver, Wilderness First Responder", maxlength: "150", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Do you have any skills or certifications which qualify you as an adventure guide? Separate each by a comma (,)"}}
-              - if !current_user.skillset.nil?
-                #{current_user.skillset}
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Youtube or Vimeo video url
-          .col-md-8
-            %input.form-control.show_ml{type: "text", name: "user[video_url]", placeholder: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',id: "user_video_url", value: "#{@current_user.video_url}", maxlength: "75", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Input a Youtube or Vimeo video URL that describes you"}}
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Facebook URL
-          .col-md-8
-            %input.form-control{placeholder: "https://www.facebook.com/myname", type: "text", name: "user[fb_url]", id: "user_fb_url", value: "#{current_user.fb_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label Twitter URL
-          .col-md-8
-            %input.form-control{placeholder: "https://www.twitter.com/myname", type: "text", name: "user[tw_url]", id: "user_tw_url", value: "#{current_user.tw_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
-        .form-group.row
-          .col-md-4
-            .form_label.edit-label TripAdvisor URL
-          .col-md-8
-            %input.form-control{placeholder: "https://www.tripadvisor.com/members/myname", type: "text", name: "user[ta_url]", id: "user_ta_url", value: "#{current_user.ta_url}", :data => {:container => "body", :toggle => "popover", :placement => "right", :content => "Add your social links to increase your chance of a booking"}}
-      - if current_user.email_list != true
-        .form-group.row.basic-form
-          .col-md-4
-            .form_label.edit-label Advlo Emails
-          .col-md-8
-            .btn-group{"data-toggle" => "buttons"}
-              %label.btn.btn-default
-                %input#option1{:name => "options", :type => "radio", value: 'true', name: "user[email_list]"}
-                Yes please
-              %label.btn.btn-default.active
-                %input#option2{:name => "options", :type => "radio", value: 'false', name: "user[email_list]"}
-                No thanks
-
-      .form-group.row
-        .col-md-offset-4.text-center
-          %input.btn.btn-success.update-user-btn{name: "commit", type: "submit", value: "UPDATE"}
+      = render partial: 'traveler_account'
 
 
   .col-md-6.text-center
@@ -209,28 +57,23 @@
           %input{type: "file", name: "hero_image[attachment]", id: "banner_image"}
 
 
+
         - if !current_user.is_guide?(current_user.id)
           .row
             .col-md-6.col-md-offset-3
               .panel.panel-default
                 .panel-body.text-left
-                  %b Please fill in the following:
-                  - if current_user.avatar.url == "/images/original/missing.png" && current_user.avatar_url == nil
-                    %li Profile Image
-                  - if current_user.name.nil? || current_user.name.empty?
-                    %li Name
-                  - if current_user.short_description.nil? || current_user.short_description.empty?
-                    %li Short Description
-                  - if current_user.location.nil? || current_user.location.empty?
-                    %li Location
-                  - if current_user.sex.nil? || current_user.sex.empty?
-                    %li Sex
-                  - if current_user.bio.nil? || current_user.bio.empty?
-                    %li Biography
-                  - if current_user.language.nil? || current_user.language.empty?
-                    %li Languages
-                  - if current_user.skillset.nil? || current_user.skillset.empty?
-                    %li Skills / Certifications
+                  .adventure-checkboxes
+
+
+                    - if @user.guide_type == 'company'
+                      = render partial: 'company_checklist'
+
+                    - elsif @user.guide_type == 'local'
+                      = render partial: 'local_checklist'
+
+                    - else @user.is_guide == false
+                      = render partial: 'local_checklist'
         - else
           .row
             .col-md-6.col-md-offset-3
@@ -241,4 +84,3 @@
             .col-md-6.col-md-offset-3                  
               %a.btn.btn-primary.update_btn{href: "/adventures/new"}
                 HOST AN ADVENTURE
-

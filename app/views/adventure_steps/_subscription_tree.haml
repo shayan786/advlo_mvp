@@ -1,23 +1,23 @@
+// plan  = [amount, plan_id, type]
+- if current_user.guide_type == 'business'
+  - plan = ['$99', '3', 'business_membership']
+- else
+  - plan = ['$30', '1', 'local_membership']
+
 .well.option_2_well.text-center
   .row
     %strong.header
-      $49 / Month
+      Membership
+    .free-month
+      +1 month trial
   %br
-    Use
     %strong
-      Advlo's 
-    booking system for 
+      = plan[0]
+    per month
     %strong
       no commission cost.
-  %br
-    OR
-  %br
-    Use your
-    %strong
-      own booking system
-    and redirect the traveler to 
-    %strong
-      your site.
+
+  Choose to use Advlo's booking system, or redirect to your own.
 
 
   .row
@@ -31,6 +31,6 @@
 
       
 
-  = render partial: "subscription_payment_form_1"
+  = render partial: "subscription_payment_form_1", locals: { plan: plan}
 
-  = render partial: "subscription_payment_form_2"
+  = render partial: "subscription_payment_form_2", locals: { plan: plan}

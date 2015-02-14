@@ -52,6 +52,8 @@ ActiveAdmin.register Adventure do
       f.input :rating, collection: ['1','2','3','4','5']
       f.input :published
       f.input :approved
+      f.input :duration_num
+      f.input :duration_type
       f.input :slug, label: 'permalink'
       f.input :summary
       f.input :other_notes

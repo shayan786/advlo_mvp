@@ -35,11 +35,12 @@ Rails.application.routes.draw do
     get '/affiliate/:referral_code'   => 'registrations#referral_sign_up'
   end
 
+  #hosting info routes
   get 'invite/:invite'                => 'adventures#hosting_info'
-  get 'partner'                       => 'adventures#hosting_info'
+  get 'partner'                       => 'adventures#adventure_info'
 
 
-  # shy wants to hide you from the world
+
   get 'travel-fund'                   => 'users#invite' 
   # get '/travel-fund/:referral_code'   => 'application#giveaway'
 

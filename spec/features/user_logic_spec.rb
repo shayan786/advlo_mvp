@@ -32,7 +32,7 @@ feature "user logic for adventure flow", :js => true do
     visit '/adventures/create_prefill'
     expect(page).to have_content('Become a host so travelers know more about you')
     fill_in 'Name', with: 'Topher'
-    fill_in 'Short Description', with: 'Anthropologist programmer'
+    fill_in 'Tagline', with: 'Anthropologist programmer'
     fill_in 'Location', with: 'Denver, Co'
     sleep 1
     fill_in 'user[dob]', with: "1990/02/05"

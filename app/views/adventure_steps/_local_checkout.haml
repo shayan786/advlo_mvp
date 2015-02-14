@@ -1,0 +1,77 @@
+.row.payout-buttons-row
+  .btn.btn-default.col-md-3.col-md-offset-2.option_btn_1
+    .pricing-top
+      .pricing-title Basic
+      .prices $0 / 30% 
+      .price-type
+        Month / per booking
+
+    .pricing-bottom   
+      %ul.feature-list
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Custom page to beautifully showcase your adventure skills"}
+          Personal Profile Page
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Unique listing pages that truly show your experience"}
+          Adventure Pages
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Manage your profile, adventures, & booking requests"}
+          Backend tools
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Built in SEO for each page / paid search marketing"}
+          SEO & Content Marketing
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"To your Bank or Paypal account"}
+          Weekly Payouts
+
+      .learn-more
+        .btn.btn-primary Basic plan
+
+  .free-trial-box
+    .price-type
+      One Month trial:
+      %b 
+        Membership 
+      %br
+      Cancel anytime within 30 days
+      
+    .learn-more.adventure-checkboxes
+      .unchecked.local-free-month
+        %input{:type => "checkbox"}
+        %label free month
+
+  .col-md-2.text-center
+
+  .btn.btn-default.col-md-3.option_btn_2
+    .pricing-top
+      .pricing-title membership
+      .prices $30 / 0%
+      .price-type
+        Month / per booking
+        
+
+    .pricing-bottom  
+      %ul.feature-list
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Custom page to beautifully showcase your adventure skills"}
+          Personal Profile Page
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Unique listing pages that truly show your experience"}
+          Adventure Pages
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Manage your profile, adventures, & booking requests"}
+          Backend tools
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Built in SEO for each page / paid search marketing"}
+          SEO & Content Marketing
+        %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"To your Bank or Paypal account"}
+          Weekly Payouts
+        %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Adventures under membership have first priority"}
+          Higher listing positions
+        %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Access to our transaction system with no commission"}
+          0% bookings commission
+        %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"You can choose to provide a link to re-direct on the 'book it' step"}
+          Option to re-direct transaction
+        %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"You can choose to provide a link to re-direct on the 'book it' step"}
+          Monthly Analytics
+
+      .learn-more
+        .btn.btn-success Membership plan
+
+
+
+  .col-md-6.col-md-offset-3
+    #commission-tree= render partial: 'commission_tree'
+  .col-md-6.col-md-offset-3
+    #subscription-tree= render partial: 'subscription_tree'

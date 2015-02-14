@@ -17,6 +17,7 @@
 
 			li {
 				float: left;
+
 			}
 
 			.section_header {
@@ -29,9 +30,18 @@
 			}
 
 			.fa {
-				padding-top: 15px;
+				padding-top: 7px;
+				padding-bottom: 7px;
 				padding-left: 15px;
 				padding-right: 15px;
+			}
+
+			.checkout-arrows {
+				padding-top: 15px;
+			}
+
+			.tooltip-inner {
+				max-width: none !important;
 			}
 			
 			.pricing-bottom {
@@ -39,40 +49,20 @@
 				float: left;
 				width: 100%;
 
-				.price-calculator {
-					position: relative;
-					float: left;
-					width: 100%;
-					margin-top: 10px;
-
-					.calc {
-						width: 50%;
-						text-align: right;
-						float: left;
-					}
-
-					.calc-title {
-						float: left;
-						width: 100%;
-						font-weight: bold;
-					}
-
-					.answer {
-						width: 47%;
-						text-align: left;
-						float: right;
-						margin-left: 3%;
-					}
-				}
-
 				.feature-list {
 					position: relative;
 					float: left;
 					padding-left: 25px;
 					padding-top: 5px;
 
+					li {
+						margin: 5px;
+						cursor: pointer;
+					}
+
 					.fa {
 						padding-left: 0px;
+						margin: 5px;
 					}
 
 					.fa-check:before {
@@ -85,6 +75,93 @@
 						color: $advlo_green;
 						opacity: 1.0;
 					}
+				}				
+			}
+
+			.free-trial-box {
+				position: absolute;
+				width: 265px;
+				margin-top: 450px;
+				height: 121px;
+				text-align: center;
+				margin-left: 14%;
+				font-size: 16px;
+				font-family: ''nexa_light'';
+
+				.price-type {
+					margin-top: 10px;
+				}
+
+				.adventure-checkboxes {
+					cursor: pointer;
+				}
+			}
+
+			.all-plans-include {
+				position: relative;
+				float: left;
+				width: 100%;
+				margin-top: 50px;
+				margin-bottom: 50px;
+				border-bottom: 1px solid #d2d2d2;
+
+
+				.margin-top-20 {
+					margin-top: 20px;
+				}
+
+				p {
+					color: #000;
+				}
+
+				.col-md-6 {
+					width: 46%;
+					margin: 2%;
+				}
+
+				h2 {
+					font-size: 2em;
+					margin-top: 15px;
+					width: 40%;
+					font-family: 'nexa_light' !important;
+					float: left;
+					text-align: center;
+				}
+
+				.right-side-line-gray {
+					border-top: solid 1px #d2d2d2;
+					float: right;
+					width: 30%;
+					margin-top: 30px;
+				}
+				.left-side-line-gray {
+					border-top: solid 1px #d2d2d2;
+					width: 30%;
+					float: left;
+					margin-top: 30px;
+				}
+
+				.feature-text {
+					color: #fefefe;
+					float: left;
+					width: 80%;
+					padding-top: 5px;
+					padding-bottom: 50px;
+					padding-left: 15px;
+				}
+
+				.marketing-package-headlines {
+					color: #000;
+					font-family: 'nexa_light' !important;
+					font-size: 20px;
+				}
+
+				.fa {
+					float: left;
+					font-size: 50px;
+					opacity: 0.9;
+					margin: 10px;
+					padding: 0px;
 				}
 			}
 
@@ -111,6 +188,10 @@
 				text-align: center;
 				margin-top: 15px;
 				margin-bottom: 15px;
+
+				.btn {
+					width: 150px;
+				}
 			}
 			.form_label {
 				padding-top: 5px;
@@ -314,11 +395,17 @@
 					margin-top: 20px;
 				}
 
+				
+
 				.prices {
 					font-family: bebas_neue_book;
-					font-size: 3.5em;	
+					font-size: 2.1em;	
+					span {	
+						font-size: 15px;
+					}
 				}
 				.price-type {
+					font-size: 1em;	
 					margin-bottom: 10px;
 				}
 			}
@@ -350,11 +437,12 @@
 		}
 
 
-		.subscribe_btn_1, .subscribe_btn_2 {
+		.subscribe_btn_1, .subscribe_btn_2, .subscribe_btn_3 {
 			margin-top: 30px !important;
 			text-align: center;
 			width: 150px;
 			height: 125px;
+			margin-left: 14%;
 
 			img {
 				position: relative;
@@ -363,8 +451,8 @@
 			}
 
 			.fa-share-square-o {
-				margin-top: 15px;
-				font-size: 50px !important;
+				margin-top: 26px;
+				font-size: 60px !important;
 				color: #545454 !important;
 			}
 
@@ -386,6 +474,7 @@
 			position: relative;
 			float: left;
 			display: none;
+			width: 100%;
 		}
 
 
@@ -394,6 +483,7 @@
 			position: relative;
 			float: left;
 			display: none;
+			width: 100%;
 		}
 
 		.option_1_well {
@@ -413,6 +503,8 @@
 		}
 
 		.option_2_well {
+			width: 100%;
+
 			@extend .option_1_well;
 
 			.dollar {
@@ -427,7 +519,7 @@
 				font-size: 0.8em;
 			}
 
-			#subscription_payment_form_1, #subscription_payment_form_2  {
+			#subscription_payment_form_1, #subscription_payment_form_2, #subscription_payment_form_3  {
 				display: none;
 				margin-top: 20px !important;
 
@@ -713,11 +805,30 @@
 	z-index: 9999;
 	position: fixed;
 }
+
+@media screen and (max-width: 771px){
+	.all-plans-include {
+		.fa {
+			width: 100%;
+		}
+	}
+}
+
+
 @media screen and (max-width: 991px){
+
 	.payout-buttons-row  {
 		width: 100%;
 		margin: 0 auto;
 	}
+
+	#adventure_create .container .panel .free-trial-box {
+		position: relative;
+		width: 100%;
+		float: left;
+		margin-top: 20px;
+		margin-left: 0;
+	}	
 
 	#adventure_create .complete-button {
 		width: 100%;
@@ -766,6 +877,7 @@
 			float: left;
 			padding-top: 25px;
 		}
+
 		#add-paypal {
 			width: 50%;
 			float: left;
@@ -774,17 +886,14 @@
 		.subscribe_btn_1 {
 			width: 50%;
 			float: left;
+			margin-left: 0%;
 			margin-top: 25px;
-
-			img {
-				width: 80%;
-				margin-top: 10px;
-			}
 		}
 		.subscribe_btn_2 {
 			width: 50%;
 			float: left;
 			margin-top: 25px;
+			margin-left: 0%;
 		}
 	}
 }
@@ -823,4 +932,11 @@
 		display: none;
 	}
 
+}
+
+.free-month {
+	font-family: 'nexa_light';
+	margin-top: 15px;
+	font-size: 17px;
+	display: none;
 }

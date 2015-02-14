@@ -1,0 +1,44 @@
+- render partial: 'info_seo_tags'
+
+#adventure_info.business_page
+
+  - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/advlo_surfers2.jpg"
+  .jumbotron{:style => "background-image: url(#{image_path image})"}
+    .container
+      .row.text-center
+        .col-md-8.host_info_text.col-md-offset-2
+          Connect with travelers, promote your trips, and sell the adventures you create
+          
+
+  
+  .row.bottom-25
+    .left-local#individual
+      .guide-button
+        .title Individual Guide
+
+    .right-business#business
+      .guide-button.green-button.green
+        .title Local Business
+            
+
+  .adventure_info_body
+
+    #individual-info
+      = render partial: 'info_page', locals: {type: 'local'}
+    #business-info      
+      = render partial: 'info_page', locals: {type: 'business'}
+
+
+:javascript
+  $('#individual').click(function(){
+    $('#individual-info').fadeIn();
+    $('#business-info').hide();
+    infoSlider('local');
+  })
+
+  $('#business').click(function(){
+    $('#business-info').fadeIn();
+    $('#individual-info').hide();  
+    infoSlider('business');
+  })
+

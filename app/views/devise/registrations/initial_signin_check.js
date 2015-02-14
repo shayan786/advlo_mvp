@@ -1,19 +1,16 @@
 $('#pre-check').remove()
 $("#user-form-wrapper").html("<%= escape_javascript(render(partial: 'post_check.haml')) %>")
 photoInput();
-
-$('#host').click(function(){
-  $('.traveler-only-form').hide()
-  $('.host-only-form').show()
-  $('.basic-form').show()
-  $('.host-checklist').show()
-
-})
-$('#traveler').click(function(){
-  $('.traveler-only-form').show()
-  $('.host-only-form').hide()
-  $('.basic-form').show()
-  $('.host-checklist').hide()    
-})
-
 usersInit();
+
+
+var type = '<%= @user.guide_type %>'
+$('.account-alert').show()
+
+if( type == 'business') {
+  $('.account-alert').html("Complete your Company profile to upload an adventure.")  
+} else if ( type == 'local' ) {
+  $('.account-alert').html("Complete your personal profile to upload an adventure.")
+} else {
+  $('.account-alert').html("Complete your profile so guides know who they will be hosting.")
+}

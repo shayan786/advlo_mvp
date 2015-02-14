@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}
+    = display_meta_tags
+    = favicon_link_tag 'advlo_favicon.ico'  
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+    - if Rails.env.production?
+      - #FB Conversion Stuff
+      - if content_for? :for_head
+        - yield :for_head
+
+      = render partial: 'shared/google_analytics'
+
+  %body
+    #wrapper
+      #loader-overlay
+        #loader-spinner
+        
+      %nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+        .container-fluid
+          / Brand and toggle get grouped for better mobile display
+          .navbar-header
+            %button.navbar-toggle#mobile-toggle-button{type: "button"}
+              %span.sr-only Togle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.navbar-brand{href: "/"}
+
+          / Collect the nav links, forms, and other content for toggling
+          #header-navbar.collapse.navbar-collapse
+            .btn.btn-primary.navbar-btn.login_in_sign_up_btn{style: "float: right; margin-right: 10px; font-weight: bold;"}
+              GET STARTED
+
+
+
+      = yield
+
+    = render partial: 'shared/footer'
