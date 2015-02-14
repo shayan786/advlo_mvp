@@ -34,11 +34,19 @@
     $('#individual-info').fadeIn();
     $('#business-info').hide();
     infoSlider('local');
+    guideScroll();
+
+    $('.dark_background').removeClass('green-line')
+    $('.dark_background').addClass('orange-line')    
   })
 
   $('#business').click(function(){
     $('#business-info').fadeIn();
     $('#individual-info').hide();  
     infoSlider('business');
+    guideScroll();
+
+    $('.dark_background').removeClass('orange-line')
+    $('.dark_background').addClass('green-line')
   })
 
