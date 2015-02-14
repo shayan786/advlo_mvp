@@ -51,20 +51,6 @@
                       .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
                       - get_cities(l[0]).each do |l|
                         .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
-                  
-        - elsif action_name != 'partner_invite' && action_name != 'hostel_invite'
-          = render partial: 'logged_out_dropdown'
-
-          #locations-menu-wrapper.locations-menu-wrapper{style: "display: none;"}
-            #locations-menu
-              - adv_regions.each_with_index do |r, i|
-                - if adv_count(r) > 0
-                  .main-location
-                    = link_to "#{r} (#{adv_count(r)})", "/adventures?region=#{r.gsub(' ','-')}"
-                    - get_countries(r).each do |l|
-                      .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
-                      - get_cities(l[0]).each do |l|
-                        .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
 
         - else
           #homepage-header-login{"data-target" => "#sign_in_modal", "data-toggle" => "modal"}
