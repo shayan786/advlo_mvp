@@ -58,8 +58,10 @@
                   .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
                   
 - elsif action_name != 'partner_invite' && action_name != 'hostel_invite'
-  #homepage-header-login
-    %a{href: '/users/sign_in'} login
+  #homepage-header-login{"data-target" => "#sign_in_modal", "data-toggle" => "modal"}
+    login
+
+  = render partial: 'sign_in_modal'
 
   
 

@@ -11,6 +11,7 @@
 	letter-spacing: 3px;
 	cursor: pointer;
 	text-shadow: -1px -1px #000;
+	color: #FFF;
 
 
 	&:hover{
@@ -326,6 +327,112 @@
 	background-color: transparent;
 }
 
+#sign_in_modal {
+	.advlo_img {
+			width: 155px;
+			margin: -5px auto;
+
+			img {
+				cursor: default !important;
+			}
+		}
+
+	.close {
+		font-size: 50px;
+		color: #fff;
+		opacity: 0.5;
+		cursor: pointer;
+		z-index: 999;
+		position: absolute;
+		top: 3px;
+		right: 22px;
+		font-weight: regular;
+		text-shadow: none;
+	}
+
+	.modal-dialog {
+		margin: 100px auto 0 auto;
+		color: #fff;
+
+		.modal-content {
+			max-width: 400px;
+			margin: 0 auto;
+			padding-bottom: 30px;
+			background-image: asset-url('cartographer_small.png');
+		}
+
+		#sign_in_form {
+			display: none;
+			margin-top: 0px !important;
+
+			.form-control {
+				width: 65%;
+			}
+
+			.sign_in_btn {
+				width: 60%;
+				font-family: bebas_neue;
+				font-weight: bold;
+				font-size: 1.1em;
+				background-color: $advlo_orange;
+				border-color: $advlo_orange;
+
+				&:hover {
+					background-color: $advlo_orange;
+					border-color: $advlo_orange;
+					opacity: 0.8;
+				}
+			}
+		}
+
+		.form-group {
+			.form-control {
+				width: 60%;
+				margin: 0 auto;
+
+				.form-control {
+					border-radius: 0px;
+				}
+			}
+		}
+
+		.modal-header {
+			font-size: 1.6em;
+			color: $orange;
+		}
+
+		.form_label {
+			padding-top: 5px;
+    	font-size: 1.2em;
+    	font-weight: bold;
+    	color: #FFF;
+		}
+	}
+
+	.sign_in_toggle_btn {
+		width: 60%;
+		padding-top: 8px;
+		font-family: bebas_neue;
+		font-weight: bold;
+		letter-spacing: 1px;
+		font-size: 1.3em;
+		background-color: $advlo_orange;
+		border-color: $advlo_orange;
+
+		&:hover {
+			background-color: $orange;
+			border-color: $orange;
+		}
+	}
+	.fb_btn {
+		width: 60%;
+		padding-top: 8px;
+		font-family: bebas_neue;
+		font-weight: bold;
+		letter-spacing: 1px;
+		font-size: 1.3em;
+	}
+}
 
 
 @media only screen and (min-width: 780px) and (max-width: 1000px) {
