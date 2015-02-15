@@ -1,10 +1,9 @@
-function tabInit(){
-  $('#individual-info').click(function () {
-    $(this).tab('show');
-  })
-
-  $('#business-info').click(function(){
-    $(this).tab('show');
+function guideScroll(){
+  $(document).ready(function(){
+    var amount = $('.guide-button').offset().top + 80
+    $('body').animate({
+      scrollTop: amount
+    }, 1000);
   })
 }
 
@@ -29,6 +28,3 @@ function infoSlider(type){
   })
 }
 
-function advInfoInit(){
-  tabInit();
-}
