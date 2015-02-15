@@ -4,6 +4,24 @@ class AdvloMailer < ActionMailer::Base
   default from: "info@advlo.com"
   layout 'advlo_mail'
 
+  # Marketing or less important emails
+  marketing_smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME_MARKETING'],
+    :password       => ENV['SENDGRID_PASSWORD_MARKETING'],
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+
+  def deliver_via_marketing(mail = @mail)
+    out = super
+
+    @@smtp_settings = marketing_smtp_settings
+
+    out
+  end
 
   # error emails 
   def geocode_limit_hit
