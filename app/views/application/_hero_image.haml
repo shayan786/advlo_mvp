@@ -1,9 +1,6 @@
-- adv_array = [154,256,401,392,183,520]
-- rand_num = rand(adv_array.length)
-- adv = Adventure.find(adv_array[rand_num])
-- image = adv.attachment.url(:hero)
+- adv = @rot_adventures.sample
 
-.homepage-photo.jumbotron.jumbotron_fix{:style => "background: url('#{image_path image}') center center no-repeat"}
+.homepage-photo.jumbotron.jumbotron_fix{:style => "background: url('#{adv.attachment.url(:hero)}') center center no-repeat"}
 
 .scroll-slow
   %a.adventure-link-wrapper#featured-homepage-adventure{href: "/adventures/#{adv.slug}"}
@@ -64,26 +61,30 @@
         with
         = adv.users.first.get_first_name
 
+- rot_advs = []
+- @rot_adventures.each do |adv|
+  - adv_obj = {bg_img_url: adv.attachment.url(:hero), url: "#{root_url}adventurs/#{adv.slug}", title: adv.title, host_img_url: adv.users.first.get_avatar_url('profile'), host_name: adv.users.first.get_first_name}
+  - rot_advs << adv_obj
+
 
 :javascript
   if ($.cookie('referrer_id')) {
     homepage_new_user_set_referrer_id($.cookie('referrer_id'));
   }
 
-
   $('#arrow-wrapper').click(function(){
     $('html, body').animate({
        scrollTop: $("#how_it_works").offset().top + 5}, 800
     )
   })
-  
 
   $(document).ready(function(){
     homepage_find_input_geocomplete();
+    banner_image_rotate(#{rot_advs.to_json});
 
     if( $('.navbar-fixed-top').is(":visible") ){
       $('.scroll-slow').css('top','75px');
       $('#arrow-wrapper').hide();
     }
-    
   });
+

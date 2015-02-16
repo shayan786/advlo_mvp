@@ -159,6 +159,42 @@ function video_modal_play_stop() {
   })
 }
 
+function banner_image_rotate(rot_advs){
+  var timer = 10000; //seconds
+  var i = 0;
+
+  setInterval(function(){
+    if (i == 5) {
+      i = 0;
+    }
+
+    
+    //effects of the img etc.
+    $('.homepage-photo, .adventure-link-wrapper').animate({
+      "opacity": 0
+    }, 1000)
+    
+    setTimeout(function(){
+      $('.homepage-photo').css({
+        "background-image": "url('"+rot_advs[i].bg_img_url+"')"
+      })
+
+      $('.adventure-link-wrapper').attr("href",rot_advs[i].url)
+      $('.adventure-link-wrapper .host_img').css({
+        "background-image": "url('"+rot_advs[i].host_img_url+"')"
+      })
+      $('.adventure-link-wrapper .adv_copy').html(rot_advs[i].title+"<br/>with "+rot_advs[i].host_name)
+      
+      $('.homepage-photo, .adventure-link-wrapper').animate({
+        "opacity": 0.6
+      }, 1000)
+    },1000)
+
+
+    i++;
+  }, timer)
+}
+
   
 homepageInit = function() {
   adventureHover();
