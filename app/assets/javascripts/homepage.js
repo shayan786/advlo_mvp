@@ -160,7 +160,7 @@ function video_modal_play_stop() {
 }
 
 function banner_image_rotate(rot_advs){
-  var timer = 10000; //seconds
+  var timer = 12000; //seconds
   var i = 0;
 
   setInterval(function(){
