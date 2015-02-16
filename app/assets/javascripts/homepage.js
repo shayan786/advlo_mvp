@@ -171,7 +171,7 @@ function banner_image_rotate(rot_advs){
     
     //effects of the img etc.
     $('.homepage-photo, .adventure-link-wrapper').animate({
-      "opacity": 0
+      "opacity": 0.1
     }, 1000)
     
     setTimeout(function(){
