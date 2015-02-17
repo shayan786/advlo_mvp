@@ -194,65 +194,69 @@
 		}
 	}
 
-	.press {
-	    background: $lighter_gray;
-	    padding-top: 10px;
-	    padding-bottom: 30px;
+}
 
-	    h3 {
-	      font-size: 2.0em;
-	      font-family: cabin_bold;
-	      margin-bottom: 30px !important;
-	      color: $dark_gray;
-	    }
+.press {
+    background: $lighter_gray;
+    position: relative; 
+    float: left;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 30px;
 
-	    .tnooz {
-	      img {
-	        padding-top: 17px;
-	        width: 115px;
-	        margin: 10px auto;
-	      }
-	    }
+    h3 {
+      font-size: 2.0em;
+      font-family: cabin_bold;
+      margin-bottom: 30px !important;
+      color: $dark_gray;
+    }
 
-	    .about {
-	      img {
-	        padding-top: 10px;
-	        width: 125px;
-	        margin: 10px auto;
-	      }
-	    }
+    .tnooz {
+      img {
+        padding-top: 17px;
+        width: 115px;
+        margin: 10px auto;
+      }
+    }
 
-	    .teton {
-	      img {
-	        width: 110px;
-	        margin: 10px auto;
-	      }
-	    }
+    .about {
+      img {
+        padding-top: 10px;
+        width: 125px;
+        margin: 10px auto;
+      }
+    }
 
-	    .skift {
-	      img {
-	        width: 80px;
-	        margin: 10px auto;
-	      }
-	    }
+    .teton {
+      img {
+        width: 110px;
+        margin: 10px auto;
+      }
+    }
 
-	    .clapway {
-	      img {
-	        padding-top: 25px;
-	        width: 140px;
-	        margin: 10px auto;
-	      }
-	    }
+    .skift {
+      img {
+        width: 80px;
+        margin: 10px auto;
+      }
+    }
 
-	    .techco {
-	      img {
-	        padding-top: 15px;
-	        width: 125px;
-	        margin: 10px auto;
-	      }
-	    }
+    .clapway {
+      img {
+        padding-top: 25px;
+        width: 140px;
+        margin: 10px auto;
+      }
+    }
 
-	}
+    .techco {
+      img {
+        padding-top: 15px;
+        width: 125px;
+        margin: 10px auto;
+      }
+    }
+
 }
 
 @media screen and (max-width: 1210px){

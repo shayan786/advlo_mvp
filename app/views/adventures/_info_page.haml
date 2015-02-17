@@ -1,51 +1,296 @@
 .dark_background
-  .host_type
-    Advlo Hosts are skilled adventurers, local guides, and outdoor professionals who create unique travel experiences to share with others. Advlo carefully vets all Hosts for quality and safety.
-  - img_url = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
-  .col.col-md-12.text-center
-    .row
-      .col.col-md-6.desktop
-        .gallery
-          #computer
-            = image_tag 'comp.png'
-            .swiper-container{class: "#{type}-slider"}
-              .swiper-wrapper
-                - img_url.each do |img|
-                  .swiper-slide
-                    .image-wrapper{style: "background-image: url('#{img}')"}
+  .box.col.col-md-12.text-center.all-plans-include.adventure-spec
+    .headline-container
+      .left-side-line
+      .headline How it Works
+      .right-side-line
+    .col.col-md-12.brick-padding
+      .row
+        .col.col-md-4.how-it-works-block
+          .fa.fa-envelope
+          .feature-text
+            Receive requests
+          .headlines 
+            We market your activity and send booking requests right to your inbox.
 
-      .col.col-md-6
-        %ul
-          %li 
-            .main.active{class: "#{type}-1"}
-              Custom Pages
-              .sub 
-                Sleek pages to showcase your adventure experiences, and your profile containing your skills, contact info, and aggregate listings.
+        .col.col-md-4.how-it-works-block
+          .fa.fa-motorcycle
+          .feature-text
+            Lead Adventures
+          .headlines 
+            Connect with adventurers who crave more authentic, local experiences when they travel.
 
-          %li 
-            .main{class: "#{type}-2"}
-              Direct Messaging
-              .sub 
-                Travelers can contact you directly to customize unique packages based on your initial uploads and your adventure skills.
+        .col.col-md-4.how-it-works-block
+          .fa.fa-money
+          .feature-text
+            Get Paid
+          .headlines 
+            Receive bank deposits in 
+            %a{href: "https://stripe.com/global", target: '_blank'} these countries
+            or create a 
+            %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal account
+            for free.
+            
 
-          %li 
-            .main{class: "#{type}-3"}
-              Mobile Optimization
-              .sub 
-                Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
+  .box.col.col-md-12
+    .headline-container
+      .lightline.left-side-line
+      .lightheading.headline What it looks like
+      .lightline.right-side-line
+    - img_url = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
+    .col.col-md-12.text-center.computer-slider.brick-padding
+      .row
+        .col.col-md-6.desktop
+          .gallery
+            #computer
+              = image_tag 'comp.png'
+              .swiper-container{class: "#{type}-slider"}
+                .swiper-wrapper
+                  - img_url.each do |img|
+                    .swiper-slide
+                      .image-wrapper{style: "background-image: url('#{img}')"}
 
+        .col.col-md-6
+          %ul
+            %li 
+              .main.active{class: "#{type}-1"}
+                Custom Pages
+                .sub 
+                  Sleek pages to showcase your adventure experiences, and your profile containing your skills, contact info, and aggregate listings.
 
-  .col.col-md-12.text-center
-    .row
-      .col.col-md-6
-        %h2 Bookings
-        %ul
-          %li Interesting item
-          %li Interesting item
-          %li Interesting item
-          %li Interesting item
+            %li 
+              .main{class: "#{type}-2"}
+                Direct Messaging
+                .sub 
+                  Travelers can contact you directly to customize unique packages based on your initial uploads and your adventure skills.
 
-      .col.col-md-6
-        .gallery
-          = image_tag 'mobile.png', id: 'mobile'
+            %li 
+              .main{class: "#{type}-3"}
+                Mobile Optimization
+                .sub 
+                  Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
           
+  .box.col.col-md-12.text-center.all-plans-include.adventure-spec
+    .headline-container
+      .headline.full What it costs
+
+    - if type == 'local'
+      - price_basic = ['Basic Plan', 'Free to upload', '30% commission on bookings']
+      - price_member = ['Membership', '$30 per Month', '0% comission on bookings']
+    - else
+      - price_basic = ['Basic Plan', '$49 per month', '5% commission on bookings']
+      - price_member = ['Membership', '$99 per Month', '0% comission on bookings']
+    .col.col-md-6
+      .price-box
+        .price-title= price_basic[0]
+        .price= price_basic[1]
+        .price-explain= price_basic[2]
+
+        .pricing-info-list
+          %ul.feature-list
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Custom page to beautifully showcase your local business"}
+              Company Profile Page
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Unique listing pages that truly show your experience"}
+              Adventure Pages
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Manage your profile, adventures, & booking requests"}
+              Backend tools
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Built in SEO for each page / paid search marketing"}
+              SEO & Content Marketing
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"To your Bank or Paypal account"}
+              Weekly Payouts
+
+    .col.col-md-6
+      .price-box
+        .price-title= price_member[0]
+        .price= price_member[1]
+        .price-explain= price_member[2].html_safe
+
+        .pricing-info-list
+          %ul.feature-list
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Custom page to beautifully showcase your local business"}
+              Company Profile Page
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Unique listing pages that truly show your experience"}
+              Adventure Pages
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Manage your profile, adventures, & booking requests"}
+              Backend tools
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Built in SEO for each page / paid search marketing"}
+              SEO & Content Marketing
+            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"To your Bank or Paypal account"}
+              Weekly Payouts
+            %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Adventures under membership have first priority"}
+              Higher listing positions
+            %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Access to our transaction system with no commission"}
+              0% bookings commission
+            %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"You can choose to provide a link to re-direct on the 'book it' step"}
+              Option to re-direct transaction
+            %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"You can choose to provide a link to re-direct on the 'book it' step"}
+              Monthly Analytics
+
+
+  .box.col.col-md-12
+    .headline-container
+      .lightline.left-side-line
+      .lightheading.headline Features include
+      .lightline.right-side-line
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-cc-visa
+        Online Transactions
+      .row.matrix_content
+        Advlo handles all payments ensuring you get paid on time
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-comments-o
+        Direct Messaging
+      .row.matrix_content
+        Communicate with travelers interested in booking your trips
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-file-image-o
+        Custom Pages
+      .row.matrix_content
+        Web pages for your host profile and each of your adventures
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-star-half-o
+        Reviews / Ratings
+      .row.matrix_content
+        Build a reputation and leverage links to exisiting traveler reviews
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-search
+        SEO & online visibility
+      .row.matrix_content
+        SEO, web hosting, & keyword marketing to bring you more traffic
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-money
+        Payout Options
+      .row.matrix_content
+        Bank deposit or PayPal / payouts are initiated at the end of each week.
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-retweet
+        Booking Requests
+      .row.matrix_content
+        Accept or decline booking requests based on your availability
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-copy
+        UNLIMITED Listings
+      .row.matrix_content
+        Easily manage all your adventures with one account
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-mobile
+        Mobile Friendly
+      .row.matrix_content
+        Manage adventures & reservations from your mobile device
+
+    .access-block
+      .row.matrix_header
+        .fa.fa-facebook-square
+        Social media tools
+      .row.matrix_content
+        Send your listing to Facebook, Twitter & Google+ in one click
+        
+    .access-block
+      .row.matrix_header
+        .fa.fa-calendar
+        Scheduling
+      .row.matrix_content
+        Offer instant booking times for immediate reservations
+
+    .access-block
+      .row.matrix_header 
+        .fa.fa-envelope
+        Email Alerts
+      .row.matrix_content
+        Get notifications when you receive a booking or direct message
+   
+          
+  .box.col.md-12.text-center
+    .container.press
+      %h3 FEATURED IN
+      .row
+        .col-md-2
+          %a{href: "http://www.tnooz.com/article/startup-pitch-advlo-connects-adventure-seekers-locals/", target: "_blank"}
+            .mention.tnooz= image_tag 'icons/press/tnooz.png'
+        .col-md-2
+          %a{href: "http://adventuretravel.about.com/od/Adventure-Travel-General/fl/New-Online-Marketplace-Invites-Travelers-to-Adventure-with-Locals.htm", target: "_blank"}
+            .mention.about= image_tag 'icons/press/about.png'
+        .col-md-2
+          %a{href: "http://www.tetonsports.com/adventureblog/lets-change-way-travel-adventure-locals/", target: "_blank"}
+            .mention.teton= image_tag 'icons/press/teton.png'
+        .col-md-2
+          %a{href: "http://skift.com/2014/06/09/5-new-travel-startups-that-help-tourist-explore-the-outdoors/#3", target: "_blank"}
+            .mention.skift= image_tag 'icons/press/skift.png'
+        .col-md-2
+          %a{href: "http://clapway.tv/needs-tour-guides-advlo-helps-adventure-locals/", target: "_blank"}
+            .mention.clapway= image_tag 'icons/press/clapway.png'
+        .col-md-2
+          %a{href: "http://tech.co/advlo-launches-adventure-travel-platform-2014-09", target: "_blank"}
+            .mention.techco= image_tag 'icons/press/techco.png'
+
+  .box.adventure_info_body
+    .white_background
+      .headline-container
+        .lightline.left-side-line
+        .lightheading.headline We're looking for
+        .lightline.right-side-line
+        
+      .host_type
+        Skilled instructors, local guides, & outdoor professionals who can create unique travel experiences. Advlo carefully vets all Hosts for quality and safety.
+        
+      .row
+        .adventure-container.adventure-container-homepage
+          .brick-wrapper
+            - @adventures.each_with_index do |adv, i|
+              .adv-info-wrapper
+                %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing"}
+                  %a{href: adventure_path(adv.slug), itemprop: 'url'}
+                    - if adv.attachment.height(:large) >= 300
+                      - adv_img = adv.attachment.url(:large)
+                    - else
+                      - adv_img = adv.attachment.url(:hero)
+                    .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
+                    .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
+                      .copy{id: "#{i}"}
+                        - if adv.title.length > 38
+                          .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
+                        -else
+                          .title{itemprop: 'name'}= adv.title
+
+                        .location{itemprop: 'description'}= get_display_location(adv)
+                        
+                        .host_name= "With #{adv.host_name}"
+
+                      .hover-block{id: i}
+                        .guide-image
+                          .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
+                        
+                      .copy-container{class: "copy-#{i}"}
+      
+                .view-profile
+                  =link_to "View #{adv.host_name}'s profile", user_path(adv.users.first.to_param)
+
+
+
+:javascript
+  $(document).ready(function(){
+  
+    $('.view-profile a').hover(function(){
+      $(this).parent().parent().find($('.hover-block')).fadeIn()
+    }, function(){
+      $(this).parent().parent().find($('.hover-block')).fadeOut()
+    })
+  })
