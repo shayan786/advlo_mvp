@@ -36,3 +36,20 @@ function infoSlider(type){
   })
 }
 
+
+
+function mobileSlider(mobile_type){
+  $(document).ready(function() {
+    var sliderName = mobile_type + 'Slider';
+    var sliderName = new Swiper('.' + mobile_type + '-slider',{
+      mode:'horizontal',
+      autoplay: 4200, 
+      onSlideChangeStart: function(swiper){
+        $(".mobile-main").removeClass('active')
+        $(".mobile" + mobile_type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
+      }
+    });
+  })
+}
+
+

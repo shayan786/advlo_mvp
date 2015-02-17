@@ -42,13 +42,14 @@
       .row
         .col.col-md-6.desktop
           .gallery
+            .swiper-container.swiper-container-comp{class: "#{type}-slider"}
+              .swiper-wrapper
+                - img_url.each do |img|
+                  .swiper-slide
+                    .image-wrapper{style: "background-image: url('#{img}')"}
+
             #computer
               = image_tag 'comp.png'
-              .swiper-container{class: "#{type}-slider"}
-                .swiper-wrapper
-                  - img_url.each do |img|
-                    .swiper-slide
-                      .image-wrapper{style: "background-image: url('#{img}')"}
 
         .col.col-md-6
           %ul
@@ -69,6 +70,40 @@
                 Mobile Optimization
                 .sub 
                   Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
+
+    - mobile_urls = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/579/hero/Screen_Shot_2015-02-17_at_12.44.26_PM.png?1424202308", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/578/hero/Screen_Shot_2015-02-17_at_12.41.11_PM.png?1424202301", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224"]
+    .col.col-md-12.text-center.computer-slider.brick-padding
+      .row
+        .col.col-md-6
+          %ul
+            %li 
+              .mobile-main.active{class: "mobile-#{type}-1"}
+                Custom Pages
+                .sub 
+                  Sleek pages to showcase your adventure experiences, and your profile containing your skills, contact info, and aggregate listings.
+
+            %li 
+              .mobile-main{class: "mobile-#{type}-2"}
+                Direct Messaging
+                .sub 
+                  Travelers can contact you directly to customize unique packages based on your initial uploads and your adventure skills.
+
+            %li 
+              .mobile-main{class: "mobile-#{type}-3"}
+                Mobile Optimization
+                .sub 
+                  Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
+
+        .col.col-md-6
+          .gallery
+            .swiper-container.swiper-container-mobile.mobile-slider
+              .swiper-wrapper
+                - mobile_urls.each do |img|
+                  .swiper-slide
+                    .image-wrapper{style: "background-image: url('#{img}')"}
+            #mobile
+              = image_tag 'mobile.png'
+        
           
   .box.col.col-md-12.text-center.all-plans-include.adventure-spec
     .headline-container
@@ -287,7 +322,6 @@
 
 :javascript
   $(document).ready(function(){
-  
     $('.view-profile a').hover(function(){
       $(this).parent().parent().find($('.hover-block')).fadeIn()
     }, function(){

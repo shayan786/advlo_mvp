@@ -84,8 +84,8 @@ sizes, pagination, etc.
 }
 
 .swiper-slide .image-wrapper {
-  height: 95% !important;
-  width: 95% !important;
+  height: 100% !important;
+  width: 100% !important;
   margin-right: 10px !important;
 }
 

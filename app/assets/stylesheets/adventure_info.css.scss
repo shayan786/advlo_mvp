@@ -193,34 +193,53 @@
         max-width: 100%;
       }
     }
+
     #mobile {
-      max-width: 100%;
+      position: relative;
+      width: 60%;
+      margin: 0 auto;
+      top: -100px;
+
+      img {
+        max-width: 100%;
+      }
     }
 
-    .swiper-container {
+    .swiper-container-comp {
       position: absolute;
       top: 28px;
       height: 81%;
       width: 71%;
       margin-left: 12%;
+    }
+    .swiper-container-mobile {
+      position: absolute;
+      height: 64%;
+      width: 37%;
+      top: 3%;
+      left: 31.25%;
+    }
 
-      .swiper-wrapper {
-        height: 100%;
+    .swiper-wrapper {
+      height: 100%;
+      width: 100%;
+
+      .swiper-slide {
         width: 100%;
+        height: 100%;
 
-        .swiper-slide {
-          width: 100%;
-          height: 100%;
-
-          .image-wrapper {
-            cursor: pointer;
-            height: 100% !important;
-            width: 100% !important;
-            background-size: 100%;
-          }
+        .image-wrapper {
+          cursor: pointer;
+          background-size: cover;
         }
       }
     }
+  }
+
+  .mobile-wrapper {
+    top: -50px;
+    max-width: 50%;
+    margin: 0 auto;
   }
 
 
@@ -382,6 +401,15 @@
 
 
 @media screen and(max-width: 992px ){
+
+  .business_page .adventure-spec .how-it-works-block {
+    float: none;
+    margin-top: 35px;
+  }
+
+  .business_page .adventure-spec .headlines {
+    float: none;
+  }
 
   .left-local {
     margin-top: 0px;
