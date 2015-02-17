@@ -227,6 +227,23 @@ class AdventuresController < ApplicationController
   end
 
   def adventure_info
+
+    @adventures = [] 
+    @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
+    @adventures << Adventure.find_by_slug('private-surf-lessons')
+    @adventures << Adventure.find_by_slug('the-pearl-islands-adventure')
+
+    case params[:guide_category]
+    when 'mountain'
+      @guide_category_img = 'advlo_mountains.jpg'
+    when 'water'
+      @guide_category_img = 'partner.jpg'
+    when 'hike'
+      @guide_category_img = 'advlo_forest.png'
+    else
+      @guide_category_img = 'advlo_mountains.jpg'
+    end
+
     render :layout => 'adventure_info'
 
   end

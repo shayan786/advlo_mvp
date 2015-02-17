@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   #hosting info routes
   get 'invite/:invite'                => 'adventures#hosting_info'
   get 'partner'                       => 'adventures#adventure_info'
+  get 'partner/:guide_category'       => 'adventures#adventure_info'
 
 
 

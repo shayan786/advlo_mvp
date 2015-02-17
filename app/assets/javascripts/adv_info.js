@@ -1,6 +1,15 @@
 function guideScroll(){
   $(document).ready(function(){
-    var amount = $('.guide-button').offset().top + 80
+    $('html').css('overflow','scroll');
+    $('.jumbotron').height('400px');
+    $('.navbar').fadeIn()
+
+    var amount = $('.adventure_info_body').offset().top - 50
+
+    if ($(window).width() < 765){
+      amount = amount - 5
+      $(".why_host").css('visibility','hidden');
+    }
     $('body').animate({
       scrollTop: amount
     }, 1000);
@@ -8,12 +17,11 @@ function guideScroll(){
 }
 
 function infoSlider(type){
-
   $(document).ready(function() {
     var sliderName = type + 'Slider';
-    var sliderName = new Swiper('.' + type  + '-slider',{
+    var sliderName = new Swiper('.' + type + '-slider',{
       mode:'horizontal',
-      autoplay: 4000, 
+      autoplay: 4200, 
       onSlideChangeStart: function(swiper){
         $(".main").removeClass('active')
         $("." + type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')

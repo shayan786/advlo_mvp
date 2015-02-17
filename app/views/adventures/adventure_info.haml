@@ -1,25 +1,22 @@
 - render partial: 'info_seo_tags'
 
 #adventure_info.business_page
-
-  - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/advlo_surfers2.jpg"
+  - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/#{@guide_category_img}"
   .jumbotron{:style => "background-image: url(#{image_path image})"}
     .container
-      .row.text-center
-        .col-md-8.host_info_text.col-md-offset-2
-          Connect with travelers, promote your trips, and sell the adventures you create
+      .row.text-center{style: "margin-top: 7%;"}
+        .col-md-8.why_host.col-md-offset-2
+          Learn how Adventure Local can help your adventure operation.
+
+      .left-local#individual
+        .guide-button
+          .title Individuals
+
+      .right-business#business
+        .guide-button.green-button.green
+          .title Businesses
+
           
-
-  
-  .row.bottom-25
-    .left-local#individual
-      .guide-button
-        .title Individual Guide
-
-    .right-business#business
-      .guide-button.green-button.green
-        .title Local Business
-            
 
   .adventure_info_body
 
@@ -30,10 +27,20 @@
 
 
 :javascript
+  
+  $(document).ready(function(){
+    $('html').css('overflow','hidden');
+    $('.navbar').hide()
+    $('#footer').hide()
+    $('.jumbotron').height($(window).height())
+  })
+
+
   $('#individual').click(function(){
     $('#individual-info').fadeIn();
     $('#business-info').hide();
     infoSlider('local');
+
     guideScroll();
 
     $('.dark_background').removeClass('green-line')
@@ -44,6 +51,7 @@
     $('#business-info').fadeIn();
     $('#individual-info').hide();  
     infoSlider('business');
+
     guideScroll();
 
     $('.dark_background').removeClass('orange-line')

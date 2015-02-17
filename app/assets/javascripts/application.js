@@ -163,10 +163,6 @@ $(document).ready(function(){
     });
   }
 
-  $('#wrapper').css({
-    minHeight: $(window).height()
-  })
-
   //Login form validation
   $('#sign_in_form').bootstrapValidator({
     fields: {
