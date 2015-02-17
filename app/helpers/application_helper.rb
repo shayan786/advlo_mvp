@@ -271,18 +271,18 @@ module ApplicationHelper
     return ['AIR', 'BIKING', 'CULTURAL', 'CAMPING', 'MOTOR', 'CLIMBING', 'HIKING', 'SNOW', 'WATER', 'OTHER']
   end
 
-  def get_category_acronym(category)
+  def get_category_icon_url(category)
     categories = {
-      "AIR" => "AIR",
-      "BIKING" => "BKG",
-      "CULTURAL" => "CTL",
-      "CAMPING" => "CPG",
-      "MOTOR" => "MTR",
-      "CLIMBING" => "CLG",
-      "HIKING" => "HKG",
-      "SNOW" => "SNW",
-      "WATER" => "WTR",
-      "OTHER" => "OTR"
+      "AIR" => "icons/categories/air.png",
+      "BIKING" => "icons/categories/biking.png",
+      "CULTURAL" => "icons/categories/cultural.png",
+      "CAMPING" => "icons/categories/camping.png",
+      "MOTOR" => "icons/categories/motor.png",
+      "CLIMBING" => "icons/categories/climbing.png",
+      "HIKING" => "icons/categories/hiking.png",
+      "SNOW" => "icons/categories/snow.png",
+      "WATER" => "icons/categories/water.png",
+      "OTHER" => "icons/categories/other.png"
     }
 
     return categories[category.upcase]

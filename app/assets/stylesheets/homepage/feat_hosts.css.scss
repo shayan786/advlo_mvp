@@ -75,17 +75,22 @@
 	.host_category_circle {
 		margin-top: 10px;
 		margin-right: 7px;
-		padding-top: 11px;
-		padding-left: 3px;
+		padding-top: 5px;
 		width: 40px;
 		height: 40px;
 		display: inline-block;
 		border-radius: 50%;
 		background-color: rgba(105,153,103,0.7);
+		background-size: contain !important;
 		color: #FFF;
 		font-family: bebas_neue_bold;
 		font-size: 1.1em;
 		letter-spacing: 2px;
+
+		img {
+			width: 30px;
+			height: 30px;
+		}
 	}
 
 	.host_adventures {

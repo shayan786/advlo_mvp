@@ -372,7 +372,7 @@ function load_adv_by_categories(categories,locals) {
 }
 
 function host_index_effects() {
-  $('.adv_box_small[data-toggle="tooltip"], .adv_box_large[data-toggle="tooltip"]').tooltip();
+  $('.adv_box_small[data-toggle="tooltip"], .adv_box_large[data-toggle="tooltip"], .host_category_circle[data-toggle="tooltip"]').tooltip();
 
   $('.host_container').hover(
     function(){

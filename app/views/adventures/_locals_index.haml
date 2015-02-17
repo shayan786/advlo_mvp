@@ -7,7 +7,8 @@
       .col-md-5.text-center
         .host_tagline= "\"#{host.short_description}\""
         - host.get_host_adventure_categories.each do |cat|
-          .host_category_circle= get_category_acronym(cat)
+          .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
+            = image_tag get_category_icon_url(cat)
         .host_bio
           = host.bio.length > 145 ? host.bio[0..145]+"..." : host.bio
           %br
