@@ -229,9 +229,9 @@ class AdventuresController < ApplicationController
   def adventure_info
 
     @adventures = [] 
-    @adventures << Adventure.find(1)
-    @adventures << Adventure.find(2)
-    @adventures << Adventure.find(3)
+    @adventures << Adventure.find_by_slug('snuba-diving-in-catalina-islands')
+    @adventures << Adventure.find_by_slug('motoadventures-costa-rica')
+    @adventures << Adventure.find_by_slug('natural-horsemanship-clinic')
 
     case params[:guide_category]
     when 'mountain'
