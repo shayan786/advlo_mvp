@@ -138,6 +138,7 @@ class ApplicationController < ActionController::Base
   def homepage
     @hero_image = HeroImage.where(region: 'Homepage').first
     @feat_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
+    @rot_adventures = Adventure.approved.where("id = ? OR id = ? OR id = ? OR id = ? OR id = ?",154,256,210,183,130)
 
     @feat_hosts = []
 

@@ -89,14 +89,14 @@
 	}
 
 	.host_adventures {
-		padding-bottom: 10px;
+		padding-top: 5px;
 
-		.adv_box {
+		.adv_box_small {
 			border-radius: 3px;
 			display: inline-block;
-			width: 95px;
-			height: 65px;
-			margin: 12px 10px 0px 10px;
+			width: 92px;
+			height: 55px;
+			margin: 7px 11px 0px 11px;
 			background-size: cover !important;
 			text-decoration: none;
 			-moz-transition:-moz-transform 0.3s ease-in; 
@@ -109,6 +109,13 @@
 				-webkit-transform:scale(1.1);
 				-o-transform:scale(1.1);
 			}
+		}
+
+		.adv_box_large {
+			@extend .adv_box_small;
+			width: 105px;
+			height: 75px;
+			margin: 30px 11px 0px 11px;
 		}
 
 
