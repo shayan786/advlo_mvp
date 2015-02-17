@@ -283,4 +283,13 @@
                 .view-profile
                   =link_to "View #{adv.host_name}'s profile", user_path(adv.users.first.to_param)
 
-  = render partial: 'devise/registrations/partner_signup', locals: {referrer: User.last }
+
+
+:javascript
+  $(document).ready(function({
+    $('.view-profile a').hover(function(){
+      $(this).parent().parent().find($('.hover-block')).fadeIn()
+    }, function(){
+      $(this).parent().parent().find($('.hover-block')).fadeOut()
+    })
+  }))
