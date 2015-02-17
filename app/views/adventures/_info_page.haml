@@ -286,10 +286,11 @@
 
 
 :javascript
-  $(document).ready(function({
+  $(document).ready(function(){
+  
     $('.view-profile a').hover(function(){
       $(this).parent().parent().find($('.hover-block')).fadeIn()
     }, function(){
       $(this).parent().parent().find($('.hover-block')).fadeOut()
     })
-  }))
+  })
