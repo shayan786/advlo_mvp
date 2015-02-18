@@ -169,29 +169,6 @@
 
    
           
-  .box.col.md-12.text-center
-    .container.press
-      %h3 FEATURED IN
-      .row
-        .col-md-2
-          %a{href: "http://www.tnooz.com/article/startup-pitch-advlo-connects-adventure-seekers-locals/", target: "_blank"}
-            .mention.tnooz= image_tag 'icons/press/tnooz.png'
-        .col-md-2
-          %a{href: "http://adventuretravel.about.com/od/Adventure-Travel-General/fl/New-Online-Marketplace-Invites-Travelers-to-Adventure-with-Locals.htm", target: "_blank"}
-            .mention.about= image_tag 'icons/press/about.png'
-        .col-md-2
-          %a{href: "http://www.tetonsports.com/adventureblog/lets-change-way-travel-adventure-locals/", target: "_blank"}
-            .mention.teton= image_tag 'icons/press/teton.png'
-        .col-md-2
-          %a{href: "http://skift.com/2014/06/09/5-new-travel-startups-that-help-tourist-explore-the-outdoors/#3", target: "_blank"}
-            .mention.skift= image_tag 'icons/press/skift.png'
-        .col-md-2
-          %a{href: "http://clapway.tv/needs-tour-guides-advlo-helps-adventure-locals/", target: "_blank"}
-            .mention.clapway= image_tag 'icons/press/clapway.png'
-        .col-md-2
-          %a{href: "http://tech.co/advlo-launches-adventure-travel-platform-2014-09", target: "_blank"}
-            .mention.techco= image_tag 'icons/press/techco.png'
-
   .box.adventure_info_body
     .white_background
       .headline-container
@@ -233,6 +210,29 @@
       
                 .view-profile
                   =link_to "View #{adv.host_name}'s profile", user_path(adv.users.first.to_param)
+                  
+  .box.col.md-12.text-center
+    .container.press
+      %h3 FEATURED IN
+      .row
+        .col-md-2
+          %a{href: "http://www.tnooz.com/article/startup-pitch-advlo-connects-adventure-seekers-locals/", target: "_blank"}
+            .mention.tnooz= image_tag 'icons/press/tnooz.png'
+        .col-md-2
+          %a{href: "http://adventuretravel.about.com/od/Adventure-Travel-General/fl/New-Online-Marketplace-Invites-Travelers-to-Adventure-with-Locals.htm", target: "_blank"}
+            .mention.about= image_tag 'icons/press/about.png'
+        .col-md-2
+          %a{href: "http://www.tetonsports.com/adventureblog/lets-change-way-travel-adventure-locals/", target: "_blank"}
+            .mention.teton= image_tag 'icons/press/teton.png'
+        .col-md-2
+          %a{href: "http://skift.com/2014/06/09/5-new-travel-startups-that-help-tourist-explore-the-outdoors/#3", target: "_blank"}
+            .mention.skift= image_tag 'icons/press/skift.png'
+        .col-md-2
+          %a{href: "http://clapway.tv/needs-tour-guides-advlo-helps-adventure-locals/", target: "_blank"}
+            .mention.clapway= image_tag 'icons/press/clapway.png'
+        .col-md-2
+          %a{href: "http://tech.co/advlo-launches-adventure-travel-platform-2014-09", target: "_blank"}
+            .mention.techco= image_tag 'icons/press/techco.png'
 
 
 
