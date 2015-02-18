@@ -35,7 +35,7 @@
   .box.col.col-md-12
     .headline-container
       .lightline.left-side-line
-      .lightheading.headline What it looks like
+      .lightheading.headline Promote your business
       .lightline.right-side-line
     - img_url = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
     .col.col-md-12.text-center.computer-slider.brick-padding
@@ -71,15 +71,12 @@
                 .sub 
                   Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
 
-    .mobile-image-group
-      .view= image_tag "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/579/hero/Screen_Shot_2015-02-17_at_12.44.26_PM.png?1424202308"
-      .view= image_tag "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/578/hero/Screen_Shot_2015-02-17_at_12.41.11_PM.png?1424202301"
-      .view= image_tag "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224"  
-      .view= image_tag "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224"  
 
-
-
-    - mobile_urls = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/579/hero/Screen_Shot_2015-02-17_at_12.44.26_PM.png?1424202308", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/578/hero/Screen_Shot_2015-02-17_at_12.41.11_PM.png?1424202301", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224"]
+    .headline-container
+      .lightline.left-side-line
+      .lightheading.headline Customize your booking process
+      .lightline.right-side-line
+    - img_url_2 = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
     .col.col-md-12.text-center.computer-slider
       .row
         .col.col-md-6.mobile-explanation-row
@@ -103,15 +100,15 @@
                   Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
             
 
-        .col.col-md-6.mobile-wrapper
+        .col.col-md-6.desktop
           .gallery
-            .swiper-container.swiper-container-mobile{class: "#{type}-swiper"}
+            .swiper-container.swiper-container-comp{class: "#{type}-swiper"}
               .swiper-wrapper
-                - mobile_urls.each do |img|
+                - img_url_2.each do |img|
                   .swiper-slide
                     .image-wrapper{style: "background-image: url('#{img}')"}
-            #mobile
-              = image_tag 'mobile.png'
+            #computer
+              = image_tag 'comp.png'
         
           
   .box.col.col-md-12.text-center.all-plans-include.adventure-spec
@@ -170,96 +167,6 @@
             %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"You can choose to provide a link to re-direct on the 'book it' step"}
               Monthly Analytics
 
-
-  .box.col.col-md-12
-    .headline-container
-      .lightline.left-side-line
-      .lightheading.headline Features include
-      .lightline.right-side-line
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-cc-visa
-        Online Transactions
-      .row.matrix_content
-        Advlo handles all payments ensuring you get paid on time
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-comments-o
-        Direct Messaging
-      .row.matrix_content
-        Communicate with travelers interested in booking your trips
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-file-image-o
-        Custom Pages
-      .row.matrix_content
-        Web pages for your host profile and each of your adventures
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-star-half-o
-        Reviews / Ratings
-      .row.matrix_content
-        Build a reputation and leverage links to exisiting traveler reviews
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-search
-        SEO & online visibility
-      .row.matrix_content
-        SEO, web hosting, & keyword marketing to bring you more traffic
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-money
-        Payout Options
-      .row.matrix_content
-        Bank deposit or PayPal / payouts are initiated at the end of each week.
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-retweet
-        Booking Requests
-      .row.matrix_content
-        Accept or decline booking requests based on your availability
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-copy
-        UNLIMITED Listings
-      .row.matrix_content
-        Easily manage all your adventures with one account
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-mobile
-        Mobile Friendly
-      .row.matrix_content
-        Manage adventures & reservations from your mobile device
-
-    .access-block
-      .row.matrix_header
-        .fa.fa-facebook-square
-        Social media tools
-      .row.matrix_content
-        Send your listing to Facebook, Twitter & Google+ in one click
-        
-    .access-block
-      .row.matrix_header
-        .fa.fa-calendar
-        Scheduling
-      .row.matrix_content
-        Offer instant booking times for immediate reservations
-
-    .access-block
-      .row.matrix_header 
-        .fa.fa-envelope
-        Email Alerts
-      .row.matrix_content
-        Get notifications when you receive a booking or direct message
    
           
   .box.col.md-12.text-center
@@ -289,11 +196,11 @@
     .white_background
       .headline-container
         .lightline.left-side-line
-        .lightheading.headline We're looking for
+        .lightheading.headline Case Studies
         .lightline.right-side-line
         
       .host_type
-        Skilled instructors, local guides, & outdoor professionals who can create unique travel experiences. Advlo carefully vets all Hosts for quality and safety.
+        Advlo hosts are skilled instructors, local guides, & outdoor professionals who can create unique travel experiences.
         
       .row
         .adventure-container.adventure-container-homepage
@@ -311,7 +218,7 @@
                       .copy{id: "#{i}"}
                         - if adv.title.length > 38
                           .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
-                        -else
+                        - else
                           .title{itemprop: 'name'}= adv.title
 
                         .location{itemprop: 'description'}= get_display_location(adv)

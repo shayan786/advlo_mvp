@@ -21,7 +21,8 @@ function infoSlider(type){
     var sliderName = type + 'Slider';
     var sliderName = new Swiper('.' + type + '-slider',{
       mode:'horizontal',
-      autoplay: 4200, 
+      autoplayDisableOnInteraction: true,
+      autoplay: 6000, 
       onSlideChangeStart: function(swiper){
         $(".main").removeClass('active')
         $("." + type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
@@ -43,7 +44,8 @@ function mobileSlider(type){
     var sliderName = type + 'Slider';
     var sliderName = new Swiper('.' + type + '-swiper',{
       mode:'horizontal',
-      autoplay: 5600, 
+      autoplayDisableOnInteraction: true,
+      autoplay: 5000, 
       onSlideChangeStart: function(swiper){
         $(".mobile-main").removeClass('active')
         $(".mobile-" + type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
