@@ -35,28 +35,37 @@
         .col-md-9
           .panel.panel-default
             .panel-body
-              .col-md-1
-              .col-md-5
-                %li.overview_item 
-                  BASED IN 
-                  %br
-                  %span{itemprop: 'nationality'}= @user.location
-                %li.overview_item
-                  SEX
-                  %br
-                  %span{itemprop: 'gender'}= @user.sex
-              .col-md-5
-                %li.overview_item_header
-                  LANGUAGES:
-                  - @user_languages.each do |l|
-                    .over_item_sub= l
+              .row
+                .col-md-1
+                .col-md-4
+                  .overview_header
+                    BASED IN 
+                  .overview_content{itemprop: 'nationality'}= @user.location
+                .col-md-2
+                .col-md-4
+                  .overview_header
+                    LANGUAGES:
+                  .overview_content
+                    - @user_languages.each do |l|
+                      = l
+                      %br
+              
 
-                %li.overview_item_header
-                  SKILLS / CERTIFICATIONS:
-                  - @user_skillsets.each do |sk|
-                    .over_item_sub= sk
+              .row{style: "margin-top: 15px;"}
+                .col-md-1
+                .col-md-4
+                  .overview_header
+                    SEX
+                  .overview_content{itemprop: 'gender'}= @user.sex
+                .col-md-2
+                .col-md-4
+                  .overview_header
+                    SKILLS & CERTS:
+                  .overview_content
+                    - @user_skillsets.each do |sk|
+                      = sk
+                      %br
 
-              .col-md-1
         .col-md-3
           .panel.panel-default
             .panel-body

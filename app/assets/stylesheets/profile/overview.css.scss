@@ -8,33 +8,20 @@
 		border-color: $light_gray;
 		min-height: 200px;
 
-		li {
-			list-style-type: none;
-			padding: 20px 0;
-		}
+    .overview_header {
+      font-family: 'nexa_light';
+      font-size: 1.5em;
+      color: $advlo_orange;
+      text-align: center;
+      border-bottom: 1px solid $advlo_orange;
+    }
 
-		.overview_item {
-			font-family: 'nexa_light';
-			font-size: 1.5em;
-			color: $orange;
-			span {
-				color: #fff;
-				font-family: cabin_regular;
-			}
-			text-align: center;
-		}
-
-		.overview_item_header {
-			@extend .overview_item;
-			color: $orange;
-			font-family: 'nexa_light';
-
-			.over_item_sub {
-				font-family: cabin_regular;
-				font-size: 1.0em;
-				color: $white;
-			}
-		}
+    .overview_content {
+      margin-top: 5px;
+      font-size: 1.3em;
+      color: #FFF;
+      text-align: center;
+    }
 
 		.box_header {
 			font-family: $profile_box_header_font;
@@ -66,7 +53,7 @@
 
 			.fa {
 				padding-top: 4px;
-				padding-right: 10px;
+				padding-left: 5px;
 			}
 
 			&:hover {
