@@ -10,9 +10,15 @@ function guideScroll(){
       amount = amount - 5
       $(".why_host").css('visibility','hidden');
     }
+    $('body').on("scroll mousedown DOMMouseScroll mousewheel keyup", function(){
+       $('body').stop();
+    });
+
     $('body').animate({
       scrollTop: amount
     }, 1000);
+
+    return false;
   })
 }
 

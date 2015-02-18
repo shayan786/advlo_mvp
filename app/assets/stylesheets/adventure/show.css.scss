@@ -5,6 +5,7 @@
   float: left;
   padding: 0px;
 
+
   #main_image{
     background-position: center center;
     background-size: cover;
@@ -538,14 +539,7 @@
       height: 100%;
       width: 99%;
 
-      .ping {
-        background: url('icons/location.png') no-repeat left center;
-        height: 40px;
-        width: 30px;
-        background-size: 100% 100%;
-        position: absolute;
-        top: 10px;
-      }
+      
 
       .brick-title {
         position: relative;
@@ -709,8 +703,7 @@
   }
 }
 
-.itinerary-wrapper {
-  
+.itinerary-wrapper {  
   .itinerary-brick {
     margin-bottom: 5px !important;
     margin-top: 3px !important;

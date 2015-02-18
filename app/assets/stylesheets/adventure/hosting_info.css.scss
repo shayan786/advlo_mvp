@@ -1,5 +1,6 @@
 #adventure_info {
   position: relative;
+  float: left;
 
   #host-signup-bottom {
     background-image: asset-url("background/advlo_beach.jpeg");
@@ -233,15 +234,6 @@
       }
     }
 
-
-    .hosting_info_itineraries {
-      margin-bottom: 50px;
-      margin-top: 10px;
-      .fa {
-        margin-top: 4px;
-      }
-    }
-
     .pricing-row {
       background: rgba(0, 0, 0, 0.6);
     }
@@ -280,6 +272,15 @@
   	}
   }
 }
+
+.hosting_info_itineraries {
+  margin-bottom: 50px;
+  margin-top: 10px;
+  .fa {
+    margin-top: 4px;
+  }
+}
+
 @media screen and (max-width: 1210px){
   #adventure_info .adventure_info_body .adv-info-wrapper {
     width: 100%;
