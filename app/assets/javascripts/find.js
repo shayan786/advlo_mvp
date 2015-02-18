@@ -7,8 +7,7 @@ function find_input_geocomplete() {
 
 function homepage_find_input_geocomplete(){
   //homepage search bar leading to locals search
-  $('#homepage-text #find_adventure_form #location').geocomplete()
-  .bind("geocode:result", function(event,result){
+  $('#homepage-text #find_adventure_form #location').geocomplete().bind("geocode:result", function(event,result){
     var loc = $(this).val();
 
     window.location = "/find?location="+loc+"&locals=true"

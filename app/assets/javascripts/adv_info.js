@@ -38,17 +38,24 @@ function infoSlider(type){
 
 
 
-function mobileSlider(mobile_type){
+function mobileSlider(type){
   $(document).ready(function() {
-    var sliderName = mobile_type + 'Slider';
-    var sliderName = new Swiper('.' + mobile_type + '-slider',{
+    var sliderName = type + 'Slider';
+    var sliderName = new Swiper('.' + type + '-swiper',{
       mode:'horizontal',
       autoplay: 4200, 
       onSlideChangeStart: function(swiper){
         $(".mobile-main").removeClass('active')
-        $(".mobile" + mobile_type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
+        $(".mobile" + type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
       }
     });
+
+    $('.mobile-main').click(function(e){
+      $('.mobile-main').removeClass('active')
+      $(this).addClass('active')
+      sliderName.swipeTo($(this).attr('class').split(' ')[0].slice(-1) - 1)
+    })
+
   })
 }
 
