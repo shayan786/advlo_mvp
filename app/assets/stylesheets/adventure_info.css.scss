@@ -73,6 +73,7 @@
     margin-bottom: 30px;
   }
 
+
   h1 {
     margin-top: 5px;
   }  
@@ -92,7 +93,6 @@
 
 
   .computer-slider {
-    margin-bottom: 50px;
   }
 
   .adventure-spec {
@@ -186,6 +186,10 @@
     font-size: 16px;
   }
 
+  .mobile-wrapper {
+    max-height: 600px;
+  }
+
   .gallery {
 
     #computer {
@@ -198,7 +202,7 @@
       position: relative;
       width: 60%;
       margin: 0 auto;
-      top: -100px;
+      top: -103px;
 
       img {
         max-width: 100%;
@@ -213,8 +217,9 @@
       margin-left: 12%;
     }
     .swiper-container-mobile {
+      z-index: 0;
       position: absolute;
-      height: 64%;
+      height: 73%;
       width: 37%;
       top: 3%;
       left: 31.25%;
@@ -236,20 +241,12 @@
     }
   }
 
-  .mobile-wrapper {
-    top: -50px;
-    max-width: 50%;
-    margin: 0 auto;
-  }
-
-
   li {
     list-style: none;
     text-align: left;
     color: #fff;
     font-size: 24px;
   }
-
 
   #individual-info {
     display: none;
@@ -483,4 +480,85 @@
     padding: 0px !important;
   }
 
+}
+
+.mobile-image-group {
+  display: none;
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+
+  .view {
+    width: 20%;
+    height: 100%;
+    float: left;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+
+
+
+@media screen and(max-width: 1435px ){
+  .business_page .gallery .swiper-container-mobile {
+    top: 2%;
+  }
+  .mobile-explanation-row {
+    margin-top: 0px;
+  }
+}
+@media screen and(max-width: 1336px ){
+  .business_page .gallery .swiper-container-mobile {
+    top: 1%;
+  }
+
+  .computer-slider {
+    margin-bottom: 100px;
+  }
+}
+@media screen and(max-width: 1275px ){
+  .business_page .gallery .swiper-container-mobile {
+    top: 0%;
+  }
+}
+@media screen and(max-width: 1200px ){
+  .mobile-wrapper {
+    display:  none;
+  }
+  .desktop {
+    display: none;
+  }
+
+  .mobile-image-group { 
+    display: block;
+  }
+
+  .mobile-explanation-row {
+    width: 100%;
+  }
+  .computer-slider {
+    margin-bottom: 0px;
+  }
+
+  .business_page .brick-padding {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+@media screen and(max-width: 700px){
+  .mobile-image-group .view {
+    width: 45%;
+    height: 100%;
+    float: left;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 30px;
+  }
 }

@@ -43,10 +43,10 @@ function mobileSlider(type){
     var sliderName = type + 'Slider';
     var sliderName = new Swiper('.' + type + '-swiper',{
       mode:'horizontal',
-      autoplay: 4200, 
+      autoplay: 5600, 
       onSlideChangeStart: function(swiper){
         $(".mobile-main").removeClass('active')
-        $(".mobile" + type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
+        $(".mobile-" + type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
       }
     });
 
@@ -55,7 +55,6 @@ function mobileSlider(type){
       $(this).addClass('active')
       sliderName.swipeTo($(this).attr('class').split(' ')[0].slice(-1) - 1)
     })
-
   })
 }
 

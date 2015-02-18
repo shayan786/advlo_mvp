@@ -51,7 +51,7 @@
             #computer
               = image_tag 'comp.png'
 
-        .col.col-md-6
+        .col.col-md-6.mobile-explanation-row
           %ul
             %li 
               .main.active{class: "#{type}-1"}
@@ -71,10 +71,18 @@
                 .sub 
                   Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
 
-    - mobile_urls = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/579/hero/Screen_Shot_2015-02-17_at_12.44.26_PM.png?1424202308", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/578/hero/Screen_Shot_2015-02-17_at_12.41.11_PM.png?1424202301", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224"]
-    .col.col-md-12.text-center.computer-slider.brick-padding
+    .mobile-image-group
+      .view= image_tag "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/579/hero/Screen_Shot_2015-02-17_at_12.44.26_PM.png?1424202308"
+      .view= image_tag "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/578/hero/Screen_Shot_2015-02-17_at_12.41.11_PM.png?1424202301"
+      .view= image_tag "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224"  
+      .view= image_tag "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224"  
+
+
+
+    - mobile_urls = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/579/hero/Screen_Shot_2015-02-17_at_12.44.26_PM.png?1424202308", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/578/hero/Screen_Shot_2015-02-17_at_12.41.11_PM.png?1424202301", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/577/hero/Screen_Shot_2015-02-17_at_12.39.37_PM.png?1424202224"]
+    .col.col-md-12.text-center.computer-slider
       .row
-        .col.col-md-6
+        .col.col-md-6.mobile-explanation-row
           %ul
             %li 
               .mobile-main.active{class: "mobile-#{type}-1"}
@@ -93,8 +101,9 @@
                 Mobile Optimization
                 .sub 
                   Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
+            
 
-        .col.col-md-6
+        .col.col-md-6.mobile-wrapper
           .gallery
             .swiper-container.swiper-container-mobile{class: "#{type}-swiper"}
               .swiper-wrapper
