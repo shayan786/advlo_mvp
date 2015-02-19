@@ -90,5 +90,12 @@
               .row.text-center
                 %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
 
+  :javascript
+    $('#contact_host_modal .contact_btn').click(function(e){
+      e.preventDefault();
+
+      $('#contact_host_form').submit();
+    })
+
 
 
