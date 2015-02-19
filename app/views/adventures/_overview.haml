@@ -6,19 +6,9 @@
   .panel.panel-default
     .panel-body
       .contact-row
-        - if current_user
-          .btn.btn-primary.contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal'}
-            %i.fa.fa-envelope-o
-            CONTACT HOST
-        - else
-          .btn.btn-primary.contact_btn
-            %i.fa.fa-envelope-o
-            CONTACT HOST
-
-          :javascript
-            $('.contact_btn').click(function(){
-              $('#member-modal').modal('show');
-            })
+        .btn.btn-primary.contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name}
+          %i.fa.fa-envelope-o
+          CONTACT HOST
 
         %br
         - fb_share_url = "#{root_url}adventures/#{@adventure.slug}"
