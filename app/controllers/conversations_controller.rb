@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
     user_email = params[:email]
 
     if User.find_by_email(user_email)
-      redirect_to '/users/sign_in', notice: "Email already exists, please sign-in."
+      @already_exists = true
     else
       user = User.create(:email => user_email)
 
