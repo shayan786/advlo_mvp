@@ -32,10 +32,10 @@ class ConversationsController < ApplicationController
 
       # Email the host about the initial message
       AdvloMailer.delay.new_message_email(conversation, message)
+    end
 
-      respond_to do |format|
-        format.js {render "/messages/message_sent.js", layout: false}
-      end
+    respond_to do |format|
+      format.js {render "/messages/message_sent.js", layout: false}
     end
   end
 
