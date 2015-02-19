@@ -89,12 +89,28 @@
                   %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
               .row.text-center
                 %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
+          .row.text-center
+            .existing_user
+              Existing User? Login
+
+  = render partial: 'sign_in_modal'
 
   :javascript
     $('#contact_host_modal .contact_btn').click(function(e){
       e.preventDefault();
 
       $('#contact_host_form').submit();
+    })
+
+    $('#contact_host_modal .existing_user').click(function(){
+      $('#contact_host_modal').modal('hide');
+
+      $('#contact_host_modal').on('hidden.bs.modal', function(){
+        $('#sign_in_modal').modal({
+          show: true,
+          backdrop: false  
+        })
+      })
     })
 
 
