@@ -55,35 +55,54 @@ class Payout < ActiveRecord::Base
           amount: payout_amount
         )
 
-        @api = PayPal::SDK::AdaptivePayments::API.new
+        # MASSPAY
+        @api = Paypal::SDK::Merchant::API.new
 
-        # Build request object
-        @pay = @api.build_pay({
-          :actionType => "PAY",
-          :receiverList => {
-            :receiver => [{
-              :amount => "#{sprintf('%.2f',payout_amount)}",
-              :email => payout_user.paypal_email 
-            }] 
-          },
-          :currencyCode => "USD",
-          :cancelUrl => "http://www.advlo.com",
-          :returnUrl => "http://www.advlo.com",
-          :requestEnvelope => {
-            :errorLanguage => "en_US"
-          },
-          :feesPayer => "SENDER"
+        # Build mass payout object and call paypal merchant api
+        @mass_pay = @api.build_mass_pay({
+          :ReceiverType => "EmailAddress",
+          :MassPayItem => [{
+            :ReceiverEmail => payout_user.paypal_email,
+            :Amount => {
+              :currencyID => "USD",
+              :value => "#{sprintf('%.2f',payout_amount)}"
+            }
+          }]
         })
 
+        @mass_pay_response = @api.mass_pay(@mass_pay)
+
+
+        # ADAPTIVE PAYMENTS
+        # @api = PayPal::SDK::AdaptivePayments::API.new
+
+        # # Build request object
+        # @pay = @api.build_pay({
+        #   :actionType => "PAY",
+        #   :receiverList => {
+        #     :receiver => [{
+        #       :amount => "#{sprintf('%.2f',payout_amount)}",
+        #       :email => payout_user.paypal_email 
+        #     }] 
+        #   },
+        #   :currencyCode => "USD",
+        #   :cancelUrl => "http://www.advlo.com",
+        #   :returnUrl => "http://www.advlo.com",
+        #   :requestEnvelope => {
+        #     :errorLanguage => "en_US"
+        #   },
+        #   :feesPayer => "SENDER"
+        # })
+
         # Make API call & get response
-        @pay_response = @api.pay(@pay)
+        # @pay_response = @api.pay(@pay)
 
         # Access Response
-        if @pay_response.success?
+        if @mass_pay_response.success?
 
           #update the payout
-          @payout.status = @pay_response.responseEnvelope.ack
-          @payout.paypal_correlation_id = @pay_response.responseEnvelope.correlationId
+          @payout.status = @mass_pay_response.Ack
+          @payout.paypal_correlation_id = @mass_pay_response.correlationId[0]
           @payout.save
 
           #update the reservations associated with the payout
@@ -102,7 +121,7 @@ class Payout < ActiveRecord::Base
           AdvloMailer.delay.paypal_payment_email(pay_url)
         else
           @payout.status = 'failed'
-          @payout.message = @pay_response.error
+          @payout.message = @mass_pay_response.Errors[0].LongMessage
 
           @payout.save
         end
