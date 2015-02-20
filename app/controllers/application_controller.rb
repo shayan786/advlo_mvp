@@ -60,6 +60,25 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def sitemap
+    # Countries, us states, cities
+    countries = []
+    states = []
+    cities = []
+    Adventure.approved.each do |adv|
+      countries << adv.country
+      cities << adv.city if adv.city != ''
+      if adv.country == "United States"
+        states << adv.state
+      end
+    end
+
+    @countries = countries.uniq.sort_by{|c| c.downcase}
+    @cities = cities.uniq.sort_by{|c| c.downcase}
+    @states = states.uniq.sort_by{|c| c.downcase}
+
+  end
+
   def invest
     @adventures = [] 
     @adventures << Adventure.find_by_slug('speedflying-basic-pilot')
