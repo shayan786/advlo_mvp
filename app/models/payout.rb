@@ -102,7 +102,7 @@ class Payout < ActiveRecord::Base
 
           #update the payout
           @payout.status = @mass_pay_response.Ack
-          @payout.paypal_correlation_id = @mass_pay_response.correlationId[0]
+          @payout.paypal_correlation_id = @mass_pay_response.CorrelationID
           @payout.save
 
           #update the reservations associated with the payout
