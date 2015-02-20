@@ -56,7 +56,7 @@ class Payout < ActiveRecord::Base
         )
 
         # MASSPAY
-        @api = Paypal::SDK::Merchant::API.new
+        @api = PayPal::SDK::Merchant.new
 
         # Build mass payout object and call paypal merchant api
         @mass_pay = @api.build_mass_pay({
@@ -118,7 +118,7 @@ class Payout < ActiveRecord::Base
           AdvloMailer.delay.payout_completed_email(@payout)
 
           #Notify us of link to pay host
-          AdvloMailer.delay.paypal_payment_email(pay_url)
+          AdvloMailer.delay.paypal_payment_email(@payout)
         else
           @payout.status = 'failed'
           @payout.message = @mass_pay_response.Errors[0].LongMessage
