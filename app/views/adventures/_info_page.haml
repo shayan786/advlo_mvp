@@ -1,31 +1,36 @@
+- if type == 'local'
+  - info = ['How it Works', 'Receive requests', 'We market your activity and send booking requests right to your inbox.','Lead Adventures','Connect with adventurers who crave more authentic, local experiences when they travel.','Get Paid', "Receive direct bank deposits or receive payments via PayPal account"]
+- else
+  - info = ['Manage and grow your business','Marketing',"We'll create custom webpages for your business, adventure trips, and guides.",'Operations',"Manage your bookings, customers, and payments all in one place.","Differentiation","Visually stand out, show-off your guides, and create customized itineraries with customers"]
+
 .dark_background
   .box.col.col-md-12.text-center.all-plans-include.adventure-spec
     .headline-container
       .left-side-line
-      .big-headline MANAGE and GROW your business
+      .big-headline= info[0]
       .right-side-line
     .col.col-md-12.brick-padding
       .row
         .col.col-md-4.how-it-works-block
           .fa.fa-newspaper-o
           .feature-text
-            Marketing
+            = info[1]
           .headlines 
-            We'll create custom webpages for your business, adventure trips, and guides.
+            = info[2]
 
         .col.col-md-4.how-it-works-block
           .fa.fa-motorcycle
           .feature-text
-            Operations
+            = info[3]
           .headlines 
-            Manage your bookings, customers, and payments all in one place.
+            = info[4]
 
         .col.col-md-4.how-it-works-block
           .fa.fa-money
           .feature-text
-            Differentiation
+            = info[5]
           .headlines 
-            Visually stand out, show-off your guides, and create customized itineraries with customers
+            = info[6]
             
             
 
@@ -48,7 +53,7 @@
             #computer
               = image_tag 'comp.png'
 
-        .col.col-md-6.mobile-explanation-row
+        .col.col-md-6
           %ul
             %li 
               .main.active{class: "#{type}-1"}
@@ -70,14 +75,12 @@
     
 
 
-    .headline-container
-      .lightline.left-side-line
-      .lightheading.big-headline Customize your booking process
-      .lightline.right-side-line
+    .mobile-barrier
     - img_url_2 = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
-    .col.col-md-12.text-center.computer-slider
+
+    .col.col-md-12.text-center.computer-slider{style: "padding-bottom: 50px;"}
       .row
-        .col.col-md-6.mobile-explanation-row
+        .col.col-md-6
           %ul
             %li 
               .mobile-main.active{class: "mobile-#{type}-1"}
@@ -113,9 +116,14 @@
     - if type == 'local'
       - price_basic = ['Basic Account', 'Free to upload', '30% commission on bookings']
       - price_member = ['Membership Account', '$30 / mo.', '0% comission on bookings']
+      - features = ['Individual Profile Page','Adventure Pages', 'Reservation tools', 'SEO & Content Marketing','Weekly Payouts', 'Premium listing positions','0% commission on bookings', 'Option to re-direct transaction','Connect multiple guide accounts']
+      - tooltips = ['A unique page to highlight your skills & offerings','Unique listing pages that show-off your experiences', "Easily manage your account, adventures, & booking requests", "Built in SEO for each page / paid search marketing", "To your Bank or Paypal account", "Adventures under membership have first priority", "Offer your adventure at a fair price.","Option to re-direct to your own transaction system, or specify cash on site.","Allow up to 5 members join under a single account"]
     - else
       - price_basic = ['Business Account', '$49 / mo.', '5% commission']
       - price_member = ['Membership Account', '$99 / mo.', '0% comission']
+      - features = ['Company Profile Page','Adventure Pages', 'Reservation tools', 'SEO & Content Marketing','Weekly Payouts', 'Premium listing positions','0% commission on bookings', 'Option to re-direct transaction','Connect multiple guide accounts']
+      - tooltips = ['Custom page to beautifully showcase your local business','Unique listing pages that show-off your experiences', "Easily manage your account, adventures, & booking requests", "Built in SEO for each page / paid search marketing", "To your Bank or Paypal account", "Adventures under membership have first priority", "Offer your adventure at a fair price.","Option to re-direct to your own transaction system, or specify cash on site.","Allow up to 5 members join under a single account"]
+
     .col.col-md-6
       .price-box
         .price-title= price_basic[0]
@@ -123,17 +131,32 @@
         .price-explain= price_basic[2]
 
         .pricing-info-list
-          %ul.feature-list
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Custom page to beautifully showcase your local business"}
-              Company Profile Page
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Unique listing pages that truly show your experience"}
-              Adventure Pages
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Manage your profile, adventures, & booking requests"}
-              Backend tools
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Built in SEO for each page / paid search marketing"}
-              SEO & Content Marketing
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"To your Bank or Paypal account"}
-              Weekly Payouts
+          .feature-list
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[0]}
+                = features[0]
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[1]}
+                = features[1]
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[2]}
+                = features[2]
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[3]}
+                = features[3]
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[4]}
+                = features[4]
+
+          .free-trial-box
+            .price-type
+              Add One Month free trial with either plan:
+              
+            .learn-more.adventure-checkboxes
+              .unchecked
+                %input{:type => "checkbox"}
+                %label free month
+
 
     .col.col-md-6
       .price-box
@@ -142,25 +165,35 @@
         .price-explain= price_member[2].html_safe
 
         .pricing-info-list
-          %ul.feature-list
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Custom page to beautifully showcase your local business"}
-              Company Profile Page
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Unique listing pages that truly show your experience"}
-              Adventure Pages
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Manage your profile, adventures, & booking requests"}
-              Backend tools
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Built in SEO for each page / paid search marketing"}
-              SEO & Content Marketing
-            %li.fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"To your Bank or Paypal account"}
-              Weekly Payouts
-            %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Adventures under membership have first priority"}
-              Higher listing positions
-            %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Access to our transaction system with no commission"}
-              0% bookings commission
-            %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"You can choose to provide a link to re-direct on the 'book it' step"}
-              Option to re-direct transaction
-            %li.fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=>"Allow up to 5 members join under a single account"}
-              Connect multiple guide accounts
+          .feature-list
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[0]}
+                = features[0]
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[1]}
+                = features[1]
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[2]}
+                = features[2]
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[3]}
+                = features[3]
+            .feature
+              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[4]}
+                = features[4]
+            .feature
+              .fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[5]}
+                = features[5]
+            .feature
+              .fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[6]}
+                = features[6]
+            .feature
+              .fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[7]}
+                = features[7]
+            .feature
+              .fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[8]}
+                = features[8]
+
 
    
   
@@ -298,6 +331,11 @@
               %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal account
               for free.             
 
+    .box
+      - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/#{@guide_category_img}"
+      .jumbotron{:style => "background-image: url(#{image_path image})"}
+    
+
 
 
 :javascript
@@ -307,6 +345,17 @@
     }, function(){
       $(this).parent().parent().find($('.hover-block')).fadeOut()
     })
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
   })
 
   toggleItineraryItemsAndArrows()
+
+  $(".learn-more.adventure-checkboxes").click(function(){
+    $(this).addClass('checked')
+    $(this).removeClass('unchecked')
+
+    $.cookie('free_month', true, { expires: 1, path: '/' });
+  })

@@ -78,24 +78,6 @@
 				}				
 			}
 
-			.free-trial-box {
-				position: absolute;
-				width: 265px;
-				margin-top: 450px;
-				height: 121px;
-				text-align: center;
-				margin-left: 14%;
-				font-size: 16px;
-				font-family: ''nexa_light'';
-
-				.price-type {
-					margin-top: 10px;
-				}
-
-				.adventure-checkboxes {
-					cursor: pointer;
-				}
-			}
 
 			.all-plans-include {
 				position: relative;
@@ -805,6 +787,25 @@
 .pac-container {
 	z-index: 9999;
 	position: fixed;
+}
+
+.free-trial-box {
+	position: absolute;
+	width: 265px;
+	margin-top: 450px;
+	height: 121px;
+	text-align: center;
+	margin-left: 14%;
+	font-size: 16px;
+	font-family: ''nexa_light'';
+
+	.price-type {
+		margin-top: 10px;
+	}
+
+	.adventure-checkboxes {
+		cursor: pointer;
+	}
 }
 
 @media screen and (max-width: 771px){

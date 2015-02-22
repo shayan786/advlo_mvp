@@ -5,6 +5,19 @@
 }
 
 .business_page {
+  width: 100%;
+
+
+  .free-trial-box {
+    position: relative;
+    width: 265px;
+    height: 121px;
+    text-align: center;
+    margin-top: 49px;
+    font-size: 16px;
+    font-family: "" nexa_light "";
+    float: left;
+  }
 
   .why_host {
     text-shadow: -1px -1px 5px #000;
@@ -95,6 +108,8 @@
     background-color: whitesmoke;
     padding-top: 30px;
     padding-bottom: 30px;
+    position: relative;
+    float: left;
 
     .how-it-works-block {
       float: left;
@@ -112,6 +127,27 @@
       font-family: 'nexa_light';
       font-size: 24px;
       width: 100%;
+    }
+
+    .feature-list {
+      .feature {
+        float: left;
+        font-size: 22px;
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: left;
+        letter-spacing: 1px;
+        cursor: pointer;
+
+        .fa {
+          font-size: 20px;
+          width: auto;
+        }
+
+        .tooltip {
+          min-width: 150px;
+        }
+      }
     }
 
     .headlines {
@@ -364,6 +400,9 @@
   height: 100px;
 }
 
+.mobile-barrier {
+  display: none;
+}
 
 
 @media screen and(max-width: 1315px ){
@@ -377,6 +416,14 @@
 
 
 @media screen and(max-width: 992px ){
+
+  
+  .business_page{
+  
+    .big-headline {
+      width: 60%;
+    }
+  }
 
   .business_page .adventure-spec .how-it-works-block {
     float: none;
@@ -437,6 +484,15 @@
 
 
 @media screen and(max-width: 600px){
+
+  .mobile-barrier {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    border-top: 1px solid whitesmoke;
+    margin-bottom: 60px;
+  }
 
   .guide-button {
     .title {
