@@ -76,14 +76,9 @@
 
               .box_header_line
               .text-center
-                - if current_user
-                  %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal'}
-                    %i.fa.fa-envelope-o
-                    SEND MESSAGE
-                - else
-                  %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#member-modal'}
-                    %i.fa.fa-envelope-o
-                    SEND MESSAGE
+                %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @user.id, "data-host-name"=>@user.get_first_name}
+                  %i.fa.fa-envelope-o
+                  SEND MESSAGE
 
               .box_social.text-center
                 - if @user.fb_url && !(@user.fb_url == '')

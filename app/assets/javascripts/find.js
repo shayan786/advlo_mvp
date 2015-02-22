@@ -391,7 +391,7 @@ function host_index_effects() {
 }
 
 function contact_host_set_values() {
-  $('.host_contact_btn').click(function(){
+  $('.host_contact_btn, .msg_btn, .contact_btn').click(function(){
     var host_name = $(this).data('host-name');
     var host_id = $(this).data('host-id');
 

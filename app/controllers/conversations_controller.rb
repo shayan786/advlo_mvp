@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
     user_email = params[:email]
 
     if User.find_by_email(user_email)
-      redirect_to '/users/sign_in', notice: "Email already exists, please sign-in."
+      @already_exists = true
     else
       user = User.create(:email => user_email)
 
@@ -32,10 +32,10 @@ class ConversationsController < ApplicationController
 
       # Email the host about the initial message
       AdvloMailer.delay.new_message_email(conversation, message)
+    end
 
-      respond_to do |format|
-        format.js {render "/messages/message_sent.js", layout: false}
-      end
+    respond_to do |format|
+      format.js {render "/messages/message_sent.js", layout: false}
     end
   end
 

@@ -1,0 +1,77 @@
+- set_meta_tags(get_meta_tags("Sitemap", "Adventure Local, Advlo Sitemap", "Find, Search, Guides, Local Adventure, Experience, Local Experience, Sitemap, map"))
+
+#sitemap
+  .container
+    .panel.panel-default
+      .panel-heading.text-center SITEMAP
+
+      .panel-body
+        .row
+          .sm_header_large.text-center ADVENTURES
+          .col-md-3
+            .sm_header_small CONTINENTS
+            %ul.sm_links
+              %li
+                %a{href: "/adventures"} All
+                - adv_regions.sort_by{|m| m.downcase}.each do |r|
+                  %li
+                    %a{href: "/adventures?region=#{r.gsub(' ','-')}"}= r
+
+            .sm_header_small COUNTRIES
+            %ul.sm_links
+              - @countries.each do |c|
+                %li
+                  %a{href: "/adventures?country=#{c.gsub(' ','-')}"}= c
+
+          .col-md-3
+            .sm_header_small US-STATES
+            %ul.sm_links
+              - @states.each do |s|
+                %li
+                  %a{href: "/adventures?state=#{s.gsub(' ','-')}"}= s
+          .col-md-6
+            .row
+              .sm_header_small.text-center CITIES
+              .col-md-6
+                %ul.sm_links
+                  - @cities[0..(@cities.count)/2].each do |c|
+                    %li
+                      %a{href: "/adventures?city=#{c.gsub(' ','-')}"}= c
+
+              .col-md-6
+                %ul.sm_links
+                  - @cities[((@cities.count)/2+1)..@cities.count].each do |c|
+                    %li
+                      %a{href: "/adventures?city=#{c.gsub(' ','-')}"}= c
+            
+            
+        .row.text-center
+          .sm_header_large INFORMATION
+          .col-md-3
+            %a.btn.btn-primary.info_btn{href: "/"} Homepage
+          .col-md-3
+            %a.btn.btn-primary.info_btn{href: "/partner"} Partner
+          .col-md-3
+            %a.btn.btn-primary.info_btn{href: "/find"} Find
+          .col-md-3
+            %a.btn.btn-primary.info_btn{href: "/blog"} Blog
+        .row.text-center
+          .col-md-3
+            %a.btn.btn-primary.info_btn{href: "/about"} About
+          .col-md-3
+            %a.btn.btn-primary.info_btn{href: "/terms"} Terms
+          .col-md-3
+            %a.btn.btn-primary.info_btn{href: "/affiliate"} Affiliate
+          .col-md-3
+            %a.btn.btn-primary.info_btn{href: "/travel-fund"} Travel-fund
+        .row.text-center
+          .col-md-6
+            %a.btn.btn-primary.info_btn{href: "/users/sign_in"} Sign-in
+          .col-md-6
+            %a.btn.btn-primary.info_btn{href: "/users/sign_up"} Sign-up
+
+
+
+                
+
+	

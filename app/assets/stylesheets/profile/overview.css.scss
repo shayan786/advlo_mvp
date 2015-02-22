@@ -172,5 +172,17 @@
           color: #FFF;
         }
       }
+
+    .existing_user {
+      display: block;
+      opacity: 0.7;
+      margin: 10px auto 5px auto;
+      color: #FFF;
+      cursor: pointer;
+
+      &:hover  {
+        opacity: 1;
+      }
+    }
 	}
 }

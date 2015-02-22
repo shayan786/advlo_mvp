@@ -65,6 +65,9 @@ Rails.application.routes.draw do
   get '/terms'                        => 'application#terms'
   get '/about'                        => 'application#about'
 
+  #sitemap
+  get '/sitemap'                      => 'application#sitemap'
+
   #investors
   get '/invest'                       => 'application#invest'
 

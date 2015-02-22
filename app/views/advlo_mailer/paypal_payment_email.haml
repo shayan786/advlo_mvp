@@ -6,7 +6,9 @@
     .indented  
       %h1 PAYPAL PAYMENT REQUIRED
       
-      %p 
-        URL:  
-        %a{href: "#{@payment_url}"}
-          = @payment_url
+      %p
+        For info only:
+      %p
+        To: @user.email
+      %p
+        Amount: @payout.amount

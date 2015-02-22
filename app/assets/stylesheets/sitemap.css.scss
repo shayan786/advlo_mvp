@@ -1,0 +1,50 @@
+#sitemap {
+	padding-top: 80px;
+
+	.panel {
+		.panel-heading {
+			padding-bottom: 5px;
+			font-size: 2.4em;
+			font-family: bebas_neue_bold;
+			letter-spacing: 2px;
+		}
+
+		.panel-body {
+			.sm_header_large {
+				font-size: 2em;
+				font-family: bebas_neue;
+				letter-spacing: 2px;
+				text-decoration: underline;
+			}
+
+			.sm_header_small {
+				@extend .sm_header_large;
+				font-size: 1.4em;
+				text-decoration: none;
+			}
+
+			ul.sm_links {
+				list-style: none;
+				margin-left: -10px;
+			}
+
+			.info_btn {
+				font-family: bebas_neue;
+				letter-spacing: 2px;
+				font-size: 1.5em;
+				padding-bottom: 3px;
+				margin-top: 15px;
+				background-color: $advlo_orange;
+    		border-color: $advlo_orange;
+    		width: 95%;
+
+    		&:hover {
+		      background-color: $orange;
+		      border-color: $orange;
+		    }
+			}
+		}
+
+	}
+
+}

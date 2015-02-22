@@ -168,7 +168,6 @@ function banner_image_rotate(rot_advs){
       i = 0;
     }
 
-    
     //effects of the img etc.
     $('.homepage-photo, .adventure-link-wrapper').animate({
       "opacity": 0.1
