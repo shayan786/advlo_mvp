@@ -1,35 +1,29 @@
-- locals.each do |host|
-  .host_container
-    .row
-      %a{href: "#{root_url}users/#{host.to_param}"}
-        .col-md-2.no_padding_right
+.host_container.text-center
+  - locals.each do |host|
+    .host_box.text-center
+      .row
+        %a{href: "#{root_url}users/#{host.to_param}"}
           .host_image{style: "background: url('#{host.get_avatar_url("medium")}') center center no-repeat"}
-      .col-md-5.text-center
+      .row
+        %a{href: "#{root_url}users/#{host.to_param}"}
+          .host_name= host.guide_type == 'business' ? host.name : host.get_first_name
+      .row
+        .border
+      .row
         .host_tagline= "\"#{host.short_description}\""
+      .row
         - host.get_host_adventure_categories.each do |cat|
           .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
             = image_tag get_category_icon_url(cat)
-        .host_bio
-          = host.bio.length > 145 ? host.bio[0..145]+"..." : host.bio
-          %br
-          %a{href: "#{root_url}users/#{host.to_param}"} LEARN MORE
-      .col-md-5
-        .host_adventures.text-center
-          - host.adventures.limit(6).each do |adv|
-            %a{class: host.adventures.count > 3 ? 'adv_box_small' : 'adv_box_large', href: "#{root_url}adventures/#{adv.slug}", style: "background: url('#{adv.attachment.url(:medium)}') center center no-repeat", "data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>"#{adv.title.length > 24 ? adv.title[0..24]+'...' : adv.title}"}
 
-    .row
-      %a{href: "#{root_url}users/#{host.to_param}"}
-        .col-md-2.no_padding_right
-          .host_name.text-center= host.get_first_name
-      .col-md-8.no_padding_left.no_padding_right
-        .host_location.text-center
+      .row
+        .host_location
           %i.fa.fa-map-marker
           = get_display_location(host.adventures.first)
-      .col-md-2.text-center.no_padding_left
+      .row  
         .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
-          %i.fa.fa-envelope-o
           CONTACT
+        
 
 
 = render partial: '/users/contact_host_modal', locals: {res: nil}
@@ -38,4 +32,5 @@
   host_index_effects();
   contact_host_set_values();
   contact_host_validation();
+  //host_masonry_init();
 

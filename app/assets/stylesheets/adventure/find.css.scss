@@ -1,9 +1,4 @@
 #find {
-  background-image: asset-url("background/hiw_find.jpg"); 
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
   padding-top: 80px;
 
   .dark_background {
@@ -42,12 +37,12 @@
   }
 
   .active {
-      border-color: $orange;
+    border-color: $orange;
     background-color: $orange;
   }
 
   .show_me_header {
-      font-family: bebas_neue;
+    font-family: bebas_neue;
     font-size: 1.4em;
     letter-spacing: 2px;
     margin-bottom: 5px;
@@ -57,12 +52,12 @@
   }
 
   .show_me_select_btn {
-          background-color: rgba(0,0,0,0.5);
-      border-color: $light_gray;
-      color: #FFF;
-      font-size: 0.9em;
-      margin-right: 10px;
-      margin-bottom: 5px;
+    background-color: rgba(0,0,0,0.5);
+    border-color: $light_gray;
+    color: #FFF;
+    font-size: 0.9em;
+    margin-right: 10px;
+    margin-bottom: 5px;
   }
 
   .show_me_select_btn.active {
@@ -88,13 +83,13 @@
 
       #location {
           height: 50px;
-          background-color: rgba(195,91,38,0.2);
+          background-color: rgba(195,91,38,0.4);
           border: none;
           box-shadow: none;
           border-bottom: 2px solid $advlo_orange;
           border-radius: 0px;
           font-size: 22px;
-          color: $advlo_orange;
+          color: #FFF;
           text-align: center;
           padding: 0;
       }

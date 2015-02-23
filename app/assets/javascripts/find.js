@@ -373,9 +373,9 @@ function load_adv_by_categories(categories,locals) {
 function host_index_effects() {
   $('.adv_box_small[data-toggle="tooltip"], .adv_box_large[data-toggle="tooltip"], .host_category_circle[data-toggle="tooltip"]').tooltip();
 
-  $('.host_container').hover(
+  $('.host_box').hover(
     function(){
-      $('.host_container').stop().animate({
+      $('.host_box').stop().animate({
         "opacity":"0.6"
       })
       $(this).stop().animate({
@@ -383,7 +383,7 @@ function host_index_effects() {
       })
     },
     function(){
-      $('.host_container').stop().animate({
+      $('.host_box').stop().animate({
         "opacity":"1"
       })
     }
@@ -429,6 +429,13 @@ function contact_host_validation(){
       }
     }
   });
+}
+
+function host_masonry_init() {
+  $('.host_container').masonry({
+    isFitWidth: true,
+    itemSelector: '.host_box'
+  }) 
 }
 
 

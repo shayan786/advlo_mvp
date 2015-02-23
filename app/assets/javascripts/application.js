@@ -106,7 +106,7 @@ $(document).ready(function(){
           height: "43px"
         });
         $('nav.navbar .navbar-brand').animate({
-        	marginTop: "6px",
+        	marginTop: "7px",
         	"background-size": "83%"
         });
         $('.logged_in_dropdown_box').animate({
@@ -139,7 +139,7 @@ $(document).ready(function(){
           height: "58px"
         });
         $('nav.navbar .navbar-brand').animate({
-        	marginTop: "0px",
+        	marginTop: "3px",
         	"background-size": "99%"
         });
         $('.logged_in_dropdown_box').animate({
