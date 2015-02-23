@@ -15,15 +15,23 @@
 	}
 }
 
-.host_container {
+.host_box {
 	border: 1px solid $light_gray;
 	border-radius: 2px;
 	margin: 10px 0;
 	background-color: rgba(0,0,0,0.7);
+	width: 375px;
+	height: auto;
+	display: inline-block;
+	margin-right: 15px;
 
 	-moz-transition:-moz-transform 0.3s ease-in; 
 	-webkit-transition:-webkit-transform 0.3s ease-in; 
 	-o-transition:-o-transform 0.3s ease-in;
+
+	&:nth-child(3n+3) {
+		margin-right: 0px;
+	}
 
 	&:hover  {
 		text-decoration: none;
@@ -32,26 +40,39 @@
 		-o-transform:scale(1.03);
 	}
 
-	.no_padding_right {
-		padding-right: 0px;
+	.row {
+		margin: 0px;
 	}
 
-	.no_padding_left {
-		padding-left: 0px;
+	a {
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+		}
 	}
 
 	.host_image {
-		height: 153px;
+		height: 150px;
+		width: 150px;
+		border-radius: 50%;
+		margin: 15px auto 0px auto;
+		border: 1px solid $dark_gray;
 		background-size: cover !important;
 	}
 
 	.host_name {
-		background-color: rgba(195, 91, 38,0.8);
-		padding-top: 5px;
+		margin-top: 10px;
 		font-family: bebas_neue;
 		letter-spacing: 2px;
 		color: #FFF;
-		font-size: 1.2em;
+		font-size: 1.8em;
+	}
+
+	.border {
+		margin: 5px auto;
+		border: 1px solid $advlo_orange;
+		width: 325px;
 	}
 
 	.host_tagline {
@@ -59,21 +80,11 @@
 		color: #FFF;
 		font-size: 1.1em;
 		font-style: italic;
-	}
-
-	.host_bio {
-		@extend .host_tagline;
-		font-size: 0.9em;
-		font-style: normal;
-
-		a {
-			font-family: bebas_neue;
-			letter-spacing: 2px;
-		}
 	}		
 
 	.host_category_circle {
-		margin-top: 10px;
+		margin-top: 15px;
+		margin-bottom: 15px;
 		margin-right: 7px;
 		padding-top: 5px;
 		width: 40px;
@@ -129,7 +140,7 @@
 	.host_location {
 		padding-top: 5px;
 		font-family: bebas_neue;
-		font-size: 1.2em;
+		font-size: 1.4em;
 		letter-spacing: 2px;
 		color: #FFF;
 		background-color: rgba(105,153,103,0.8);
@@ -141,8 +152,8 @@
 
 	.host_contact_btn {
 		width: 100%;
-		font-family: bebas_neue;
-		font-size: 1.2em;
+		font-family: bebas_neue_bold;
+		font-size: 1.4em;
 		letter-spacing: 2px;
 		border-radius: 0px;
 		padding-top: 5px;
@@ -153,10 +164,13 @@
 			border: none;
 		}
 
+		.contact_text {
+			margin-left: -20px
+		}
+
 		.fa {
 			font-size: 0.9em;
 			padding-top: 2px;
-			margin-left: 20px;
 		}
 	}
 }
@@ -164,38 +178,21 @@
 /* mobile */
 @media screen and (max-width: 500px){ 
 	.host_container {
-		.no_padding_right {
-			padding-right: 15px;
-		}
-		.no_padding_left {
-			padding-left: 15px;
-		}
+		
 	}
 
 	.host_container .host_image {
-		margin: 10px auto;
-		width: 40%;
-		border-radius: 50%;
-		border: 1px solid $advlo_orange;
+		
 	}
 }
 
 /* tablet */
 @media screen and (min-width: 501px) and (max-width: 800px) { 
 	.host_container {
-		.no_padding_right {
-			padding-right: 15px;
-		}
-		.no_padding_left {
-			padding-left: 15px;
-		}
+		
 	}
 
 	.host_container .host_image {
-		margin: 10px auto;
-		width: 26%;
-		height: 185px;
-		border-radius: 50%;
-		border: 1px solid $advlo_orange;
+		
 	}
 }
