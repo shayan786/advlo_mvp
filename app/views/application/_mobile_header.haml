@@ -1,29 +1,31 @@
-%a#host-mobile{href: '/adventures/info'}
-  .text Host
-%a#request-mobile{href: '/adventures/request'}
-  .text Request
+#exit-nav
+  .fa.fa-chevron-right
 
-.mobile-item#adventures-mobile 
-  .text#scope-toggle Adventures
-  #adventures-div
-    - adv_regions.each_with_index do |r, i|
-      .mobile-location
-        .region= "#{r}" if  adv_count(r) > 0
-        - get_countries(r).each do |l|
-          .mobile-country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/adventures?country=#{l[0]}"
+%a{href:'/'}
+  .mobile-logo= image_tag 'logos/logo_small.png'
+
+%a.mobile-item{href:'/find'}
+  .text Adventures
+
+%a.mobile-item{href:'/partner'}
+  .text Join as host
+
+%a.mobile-item{href:'/blog'}
+  .text Blog
+  
 
 - if current_user
-  .mobile-item
-    %a#login-mobile{href: '/users/dashboard'} 
-      .text My Dashboard
-  %a#mobile-signout{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} SIGN OUT
+  %a.mobile-item{href: '/users/dashboard'} 
+    .text Account
+
+  %a#mobile-signout{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} Log Out
 
   
 - else
-  .mobile-item#login-mobile 
-    .text Login
+  .mobile-item#login-mobile
+    .text Account
     
-  #mobile-login-form
+  .mobile-item#mobile-login-form
     %form.sign_in_form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form", id: "sign_in_form"}
       =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
       %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
@@ -41,23 +43,26 @@
 
 
 :javascript
-  $('#mobile-toggle-button').click(function(){
-    $('#mobile-navbar').slideToggle('down')
-  })
+  $(document).ready(function(){
+    $('#clickout').css('width',$(window).width() - $('#mobile-navbar').width())
 
-  $('#scope-toggle').click(function(){
-    $('#adventures-div').slideToggle('down');
-  })
+    $('#mobile-toggle-button').click(function(){
+      $('#mobile-navbar').animate({
+        left: 0
+      },100);
+      $('#mobile-navbar').css('box-shadow','23px 0px 69px 51px rgba(0,0,0,0.8)')
+    })
 
-  $('#login-mobile').click(function(){
-    $('#mobile-login-form').slideToggle('slow');
-    $('#adventures-div').slideUp()
-  })
+    $('#exit-nav, #clickout').click(function(){
+      $('#mobile-navbar').animate({
+        left: '-250px'
+      }, 100);
+      $('#mobile-navbar').css('box-shadow','none')
+    })
 
-  $('.mobile-location').click(function(){
-    $('.mobile-location').find('.region').css('text-decoration','none')
-    $(this).find('.region').css('text-decoration','underline')
-    $('.mobile-country').hide()
-    $('#adventures-div').show()
-    $(this).children('.mobile-country').toggle()
+
+    $('#login-mobile').click(function(){
+      $('#mobile-login-form').slideToggle('slow');
+    })
+
   })

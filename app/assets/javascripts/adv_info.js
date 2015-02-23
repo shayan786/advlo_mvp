@@ -2,13 +2,13 @@ function guideScroll(){
   $(document).ready(function(){
     $('html').css('overflow','scroll');
     $('.jumbotron').height('400px');
-    $('.navbar').fadeIn()
 
     var amount = $('.adventure_info_body').offset().top - 50
 
     if ($(window).width() < 765){
-      amount = amount - 5
-      $(".why_host").css('visibility','hidden');
+      amount = amount + 50
+    } else {
+      $('.navbar').fadeIn();
     }
     $('body').on("scroll mousedown DOMMouseScroll mousewheel keyup", function(){
        $('body').stop();
@@ -39,6 +39,7 @@ function infoSlider(type){
       $('.main').removeClass('active')
       $(this).addClass('active')
       sliderName.swipeTo($(this).attr('class').split(' ')[0].slice(-1) - 1)
+      sliderName.stopAutoplay();
     })
   })
 }
@@ -62,6 +63,7 @@ function mobileSlider(type){
       $('.mobile-main').removeClass('active')
       $(this).addClass('active')
       sliderName.swipeTo($(this).attr('class').split(' ')[0].slice(-1) - 1)
+      sliderName.stopAutoplay();
     })
   })
 }

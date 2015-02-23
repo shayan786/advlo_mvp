@@ -244,8 +244,6 @@ class AdventuresController < ApplicationController
       @guide_category_img = 'advlo_mountains.jpg'
     end
 
-    render :layout => 'adventure_info'
-
   end
 
   # info page for requesting a certain adventure

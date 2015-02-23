@@ -462,76 +462,101 @@
 	}
 }
 
-#mobile-navbar { 
-	background-color: $header_background_color;
-	opacity: $header_opacity;
-	padding: 5px 10px;
+
+.mobile-header-container {
 	display: none;
-	
-	position: relative;
-	float: left;
-	width: 115%;
-	margin-left: -25px;
+
+	#mobile-toggle-button {
+		position: fixed;
+		top: 0;
+		left: 0px;
+		z-index: 997;
+		display: block;
+		height: 40px;
+		width: 40px;
+		padding: 10px;
+		background: rgba(0,0,0,0.5);
+		cursor: pointer;
+
+		.icon-bar {
+			background-color: #fff;
+			display: block;
+			width: 100%;
+			height: 2px;
+			border-radius: 1px;
+			margin-top: 2px;
+			margin-left: -1px;
+			margin-bottom: 5px;
+		}
+	}
+}
+
+
+#exit-nav {
+	position: absolute;
+	right: 7px;
+	top: 9px;
+	font-size: 34px;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.mobile-logo {
+	height: 64px;
+	margin-left: 14px;
+
+	img {
+		height: 100%;
+	}
+}
+
+#clickout {
+	position: fixed;
+	display: none;
+	width: 100px;
+	right: 0px;
+	height: 100%;
+	z-index: 9999;
+}
+
+#mobile-navbar { 
+	display: none;
+	width: 250px;
+	min-height: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: -250px;
+	z-index: 999;
+	background-color: $lighter_gray;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;	
+
 
 	a {
 		text-decoration: none;
-		color: $header_text_color;
+		color: #000;
 	}
 
 	.mobile-item {
-		width: 100%;
+		position: relative;
 		float: left;
-		border: 1px solid gray;
-		border-radius: 5px;
-		text-align: center;
-		font-size: 30px;
-		margin-top: 10px;
+		width: 100%;
+		margin-top: 15px;
 		margin-bottom: 10px;
-		font-family: 'nexa_light';
-		text-transform: uppercase;
 		cursor: pointer;
-		background: #fff;
 
 		.text {
-			margin-top: 5px;
-			position: relative;
-			color: #000;
-		}
-		.text:hover {
-			opacity: 0.5;
-		}
-
-		.mobile-location {
-			width: 100%;
-			position: relative;
-			float: left;
-			text-align: center;
-			font-size: 18px;
+			color: rgba(0, 0, 0, 0.87);
 			font-family: 'nexa_light';
-			color: #000;
-
-			.mobile-country {
-				display: none;
-				a {
-					color: #000;
-					font-size: 14px;
-					text-transform: capitalize;
-				}
-			}
+			font-weight: bold;
+			margin-left: 15px;
+			font-size: 17px;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			margin-right: 15px;
 		}
 	}
-
-	#host-mobile {
-		@extend .mobile-item;
-		width: 49%;
-		font-size: 26px;
-	}
-
-	#request-mobile {
-		@extend #host-mobile;
-		float: right;
-	}
-
 	
 
 	#adventures-div {
@@ -550,9 +575,9 @@
 		margin-bottom: 10px;
 		position: relative;
 		float: left;
-		text-align: center;
+		text-align: left;
 		cursor: pointer;
-		font-family: 'nexa_light';
+		margin-left: 15px;
 	}
 
 	#mobile-signout:hover {
@@ -593,6 +618,7 @@
 	.navbar-header {
 		width: 110% !important;
 	}
+
 }
 
 @media only screen and (max-width: 802px) and (min-width: 781px) {
@@ -601,28 +627,33 @@
 	}
 }
 
-	
-@media only screen and (min-width: 702px) and (max-width: 780px) {
-	#header-navbar {
+
+
+
+@media only screen and (max-width: 781px) {
+	.navbar-fixed-top {
 		display: none;
 	}
-	#mobile-toggle-button {
+
+	.mobile-header-container {
 		display: block;
 	}
-	.navbar-nav {
-		display: none !important;
-	}
-	.navbar-header {
-		width: 102% !important;
+
+	#clickout {
+		display: block;
 	}
 
 	#mobile-navbar {
-		width: 106% !important;
+		display: block;
 	}
-}
 
-@media only screen and (min-width: 781px) {
-	#mobile-navbar {
-		display: none !important;
+	#mobile-toggle-button {
+		cursor: pointer;
+		display: block;
 	}
+
+	.blog-page-wrapper {
+	  margin-top: 0px !important;
+  }
+
 }

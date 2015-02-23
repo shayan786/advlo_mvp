@@ -67,6 +67,10 @@ $(window).load(function() {
   $("#loader-overlay").fadeOut("slow");
 });
 
+setInterval(function(){
+  $("#loader-overlay").fadeOut("slow");
+}, 5000);
+
 
 $(document).ajaxStart(function(){
   if ($(window).width() <= 767) {

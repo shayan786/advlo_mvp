@@ -147,6 +147,10 @@
         .tooltip {
           min-width: 150px;
         }
+
+        .tooltip.right {
+          margin-left: 25px;
+        }
       }
     }
 
@@ -416,7 +420,6 @@
 
 
 @media screen and(max-width: 992px ){
-
   
   .business_page{
   
@@ -496,8 +499,8 @@
 
   .guide-button {
     .title {
-      margin-top: 10%;
-      font-size: 24px;
+      letter-spacing: 3px;
+      font-size: 20px;
     }
   }
   .business_page .why_host {

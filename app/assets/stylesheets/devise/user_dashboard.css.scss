@@ -383,9 +383,14 @@
 }
 
 //IPAD && IPHONE
-@media screen and (max-width: 780px){ 
+@media screen and (max-width: 781px){ 
 	#d_user_dashboard .container .panel .panel-body .user_adv {
 		text-align: center !important;
+	}
+
+	#d_user_dashboard {
+		margin-top: 10px;
+		padding-top: 0;
 	}
 }
 //IPHONE
@@ -393,6 +398,8 @@
 	#d_user_dashboard .container .panel .panel-body .user_adv .edit_btn {
 		width: 90%;
 	}
+
+
 }
 
 @media screen and (min-width: 700px) and (max-width: 800px){
