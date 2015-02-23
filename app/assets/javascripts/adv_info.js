@@ -3,6 +3,7 @@ function guideScroll(){
     $('html').css('overflow','scroll');
     $('.jumbotron').height('400px');
 
+
     var amount = $('.adventure_info_body').offset().top - 50
 
     if ($(window).width() < 765){
@@ -18,8 +19,22 @@ function guideScroll(){
       scrollTop: amount
     }, 1000);
 
+    $('#footer').show()
+    
     return false;
   })
+}
+
+function toggleItin(){
+  $('.itinerary-brick').click(function(){
+    $(this).children().last().toggle();
+    $(this).children().first().toggle();
+    $(this).children().first().next().toggle();
+  })
+  
+  $('.itinerary-brick').first().click()
+  $('.itinerary-brick').last().css('border-bottom','none')
+
 }
 
 function infoSlider(type){

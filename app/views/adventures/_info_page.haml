@@ -1,14 +1,10 @@
 - if type == 'local'
   - info = ['How it Works', 'Receive requests', 'We market your activity and send booking requests right to your inbox.','Lead Adventures','Connect with adventurers who crave more authentic, local experiences when they travel.','Get Paid', "Receive direct bank deposits or receive payments via PayPal account"]
 - else
-  - info = ['Manage and grow your business','Marketing',"We'll create custom webpages for your business, adventure trips, and guides.",'Operations',"Manage your bookings, customers, and payments all in one place.","Differentiation","Visually stand out, show-off your guides, and create customized itineraries with customers"]
+  - info = ['Manage and grow your business','Promote your Brand',"We'll create custom webpages and listings for your business and adventure trips.",'Manage your Content',"Easily manage your trips, sales leads, and booking requests; all in one place.","Receive bookings","Book trips from our site or embed on yours. We'll handle payments for you."]
 
 .dark_background
   .box.col.col-md-12.text-center.all-plans-include.adventure-spec
-    .headline-container
-      .left-side-line
-      .big-headline= info[0]
-      .right-side-line
     .col.col-md-12.brick-padding
       .row
         .col.col-md-4.how-it-works-block
@@ -37,7 +33,7 @@
   .box.col.col-md-12
     .headline-container
       .lightline.left-side-line
-      .lightheading.big-headline Promote your business
+      .lightheading.big-headline Frontend Features
       .lightline.right-side-line
     - img_url = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
     .col.col-md-12.text-center.computer-slider.brick-padding
@@ -77,6 +73,10 @@
 
     .mobile-barrier
     - img_url_2 = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
+    .headline-container
+      .lightline.left-side-line
+      .lightheading.big-headline Backend Features
+      .lightline.right-side-line
 
     .col.col-md-12.text-center.computer-slider{style: "padding-bottom: 50px;"}
       .row
@@ -111,18 +111,48 @@
             #computer
               = image_tag 'comp.png'
         
-          
+  / .box.col.col-md-12.text-center.all-plans-include.adventure-spec
+  /   .headline-container
+  /     .left-side-line
+  /     .big-headline Both options include
+  /     .right-side-line
+  /   .col.col-md-12.brick-padding
+  /     .row
+  /       .col.col-md-4.how-it-works-block
+  /         .fa.fa-envelope
+  /         .feature-text
+  /           Adventure requests
+  /         .headlines 
+  /           We market your activity and send booking requests right to your inbox.
+
+  /       .col.col-md-4.how-it-works-block
+  /         .fa.fa-globe
+  /         .feature-text
+  /           Global Community
+  /         .headlines 
+  /           Connect with adventurers who crave more authentic, local experiences when they travel.
+
+  /       .col.col-md-4.how-it-works-block
+  /         .fa.fa-money
+  /         .feature-text
+  /           Weekly payouts
+  /         .headlines 
+  /           Receive bank deposits in 
+  /           %a{href: "https://stripe.com/global", target: '_blank'} these countries
+  /           or create a 
+  /           %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal account
+  /           for free.             
+
   .box.col.col-md-12.text-center.all-plans-include.adventure-spec
     - if type == 'local'
       - price_basic = ['Basic Account', 'Free to upload', '30% commission on bookings']
       - price_member = ['Membership Account', '$30 / mo.', '0% comission on bookings']
       - features = ['Individual Profile Page','Adventure Pages', 'Reservation tools', 'SEO & Content Marketing','Weekly Payouts', 'Premium listing positions','0% commission on bookings', 'Option to re-direct transaction','Connect multiple guide accounts']
-      - tooltips = ['A unique page to highlight your skills & offerings','Unique listing pages that show-off your experiences', "Easily manage your account, adventures, & booking requests", "Built in SEO for each page / paid search marketing", "To your Bank or Paypal account", "Adventures under membership have first priority", "Offer your adventure at a fair price.","Option to re-direct to your own transaction system, or specify cash on site.","Allow up to 5 members join under a single account"]
+      
     - else
       - price_basic = ['Business Account', '$49 / mo.', '5% commission']
       - price_member = ['Membership Account', '$99 / mo.', '0% comission']
       - features = ['Company Profile Page','Adventure Pages', 'Reservation tools', 'SEO & Content Marketing','Weekly Payouts', 'Premium listing positions','0% commission on bookings', 'Option to re-direct transaction','Connect multiple guide accounts']
-      - tooltips = ['Custom page to beautifully showcase your local business','Unique listing pages that show-off your experiences', "Easily manage your account, adventures, & booking requests", "Built in SEO for each page / paid search marketing", "To your Bank or Paypal account", "Adventures under membership have first priority", "Offer your adventure at a fair price.","Option to re-direct to your own transaction system, or specify cash on site.","Allow up to 5 members join under a single account"]
 
     .col.col-md-6
       .price-box
@@ -130,69 +160,137 @@
         .price= price_basic[1]
         .price-explain= price_basic[2]
 
-        .pricing-info-list
-          .feature-list
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[0]}
-                = features[0]
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[1]}
-                = features[1]
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[2]}
-                = features[2]
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[3]}
-                = features[3]
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[4]}
-                = features[4]
-
-          .free-trial-box
-            .price-type
-              Add One Month free trial with either plan:
-              
-            .learn-more.adventure-checkboxes
-              .unchecked
-                %input{:type => "checkbox"}
-                %label free month
-
 
     .col.col-md-6
       .price-box
-        .price-title= price_member[0]
-        .price= price_member[1]
-        .price-explain= price_member[2].html_safe
+        .price-title.premium= price_member[0]
+        .price.premium= price_member[1]
+        .price-explain.premium= price_member[2].html_safe
 
-        .pricing-info-list
-          .feature-list
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[0]}
-                = features[0]
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[1]}
-                = features[1]
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[2]}
-                = features[2]
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[3]}
-                = features[3]
-            .feature
-              .fa.fa-check{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[4]}
-                = features[4]
-            .feature
-              .fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[5]}
-                = features[5]
-            .feature
-              .fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[6]}
-                = features[6]
-            .feature
-              .fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[7]}
-                = features[7]
-            .feature
-              .fa.fa-check.extra{'data-toggle'=>"tooltip", 'data-placement'=>"right", 'title'=> tooltips[8]}
-                = features[8]
+
+
+    .adventure_info_body
+      .gray_background
+        .container
+          .feature-list-btn-wrapper
+            .guide-button.feature-list-btn
+              .title Full Feature List
+           
+          .feature-list-content-wrapper
+            .access-block
+              .row.matrix_header
+                .fa.fa-cc-visa
+                Online Transactions
+              .row.matrix_content
+                Advlo handles all payments ensuring you get paid on time
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-comments-o
+                Direct Messaging
+              .row.matrix_content
+                Communicate with travelers interested in booking your trips
+
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-file-image-o
+                Custom Pages
+              .row.matrix_content
+                Web pages for your host profile and each of your adventures
+
+            .access-block
+              .row.matrix_header.premium.premium-border
+                .fa.fa.fa-copy
+                Unlimited Adventures
+              .row.matrix_content
+                0% commission on any of your adventure bookings
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-star-half-o
+                Reviews / Ratings
+              .row.matrix_content
+                Build a reputation and leverage links to exisiting traveler reviews
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-search
+                Online Visibility
+              .row.matrix_content
+                SEO, web hosting, & keyword marketing to bring you more traffic
+
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-money
+                Payout Options
+              .row.matrix_content
+                Bank deposit or PayPal / payouts are initiated at the end of each week.
+
+            .access-block
+              .row.matrix_header.premium.premium-border
+                .fa.fa-thumb-tack
+                Top Results Position
+              .row.matrix_content
+                Your adventures will be at the top of a location list when searched
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-retweet
+                Booking Requests
+              .row.matrix_content
+                Accept or decline booking requests based on your availability
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-copy
+                Content Management
+              .row.matrix_content
+                Easily manage all your adventures with one account
+
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-mobile
+                Mobile Friendly
+              .row.matrix_content
+                Manage adventures & reservations from your mobile device
+
+            .access-block
+              .row.matrix_header.premium.premium-border
+                .fa.fa-share-square-o
+                Redirect URL
+              .row.matrix_content
+                Redirect the traveler to your own booking & reservations system or use Advlo's
+
+            .access-block
+              .row.matrix_header
+                .fa.fa-facebook-square
+                Social media tools
+              .row.matrix_content
+                Send your listing to Facebook, Twitter & Google+ in one click
+                
+            .access-block
+              .row.matrix_header
+                .fa.fa-calendar
+                Scheduling
+              .row.matrix_content
+                Offer instant booking times for immediate reservations
+
+            .access-block
+              .row.matrix_header 
+                .fa.fa-envelope
+                Email Alerts
+              .row.matrix_content
+                Get notifications when you receive a booking or direct message
+
+            .access-block
+              .row.matrix_header.premium.premium-border
+                .fa.fa-share-square-o
+                Multiple Guide Accounts
+              .row.matrix_content
+                Connect up to 5 host profiles associated with your account
 
 
    
@@ -299,37 +397,6 @@
             .description
               You have the option to decline any booking requests and directly message the traveler to reschedule. If the transaction has already happened, you can cancel the booking in your dashboard and we will handle the traveler refund. 
 
-    .box.col.col-md-12.text-center.all-plans-include.adventure-spec
-      .headline-container
-        .left-side-line
-        .big-headline Both options include
-        .right-side-line
-      .col.col-md-12.brick-padding
-        .row
-          .col.col-md-4.how-it-works-block
-            .fa.fa-envelope
-            .feature-text
-              Adventure requests
-            .headlines 
-              We market your activity and send booking requests right to your inbox.
-
-          .col.col-md-4.how-it-works-block
-            .fa.fa-globe
-            .feature-text
-              Global Community
-            .headlines 
-              Connect with adventurers who crave more authentic, local experiences when they travel.
-
-          .col.col-md-4.how-it-works-block
-            .fa.fa-money
-            .feature-text
-              Weekly payouts
-            .headlines 
-              Receive bank deposits in 
-              %a{href: "https://stripe.com/global", target: '_blank'} these countries
-              or create a 
-              %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal account
-              for free.             
 
     .box
       - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/#{@guide_category_img}"
@@ -345,17 +412,10 @@
     }, function(){
       $(this).parent().parent().find($('.hover-block')).fadeOut()
     })
-
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
   })
 
-  toggleItineraryItemsAndArrows()
 
-  $(".learn-more.adventure-checkboxes").click(function(){
-    $(this).addClass('checked')
-    $(this).removeClass('unchecked')
-
-    $.cookie('free_month', true, { expires: 1, path: '/' });
+  $('.feature-list-btn').click(function(){
+    $(this).hide();
+    $('.feature-list-content-wrapper').fadeIn()
   })

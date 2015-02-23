@@ -8,17 +8,6 @@
   width: 100%;
 
 
-  .free-trial-box {
-    position: relative;
-    width: 265px;
-    height: 121px;
-    text-align: center;
-    margin-top: 49px;
-    font-size: 16px;
-    font-family: "" nexa_light "";
-    float: left;
-  }
-
   .why_host {
     text-shadow: -1px -1px 5px #000;
     margin-bottom: 50px;
@@ -124,7 +113,8 @@
     }
 
     .feature-text {
-      font-family: 'nexa_light';
+      font-family: 'nexa_bold';
+      text-transform: uppercase;
       font-size: 24px;
       width: 100%;
     }
@@ -142,14 +132,6 @@
         .fa {
           font-size: 20px;
           width: auto;
-        }
-
-        .tooltip {
-          min-width: 150px;
-        }
-
-        .tooltip.right {
-          margin-left: 25px;
         }
       }
     }
@@ -187,23 +169,6 @@
         color: $advlo_orange;
       }
 
-      .extra:before {
-        color: $advlo_green !important;
-      }
-
-      .pricing-info-list {
-        width: 55%;
-        margin: 0 auto;
-        position: relative;
-        margin-top: 25px;
-
-        li {
-          font-size: 20px;
-          margin-bottom: 10px;
-          line-height: 35px;
-          color: #000;
-        }
-      }
     }
   }
 
@@ -213,14 +178,16 @@
     font-size: 26px;
     margin-bottom: 25px;
     margin-top: 10px;
-    font-family: 'nexa_light';
+    font-family: 'nexa_bold';
     letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
 
   .sub {
     color: #fff;
     font-family: 'cabin_regular';
+    text-transform: none;
   }
 
   .active {
@@ -313,8 +280,8 @@
   .title {
     color: #fff;
     text-align: center;
-    font-size: 35px;
-    margin-top: 10%;
+    font-size: 29px;
+    margin-top: 11%;
     font-family: bebas_neue;
     text-shadow: -1px -1px grey;
     line-height: 33px;
@@ -390,6 +357,13 @@
   box-shadow: 0 3px 0 0 #1E824C;
 }
 
+.premium {
+  color: $advlo_green !important;
+}
+.premium-border {
+  border-bottom: 1px solid $advlo_green !important;
+}
+
 
 .left-local {
   width: 30%;
@@ -453,7 +427,7 @@
   }
   .business_page .headline {
     width: 60%;
-    font-size: 27px;
+    font-size: 15px;
     margin-top: 33px;
   }
 

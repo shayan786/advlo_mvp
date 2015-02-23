@@ -1,6 +1,7 @@
 #adventure_info {
   position: relative;
   float: left;
+  width: 100%;
 
   #host-signup-bottom {
     background-image: asset-url("background/advlo_beach.jpeg");
@@ -147,16 +148,6 @@
       }
     }
 
-    .with_membership_features {
-      margin-left: 10%;
-      margin-right: 10%;
-      margin-bottom: 25px;
-      border: 1px solid #FFF;
-      border-radius: 10px;
-      padding-top: 25px;
-      background: rgba(0,0,0,0.4);
-    }
-
     .host_header {
       font-family: 'nexa_light';
       font-weight: bold;
@@ -259,11 +250,10 @@
   	.matrix_content {
   		font-size: 15px;
       margin-top: 10px;
-      margin-bottom: 10px;
-      color: white;
+      color: #000;
       opacity: 1;
-      text-align: center;
-      min-height: 120px;
+      font-family: 'cabin_regular';
+      min-height: 100px;
 
       .display_percent {
         font-size: 2.6em;
@@ -279,6 +269,30 @@
     margin-top: 4px;
   }
 }
+
+.feature-list-btn-wrapper {
+  position: relative; 
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+
+  .feature-list-btn {
+    width: 300px !important;
+    float: none !important;
+
+    .title {
+      margin-top: 15px;
+      margin-bottom: 10px;
+      font-size: 27px;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.feature-list-content-wrapper {
+  display: none;
+}
+
 
 @media screen and (max-width: 1210px){
   #adventure_info .adventure_info_body .adv-info-wrapper {

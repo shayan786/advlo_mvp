@@ -47,6 +47,7 @@
     $('#clickout').css('width',$(window).width() - $('#mobile-navbar').width())
 
     $('#mobile-toggle-button').click(function(){
+      $('#clickout').css('display','block');
       $('#mobile-navbar').animate({
         left: 0
       },100);
@@ -54,6 +55,7 @@
     })
 
     $('#exit-nav, #clickout').click(function(){
+      $(this).hide()
       $('#mobile-navbar').animate({
         left: '-250px'
       }, 100);
