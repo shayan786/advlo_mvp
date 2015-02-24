@@ -160,7 +160,7 @@ class ApplicationController < ActionController::Base
     
     nearby_adventures = Adventure.near(request.remote_ip,200).approved
 
-    if nearby_adventures.length > 3
+    if nearby_adventures.length > 2
       @nearby_adventures = nearby_adventures.limit(3)
     else
       @new_adventures = Adventure.approved.order('id desc').limit(3)
