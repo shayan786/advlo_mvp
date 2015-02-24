@@ -97,16 +97,23 @@ class ReservationsController < ApplicationController
       user.save
     end
 
-    puts "@reservation.credit => #{@reservation.credit}"
 
     request_date = params[:reservation_request][:date]
     request_time = params[:reservation_request][:time]
 
+
     request_date_time = (request_date+" "+request_time).to_datetime
+
     @reservation.event_start_time = request_date_time
+
+    puts "request_date_time => #{request_date_time}"
 
     # For now, 
     # => create one
+    puts "params[:stripe_token] => #{params[:stripe_token]}"
+    puts "params[:credit_card_name] => #{params[:credit_card_name]}"
+    puts "user.email => #{user.email}"
+
     customer = Stripe::Customer.create(
       :card => params[:stripe_token],
       :email => user.email,
