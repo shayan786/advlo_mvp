@@ -6,16 +6,6 @@
   }
 
   .search_options {
-      margin-top: 20px;
-
-      .or {
-        color: $advlo_orange;
-        font-size: 1.8em;
-        font-family: bebas_neue_book;
-        letter-spacing: 2px;
-        padding-top: 20px;
-      }
-
   .orange_btn{
     border-color: $advlo_orange;
     background-color: $advlo_orange;
@@ -55,7 +45,7 @@
     background-color: rgba(0,0,0,0.5);
     border-color: $light_gray;
     color: #FFF;
-    font-size: 0.9em;
+    font-size: 1em;
     margin-right: 10px;
     margin-bottom: 5px;
   }

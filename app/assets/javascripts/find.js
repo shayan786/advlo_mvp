@@ -60,40 +60,44 @@ function checkbox_highlighting() {
   })
 }
 
-function toggle_search_types() {
-  $('#find .search_options .where_to_btn').click(function(){
-    $('#find .search_options .which_adventure_btn').removeClass('active')
+function toggle_show_me_types() {
+	$('#find .search_options .show_me_adventures').click(function(){
+    $('#find .search_options .show_me_locals').removeClass('active')
+    $('#find .search_options .show_me_activities').removeClass('active')
     $(this).addClass('active');
+
+    $('#find .search_options #find_adventure_form #locals').val(false);
+    $('#find .search_options #find_adventure_activity_form #locals').val(false);
 
     $('#find .search_options #find_adventure_activity_form').fadeOut();
     $('#find .search_options #find_adventure_form').delay(400).fadeIn();
   })
 
-  $('#find .search_options .which_adventure_btn').click(function(){
-    $('#find .search_options .where_to_btn').removeClass('active')
-    $(this).addClass('active');
-
-    $('#find .search_options #find_adventure_form').fadeOut();
-    $('#find .search_options #find_adventure_activity_form').delay(400).fadeIn();
-  })
-}
-
-function toggle_show_me_types() {
-	$('#find .search_options .show_me_adventures').click(function(){
-    $('#find .search_options .show_me_locals').removeClass('active')
-    $(this).addClass('active');
-
-    $('#find .search_options #find_adventure_form #locals').val(false);
-    $('#find .search_options #find_adventure_activity_form #locals').val(false);
-  })
-
   $('#find .search_options .show_me_locals').click(function(){
     $('#find .search_options .show_me_adventures').removeClass('active')
+    $('#find .search_options .show_me_activities').removeClass('active')
     $(this).addClass('active');
 
     $('#find .search_options #find_adventure_form #locals').val(true);
     $('#find .search_options #find_adventure_activity_form #locals').val(true);
+
+    $('#find .search_options #find_adventure_activity_form').fadeOut();
+    $('#find .search_options #find_adventure_form').delay(400).fadeIn();
   })
+
+  $('#find .search_options .show_me_activities').click(function(){
+    $('#find .search_options .show_me_adventures').removeClass('active')
+    $('#find .search_options .show_me_locals').removeClass('active')
+    
+    $(this).addClass('active');
+
+    $('#find .search_options #find_adventure_form #locals').val(false);
+    $('#find .search_options #find_adventure_activity_form #locals').val(false);
+
+    $('#find .search_options #find_adventure_form').fadeOut();
+    $('#find .search_options #find_adventure_activity_form').delay(400).fadeIn();
+  })
+
 }
 
 function search_form_submits() {
@@ -442,7 +446,6 @@ function host_masonry_init() {
 adventureFind = function () {
   find_input_geocomplete();
   checkbox_highlighting();
-  toggle_search_types();
   toggle_show_me_types();
   search_form_submits();
   activity_search_checkbox_validation();
