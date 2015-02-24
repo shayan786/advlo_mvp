@@ -18,8 +18,6 @@ function guideScroll(){
     $('body').animate({
       scrollTop: amount
     }, 1000);
-
-    $('#footer').show()
     
     return false;
   })

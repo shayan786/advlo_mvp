@@ -1,69 +1,36 @@
 #bottom-login
   .container.join-text.text-center
-    JOIN ADVLO AS A
+    Join Adventure Local
 
   #pre-check-homepage
-    - if current_user
-      %a.btn.btn-default.pre-check#travel{href: '/users/edit'}
-        %p Traveler
+    .advlo-signup-bottom
+      %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
+        %i.fa.fa-facebook-square
+        connect
+          
 
-      %a.btn.btn-default.pre-check#host{href: '/adventures/info'}
-        %p Partner
+      %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form_travel'}
+        = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+        = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => false)
+        = tag(:input, :type => "hidden", :name => "user[guide_type]", :value => '', id: 'guide_type')
+        .form-group
+          %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+        .form-group
+          %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
+        .form-group
+          %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
+        %input.btn.btn-primary.sign_up_btn#travel_email_signup{name: "sign_up", type: "submit", value: "JOIN"}
 
-    - else
-
-      .btn.btn-default.pre-check#travel.travel-signup-toggle
-        %p Traveler
-      %a.btn.btn-default.pre-check#host{href: '/invite/partner'}
-        %p Partner
-
-
-    .block.block-travel
-      .bottom-signup-text
-        Join for free and learn about unique, 
-        %br
-        local adventure packages only on Advlo..
-
-      .advlo-signup-bottom
-        %a.btn.btn-primary.homepage_fb_btn#bottom_traveler_fb_signup{href: "/users/auth/facebook"}
-          %i.fa.fa-facebook-square
-          connect
-            
-
-        %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form_travel'}
-          = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-          = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => false)
-          .form-group
-            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
-          .form-group
-            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
-          .form-group
-            %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
-          %input.btn.btn-primary.sign_up_btn#travel_email_signup{name: "sign_up", type: "submit", value: "JOIN"}
-
-        .row
-          .homepage_login_bottom_travel.homepage_email_btn
-            email
+      .homepage_login_bottom_travel.homepage_email_btn
+        email
 
       
 
 :javascript
-  $('.travel-signup-toggle').click(function(){
-    $('.block-partner').hide()
-    $('.block-travel').fadeIn()
-    $(this).addClass('active')
-    $('#host').removeClass('active')
+
+  $('.homepage_email_btn').click(function(){
     window.scrollTo(0, $(document).height());
-  })
-
-
-  $('.homepage_login_bottom_travel').click(function(){
     $('.homepage_login_form_travel').fadeIn();
-    $(this).hide();
-  })
-
-  $('.homepage_login_bottom_host').click(function(){
-    $('.homepage_login_form_host').fadeIn();
     $(this).hide();
   })
 

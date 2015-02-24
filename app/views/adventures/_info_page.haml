@@ -1,7 +1,20 @@
 - if type == 'local'
-  - info = ['How it Works', 'Receive requests', 'We market your activity and send booking requests right to your inbox.','Lead Adventures','Connect with adventurers who crave more authentic, local experiences when they travel.','Get Paid', "Receive direct bank deposits or receive payments via PayPal account"]
+  - info = ['Host Adventures', "We'll create custom webpages and listings for you and your adventure trips.",'Connect with Travelers','Connect directly with adventure travelers who crave more authentic, local experiences.','Receive Payments', "Receive payments from bookings through direct Bank deposit or via Paypal account."]
+
+  - comp = ["Adventure Host Profile","Showcase your adventures & outdoor skills, promote yourself by connecting social channels and allow travelers to contact you directly.",'Unlimited Adventure Listings', 'Easily create pages for each of your adventure trips to show how unique your experience is with photography, videos, maps, & more.', 'Responsive Page Design',"Enable travelers to view your adventures on mobile phones, tablets, and desktops to convert more potential bookings."]
+
+  - comp_2 =["Online Bookings", "Allow travelers to book or request your trips online 24/7 - manage availability and accept request through your dashboard.","Content Management","Easily edit adventures, share to social media channels, or embed a trip on your exisiting website or blog - all through our intuitive dashboard.", "Automatic Payments", "We'll handle international payments for you and deposit weekly payouts to your bank or PayPal account. In case of weather or other outside factors, simply cancel a trip and issue a refund with a few clicks."]
+
+  - titles = ['Promote Yourself', 'Manage your content and bookings']
+
 - else
-  - info = ['Manage and grow your business','Promote your Brand',"We'll create custom webpages and listings for your business and adventure trips.",'Manage your Content',"Easily manage your trips, sales leads, and booking requests; all in one place.","Receive bookings","Book trips from our site or embed on yours. We'll handle payments for you."]
+  - info = ['Promote your Brand',"We'll create custom webpages and listings for your business and adventure trips.",'Manage your Content',"Easily manage your adventures, sales leads, and booking requests; all in one place.",'Receive Payments', "Receive payments through our transaction system or choose to connect your own."]
+
+  - comp = ["Custom Business Profile","Showcase your adventures, increase your businesses SEO by connecting a website and social channels, while encouraging travelers to contact you directly.",'Unlimited Adventure Listings', 'Easily create pages for each of your adventure trips to show how unique your experience is with photography, videos, maps, & more.', 'Responsive Page Design',"Enable travelers to view your adventures on mobile phones, tablets, and desktops to convert more potential bookings."]
+
+  - comp_2 =["Online Bookings", "Allow customers to book or request your trips online 24/7 - manage availability and accept request through your dashboard.","Content Management","Easily edit adventures, share to social media channels, or embed a trip on your exisiting website or blog - all through our intuitive dashboard.", "Automatic Payments", "We'll handle international payments for you and deposit weekly payouts to your bank or PayPal account. In case of weather or other outside factors, simply cancel a trip and issue a refund with a few clicks."]
+
+  - titles = ['Promote your business and trips', 'Manage your content and bookings']
 
 .dark_background
   .box.col.col-md-12.text-center.all-plans-include.adventure-spec
@@ -10,30 +23,30 @@
         .col.col-md-4.how-it-works-block
           .fa.fa-newspaper-o
           .feature-text
-            = info[1]
+            = info[0]
           .headlines 
-            = info[2]
+            = info[1]
 
         .col.col-md-4.how-it-works-block
           .fa.fa-motorcycle
           .feature-text
-            = info[3]
+            = info[2]
           .headlines 
-            = info[4]
+            = info[3]
 
         .col.col-md-4.how-it-works-block
           .fa.fa-money
           .feature-text
-            = info[5]
+            = info[4]
           .headlines 
-            = info[6]
+            = info[5]
             
             
 
   .box.col.col-md-12
     .headline-container
       .lightline.left-side-line
-      .lightheading.big-headline Frontend Features
+      .lightheading.big-headline= titles[0]
       .lightline.right-side-line
     - img_url = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
     .col.col-md-12.text-center.computer-slider.brick-padding
@@ -53,52 +66,57 @@
           %ul
             %li 
               .main.active{class: "#{type}-1"}
-                Custom Pages
+                = comp[0]
                 .sub 
-                  Responsive webpages that showcase your adventure trips and a business profile containing your website link, reviews, photogrpahy, videos, & all your adventure listings.
+                  = comp[1]
 
             %li 
               .main{class: "#{type}-2"}
-                Direct Messaging
+                = comp[2]
                 .sub 
-                  Travelers can contact you directly to customize unique packages based on your initial uploads and your adventure skills.
+                  = comp[3]
 
             %li 
               .main{class: "#{type}-3"}
-                Platform Technology
+                = comp[4]
                 .sub 
-                  Boost your SEO & online presence. Your payment is used directly for marketing efforts such as paid advertising, social media posts, and promotional emails. 
-    
+                  = comp[5]
 
 
     .mobile-barrier
     - img_url_2 = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/200/hero/adventure-page.png?1413192952", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
     .headline-container
       .lightline.left-side-line
-      .lightheading.big-headline Backend Features
+      .lightheading.big-headline= titles[1]
       .lightline.right-side-line
 
-    .col.col-md-12.text-center.computer-slider{style: "padding-bottom: 50px;"}
+    .col.col-md-12.text-center.computer-slider.brick-padding
       .row
         .col.col-md-6
           %ul
             %li 
               .mobile-main.active{class: "mobile-#{type}-1"}
-                Site Integration
+                = comp_2[0]
                 .sub 
-                  Embedding your adventure listings on exisisting websites is simple, and allows travelers to book your trips online in just a few steps.
+                  = comp_2[1]
                 
             %li 
               .mobile-main{class: "mobile-#{type}-2"}
-                Book Trips Online
+                = comp_2[2]
+
                 .sub 
-                  Allow customers to conveniently book your trips online 24/7 - Manage availability via calendar or respond to booking requests. 
+                  = comp_2[3]
+
+
 
             %li 
               .mobile-main{class: "mobile-#{type}-3"}
-                Mobile Optimization
+                = comp_2[4]
+
+
                 .sub 
-                  Travelers can view your pages on any device, and book adventures on the spot from their mobile phone.
+                  = comp_2[5]
+                  
             
 
         .col.col-md-6.desktop
@@ -191,7 +209,6 @@
               .row.matrix_content
                 Communicate with travelers interested in booking your trips
 
-
             .access-block
               .row.matrix_header
                 .fa.fa-file-image-o
@@ -202,7 +219,7 @@
             .access-block
               .row.matrix_header.premium.premium-border
                 .fa.fa.fa-copy
-                Unlimited Adventures
+                Zero Commission
               .row.matrix_content
                 0% commission on any of your adventure bookings
 
@@ -287,10 +304,10 @@
 
             .access-block
               .row.matrix_header.premium.premium-border
-                .fa.fa-share-square-o
-                Multiple Guide Accounts
+                .fa.fa-users
+                Dedicated Support
               .row.matrix_content
-                Connect up to 5 host profiles associated with your account
+                An advlo representative to help upload & optimize all your adventures
 
 
    
@@ -301,10 +318,6 @@
         .lightline.left-side-line
         .lightheading.big-headline Case Studies
         .lightline.right-side-line
-        
-      .host_type
-        Advlo hosts are skilled instructors, local guides, & outdoor professionals who can create unique travel experiences.
-        
       .row
         .adventure-container.adventure-container-homepage
           .brick-wrapper
@@ -399,10 +412,12 @@
 
 
     .box
-      - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/#{@guide_category_img}"
-      .jumbotron{:style => "background-image: url(#{image_path image})"}
-    
-
+      - if current_user
+        .jumbotron{:style => "background-image: url(#{image_path image}); text-align: center;"}
+          %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: "margin-top: 10%;"} LIST YOUR ADVENTURE
+      - else
+        = render partial: 'signup'
+          
 
 
 :javascript
