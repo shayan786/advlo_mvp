@@ -40,6 +40,8 @@
     $('#individual-info').fadeIn();
     $('#business-info').hide();
 
+    $('#guide_type').val('local')
+
     infoSlider('local');
     mobileSlider('local');
     guideScroll();
@@ -52,6 +54,8 @@
   $('#business').click(function(){
     $('#business-info').fadeIn();
     $('#individual-info').hide();  
+
+    $('#guide_type').val('business')
 
     infoSlider('business');
     mobileSlider('business');

@@ -9,14 +9,11 @@
 		font-weight: bold;
 		margin-bottom: 35px;
 		background-color: rgba(195, 91, 38, 0.7);
-		border-top: 1px solid $lighter_gray;
-		border-bottom: 1px solid $lighter_gray;
 		padding-top: 10px;
 	}
 }
 
 .host_box {
-	border: 1px solid $light_gray;
 	border-radius: 2px;
 	margin: 10px 0;
 	background-color: rgba(0,0,0,0.7);
@@ -139,11 +136,11 @@
 
 	.host_location {
 		padding-top: 5px;
-		font-family: bebas_neue;
+		font-family: bebas_neue_bold;
 		font-size: 1.4em;
 		letter-spacing: 2px;
 		color: #FFF;
-		background-color: rgba(105,153,103,0.8);
+		background-color: rgba(105,153,103,0.3);
 
 		.fa {
 			margin-right: 5px;
@@ -159,6 +156,7 @@
 		padding-top: 5px;
 		padding-bottom: 0px;
 		border: none;
+		background-color: $advlo_orange;
 
 		&:hover {
 			border: none;

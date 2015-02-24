@@ -84,7 +84,7 @@
 
 
     .mobile-barrier
-    - img_url_2 = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/203/hero/checkout.png?1413192968", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/589/hero/Screen_Shot_2015-02-23_at_8.55.37_PM.png?1424750186", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/565/thumb/photo_Aroyan_IMG_9250.jpg?1423245121"]
+    - img_url_2 = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/591/hero/Screen_Shot_2015-02-23_at_10.01.29_PM.png?1424754124", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/589/hero/Screen_Shot_2015-02-23_at_8.55.37_PM.png?1424750186", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/590/hero/Screen_Shot_2015-02-23_at_10.07.37_PM.png?1424754486"]
     .headline-container
       .lightline.left-side-line
       .lightheading.big-headline= titles[1]
@@ -181,9 +181,9 @@
 
     .col.col-md-6
       .price-box
-        .price-title.premium= price_member[0]
-        .price.premium= price_member[1]
-        .price-explain.premium= price_member[2].html_safe
+        .price-title= price_member[0]
+        .price= price_member[1]
+        .price-explain= price_member[2].html_safe
 
 
 
@@ -195,6 +195,36 @@
               .title Full Feature List
            
           .feature-list-content-wrapper
+            .premium
+              %h3 Membership Features
+              .access-block
+                .row.matrix_header
+                  .fa.fa-thumb-tack
+                  Top Results Position
+                .row.matrix_content
+                  Your adventures will be at the top of a location list when searched
+
+              .access-block
+                .row.matrix_header
+                  .fa.fa-users
+                  Dedicated Support
+                .row.matrix_content
+              
+                  An advlo representative to help upload & optimize all your adventures
+              .access-block
+                .row.matrix_header
+                  .fa.fa-share-square-o
+                  Redirect URL
+                .row.matrix_content
+                  Redirect the traveler to your own booking system on checkout or use Advlo's
+
+              .access-block
+                .row.matrix_header
+                  .fa.fa.fa-copy
+                  Zero Commission
+                .row.matrix_content
+                  0% commission on any of your adventure bookings
+
             .access-block
               .row.matrix_header
                 .fa.fa-cc-visa
@@ -217,13 +247,6 @@
                 Web pages for your host profile and each of your adventures
 
             .access-block
-              .row.matrix_header.premium.premium-border
-                .fa.fa.fa-copy
-                Zero Commission
-              .row.matrix_content
-                0% commission on any of your adventure bookings
-
-            .access-block
               .row.matrix_header
                 .fa.fa-star-half-o
                 Reviews / Ratings
@@ -237,20 +260,12 @@
               .row.matrix_content
                 SEO, web hosting, & keyword marketing to bring you more traffic
 
-
             .access-block
               .row.matrix_header
                 .fa.fa-money
                 Payout Options
               .row.matrix_content
                 Bank deposit or PayPal / payouts are initiated at the end of each week.
-
-            .access-block
-              .row.matrix_header.premium.premium-border
-                .fa.fa-thumb-tack
-                Top Results Position
-              .row.matrix_content
-                Your adventures will be at the top of a location list when searched
 
             .access-block
               .row.matrix_header
@@ -266,20 +281,12 @@
               .row.matrix_content
                 Easily manage all your adventures with one account
 
-
             .access-block
               .row.matrix_header
                 .fa.fa-mobile
                 Mobile Friendly
               .row.matrix_content
                 Manage adventures & reservations from your mobile device
-
-            .access-block
-              .row.matrix_header.premium.premium-border
-                .fa.fa-share-square-o
-                Redirect URL
-              .row.matrix_content
-                Redirect the traveler to your own booking & reservations system or use Advlo's
 
             .access-block
               .row.matrix_header
@@ -302,18 +309,10 @@
               .row.matrix_content
                 Get notifications when you receive a booking or direct message
 
-            .access-block
-              .row.matrix_header.premium.premium-border
-                .fa.fa-users
-                Dedicated Support
-              .row.matrix_content
-                An advlo representative to help upload & optimize all your adventures
 
-
-   
   
   .box.adventure_info_body
-    .white_background
+    .case_studies
       .headline-container
         .lightline.left-side-line
         .lightheading.big-headline Case Studies
@@ -413,7 +412,7 @@
 
     .box
       - if current_user
-        .jumbotron{:style => "background-image: url(#{image_path image}); text-align: center;"}
+        .jumbotron{:style => "background-image: url(#{image_path 'background/biklo_darken.jpg'}); text-align: center;"}
           %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: "margin-top: 10%;"} LIST YOUR ADVENTURE
       - else
         = render partial: 'signup'

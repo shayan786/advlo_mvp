@@ -56,22 +56,17 @@
 
   #homepage-text {
     position: relative;
-    top: 65px;
     text-align: center;
     width: 100%;
     margin-bottom: 30px;
+    margin-top: 140px;
 
-    .logo {
-      img {
-        height: 225px;
-      }
-    }
 
     #explanation {
       width: 50%;
       margin: 0 auto;
       text-shadow: -1px -1px 5px #000;
-      font-size: 1.6em;
+      font-size: 2.5em;
       color: #FFF;
       margin-top: 30px !important;
       margin-bottom: 15px;
@@ -88,7 +83,7 @@
         background-color: rgba(0,0,0,0.7);
         color: $advlo_orange;
         font-size: 1.2em;
-        border: 2px solid $advlo_orange;
+        border: none;
         cursor: pointer;
 
         &:hover {
@@ -99,10 +94,9 @@
 
       #location {
         height: 50px;
-        background-color: rgba(195,91,38,0.55);
+        background-color: rgba(0,0,0, 0.6);
         border: none;
         box-shadow: none;
-        border-bottom: 2px solid $advlo_orange;
         border-radius: 0px;
         font-size: 22px;
         color: #FFF;

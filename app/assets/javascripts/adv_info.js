@@ -3,7 +3,6 @@ function guideScroll(){
     $('html').css('overflow','scroll');
     $('.jumbotron').height('400px');
 
-
     var amount = $('.adventure_info_body').offset().top - 50
 
     if ($(window).width() < 765){
