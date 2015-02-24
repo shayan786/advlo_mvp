@@ -5,20 +5,21 @@
 	.panel {
 		background: rgba(0,0,0,0.5);
 		color: $white;
-		border-color: $light_gray;
+		border: none;
 		min-height: 200px;
 
     .overview_header {
       font-family: 'nexa_light';
+      font-weight: bold;
       font-size: 1.5em;
       color: $advlo_orange;
       text-align: center;
-      border-bottom: 1px solid $advlo_orange;
+      border-bottom: 2px solid $advlo_orange;
     }
 
     .overview_content {
       margin-top: 5px;
-      font-size: 1.3em;
+      font-size: 1.2em;
       color: #FFF;
       text-align: center;
     }
@@ -32,7 +33,6 @@
 
 			span {
 				word-wrap: break-word;
-				font-family: 'nexa_light';
 			}
 		}
 

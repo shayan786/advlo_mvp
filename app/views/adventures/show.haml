@@ -28,6 +28,9 @@
               - profile_img = "#{@current_guide.avatar_url}?type=large"
 
             .image-wrapper{style: "background: url('#{profile_img}') no-repeat center center;"}
+        .link-to-profile
+          %a{href: user_path(@current_guide)} Visit Profile
+
 
 
       .adventure-block

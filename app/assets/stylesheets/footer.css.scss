@@ -46,6 +46,7 @@
 	overflow-y: hidden !important;
 	border-top: 1px solid $light_gray;
 	padding: 8px 0 2px 0;
+	
 
 
 	.container {
@@ -385,9 +386,11 @@
 
 
 	.footer-text {
-		font-family: 'bebas_neue';
-		font-size: 18px;
+		font-family: 'nexa_light';
+		font-weight: bold;
+		font-size: 15px;
 		letter-spacing: 2px;
+		margin-top: 10px;
 	}
 
 	.social-row {

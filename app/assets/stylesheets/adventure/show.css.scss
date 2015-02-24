@@ -18,6 +18,16 @@
     margin-top: 52px;
   }
 
+  .link-to-profile {
+    margin-top: 4px;
+    a {
+      font-family: 'nexa_light';
+      font-style: italic;
+      font-size: 16px;
+      color: #fff;
+    }
+  }
+
   .adventure-show-infographic {
     z-index: 100;
     position: fixed;
@@ -145,14 +155,16 @@
     margin: 0 auto;
     margin-top: 5px;
     background-color: rgba(92,184,92,0.5);
+    border: none;
 
     span {
       color: #fff;
-      font-size: 34px;
+      font-size: 27px;
       position: relative;
       top: 2px;
       margin-right: 10px;
-      font-family: 'bebas_neue';
+      font-family: 'nexa_light';
+      font-weight: bold;
       margin-left: 10px;
     }
   }
@@ -208,7 +220,7 @@
           background: rgba(0,0,0,0.5);
           padding-left: 5px;
           padding-right: 5px;
-          border: 1px solid $light_gray;
+          border: none;
         }
 
         .readmore-js-toggle {
@@ -225,6 +237,8 @@
           margin-bottom: 15px;
           background-color: rgba(229,107,45, 0.5);
           border-color: $login_btn_color;
+          font-family: 'nexa_light';
+          font-weight: bold;
 
           .fa {
             padding-top: 4px;
@@ -272,9 +286,8 @@
           }
 
           .default-content {
-            font-family: 'nexa_light';
+            font-family: cabin_regular;
             font-size: 0.6em;
-            font-weight: bold;
             line-height: 1.0em;
           }
         }
@@ -283,16 +296,16 @@
         .default-title {
           color: $gray;
           font-family: 'nexa_light';
+          font-weight: bold;
           font-size: 0.6em;
         }
 
         .default-summary {
-          font-family: 'nexa_light';
+          font-family: cabin_regular;
           font-size: 0.6em;
           line-height: 1.3em;
           margin-top: 15px;
           margin-bottom: 15px;
-          font-weight: bold;
         }
 
         .social_btn {
@@ -472,9 +485,7 @@
               color: #fff;
             }
           }
-          
         }
-
         .guide-profile-image {
           width: 200px;
           height: 200px;
@@ -583,7 +594,7 @@
       position: relative;
       color: #fff;
       float: left;
-      margin-top: 17px;
+      margin-top: 11px;
       height: 100%;
       width: 100%;
       
@@ -597,6 +608,7 @@
         text-align: center;
         font-size: 24px;
         font-family: 'nexa_light';
+        font-weight: bold;
         text-transform: uppercase;
         background-color: rgba(0, 0, 0, 0.7);
         color: #fff;

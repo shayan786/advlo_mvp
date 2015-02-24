@@ -27,13 +27,9 @@
         
         %li
           %form
-            %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
+            %a.btn.btn-default.navbar-btn.header-button{href: "/partner"}
               Join as Host
 
-        %li
-          %form
-            %a.btn.btn-default.navbar-btn.header-button{href: "/blog"}
-              Blog
         
         - if current_user && count = action_required(current_user)
           %li
