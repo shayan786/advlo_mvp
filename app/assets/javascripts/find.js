@@ -69,6 +69,10 @@ function toggle_show_me_types() {
     $('#find .search_options #find_adventure_form #locals').val(false);
     $('#find .search_options #find_adventure_activity_form #locals').val(false);
 
+    if ($('#find .search_options #find_adventure_form #location').val().length > 0) {
+      $('#find .search_options #find_adventure_form').submit();
+    }
+
     $('#find .search_options #find_adventure_activity_form').fadeOut();
     $('#find .search_options #find_adventure_form').delay(400).fadeIn();
   })
@@ -80,6 +84,10 @@ function toggle_show_me_types() {
 
     $('#find .search_options #find_adventure_form #locals').val(true);
     $('#find .search_options #find_adventure_activity_form #locals').val(true);
+
+    if ($('#find .search_options #find_adventure_form #location').val().length > 0) {
+      $('#find .search_options #find_adventure_form').submit();
+    }
 
     $('#find .search_options #find_adventure_activity_form').fadeOut();
     $('#find .search_options #find_adventure_form').delay(400).fadeIn();
