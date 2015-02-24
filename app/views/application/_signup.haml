@@ -11,8 +11,8 @@
 
       %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form_travel'}
         = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-        = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => false)
-        = tag(:input, :type => "hidden", :name => "user[guide_type]", :value => '', id: 'guide_type')
+        = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => true)
+        = tag(:input, :type => "hidden", :name => "user[guide_type]", :value => '', class: 'guide_type_form')
         .form-group
           %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
         .form-group

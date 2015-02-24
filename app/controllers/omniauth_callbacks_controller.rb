@@ -21,7 +21,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_sign_in_path_for(resource)
-    if request.env['omniauth.params'] == {"affiliate" => "true"}
+
+    if request.env['omniauth.params']["is_guide"] == 'true'
+      @user.is_guide = true
+      @user.guide_type = request.env['omniauth.params']['guide_type']
+      @user.save
+
+      '/users/edit'
+    elsif request.env['omniauth.params'] == {"affiliate" => "true"}
       @user.affiliate = true
       @user.save
 

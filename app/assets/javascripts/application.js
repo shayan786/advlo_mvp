@@ -69,7 +69,7 @@ $(window).load(function() {
 
 setInterval(function(){
   $("#loader-overlay").fadeOut("slow");
-}, 5000);
+}, 3500);
 
 
 $(document).ajaxStart(function(){
