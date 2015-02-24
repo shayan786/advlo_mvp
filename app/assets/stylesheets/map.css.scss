@@ -1,0 +1,37 @@
+#map {
+	padding-top: 80px;
+
+	.panel {
+		.panel-heading {
+			padding-bottom: 5px;
+			font-size: 2.4em;
+			font-family: bebas_neue_bold;
+			letter-spacing: 2px;
+		}
+
+		.panel-body {
+			.sm_header_large {
+				font-size: 2em;
+				font-family: bebas_neue;
+				letter-spacing: 2px;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+#chartdiv {
+	width	: 100%;
+	height	: 500px;
+}						
+.amcharts-map-area {
+  -webkit-transition: -webkit-transform .5s cubic-bezier(0,.45,.15,2);
+  -webkit-transform-origin: 50% 50%;
+
+  transition: transform .5s cubic-bezier(0,.45,.15,2);
+  transform-origin: 50% 50%;
+}
+.amcharts-map-area:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);  
+}

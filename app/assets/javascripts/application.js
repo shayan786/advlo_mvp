@@ -45,6 +45,10 @@
 //= require zeroclipboard
 //= require event_tracking
 //= require sweet-alert.min
+//= require worldLow
+//= require coolmap
+//= require continentsLow
+//= coolmaps
 
 
 
