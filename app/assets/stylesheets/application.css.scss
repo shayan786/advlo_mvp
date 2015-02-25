@@ -218,3 +218,48 @@ select {
 .modal-open {
   padding-right: 0px !important;
 }
+
+@media only screen and (max-width: 771px) {
+
+  .host_box {
+    width: 85% !important;
+
+    .row {
+      margin: 0 !important;
+
+      .border {
+        width: auto;
+      }
+    }
+  }
+
+
+  .new_adventures {
+    padding-bottom: 0;
+  }
+
+  #bottom-login  {
+
+    .join-wrapper {
+      margin-top: 30px;
+    }
+
+    .why {
+      font-size: 17px;
+    }
+  }
+
+  .homepage-title {
+    width: 90%;
+    margin: 0 auto  !important;
+    font-size: 26px !important;
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+  }
+
+  .scroll-slow #homepage-text #find_adventure_form {
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 45px;
+  }
+}
