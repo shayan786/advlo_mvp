@@ -2,8 +2,12 @@
   #maui-logo
     = link_to (image_tag ('logos/advlo_header_logo.png')), '/'
   #active_admin_login
-    - scope = Devise::Mapping.find_scope!(resource_name)
-    = active_admin_form_for(resource, :as => resource_name, :url => send(:"#{scope}_session_path"), :html => { :id => "session_new" }) do |f|
+    / - scope = Devise::Mapping.find_scope!(resource_name)
+    / = active_admin_form_for(resource, :as => resource_name, :url => send(:"#{scope}_session_path"), :html => { :id => "session_new" }) do |f|
+
+    %form{"accept-charset" => "UTF-8", action: admin_user_session_path, method: "POST", id: "adventure_iten_form", "data-remote" => "true"}
+      = tag(:input, :type => "hidden", :value => "post", :name => "_method")
+      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
       %fieldset.inputs
         #admin_user_email_input.input.required.stringish
           %label.email_label{:for => "admin_user_email"}

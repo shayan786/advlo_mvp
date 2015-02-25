@@ -138,7 +138,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if request.path == '/admin/login' 
-      return
+      puts "Hello => #{request.path} :for:  #{request}"
+      return '/admin'
     end
 
     session[:previous_url]
