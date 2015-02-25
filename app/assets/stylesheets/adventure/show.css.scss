@@ -20,6 +20,8 @@
 
   .link-to-profile {
     margin-top: 20px;
+    z-index: 9999;
+    
     a {
       font-family: 'nexa_light';
       font-style: italic;
@@ -94,6 +96,7 @@
       width: 100%;
       float: left;
       top: 5px;
+      z-index: -1;
 
       #adventure-title {
         color: #fff;
@@ -751,10 +754,11 @@
     margin-right: 40px;
     margin-top: 10px;
     margin-bottom: 15px;
-    line-height: 25px;
+
+    font-family: cabin_regular;
+    font-size: 0.6em;
+    line-height: 1.3em;
     color: #fff;
-    font-family: 'cabin_regular';
-    font-size: 20px;
     display: none;
   }
 }

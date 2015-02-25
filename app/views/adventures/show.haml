@@ -28,8 +28,11 @@
               - profile_img = "#{@current_guide.avatar_url}?type=large"
 
             .image-wrapper{style: "background: url('#{profile_img}') no-repeat center center;"}
-        .link-to-profile
-          %a{href: user_path(@current_guide)} Visit Profile
+
+        - review_count = Review.where(adventure_id: @adventure.id).count
+        - if review_count == 0
+          .link-to-profile
+            %a{href: user_path(@current_guide)} Visit Profile
 
 
 
@@ -37,7 +40,6 @@
         #adventure-reviews-count
           - if @adventure.title.length > 25
             .add_space
-          - review_count = Review.where(adventure_id: @adventure.id).count
           - case review_count
           - when 0
             //%em= "No Reviews"
