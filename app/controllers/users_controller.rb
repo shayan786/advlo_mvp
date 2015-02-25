@@ -32,8 +32,8 @@ class UsersController < ApplicationController
   def update_profile_img
 
     @user = User.find_by_id(params[:user_id])
-    puts "@user.inspect =====> #{@user.inspect}"
 
+    puts params[:user][:avatar]
     @user.avatar = params[:user][:avatar]
     @user.save
 
