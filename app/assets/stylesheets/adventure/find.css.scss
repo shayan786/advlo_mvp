@@ -370,6 +370,36 @@
   }
 }
 
+/* google geocomplete css */
+.pac-container {
+  font-family: cabin_regular !important;
+  background: rgba(0,0,0,0.7);
+
+  .pac-item {
+    font-size: 1.2em;
+    color: #FFF;
+    padding: 5px 15px;
+
+    &:hover {
+      background-color: $advlo_orange;
+    }
+  }
+
+  .pac-matched {
+    font-size: 1em;
+    color: #FFF;
+  }
+
+  .pac-item-query {
+    font-size: 1em;
+    color: #FFF;
+  }
+
+  .pac-icon {
+    display: none;
+  }
+}
+
 /* tablet */
 @media screen and (min-width: 501px) and (max-width: 800px){ 
     #find {
