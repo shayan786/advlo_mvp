@@ -39,7 +39,7 @@ group :development, :test do
   gem 'rb-fsevent',              :require => false
 end
 
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook' 

@@ -9,8 +9,8 @@ GIT
       multi_json (~> 1.0, >= 1.0.3)
 
 GIT
-  remote: git://github.com/gregbell/active_admin.git
-  revision: a0bf8da21b7a6f37e1ad28790187e0244a0d5466
+  remote: git://github.com/activeadmin/activeadmin.git
+  revision: 6bde1f57ec5f9b724c21e5af146678f4ade839bc
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
