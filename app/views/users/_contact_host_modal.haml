@@ -96,11 +96,6 @@
   = render partial: 'sign_in_modal'
 
   :javascript
-    $('#contact_host_modal .contact_btn').click(function(e){
-      e.preventDefault();
-
-      $('#contact_host_form').submit();
-    })
 
     $('#contact_host_modal .existing_user').click(function(){
       $('#contact_host_modal').modal('hide');
