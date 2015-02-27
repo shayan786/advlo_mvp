@@ -52,7 +52,7 @@ $(document).ready(function(){
   footerInit();
   headerLoginToggle();
   mobileHeaderLoginToggle();
-  contact_host_set_values();
+  
   // fixes the bug that you can click right below a modal to close it
   $('.modal-dialog').height($('.modal-body').last().css('height'))
 
