@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   # before_filter :get_poll
 
+  def map
+  end
 
   def giveaway
     if params[:promo_code]
@@ -155,6 +157,15 @@ class ApplicationController < ActionController::Base
   end
 
   def homepage
+
+    na = Adventure.approved.where(region: 'North America').count
+    la = Adventure.approved.where(region: 'Latin America').count
+    af = Adventure.approved.where(region: 'Africa').count
+    eu = Adventure.approved.where(region: 'Europe').count
+    oc = Adventure.approved.where(region: 'Oceania').count
+    as = Adventure.approved.where(region: 'Asia').count
+    @adventure_counts = [na,la,af,oc,as,eu]
+
     @hero_image = HeroImage.where(region: 'Homepage').first
     @feat_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
     

@@ -91,6 +91,7 @@ Rails.application.routes.draw do
   post '/find/filter_adventure'       => 'adventures#find_adventure_filter'
   post '/find/filter_local'           => 'adventures#find_local_filter'             
 
+  get '/map'                          => 'application#map'
   #adventure controller routes
   get '/adventures/info'              => 'adventures#hosting_info'
   get '/adventures/request'           => 'adventures#request_info'

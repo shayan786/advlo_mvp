@@ -32,6 +32,17 @@
   display:none;
 }
 
+#chartdiv {
+  width : 100%;
+  height  : 500px;
+}       
+
+.map-panel {
+  background-image: url("http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/583/hero/image.jpg?1424671710");
+  background-size: 100%;
+  opacity: 0.8;
+}    
+
 #honeypot {
   width: 65%;
   visibility: hidden;

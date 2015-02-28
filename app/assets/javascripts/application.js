@@ -45,6 +45,8 @@
 //= require zeroclipboard
 //= require event_tracking
 //= require sweet-alert.min
+//= require amcharts
+//= require continentsLow
 
 
 
