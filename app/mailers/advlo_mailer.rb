@@ -58,7 +58,7 @@ class AdvloMailer < ActionMailer::Base
 
     # Only send the email if the adventure is not published
     if !@adventure.published && @adventure.title && @adventure.title != ''
-      mail(to: @user.email, from: 'shayan@advlo.com', subject: "[ADVLO] : Publish your adventure!") do |format|
+      mail(to: @user.email, from: 'founders@advlo.com', subject: "[ADVLO] : Publish your adventure!") do |format|
         format.html { render layout: 'simple_shayan' }
         format.text
       end
