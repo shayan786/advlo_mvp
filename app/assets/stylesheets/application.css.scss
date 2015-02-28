@@ -32,6 +32,17 @@
   display:none;
 }
 
+#chartdiv {
+  width : 100%;
+  height  : 500px;
+}       
+
+.map-panel {
+  background-image: url("http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/583/hero/image.jpg?1424671710");
+  background-size: 100%;
+  opacity: 0.8;
+}    
+
 #honeypot {
   width: 65%;
   visibility: hidden;
@@ -201,10 +212,10 @@ select {
 }
 .nexa-light {
   font-family: 'nexa_light' !important;
+  font-weight: bold;
 }
 .nexa-bold {
   letter-spacing: 3px;
-  font-weight: bold;
 }
 
 .brick-wrapper .adventure-brick .image-wrapper .copy  .profile-page-title {
@@ -217,4 +228,49 @@ select {
 
 .modal-open {
   padding-right: 0px !important;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .host_box {
+    width: 85% !important;
+
+    .row {
+      margin: 0 !important;
+
+      .border {
+        width: auto;
+      }
+    }
+  }
+
+
+  .new_adventures {
+    padding-bottom: 0;
+  }
+
+  #bottom-login  {
+
+    .join-wrapper {
+      margin-top: 30px;
+    }
+
+    .why {
+      font-size: 17px;
+    }
+  }
+
+  .homepage-title {
+    width: 90%;
+    margin: 0 auto  !important;
+    font-size: 26px !important;
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+  }
+
+  .scroll-slow #homepage-text #find_adventure_form {
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 45px;
+  }
 }

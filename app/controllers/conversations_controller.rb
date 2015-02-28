@@ -41,6 +41,7 @@ class ConversationsController < ApplicationController
 
   def new 
     # Create a new conversation
+    
     conversation = Conversation.new(
         :adventure_id => params[:conversation][:adventure_id],
         :sender_id => params[:conversation][:user_id],

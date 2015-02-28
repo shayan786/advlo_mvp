@@ -69,6 +69,10 @@ function toggle_show_me_types() {
     $('#find .search_options #find_adventure_form #locals').val(false);
     $('#find .search_options #find_adventure_activity_form #locals').val(false);
 
+    if ($('#find .search_options #find_adventure_form #location').val().length > 0) {
+      $('#find .search_options #find_adventure_form').submit();
+    }
+
     $('#find .search_options #find_adventure_activity_form').fadeOut();
     $('#find .search_options #find_adventure_form').delay(400).fadeIn();
   })
@@ -80,6 +84,10 @@ function toggle_show_me_types() {
 
     $('#find .search_options #find_adventure_form #locals').val(true);
     $('#find .search_options #find_adventure_activity_form #locals').val(true);
+
+    if ($('#find .search_options #find_adventure_form #location').val().length > 0) {
+      $('#find .search_options #find_adventure_form').submit();
+    }
 
     $('#find .search_options #find_adventure_activity_form').fadeOut();
     $('#find .search_options #find_adventure_form').delay(400).fadeIn();
@@ -395,7 +403,7 @@ function host_index_effects() {
 }
 
 function contact_host_set_values() {
-  $('.host_contact_btn, .msg_btn, .contact_btn').click(function(){
+  $('.contact_btn, .host_contact_btn, .msg_btn').click(function(){
     var host_name = $(this).data('host-name');
     var host_id = $(this).data('host-id');
 

@@ -18,26 +18,6 @@ h1 {
 }
 
 
-.join-text {
-  font-family: 'bebas_neue' !important;
-  color: #fff;
-  text-align: center;
-  font-size: 3em;
-  letter-spacing: 6px;
-  margin-top: 40px;
-  float: left;
-  text-align: center;
-  width: 100%;
-  text-shadow: 1px 1px 6px #000;
-}
-
-@media screen and (max-width: 600px){
-  .join-text {
-    font-size: 1.5em;
-  }
-}
-
-
 .block {
   display: none;
   position: relative;
@@ -53,7 +33,48 @@ h1 {
   position: relative;
   float: left;
   width: 100%;
+  min-height: 500px;
 
+
+  .join-wrapper {
+    margin-top: 75px;
+  }
+
+  .why {
+    font-family: cabin_bold !important;
+    width: 50%;
+    position: relative;
+    margin: 0 auto;
+    top: 14px;
+    color: #fff;
+    text-shadow: 1px 0px 5px #000;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+
+  .join-text {
+    font-family: 'nexa_light';
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    font-size: 3em;
+    letter-spacing: 6px;
+    margin-top: 20px;
+    float: left;
+    text-align: center;
+    width: 100%;
+    text-shadow: 1px 1px 6px #000;
+  }
+
+  @media screen and (max-width: 600px){
+    .join-text {
+      font-size: 1.5em;
+    }
+    .why {
+      width: 95%;
+    }
+  }
 
   .advlo-signup-bottom {
     position: relative;

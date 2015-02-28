@@ -414,13 +414,13 @@ function usersInit(){
 function usersShowInit(){
   profileSlider();
   centerGuideImage();
+  contact_host_set_values();
   profileCenterImage();
   user_rating_show();
   user_adv_rating_show();
   host_contact_validator();
   contact_form_validator();
   sign_in_sign_up_modal();
-  contact_host_set_values();
 }
 
 function travelFundInit(){

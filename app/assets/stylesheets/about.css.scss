@@ -4,6 +4,17 @@
   background: asset-url("background/banner_background.png");
   background-size: 100%;
 
+  .about-video-wrapper {
+    margin-top: 60px;
+    margin-bottom: 90px;
+    height: 400px;
+
+    iframe {
+      height: 400px;
+      width: 100%;
+    }
+  }
+
   .personal_img {
     margin: 20px auto 10px auto;
     border-radius: 50%;

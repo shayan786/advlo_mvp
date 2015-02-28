@@ -72,6 +72,18 @@
 	background: rgba(0, 0, 0, 0.6);
 	padding-bottom: 40px;
 
+	h3 {
+		font-family: 'cabin_bold';
+		color: #fff;
+		font-size: 17px;
+		text-align: center;
+		width: 90%;
+		margin: 0 auto;
+		margin-bottom: 60px;
+		letter-spacing: 1px;
+		line-height: 25px;
+	}
+
 	.advlo_connection_img {
 		background: asset-url('icons/advlo_connection.png') center center no-repeat;
 		background-size: cover !important;
@@ -133,14 +145,15 @@
 	}
 
 	.title {
-		font-family: bebas_neue;
+		font-family: nexa_light;
+		font-weight: bold;
 		font-size: 3.8em;
 		color: #FFF;
-		letter-spacing: 2px;
+		letter-spacing: 1px;
 		font-weight: bold;
-		margin-bottom: 50px;
-		background-color: rgba(195, 91, 38, 0.7);
 		padding-top: 10px;
+		padding-top: 60px;
+		padding-bottom: 30px;
 	}
 
 	.dot {

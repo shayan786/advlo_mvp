@@ -40,7 +40,8 @@
     $('#individual-info').fadeIn();
     $('#business-info').hide();
 
-    $('#guide_type').val('local')
+    $('.guide_type_form').val('local')
+    $('.homepage_fb_btn').attr('href', "/users/auth/facebook?is_guide=true&guide_type=local");
 
     infoSlider('local');
     mobileSlider('local');
@@ -55,7 +56,8 @@
     $('#business-info').fadeIn();
     $('#individual-info').hide();  
 
-    $('#guide_type').val('business')
+    $('.guide_type_form').val('business')
+    $('.homepage_fb_btn').attr('href', "/users/auth/facebook?is_guide=true&guide_type=business");
 
     infoSlider('business');
     mobileSlider('business');

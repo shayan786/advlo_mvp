@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_filter :store_location
-  before_filter :get_poll
+  # before_filter :get_poll
 
   def map
   end
@@ -139,11 +139,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if request.path == '/admin/login' 
-      return
+    puts "#{admin_dashboard_path}"
+    puts "Hello => #{request.path} :for:  #{request}"
+    if request.path != '/admin/login'
+      session[:previous_url]
     end
-
-    session[:previous_url]
   end
 
   def after_sign_out_path_for(resource)
@@ -159,7 +159,14 @@ class ApplicationController < ActionController::Base
   def homepage
     @hero_image = HeroImage.where(region: 'Homepage').first
     @feat_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
-    @new_adventures = Adventure.approved.order('id desc').limit(3)
+    
+    nearby_adventures = Adventure.near(request.remote_ip,200).approved
+
+    if nearby_adventures.length > 2
+      @nearby_adventures = nearby_adventures.limit(3)
+    else
+      @new_adventures = Adventure.approved.order('id desc').limit(3)
+    end
 
     @rot_adventures = Adventure.approved.where("id = ? OR id = ? OR id = ? OR id = ?",154,210,183,130)
 

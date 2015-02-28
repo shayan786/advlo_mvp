@@ -12,7 +12,7 @@
       = adv.users.first.get_first_name
   #homepage-text       
     #explanation
-      Search for local hosts to find unique adventure travel experiences
+      Connect with local guides and book unique adventure travel experiences
 
 
     .row
@@ -20,7 +20,7 @@
         .col-md-6.col-md-offset-3
           .form-group
             .input-group
-              %input.form-control{placeholder: "Where to?", name: "location", id: "location", autofocus: true}
+              %input.form-control{placeholder: "Enter Destination", name: "location", id: "location", onfocus: "focusFunction()", onblur: "unfocusFunction()"}
               .input-group-addon
                 %i.fa.fa-search
 
@@ -86,3 +86,9 @@
     }
   });
 
+  function focusFunction() {
+    $("#location").attr('placeholder',"");
+  }
+  function unfocusFunction() {
+    $("#location").attr('placeholder',"Enter Destination");
+  }

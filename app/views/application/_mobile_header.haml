@@ -44,10 +44,10 @@
 
 :javascript
   $(document).ready(function(){
-    $('#clickout').css('width',$(window).width() - $('#mobile-navbar').width())
 
     $('#mobile-toggle-button').click(function(){
       $('#clickout').css('display','block');
+      $('#clickout').css('width',$(window).width() - $('#mobile-navbar').width())
       $('#mobile-navbar').animate({
         left: 0
       },100);
@@ -55,11 +55,11 @@
     })
 
     $('#exit-nav, #clickout').click(function(){
-      $(this).hide()
       $('#mobile-navbar').animate({
         left: '-250px'
       }, 100);
       $('#mobile-navbar').css('box-shadow','none')
+      $('#clickout').css('display','none');
     })
 
 

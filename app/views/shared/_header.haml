@@ -22,18 +22,14 @@
       %ul.nav.navbar-nav.navbar-right.login-right
         %li.header-button
           %button.btn.btn-default.navbar-btn#find-adventures
-            Adventures
+            All Adventures
             %b.caret
         
         %li
           %form
-            %a.btn.btn-default.navbar-btn.header-button{href: "/adventures/info"}
+            %a.btn.btn-default.navbar-btn.header-button{href: "/partner"}
               Join as Host
 
-        %li
-          %form
-            %a.btn.btn-default.navbar-btn.header-button{href: "/blog"}
-              Blog
         
         - if current_user && count = action_required(current_user)
           %li

@@ -4,7 +4,7 @@
       .footer_text
         .row
           .col-md-12.footer-text
-            %a{href: "/adventures/info"}
+            %a{href: "/partner"}
               PARTNERS
             .dash= " - " 
             %a{href: "/affiliate"}
@@ -38,7 +38,7 @@
           
 
     - unless current_user
-      = render partial: 'application/sign_up_please.haml'
+      // = render partial: 'application/sign_up_please.haml'
       = render partial: 'application/member_modal.haml'
 
 

@@ -32,8 +32,8 @@ class UsersController < ApplicationController
   def update_profile_img
 
     @user = User.find_by_id(params[:user_id])
-    puts "@user.inspect =====> #{@user.inspect}"
 
+    puts params[:user][:avatar]
     @user.avatar = params[:user][:avatar]
     @user.save
 
@@ -113,35 +113,13 @@ class UsersController < ApplicationController
   def update_paypal_email
     user = User.find(params[:user_id])
 
-    # Verify paypal account
-    @api = PayPal::SDK::AdaptiveAccounts::API.new
+    user.update(paypal_email: params[:paypal_email])
 
-    @get_verified_status = @api.build_get_verified_status({
-      :emailAddress => "#{params[:paypal_email]}",
-      :matchCriteria => "NAME",
-      :firstName => "#{params[:paypal_first_name]}",
-      :lastName => "#{params[:paypal_last_name]}" 
-    })
-
-    @get_verified_status_response = @api.get_verified_status(@get_verified_status)
-
-    if @get_verified_status_response.success?
-      user.update(paypal_email: params[:paypal_email])
-
-      respond_to do |format|
-        if params[:paypal_update] == "1"
-          format.js {render "paypal_update.js", layout: false}
-        else
-          format.js {render "paypal.js", layout: false}
-        end
-      end
-    else
-      respond_to do |format|
-        if params[:paypal_update] == "1"
-          format.js {render "paypal_email_fail.js", layout: false}
-        else
-          format.js {render "paypal_email_fail.js", layout: false}
-        end
+    respond_to do |format|
+      if params[:paypal_update] == "1"
+        format.js {render "paypal_update.js", layout: false}
+      else
+        format.js {render "paypal.js", layout: false}
       end
     end
   end

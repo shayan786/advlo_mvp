@@ -1,27 +1,13 @@
 - set_meta_tags(get_meta_tags("About Us","About the Advlo Team","Christopher Knight, Shayan Dhanani, Jonathan Maser, Advlo Founders"))
 
 #about
-  - image_chris = "background/about_chris.jpg"
-  - image_jon = "background/about_jon.jpg"
-  - image_shayan = "background/about_shayan.jpg"
-
   .row
-    .col-md-4
-      .personal_img{style: "background: url(#{image_path image_chris}) center center no-repeat"}
-
-      .row.text-center 
-        %h3 CHRISTOPHER
-
-    .col-md-4
-      .personal_img{style: "background: url(#{image_path image_jon}) center center no-repeat"}
-
+    .col-md-6.col-md-offset-3
       .row.text-center
-        %h3 JON
-    .col-md-4
-      .personal_img{style: "background: url(#{image_path image_shayan}) center center no-repeat"}
-
-      .row.text-center
-        %h3 SHAYAN
+        .about-video-wrapper
+          .video-container
+            .embed-container
+              %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/99599469?title=0&portrait=0", :webkitallowfullscreen => ""}
 
 
   .border
@@ -30,7 +16,7 @@
   .about-wrapper
     .container
       %p.text-center.mission_statement
-        Our goal is to connect adventure travelers around the world with the most authentic locals. We have built the platform as something we want to use ourselves, and for the incredible guides around the globe who deserve to be seen. 
+        Our goal is to connect adventure travelers around the world with the most authentic locals guides and businesses.
             
   .col.md-12.text-center.press
     .container

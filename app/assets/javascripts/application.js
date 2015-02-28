@@ -45,10 +45,8 @@
 //= require zeroclipboard
 //= require event_tracking
 //= require sweet-alert.min
-//= require worldLow
-//= require coolmap
+//= require amcharts
 //= require continentsLow
-//= coolmaps
 
 
 
@@ -56,6 +54,7 @@ $(document).ready(function(){
   footerInit();
   headerLoginToggle();
   mobileHeaderLoginToggle();
+  
   // fixes the bug that you can click right below a modal to close it
   $('.modal-dialog').height($('.modal-body').last().css('height'))
 
@@ -73,7 +72,7 @@ $(window).load(function() {
 
 setInterval(function(){
   $("#loader-overlay").fadeOut("slow");
-}, 5000);
+}, 3500);
 
 
 $(document).ajaxStart(function(){

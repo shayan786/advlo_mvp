@@ -39,6 +39,7 @@ function infoSlider(type){
     var sliderName = type + 'Slider';
     var sliderName = new Swiper('.' + type + '-slider',{
       mode:'horizontal',
+      speed: 600,
       autoplayDisableOnInteraction: true,
       autoplay: 6000, 
       onSlideChangeStart: function(swiper){
@@ -63,6 +64,7 @@ function mobileSlider(type){
     var sliderName = type + 'Slider';
     var sliderName = new Swiper('.' + type + '-swiper',{
       mode:'horizontal',
+      speed: 600,
       autoplayDisableOnInteraction: true,
       autoplay: 5000, 
       onSlideChangeStart: function(swiper){

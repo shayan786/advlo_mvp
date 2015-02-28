@@ -1,18 +1,23 @@
 #feat_advs {
-	min-height: 400px;
-	padding-bottom: 60px;
-	margin: 0 auto;
+	padding-bottom: 35px;
+  background-color: rgba(0,0,0,0.5);
 
   .row {
     .title {
-      font-family: bebas_neue;
+      font-family: nexa_light;
+      font-weight: bold;
       font-size: 3.8em;
       color: #FFF;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       font-weight: bold;
-      margin-bottom: 35px;
-      background-color: rgba(195, 91, 38, 0.7);
       padding-top: 10px;
+      padding-top: 60px;
+      padding-bottom: 60px;
     }
   }
+}
+
+.new_adventures {
+  background-color: rgba(255,255,255,0.1) !important;
+  padding-bottom: 90px !important;
 }
