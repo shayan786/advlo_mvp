@@ -37,11 +37,12 @@
               .row
                 #chartdiv
 
+
 :javascript
   var map = AmCharts.makeChart("chartdiv", {
 
     type: "map",
-      pathToImages: "http://www.amcharts.com/lib/3/images/",
+    pathToImages: "http://www.amcharts.com/lib/3/images/",
     handDrawn: true,
     dragMap: false,
 
@@ -60,63 +61,68 @@
 
       areas: [{
         "id": "africa",
-        "title": "Africa",
+        "title": "Africa" + "( #{@adventure_counts[2]} )",
         "pattern": {
           "url": "http://www.amcharts.com/lib/3/patterns/black/pattern1.png",
           width: 4,
           height: 4,
           color:"#FE9A2E"
-        }
+        },
+        url: "/adventures?region=Africa"
       }, {
         "id": "asia",
-        "title": "Asia",
+        "title": "Asia" + "( #{@adventure_counts[4]} )",
         "pattern": {
           "url": "http://www.amcharts.com/lib/3/patterns/black/pattern2.png",
           width: 4,
           height: 4,
           color:"#642EFE"
-        }
+        },
+        url: "/adventures?region=Asia"
       }, {
         "id": "australia",
-        "title": "Australia",
+        "title": "Oceania" + "( #{@adventure_counts[3]} )",
         "pattern": {
           "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
           width: 4,
           height: 4,
          color:"#FACC2E"
-        }
+        },
+        url: "/adventures?region=Oceania"
       }, {
         "id": "europe",
-        "title": "Europe",
+        "title": "Europe" + "( #{@adventure_counts[5]} )",
         "pattern": {
           "url": "http://www.amcharts.com/lib/3/patterns/black/pattern4.png",
           width: 4,
           height: 4,
           color:"#FE2E64"
-        }
+        },
+        url: "/adventures?region=Europe"
       }, {
         "id": "north_america",
-        "title": "North America",
+        "title": "North America" + "( #{@adventure_counts[0]} )",
         "pattern": {
           "url": "http://www.amcharts.com/lib/3/patterns/black/pattern5.png",
           width: 4,
           height: 4,
           color:"#58FA82"
-        }
+        },
+        url: "/adventures?region=North-America"
       }, {
         "id": "south_america",
-        "title": "Latin America",
+        "title": "Latin America" + "( #{@adventure_counts[1]} )",
         "pattern": {
           "url": "http://www.amcharts.com/lib/3/patterns/black/pattern6.png",
           width: 4,
           height: 4,
-          color:"#000000"
-        }
+          color:"#2EFEF7"
+        },
+        url: "/adventures?region=Latin-America"
       }]
     },
     zoomControl: {
       panControlEnabled: false,
       zoomControlEnabled: false
     }
-
   });
