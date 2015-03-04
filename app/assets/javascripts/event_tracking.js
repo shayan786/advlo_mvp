@@ -1,10 +1,6 @@
 function homepageGoogleTracking(){
   // signups
 
-  // $('#fb-top-signup').on('click', function() {
-  //   ga('send', 'event', 'submit', 'click', '#fb-top-signup');
-  // });
-
   // $('#submit-email-login').on('click', function() {
   //   ga('send', 'event', 'submit', 'homepageclick', 'top-email-signup');
   // });

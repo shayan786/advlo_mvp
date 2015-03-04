@@ -37,7 +37,7 @@
         .col-md-6.col-md-offset-3
           .form-group
             .input-group
-              %input.form-control{placeholder: "Enter Location", name: "location", id: "location", autofocus: true}
+              %input.form-control{placeholder: "Enter Destination", name: "location", id: "location", onfocus: "focusFunction()", onblur: "unfocusFunction()"}
               .input-group-addon
                 %i.fa.fa-search
 
@@ -68,6 +68,7 @@
 
 :javascript
   adventureFind();
+  
 
 
 - if params[:location]

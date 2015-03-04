@@ -64,6 +64,22 @@ $(document).ready(function(){
 })
 
 
+
+
+function focusFunction() {
+  $("#location").attr('placeholder',"");
+}
+function unfocusFunction() {
+  $("#location").attr('placeholder',"Enter Destination");
+}
+function trackSearch(e) {
+  alert('')
+  e.preventDefault();
+  console.log($(this))
+  ga('send', 'event', 'submit', 'click', '#fb-top-signup');
+}
+
+
 // LOADER RELATED FUNCTIONS
 $(window).load(function() {
   // Animate loader off screen

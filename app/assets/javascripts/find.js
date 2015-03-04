@@ -1,6 +1,6 @@
 function find_input_geocomplete() {
-  $('#find .search_options #location').geocomplete()
-  .bind("geocode:result", function(event, result){
+  $('#find .search_options #location').geocomplete().bind("geocode:result", function(event, result){
+    ga('send', 'event', 'search', 'location', $(this).val() );
   	$('#find .search_options #find_adventure_form').submit();
   })
 }
