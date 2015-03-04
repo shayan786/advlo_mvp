@@ -120,6 +120,7 @@ class MarketingMailer < ActionMailer::Base
   def jon_market_host_outreach(email, name, reference=nil)
     @email = email
     @reference = reference
+
     @name = name
 
     mail(to: @email, from: 'jon@advlo.com', subject: "Adventure Marketplace") do |format|
