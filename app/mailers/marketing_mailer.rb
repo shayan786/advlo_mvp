@@ -123,7 +123,7 @@ class MarketingMailer < ActionMailer::Base
     @email = email
     @reference = reference
 
-    mail(to: @email, from: 'support@advlo.com', subject: "Adventure Travel Marketplace", bcc: "advlo@pipedrivemail.com") do |format|
+    mail(to: @email, from: 'founders@advlo.com', subject: "Adventure Travel Platform", bcc: "advlo@pipedrivemail.com") do |format|
       format.html { render layout: 'simple_jon' }
       format.text
     end
