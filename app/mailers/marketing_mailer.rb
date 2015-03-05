@@ -117,13 +117,13 @@ class MarketingMailer < ActionMailer::Base
 
   #--------------------- OUTREACH EMAILS -----------------------------------------
 
-  def jon_market_host_outreach(email, name, reference=nil)
+
+
+  def jon_market_host_outreach(email, reference=nil)
     @email = email
     @reference = reference
 
-    @name = name
-
-    mail(to: @email, from: 'jon@advlo.com', subject: "Adventure Marketplace") do |format|
+    mail(to: @email, from: 'support@advlo.com', subject: "Adventure Travel Marketplace", bcc: "advlo@pipedrivemail.com") do |format|
       format.html { render layout: 'simple_jon' }
       format.text
     end
