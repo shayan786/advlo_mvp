@@ -25,15 +25,29 @@
     .btn.btn-danger.cancel_subscription_btn{"data-adventure-id" => "#{@adventure.id}", "data-host-id" => "#{@adventure.users.first.id}"}
       %i.fa.fa-times
       CANCEL MEMBERSHIP
+
   - elsif Time.now < Time.at(stripe_subscription_obj.current_period_end)
     YOUR MEMBERSHIP HAS BEEN CANCELLED BUT IS STILL ACTIVE UNTIL
     %br
     %b= Time.at(stripe_subscription_obj.current_period_end).strftime("%m-%d-%Y")
 
+
   %br
   %br
-  To modify this membership, change your re-direct link, or if you have any questions please contact us at: 
+  To modify this membership, or if you have any questions please contact us at: 
   = mail_to 'support@advlo.com'
+
+
+  - if @adventure.subscription_redirect_url
+    %hr
+    %h3 Redirect Url
+    %form{"accept-charset" => "UTF-8", action: '/update/redirect_url', method: "POST", id: "redirect_url", 'data-remote' => true}
+      = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      = tag(:input, :type => "text", :name => "redirect_url", :value => @adventure.subscription_redirect_url, id: 'redirect_url_update')
+
+      %br
+      %br
+      %input.btn.btn-primary{type: 'submit', value: 'UPDATE', id: 'update_redirect_url'}
 
   %br
   %br

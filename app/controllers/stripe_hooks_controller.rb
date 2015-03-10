@@ -77,7 +77,7 @@ class StripeHooksController < ApplicationController
     user = User.find_by_stripe_subscription_id(sub_id)
     
     user.adventures.each do |adv|
-      adv.redirect_url = nil
+      adv.subscription_redirect_url = nil
       adv.save
     end
 

@@ -100,10 +100,12 @@ Rails.application.routes.draw do
   get '/adventures/create_prefill'		=> 'adventures#create_prefill'
   post '/adventures/requests'         => 'adventures#requests'
 
+
   get '/adventures/filter',           to: 'adventures#filter'
 
   resources :adventures
   resources :adventure_steps
+  post '/update/redirect_url'         => 'adventure_steps#update_redirect'
   
   #events
   resources :events

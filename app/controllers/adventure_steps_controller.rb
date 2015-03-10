@@ -5,6 +5,7 @@ class AdventureStepsController < ApplicationController
 
   def show
 
+
     if params[:adventure_id]
       @adventure = Adventure.find_by_id(params[:adventure_id])
     else
@@ -26,6 +27,8 @@ class AdventureStepsController < ApplicationController
     @adventure ? session[:adventure_id] = @adventure.id : nil
 
     # Prevent URL injection
+
+    
     case params[:id]
 
     when "basic"
@@ -79,6 +82,18 @@ class AdventureStepsController < ApplicationController
         end
       else
         redirect_to "/adventure_steps/payment?adventure_id=#{@adventure.id}", notice: "Please add a bank account or paypal email for this adventure"
+      end
+    end
+
+  end
+
+  def update_redirect
+    @adventure = Adventure.find(session[:adventure_id])
+    @adventure.subscription_redirect_url = params[:redirect_url]
+    
+    if @adventure.save 
+      respond_to do |format|
+        format.js {render action:'update_redirect.js', layout: false}
       end
     end
 
