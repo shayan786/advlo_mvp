@@ -69,10 +69,6 @@ GEM
       activesupport (= 4.1.0)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    active_admin_editor (1.1.0)
-      activeadmin (>= 0.4.0)
-      ejs
-      rails (>= 3.0.0)
     activemodel (4.1.0)
       activesupport (= 4.1.0)
       builder (~> 3.1)
@@ -111,8 +107,6 @@ GEM
       thor
     buftok (0.2.0)
     builder (3.2.2)
-    celluloid (0.16.0)
-      timers (~> 4.0.0)
     childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
@@ -150,10 +144,6 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    ejs (1.1.1)
-    em-websocket (0.5.1)
-      eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.6.0)
     equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.7)
@@ -165,24 +155,10 @@ GEM
     ffi (1.9.6)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
-    formatador (0.2.5)
     formtastic (3.1.3)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.1.1)
     geocoder (1.2.7)
-    guard (2.12.4)
-      formatador (>= 0.2.4)
-      listen (~> 2.7)
-      lumberjack (~> 1.0)
-      nenv (~> 0.1)
-      notiffany (~> 0.0)
-      pry (>= 0.9.12)
-      shellany (~> 0.0)
-      thor (>= 0.18.1)
-    guard-livereload (2.4.0)
-      em-websocket (~> 0.5)
-      guard (~> 2.8)
-      multi_json (~> 1.8)
     haml (4.0.6)
       tilt
     haml-rails (0.8.2)
@@ -197,7 +173,6 @@ GEM
     hashie (3.4.0)
     hike (1.2.3)
     hirefire-resource (0.3.5)
-    hitimes (1.2.2)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -227,11 +202,6 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (2.8.5)
-      celluloid (>= 0.15.2)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
-    lumberjack (1.0.9)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -239,7 +209,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     meta-tags (2.0.0)
       actionpack (>= 3.0.0)
-    method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.2)
     minitest (5.5.1)
@@ -247,14 +216,10 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
-    nenv (0.2.0)
     netrc (0.10.3)
     newrelic_rpm (3.10.0.279)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    notiffany (0.0.6)
-      nenv (~> 0.1)
-      shellany (~> 0.0)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -288,13 +253,7 @@ GEM
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
     rack (1.5.2)
-    rack-livereload (0.3.15)
-      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.0)
@@ -324,9 +283,6 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.1)
-    rb-fsevent (0.9.4)
-    rb-inotify (0.9.5)
-      ffi (>= 0.5.0)
     rdoc (4.2.0)
       json (~> 1.4)
     remotipart (1.2.1)
@@ -379,9 +335,7 @@ GEM
     shareable (1.1.4)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    shellany (0.0.1)
     simple_oauth (0.3.1)
-    slop (3.6.0)
     spring (1.3.2)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -403,8 +357,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    timers (4.0.1)
-      hitimes
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -441,7 +393,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_admin_editor
   activeadmin!
   aws-sdk (< 2.0)
   better_errors
@@ -458,8 +409,6 @@ DEPENDENCIES
   devise
   font-awesome-rails
   geocoder
-  guard (>= 2.2.2)
-  guard-livereload
   haml-rails
   hirefire-resource
   instagram!
@@ -476,10 +425,8 @@ DEPENDENCIES
   paypal-sdk-merchant
   pg
   phony_rails
-  rack-livereload
   rails (= 4.1.0)
   rails_12factor
-  rb-fsevent
   remotipart (~> 1.2)
   roadie-rails
   rspec-rails

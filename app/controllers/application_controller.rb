@@ -139,10 +139,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    puts "#{admin_dashboard_path}"
-    puts "Hello => #{request.path} :for:  #{request}"
     if request.path != '/admin/login'
       session[:previous_url]
+    else
+      respond_to do |format|
+        format.html {redirect_to "/admin"}
+        format.js {redirect_to "/admin"}
+      end
     end
   end
 

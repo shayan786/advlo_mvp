@@ -1,5 +1,13 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  before_filter :check_for_bots
+
+  def check_for_bots
+    if params[:honeypot] != '' && params[:honeypot] != nil
+      redirect_to '/' and return
+    end
+  end
+
   # This is the default 'my adventures' page
   def dashboard
     if !current_user

@@ -24,6 +24,8 @@
             %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]"}
           .form-group
             %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
+          .honeypot
+            %input.form-control{type: "text", name: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
           .row
             %input.btn.btn-primary.sign_up_btn{name: "sign_up", type: "submit", value: "SIGN UP"}
 

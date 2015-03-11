@@ -23,7 +23,7 @@
       .container
         %form{"accept-charset" => "UTF-8", action: "/adventures/requests", method: "POST", id: "request_page_form", "data-remote" => "true"}
           = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-          #honeypot
+          .honeypot
             %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
           .form-group.row
             .col-md-4 

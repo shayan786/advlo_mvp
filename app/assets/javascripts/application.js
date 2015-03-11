@@ -274,8 +274,9 @@ $(document).ready(function(){
 
 function footerInit(){
 
+
   $('#contact_form .contact_btn').click(function() {
-    if($('#honeypot input').val() == ''){
+    if($('.honeypot input').val() == ''){
       $('#contact_form').submit();
     } else {
       location.reload();
