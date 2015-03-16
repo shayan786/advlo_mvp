@@ -70,8 +70,16 @@
                       - share_url = "#{root_url}adventures/#{adv.slug}"
                       %a.btn.btn-default.social_btn.fb{href: "#{share_url}", "data-title" => "#{adv.title}", "data-desc" => "#{adv.summary}", "data-image" => "#{adv.attachment.url(:medium)}", style: "margin-right: 5px;"}
                         %i.fa.fa-facebook
-                      .btn.btn-default.social_btn.twitter{style: "margin-right: 5px;"}
+                      .btn.btn-default.social_btn.twitter-dash{style: "margin-right: 5px;"}
                         %i.fa.fa-twitter
+                        :javascript
+                          $('.twitter-dash').click(function(){
+                            var encodedUrl = encodeURIComponent("http://advlo.com/adventures/"+ '#{adv.slug}');
+                            height = $(window).height();
+                            width = $(window).width();
+
+                            window.open("https://twitter.com/share?url=" + 'www.advlo.com' + "&text=%23AdventureLocal - Check out my adventure on @Advlo_ - " + encodedUrl, 'sharer', 'top=' + (height/3) + ',left=' + (width/3) + ',toolbar=0,status=0,width=' + 500 + ',height=' + 500);
+                          })
                       %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{share_url}", onclick: "javascript:window.open(this.href,
                 '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"}
                         %i.fa.fa-google-plus 
@@ -86,5 +94,7 @@
 
   $(document).ready(function() {
     swal_delete_adventure();
+
+    
   })
   

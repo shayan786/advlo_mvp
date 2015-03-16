@@ -300,7 +300,7 @@ class AdventureStepsController < ApplicationController
 
       else
         puts "params[:trial_end]====> #{params[:trial_end]}"
-        puts "params====> #{params}"
+        puts "params ====> #{params}"
         
         # Create stripe customer
         customer = Stripe::Customer.create(

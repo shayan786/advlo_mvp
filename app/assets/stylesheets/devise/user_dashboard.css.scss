@@ -29,6 +29,19 @@
 	color: $profile_font_color;
 
 
+	.twitter-dash {
+	  padding-left: 2px;
+	  color: #FFF;
+	  background-color: #30D8F0;
+	  border-color: #30D8F0;
+
+	  &:hover {
+		  background-color: #30D8F0;
+	    opacity: 0.8;
+	  }
+	}
+
+
 	.container {
 
 		.panel {
