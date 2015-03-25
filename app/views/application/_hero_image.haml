@@ -61,7 +61,7 @@
 - rot_advs = []
 - @rot_adventures.each do |adv|
   .preload{style: "display: none; background: url('#{adv.attachment.url(:hero)}') no-repeat -9999px -9999px;"}
-  - adv_obj = {bg_img_url: adv.attachment.url(:hero), url: "#{root_url}adventurs/#{adv.slug}", title: adv.title, host_img_url: adv.users.first.get_avatar_url('profile'), host_name: adv.users.first.get_first_name}
+  - adv_obj = {bg_img_url: adv.attachment.url(:hero), url: "#{root_url}adventures/#{adv.slug}", title: adv.title, host_img_url: adv.users.first.get_avatar_url('profile'), host_name: adv.users.first.get_first_name}
   - rot_advs << adv_obj
 
 
