@@ -1606,6 +1606,7 @@ function paypal_or_bank_toggle(){
 
 function getStripeToken_subscription() {
   $('.option_2_well #subscription_payment_form_1 .subscribe_btn').click(function() {
+    alert(card)
 
     var card = {
       number:   $(".option_2_well #subscription_payment_form_1 #credit_card_number").val(),
@@ -1613,6 +1614,8 @@ function getStripeToken_subscription() {
       expYear:  $(".option_2_well #subscription_payment_form_1 #exp_year").val(),
       cvc:      $(".option_2_well #subscription_payment_form_1 #cvv").val()
     };
+
+    console.log(card)
 
 
     Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))    
