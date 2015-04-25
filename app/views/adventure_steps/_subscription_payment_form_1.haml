@@ -1,5 +1,3 @@
-// check user type & pass correct subsctiption values via plan
-
 %form#subscription_payment_form_1{"accept-charset" => "UTF-8", action: wizard_path, "data-remote" => "true", enctype: "multipart/form-data", method: "post"}
   = tag(:input, :type => "hidden", :value => "put", :name => "_method")
   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -8,7 +6,6 @@
   = tag(:input, :id => "stripe_token", :type => "hidden", :name => "stripe_token")
   = tag(:input, :type => "hidden", :name => "subscription", :value => '1')
   = tag(:input, :type => "hidden", :name => "subscription_plan", :value => plan[1])
-  = tag(:input, :type => "hidden", :name => "trial_end", :class => 'trial_end', :value => 'now')
 
 
   .amount_warning.row.text-center

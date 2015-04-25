@@ -371,16 +371,17 @@
 				color: #fff;
 
 				.pricing-title {
-					font-family: bebas_neue_book;
-					font-size: 1.7em;	
-					margin-top: 20px;
+					font-family: cabin_regular;
+				  font-size: 1.7em;
+				  margin-top: 20px;
+				  text-transform: uppercase;
 				}
 
 				
 
 				.prices {
-					font-family: bebas_neue_book;
-					font-size: 2.1em;	
+					font-family: cabin_regular;
+					font-size: 1.5em;
 					span {	
 						font-size: 15px;
 					}
@@ -502,7 +503,7 @@
 				font-size: 0.8em;
 			}
 
-			#subscription_payment_form_1, #subscription_payment_form_2, #subscription_payment_form_3  {
+			#subscription_payment_form_1, #subscription_payment_form_2 {
 				display: none;
 				margin-top: 20px !important;
 
@@ -795,24 +796,6 @@
 	position: fixed;
 }
 
-.free-trial-box {
-	position: absolute;
-	width: 265px;
-	margin-top: 450px;
-	height: 121px;
-	text-align: center;
-	margin-left: 14%;
-	font-size: 16px;
-	font-family: ''nexa_light'';
-
-	.price-type {
-		margin-top: 10px;
-	}
-
-	.adventure-checkboxes {
-		cursor: pointer;
-	}
-}
 
 @media screen and (max-width: 771px){
 	.all-plans-include {
@@ -829,14 +812,6 @@
 		width: 100%;
 		margin: 0 auto;
 	}
-
-	#adventure_create .container .panel .free-trial-box {
-		position: relative;
-		width: 100%;
-		float: left;
-		margin-top: 20px;
-		margin-left: 0;
-	}	
 
 	#adventure_create .complete-button {
 		width: 100%;
