@@ -42,7 +42,7 @@
 #footer {
 	width: 100%;
 	position: relative;
-	background-color: $footer_background_color;
+	background-color: rgba(0,0,0,0.8);
 	overflow-y: hidden !important;
 	border-top: 1px solid $light_gray;
 	padding: 8px 0 2px 0;
@@ -388,7 +388,7 @@
 	.footer-text {
 		font-family: 'nexa_light';
 		font-weight: bold;
-		font-size: 15px;
+		font-size: 12px;
 		letter-spacing: 2px;
 		margin-top: 10px;
 	}

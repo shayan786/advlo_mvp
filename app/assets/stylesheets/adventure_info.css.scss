@@ -116,6 +116,7 @@
       text-transform: uppercase;
       font-size: 24px;
       width: 100%;
+      color: #c35b26
     }
 
     .feature-list {
@@ -263,14 +264,14 @@
   box-sizing: content-box;
   position: relative;
   cursor: pointer;
-  border: none;
+  border: 2px solid white;
   font: normal 20px/2.4 "Open Sans", Helvetica, sans-serif;
   color: rgba(255,255,255,0.9);
   text-transform: capitalize;
   -o-text-overflow: clip;
   text-overflow: clip;
 
-  background: $advlo_orange;
+  background: rgba(0,0,0,0.8);
   -webkit-box-shadow: 0 5px 0 0 #a65200;
   box-shadow: 0 5px 0 0 #a65200;
 
@@ -290,6 +291,7 @@
     text-shadow: -1px -1px grey;
     line-height: 33px;
     letter-spacing: 5px;
+    font-weight: bold
   }
 }
 
@@ -344,9 +346,10 @@
 }
 
 .green-button {
-  background: $advlo_green;
+  background: rgba(0,0,0,0.8);
   -webkit-box-shadow: 0 5px 0 0 #1E824C;
   box-shadow: 0 5px 0 0 #1E824C;
+  border: 2px solid white
 }
 
 
