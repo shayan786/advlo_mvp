@@ -15,14 +15,13 @@
   }
 
   .blogpage-title {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #c35b26;
     margin-top: 18px;
     font-size: 20px;
-    letter-spacing: 2px;
-    font-family: bebas_neue;
+    font-family: nexa_bold;
     text-align: center;
     margin-bottom: 20px;
-    color: #000;
+    color: #c35b26;
   }
 
   .social-container {
@@ -54,6 +53,8 @@
     font-size: 13px;
     text-transform: capitalize;
     font-family: cabin_regular;
+    text-align: center;
+    color: #FFF;
   }
 
   .blog-date {
@@ -83,7 +84,7 @@
     top: 65px;
     width: 16.6666666667%;
     max-height: 80%;
-    background: whitesmoke;
+    background: transparent;
   }
 
   .mobile-blog-list {
@@ -92,7 +93,7 @@
 
   #right-sidebar-container {
     height: 100%;
-    background: whitesmoke;
+    background: rgba(255,255,255,0.2);
 
   }
 
@@ -108,12 +109,12 @@
       float: left;
       width: 100%;
       color: #000;
-      background: whitesmoke;
+      background: transparent;
       font-size: 30px;
       letter-spacing: 2px;
-      font-family: bebas_neue;
+      font-family: nexa_bold;
       text-align: center;
-      color: #000;
+      color: #FFF;
       margin-bottom: 5px;
       padding-top: 8px;
     }
@@ -122,7 +123,7 @@
       position: relative;
       float: left;
       width: 100%;
-      background: whitesmoke;
+      background: rgba(0,0,0,0.5);
       margin-bottom: 10px;
       border-radius: 2px;
 
@@ -153,11 +154,13 @@
           font-family: 'bebas_neue_book';
           font-size: 30px;
           margin-top: 5px;
-          text-decoration: underline;
+          border-bottom: 2px solid #c35b26;
+          color: #c35b26;
         }
         .author {
           font-style: italic;
           font-size: 0.9em;
+          color: #FFF;
         }
         .excerpt {
           font-family: 'cabin_regular';
@@ -165,6 +168,7 @@
           margin-top: 10px;
           line-height: 22px;
           padding-right: 15px;
+          color: #FFF;
         }
       }
 
@@ -177,6 +181,7 @@
         font-family: 'bebas_neue';
         letter-spacing: 1px;
         margin-top: 15px;
+        color: #c35b26;
       }
 
       .blog-post-date {
@@ -186,6 +191,7 @@
         position: absolute;
         bottom: 10px;
         right: 15px;
+        color: #FFF;
       }
     }
 
@@ -357,7 +363,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
     position: relative;
     width: 100%;
     float: left;
-    background: whitesmoke;
+    background: rgba(255,255,255,0.3);
     height: 50px;
     margin-bottom: 5px;
   }
