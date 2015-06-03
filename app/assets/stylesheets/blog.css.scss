@@ -66,7 +66,7 @@
   }
 
   a{
-    color: #000;
+    color: #c35b26;
   }
 
   a:hover {
@@ -93,7 +93,8 @@
 
   #right-sidebar-container {
     height: 100%;
-    background: rgba(255,255,255,0.2);
+    background: transparent;
+    margin-top: 40px;
 
   }
 
@@ -110,7 +111,7 @@
       width: 100%;
       color: #000;
       background: transparent;
-      font-size: 30px;
+      font-size: 40px;
       letter-spacing: 2px;
       font-family: nexa_bold;
       text-align: center;
@@ -199,7 +200,7 @@
 
   #related-adventures-container {
     height: 100%;
-    background: whitesmoke;
+    background: transparent;
     margin-top: 5px;
     float: left;
     position: relative;
@@ -334,6 +335,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
   .title {
     font-size: 13px;
     letter-spacing: 1px;
+    color: #FFF;
   }
 }
 
@@ -437,7 +439,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
   width: 100%;
   margin-top: 55px;
   margin-bottom: 0px;
-  background: whitesmoke;  
+  background: transparent;  
 
   .post-wrapper {
     position: relative;
@@ -454,6 +456,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       font-size: 3em;
       font-family: 'bebas_neue';
       letter-spacing: 1px;
+      color: #c35b26;
     }
 
     .blog-date {
@@ -528,6 +531,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       position: relative;
       float: left;
       margin-bottom: 30px !important;
+      color: #333333;
 
       p {
         line-height: 25px;
@@ -567,12 +571,14 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
         font-size: 22px;
         letter-spacing: 1px;
         margin-top: 10px;
+        color: #c35b26;
+        text-decoration: underline;
       }
       .blog-image-excerpt {
-        font-family: 'nexa_light';
+        font-family: 'cabin_regular';
         font-size: 14.5px;
         width: 90%;
-        color: #000;
+        color: #333333;
 
         a {
           text-decoration: underline;
