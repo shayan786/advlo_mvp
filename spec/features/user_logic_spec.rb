@@ -92,6 +92,6 @@ feature "user logic for adventure flow", :js => true do
     find("#add_bank_form_btn").click
     visit '/adventure_steps/publish?adventure_id=1'
     click_button "PUBLISH"
-    expect(page).to have_content('PENDING APPROVAL: We’ll notify you when it goes live')
+    expect(page).to have_content('PENDING APPROVAL: Well notify you when it goes live')
   end
 end

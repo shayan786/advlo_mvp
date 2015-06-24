@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   # before_filter :get_poll
 
+  caches_action :homepage, :layout => false
+
   def map
   end
 
