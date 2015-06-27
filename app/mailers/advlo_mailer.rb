@@ -471,16 +471,5 @@ class AdvloMailer < ActionMailer::Base
     @reference = reference
     mail(to: email, subject: "Advlo Giveaway is underway", from: "christopher@advlo.com")
   end
-
-
-  def test_email
-    attachments['SDhanani191481001_transcript.pdf'] = File.read("#{Rails.root.to_s}/attachments/SDhanani191481001_transcript.pdf")
-    attachments['Syracuse_Transcript_Legend.pdf'] = File.read("#{Rails.root.to_s}/attachments/Syracuse_Transcript_Legend.pdf")
-
-    mail(to: "uspog@us.ibm.com", subject: "Syracuse University Transcript", from: "transcripts@syr.edu") do |format|
-      format.html { render layout: 'test' }
-      format.text
-    end
-  end
 end
 
