@@ -1,15 +1,10 @@
 // plan  = [amount, plan_id, type]
-- if current_user.guide_type == 'business'
-  - plan = ['$99', '3', 'business_membership']
-- else
-  - plan = ['$30', '1', 'local_membership']
+- plan = ['$30', '1', 'local_membership']
 
 .well.option_2_well.text-center
   .row
     %strong.header
       Membership
-    .free-month
-      +1 month trial
   %br
     %strong
       = plan[0]

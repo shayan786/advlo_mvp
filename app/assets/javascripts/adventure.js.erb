@@ -83,7 +83,7 @@ function highlightFilters(){
 function adventureHover(){
   $('.adventure-brick').hover(function(){
     $(this).find($('.hover-block')).stop(true).show()
-    $(this).stop(true).css('border','1px solid #000')
+    $(this).stop(true).css("background-color", "rgba(0,0,0,0.3)")
   }, function(){
     $(this).stop(true).css('border','none')
     $(this).find($('.hover-block')).stop(true).fadeOut()
@@ -1441,27 +1441,6 @@ function payment_options_btns() {
     $('#add-card-form').fadeToggle();
   });
 
-  $(".learn-more.adventure-checkboxes .business-free-month").click(function(){
-    $(this).addClass('checked')
-    $(this).removeClass('unchecked')
-
-    $('.free-month').show()
-    $('.trial_end').val('<%= (DateTime.now + 30).to_i %>')
-    $('.trial_end').addClass('trial-added')
-    // toggle free month true to stripe basic
-  })
-
-  $(".learn-more.adventure-checkboxes .local-free-month").click(function(){
-    $(this).addClass('checked')
-    $(this).removeClass('unchecked')
-
-    $('.free-month').show()
-    $('.trial_end').val('<%= (DateTime.now + 30).to_i %>')
-    $('.trial_end').addClass('trial-added')
-
-    // toggle free month true to stripe basic
-  })
-
 
   $('.option_btn_1').click(function(){
     $('.option_btn_2').removeClass('active')
@@ -1614,7 +1593,6 @@ function getStripeToken_subscription() {
       cvc:      $(".option_2_well #subscription_payment_form_1 #cvv").val()
     };
 
-
     Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))    
     Stripe.card.createToken(card, function(status, response) {
 
@@ -1646,31 +1624,6 @@ function getStripeToken_subscription() {
         $(".option_2_well #subscription_payment_form_2 #stripe_token").val(response.id);
         
         $('.option_2_well #subscription_payment_form_2').submit();
-      } else {
-        $("#stripe-error-message").text(response.error.message);
-      }
-    });
-
-    return false;
-  });
-
-  $('.option_2_well #subscription_payment_form_3 .subscribe_btn').click(function() {
-
-    var card = {
-      number:   $(".option_2_well #subscription_payment_form_1 #credit_card_number").val(),
-      expMonth: $(".option_2_well #subscription_payment_form_1 #exp_month").val(),
-      expYear:  $(".option_2_well #subscription_payment_form_1 #exp_year").val(),
-      cvc:      $(".option_2_well #subscription_payment_form_1 #cvv").val()
-    };
-
-
-    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))    
-    Stripe.card.createToken(card, function(status, response) {
-
-      if (status === 200) {
-        $(".option_2_well #subscription_payment_form_1 #stripe_token").val(response.id);
-        
-        $('.option_2_well #subscription_payment_form_1').submit();
       } else {
         $("#stripe-error-message").text(response.error.message);
       }

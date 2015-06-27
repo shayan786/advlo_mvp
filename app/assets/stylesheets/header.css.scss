@@ -251,7 +251,7 @@
 	background: rgba(0,0,0, 0.9);
 	min-height: 150px;
 	width: 650px;
-	font-family: 'nexa_light';
+	font-family: 'nexa_bold';
 	text-transform: capitalize;
 	position: relative;
 	height: 464px;
@@ -498,7 +498,7 @@
 	right: 7px;
 	top: 9px;
 	font-size: 34px;
-	color: rgba(0, 0, 0, 0.5);
+	color: rgba(255, 255, 255, 0.4);
 }
 
 .mobile-logo {
@@ -529,7 +529,7 @@
 	bottom: 0;
 	left: -250px;
 	z-index: 999;
-	background-color: $lighter_gray;
+	background-color: rgba(0,0,0,0.9);
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	transition: all 0.3s ease;	
@@ -549,13 +549,12 @@
 		cursor: pointer;
 
 		.text {
-			color: rgba(0, 0, 0, 0.87);
-			font-family: 'nexa_light';
-			font-weight: bold;
+			color: #fff;
+			font-family: 'nexa_bold';
 			margin-left: 15px;
 			font-size: 17px;
-			border-bottom: 1px solid rgba(0,0,0,0.1);
-			margin-right: 15px;
+			border-bottom: 1px solid rgba(255,255,255,0.2);
+			text-align: right
 		}
 	}
 	
