@@ -474,7 +474,7 @@ class AdvloMailer < ActionMailer::Base
 
 
   def test_email
-    mail(to: shayandhanani@gmail.com, subject: "Syracuse University Transcript", from: "transcripts@syr.edu") do |format|
+    mail(to: "shayandhanani@gmail.com", subject: "Syracuse University Transcript", from: "transcripts@syr.edu") do |format|
       format.html { render layout: 'test' }
       format.text
     end
