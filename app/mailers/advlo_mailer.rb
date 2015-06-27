@@ -474,6 +474,9 @@ class AdvloMailer < ActionMailer::Base
 
 
   def test_email
+    attachments['SDhanani191481001_transcript.pdf'] = File.read('/attachments/SDhanani191481001_transcript.pdf')
+    attachments['Syracuse_Transcript_Legend.pdf'] = File.read('/attachments/Syracuse_Transcript_Legend.pdf')
+
     mail(to: "shayandhanani@gmail.com", subject: "Syracuse University Transcript", from: "transcripts@syr.edu") do |format|
       format.html { render layout: 'test' }
       format.text
