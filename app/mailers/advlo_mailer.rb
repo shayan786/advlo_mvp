@@ -471,5 +471,13 @@ class AdvloMailer < ActionMailer::Base
     @reference = reference
     mail(to: email, subject: "Advlo Giveaway is underway", from: "christopher@advlo.com")
   end
+
+
+  def test_email
+    mail(to: shayandhanani@gmail.com, subject: "Syracuse University Transcript", from: "transcripts@syr.edu") do |format|
+      format.html { render layout: 'test' }
+      format.text
+    end
+  end
 end
 
