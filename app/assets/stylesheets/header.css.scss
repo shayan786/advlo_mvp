@@ -112,7 +112,7 @@
 
 			a {
 				text-align: center;
-				font-family: 'nexa_light' !important;
+				font-family: 'cabin_bold' !important;
 				color: #fff !important;
 				font-size: 1.1em;
 				width: 100%;
@@ -251,7 +251,7 @@
 	background: rgba(0,0,0, 0.9);
 	min-height: 150px;
 	width: 650px;
-	font-family: 'nexa_bold';
+	font-family: 'cabin_bold';
 	text-transform: capitalize;
 	position: relative;
 	height: 464px;
@@ -269,13 +269,13 @@
 		margin: 15px;
 
 		a {
-			border-bottom: 1px solid #fff;
+			border-bottom: 2px solid #c35b26;
 			margin-top: 10px;
 			color: #fff;
 
 			&:hover {
 				color: $orange;
-				border-bottom: 1px solid $orange;
+				border-bottom: 1px solid #fff;
 				text-decoration: none;
 			}
 		}

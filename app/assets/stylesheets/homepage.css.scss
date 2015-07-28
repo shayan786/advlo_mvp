@@ -54,7 +54,7 @@ h1 {
   }
 
   .join-text {
-    font-family: 'nexa_bold';
+    font-family: 'bebas_neue';
     font-weight: bold;
     color: #fff;
     text-align: center;
@@ -69,10 +69,11 @@ h1 {
 
   @media screen and (max-width: 600px){
     .join-text {
-      font-size: 1.5em;
+      font-size: 2em;
     }
     .why {
-      width: 95%;
+      width: 75%;
+      font-size: 16px;
     }
   }
 
@@ -85,13 +86,13 @@ h1 {
 
     .homepage_fb_btn {
       margin-top: 25px;
-      font-size: 1.6em;
+      font-size: 1.4em;
       background-color: transparent;
       background: rgba(40, 94, 142, 0.8);
-      font-family: 'bebas_neue_book';
-      letter-spacing: 2px;
+      font-family: 'cabin_bold';
       width: 40%;
-      padding-top: 15px;
+      padding-top: 12px;
+      padding-bottom: 12px;
       max-width: 300px;
       min-width: 250px;
     }
@@ -104,15 +105,13 @@ h1 {
 
       background: rgba(195, 91, 38, 0.8);
       border-color: rgba(195, 91, 38, 1);
-      border: 1px solid rgba(195, 91, 38, 1);
       margin: 0 auto;
       margin-top: 10px;
 
       height: 35px;
       color: #fff;
-      font-family: 'bebas_neue_book';
+      font-family: 'cabin_bold';
       font-size: 17px;
-      letter-spacing: 4px;
       padding-top: 5px;
       width: 40%;
       max-width: 300px;
@@ -174,7 +173,7 @@ h1 {
 
       p { 
         margin-top: 6px;
-        font-family: 'bebas_neue' !important;
+        font-family: 'cabin_bold' !important;
         font-size: 20px;
         letter-spacing: 2px;
       }
