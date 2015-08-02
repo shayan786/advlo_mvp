@@ -89,7 +89,6 @@
   #find_adventure_activity_form {
       display: none;
           border-radius: 3px;
-          border: 1px solid $advlo_orange;
           background-color: rgba(0,0,0,0.3);
           margin-top: 35px;
           padding: 10px 15px;
@@ -99,7 +98,7 @@
           margin-right: 15px;
           color: #FFF;
           opacity: 0.7;
-          font-family: bebas_neue;
+          font-family: cabin_bold;
           letter-spacing: 2px;
           font-size: 1.1em;
           padding-top: 10px;
@@ -144,9 +143,8 @@
       .no_results {
           display: none;
           border-radius: 3px;
-          border: 1px solid $advlo_orange;
           background-color: rgba(0,0,0,0.3);
-          font-family: bebas_neue;
+          font-family: cabin_bold;
     font-size: 2em;
     letter-spacing: 2px;
     font-style: italic;
@@ -168,19 +166,17 @@
 
       .location_filter {
           border-radius: 3px;
-          border: 1px solid $advlo_orange;
           background-color: rgba(0,0,0,0.3);
           padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 15px;
 
     .filter_header {
-      font-family: bebas_neue;
+      font-family: cabin_bold;
         font-size: 1.3em;
         letter-spacing: 2px;
         margin-bottom: 5px;
         color: $orange;
-        text-decoration: underline;
     }
 
     .filter_select_btn {

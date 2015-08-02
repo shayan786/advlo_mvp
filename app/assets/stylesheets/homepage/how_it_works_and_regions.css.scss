@@ -112,21 +112,23 @@
 		}
 
 		.hiw_img_text{
-			background: rgba(0,0,0,0.5);
+			background: rgba(0,0,0,0.4);
 			font-family: bebas_neue;
 			font-weight: bold;
 			letter-spacing: 2px;
 			color: #FFF;
-			padding-top: 103px;
-			padding-bottom: 103px;
+			padding-top: 87px;
+			padding-bottom: 88px;
 
 			.large {
-				font-size: 3.5em;
+				font-size: 5em;
+				color: rgba(255,255,255,0.75);
 			}
 
 			.small {
 				line-height: 0px;
 				font-size: 1.5em;
+				color: #fff;
 			}
 
 		}

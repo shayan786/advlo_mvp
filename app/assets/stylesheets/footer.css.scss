@@ -1,12 +1,12 @@
 #toggle-sign-in {
-	font-family: 'bebas_neue';
-	margin-top: 10px;
+	font-family: 'cabin_regular';
 	cursor: pointer;
+	margin-bottom: 42px;
 }
 
 .sign_up_btn {
 	width: 57%;
-	margin-bottom: 25px;
+	margin-bottom: 5px;
 	margin-top: 5px;
 	font-size: 1.2em;
 	background-color: $advlo_orange;
@@ -321,9 +321,9 @@
 	}
 
 	.back-text {
-		font-family: 'bebas_neue_book' !important;
+		font-family: 'cabin_regular' !important;
 		font-size: 13px;
-		letter-spacing: 1.5px;
+		color: rgba(255,255,255,0.5);
 
 		a:hover {
 			text-decoration: none;
@@ -346,7 +346,7 @@
 		.sign_up_toggle_btn {
 			width: 60%;
 			padding-top: 8px;
-			font-family: bebas_neue;
+			font-family: cabin_bold;
 			font-weight: bold;
 			letter-spacing: 1px;
 			font-size: 1.3em;
@@ -360,10 +360,11 @@
 		.fb_btn {
 			width: 60%;
 			padding-top: 8px;
-			font-family: bebas_neue;
+			font-family: cabin_bold;
 			font-weight: bold;
 			letter-spacing: 1px;
 			font-size: 1.3em;
+			margin-top: 24px;
 		}
 	}
 
@@ -386,7 +387,7 @@
 
 
 	.footer-text {
-		font-family: 'nexa_light';
+		font-family: 'cabin_bold';
 		font-weight: bold;
 		font-size: 12px;
 		letter-spacing: 2px;

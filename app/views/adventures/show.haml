@@ -33,9 +33,6 @@
         - if review_count == 0
           .link-to-profile
             %a{href: user_path(@current_guide)} Visit Profile
-
-
-
       .adventure-block
         #adventure-reviews-count
           - if @adventure.title.length > 25
@@ -77,14 +74,6 @@
             #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
               %span 
                 BOOK IT
-
-    - else
-      .guide-block
-        .guide-name
-          Want to guide this adventure?
-        .guide-profile-image
-          = image_tag 'missing.png'
-
   .adventure-copy-wrapper
     - flash.each do |key, value|
       .alert-warning.adv-show-alert.text-center
