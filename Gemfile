@@ -21,6 +21,7 @@ gem 'font-awesome-rails'
 group :production do 
   gem 'rails_12factor'
   gem 'thin'
+  gem 'puma'
 end
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
