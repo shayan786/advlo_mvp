@@ -18,10 +18,12 @@ gem 'bootstrap-filestyle-rails'
 gem 'bootstrap_form'
 gem 'font-awesome-rails'
 
+# AWS EB
+gem 'puma'
+
 group :production do 
   gem 'rails_12factor'
   gem 'thin'
-  gem 'puma'
 end
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
