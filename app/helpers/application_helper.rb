@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def check_if_advlo(user)
-    if user && user.email == 'chrisknight.mail@gmail.com' || user.email == 'shayan@advlo.com' || user.email == 'jemaser@syr.edu'
+    if user && user.email == 'chrisknight.mail@gmail.com' || user.email == 'shayan@advlo.com' || user.email == 'jemaser@syr.edu' || user.email == 'adam@advlo.com'
       return true
       
     else
@@ -93,7 +93,7 @@ module ApplicationHelper
     city_locations = []
     city_count.each {|l| city_locations << l if l[1] >= 10}
     
-    return city_locations
+    return city_locations.sort_by{|k| k[0]}
   end
 
   def get_countries(region)
@@ -109,7 +109,7 @@ module ApplicationHelper
     country_locations = []
     country_count.each {|l| country_locations << l if l[1] >= 1}
     
-    return country_locations
+    return country_locations.sort_by{|k| k[0]}
   end
 
   def get_continent(country_code)

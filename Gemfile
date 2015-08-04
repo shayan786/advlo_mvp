@@ -18,6 +18,9 @@ gem 'bootstrap-filestyle-rails'
 gem 'bootstrap_form'
 gem 'font-awesome-rails'
 
+# AWS EB
+gem 'puma'
+
 group :production do 
   gem 'rails_12factor'
   gem 'thin'
