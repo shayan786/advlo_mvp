@@ -1,22 +1,22 @@
 #exit-nav
-  .fa.fa-chevron-right
+  .fa.fa-chevron-left
 
 %a{href:'/'}
   .mobile-logo= image_tag 'logos/logo_small.png'
 
 %a.mobile-item{href:'/find'}
-  .text Adventures
+  .text ADVENTURES
 
 %a.mobile-item{href:'/partner'}
-  .text Join as host
+  .text JOIN AS A HOST
 
 %a.mobile-item{href:'/blog'}
-  .text Blog
+  .text BLOG
   
 
 - if current_user
   %a.mobile-item{href: '/users/dashboard'} 
-    .text Account
+    .text ACCOUNT
 
   %a.mobile-item#mobile-signout{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} Log Out
     
@@ -24,13 +24,13 @@
   
 - else
   .mobile-item#login-mobile
-    .text Account
+    .text ACCOUNT
     
   .mobile-item#mobile-login-form
     %form.sign_in_form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form", id: "sign_in_form"}
       =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
       %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
-        Connect with Facebook
+        CONNECT WITH FACEBOOK
       .form-group
         %input.form-control{placeholder: "Email Address", type: "email", name: "user[email]", id: "mobile_user_email_login"}
 
@@ -38,7 +38,7 @@
         %input.form-control{placeholder: "Password", type: "password", autocomplete: "off", id: "mobile_user_password", name: "user[password]"}
       %input.btn.btn-primary.sign_in_btn#mobile-login-form-submit{name: "sign_in", type: "submit", value: "Sign In"}
       .connect_btn.btn.email_btn#mobile-login-toggle
-        Connect with Email
+        CONNECT WITH EMAIL
     #sign_up_link
       = link_to "SIGN UP", new_user_registration_path    
 

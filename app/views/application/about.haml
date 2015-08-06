@@ -13,11 +13,6 @@
   .border
   .border
 
-  .about-wrapper
-    .container
-      %p.text-center.mission_statement
-        Our goal is to connect adventure travelers around the world with the most authentic locals guides and businesses.
-            
   .col.md-12.text-center.press
     .container
       %h3 FEATURED IN
@@ -42,41 +37,10 @@
           %a{href: "http://tech.co/advlo-launches-adventure-travel-platform-2014-09", target: "_blank"}
             .mention.techco= image_tag 'icons/press/techco.png'
 
-
-  .border
-
-  .white_background.container-fluid.about-bio-brick
-    .col-md-4
-      .row.text-center 
-        .text-brick.self-bio
-          When I think about my experiences from traveling my fondest memories are not about what I did, but from the people I adventured with. Travel is a luxury that most of the world's people never get to experience. However, the ability to immerse yourself into a foreign culture has been the greatest learning experience I have ever had.
-          %p{style: "color: #C35B26; margin-top: 10px;"}
-            = "- CHRISTOPHER"
-
-          
-
-    .col-md-4
-      .row.text-center
-        .text-brick.self-bio
-          Connection stems from shared experiences. 
-          After traveling around the world, experiencing diverse cultures and meeting some of the most genuine locals, I wanted to make connecting travelers to amazing adventurers an easier process. If you love travel, people and unique experiences as much as I do, you're going to love Advlo.
-          %p{style: "color: #C35B26; margin-top: 10px;"}
-            = "- JON"
-
-
-    .col-md-4
-      .row.text-center
-        .text-brick.self-bio
-          The world is an extremely diverse place, and I truly believe that the only way to experience and learn about what it has to offer is by interacting with those whom have spent a majority of their life there. Every person's experience is different when they travel, for me the cultural exchange along with learning from the locals will have me traveling for a while.
-          %p{style: "color: #C35B26; margin-top: 10px;"}
-            = "- SHAYAN"
-
-
-
     .col-md-12.text-center
       .row#contact-us
         #leave-a-note
-          %p Leave us a Note
+          %p SEND US A NOTE
 
     .col-md-4.col-md-offset-4.text-center#contact-advlo
       %form{"accept-charset" => "UTF-8", action: "/contact", method: "POST", id: "about_us_contact_form", "data-remote" => "true"}
@@ -90,7 +54,7 @@
           %input.form-control{type: "text", name: "contact[email]", id: "contact_email", placeholder: 'Email Address', class: "email-field", value: current_user ? current_user.email : ''}
 
         .form-group.row
-          %textarea.form-control{rows: "7", type: "text", name: "contact[comments]", id: "contact_comments", placeholder: 'We would love to hear from you.'}
+          %textarea.form-control{rows: "7", type: "text", name: "contact[comments]", id: "contact_comments", placeholder: 'Message'}
 
         .honeypot
           %input.form-control{type: "text", name: "honeypot", id: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}

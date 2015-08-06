@@ -19,7 +19,7 @@
               = image_tag asset_url('instagram.png')
 
         .blogpage-title
-          Advlo Blog
+          RECENT POSTS
         - @blogposts.each do |bp|
           %a{href:"http://advlo.com/blog/#{bp.permalink}"}
             .blog-link
@@ -32,7 +32,7 @@
 
     .col.col-md-8.blogpost-container
       .blog-header-title
-        = "- Advlo Travel Journal -"
+        = "ADVENTURE LOCAL BLOG"
       .mobile-blog-list
         .social-container
           .follow
@@ -69,7 +69,7 @@
 
     .col.col-md-2#right-sidebar-container
       .blogpage-title{style: 'margin-right: 10px;'}
-        Locations & Adventures
+        FIND YOUR NEXT ADVENTURE
 
       #right-content-container
         / - block = @photos.zip(@tweets).flatten.compact

@@ -25,14 +25,14 @@
                   = image_tag asset_url('instagram.png')
 
             .blogpage-title
-              %a{href:'/blog'} Advlo Blog
+              %a{href:'/blog'} RECENT POSTS
             - @blogposts.each do |bp|
               %a{href:"http://advlo.com/blog/#{bp.permalink}"}
                 .blog-link
                   = bp.title
                 
 
-    .col.col-md-8{style: "border-left: 1px solid #333333;border-right: 1px solid #333333; "}
+    .col.col-md-8{style: "border-left: 1px solid #333333;border-right: 1px solid #333333;background-color: rgba(255,255,255,0.8)"}
       .post-wrapper
         .blog-title= @blogpost.title
         .blog-author.text-center= "by #{@blogpost.author}"
@@ -95,7 +95,7 @@
 
     .col.col-md-2#related-adventures-container
       .blogpage-title{style: 'margin-right: 10px;'}
-        Locations & Adventures
+        FIND YOUR NEXT ADVENTURE
       #right-content-container
         - block = @adventures.zip(@locations).flatten.compact
         - block.each do |item|

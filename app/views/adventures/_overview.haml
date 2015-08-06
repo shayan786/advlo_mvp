@@ -6,7 +6,7 @@
   .panel.panel-default
     .panel-body
       .contact-row
-        .btn.btn-primary.contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name}
+        .btn.btn-primary.contact_btn.host_contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name}
           %i.fa.fa-envelope-o
           CONTACT HOST
 

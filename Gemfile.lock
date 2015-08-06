@@ -259,6 +259,7 @@ GEM
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
+    puma (2.12.2)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -434,6 +435,7 @@ DEPENDENCIES
   paypal-sdk-merchant
   pg
   phony_rails
+  puma
   rails (= 4.1.0)
   rails_12factor
   remotipart (~> 1.2)
