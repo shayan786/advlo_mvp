@@ -39,7 +39,6 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook' 
@@ -64,4 +63,5 @@ gem 'zeroclipboard-rails'
 gem 'instagram',  :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
 gem 'shareable'
 gem 'twitter'
-gem 'active_admin_editor'
+
+gem 'rails_admin'

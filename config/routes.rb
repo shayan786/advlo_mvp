@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'errors/file_not_found'
 
   get 'errors/unprocessable'
 
   get 'errors/internal_server_error'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations", :passwords => "passwords"}
-  ActiveAdmin.routes(self)
   
   #user dashboard route
   devise_scope :user do
