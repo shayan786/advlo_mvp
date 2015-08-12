@@ -5,7 +5,7 @@ RailsAdmin.config do |config|
   # == Devise ==
   config.authenticate_with do
     unless (current_user and check_if_advlo(current_user))
-      flash[:error] = "Unauthorized Access"
+      flash[:error] = nil
       redirect_to '/'
     end    
   end
