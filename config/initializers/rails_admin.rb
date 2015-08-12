@@ -2,11 +2,15 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
-  ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  # == Devise ==
+  config.authenticate_with do
+    unless (current_user and check_if_advlo(current_user))
+      flash[:error] = "Unauthorized Access"
+      redirect_to '/'
+    end    
+  end
+
+
 
   ## == Cancan ==
   # config.authorize_with :cancan

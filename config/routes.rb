@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'errors/internal_server_error'
 
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations", :passwords => "passwords"}
+
   
   #user dashboard route
   devise_scope :user do
