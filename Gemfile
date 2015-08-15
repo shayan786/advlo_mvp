@@ -23,8 +23,7 @@ gem 'font-awesome-rails'
 gem 'puma'
 
 group :production do 
-  gem 'rails_12factor'
-  gem 'thin'
+  gem 'unicorn'
 end
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -49,12 +48,10 @@ gem 'wicked'
 gem 'stripe'
 gem 'paypal-sdk-merchant'
 gem 'geocoder'
-gem 'newrelic_rpm'
-gem 'delayed_job_active_record'
+gem 'sidekiq'
 gem 'delayed_paperclip'
 gem 'daemons'
 gem 'roadie-rails'
-gem 'hirefire-resource'
 gem 'meta-tags'
 gem 'remotipart', '~> 1.2'
 gem 'phony_rails'
