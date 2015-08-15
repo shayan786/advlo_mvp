@@ -22,4 +22,4 @@ production:
   password: <%= ENV['RDS_PASSWORD'] %>
   host: <%= ENV['RDS_HOSTNAME'] %>
   port: <%= ENV['RDS_PORT'] %>
-  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 10 %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 25 %>
