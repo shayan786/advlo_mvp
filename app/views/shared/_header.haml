@@ -51,7 +51,7 @@
         - if adv_count(r) > 0
           .main-location
             = link_to "#{r} (#{adv_count(r)})", "/find?location=#{URI.encode(r)}&locals=false"
-            - get_countries(r).each do |l|
+            - get_countries(r).each do |c|
               .sub-location.country=link_to "#{c[0]} (#{city_adv_count(c[0])})", "/find?location=#{URI.encode(c[0])}&locals=false"
               - get_cities(l[0]).each do |l|
                 .sub-location.city=link_to "- #{l[0]}", "/find?location=#{URI.encode(l[0])},#{URI.encode(c[0])}&locals=false"
