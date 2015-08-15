@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  #errors
   get 'errors/file_not_found'
-
   get 'errors/unprocessable'
-
   get 'errors/internal_server_error'
 
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations", :passwords => "passwords"}
 
+  #sidekiq
+  require 'sidekiq/web'
+  authenticate :user, lambda { |u| u.email == "shayan@advlo.com" } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   
   #user dashboard route
   devise_scope :user do
