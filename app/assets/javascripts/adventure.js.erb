@@ -1689,6 +1689,65 @@ function swal_delete_adventure() {
   })
 }
 
+unction itin_form_new_validation() {
+  $('#adventure_iten_form .add_event_btn').addClass('disabled');
+
+  $('#adventure_iten_form #iten_headline').on('keyup', function() {
+    var headline = $.trim($(this).val()).length;
+    var desc = $.trim($('#adventure_iten_form #iten_description').val()).length;
+
+    if (headline > 3 && desc > 3) {
+      $('#adventure_iten_form .add_event_btn').removeClass('disabled');
+    }
+    else if ($('#adventure_iten_form .add_event_btn').hasClass('disabled') == false ){
+      $('#adventure_iten_form .add_event_btn').addClass('disabled');
+    }
+  })
+
+  $('#adventure_iten_form #iten_description').on('keyup', function() {
+    var desc = $.trim($(this).val()).length;
+    var headline = $.trim($('#adventure_iten_form #iten_headline').val()).length;
+
+    if (headline > 3 && desc > 3) {
+      $('#adventure_iten_form .add_event_btn').removeClass('disabled');
+    }
+    else if ($('#adventure_iten_form .add_event_btn').hasClass('disabled') == false ){
+      $('#adventure_iten_form .add_event_btn').addClass('disabled');
+    }
+  })
+}
+
+function itin_form_update_validation(itin_id) {
+  // UPDATE BTN
+  $('#adventure_iten_no_'+itin_id+' #iten_headline').on('keyup', function() {
+    var headline = $.trim($(this).val()).length;
+    var desc = $.trim($('#adventure_iten_no_'+itin_id+' #iten_description').val()).length;
+
+    var delete_btn = $(this).closest('form').find('.btn-success')
+
+    if (headline > 3 && desc > 3) {
+      delete_btn.removeClass('disabled')
+    }
+    else if (delete_btn.hasClass('disabled') == false){
+      delete_btn.addClass('disabled');
+    }
+  })
+
+  $('#adventure_iten_no_'+itin_id+' #iten_description').on('keyup', function() {
+    var desc = $.trim($(this).val()).length;
+    var headline = $.trim($('#adventure_iten_no_'+itin_id+' #iten_headline').val()).length;
+
+    var delete_btn = $(this).closest('form').find('.btn-success')
+
+    if (headline > 3 && desc > 3) {
+      delete_btn.removeClass('disabled');
+    }
+    else if (delete_btn.hasClass('disabled') == false ){
+      delete_btn.addClass('disabled');
+    }
+  })
+}
+
 
 adventureShow = function() {
   setRatingStars();
