@@ -164,10 +164,6 @@ function banner_image_rotate(rot_advs){
   var i = 0;
 
   setInterval(function(){
-    if (i == 5) {
-      i = 0;
-    }
-
     //effects of the img etc.
     $('.homepage-photo, .adventure-link-wrapper').animate({
       "opacity": 0.1
@@ -185,12 +181,16 @@ function banner_image_rotate(rot_advs){
       $('.adventure-link-wrapper .adv_copy').html(rot_advs[i].title+"<br/>with "+rot_advs[i].host_name)
       
       $('.homepage-photo, .adventure-link-wrapper').animate({
-        "opacity": 0.6
+        "opacity": 0.8
       }, 1000)
     },1000)
 
-
-    i++;
+    if (i == rot_advs.length - 1) {
+      i = 0;
+    }
+    else {
+      i++;
+    }
   }, timer)
 }
 
