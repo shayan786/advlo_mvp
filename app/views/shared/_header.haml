@@ -54,7 +54,7 @@
             - get_countries(r).each do |l|
               .sub-location.country=link_to "#{c[0]} (#{city_adv_count(c[0])})", "/find?location=#{URI.encode(c[0])}&locals=false"
               - get_cities(l[0]).each do |l|
-                .sub-location.city=link_to "- #{l[0]}", "/find?location=#{URI.encode(l[0])},#{URI.enconde(c[0])}&locals=false"
+                .sub-location.city=link_to "- #{l[0]}", "/find?location=#{URI.encode(l[0])},#{URI.encode(c[0])}&locals=false"
                   
 
   = render partial: 'sign_in_modal'
