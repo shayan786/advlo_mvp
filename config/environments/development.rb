@@ -45,4 +45,18 @@ Rails.application.configure do
 
   ENV['INSTAGRAM_CLIENT_ID'] = "04e45daeb59e403cba7e0a3a833695f8"
   ENV['INSTAGRAM_SECRET'] = "5cfacc6f2a6d4e199396677deab2b76b"
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    :url => ':s3_alias_url',
+    :s3_host_alias => 'static.advlo.com', 
+    :bucket => 'advlo',
+    :path => ":class/:attachment/:id_partition/:style/:filename",
+    :s3_protocol => :http
+  }
 end
