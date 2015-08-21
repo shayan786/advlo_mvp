@@ -1,6 +1,7 @@
 ---
-production:
-  :concurrency: 5
 :queues:
 	- default
 	- paperclip
+
+production:
+  :concurrency: 5
