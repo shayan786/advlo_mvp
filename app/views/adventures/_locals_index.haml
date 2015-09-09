@@ -23,7 +23,7 @@
           .view_trips
             VIEW 
             - if host.adventures.count > 0 ? count = host.adventures.count : count = ''
-              %span#trip-count= count <= 1 ? "(#{count} TRIP)" : "(#{count} TRIPS)"
+              %span#trip-count= count <= 1 ? "#{count} ADVENTURE" : "#{count} ADVENTURES"
 
       .row  
         .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
