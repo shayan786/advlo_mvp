@@ -87,7 +87,7 @@ GEM
     bootstrap_form (2.3.0)
     buftok (0.2.0)
     builder (3.2.2)
-    celluloid (0.16.1)
+    celluloid (0.16.0)
       timers (~> 4.0.0)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
@@ -223,6 +223,7 @@ GEM
       countries (~> 0.11, >= 0.11.5)
       phony (~> 2.12)
     polyglot (0.3.5)
+    puma (2.12.2)
     rack (1.5.5)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
@@ -420,6 +421,7 @@ DEPENDENCIES
   paypal-sdk-merchant
   pg
   phony_rails
+  puma
   rails (= 4.1.0)
   rails_admin
   remotipart (~> 1.2)

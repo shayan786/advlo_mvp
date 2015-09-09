@@ -97,7 +97,6 @@ class User < ActiveRecord::Base
   def send_welcome_email
     AdvloMailer.delay.welcome_email(self)
     AdvloMailer.delay(run_at: 1.day.from_now).welcome_email_from_founder(self)
-    AdvloMailer.delay(run_at: 4.day.from_now).market_nearby_adventures(self)
   end
 
   # Returns lat/long for now
