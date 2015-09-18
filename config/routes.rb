@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
     get '/users/initial/:type'        => 'registrations#inital_signin_check'
     get '/affiliate/:referral_code'   => 'registrations#referral_sign_up'
+
+    get '/travel-fund/:referral_code'   => 'registrations#referral_sign_up'
   end
 
   #hosting info routes
@@ -43,7 +45,6 @@ Rails.application.routes.draw do
 
 
   get 'travel-fund'                   => 'users#invite' 
-  get '/travel-fund/:referral_code'   => 'application#giveaway'
 
   # get 'giveaway/:promo_code'          => 'application#giveaway'
   # get 'giveaway'                      => 'application#giveaway'
