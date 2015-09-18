@@ -2,7 +2,10 @@
 %html
   %head
     %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}
-    = display_meta_tags
+    - if action_name == 'homepage'
+      %title Advlo - Adventure Local
+    - else
+      = display_meta_tags
     = favicon_link_tag 'advlo_favicon.ico'  
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
