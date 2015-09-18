@@ -42,12 +42,11 @@ h1 {
 
   .why {
     font-family: cabin_bold !important;
-    width: 50%;
+    width: 30%;
     position: relative;
     margin: 0 auto;
     top: 14px;
     color: #fff;
-    text-shadow: 1px 0px 5px #000;
     text-align: center;
     font-size: 25px;
     margin-bottom: 15px;
@@ -58,22 +57,21 @@ h1 {
     font-weight: bold;
     color: #fff;
     text-align: center;
-    font-size: 3em;
-    letter-spacing: 6px;
+    font-size: 4em;
+    letter-spacing: 2px;
     margin-top: 20px;
     float: left;
     text-align: center;
     width: 100%;
-    text-shadow: 1px 1px 6px #000;
   }
 
   @media screen and (max-width: 600px){
     .join-text {
-      font-size: 2em;
+      font-size: 3em;
     }
     .why {
       width: 75%;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 

@@ -126,7 +126,8 @@
             %tr
               %td#header{colspan: "2"}
                 %a{href: "http://www.advlo.com/"}
-                  .logo= image_tag(asset_url(image_path('logos/small-logo.png')), atl: "")
+                  .logo 
+                    %img{src: "http://static.advlo.com/email_assets/small-logo.png", alt: ""}
 
               // content      
               %tr
@@ -141,10 +142,10 @@
                   %br
                   %br
                   %a{href: "http://www.facebook.com/advlo"}
-                    %img{src: "#{image_path(asset_url('facebook.png'))}", style: 'width="50" height="50"'}
+                    %img{src: "http://static.advlo.com/email_assets/facebook.png", style: 'width="50" height="50"'}
                   %a{href: "http://www.twitter.com/advlo_"}
-                    %img{src: "#{image_path(asset_url('twitter.png'))}", style: 'width="50" height="50"'}
+                    %img{src: "http://static.advlo.com/email_assets/twitter.png", style: 'width="50" height="50"'}
                   %a{href: "https://plus.google.com/+Advlo-Adventure-Local"}
-                    %img{src: "#{image_path(asset_url('googleplus.png'))}", style: 'width="50" height="50"'}
+                    %img{src: "http://static.advlo.com/email_assets/googleplus.png", style: 'width="50" height="50"'}
                   %a{href: "http://www.instagram.com/advlo"}
-                    %img{src: "#{image_path(asset_url('instagram.png'))}", style: 'width="50" height="50"'}
+                    %img{src: "http://static.advlo.com/email_assets/instagram.png", style: 'width="50" height="50"'}

@@ -3,23 +3,28 @@
     .host_box.text-center
       .row
         %a{href: "#{root_url}users/#{host.to_param}"}
-          .host_image{style: "background: url('#{host.get_avatar_url("medium")}') center center no-repeat"}
+          .host_image{style: "background: url('#{host.get_avatar_url("large")}') center center no-repeat"}
       .row
         %a{href: "#{root_url}users/#{host.to_param}"}
           .host_name= host.guide_type == 'business' ? host.name : host.get_first_name
       .row
-        .border
+        .host_location
+          %i.fa.fa-map-marker
+          = get_display_location(host.adventures.first)
       .row
-        .host_tagline= "\"#{host.short_description}\""
+        .border
       .row
         - host.get_host_adventure_categories.each do |cat|
           .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
             = image_tag get_category_icon_url(cat)
 
       .row
-        .host_location
-          %i.fa.fa-map-marker
-          = get_display_location(host.adventures.first)
+        %a{href: "#{root_url}users/#{host.to_param}"}
+          .view_trips
+            VIEW 
+            - if host.adventures.count > 0 ? count = host.adventures.count : count = ''
+              %span#trip-count= count <= 1 ? "#{count} ADVENTURE" : "#{count} ADVENTURES"
+
       .row  
         .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
           CONTACT
