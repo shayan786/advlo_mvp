@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
 
   get 'travel-fund'                   => 'users#invite' 
-  # get '/travel-fund/:referral_code'   => 'application#giveaway'
+  get '/travel-fund/:referral_code'   => 'application#giveaway'
 
   # get 'giveaway/:promo_code'          => 'application#giveaway'
   # get 'giveaway'                      => 'application#giveaway'
