@@ -41,7 +41,14 @@
   -ms-filter:"alpha(opacity=60)";
   filter:alpha(opacity=60);
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.6);
-  opacity:.60; 
+  opacity:.60;
+  filter: blur(2px); 
+  -webkit-filter: blur(2px); 
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px); 
+  -ms-filter: blur(2px);
+  filter: url(blur.svg#blur);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='2');
 }
 
 .jumbotron_fix {
@@ -64,8 +71,7 @@
     #explanation {
       width: 50%;
       margin: 0 auto;
-      text-shadow: -1px -1px 5px #000;
-      font-size: 2.5em;
+      font-size: 2.0em;
       color: #FFF;
       margin-top: 30px !important;
       margin-bottom: 15px;
@@ -84,6 +90,8 @@
         font-size: 1.2em;
         border: none;
         cursor: pointer;
+        border-top-right-radius: 24px;
+        border-bottom-right-radius: 24px;
 
         &:hover {
           color: #FFF;
@@ -93,14 +101,16 @@
 
       #location {
         height: 50px;
-        background-color: rgba(0,0,0, 0.6);
+        background-color: rgba(255,255,255,0.15);
         border: none;
         box-shadow: none;
         border-radius: 0px;
         font-size: 22px;
-        color: #FFF;
+        color: #000;
         text-align: center;
         padding: 0;
+        border-bottom-left-radius: 24px;
+        border-top-left-radius: 24px;
       }
     }
   }
@@ -215,8 +225,8 @@
 .adventure-link-wrapper {
   position: absolute;
   width: 300px;
-  top: 10px;
-  left: 10px;
+  top: 370px;
+  right: 10px;
 
   text-shadow: 1px 1px #000;
   color: #FFF;
@@ -229,13 +239,14 @@
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    margin-left: 10px;
     background-size: cover !important;
-    float: left;
+    float: right;
   }
 
   .adv_copy {
-    float: left;
-    text-align: left;
+    float: right;
+    text-align: right;
   }
   &:hover {
     text-decoration: none;
