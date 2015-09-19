@@ -2,10 +2,15 @@ class MessagesController < ApplicationController
 
   def new
     # Create a new message
+    body = params[:message][:body]
+    body.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).each do |x|
+      body.gsub! x, '...'
+    end
+
     @message = Message.new(
         :conversation_id => params[:message][:conversation_id],
         :sender_id => params[:message][:sender_id],
-        :body => params[:message][:body]
+        :body => body
       )
 
     @message.save

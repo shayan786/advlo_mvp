@@ -9,15 +9,11 @@ console.log(num_messages)
 
 // Append the latest message to the modal
 var message_body = "<%= escape_javascript(@message.body.gsub(/\n/, '<br/>').html_safe) %>";
-
-
 var to_copy_panel_num = $(modal_id + " .message_panel").length-2;
-
 var new_message_panel = $(modal_id+" .message_panel").last().clone();
-
 new_message_panel.find('.panel-body').html(message_body);
 
-new_message_panel.insertBefore($(modal_id + " .message_panel").last());
+new_message_panel.insertBefore($(modal_id + ' .message_panel').first().next());
 
 // Clear out the current form
 $(modal_id + " #message_body ").val('');
