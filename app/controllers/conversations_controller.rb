@@ -20,7 +20,7 @@ class ConversationsController < ApplicationController
           :receiver_id => params[:conversation][:host_id],
           :subject => params[:conversation][:subject]
         )
-      
+
       body = params[:message][:body]
       body.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).each do |x|
         body.gsub! x, '...'
@@ -56,10 +56,14 @@ class ConversationsController < ApplicationController
       )
     conversation.save
 
+    body = params[:message][:body]
+    body.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).each do |x|
+      body.gsub! x, '...'
+    end
     # Create the initial message
     message = Message.new(
         :sender_id => params[:conversation][:user_id],
-        :body => params[:message][:body],
+        :body => body,
         :conversation_id => conversation.id
       )
     message.save
