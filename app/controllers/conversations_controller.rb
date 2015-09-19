@@ -20,12 +20,18 @@ class ConversationsController < ApplicationController
           :receiver_id => params[:conversation][:host_id],
           :subject => params[:conversation][:subject]
         )
+      
+      body = params[:message][:body]
+      body.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).each do |x|
+        body.gsub! x, '...'
+      end
 
       message = Message.create(
           :sender_id => user.id,
-          :body => params[:message][:body],
+          :body => body,
           :conversation_id => conversation.id
         )
+
 
       conversation.updated_at = message.created_at
       conversation.save
