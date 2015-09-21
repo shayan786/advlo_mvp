@@ -10,54 +10,16 @@
 #clickout
 
 -# Navigation Header
-%nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+%nav.navbar.navbar-default{role: "navigation"}
   .container-fluid
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %a.navbar-brand{href: "/"}
 
-
-    / Collect the nav links, forms, and other content for toggling
-    #header-navbar.collapse.navbar-collapse
-      %ul.nav.navbar-nav.navbar-right.login-right
-        %li.header-button
-          %button.btn.btn-default.navbar-btn#find-adventures
-            All Adventures
-            %b.caret
-        
-        %li
-          %form
-            %a.btn.btn-default.navbar-btn.header-button{href: "/partner"}
-              Upload an Adventure
-
-        
-        - if current_user && count = action_required(current_user)
-          %li
-            %form
-              %a.btn.btn-default.navbar-btn{href: "/users/reservations", title: "Action Required"}
-                %i.fa.fa-flag
-                = "(#{count})"
-
-        
-        - if current_user
-          = render partial: 'logged_in_dropdown'
-
-        - else
-          = render partial: 'logged_out_dropdown'
-
-  #locations-menu-wrapper.locations-menu-wrapper{style: "display: none;"}
-    #locations-menu
-      - adv_regions.each_with_index do |r, i|
-        - if adv_count(r) > 0
-          .main-location
-            = link_to "#{r} (#{adv_count(r)})", "/find?location=#{URI.encode(r)}&locals=false"
-            - get_countries(r).each do |l|
-              .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/find?location=#{l[0]}&locals=false"
-              - get_cities(l[0]).each do |l|
-                .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
-                  
-
-  = render partial: 'sign_in_modal'
+    - if current_user
+      = render partial: 'logged_in_header'
+    - else
+      = render partial: 'logged_out_header'
 
   
 

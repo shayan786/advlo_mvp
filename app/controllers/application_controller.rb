@@ -177,7 +177,7 @@ class ApplicationController < ActionController::Base
       @new_adventures = Adventure.approved.order('id desc').limit(3)
     end
 
-    @rot_adventures = Adventure.approved.where("id = ? OR id = ? OR id = ? OR id = ?",154,210,183,370)
+    @hero_adv = Adventure.find(370)
 
     @feat_hosts = []
 

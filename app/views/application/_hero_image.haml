@@ -1,28 +1,14 @@
-- adv = @rot_adventures.sample
-
-.homepage-photo.jumbotron.jumbotron_fix{:style => "background: url('#{adv.attachment.url(:hero)}') center center no-repeat"}
+.homepage-photo.jumbotron.jumbotron_fix{:style => "background: url('#{@hero_adv.attachment.url(:hero)}') center center no-repeat"}
 
 .scroll-slow
-  %a.adventure-link-wrapper#featured-homepage-adventure{href: "/adventures/#{adv.slug}"}
-    .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-    .adv_copy
-      = adv.title
-      %br
-      with
-      = adv.users.first.get_first_name
-  #homepage-text       
+  #homepage-text  
+    #adventure-local
+      ADVENTURE LOCAL     
     #explanation
-      Discover and create unique adventure travel experiences with local guides   
+      We connect adventurous travelers and local hosts worldwide through a platform that fosters creativity, innovation and responsible tourism   
 
-
-    .row
-      #find_adventure_form
-        .col-md-6.col-md-offset-3
-          .form-group
-            .input-group
-              %input.form-control{placeholder: "Enter Destination", name: "location", id: "location", onfocus: "focusFunction()", onblur: "unfocusFunction()"}
-              .input-group-addon
-                %i.fa.fa-search
+    #explore-btn.btn.btn-default
+      START EXPLORING
 
     - if notice
       .col-md-6.col-md-offset-3 
@@ -32,53 +18,14 @@
             %span.sr-only Close
           = notice.html_safe
 
-  .text-center.explanation-row
-    
-    
-
-    #arrow-wrapper
-      %a
-        .bottom
-
-  - if current_user
-    %a.mobile-content-link-wrapper-logged-in{href: "/adventures/#{adv.slug}"}
-      .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-      .adv_copy
-        = adv.title
-        %br
-        with
-        = adv.users.first.get_first_name
-  - else
-    %a.mobile-content-link-wrapper{href: "/adventures/#{adv.slug}"}
-      .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-      .adv_copy
-        = adv.title
-        %br
-        with
-        = adv.users.first.get_first_name
-
-
-- rot_advs = []
-- @rot_adventures.each do |adv|
-  .preload{style: "display: none; background: url('#{adv.attachment.url(:hero)}') no-repeat -9999px -9999px;"}
-  - adv_obj = {bg_img_url: adv.attachment.url(:hero), url: "#{root_url}adventures/#{adv.slug}", title: adv.title, host_img_url: adv.users.first.get_avatar_url('profile'), host_name: adv.users.first.get_first_name}
-  - rot_advs << adv_obj
-
 
 :javascript
-  if ($.cookie('referrer_id')) {
-    homepage_new_user_set_referrer_id($.cookie('referrer_id'));
-  }
-
-  $('#arrow-wrapper').click(function(){
-    $('html, body').animate({
-       scrollTop: $("#how_it_works").offset().top + 5}, 800
-    )
-  })
-
   $(document).ready(function(){
+    if ($.cookie('referrer_id')) {
+      homepage_new_user_set_referrer_id($.cookie('referrer_id'));
+    }
+
     homepage_find_input_geocomplete();
-    banner_image_rotate(#{rot_advs.to_json});
 
     if( $('.navbar-fixed-top').is(":visible") ){
       $('.scroll-slow').css('top','75px');

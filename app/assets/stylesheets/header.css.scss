@@ -1,5 +1,4 @@
 //NAVBAR CUSTOMIZATIONS
-
 #homepage-header-login {
 	z-index: 999;
 	position: absolute;
@@ -30,36 +29,32 @@
 .navbar {
 	height: 55px;
 	font-family: cabin_bold;
-	background: #000;
-	opacity: $header_opacity;
+	background: transparent;
 	padding: 4px 0 4px 10px;
 	z-index: 1001;
 	border-bottom: none;
 
 	.navbar-brand {
-		background: asset-url("logos/advlo_header_logo.png");
+		background: asset-url("logos/advlo_header_logo_white.png");
 		background-repeat: no-repeat;
 		background-size: 100%;
 		width: 175px !important;
+		margin-top: 5px;
 	}
 
 	.header-button{
 		margin-right: 20px;
 
 		button.btn-default {
-			border-color: #000;
-			background-color: #000;
-
-			&:hover {
-				border-color: $light_gray;
-			}
+			border: none;
+			background-color: transparent;
 		}
 	}
 
 	.btn.btn-default {
 		color: $header_text_color;
-		border-color: #000;
-		background-color: #000;
+		border: none;
+		background-color: transparent;
 
 		&:hover {
 			border-color: $light_gray;
@@ -71,13 +66,8 @@
 	}
 
 	.login_in_sign_up_btn {
-		border-color: $advlo_orange;
-		background-color: $advlo_orange;
-
-		&:hover {
-			border-color: $orange;
-			background-color: $orange;
-		}
+		border-color: #FFF;
+		background-color: transparent;
 	}
 }
 
@@ -326,7 +316,13 @@
 	background-color: transparent;
 }
 
+.modal-backdrop {
+	z-index: 0;
+}
+
 #sign_in_modal {
+	z-index: 1041;
+
 	.advlo_img {
 			width: 155px;
 			margin: -5px auto;

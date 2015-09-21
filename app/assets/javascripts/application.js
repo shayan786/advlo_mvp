@@ -57,10 +57,6 @@ $(document).ready(function(){
   
   // fixes the bug that you can click right below a modal to close it
   $('.modal-dialog').height($('.modal-body').last().css('height'))
-
-  $('.new-account').click(function(){
-    $('#member-modal').modal('show');
-  })
 })
 
 
@@ -113,6 +109,9 @@ $(document).ajaxStop(function(){
 
 //Header resize on scroll
 $(document).ready(function(){
+
+  /*
+
 	var flag = 0;
 
     if($(window).width() > 768){
@@ -185,6 +184,8 @@ $(document).ready(function(){
       } 
     });
   }
+
+  */
 
   //Login form validation
   $('#sign_in_form').bootstrapValidator({
