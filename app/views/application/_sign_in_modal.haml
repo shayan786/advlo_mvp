@@ -33,8 +33,19 @@
           .btn.btn-primary.sign_in_toggle_btn
             EMAIL
 
+        .row
+          .sign_up_link
+            SIGN UP
+
 :javascript
-  $('#sign_in_modal .sign_in_toggle_btn').click(function(){
-    $(this).hide();
-    $('#sign_in_modal #sign_in_form').fadeIn();
+  $(document).ready(function(){
+    $('#sign_in_modal .sign_in_toggle_btn').click(function(){
+      $(this).hide();
+      $('#sign_in_modal #sign_in_form').fadeIn();
+    })
+
+    $("#sign_in_modal .sign_up_link").click(function(){
+      $('#sign_in_modal').modal('hide');
+      $('#member-modal').modal('show');
+    })
   })
