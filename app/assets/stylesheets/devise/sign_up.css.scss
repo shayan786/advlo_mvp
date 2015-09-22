@@ -41,12 +41,15 @@
 					border-color: $login_btn_color_hover;
 				}
 			}
+
 			.fb_btn {
 				width: 100%;
 				color: #FFFFFF !important;
 				font-size: 1.3em;
 				margin-bottom: 20px;
-				
+				padding-top: 12px;
+				padding-bottom: 12px;
+				font-weight: bold;
 
 				.fa {
 					margin-right: 10px;
@@ -56,6 +59,12 @@
 	}
 }
 
+.or-email {
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	font-style: italic;
+}
 
 .d_error_msgs {
 

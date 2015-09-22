@@ -4,17 +4,20 @@
   .container
     .panel.col-md-4.col-md-offset-4
       %h2.text-center Join Advlo
+      %h5.text-center Discover exclusive adventures and a global network of local guides
       .panel-body
         .d_error_msgs= devise_error_messages!
         %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form"}
           %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
             %i.fa.fa-facebook
-            Sign Up with Facebook
+            Sign up with Facebook
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
           =tag(:input, :type => "hidden", :id => "referrer_id", :name => "user[referrer_id]", :value => nil)
+        .or-email 
+          or
 
           .form-group
-            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", style: "background-color: #{000}"}
           .form-group
             %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]"}
           .form-group
