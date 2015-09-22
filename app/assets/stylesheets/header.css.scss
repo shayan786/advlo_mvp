@@ -32,7 +32,7 @@
 	background: transparent;
 	padding: 4px 0 4px 10px;
 	z-index: 1001;
-	border-bottom: none;
+	border: none;
 
 	.navbar-brand {
 		background: asset-url("logos/advlo_header_logo_white.png");
@@ -48,6 +48,10 @@
 		button.btn-default {
 			border: none;
 			background-color: transparent;
+		}
+
+		&.bordered.btn-default {
+			border: 2px solid #fff;
 		}
 	}
 
@@ -66,7 +70,7 @@
 	}
 
 	.login_in_sign_up_btn {
-		border-color: #FFF;
+		border: none;
 		background-color: transparent;
 	}
 }

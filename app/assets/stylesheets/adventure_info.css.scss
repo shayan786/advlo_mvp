@@ -8,7 +8,6 @@
   width: 100%;
 
   .why_host {
-    text-shadow: -1px -1px 5px #000;
     margin-bottom: 50px;
     font-size: 2.8em;
     color: #FFF;
@@ -258,13 +257,13 @@
   width: 100%;
   height: 100%;
   display: inline-block;
-  border-radius: 30px;
+  border-radius: 50px;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   position: relative;
   cursor: pointer;
-  border: 2px solid white;
+  border: none;
   font: normal 20px/2.4 "Open Sans", Helvetica, sans-serif;
   color: rgba(255,255,255,0.9);
   text-transform: capitalize;
@@ -349,7 +348,6 @@
   background: rgba(0,0,0,0.8);
   -webkit-box-shadow: 0 5px 0 0 #1E824C;
   box-shadow: 0 5px 0 0 #1E824C;
-  border: 2px solid white
 }
 
 

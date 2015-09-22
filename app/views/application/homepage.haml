@@ -1,12 +1,12 @@
 - render partial: 'homepage_seo_tags'
 = render partial: 'hero_image'
 = render partial: 'how_it_works'
-= render partial: 'feat_hosts'
-= render partial: 'feat_adventures'
-- if @nearby_adventures
-  = render partial: 'nearby_adventures'
-- else
-  = render partial: 'newest_adventures'
+/= render partial: 'feat_hosts'
+/= render partial: 'feat_adventures'
+/- if @nearby_adventures
+/  = render partial: 'nearby_adventures'
+/- else
+/  = render partial: 'newest_adventures'
 = render partial: 'signup'
 
 - if notice
