@@ -309,9 +309,9 @@ function footerInit(){
 
   
   $('.homepage_email_btn').hover(function(){
-    $(this).css('background','rgba(195, 91, 38, 1)')
+    $(this).css('background','rgba(0, 0, 0, 0.5)')
   },function(){
-    $(this).css('background','rgba(195, 91, 38, 0.8)')
+    $(this).css('background','rgba(0, 0, 0, 0.25)')
   })
 
   $('.sign_up_btn').hover(function(){

@@ -4,23 +4,35 @@
     %br
     %br
     .row
-      .col-md-4
+      .col-md-12
         .hiw_img{style: "background: url('#{asset_path("background/hiw_search.jpg")}') center center no-repeat"}
-          .hiw_img_text.text-center
+          .hiw_img_text.text-left
             .large Explore by destination or activity
-        .hiw-small Search by destination or activity to view existing adventures or local hosts that interest you
+            .hiw-small-left Search by destination or activity to view existing adventures or local hosts that interest you
+            .explore_wrapper
+              %a{href: '/find'}
+                #hiw-btn.btn.btn-default 
+                  START EXPLORING
       
-      .col-md-4
+      .col-md-12
         .hiw_img{style: "background: url('#{asset_path("background/hiw_find.jpg")}') center center no-repeat"}
-          .hiw_img_text.text-center{style: "position: relative;"}
+          .hiw_img_text.text-right{style: "position: relative;"}
             .large Connect with local adventure hosts
-        .hiw-small Find and connect with local adventure hosts to set up your next adventure
-      
-      .col-md-4
+            .hiw-small-right Find and connect with local adventure hosts to set up your next adventure
+            .explore_wrapper
+              %a{href: '/find'}
+                #hiw-btn.btn.btn-default 
+                  CONNECT WITH HOSTS
+
+      .col-md-12
         .hiw_img{style: "background: url('#{asset_path("background/hiw_adventure.jpg")}') center center no-repeat"}
-          .hiw_img_text.text-center
+          .hiw_img_text.text-left
             .large Experience your custom adventure
-        .hiw-small We'll handle the payment transfer and logistics, while you Adventure Local
+            .hiw-small-left We'll handle the payment transfer and logistics, while you Adventure Local
+            .explore_wrapper
+              %a{href: '/find'}
+                #hiw-btn.btn.btn-default 
+                  REQUEST AN ADVENTURE
 
 / FEATURE REGIONS
 /    .row

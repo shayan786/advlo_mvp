@@ -374,7 +374,7 @@
 
 			.sign_in_btn {
 				width: 60%;
-				font-family: bebas_neue;
+				font-family: cabin_regular;
 				font-weight: bold;
 				font-size: 1.1em;
 				background-color: $advlo_orange;
@@ -643,6 +643,10 @@
 
 @media only screen and (max-width: 781px) {
 	.navbar-fixed-top {
+		display: none;
+	}
+
+	.navbar-brand {
 		display: none;
 	}
 

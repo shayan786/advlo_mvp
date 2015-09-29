@@ -96,9 +96,9 @@
 
 	.hiw_img {
 		background-size: cover !important;
-		height: 280px;
+		height: 320px;
 		width: 100%;
-		border-radius: 200px;
+		border-radius: 4px;
 		margin-bottom: 10px;
 		margin-top:	24px;
 
@@ -114,31 +114,57 @@
 		}
 
 		.hiw_img_text{
-			background: rgba(0,0,0,0.4);
 			font-family: cabin_regular;
 			letter-spacing: 1px;
 			color: #FFF;
-			padding-top: 105px;
-			padding-bottom: 105px;
-			border-radius: 200px;
+			padding-top: 95px;
+			padding-bottom: 95px;
+			border-radius: 4px;
 
 			.large {
-				font-size: 1.8em;
-				color: rgba(255,255,255,0.75);
+				font-size: 2.4em;
+				color: #fff;
 				font-weight: bold;
-				padding-right: 48px;
-				padding-left: 48px;
+				padding-right: 40px;
+				padding-left: 40px;
 			}
 		}
 	}
 
-	.hiw-small {
+	#hiw-btn.btn.btn-default {
+		background-color: rgba(181,84,35, 0.8);
+		border: none;
+		color: #fff;
+		letter-spacing: none;
+		margin-left: 40px;
+		margin-right: 40px;
+		margin-top: 24px;
+		font-weight: bold;
+
+		&:hover {
+        	background-color: rgba(181,84,35, 0.4);
+      	}
+	} 
+
+
+	.hiw-small-left {
 		line-height: 0px;
-		font-size: 1.2em;
+		font-size: 1.4em;
 		color: rgba(255,255,255,0.6);
-		text-align: center;
-		line-height: 16px;
-		padding-top: 20px;
+		text-align: left;
+		line-height: 24px;
+		padding-top: 0px;
+		padding-left: 40px;
+	}
+
+	.hiw-small-right {
+		line-height: 0px;
+		font-size: 1.4em;
+		color: rgba(255,255,255,0.6);
+		text-align: right;
+		line-height: 24px;
+		padding-top: 0px;
+		padding-right: 40px;
 	}
 
 	.video_copy {
@@ -284,4 +310,50 @@
 		display: none !important;
 	}
 
+	#how_it_works {
+		.hiw_img .hiw_img_text .large {
+			font-size: 1.4em;
+			color: #fff;
+			font-weight: bold;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	
+		.hiw-small-left {
+			line-height: 0px;
+			font-size: 1em;
+			color: rgba(255,255,255,0.8);
+			text-align: left;
+			line-height: 16px;
+			padding-top: 10px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.hiw-small-right {
+			line-height: 0px;
+			font-size: 1em;
+			color: rgba(255,255,255,0.8);
+			text-align: right;
+			line-height: 16px;
+			padding-top: 10px;
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+		
+		#hiw-btn.btn.btn-default {
+			background-color: rgba(181,84,35, 0.8);
+			border: none;
+			color: #fff;
+			letter-spacing: none;
+			margin-left: 20px;
+			margin-right: 20px;
+			margin-top: 20px;
+			font-size: 12px;
+
+			&:hover {
+		    	background-color: rgba(181,84,35, 0.4);
+		  	}
+		} 
+	}
 }

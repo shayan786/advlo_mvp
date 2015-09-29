@@ -2,22 +2,6 @@
   margin-bottom: 0px;
 }
 
-.homepage-photo{
-  -khtml-opacity:.80; 
-  -moz-opacity:.80; 
-  -ms-filter:"alpha(opacity=80)";
-  filter:alpha(opacity=80);
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.8);
-  opacity:.80;
-  filter: blur(2px); 
-  -webkit-filter: blur(2px); 
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px); 
-  -ms-filter: blur(2px);
-  filter: url(blur.svg#blur);
-  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='2');
-}
-
 .jumbotron_fix {
 	min-height: 625px;
 	background-size: cover !important;
@@ -38,13 +22,15 @@
     color: #FFF;
 
     #adventure-local{
-      font-family: bebas_neue_bold;
-      font-size: 6.0em;
+      font-family: bebas_neue;
+      font-size: 6em;
       padding-top: 32px;
+      letter-spacing: 3px;
+      font-weight: bold;
     }
 
     #explanation {
-      width: 50%;
+      width: 45%;
       margin: 0 auto;
       font-size: 1.4em;
       margin-bottom: 15px;
@@ -57,7 +43,7 @@
     #explore-btn {
       margin-top: 30px;
       border: none;
-      background-color: rgba(255,118,49, 0.9);
+      background-color: rgba(255,118,49, 0.6);
       color: #FFF;
       border-radius: 6px;
       padding: 10px 20px;
@@ -67,7 +53,7 @@
       font-weight: bold;
 
       &:hover {
-        background-color: rgba(181,84,35, 0.8);
+        background-color: rgba(255,118,49, 0.4);
       }
     }
   }
@@ -348,5 +334,12 @@
     background: #fff;
     width: 100%;
     top: 50px;
+  }
+
+  .scroll-slow #homepage-text #adventure-local {
+    font-family: bebas_neue;
+    font-size: 5.0em;
+    padding-top: 0px;
+    letter-spacing: 2px;
   }
 }

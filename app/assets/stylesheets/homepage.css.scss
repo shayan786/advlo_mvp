@@ -26,7 +26,7 @@ h1 {
 }
 
 #bottom-login {
-  background-image: asset-url("background/advlo_beach.jpeg");
+  background-image: asset-url("background/HomepageMountain.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -95,21 +95,16 @@ h1 {
       min-width: 250px;
     }
 
-    .homepage_email_btn, .sign_up_btn {
+    .homepage_email_btn {
       border-radius: 3px;
       cursor: pointer;
-      background-color: transparent;
-      background: rgba(0, 0, 0, 0.3);
-
-      background: rgba(195, 91, 38, 0.8);
-      border-color: rgba(195, 91, 38, 1);
+      background-color:rgba(0,0,0,0.25);
       margin: 0 auto;
       margin-top: 10px;
-
       height: 35px;
       color: #fff;
       font-family: 'cabin_bold';
-      font-size: 17px;
+      font-size: 14px;
       padding-top: 5px;
       width: 40%;
       max-width: 300px;
