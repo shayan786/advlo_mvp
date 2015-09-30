@@ -1,5 +1,5 @@
 - if type == 'local'
-  - info = ['Host Adventures', "We'll create custom webpages and listings for you and your adventure trips.",'Connect with Travelers','Connect directly with adventure travelers who crave more authentic, local experiences.','Receive Payments', "Receive payments from bookings through direct Bank deposit or via Paypal account."]
+  - info = ['CREATE ADVENTURES', "Show off what you can do and we'll create custom webpages your adventure trips.",'HOST TRAVELERS','Connect with people that share your passion and want to go on your adventures.','RECEIVE MONEY', "You set your own prices and we'll handle all payments sent directly to your account."]
 
   - comp = ["Adventure Host Profile","Showcase your adventures & outdoor skills, promote yourself by connecting social channels and allow travelers to contact you directly.",'Unlimited Adventure Listings', 'Easily create pages for each of your adventure trips to show how unique your experience is with photography, videos, maps, & more.', 'Responsive Page Design',"Enable travelers to view your adventures on mobile phones, tablets, and desktops to convert more potential bookings."]
 
@@ -18,17 +18,22 @@
 
 .dark_background
   .box.col.col-md-12.text-center.all-plans-include.adventure-spec
-    .col.col-md-12.brick-padding
+    .col-md-6.col-md-offset-3
+      .whatisadvlo
+        WHAT IS ADVLO?
+      .whatisadvlodescription
+        A community of like-minded adventurous people who can meet and discover friends and guides willing to offer their services around culture, adventure activities and the outdoors. Initial connection will take place on an online platform, built to empower local adventure guides and operators around the world by giving immediate access to upload, market and sell their services.
+    .col.col-md-12.benefits
       .row
         .col.col-md-4.how-it-works-block
-          .fa.fa-newspaper-o
+          .fa.fa-map-o
           .feature-text
             = info[0]
           .headlines 
             = info[1]
 
         .col.col-md-4.how-it-works-block
-          .fa.fa-motorcycle
+          .fa.fa-globe
           .feature-text
             = info[2]
           .headlines 
@@ -41,48 +46,7 @@
           .headlines 
             = info[5]
             
-            
-
   .box.col.col-md-12
-    .headline-container
-      .lightline.left-side-line
-      .lightheading.big-headline= titles[0]
-      .lightline.right-side-line
-    - img_url = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/588/hero/Screen_Shot_2015-02-23_at_8.32.24_PM.png?1424748847", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/585/hero/Screen_Shot_2015-02-23_at_8.36.18_PM.png?1424749024", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/587/hero/mobile.png?1424749398"]
-    .col.col-md-12.text-center.computer-slider.brick-padding
-      .row
-        .col.col-md-6.desktop
-          .gallery
-            .swiper-container.swiper-container-comp{class: "#{type}-slider"}
-              .swiper-wrapper
-                - img_url.each do |img|
-                  .swiper-slide
-                    .image-wrapper{style: "background-image: url('#{img}')"}
-
-            #computer
-              = image_tag 'comp.png'
-
-        .col.col-md-6
-          %ul
-            %li 
-              .main.active{class: "#{type}-1"}
-                = comp[0]
-                .sub 
-                  = comp[1]
-
-            %li 
-              .main{class: "#{type}-2"}
-                = comp[2]
-                .sub 
-                  = comp[3]
-
-            %li 
-              .main{class: "#{type}-3"}
-                = comp[4]
-                .sub 
-                  = comp[5]
-
-
     .mobile-barrier
     - img_url_2 = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/591/hero/Screen_Shot_2015-02-23_at_10.01.29_PM.png?1424754124", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/589/hero/Screen_Shot_2015-02-23_at_8.55.37_PM.png?1424750186", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/590/hero/Screen_Shot_2015-02-23_at_10.07.37_PM.png?1424754486"]
     .headline-container
@@ -128,296 +92,12 @@
                     .image-wrapper{style: "background-image: url('#{img}')"}
             #computer
               = image_tag 'comp.png'
-        
-  / .box.col.col-md-12.text-center.all-plans-include.adventure-spec
-  /   .headline-container
-  /     .left-side-line
-  /     .big-headline Both options include
-  /     .right-side-line
-  /   .col.col-md-12.brick-padding
-  /     .row
-  /       .col.col-md-4.how-it-works-block
-  /         .fa.fa-envelope
-  /         .feature-text
-  /           Adventure requests
-  /         .headlines 
-  /           We market your activity and send booking requests right to your inbox.
-
-  /       .col.col-md-4.how-it-works-block
-  /         .fa.fa-globe
-  /         .feature-text
-  /           Global Community
-  /         .headlines 
-  /           Connect with adventurers who crave more authentic, local experiences when they travel.
-
-  /       .col.col-md-4.how-it-works-block
-  /         .fa.fa-money
-  /         .feature-text
-  /           Weekly payouts
-  /         .headlines 
-  /           Receive bank deposits in 
-  /           %a{href: "https://stripe.com/global", target: '_blank'} these countries
-  /           or create a 
-  /           %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal account
-  /           for free.             
-
-  .box.col.col-md-12.text-center.all-plans-include.adventure-spec
-    - if type == 'local'
-      - price_basic = ['GUIDE ACCOUNT', 'FREE TRIP LISTINGS', '30% commission on bookings']
-      - price_member = ['UNLIMITED SALES', '$30/mo.', '0% comission on bookings']
-      - features = ['Individual Profile Page','Adventure Pages', 'Reservation tools', 'SEO & Content Marketing','Weekly Payouts', 'Premium listing positions','0% commission on bookings', 'Option to re-direct transaction','Connect multiple guide accounts']
-      
-    - else
-      - price_basic = ['BUSINESS ACCOUNT', '$49/mo.', '5% commission']
-      - price_member = ['UNLIMITED SALES', '$99/mo.', '0% comission']
-      - features = ['Company Profile Page','Adventure Pages', 'Reservation tools', 'SEO & Content Marketing','Weekly Payouts', 'Premium listing positions','0% commission on bookings', 'Option to re-direct transaction','Connect multiple guide accounts']
-
-    .col.col-md-6
-      .price-box
-        .price-title= price_basic[0]
-        .price= price_basic[1]
-        .price-explain= price_basic[2]
-
-
-    .col.col-md-6
-      .price-box
-        .price-title= price_member[0]
-        .price= price_member[1]
-        .price-explain= price_member[2].html_safe
-
-
-
-    .adventure_info_body
-      .gray_background
-        .container
-          .feature-list-btn-wrapper
-            .guide-button.feature-list-btn
-              .title FEATURE LIST
-           
-          .feature-list-content-wrapper
-            .premium
-              %h3 MEMBERSHIP FEATURES
-              .access-block
-                .row.matrix_header
-                  .fa.fa-thumb-tack
-                  Top Results Position
-                .row.matrix_content
-                  Your adventures will be at the top of a location list when searched
-
-              .access-block
-                .row.matrix_header
-                  .fa.fa-users
-                  Dedicated Support
-                .row.matrix_content
-              
-                  An advlo representative to help upload & optimize all your adventures
-              .access-block
-                .row.matrix_header
-                  .fa.fa-share-square-o
-                  Redirect URL
-                .row.matrix_content
-                  Redirect the traveler to your own booking system on checkout or use Advlo's
-
-              .access-block
-                .row.matrix_header
-                  .fa.fa.fa-copy
-                  Zero Commission
-                .row.matrix_content
-                  0% commission on any of your adventure bookings
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-cc-visa
-                Online Transactions
-              .row.matrix_content
-                Advlo handles all payments ensuring you get paid on time
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-comments-o
-                Direct Messaging
-              .row.matrix_content
-                Communicate with travelers interested in booking your trips
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-file-image-o
-                Custom Pages
-              .row.matrix_content
-                Web pages for your host profile and each of your adventures
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-star-half-o
-                Reviews / Ratings
-              .row.matrix_content
-                Build a reputation and leverage links to exisiting traveler reviews
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-search
-                Online Visibility
-              .row.matrix_content
-                SEO, web hosting, & keyword marketing to bring you more traffic
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-money
-                Payout Options
-              .row.matrix_content
-                Bank deposit or PayPal / payouts are initiated at the end of each week.
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-retweet
-                Booking Requests
-              .row.matrix_content
-                Accept or decline booking requests based on your availability
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-copy
-                Content Management
-              .row.matrix_content
-                Easily manage all your adventures with one account
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-mobile
-                Mobile Friendly
-              .row.matrix_content
-                Manage adventures & reservations from your mobile device
-
-            .access-block
-              .row.matrix_header
-                .fa.fa-facebook-square
-                Social media tools
-              .row.matrix_content
-                Send your listing to Facebook, Twitter & Google+ in one click
-                
-            .access-block
-              .row.matrix_header
-                .fa.fa-calendar
-                Scheduling
-              .row.matrix_content
-                Offer instant booking times for immediate reservations
-
-            .access-block
-              .row.matrix_header 
-                .fa.fa-envelope
-                Email Alerts
-              .row.matrix_content
-                Get notifications when you receive a booking or direct message
-
-
-  
-  .box.adventure_info_body
-    .case_studies
-      .headline-container
-        .lightline.left-side-line
-        .lightheading.big-headline CASE STUDIES
-        .lightline.right-side-line
-      .row
-        .adventure-container.adventure-container-homepage
-          .brick-wrapper
-            - @adventures.each_with_index do |adv, i|
-              .adv-info-wrapper
-                %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing"}
-                  %a{href: adventure_path(adv.slug), itemprop: 'url'}
-                    - if adv.attachment.height(:large) >= 300
-                      - adv_img = adv.attachment.url(:large)
-                    - else
-                      - adv_img = adv.attachment.url(:hero)
-                    .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
-                    .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
-                      .copy{id: "#{i}"}
-                        - if adv.title.length > 38
-                          .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
-                        - else
-                          .title{itemprop: 'name'}= adv.title
-
-                        .location{itemprop: 'description'}= get_display_location(adv)
-                        
-                        .host_name= "With #{adv.host_name}"
-
-                      .hover-block{id: i}
-                        .guide-image
-                          .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
-                        
-                      .copy-container{class: "copy-#{i}"}
-      
-                .view-profile
-                  =link_to "View #{adv.host_name}'s profile", user_path(adv.users.first.to_param)
-
-  #adventure_info
-    .adventure_info_body
-      .gray_background
-        .container.itinerary-wrapper.hosting_info_itineraries
-          .row.host_header
-            FAQ 
-
-          .copy-brick.itinerary-brick
-            .fa.fa-plus
-            .fa.fa-minus
-            .headline
-              How do I create a listing?
-            .description
-              Create an
-              %a{href: '/users/sign_up'}account
-              and complete your host profile, then click 'Host an Adventure'. From there you will be able to start building your adventure.
-
-          .copy-brick.itinerary-brick
-            .fa.fa-plus
-            .fa.fa-minus
-            .headline
-              How do payments work?
-            .description
-              We accept global credit card payments through
-              %a{href: 'https://stripe.com/global', target: '_blank'}
-                Stripe's
-              secure processing framework which is PCI compliant.
-              Payouts are either direct bank deposit 
-              %a{href: "https://stripe.com/global", target: '_blank'}
-                in a country 
-              that supports it, or via
-              %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal. 
-              Payouts will be triggered at the end of each week for all of your completed bookings.
-
-
-          .copy-brick.itinerary-brick
-            .fa.fa-plus
-            .fa.fa-minus
-            .headline
-              Can I use my own transaction system?
-            .description
-              If you prefer to manage transactions on your own site or in person but still want the front-end tools and benefits of being part of the Advlo community, choose the membership plan and have access to re-direct to your own link.
-
-          .copy-brick.itinerary-brick
-            .fa.fa-plus
-            .fa.fa-minus
-            .headline
-              Do I need a permit to offer trips?
-            .description
-              We review every adventure & vet hosts thoroughly before we approve adventures. As a host you agree that you are legally able to operate your activity in the location. Please review our
-              %a{href: 'http://www.advlo.com/terms'} Terms of Service.
-
-          .copy-brick.itinerary-brick
-            .fa.fa-plus
-            .fa.fa-minus
-            .headline
-              What if I receive a booking request but can't make it?
-            .description
-              You have the option to decline any booking requests and directly message the traveler to reschedule. If the transaction has already happened, you can cancel the booking in your dashboard and we will handle the traveler refund. 
-
-
     .box
       - if current_user
         .jumbotron{:style => "background-image: url(#{image_path 'background/biklo_darken.jpg'}); text-align: center;"}
           %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: "margin-top: 10%;"} LIST YOUR ADVENTURE
       - else
-        = render partial: 'signup'
-          
-
+        = render partial: 'signup'       
 
 :javascript
   $(document).ready(function(){
@@ -433,3 +113,326 @@
     $(this).hide();
     $('.feature-list-content-wrapper').fadeIn()
   })
+
+/  #adventure_info
+/    .adventure_info_body
+/      .gray_background
+/        .container.itinerary-wrapper.hosting_info_itineraries
+/          .row.host_header
+/            FAQ
+/
+/          .copy-brick.itinerary-brick
+/            .fa.fa-plus
+/            .fa.fa-minus
+/            .headline
+/              How do I create a listing?
+/            .description
+/              Create an
+/              %a{href: '/users/sign_up'}account
+/              and complete your host profile, then click 'Host an Adventure'. From there you will be able to start building your adventure.
+
+/          .copy-brick.itinerary-brick
+/            .fa.fa-plus
+/            .fa.fa-minus
+/            .headline
+/              How do payments work?
+/            .description
+/              We accept global credit card payments through
+/              %a{href: 'https://stripe.com/global', target: '_blank'}
+/                Stripe's
+/              secure processing framework which is PCI compliant.
+/              Payouts are either direct bank deposit 
+/              %a{href: "https://stripe.com/global", target: '_blank'}
+/                in a country 
+/              that supports it, or via
+/              %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal. 
+/              Payouts will be triggered at the end of each week for all of your completed bookings.
+
+
+/          .copy-brick.itinerary-brick
+/            .fa.fa-plus
+/            .fa.fa-minus
+/            .headline
+/              Can I use my own transaction system?
+/            .description
+/              If you prefer to manage transactions on your own site or in person but still want the front-end tools and benefits of being part of the Advlo community, choose the membership plan and have access to re-direct to your own link.
+
+/          .copy-brick.itinerary-brick
+/            .fa.fa-plus
+/            .fa.fa-minus
+/            .headline
+/              Do I need a permit to offer trips?
+/            .description
+/              We review every adventure & vet hosts thoroughly before we approve adventures. As a host you agree that you are legally able to operate your activity in the location. Please review our
+/              %a{href: 'http://www.advlo.com/terms'} Terms of Service.
+
+/          .copy-brick.itinerary-brick
+/            .fa.fa-plus
+/            .fa.fa-minus
+/            .headline
+/              What if I receive a booking request but can't make it?
+/            .description
+/              You have the option to decline any booking requests and directly message the traveler to reschedule. If the transaction has already happened, you can cancel the booking in your dashboard and we will handle the traveler refund. 
+
+  
+
+
+/  .box.col.col-md-12
+/    .headline-container
+/      .lightline.left-side-line
+/      .lightheading.big-headline= titles[0]
+/      .lightline.right-side-line
+/    - img_url = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/588/hero/Screen_Shot_2015-02-23_at_8.32.24_PM.png?1424748847", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/585/hero/Screen_Shot_2015-02-23_at_8.36.18_PM.png?1424749024", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/587/hero/mobile.png?1424749398"]
+/    .col.col-md-12.text-center.computer-slider.brick-padding
+/      .row
+/        .col.col-md-6.desktop
+/          .gallery
+/            .swiper-container.swiper-container-comp{class: "#{type}-slider"}
+/              .swiper-wrapper
+/                - img_url.each do |img|
+/                  .swiper-slide
+/                    .image-wrapper{style: "background-image: url('#{img}')"}
+
+/            #computer
+/              = image_tag 'comp.png'
+
+/        .col.col-md-6
+/          %ul
+/            %li 
+/              .main.active{class: "#{type}-1"}
+/                = comp[0]
+/                .sub 
+/                  = comp[1]
+
+/            %li 
+/              .main{class: "#{type}-2"}
+/                = comp[2]
+/                .sub 
+/                  = comp[3]
+
+/            %li 
+/              .main{class: "#{type}-3"}
+/                = comp[4]
+/                .sub 
+/                  = comp[5]
+
+/ .box.col.col-md-12.text-center.all-plans-include.adventure-spec
+/   .headline-container
+/     .left-side-line
+/     .big-headline Both options include
+/     .right-side-line
+/   .col.col-md-12.brick-padding
+/     .row
+/       .col.col-md-4.how-it-works-block
+/         .fa.fa-envelope
+/         .feature-text
+/           Adventure requests
+/         .headlines 
+/           We market your activity and send booking requests right to your inbox.
+
+/       .col.col-md-4.how-it-works-block
+/         .fa.fa-globe
+/         .feature-text
+/           Global Community
+/         .headlines 
+/           Connect with adventurers who crave more authentic, local experiences when they travel.
+
+/       .col.col-md-4.how-it-works-block
+/         .fa.fa-money
+/         .feature-text
+/           Weekly payouts
+/         .headlines 
+/           Receive bank deposits in 
+/           %a{href: "https://stripe.com/global", target: '_blank'} these countries
+/           or create a 
+/           %a{href: 'https://www.paypal.com/webapps/mpp/country-worldwide', target: '_blank'} PayPal account
+/           for free.             
+
+/  .box.col.col-md-12.text-center.all-plans-include.adventure-spec
+/    - if type == 'local'
+/      - price_basic = ['GUIDE ACCOUNT', 'FREE TRIP LISTINGS', '30% commission on bookings']
+/      - price_member = ['UNLIMITED SALES', '$30/mo.', '0% comission on bookings']
+/      - features = ['Individual Profile Page','Adventure Pages', 'Reservation tools', 'SEO & Content Marketing','Weekly Payouts', 'Premium listing positions','0% commission on bookings', 'Option to re-direct transaction','Connect multiple guide accounts']
+      
+/    - else
+/      - price_basic = ['BUSINESS ACCOUNT', '$49/mo.', '5% commission']
+/      - price_member = ['UNLIMITED SALES', '$99/mo.', '0% comission']
+/      - features = ['Company Profile Page','Adventure Pages', 'Reservation tools', 'SEO & Content Marketing','Weekly Payouts', 'Premium listing positions','0% commission on bookings', 'Option to re-direct transaction','Connect multiple guide accounts']
+
+/    .col.col-md-6
+/      .price-box
+/        .price-title= price_basic[0]
+/        .price= price_basic[1]
+/        .price-explain= price_basic[2]
+
+
+/    .col.col-md-6
+/      .price-box
+/        .price-title= price_member[0]
+/        .price= price_member[1]
+/        .price-explain= price_member[2].html_safe
+
+
+
+/    .adventure_info_body
+/      .gray_background
+/        .container
+/          .feature-list-btn-wrapper
+/            .guide-button.feature-list-btn
+/              .title FEATURE LIST
+/           
+/          .feature-list-content-wrapper
+/            .premium
+/              %h3 MEMBERSHIP FEATURES
+/              .access-block
+/                .row.matrix_header
+/                  .fa.fa-thumb-tack
+/                  Top Results Position
+/                .row.matrix_content
+/                  Your adventures will be at the top of a location list when searched
+
+/              .access-block
+/                .row.matrix_header
+/                  .fa.fa-users
+/                  Dedicated Support
+/                .row.matrix_content
+/              
+/                  An advlo representative to help upload & optimize all your adventures
+/              .access-block
+/                .row.matrix_header
+/                  .fa.fa-share-square-o
+/                  Redirect URL
+/                .row.matrix_content
+/                  Redirect the traveler to your own booking system on checkout or use Advlo's
+
+/              .access-block
+/                .row.matrix_header
+/                  .fa.fa.fa-copy
+/                  Zero Commission
+/                .row.matrix_content
+/                  0% commission on any of your adventure bookings
+/
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-cc-visa
+/                Online Transactions
+/              .row.matrix_content
+/                Advlo handles all payments ensuring you get paid on time
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-comments-o
+/                Direct Messaging
+/              .row.matrix_content
+/                Communicate with travelers interested in booking your trips
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-file-image-o
+/                Custom Pages
+/              .row.matrix_content
+/                Web pages for your host profile and each of your adventures
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-star-half-o
+/                Reviews / Ratings
+/              .row.matrix_content
+/                Build a reputation and leverage links to exisiting traveler reviews
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-search
+/                Online Visibility
+/              .row.matrix_content
+/                SEO, web hosting, & keyword marketing to bring you more traffic
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-money
+/                Payout Options
+/              .row.matrix_content
+/                Bank deposit or PayPal / payouts are initiated at the end of each week.
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-retweet
+/                Booking Requests
+/              .row.matrix_content
+/                Accept or decline booking requests based on your availability
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-copy
+/                Content Management
+/              .row.matrix_content
+/                Easily manage all your adventures with one account
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-mobile
+/                Mobile Friendly
+/              .row.matrix_content
+/                Manage adventures & reservations from your mobile device
+
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-facebook-square
+/                Social media tools
+/              .row.matrix_content
+/                Send your listing to Facebook, Twitter & Google+ in one click
+                
+/            .access-block
+/              .row.matrix_header
+/                .fa.fa-calendar
+/                Scheduling
+/              .row.matrix_content
+/                Offer instant booking times for immediate reservations
+
+/            .access-block
+/              .row.matrix_header 
+/                .fa.fa-envelope
+/                Email Alerts
+/              .row.matrix_content
+/                Get notifications when you receive a booking or direct message
+
+
+  
+/  .box.adventure_info_body
+/    .case_studies
+/      .headline-container
+/        .lightline.left-side-line
+/        .lightheading.big-headline CASE STUDIES
+/        .lightline.right-side-line
+/      .row
+/        .adventure-container.adventure-container-homepage
+/          .brick-wrapper
+/            - @adventures.each_with_index do |adv, i|
+/              .adv-info-wrapper
+/                %div.adventure-brick{:itemscope => true, :itemtype => "http://schema.org/Thing"}
+/                  %a{href: adventure_path(adv.slug), itemprop: 'url'}
+/                    - if adv.attachment.height(:large) >= 300
+/                      - adv_img = adv.attachment.url(:large)
+/                    - else
+/                      - adv_img = adv.attachment.url(:hero)
+/                    .rich-snippet{itemprop: 'image', src: adv.attachment.url(:thumb)}
+/                    .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
+/                      .copy{id: "#{i}"}
+/                        - if adv.title.length > 38
+/                          .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
+/                        - else
+/                          .title{itemprop: 'name'}= adv.title
+/
+/                        .location{itemprop: 'description'}= get_display_location(adv)
+/                        
+/                        .host_name= "With #{adv.host_name}"
+/
+/                      .hover-block{id: i}
+/                        .guide-image
+/                          .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
+                        
+/                      .copy-container{class: "copy-#{i}"}
+      
+/                .view-profile
+/                  =link_to "View #{adv.host_name}'s profile", user_path(adv.users.first.to_param)
+

@@ -4,17 +4,13 @@
   - image = @hero_image ? @hero_image.attachment.url(:hero) : "background/#{@guide_category_img}"
   .jumbotron{:style => "background-image: url(#{image_path image})"}
     .container
-      .row.text-center{style: "margin-top: 7%;"}
+      .row.text-center{style: "margin-top: 3%;"}
         .col-md-8.why_host.col-md-offset-2
-          Learn how Adventure Local can help drive sales and promote your guide services
+          Do what you love, meet awesome people and get paid to do it
 
       .left-local#individual
         .guide-button
-          .title Individual Guides
-
-      .right-business#business
-        .guide-button.green-button.green
-          .title Tour Operators
+          .title GET STARTED
 
           
 
@@ -22,8 +18,8 @@
 
     #individual-info
       = render partial: 'info_page', locals: {type: 'local'}
-    #business-info      
-      = render partial: 'info_page', locals: {type: 'business'}
+/    #business-info      
+/      = render partial: 'info_page', locals: {type: 'business'}
 
 
 :javascript

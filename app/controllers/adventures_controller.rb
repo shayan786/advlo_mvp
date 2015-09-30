@@ -241,7 +241,7 @@ class AdventuresController < ApplicationController
     when 'hike'
       @guide_category_img = 'advlo_forest.png'
     else
-      @guide_category_img = 'advlo_mountains.jpg'
+      @guide_category_img = 'PartnerMountains.jpg'
     end
 
   end
