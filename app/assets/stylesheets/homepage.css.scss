@@ -26,7 +26,7 @@ h1 {
 }
 
 #bottom-login {
-  background-image: asset-url("background/HomepageMountain.png");
+  background-image: asset-url("background/Find-Your-Adventure-Footer.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -53,11 +53,11 @@ h1 {
   }
 
   .join-text {
-    font-family: 'bebas_neue';
+    font-family: 'nexa_light';
     font-weight: bold;
     color: #fff;
     text-align: center;
-    font-size: 6em;
+    font-size: 4em;
     letter-spacing: 2px;
     margin-top: 20px;
     float: left;
@@ -67,7 +67,8 @@ h1 {
 
   @media screen and (max-width: 600px){
     .join-text {
-      font-size: 3em;
+      font-size: 2.8em;
+      letter-spacing: 2px;
     }
     .why {
       width: 75%;
