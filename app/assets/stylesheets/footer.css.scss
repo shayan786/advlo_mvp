@@ -1,13 +1,13 @@
 #toggle-sign-in {
 	font-family: 'cabin_regular';
 	cursor: pointer;
-	margin-bottom: 42px;
+	margin-bottom: 2px;
 }
 
 .sign_up_btn {
 	width: 57%;
 	margin-bottom: 5px;
-	margin-top: 5px;
+	margin-top: 15px;
 	font-size: 1.2em;
 	background-color: $advlo_orange;
 	border-color: $advlo_orange;
@@ -146,7 +146,7 @@
 			.modal-content {
 				max-width: 450px;
 				margin: 0 auto;
-				background-image: asset-url('cartographer_small.png');
+				background-color: rgba(0,0,0,0.85);
 
 
 				.question-wrapper {
@@ -270,9 +270,11 @@
 			#signup_modal {
 				display: none;
 				margin-top: 0px !important;
+				padding-top: 10px;
 
 				.form-control {
 					width: 65%;
+					color: #fff;
 				}
 
 				.sign_up_btn {
@@ -290,7 +292,7 @@
 
 				.btn-primary {
 					background-color: $advlo_orange;
-					border-color: $advlo_orange;
+					border: none;
 				}
 			}
 
@@ -322,7 +324,7 @@
 	.back-text {
 		font-family: 'cabin_regular' !important;
 		font-size: 13px;
-		color: rgba(255,255,255,0.5);
+		color: rgba(255,255,255,0.4);
 
 		a:hover {
 			text-decoration: none;
@@ -343,12 +345,16 @@
 
 
 		.sign_up_toggle_btn {
-			width: 60%;
-			padding-top: 8px;
-			font-family: cabin_bold;
+			width: 42%;
+			padding-top: 6px;
+			font-family: nexa_light;
 			font-weight: bold;
 			letter-spacing: 1px;
-			font-size: 1.3em;
+			font-size: 1.0em;
+			background-color: transparent;
+			border: 1px solid rgba(255,255,255,0.5);
+			margin-top: 10px;
+			margin-bottom: 57px;
 
 			&:hover {
 				background-color: $advlo_orange;
@@ -357,13 +363,14 @@
 			}
 		}
 		.fb_btn {
-			width: 60%;
-			padding-top: 8px;
-			font-family: cabin_bold;
+			width: 80%;
+			padding-top: 16px;
+			font-family: nexa_light;
 			font-weight: bold;
 			letter-spacing: 1px;
-			font-size: 1.3em;
-			margin-top: 24px;
+			font-size: 1.2em;
+			margin-top: 54px;
+			padding-bottom: 16px;
 		}
 	}
 

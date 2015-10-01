@@ -28,11 +28,12 @@
 
 .navbar {
 	height: 55px;
-	font-family: cabin_bold;
+	font-family: nexa_bold;
 	background: transparent;
 	padding: 4px 0 4px 10px;
 	z-index: 1001;
 	border: none;
+	letter-spacing: 1px;
 
 	.navbar-brand {
 		background: asset-url("logos/advlo_header_logo_white.png");
@@ -232,7 +233,7 @@
 
 
 .sign_up_link {
-	margin-top: 10px;
+	margin-top: 8px;
 	a {
 		text-decoration: none;
 		&:hover {
@@ -354,18 +355,19 @@
 		color: #fff;
 
 		.modal-content {
-			max-width: 400px;
+			max-width: 500px;
 			margin: 0 auto;
 			padding-bottom: 15px;
-			background-image: asset-url('cartographer_small.png');
+			background-color: rgba(0,0,0,0.85);
 		}
 
 		#sign_in_form {
 			display: none;
-			margin-top: 0px !important;
+			margin-top: 10px !important;
 
 			.form-control {
-				width: 65%;
+				width: 64%;
+				color: #fff;
 			}
 
 			#user_password {
@@ -413,32 +415,35 @@
 	}
 
 	.sign_in_toggle_btn {
-		width: 60%;
+		width: 32%;
 		padding-top: 8px;
-		font-family: bebas_neue;
+		font-family: nexa_light;
 		font-weight: bold;
 		letter-spacing: 1px;
-		font-size: 1.3em;
-		background-color: $advlo_orange;
-		border-color: $advlo_orange;
+		font-size: 1.0em;
+		background-color: transparent;
+		border: 2px solid rgba(255,255,255,0.5);
+		margin-top: 10px;
 
 		&:hover {
-			background-color: $orange;
-			border-color: $orange;
+			background-color: rgba(0,0,0,0.3);
+			border-color: rgba(255,255,255,0.2);
 		}
 	}
 	.fb_btn {
-		width: 60%;
-		padding-top: 8px;
-		font-family: bebas_neue;
+		width: 80%;
+		padding-top: 16px;
+		font-family: nexa_light;
 		font-weight: bold;
 		letter-spacing: 1px;
-		font-size: 1.3em;
+		font-size: 1.2em;
+		margin-top: 30px;
+		padding-bottom: 16px;
+		padding-right: 48px
 	}
 
 	.sign_up_link {
-		font-family: bebas_neue;
-		letter-spacing: 2px;
+		font-family: cabin_regular;
 		font-size: 1.2em;
 		margin-top: 20px;
 		cursor: pointer;

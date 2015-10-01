@@ -3,16 +3,25 @@
     %li
       %form
         %a.btn.btn-default.navbar-btn.header-button.bordered{href: "/partner"}
-          Host an Adventure
+          BECOME A HOST
 
     %li
       %form
         .btn.btn-primary.navbar-btn.login_in_sign_up_btn.new-account{style: "margin-right: 10px; font-weight: bold;"}
           LOGIN
 
+    %li
+      %form
+        .btn.btn-primary.navbar-btn.login_in_sign_up_btn.sign_up_link{style: "margin-right: 10px; font-weight: bold;"}
+          SIGN UP
+
 = render partial: 'sign_in_modal'
 
 :javascript
   $('.new-account').click(function(){
     $('#sign_in_modal').modal('show');
+  })
+
+  $('.sign_up_link').click(function(){
+    $('#member-modal').modal('show');
   })

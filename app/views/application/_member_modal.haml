@@ -8,7 +8,7 @@
         .row
           %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
             %i.fa.fa-facebook
-            FACEBOOK
+            CONNECT WITH FACEBOOK
 
         %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'popup_login_form'}
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -16,11 +16,11 @@
           =tag(:input, :type => "hidden", :id => "promo_id", :name => "promo[referrer_id]", :value => nil)
 
           .form-group
-            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email", style: "background-color: rgb(68,68,68); border: none;"}
           .form-group
-            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]"}
+            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", id: "user_password", name: "user[password]", style: "background-color: rgb(68,68,68); border: none;"}
           .form-group
-            %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]"}
+            %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", id: "user_password_confirmation", name: "user[password_confirmation]", style: "background-color: rgb(68,68,68); border: none;"}
           .honeypot
             %input.form-control{type: "text", name: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
           .row
@@ -28,10 +28,10 @@
 
         .row
           .btn.btn-success.sign_up_toggle_btn.popup_login
-            EMAIL
+            OR EMAIL
 
         .sign-up-link#toggle-sign-in
-          Already have an account? Sign In
+          Already have an account? SIGN IN
 
         .back-text
           By signing up, you agree to Advlo's
