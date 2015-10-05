@@ -173,6 +173,10 @@
     margin: 0 auto;
   }
 
+  .scroll-slow #homepage-text {
+    margin-top: 100px;
+  }
+
   .scroll-slow #homepage-text .logo img {
     height: 150px;
   }
@@ -206,6 +210,14 @@
   }
   .jumbotron_fix {
     min-height: 700px;
+  }
+
+  .scroll-slow #homepage-text #explore-btn {
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
   }
 }
 
@@ -289,6 +301,9 @@
     font-size: 1.4em !important;
   }
 
+  .jumbotron_fix {
+    min-height: 550px;
+  }
 
   .navbar-collapse {
     padding-right: 0px;
@@ -338,7 +353,7 @@
 
   .scroll-slow #homepage-text #adventure-local {
     font-family: nexa_light;
-    font-size: 3.0em;
+    font-size: 2.6em;
     padding-top: 0px;
     font-weight: bold;
     letter-spacing: 0px;
