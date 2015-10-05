@@ -69,7 +69,7 @@
 }
 
 #how_it_works {
-	background: rgba(0, 0, 0, 0.6);
+	background: transparent;
 	padding-top: 50px;
 
 	h3 {
@@ -135,18 +135,21 @@
 			font-family: cabin_regular;
 			letter-spacing: 1px;
 			color: #FFF;
-			padding-top: 95px;
-			padding-bottom: 95px;
+			padding-top: 48px;
+			padding-bottom: 48px;
 			border-radius: 4px;
 
 			.large {
-				font-size: 2.4em;
+				font-size: 4em;
 				color: #fff;
 				font-weight: bold;
 				padding-right: 40px;
 				padding-left: 40px;
 				font-family: nexa_light;
 				font-weight: bold;
+				letter-spacing: 5px;
+				text-align: center;
+				padding-top: 35px;
 			}
 		}
 	}
@@ -166,31 +169,30 @@
       	}
 	} 
 
-	.hiw-small-left {
-		line-height: 0px;
-		font-size: 1.2em;
-		color: rgba(255,255,255,0.6);
-		text-align: left;
+	.hiw-small {
+		font-size: 1.5em;
+		color: rgba(255,255,255,0.8);
+		text-align: center;
 		line-height: 24px;
 		padding-top: 0px;
-		padding-left: 40px;
 		letter-spacing: 0px;
+		padding-right: 80px;
+		padding-left: 80px;
 	}
 
-	.hiw-small-right {
-		line-height: 0px;
-		font-size: 1.2em;
-		color: rgba(255,255,255,0.6);
-		text-align: right;
+	.hiw-small-host {
+		font-size: 1.5em;
+		color: rgba(255,255,255,0.8);
+		text-align: center;
 		line-height: 24px;
 		padding-top: 0px;
-		padding-right: 40px;
-		letter-spacing: 0px;
+		padding-right: 260px;
+		padding-left: 260px;
 	}
 
 	.category_img {
 		background-size: cover !important; 
-		height: 320px;
+		height: 280px;
 		width: 100%;
 		border-radius: 4px;
 		margin-bottom: 10px;
@@ -211,8 +213,31 @@
 			font-family: nexa_light;
 			font-size: 3.2em;
 			color: #fff;
-			padding-top: 124px;
+			padding-top: 110px;
+			font-weight: bold;
+			letter-spacing: 2px;
 		}
+	}
+
+	.hostpanel {
+		background-color: transparent;
+	}
+
+	.hostsection-header {
+		font-size: 4em;
+		font-family: nexa_light;
+		font-weight: bold;
+		color: #fff;
+		text-align: center;
+		padding-top: 35px;
+		letter-spacing: 4px;
+	}
+
+	.hostsection-text {
+		font-family: cabin-regular;
+		font-size: 1.8em;
+		color: rgba(255,255,255,0.8);
+		text-align: center;
 	}
 
 	.video_copy {
@@ -359,11 +384,22 @@
 		height: 220px;
 	}
 
+	#how_it_works .hostsection-header {
+		font-size: 3em;
+		line-height: 42px;
+	}
+
+	#how_it_works .hostsection-text {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-size: 1.5em;
+	}
+
 	#how_it_works .category_img .category_img_text.text-center {
 		font-family: nexa_light;
-		font-size: 1.8em;
+		font-size: 3em;
 		color: #fff;
-		padding-top: 94px;
+		padding-top: 80px;
 		font-weight: bold;
 	}
 
@@ -380,37 +416,39 @@
 
 	#how_it_works {
 		.hiw_img .hiw_img_text .large {
-			font-size: 1.4em;
+			font-size: 3em;
 			color: #fff;
 			font-weight: bold;
 			padding-left: 20px;
 			padding-right: 20px;
+			padding-top: 50px;
+			line-height: 46px;
 		}
-	
-		.hiw-small-left {
+
+		.hiw-small {
 			line-height: 0px;
-			font-size: 1em;
+			font-size: 1.7em;
 			color: rgba(255,255,255,0.8);
-			text-align: left;
-			line-height: 16px;
+			text-align: center;
+			line-height: 26px;
 			padding-top: 10px;
 			padding-left: 20px;
 			padding-right: 20px;
 		}
 
-		.hiw-small-right {
+		.hiw-small-host {
 			line-height: 0px;
-			font-size: 1em;
+			font-size: 1.7em;
 			color: rgba(255,255,255,0.8);
-			text-align: right;
-			line-height: 16px;
+			text-align: center;
+			line-height: 26px;
 			padding-top: 10px;
 			padding-right: 20px;
 			padding-left: 20px;
 		}
 		
 		#hiw-btn.btn.btn-default {
-			background-color: rgba(181,84,35, 0.8);
+			background-color: #ff7631;
 			border: none;
 			color: #fff;
 			letter-spacing: none;
@@ -420,7 +458,7 @@
 			font-size: 12px;
 
 			&:hover {
-		    	background-color: rgba(181,84,35, 0.4);
+		    	background-color: rgba(181,84,35, 0.6);
 		  	}
 		} 
 	}

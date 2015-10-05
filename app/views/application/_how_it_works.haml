@@ -4,64 +4,80 @@
     %br
     %br
     .row
-      .col-md-12
-        .hiw_img{style: "background: url('#{asset_path("background/hiw_search.png")}') center center no-repeat"}
-          .hiw_img_text.text-left
-            .large Explore by destination or activity
-            .hiw-small-left Search to view existing adventures or local hosts that interest you
-            .explore_wrapper
-              %a{href: '/find'}
-                #hiw-btn.btn.btn-default 
-                  START EXPLORING
+      .col-md-6
+        .hiw_img{style: "background: url('#{asset_path("background/hiw_search.jpg")}') center center no-repeat"}
+          .hiw_img_text.text-center
+            .large CREATE
+            .hiw-small Explore local hosts by destination or activity and create your custom experience.
       
-      .col-md-12
-        .hiw_img{style: "background: url('#{asset_path("background/hiw_find.jpg")}') center center no-repeat"}
-          .hiw_img_text.text-right{style: "position: relative;"}
-            .large Connect with local adventure hosts
-            .hiw-small-right Find and connect with local adventure hosts to set up your next adventure
-            .explore_wrapper
-              %a{href: '/find'}
-                #hiw-btn.btn.btn-default 
-                  CONNECT WITH HOSTS
+      .col-md-6
+        .hiw_img{style: "background: url('#{asset_path("background/advlo_beach.jpeg")}') center center no-repeat"}
+          .hiw_img_text.text-center
+            .large CONNECT
+            .hiw-small Choose your favorite local hosts and start customizing your adventure with them.
 
       .col-md-12
         .hiw_img{style: "background: url('#{asset_path("background/hiw_adventure.jpg")}') center center no-repeat"}
-          .hiw_img_text.text-left
-            .large Experience your custom adventure
-            .hiw-small-left We'll handle the payment transfer and logistics, while you Adventure Local
+          .hiw_img_text.text-center
+            .large ADVENTURE
+            .hiw-small-host We'll handle the payment transfer and logistics, while you Adventure Local.
             .explore_wrapper
               %a{href: '/find'}
-                #hiw-btn.btn.btn-default 
-                  REQUEST AN ADVENTURE
+                #hiw-btn.btn.btn-default
+                  GET STARTED
   
   .container.categories
     %br
     %br
     .row
       .categorysection-header
-        Find a local to show you how to adventure in their town
+        Find a local to show you adventures in their town
       .col-md-6
         %a{href: "/find?categories=water&locals=false"}
           .category_img{style: "background: url('#{asset_path("background/WaterWaves.jpeg")}') center center no-repeat"}
             .category_img_text.text-center{style: "position: relative; top: 0px;"}
-              WATER || WAVES
-      .col-md-6 
+              WATER
+      .col-md-3 
         %a{href: "/find?categories=snow&locals=false"}
           .category_img{style: "background: url('#{asset_path("background/SnowMtn.jpg")}') center center no-repeat"}
             .category_img_text.text-center{style: "position: relative; top: 0px;"}
-              SNOW || MOUNTAINS
-    .row
-      .col-md-6
+              SNOW
+      .col-md-3
         %a{href: "/find?categories=air&locals=false"}
           .category_img{style: "background: url('#{asset_path("background/AirWind.jpg")}') center center no-repeat"}
             .category_img_text.text-center{style: "position: relative; top: 0px;"}
-              AIR || WIND
-      .col-md-6
+              AIR
+    .row
+      .col-md-3
+        %a{href: "/find?categories=air&locals=false"}
+          .category_img{style: "background: url('#{asset_path("background/Motor.jpg")}') center center no-repeat"}
+            .category_img_text.text-center{style: "position: relative; top: 0px;"}
+              MOTOR
+      .col-md-3
         %a{href: "find?categories=biking,camping,climbing,hiking&locals=false"}
           .category_img{style: "background: url('#{asset_path("background/DirtRock.jpg")}') center center no-repeat"}
             .category_img_text.text-center{style: "position: relative; top: 0px;"}
-              DIRT || ROCKS
+              ROCKS
+      .col-md-6
+        %a{href: "find?categories=biking,camping,climbing,hiking&locals=false"}
+          .category_img{style: "background: url('#{asset_path("background/advlo_forest.png")}') center center no-repeat"}
+            .category_img_text.text-center{style: "position: relative; top: 0px;"}
+              TRAIL
               
+  .container.hostpanel
+    %br
+    %br
+    .row
+      .col-md-12
+        .hiw_img_text.text-center
+          .hostsection-header
+            WHAT'S YOUR ADVENTURE?
+          .hostsection-text
+            Show us how adventurous you are and share it with the world.
+          .explore_wrapper
+            %a{href: '/partner'}
+              #hiw-btn.btn.btn-default{style: "padding-right: 24px; padding-left: 24px; padding-top: 12px; padding-bottom: 12px; margin-bottom: 80px;"}
+                BECOME A HOST
 
 / FEATURE REGIONS
 /    .row

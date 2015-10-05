@@ -22,11 +22,10 @@
     color: #FFF;
 
     #adventure-local{
-      font-family: nexa_light;
+      font-family: nexa_bold;
       font-size: 5em;
       padding-top: 32px;
       letter-spacing: 3px;
-      font-weight: bold;
     }
 
     #explanation {
@@ -42,20 +41,19 @@
 
     #explore-btn {
       margin-top: 30px;
-      border: none;
       background-color: rgba(0,0,0,0.8);
       color: #FFF;
-      border-radius: 6px;
       padding: 10px 20px;
-      border: none;
       font-size: 19px;
       letter-spacing: 3px;
       font-weight: bold;
-      border: 3px solid rgb(255,118,49);
       font-family: nexa_light;
+      background-color: rgb(255,118,49);
+      border-radius: 0px;
+      border: none;
 
       &:hover {
-        background-color: rgba(255,118,49, 0.4);
+        background-color: rgba(255,118,49, 0.6);
       }
     }
   }
