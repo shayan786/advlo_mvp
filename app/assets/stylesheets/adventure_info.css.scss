@@ -109,7 +109,7 @@
     color: #333333;
     text-align: center;
     font-weight: bold;
-    padding-top: 24px;
+    padding-top: 50px;
     padding-bottom: 24px;
     letter-spacing: 2px;
   }
@@ -426,8 +426,8 @@
 @media screen and(max-width: 1315px ){
   .business_page .sub {
     font-size: 24px;
-    margin-bottom: 20px;
-    margin-top: 0px;
+    margin-bottom: 50px;
+    margin-top: 8px;
     font-size: 14px;
   }
 }
@@ -444,7 +444,8 @@
 
   .business_page .adventure-spec .how-it-works-block {
     float: none;
-    margin-top: 35px;
+    margin-top: 60px;
+    margin-bottom: 60px;
   }
 
   .business_page .adventure-spec .headlines {
@@ -500,6 +501,18 @@
     display: none;
   }
 
+  .business_page .mobile-main {
+    line-height: 100%;
+    cursor: pointer;
+    font-size: 0.7em;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    font-family: 'nexa_bold';
+    text-transform: uppercase;
+    text-align: center;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
 
   .mobile-barrier {
     display: block;
@@ -507,22 +520,42 @@
     float: left;
     width: 100%;
     border-top: 1px solid whitesmoke;
-    margin-bottom: 60px;
+  }
+
+  .business_page .whatisadvlodescription {
+    font-family: cabin_regular;
+    font-size: 1em;
+  }
+
+  .business_page .why_host {
+    padding-top: 0px;
   }
 
   .guide-button {
+    height: 40px;
+
     .title {
-      letter-spacing: 3px;
-      font-size: 20px;
+      letter-spacing: 1px;
+      font-size: 16px;
+      margin-top: 6px;
     }
   }
+
+  .business_page .adventure-spec .headlines {
+    font-size: 1em;
+  }
+
   .business_page .why_host {
     font-size: 1.5em;
     margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
-  .guide-button {
-    height: 68px;
+  .business_page .lightheading {
+    font-size: 2em;
+    margin-bottom: 60px;
+    margin-top: 0px;
   }
 
   .more-info-box {

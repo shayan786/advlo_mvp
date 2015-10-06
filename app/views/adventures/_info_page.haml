@@ -1,11 +1,11 @@
 - if type == 'local'
-  - info = ["LIST YOUR ADVENTURES", "Brag away. Show off the adventures you can lead in your town and we'll create custom webpages your adventure experiences.",'HOST TRAVELERS',"We'll send travelers who share your passion to connect with you and (if you think they're worthy) experience your adventures.", "GET REWARDED", "Whether your a weekend warrior or full-time explorer, your expertise is valuable and people are willing to pay you for it."]
+  - info = ["LIST ADVENTURES", "Brag away. Show off the adventures you can lead in your town and we'll create custom webpages your adventure experiences.",'HOST TRAVELERS',"We'll send travelers who share your passion to connect with you and (if you think they're worthy) experience your adventures.", "GET REWARDED", "Whether your a weekend warrior or full-time explorer, your expertise is valuable and people are willing to pay you for it."]
 
   - comp = ["Adventure Host Profile","Showcase your adventures & outdoor skills, promote yourself by connecting social channels and allow travelers to contact you directly.",'Unlimited Adventure Listings', 'Easily create pages for each of your adventure trips to show how unique your experience is with photography, videos, maps, & more.', 'Responsive Page Design',"Enable travelers to view your adventures on mobile phones, tablets, and desktops to convert more potential bookings."]
 
   - comp_2 =["1. CREATE YOUR PROFILE", "Our team will work with you to create a profile as cool as you and your adventures. Display images & videos, sample itineraries and traveler reviews. Tell others your story and have fun with it!","2. SHOW WHAT YOU CAN DO","We will notify you when a traveler requests an adventure matching your skills. Respond directly through our request portal or let them contact you.", "3. CONNECT WITH TRAVELERS", "We'll handle international payments for you and deposit weekly payouts to your bank or PayPal account. In case of weather or other outside factors, simply cancel a trip and issue a refund with a few clicks."]
 
-  - titles = ['PROMOTE YOUR SERVICES', 'START THE ADVENTURE IN 3 STEPS']
+  - titles = ['PROMOTE YOUR SERVICES', 'START HOSTING IN 3 STEPS']
 
 - else
   - info = ['Promote your Brand',"We'll create custom webpages and listings for your business and adventure trips.",'Manage your Content',"Easily manage your adventures, sales leads, and booking requests; all in one place.",'Receive Payments', "Receive payments through our transaction system or choose to connect your own."]
@@ -57,26 +57,25 @@
     .col.col-md-12.text-center.computer-slider.brick-padding
       .row
         .col.col-md-6
-          %ul
-            %li 
-              .mobile-main.active{class: "mobile-#{type}-1"}
-                = comp_2[0]
-                .sub 
-                  = comp_2[1]
-                
-            %li 
-              .mobile-main{class: "mobile-#{type}-2"}
-                = comp_2[2]
-                .sub 
-                  = comp_2[3]
+          %li 
+            .mobile-main.active{class: "mobile-#{type}-1"}
+              = comp_2[0]
+              .sub 
+                = comp_2[1]
+              
+          %li 
+            .mobile-main{class: "mobile-#{type}-2"}
+              = comp_2[2]
+              .sub 
+                = comp_2[3]
 
 
 
-            %li 
-              .mobile-main{class: "mobile-#{type}-3"}
-                = comp_2[4]
-                .sub 
-                  = comp_2[5]
+          %li 
+            .mobile-main{class: "mobile-#{type}-3"}
+              = comp_2[4]
+              .sub 
+                = comp_2[5]
                   
             
 
