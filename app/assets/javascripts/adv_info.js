@@ -1,28 +1,6 @@
-function guideScroll(){
-  $(document).ready(function(){
-    $('html').css('overflow','scroll');
-    $('.jumbotron').height('400px');
-
-    var amount = $('.adventure_info_body').offset().top - 50
-
-    if ($(window).width() < 765){
-      amount = amount + 50
-    } else {
-      $('.navbar').fadeIn();
-    }
-    $('body').on("scroll mousedown DOMMouseScroll mousewheel keyup", function(){
-       $('body').stop();
-    });
-
-    $('body').animate({
-      scrollTop: amount
-    }, 1000);
-    
-    return false;
-  })
-}
 
 function toggleItin(){
+
   $('.itinerary-brick').click(function(){
     $(this).children().last().toggle();
     $(this).children().first().toggle();
@@ -59,17 +37,17 @@ function infoSlider(type){
 
 
 
-function mobileSlider(type){
+function mobileSlider(){
   $(document).ready(function() {
-    var sliderName = type + 'Slider';
-    var sliderName = new Swiper('.' + type + '-swiper',{
+    var sliderName = 'local' + 'Slider';
+    var sliderName = new Swiper('.' + 'local' + '-swiper',{
       mode:'horizontal',
       speed: 600,
       autoplayDisableOnInteraction: true,
       autoplay: 5000, 
       onSlideChangeStart: function(swiper){
         $(".mobile-main").removeClass('active')
-        $(".mobile-" + type + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
+        $(".mobile-" + 'local' + '-' + parseInt(sliderName.activeLoopIndex + 1)).addClass('active')
       }
     });
 

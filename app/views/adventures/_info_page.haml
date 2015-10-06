@@ -16,8 +16,8 @@
 
   - titles = ['PROMOTE YOUR BUSINESS', 'MANAGE TRIPS & BOOKINGS']
 
-.dark_background
-  .box.col.col-md-12.text-center.all-plans-include.adventure-spec
+.dark_background.orange-line
+  .col.col-md-12.text-center.all-plans-include.adventure-spec
     .col-md-6.col-md-offset-3
       .whatisadvlo
         WHAT IS ADVLO?
@@ -46,7 +46,7 @@
           .headlines 
             = info[5]
             
-  .box.col.col-md-12
+  .col.col-md-12.no-padding
     .mobile-barrier
     - img_url_2 = ["http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/591/hero/Screen_Shot_2015-02-23_at_10.01.29_PM.png?1424754124", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/589/hero/Screen_Shot_2015-02-23_at_8.55.37_PM.png?1424750186", "http://s3-us-west-2.amazonaws.com/advlo/hero_images/attachments/000/000/590/hero/Screen_Shot_2015-02-23_at_10.07.37_PM.png?1424754486"]
     .headline-container
@@ -67,7 +67,6 @@
             %li 
               .mobile-main{class: "mobile-#{type}-2"}
                 = comp_2[2]
-
                 .sub 
                   = comp_2[3]
 
@@ -76,8 +75,6 @@
             %li 
               .mobile-main{class: "mobile-#{type}-3"}
                 = comp_2[4]
-
-
                 .sub 
                   = comp_2[5]
                   
@@ -85,19 +82,20 @@
 
         .col.col-md-6.desktop
           .gallery
+            #computer
+              = image_tag 'comp.png'
             .swiper-container.swiper-container-comp{class: "#{type}-swiper"}
               .swiper-wrapper
                 - img_url_2.each do |img|
                   .swiper-slide
                     .image-wrapper{style: "background-image: url('#{img}')"}
-            #computer
-              = image_tag 'comp.png'
-    .box
-      - if current_user
-        .jumbotron{:style => "background-image: url(#{image_path 'background/biklo_darken.jpg'}); text-align: center;"}
-          %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: "margin-top: 10%;"} LIST YOUR ADVENTURE
-      - else
-        = render partial: 'signup'       
+    
+  
+    - if current_user
+      .jumbotron{:style => "background-image: url(#{image_path 'background/biklo_darken.jpg'}); text-align: center;"}
+        %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: "margin-top: 10%;"} LIST YOUR ADVENTURE
+    - else
+      = render partial: 'signup'       
 
 :javascript
   $(document).ready(function(){

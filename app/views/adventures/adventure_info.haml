@@ -6,7 +6,7 @@
     .container
       .row.text-center{style: "margin-top: 3%;"}
         .col-md-8.why_host.col-md-offset-2
-          Do what you love, meet awesome people and get paid to do it
+          Do what you love, meet awesome people, and get paid to do it
 
       .left-local#individual
         .guide-button
@@ -24,47 +24,10 @@
 
 :javascript
   
-  $(document).ready(function(){
-    $('html').css('overflow','hidden');
-    $('.navbar').hide()
-    $('#footer').hide()
-    $('.jumbotron').height($(window).height())
+
+  mobileSlider();
+
+
+  $('.guide-button').click(function(){
+    $('.login_in_sign_up_btn').last().click()
   })
-
-
-  $('#individual').click(function(){
-    $('#individual-info').fadeIn();
-    $('#business-info').hide();
-
-    $('.guide_type_form').val('local');
-    $('.is_guide_form').val('true');
-
-    $('.homepage_fb_btn').attr('href', "/users/auth/facebook?is_guide=true&guide_type=local");
-
-    infoSlider('local');
-    mobileSlider('local');
-    guideScroll();
-    toggleItin();
-
-    $('.dark_background').removeClass('green-line')
-    $('.dark_background').addClass('orange-line')    
-  })
-
-  $('#business').click(function(){
-    $('#business-info').fadeIn();
-    $('#individual-info').hide();  
-
-    $('.guide_type_form').val('business');
-    $('.is_guide_form').val('true');
-
-    $('.homepage_fb_btn').attr('href', "/users/auth/facebook?is_guide=true&guide_type=business");
-
-    infoSlider('business');
-    mobileSlider('business');
-    guideScroll();
-    toggleItin();
-
-    $('.dark_background').removeClass('orange-line')
-    $('.dark_background').addClass('green-line')
-  })
-
