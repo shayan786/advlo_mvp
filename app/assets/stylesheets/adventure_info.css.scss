@@ -473,14 +473,14 @@
   }
 
   .left-local {
-    width: 80%;
+    width: 48%;
     margin-bottom: 25px;
     margin-top: 25px;
   }
 
   .guide-button {
     .title {
-      margin-top: 7%;
+      margin-top: 17px;
       font-size: 30px;
     }
   }
@@ -546,7 +546,7 @@
   }
 
   .business_page .why_host {
-    font-size: 1.5em;
+    font-size: 3.2em;
     margin-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
@@ -565,5 +565,10 @@
   .col {
     padding: 0px !important;
   }
+}
 
+@media screen and(max-width: 450px){
+  .business_page .why_host {
+    font-size: 1.5em;
+  }
 }
