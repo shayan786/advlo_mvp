@@ -177,7 +177,7 @@ class ApplicationController < ActionController::Base
       @new_adventures = Adventure.approved.order('id desc').limit(3)
     end
 
-    @hero_adv = Adventure.find(370)
+    @hero_adv = Adventure.find(370) ? Adventure.find(370) : Adventure.find_by_title('Bondi Surf Experience')
 
     @feat_hosts = []
 
