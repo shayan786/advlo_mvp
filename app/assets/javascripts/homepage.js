@@ -160,9 +160,11 @@ function video_modal_play_stop() {
 }
 
 function fixBannerText(){
-  $('.scroll-slow #homepage-text').css({
-    "marginTop": "100px"
-  })
+  if ($('nav.logged-in').length != 0) {
+    $('.scroll-slow #homepage-text').css({
+      "marginTop": "100px"
+    })
+  }
 }
 
   
