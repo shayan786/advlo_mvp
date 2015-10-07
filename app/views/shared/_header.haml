@@ -9,19 +9,10 @@
   = render partial: 'mobile_header'
 #clickout
 
--# Navigation Header
-%nav.navbar.navbar-default{role: "navigation"}
-  .container-fluid
-    / Brand and toggle get grouped for better mobile display
-    .navbar-header
-      %a.navbar-brand{href: "/"}
-
-    - if current_user
-      = render partial: 'logged_in_header'
-    - else
-      = render partial: 'logged_out_header'
-
-  
+- if current_user
+  = render partial: 'logged_in_header'
+- else
+  = render partial: 'logged_out_header'
 
 
 :javascript 

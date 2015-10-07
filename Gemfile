@@ -60,5 +60,7 @@ gem 'zeroclipboard-rails'
 gem 'instagram',  :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
 gem 'shareable'
 gem 'twitter'
+gem 'image_optim'
+gem 'image_optim_pack'
 
 gem 'rails_admin'

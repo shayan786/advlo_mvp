@@ -26,7 +26,7 @@
 	}
 }
 
-.navbar {
+.navbar.logged-out {
 	height: 55px;
 	font-family: nexa_bold;
 	background: transparent;
@@ -52,6 +52,8 @@
 		}
 
 		&.bordered.btn-default {
+			padding-top: 7px;
+			padding-bottom: 4px;
 			border: 2px solid #fff;
 		}
 	}
@@ -74,6 +76,28 @@
 		border: none;
 		background-color: transparent;
 	}
+}
+
+.navbar.logged-in {
+	@extend .navbar.logged-out;
+
+	height: 58px;
+	background: #000;
+	opacity: $header_opacity;
+
+
+	.navbar-brand {
+		background: asset-url("logos/advlo_header_logo.png");
+		background-repeat: no-repeat;
+		background-size: 100%;
+		width: 175px !important;
+		margin-top: 3px;
+	}
+
+	.navbar-btn {
+		margin-top: 12px;
+	}
+
 }
 
 .navbar .nav {
@@ -190,7 +214,7 @@
 	.user_name {
 		color: $header_text_color;
 		float: right;
-		margin-top: 15px;
+		margin-top: 18px;
 	}
 }
 
@@ -415,7 +439,6 @@
 	}
 
 	.sign_in_toggle_btn {
-		width: 32%;
 		padding-top: 8px;
 		font-family: nexa_light;
 		font-weight: bold;

@@ -159,6 +159,12 @@ function video_modal_play_stop() {
   })
 }
 
+function fixBannerText(){
+  $('.scroll-slow #homepage-text').css({
+    "marginTop": "100px"
+  })
+}
+
   
 homepageInit = function() {
   adventureHover();
@@ -169,6 +175,7 @@ homepageInit = function() {
   request_form_maxlength();
   how_it_works_hovers();
   video_modal_play_stop();
+  fixBannerText();
 }
 
 aboutPageInit = function() {

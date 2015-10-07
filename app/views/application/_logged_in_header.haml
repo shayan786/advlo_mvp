@@ -1,78 +1,82 @@
-#header-navbar.collapse.navbar-collapse
-  %ul.nav.navbar-nav.navbar-right.login-right
-    %li.header-button
-      %button.btn.btn-default.navbar-btn#find-adventures
-        All Adventures
-        %b.caret
-    %li
-      %form
-        %a.btn.btn-default.navbar-btn.header-button{href: "/partner"}
-          Upload an Adventure
+%nav.navbar.navbar-default.logged-in.navbar-fixed-top{role: "navigation"}
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{href: "/"}
+    #header-navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right.login-right
+        %li.header-button
+          %button.btn.btn-default.navbar-btn#find-adventures
+            All Adventures
+            %b.caret
+        %li
+          %form
+            %a.btn.btn-default.navbar-btn.header-button{href: "/partner"}
+              Upload an Adventure
 
-    - if count = action_required(current_user)
-      %li
-        %form
-          %a.btn.btn-default.navbar-btn{href: "/users/reservations", title: "Action Required"}
-            %i.fa.fa-flag
-            = "(#{count})"
-
-
-%li.dropdown
-  %a.logged_in_dropdown_box{href: "#", "data-toggle" => "dropdown", type: 'button'}
-    .img-circle.profile_img{style: %(background: url("#{current_user.get_avatar_url('thumb')}") center center no-repeat)}
-
-    - if current_user.name.nil? || current_user.name.empty?
-      .user_name
-        = current_user.email
-        %b.caret
-    - else 
-      .user_name
-        = current_user.get_abbreviated_name
-        %b.caret
-
-  %ul.dropdown-menu.right-side.logged_in_dropdown_menu{role: "menu"}
-    %li
-      %a.orange-hover{href: "/users/dashboard"} 
-        %i.fa.fa-bicycle.header-fa-little{style: 'float: left; margin-right: 10px;'}
-        .text Adventures
-
-    %li
-      %a.orange-hover{href: "/users/conversations"} 
-        %i.fa.fa-envelope-o{style: 'float: left; margin-right: 15px;'}
-        
-        - if @messages_count && @messages_count > 0
-          .text= "Messages (#{@messages_count})"
-        - else
-          .text Messages
-
-    %li
-      %a.orange-hover{href: "/users/edit"} 
-        %i.fa.fa-user.header-fa{style: 'float: left; margin-right: 10px;'}
-        .text Profile
-
-    %li
-      %a.orange-hover{href: "/users/wallet"}
-        %i.fa.fa-cc-visa.header-fa-little{style: 'float: left; margin-right: 10px;'}
-        .text Wallet
-
-    %li
-      %a.orange-hover{href: "/travel-fund"} 
-        %i.fa.fa-angellist.header-fa{style: 'float: left; margin-right: 10px;'}
-        .text Invite
-    
-    %li
-      %a.orange-hover{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} 
-        %i.fa.fa-sign-out.header-fa{style: 'float: left; margin-right: 10px;'}
-        Sign Out
+        - if count = action_required(current_user)
+          %li
+            %form
+              %a.btn.btn-default.navbar-btn{href: "/users/reservations", title: "Action Required"}
+                %i.fa.fa-flag
+                = "(#{count})"
 
 
-#locations-menu-wrapper.locations-menu-wrapper{style: "display: none;"}
-  #locations-menu
-    - adv_regions.each_with_index do |r, i|
-      - if adv_count(r) > 0
-        .main-location
-          = link_to "#{r} (#{adv_count(r)})", "/find?location=#{URI.encode(r)}&locals=false"
-          - get_countries(r).each do |l|
-            .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/find?location=#{l[0]}&locals=false"
-            - get_cities(l[0]).each do |l|
-              .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"
+        %li.dropdown
+          %a.logged_in_dropdown_box{href: "#", "data-toggle" => "dropdown", type: 'button'}
+            .img-circle.profile_img{style: %(background: url("#{current_user.get_avatar_url('thumb')}") center center no-repeat)}
+
+            - if current_user.name.nil? || current_user.name.empty?
+              .user_name
+                = current_user.email
+                %b.caret
+            - else 
+              .user_name
+                = current_user.get_abbreviated_name
+                %b.caret
+
+          %ul.dropdown-menu.right-side.logged_in_dropdown_menu{role: "menu"}
+            %li
+              %a.orange-hover{href: "/users/dashboard"} 
+                %i.fa.fa-bicycle.header-fa-little{style: 'float: left; margin-right: 10px;'}
+                .text Adventures
+
+            %li
+              %a.orange-hover{href: "/users/conversations"} 
+                %i.fa.fa-envelope-o{style: 'float: left; margin-right: 15px;'}
+                
+                - if @messages_count && @messages_count > 0
+                  .text= "Messages (#{@messages_count})"
+                - else
+                  .text Messages
+
+            %li
+              %a.orange-hover{href: "/users/edit"} 
+                %i.fa.fa-user.header-fa{style: 'float: left; margin-right: 10px;'}
+                .text Profile
+
+            %li
+              %a.orange-hover{href: "/users/wallet"}
+                %i.fa.fa-cc-visa.header-fa-little{style: 'float: left; margin-right: 10px;'}
+                .text Wallet
+
+            %li
+              %a.orange-hover{href: "/travel-fund"} 
+                %i.fa.fa-angellist.header-fa{style: 'float: left; margin-right: 10px;'}
+                .text Invite
+            
+            %li
+              %a.orange-hover{href: "/users/sign_out", :data => {:method => "delete"}, rel: "nofollow"} 
+                %i.fa.fa-sign-out.header-fa{style: 'float: left; margin-right: 10px;'}
+                Sign Out
+
+
+    #locations-menu-wrapper.locations-menu-wrapper{style: "display: none;"}
+      #locations-menu
+        - adv_regions.each_with_index do |r, i|
+          - if adv_count(r) > 0
+            .main-location
+              = link_to "#{r} (#{adv_count(r)})", "/find?location=#{URI.encode(r)}&locals=false"
+              - get_countries(r).each do |l|
+                .sub-location.country=link_to "#{l[0]} (#{city_adv_count(l[0])})", "/find?location=#{l[0]}&locals=false"
+                - get_cities(l[0]).each do |l|
+                  .sub-location.city=link_to "- #{l[0]}", "/adventures?city=#{l[0]}"

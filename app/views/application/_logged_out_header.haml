@@ -1,19 +1,23 @@
-#header-navbar.collapse.navbar-collapse
-  %ul.nav.navbar-nav.navbar-right.login-right
-    %li
-      %form
-        %a.btn.btn-default.navbar-btn.header-button.bordered{href: "/partner"}
-          BECOME A HOST
+%nav.navbar.navbar-default.logged-out{role: "navigation"}
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{href: "/"}
+    #header-navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right.login-right
+        %li
+          %form
+            %a.btn.btn-default.navbar-btn.header-button.bordered{href: "/partner"}
+              BECOME A HOST
 
-    %li
-      %form
-        .btn.btn-primary.navbar-btn.login_in_sign_up_btn.new-account{style: "margin-right: 10px; font-weight: bold;"}
-          LOGIN
+        %li
+          %form
+            .btn.btn-primary.navbar-btn.login_in_sign_up_btn.new-account{style: "margin-right: 10px; font-weight: bold;"}
+              LOGIN
 
-    %li
-      %form
-        .btn.btn-primary.navbar-btn.login_in_sign_up_btn.sign_up_link{style: "margin-right: 10px; font-weight: bold;"}
-          SIGN UP
+        %li
+          %form
+            .btn.btn-primary.navbar-btn.login_in_sign_up_btn.sign_up_link{style: "margin-right: 10px; font-weight: bold;"}
+              SIGN UP
 
 = render partial: 'sign_in_modal'
 
