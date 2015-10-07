@@ -314,9 +314,7 @@
   text-transform: capitalize;
   -o-text-overflow: clip;
   text-overflow: clip;
-  background: #F27935;
-
-
+  background-color: rgba(195,91,38, 0.9);
 
   .title {
     color: #fff;
@@ -332,7 +330,7 @@
 
 
 .guide-button:hover {
-  background: rgba(242,121,53, 0.8);
+  background-color: rgba(134,61,24, 0.8);
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
