@@ -57,7 +57,7 @@ h1 {
     font-weight: bold;
     color: #fff;
     text-align: center;
-    font-size: 4em;
+    font-size: 3em;
     letter-spacing: 2px;
     margin-top: 20px;
     float: left;
@@ -65,14 +65,23 @@ h1 {
     width: 100%;
   }
 
+  .join-text-small {
+    font-family: cabin_regular;
+    font-size: 1.2em;
+    color: rgba(255,255,255,0.6);
+  }
+
   @media screen and (max-width: 600px){
     .join-text {
-      font-size: 2.8em;
-      letter-spacing: 2px;
+      font-size: 2.1em;
+      letter-spacing: 0px;
     }
     .why {
       width: 75%;
       font-size: 14px;
+    }
+    .join-text-small {
+      font-size: 1em;
     }
   }
 
@@ -83,33 +92,44 @@ h1 {
     text-align: center;
     margin-bottom: 100px;
 
-    .homepage_fb_btn {
+    .bottomlogin_signup_btn {
       margin-top: 25px;
       font-size: 1.4em;
-      background-color: transparent;
-      background: rgba(40, 94, 142, 0.8);
+      background-color: rgba(181,84,35,1);
       font-family: 'cabin_bold';
       width: 40%;
       padding-top: 12px;
       padding-bottom: 12px;
       max-width: 300px;
       min-width: 250px;
+    
+      &:hover {
+        background-color: rgba(125,58,24,0.8);
+      }
     }
+  }
 
-    .homepage_email_btn {
-      border-radius: 3px;
-      cursor: pointer;
-      background-color:rgba(0,0,0,0.25);
-      margin: 0 auto;
-      margin-top: 10px;
-      height: 35px;
-      color: #fff;
+  .advlo-partner-bottom {
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 100px;
+
+    .bottomlogin_partner_btn {
+      margin-top: 25px;
+      font-size: 1.4em;
+      background-color: rgba(181,84,35,1);
       font-family: 'cabin_bold';
-      font-size: 14px;
-      padding-top: 5px;
       width: 40%;
+      padding-top: 12px;
+      padding-bottom: 12px;
       max-width: 300px;
       min-width: 250px;
+    
+      &:hover {
+        background-color: rgba(125,58,24,0.8);
+      }
     }
 
     .sign_up_btn {
