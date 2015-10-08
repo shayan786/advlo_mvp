@@ -1,12 +1,17 @@
 
 #find {
-  padding-top: 80px;
 
   .dark_background {
       background-color: $dark_gray;
   }
 
   .search_options {
+    min-height: 400px;
+    padding-top: 120px;
+    background-image: asset-url("background/find_background.jpg");
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center bottom;
   .orange_btn{
     border-color: $advlo_orange;
     background-color: $advlo_orange;
@@ -25,6 +30,13 @@
     .fa {
       margin-right: 7px;
     }
+  }
+
+  .find-header {
+    font-family: cabin_regular;
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
   }
 
   .active {
@@ -76,7 +88,7 @@
 
       #location {
           height: 50px;
-          background-color: rgba(255,255,255,0.35);
+          background-color: rgba(0,0,0,0.75);
           border: none;
           box-shadow: none;
           border-radius: 0px;
@@ -130,7 +142,6 @@
   }
 
   .search_results {
-      margin-top: 40px;
       padding-bottom: 40px;
       min-height: 500px;
 
@@ -185,7 +196,7 @@
 
     .filter_select_btn {
       background-color: rgba(0,0,0,0.5);
-      border-color: $light_gray;
+      border: none;
       color: #FFF;
       font-size: 0.9em;
       margin-right: 5px;
@@ -194,7 +205,6 @@
 
     .active {
       background-color: rgba(195,91,38,0.7);
-      border-color: rgba(195,91,38,0.7);
     }
 
       }
@@ -263,17 +273,19 @@
             margin: 0 auto;
 
             .copy{
-              font-size: 14px;
+              font-size: 12px;
               color: #fff;
-              bottom: 5px;
+              bottom: 14px;
               position: absolute;
               z-index: 100;
-              left: 15px;
               font-family: 'cabin_regular';
+              text-align: center;
+              width: 375px;
+
 
 
               .title {
-                font-size: 17px;
+                font-size: 21px;
               }
 
 
