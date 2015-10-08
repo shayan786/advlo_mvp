@@ -27,20 +27,21 @@
 }
 
 .navbar.logged-out {
-	height: 55px;
+	height: 58px;
 	font-family: nexa_bold;
-	background: transparent;
+	background: #333333;
 	padding: 4px 0 4px 10px;
 	z-index: 1001;
 	border: none;
 	letter-spacing: 1px;
+	margin-bottom: 0px;
 
 	.navbar-brand {
 		background: asset-url("logos/advlo_header_logo_white.png");
 		background-repeat: no-repeat;
 		background-size: 100%;
 		width: 175px !important;
-		margin-top: 5px;
+		margin-top: 2px;
 	}
 
 	.header-button{
@@ -82,7 +83,7 @@
 	@extend .navbar.logged-out;
 
 	height: 58px;
-	background: #000;
+	background: #333333;
 	opacity: $header_opacity;
 	font-family: cabin-bold;
 
@@ -128,7 +129,7 @@
 			border-bottom-right-radius: 0px;
 			border-bottom-left-radius: 10px;
 			border-top-left-radius: 0px;
-			background: rgba(0, 0, 0, 1);
+			background: #333333;
 
 			a {
 				text-align: center;
@@ -137,6 +138,7 @@
 				font-size: 1.1em;
 				width: 100%;
 				text-align: left;
+				padding-left: 48px;
 
 			}
 

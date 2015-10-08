@@ -149,9 +149,11 @@
     }
 
     .modal-header {
-      font-family: cabin_bold;
-      color: $orange;
+      font-family: cabin_regular;
+      color: #fff;
       font-size: 1.6em;
+      padding-left: 60px;
+      padding-right: 60px;
     }
 
     .modal-body {
@@ -165,7 +167,7 @@
           padding-top: 5px;
           font-size: 1.2em;
           font-weight: bold;
-          color: #FFF;
+          color: #e56b2d;
         }
 
         .checkbox-inline {
