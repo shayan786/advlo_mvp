@@ -1,14 +1,13 @@
 function find_input_geocomplete() {
   $('#find .search_options #location').geocomplete().bind("geocode:result", function(event, result){
-    ga('send', 'event', 'search', 'location', $(this).val() );
   	$('#find .search_options #find_adventure_form').submit();
   })
 }
 
 function homepage_find_input_geocomplete(){
   //homepage search bar leading to locals search
-  $('#homepage-text #find_adventure_form #location').geocomplete().bind("geocode:result", function(event,result){
-    var loc = $(this).val();
+  $('#find_adventure_form #location').geocomplete().bind("geocode:result", function(event,result){
+    var loc = this.value;
 
     window.location = "/find?location="+loc+"&locals=true"
   })
@@ -17,7 +16,7 @@ function homepage_find_input_geocomplete(){
     var details = $.trim($('#find_adventure_form #location').val());
 
     if (details.length > 2) {
-      var loc = $('#homepage-text #find_adventure_form #location').val();
+      var loc = $('#find_adventure_form #location').val();
 
       window.location = "/find?location="+loc+"&locals=true"
     }
