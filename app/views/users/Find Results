@@ -1,0 +1,450 @@
+Searching 1276 files for "subject *"
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/devise/registrations/_contact_traveler_modal.haml:
+   15              .form-group.row
+   16                .col-md-4 
+   17:                 .form_label.text-right.edit-label Subject *
+   18                .col-md-6
+   19                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/users/_contact_host_modal.haml:
+   16                .form-group.row
+   17                  .col-md-4 
+   18:                   .form_label.text-right.edit-label Subject *
+   19                  .col-md-6
+   20                    %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+   ..
+   45                .form-group.row
+   46                  .col-md-4 
+   47:                   .form_label.text-right.edit-label Subject *
+   48                  .col-md-6
+   49                    %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+   ..
+   79                .form-group.row
+   80                  .col-md-4 
+   81:                   .form_label.text-right.edit-label Subject *
+   82                  .col-md-6
+   83                    %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+
+4 matches across 2 files
+
+
+Searching 1276 files for "#contact_host_modal"
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/javascripts/adventure.js.erb:
+  631  
+  632  function contact_form_validator() {
+  633:   $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
+  634  
+  635    //request adventure form validation on button
+  636:   $('#contact_host_modal .modal-dialog #message_body').on('keyup', function() {
+  637      var details = $.trim($(this).val());
+  638  
+  639        if (details.length > 6) {
+  640:         $('#contact_host_modal .modal-dialog .contact_btn').removeClass('disabled');
+  641        }
+  642        else if (details.length <= 6) {
+  643:         $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
+  644        }
+  645    })
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/javascripts/find.js:
+  408      var host_id = $(this).data('host-id');
+  409  
+  410:     $('#contact_host_modal .contact_host_form input[name="conversation[host_id]"]').val(host_id);
+  411:     $('#contact_host_modal .modal-header').text('Message - '+host_name);
+  412    })
+  413  }
+  414  
+  415  function contact_host_validation(){
+  416:   $('#contact_host_modal #contact_host_form').bootstrapValidator({
+  417      fields: {
+  418        'email': {
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/javascripts/wallet.js:
+   76  
+   77  function host_contact_validation() {
+   78:   $('#contact_host_modal .contact_host_form .contact_btn').addClass('disabled');
+   79  
+   80:   $('#contact_host_modal .contact_host_form #contact_message').on('keyup', function() {
+   81      var details = $.trim($(this).val());
+   82  
+   83        if (details.length > 8) {
+   84:           $('#contact_host_modal .contact_host_form .contact_btn').removeClass('disabled');
+   85        }
+   86        else if (details.length <= 8) {
+   87:         $('#contact_host_modal .contact_host_form .contact_btn').addClass('disabled');
+   88        }
+   89    })
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/adventure/show.css.scss:
+  323          }
+  324  
+  325:         #contact_host_modal {
+  326            .modal-header {
+  327              font-size: 0.7em;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/profile/overview.css.scss:
+  131  }
+  132  
+  133: #contact_host_modal {
+  134  	.contact_btn {
+  135        margin-top: 20px;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/adventures/_locals_index.haml:
+   27  
+   28        .row  
+   29:         .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
+   30            CONTACT
+   31          
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/adventures/show.haml:
+   55                CONTINUE
+   56          - else
+   57:           #book-it.btn.btn-success{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name} 
+   58              %span 
+   59                CONTINUE
+   ..
+  103                        CONTINUE
+  104                  - else
+  105:                   #book-it.btn.btn-success{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name} 
+  106                      %span 
+  107                        CONTINUE
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/messages/message_sent.js.erb:
+    2  	window.location = '/users/sign_in';
+    3  <% else %>
+    4: 	$('#contact_host_modal .contact_host_form').fadeOut();
+    5  
+    6: 	$('#contact_host_modal .modal-body').html('<h2 style="color: #FFF; text-align: center;">Your message has been sent. Most of our hosts reply within 24 hours</h2>')
+    7  
+    8  	// If user clicks out of the modal, refresh the page
+    9: 	$('#contact_host_modal').on('hide.bs.modal', function(e){
+   10  		window.location.reload(true);
+   11  	})
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/users/_contact_host_modal.haml:
+    1  - if res
+    2:   #contact_host_modal.modal.fade{role: "dialog", class: "contact_host_modal_#{res.id}"}
+    3      .modal-dialog
+    4        .modal-content
+    .
+   29  
+   30  - elsif current_user
+   31:   #contact_host_modal.modal.fade{role: "dialog"}
+   32      .modal-dialog
+   33        .modal-content
+   ..
+   58  
+   59  - else
+   60:   #contact_host_modal.modal.fade{role: "dialog"}
+   61      .modal-dialog
+   62        .modal-content
+   ..
+   98    :javascript
+   99  
+  100:     $('#contact_host_modal .existing_user').click(function(){
+  101:       $('#contact_host_modal').modal('hide');
+  102  
+  103:       $('#contact_host_modal').on('hidden.bs.modal', function(){
+  104          $('#sign_in_modal').modal({
+  105            show: true,
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/users/show.haml:
+   77                .box_header_line
+   78                .text-center
+   79:                 %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @user.id, "data-host-name"=>@user.get_first_name}
+   80                    %i.fa.fa-envelope-o
+   81                    SEND MESSAGE
+
+26 matches across 10 files
+
+
+Searching 1276 files for ".modal-header"
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/javascripts/find.js:
+  409  
+  410      $('#contact_host_modal .contact_host_form input[name="conversation[host_id]"]').val(host_id);
+  411:     $('#contact_host_modal .modal-header').text('Message - '+host_name);
+  412    })
+  413  }
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/adventure/index.css.scss:
+  362    }
+  363  
+  364:   .modal-header {
+  365      font-family: cabin_bold;
+  366      color: $orange;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/adventure/show.css.scss:
+  324  
+  325          #contact_host_modal {
+  326:           .modal-header {
+  327              font-size: 0.7em;
+  328            }
+  ...
+  801      margin-top: 100px;
+  802  
+  803:     .modal-header {
+  804        font-size: 1.6em;
+  805        color: $orange;
+  ...
+ 1032    }
+ 1033  
+ 1034:   .modal-header {
+ 1035      font-size: 25px;
+ 1036      margin-bottom: 15px;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/devise/user_dashboard.css.scss:
+  294  		}
+  295  
+  296: 		.modal-header {
+  297  			font-size: 1.6em;
+  298  			color: $orange;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/footer.css.scss:
+  308  			}
+  309  
+  310: 			.modal-header {
+  311  				font-size: 1.6em;
+  312  				color: $orange;
+  ...
+  418  		}
+  419  
+  420: 		.modal-header {
+  421  			font-size: 1.6em;
+  422  			color: $orange;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/header.css.scss:
+  429  		}
+  430  
+  431: 		.modal-header {
+  432  			font-size: 1.6em;
+  433  			color: $orange;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/homepage/banner.css.scss:
+  257    }
+  258  
+  259:   .modal-header {
+  260      font-family: cabin_bold;
+  261      color: $orange;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/profile/overview.css.scss:
+  149      }
+  150  
+  151:     .modal-header {
+  152        font-family: cabin_bold;
+  153        color: $orange;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/adventures/_gallery.haml:
+   31      .modal-dialog
+   32        .modal-content
+   33:         .modal-header
+   34            %button.close{"aria-hidden" => "true", type: "button"} ×
+   35            %h4.modal-title
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/adventures/_request_modal.haml:
+    2    .modal-dialog
+    3      .modal-content
+    4:       .modal-header.text-center
+    5          Request an Adventure — We'll Find You a Host
+    6        .modal-body
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/devise/registrations/_adventure_review_modal.haml:
+    7    .modal-dialog
+    8      .modal-content
+    9:       .modal-header.text-center
+   10          = res.adventure.title
+   11          %br
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/devise/registrations/_contact_traveler_modal.haml:
+    3    .modal-dialog
+    4      .modal-content
+    5:       .modal-header.text-center
+    6          = "Message - #{traveler.get_abbreviated_name_or_email}"
+    7        .modal-body
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/devise/registrations/_host_cancel_reservation_modal.haml:
+    2    .modal-dialog
+    3      .modal-content
+    4:       .modal-header.text-center
+    5          Cancel Resevation
+    6        .modal-body
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/devise/registrations/_user_cancel_reservation_modal.haml:
+    2    .modal-dialog
+    3      .modal-content
+    4:       .modal-header.text-center
+    5          Cancel Resevation
+    6        .cancellation_note.text-center
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/devise/registrations/conversations.haml:
+   39                          .modal-dialog
+   40                            .modal-content
+   41:                             .modal-header.text-center
+   42                                = con.subject
+   43                              .modal-body
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/shared/_footer.haml:
+   43        .modal-dialog
+   44          .modal-content
+   45:           .modal-header.text-center
+   46              Contact Advlo
+   47            .modal-body
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/users/_contact_host_modal.haml:
+    3      .modal-dialog
+    4        .modal-content
+    5:         .modal-header.text-center
+    6            = "Message - #{user.get_abbreviated_name}"
+    7          .modal-body
+    .
+   32      .modal-dialog
+   33        .modal-content
+   34:         .modal-header.text-center
+   35            = "Tell #{user.get_abbreviated_name} what you're seeking or request to join them for an Adventure!"
+   36          .modal-body
+   ..
+   61      .modal-dialog
+   62        .modal-content
+   63:         .modal-header.text-center
+   64            = "Message"
+   65          .modal-body
+
+22 matches across 17 files
+
+
+Searching 1276 files for "#contact_host_modal"
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/javascripts/adventure.js.erb:
+  631  
+  632  function contact_form_validator() {
+  633:   $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
+  634  
+  635    //request adventure form validation on button
+  636:   $('#contact_host_modal .modal-dialog #message_body').on('keyup', function() {
+  637      var details = $.trim($(this).val());
+  638  
+  639        if (details.length > 6) {
+  640:         $('#contact_host_modal .modal-dialog .contact_btn').removeClass('disabled');
+  641        }
+  642        else if (details.length <= 6) {
+  643:         $('#contact_host_modal .modal-dialog .contact_btn').addClass('disabled');
+  644        }
+  645    })
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/javascripts/find.js:
+  408      var host_id = $(this).data('host-id');
+  409  
+  410:     $('#contact_host_modal .contact_host_form input[name="conversation[host_id]"]').val(host_id);
+  411:     $('#contact_host_modal .modal-header').text('Message - '+host_name);
+  412    })
+  413  }
+  414  
+  415  function contact_host_validation(){
+  416:   $('#contact_host_modal #contact_host_form').bootstrapValidator({
+  417      fields: {
+  418        'email': {
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/javascripts/wallet.js:
+   76  
+   77  function host_contact_validation() {
+   78:   $('#contact_host_modal .contact_host_form .contact_btn').addClass('disabled');
+   79  
+   80:   $('#contact_host_modal .contact_host_form #contact_message').on('keyup', function() {
+   81      var details = $.trim($(this).val());
+   82  
+   83        if (details.length > 8) {
+   84:           $('#contact_host_modal .contact_host_form .contact_btn').removeClass('disabled');
+   85        }
+   86        else if (details.length <= 8) {
+   87:         $('#contact_host_modal .contact_host_form .contact_btn').addClass('disabled');
+   88        }
+   89    })
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/adventure/show.css.scss:
+  323          }
+  324  
+  325:         #contact_host_modal {
+  326            .modal-header {
+  327              font-size: 0.7em;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/assets/stylesheets/profile/overview.css.scss:
+  131  }
+  132  
+  133: #contact_host_modal {
+  134  	.contact_btn {
+  135        margin-top: 20px;
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/adventures/_locals_index.haml:
+   27  
+   28        .row  
+   29:         .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
+   30            CONTACT
+   31          
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/adventures/show.haml:
+   55                CONTINUE
+   56          - else
+   57:           #book-it.btn.btn-success{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name} 
+   58              %span 
+   59                CONTINUE
+   ..
+  103                        CONTINUE
+  104                  - else
+  105:                   #book-it.btn.btn-success{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name} 
+  106                      %span 
+  107                        CONTINUE
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/messages/message_sent.js.erb:
+    2  	window.location = '/users/sign_in';
+    3  <% else %>
+    4: 	$('#contact_host_modal .contact_host_form').fadeOut();
+    5  
+    6: 	$('#contact_host_modal .modal-body').html('<h2 style="color: #FFF; text-align: center;">Your message has been sent. Most of our hosts reply within 24 hours</h2>')
+    7  
+    8  	// If user clicks out of the modal, refresh the page
+    9: 	$('#contact_host_modal').on('hide.bs.modal', function(e){
+   10  		window.location.reload(true);
+   11  	})
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/users/_contact_host_modal.haml:
+    1  - if res
+    2:   #contact_host_modal.modal.fade{role: "dialog", class: "contact_host_modal_#{res.id}"}
+    3      .modal-dialog
+    4        .modal-content
+    .
+   29  
+   30  - elsif current_user
+   31:   #contact_host_modal.modal.fade{role: "dialog"}
+   32      .modal-dialog
+   33        .modal-content
+   ..
+   58  
+   59  - else
+   60:   #contact_host_modal.modal.fade{role: "dialog"}
+   61      .modal-dialog
+   62        .modal-content
+   ..
+   98    :javascript
+   99  
+  100:     $('#contact_host_modal .existing_user').click(function(){
+  101:       $('#contact_host_modal').modal('hide');
+  102  
+  103:       $('#contact_host_modal').on('hidden.bs.modal', function(){
+  104          $('#sign_in_modal').modal({
+  105            show: true,
+
+/Users/SerKnight/Desktop/projects/advlo_mvp/app/views/users/show.haml:
+   77                .box_header_line
+   78                .text-center
+   79:                 %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @user.id, "data-host-name"=>@user.get_first_name}
+   80                    %i.fa.fa-envelope-o
+   81                    SEND MESSAGE
+
+26 matches across 10 files
+
+
+Searching 1276 files for "68,68,68]"
+
+0 matches across 0 files
