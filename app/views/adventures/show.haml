@@ -30,9 +30,7 @@
             .image-wrapper{style: "background: url('#{profile_img}') no-repeat center center;"}
 
         - review_count = Review.where(adventure_id: @adventure.id).count
-        - if review_count == 0
-          .link-to-profile
-            %a{href: user_path(@current_guide)} Visit Profile
+    
       .adventure-block
         #adventure-reviews-count
           - if @adventure.title.length > 25
@@ -51,29 +49,28 @@
             .review-count
               %em= "#{review_count} Reviews"
 
-        #adventure-price
-          - if current_user && current_user.credit > 0 && @adventure.price >= 50
-            - price = (@adventure.price - current_user.credit).to_i
-            - if price < 0
-              - price = 1
-            %span.old_price{style: "text-decoration: line-through;"}= "$ #{@adventure.price}"
-            %span.new_price= "$ #{price}"
-          - else
-            %span= "$ #{@adventure.price}"
-
         -if !@adventure.approved || @current_guide == current_user
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 
             %span 
-              BOOK IT
-        -else
-          - if @adventure.is_subscribed_and_has_redirect_url?
-            %a#book-it.btn.btn-success{href: "#{@adventure.subscription_redirect_url}", target: "_blank"}
-              %span 
-                BOOK IT
-          - else
-            #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
-              %span 
-                BOOK IT
+              CONTINUE
+        - else
+          #book-it.btn.btn-success{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name} 
+            %span 
+              CONTINUE
+        %a{href: user_path(@current_guide)}
+          #book-it-profile.btn.btn-success
+            VIEW PROFILE
+        %br
+        %br
+        - fb_share_url = "#{root_url}adventures/#{@adventure.slug}"
+        %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "#{@adventure.title}", "data-desc" => "#{@adventure.summary}", "data-image" => "#{@adventure.attachment.url(:medium)}", style: "margin-right: 5px;"}
+          %i.fa.fa-facebook
+        .btn.btn-default.social_btn.twitter{style: "margin-right: 5px;"}
+          %i.fa.fa-twitter
+        %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{fb_share_url}", onclick: "javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"}
+          %i.fa.fa-google-plus
+
   .adventure-copy-wrapper
     - flash.each do |key, value|
       .alert-warning.adv-show-alert.text-center
@@ -94,27 +91,20 @@
               .guide-profile-image{style: "background: url(#{@current_guide.get_avatar_url('large')}) no-repeat center center;"}
               
 
-            .adventure-block.col-sm-12.text-center
-              #adventure-price
-                - if current_user && current_user.credit > 0 && @adventure.price >= 30
-                  %span.old_price{style: "text-decoration: line-through;"}= "$ #{@adventure.price}"
-                  %span.new_price= "$ #{(@adventure.price - current_user.credit).to_i}"
-                - else
-                  %span= "$ #{@adventure.price}"
-                  
+            .adventure-block.col-sm-12.text-center                 
               -if !@adventure.approved || @current_guide == current_user
                 #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 
                   %span 
-                    BOOK IT
+                    CONTINUE
               -else
                 - if @adventure.is_subscribed_and_has_redirect_url?
                   %a#book-it.btn.btn-success{href: "http://#{@adventure.subscription_redirect_url}", target: "_blank"}
                     %span 
-                      BOOK IT
+                      CONTINUE
                 - else
-                  #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
+                  #book-it.btn.btn-success{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name} 
                     %span 
-                      BOOK IT
+                      CONTINUE
 
     .row.information-container
       #overview.title-brick
@@ -144,8 +134,6 @@
 
       #host_bio.title-brick.dark_gray_background
         = render partial: 'host_bio'
-        #payment_panel.title-brick
-          = render partial: 'payment_panel'
 
       - if @adventure.approved
         #reviews.title-brick
@@ -154,23 +142,7 @@
       #adventure_browse.title-brick.dark_gray_background
         = render partial: 'adventure_browse'
                 
-
-    .col-md-3#desktop-adventure-nav
-      .navigation-brick
-        %a{href: '#overview'}
-          .item
-            %span overview
-        - if @adventure.itineraries.count > 0
-          %a{href: '#itinerary'}
-            .item
-              %span itinerary
-        %a{href: '#gallery'}
-          .item
-            %span gallery
-        %a{href: '#additional_info'}
-          .item
-            %span additional info
-
+= render partial: "users/contact_host_modal", locals: {user: @adventure.users.first, res: nil}
 
 :javascript
   adventureShow();

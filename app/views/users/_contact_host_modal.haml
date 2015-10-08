@@ -3,7 +3,7 @@
     .modal-dialog
       .modal-content
         .modal-header.text-center
-          = "Message - #{user.get_abbreviated_name}"
+          = "Tell #{user.get_abbreviated_name} what you're seeking or request to join them for an Adventure!"
         .modal-body
           .contact_host_form
             %form{"accept-charset" => "UTF-8", action: "/conversations/new", method: "POST", id: "contact_host_form"}
@@ -17,13 +17,13 @@
                 .col-md-4 
                   .form_label.text-right.edit-label Subject *
                 .col-md-6
-                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : "", style: "background-color: rgb(168,168,168); border: none;"}
 
               .form-group.row
                 .col-md-4 
                   .form_label.text-right.edit-label Message *
                 .col-md-6
-                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
+                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body", style: "background-color: rgb(168,168,168); border: none;"}
               .row.text-center
                 %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
 
@@ -32,7 +32,7 @@
     .modal-dialog
       .modal-content
         .modal-header.text-center
-          = "Message"
+          = "Tell #{user.get_abbreviated_name} what you're seeking or request to join them for an Adventure!"
         .modal-body
           .contact_host_form
             %form{"accept-charset" => "UTF-8", action: "/conversations/new", method: "POST", id: "contact_host_form"}
@@ -46,13 +46,13 @@
                 .col-md-4 
                   .form_label.text-right.edit-label Subject *
                 .col-md-6
-                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : "", style: "background-color: rgb(168,168,168); border: none;"}
 
               .form-group.row
                 .col-md-4 
                   .form_label.text-right.edit-label Message *
                 .col-md-6
-                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
+                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body", style: "background-color: rgb(168,168,168); border: none;"}
               .row.text-center
                 %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
 
@@ -61,7 +61,7 @@
     .modal-dialog
       .modal-content
         .modal-header.text-center
-          = "Message"
+          = "Tell #{user.get_abbreviated_name} what you're seeking or request to join them for an Adventure!"
         .modal-body
           .contact_host_form
             %form{"accept-charset" => "UTF-8", action: "/conversations/new_user", method: "POST", id: "contact_host_form", "data-remote"=>"true"}
@@ -74,19 +74,19 @@
                 .col-md-4 
                   .form_label.text-right.edit-label Email *
                 .col-md-6
-                  %input.form-control{type: "text", name: "email", id: "conversation_new_user_email"}
+                  %input.form-control{type: "text", name: "email", id: "conversation_new_user_email", style: "background-color: rgb(168,168,168); border: none;"}
 
               .form-group.row
                 .col-md-4 
                   .form_label.text-right.edit-label Subject *
                 .col-md-6
-                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : ""}
+                  %input.form-control{type: "text", name: "conversation[subject]", id: "conversation_subject", value: @adventure ? "#{@adventure.title}" : "", style: "background-color: rgb(168,168,168); border: none;"}
 
               .form-group.row
                 .col-md-4 
                   .form_label.text-right.edit-label Message *
                 .col-md-6
-                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body"}
+                  %textarea.form-control{rows: "7", type: "text", name: "message[body]", id: "message_body", style: "background-color: rgb(168,168,168); border: none;"}
               .row.text-center
                 %input.btn.btn-primary.contact_btn{type: "submit", value: "Submit"}
           .row.text-center

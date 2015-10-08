@@ -5,54 +5,26 @@
       OVERVIEW
   .panel.panel-default
     .panel-body
-      .contact-row
-        .btn.btn-primary.contact_btn.host_contact_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @adventure.users.first.id, "data-host-name"=>@adventure.users.first.get_first_name}
-          %i.fa.fa-envelope-o
-          CONTACT HOST
-
-        %br
-        - fb_share_url = "#{root_url}adventures/#{@adventure.slug}"
-        %a.btn.btn-default.social_btn.fb{href: "#{fb_share_url}", "data-title" => "#{@adventure.title}", "data-desc" => "#{@adventure.summary}", "data-image" => "#{@adventure.attachment.url(:medium)}", style: "margin-right: 5px;"}
-          %i.fa.fa-facebook
-        .btn.btn-default.social_btn.twitter{style: "margin-right: 5px;"}
-          %i.fa.fa-twitter
-        %a.btn.btn-default.social_btn.gp{href: "https://plus.google.com/share?url=#{fb_share_url}", onclick: "javascript:window.open(this.href,
-  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"}
-          %i.fa.fa-google-plus
-      
       .col-md-5
         .container
           .row.default-body
             .col-md-2
-              %i.fa.fa-chevron-circle-right 
-              %span.default-title PRICE:
-            .col-md-3
-              - if @adventure.price_type == 'per_adventure'
-                %span.default-content= "$ #{@adventure.price} per group"
-              - else 
-                %span.default-content= "$ #{@adventure.price} per person"
-          .row.default-body
-            .col-md-2
-              %i.fa.fa-chevron-circle-right 
               %span.default-title GROUP SIZE:
             .col-md-3
               %span.default-content= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
           .row.default-body
             .col-md-2
-              %i.fa.fa-chevron-circle-right 
               %span.default-title DURATION:
             .col-md-3
               %span.default-content= "#{@adventure.duration_num} #{@adventure.duration_type}"
           .row.default-body
             .col-md-2
-              %i.fa.fa-chevron-circle-right 
               %span.default-title LOCATION:
             .col-md-3
               %span.default-content= @adventure.location
 
           .row.default-body
             .col-md-2
-              %i.fa.fa-chevron-circle-right 
               %span.default-title CATEGORY:
             .col-md-3
               %span.default-content{itemprop: 'category'}
@@ -61,14 +33,5 @@
                     = cat.capitalize + " / "
                   - else 
                     = cat.capitalize
-
-          .row.default-body
-            .col-md-3
-              %i.fa.fa-chevron-circle-right
-              %span.default-title.summary-information SUMMARY:
-          .row.default_body
-            .col-md-8
-              .default-summary{itemprop: 'description'}= @adventure.summary.gsub(/\n/, '<br/>').html_safe
-
-
-= render partial: "users/contact_host_modal", locals: {user: @adventure.users.first, res: nil}
+  .col-md-9
+    .default-summary{itemprop: 'description'}= @adventure.summary.gsub(/\n/, '<br/>').html_safe

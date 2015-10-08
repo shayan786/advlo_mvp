@@ -14,8 +14,7 @@
     overflow: hidden;
     float: left;
     display: block;
-    width: 100%;
-    margin-top: 52px;
+    width: 75%;
   }
 
   .link-to-profile {
@@ -33,14 +32,16 @@
   .adventure-show-infographic {
     z-index: 100;
     position: fixed;
-    top: 100px;
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
     right: 0px;
-    margin-right: 15px;
     margin-left: 15px;
-    min-height: 400px;
     padding-bottom: 20px;
+    margin-top: 0px;
+    padding-top: 150px;
+    min-width: 25%;
+    height: 130%;
+    margin-top: -75px;
 
     .guide-block {
       color: #fff;
@@ -49,7 +50,8 @@
         font-size: 18px;
         margin-top: 5px;
         font-style: italic;
-        font-family: 'Nexa_light';
+        font-family: 'cabin_regular';
+        margin-bottom: 12px;
 
         a { 
           text-decoration: none;
@@ -66,7 +68,7 @@
         color: $advlo_orange;
       }
       .shortened {
-        font-size: 18px;
+        font-size: 1em;
       }
 
       .guide-profile-image {
@@ -154,11 +156,11 @@
   #book-it {
     cursor: pointer;
     width: 80%;
-    max-width: 200px;
     margin: 0 auto;
     margin-top: 5px;
-    background-color: rgba(92,184,92,0.5);
+    background-color: rgba(69,249,69,0.7);
     border: none;
+    max-width: 300px;
 
     span {
       color: #fff;
@@ -170,16 +172,82 @@
       font-weight: bold;
       margin-left: 10px;
     }
+
+    #book-it:hover {
+      background-color: rgba(69,249,69,0.4);
+    }
   }
-  #book-it:hover {
-    background-color: rgba(92,184,92,1);
+
+  #book-it-profile {
+    cursor: pointer;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5px;
+    background-color: rgba(195,91,38,0.5);
+    border: none;
+    font-family: nexa_light;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    span {
+      color: #fff;
+      font-size: 18px;
+      position: relative;
+      top: 2px;
+      margin-right: 10px;
+      font-family: 'nexa_light';
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  }
+  #book-it-profile:hover {
+    background-color: rgba(195,91,38,0.2);
   }
 
   #adventure-title-mobile {
     color: $advlo_orange;
-    font-size: 30px;
+    font-size: 1.6em;
   }
 
+  .social_btn {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 15px;
+  }
+
+  .fb {
+    color: #FFF;
+    background-color: #3B5998;
+    border-color: #3B5998;
+
+    &:hover {
+      opacity: 0.8;
+    }          
+  }
+
+  .twitter {
+    color: #FFF;
+    background-color: #30D8F0;
+    border-color: #30D8F0;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .gp {
+    color: #FFF;
+    background-color: #d34836;
+    border-color: #d34836;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 
   .adventure-copy-wrapper {
 
@@ -311,46 +379,6 @@
           margin-bottom: 15px;
         }
 
-        .social_btn {
-          width: 30px;
-          height: 30px;
-          text-align: center;
-          padding: 6px 0;
-          font-size: 12px;
-          line-height: 1.5;
-          border-radius: 15px;
-        }
-
-        .fb {
-          color: #FFF;
-          background-color: #3B5998;
-          border-color: #3B5998;
-
-          &:hover {
-            opacity: 0.8;
-          }          
-        }
-
-        .twitter {
-          color: #FFF;
-          background-color: #30D8F0;
-          border-color: #30D8F0;
-
-          &:hover {
-            opacity: 0.8;
-          }
-        }
-
-        .gp {
-          color: #FFF;
-          background-color: #d34836;
-          border-color: #d34836;
-
-          &:hover {
-            opacity: 0.8;
-          }
-        }
-
         #map {
           margin-top: -178px;
           float: right;
@@ -368,7 +396,7 @@
       }
 
       #gallery {
-        background: rgba(0,0,0,0.6);
+        background: #333333;
         padding-bottom: 20px;
         padding-top: 15px;
       }
@@ -480,9 +508,10 @@
       
 
           .guide-name {
-            font-size: 30px;
+            font-size: 1.4em;
             margin-bottom: 20px;
-            font-family: 'Nexa_light';
+            font-style: italic;
+            font-family: 'cabin_regular';
             a {
               text-decoration: none;
               color: #fff;
@@ -730,7 +759,7 @@
     border-bottom: none;
   }
   .fa {
-    color: #666;
+    color: #c35b26;
     font-size: 16px;
     margin: 14px;
     float: left;
@@ -741,13 +770,15 @@
   .headline { 
     font-family: 'nexa_light';
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 20px;
     color: #fff;
     color: #fff;
     margin-top: 10px;
     margin-left: 40px;
     margin-bottom: 10px;
     word-wrap: break-word;
+    font-weight: bold;
+    letter-spacing: 2px;
   }
   .description {
     margin-left: 60px;
@@ -758,7 +789,7 @@
     font-family: cabin_regular;
     font-size: 19px;
     line-height: 1.3em;
-    color: #fff;
+    color: rgba(255,255,255,0.5);
     display: none;
   }
 }
@@ -789,7 +820,7 @@
   }
 }
 .modal-content {
-  background-color: $dark_gray;
+  background-color: #000;
 }
 .modal-dialog {
   height: 100%;
@@ -1137,6 +1168,11 @@
   #desktop-adventure-nav {
     display: none;
   }
+
+  .adventure-show-container #main_image {
+    width: 100%;
+  }
+
   .adventure-show-container .adventure-copy-wrapper #mobile-adventure-infographic {
     display: block;
   }
