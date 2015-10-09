@@ -14,7 +14,9 @@
       font-size: 1.5em;
       color: $advlo_orange;
       text-align: center;
-      border-bottom: 2px solid $advlo_orange;
+      border-top: 2px solid $advlo_orange;
+      padding-top: 20px;
+      padding-bottom: 20px;
     }
 
     .overview_content {
@@ -22,6 +24,8 @@
       font-size: 1.2em;
       color: #FFF;
       text-align: center;
+      padding-right: 200px;
+      padding-left: 200px;
     }
 
 		.box_header {
@@ -42,24 +46,23 @@
 
 		.msg_btn {
 			font-size: 1.4em;
-			width: 90%;
+			width: 20%;
 			padding-top: 15px;
 			padding-bottom: 15px;
 			margin-top: 20px;
 			margin-bottom: 20px;
+      min-width: 250px;
+      background-color: rgba(255,255,255,0.6);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.45);
+      color: #000;
+      border: 1px solid rgba(255,255,255,0.6);
 
-			background-color: $login_btn_color;
-			border-color: $login_btn_color;
-
-			.fa {
-				padding-top: 4px;
-				padding-left: 5px;
-			}
-
-			&:hover {
-				background-color: $login_btn_color_hover;
-				border-color: $login_btn_color_hover;
-			}
+      &:hover {
+        border: 1px solid rgba(255,255,255,0.2);
+        background-color: rgba(0,0,0,0.45);
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.45);
+        color: #fff;
+      }
 		}
 
 		.box_social {
@@ -189,4 +192,28 @@
       }
     }
 	}
+}
+
+@media screen and (max-width: 1199px){
+  #p_overview .panel .overview_content {
+    font-size: 1.2em;
+    padding-right: 120px;
+    padding-left: 120px;
+  }
+}
+
+@media screen and (max-width: 800px){
+  #p_overview .panel .overview_content {
+    font-size: 1.1em;
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  #p_overview .panel .overview_content {
+    font-size: 1.0em;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
 }
