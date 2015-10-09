@@ -295,6 +295,59 @@
   display: none;
 }
 
+.host-bottomlogin {
+  background-image: asset-url("background/hiw_adventure.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 500px;
+
+  .join-wrapper {
+    margin-top: 75px;
+  }
+
+  .join-text {
+    font-family: 'nexa_bold';
+    color: #fff;
+    text-align: center;
+    font-size: 3.5em;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    float: left;
+    text-align: center;
+    width: 100%;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  }
+
+  .join-text-small {
+    font-family: cabin_regular;
+    font-size: 1.2em;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .advlo-partner-bottom {
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: center;
+    
+    .bottomlogin_partner_btn {
+      margin-top: 25px;
+      font-size: 1.4em;
+      border: 4px solid rgb(181,84,35);
+      font-family: 'cabin_bold';
+      width: 40%;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      max-width: 300px;
+      min-width: 250px;
+      background-color: rgba(0,0,0,0.8);
+    } 
+  }
+}
 
 @media screen and (max-width: 1210px){
   #adventure_info .adventure_info_body .adv-info-wrapper {
@@ -372,6 +425,14 @@
 
   .adventure-container .brick-wrapper .adventure-brick {
     margin: 10px;
+  }
+
+  .host-bottomlogin .join-text {
+    font-size: 2.5em;
+    letter-spaceing: 0px;
+    margin-top: 38px;
+    line-height: 40px;
+    padding-bottom: 10px;
   }
 }
 

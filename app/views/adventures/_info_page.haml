@@ -3,7 +3,7 @@
 
   - comp = ["Adventure Host Profile","Showcase your adventures & outdoor skills, promote yourself by connecting social channels and allow travelers to contact you directly.",'Unlimited Adventure Listings', 'Easily create pages for each of your adventure trips to show how unique your experience is with photography, videos, maps, & more.', 'Responsive Page Design',"Enable travelers to view your adventures on mobile phones, tablets, and desktops to convert more potential bookings."]
 
-  - comp_2 =["1. CREATE YOUR PROFILE", "Our team will work with you to create a profile as cool as you and your adventures. Display images & videos, sample itineraries and traveler reviews. Tell others your story and have fun with it!","2. SHOW WHAT YOU CAN DO","We will notify you when a traveler requests an adventure matching your skills. Respond directly through our request portal or let them contact you.", "3. CONNECT WITH TRAVELERS", "We'll handle international payments for you and deposit weekly payouts to your bank or PayPal account. In case of weather or other outside factors, simply cancel a trip and issue a refund with a few clicks."]
+  - comp_2 =["1. CREATE YOUR PROFILE", "Our team will help you create a profile with all the adventures you want to offer. Display images and video, sample itineraries and traveler reviews. Share your adventurous side and have fun with it!","2. CONNECT WITH TRAVELERS","We will notify you when a traveler requests an adventure matching your skills. Respond directly through our request portal or let them contact you.", "3. HOST ADVENTURES", "We’ll handle all payments (including international travelers), and deposit weekly payouts to your bank or PayPal account. In case of weather or other outside factors, easily cancel a trip and issue a refund with a few simple clicks."]
 
   - titles = ['PROMOTE YOUR SERVICES', 'START HOSTING IN 3 STEPS']
 
@@ -93,8 +93,16 @@
     - if current_user
       .jumbotron{:style => "background-image: url(#{image_path 'background/biklo_darken.jpg'}); text-align: center;"}
         %a.btn.btn-primary.adv_info_btn{href: "/adventures/create_prefill", style: "margin-top: 10%;"} LIST YOUR ADVENTURE
-    - else
-      = render partial: 'signup'       
+.host-bottomlogin
+  .col-md-12
+    .join-wrapper
+      .container.join-text.text-center
+        HOST YOUR ADVENTURES
+      .join-text-small.text-center
+        Meet awesome people, do what you love and make money
+      .advlo-partner-bottom
+        %a.btn.btn-primary.bottomlogin_partner_btn
+          START FOR FREE     
 
 :javascript
   $(document).ready(function(){
@@ -105,6 +113,9 @@
     })
   })
 
+  $('.advlo-partner-bottom').click(function(){
+    $('.login_in_sign_up_btn').last().click()
+  })
 
   $('.feature-list-btn').click(function(){
     $(this).hide();

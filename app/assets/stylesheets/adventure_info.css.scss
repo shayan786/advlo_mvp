@@ -502,7 +502,7 @@
   .business_page .mobile-main {
     line-height: 100%;
     cursor: pointer;
-    font-size: 0.7em;
+    font-size: 0.6em;
     margin-bottom: 25px;
     margin-top: 10px;
     font-family: 'nexa_bold';
@@ -529,8 +529,13 @@
     padding-top: 0px;
   }
 
+  .left-local {
+    width: 100%;
+  }
+
   .guide-button {
     height: 40px;
+    min-width: 200px;
 
     .title {
       letter-spacing: 1px;
@@ -544,10 +549,11 @@
   }
 
   .business_page .why_host {
-    font-size: 3.2em;
+    font-size: 2.2em;
     margin-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
+    padding-top: 80px;
   }
 
   .business_page .lightheading {
