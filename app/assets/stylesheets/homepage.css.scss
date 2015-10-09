@@ -53,22 +53,22 @@ h1 {
   }
 
   .join-text {
-    font-family: 'nexa_light';
-    font-weight: bold;
+    font-family: 'nexa_bold';
     color: #fff;
     text-align: center;
-    font-size: 3em;
+    font-size: 3.5em;
     letter-spacing: 2px;
     margin-top: 20px;
     float: left;
     text-align: center;
     width: 100%;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
   }
 
   .join-text-small {
     font-family: cabin_regular;
     font-size: 1.2em;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.8);
   }
 
   @media screen and (max-width: 600px){
@@ -102,11 +102,11 @@ h1 {
       padding-bottom: 12px;
       max-width: 300px;
       min-width: 250px;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(0,0,0,0.8);
     
       &:hover {
         border: 3px solid rgb(125,58,24);
-        background-color: rgba(0,0,0,0.8);
+        background-color: #000;
       }
     }
   }
@@ -128,11 +128,11 @@ h1 {
       padding-bottom: 12px;
       max-width: 300px;
       min-width: 250px;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(0,0,0,0.8);
     
       &:hover {
         border: 3px solid rgb(125,58,24);
-        background-color: rgba(0,0,0,0.8);
+        background-color: #000;
       }
     }
 

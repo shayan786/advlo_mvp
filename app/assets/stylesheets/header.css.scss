@@ -37,7 +37,7 @@
 	margin-bottom: 0px;
 
 	.navbar-brand {
-		background: asset-url("logos/advlo_header_logo_white.png");
+		background: asset-url("logos/advlo_header_logo.png");
 		background-repeat: no-repeat;
 		background-size: 100%;
 		width: 175px !important;
@@ -673,6 +673,10 @@
 
 
 @media only screen and (max-width: 781px) {
+	.navbar.logged-out {
+		display: none;
+	}
+
 	.navbar-fixed-top {
 		display: none;
 	}
