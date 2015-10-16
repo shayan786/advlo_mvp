@@ -133,11 +133,6 @@
                     ABOUT ME:
                   .overview_content{itemprop: 'potentialAction'}= @user.bio.gsub(/\n/, '<br/>').html_safe 
 
-  #p_bio
-    .container
-      .row
-        .col-md-12
-
           - if @user.video_url
             .user-video-wrapper.text-center
               = raw(@user.embed(@user.video_url))
