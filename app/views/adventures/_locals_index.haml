@@ -19,7 +19,7 @@
           .border
         .row
           .host_bio
-            = truncate(host.bio, length: 400)
+            = truncate(host.bio, length: 275)
         .row
           - host.get_host_adventure_categories.each do |cat|
             .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
