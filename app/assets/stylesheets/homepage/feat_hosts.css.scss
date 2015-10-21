@@ -196,15 +196,19 @@
 	}
 
 	.adventure-thumbnails {
-		width: 100%;
-		height: auto;
-	
+		padding-bottom: 10px;
 
 		.image-wrapper{
-	      height: auto;
-	      width: 100%;
+				margin-top: 10px;
+	      width: 95px;
+	      height: 65px;
 	      border-radius: 4px;
 	      background-size: cover !important;
+	      display: inline-block;
+
+	      &:nth-child(odd) {
+	      	margin-right: 10px;
+	      }
 		}  
 	}
 }

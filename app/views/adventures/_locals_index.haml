@@ -31,7 +31,7 @@
               - if host.adventures.count > 0 ? count = host.adventures.count : count = ''
                 %span#trip-count= count <= 1 ? "#{count} ADVENTURE" : "#{count} ADVENTURES"
         .row
-          .adventure-thumbnails
+          .adventure-thumbnails.text-center
             - host.adventures.approved.each do |adv|
               %a{href: adventure_path(adv.slug), itemprop: 'url'}
                 - adv_img_show = adv.attachment.url(:hero)
