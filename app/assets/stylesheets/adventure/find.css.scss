@@ -6,7 +6,7 @@
   }
 
   .search_options {
-    min-height: 400px;
+    min-height: 330px;
     padding-top: 120px;
     background-size: cover !important;
     background-repeat: no-repeat;
@@ -181,8 +181,10 @@
 
       .location_filter {
           border-radius: 3px;
-          background-color: rgba(0,0,0,0.3);
+          background-color: transparent;
           padding-top: 15px;
+          padding-right: 2px;
+          padding-left: 2px;
     padding-bottom: 15px;
     margin-top: 15px;
 
@@ -201,6 +203,9 @@
       font-size: 0.9em;
       margin-right: 5px;
       margin-bottom: 5px;
+      width: 80px;
+      height: 50px;
+      padding-top: 16px;
     }
 
     .active {
