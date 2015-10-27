@@ -57,7 +57,7 @@
 		background-size: cover !important;
 		margin: 0;
 		border-radius: 4px;
-		margin-top: 15px;
+		margin-top: 30px;
 	}
 
 	.host_name {
@@ -68,7 +68,6 @@
 		font-size: 2.4em;
 		text-align: center;
 		font-weight: bold;
-		margin-bottom: 20px;
 	}
 
 	.border {
@@ -85,7 +84,8 @@
 	}		
 
 	.host_category_circle {
-		margin-bottom: 15px;
+		margin-bottom: 12px;
+		margin-top: 12px;
 		margin-right: 7px;
 		padding-top: 5px;
 		width: 40px;
@@ -147,7 +147,7 @@
 		padding-right: 0px;
 	}
 
-	.host_location {
+	.host_events {
 		font-family: bebas_neue;
 		font-weight: bold;
 		font-size: 20px;
@@ -165,10 +165,24 @@
 		}
 	}
 
+	.host_location {
+		font-family: bebas_neue;
+		font-weight: bold;
+		font-size: 20px;
+		color: #fff;
+		background-color: transparent;
+		text-align: center;
+		padding-bottom: 12px;
+		letter-spaceing: 1px;
+		border-bottom: 1px solid rgba(255,255,255,0.2);
+
+	}
+
 	.host_bio {
 		color: rgba(255,255,255,0.6);
 		text-align: center;
 		padding-top: 24px;
+		padding-bottom: 24px;
 	}
 
 	.view_trips {
@@ -245,7 +259,7 @@
 
 	.adventure-thumbnails {
 		padding-bottom: 10px;
-		margin-top: 15px;
+		margin-top: 20px;
 
 		.image-wrapper{
 				margin-top: 10px;
@@ -285,6 +299,10 @@
 	.host_box .host_contact_btn {
 		width: 50%;
 	}
+
+	.host_box .host_profile_btn {
+		width: 50%;
+	}
 }
 
 @media screen and (max-width: 780px){
@@ -296,6 +314,10 @@
 	.host_box .host_contact_btn {
 		width: 100%;
 	}
+
+	.host_box .host_profile_btn {
+		width: 100%;
+	}
 }
 
 /* mobile */
@@ -304,7 +326,15 @@
 	.host_box .host_name {
 		line-height: 30px;
 		font-size: 2.0em;
+		margin-bottom: 20px;
+	}
 
+	.host_box .host_profile_btn {
+		font-size: 1.3em;
+	}
+
+	.host_box .host_contact_btn {
+		font-size: 1.3em;
 	}
 
 	.host_container {

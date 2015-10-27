@@ -17,14 +17,17 @@
           %a{href: "#{root_url}users/#{host.to_param}"}
             .host_name= host.guide_type == 'business' ? host.name : host.get_first_name
         .row
+          .host_location
+            %i.fa.fa-map-marker
+            = get_display_location(host.adventures.first)
+        .row
           - host.get_host_adventure_categories.each do |cat|
             .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
               = image_tag get_category_icon_url(cat)
         .row
           .col-md-6.location-block
-            .host_location
-              %i.fa.fa-map-marker
-              = get_display_location(host.adventures.first)
+            .host_events
+              2 Meetups
           .col-md-6.tripnumber-block
             %a{href: "#{root_url}users/#{host.to_param}"}
               .view_trips
@@ -36,7 +39,7 @@
       .col-md-4
         .row
           .adventure-thumbnails.text-center
-            - host.adventures.approved.each do |adv|
+            - host.adventures.approved.limit(4).each do |adv|
               %a{href: adventure_path(adv.slug), itemprop: 'url'}
                 - adv_img_show = adv.attachment.url(:hero)
                 .image-wrapper{style: "background: url('#{adv_img_show}') no-repeat center center;"}
