@@ -278,7 +278,7 @@
 }
 
 @media screen and (max-width: 991px){
-	.host_box .host_location {
+	.host_box .host_events {
 		border-right: none;
 		border-bottom: none;
 	}
@@ -327,6 +327,10 @@
 		line-height: 30px;
 		font-size: 2.0em;
 		margin-bottom: 20px;
+	}
+
+	.adventure-thumbnails {
+		display: none;
 	}
 
 	.host_box .host_profile_btn {
