@@ -1,17 +1,24 @@
 .col-md-12.host_container.text-center
   - locals.each do |host|
     .host_box.text-center
-      .col-md-3
+      .col-md-4
         .row
           %a{href: "#{root_url}users/#{host.to_param}"}
             .host_image{style: "background: url('#{host.get_avatar_url("large")}') center center no-repeat"}
         .row  
+          .btn.btn-primary.host_profile_btn{href: "#{root_url}users/#{host.to_param}"}
+            VIEW PROFILE
+        .row  
           .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
-            SELECT & CONTINUE
-      .col-md-7
+            CONTACT HOST
+      .col-md-4
         .row
           %a{href: "#{root_url}users/#{host.to_param}"}
             .host_name= host.guide_type == 'business' ? host.name : host.get_first_name
+        .row
+          - host.get_host_adventure_categories.each do |cat|
+            .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
+              = image_tag get_category_icon_url(cat)
         .row
           .col-md-6.location-block
             .host_location
@@ -25,19 +32,13 @@
         .row
           .host_bio
             = truncate(host.bio, length: 275)
-      .col-md-2.categories-block
+      .col-md-4
         .row
-          - host.get_host_adventure_categories.each do |cat|
-            .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
-              = image_tag get_category_icon_url(cat)
-      .row
-        .col-md-12
-          .row
-            .adventure-thumbnails.text-center
-              - host.adventures.approved.each do |adv|
-                %a{href: adventure_path(adv.slug), itemprop: 'url'}
-                  - adv_img_show = adv.attachment.url(:hero)
-                  .image-wrapper{style: "background: url('#{adv_img_show}') no-repeat center center;"}
+          .adventure-thumbnails.text-center
+            - host.adventures.approved.each do |adv|
+              %a{href: adventure_path(adv.slug), itemprop: 'url'}
+                - adv_img_show = adv.attachment.url(:hero)
+                .image-wrapper{style: "background: url('#{adv_img_show}') no-repeat center center;"}
 
 = render partial: '/users/contact_host_modal', locals: {res: nil}
 

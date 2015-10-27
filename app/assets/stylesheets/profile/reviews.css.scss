@@ -6,6 +6,7 @@
 	padding-right: 20px;
 	padding-top: 25px;
 	padding-bottom: 20px;
+	background-color: #000;
 
 	.review_header {
 		font-family: nexa_bold !important;
@@ -15,7 +16,8 @@
 
 	.no_reviews_text {
 		font-family: nexa_light;
-		color: $white;
+		font-weight: bold;
+		color: #fff;
 		font-size: 0.6em;
 	}
 }
