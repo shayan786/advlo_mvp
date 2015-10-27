@@ -6,8 +6,9 @@
           %a{href: "#{root_url}users/#{host.to_param}"}
             .host_image{style: "background: url('#{host.get_avatar_url("large")}') center center no-repeat"}
         .row  
-          .btn.btn-primary.host_profile_btn{href: "#{root_url}users/#{host.to_param}"}
-            VIEW PROFILE
+          %a{href: "#{root_url}users/#{host.to_param}"}
+            .btn.btn-primary.host_profile_btn
+              VIEW PROFILE & ADVENTURES
         .row  
           .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
             CONTACT HOST
@@ -31,7 +32,7 @@
                   %span#trip-count= count <= 1 ? "#{count} ADVENTURE" : "#{count} ADVENTURES"
         .row
           .host_bio
-            = truncate(host.bio, length: 275)
+            = truncate(host.bio, length: 200)
       .col-md-4
         .row
           .adventure-thumbnails.text-center
