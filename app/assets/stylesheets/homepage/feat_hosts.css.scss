@@ -17,11 +17,12 @@
 
 .host_box {
 	border-radius: 4px;
-	margin: 5px;
 	background-color: rgba(0,0,0,0.6);
 	width: 100%;
 	height: auto;
 	display: inline-block;
+	margin-top: 12px;
+	margin-bottom: 12px;
 
 	-moz-transition:-moz-transform 0.3s ease-in; 
 	-webkit-transition:-webkit-transform 0.3s ease-in; 
@@ -60,12 +61,14 @@
 	}
 
 	.host_name {
-		margin-top: 10px;
-		font-family: cabin_bold;
+		margin-top: 24px;
+		font-family: bebas_neue;
 		letter-spacing: 1px;
-		color: #FFF;
-		font-size: 2em;
-		text-align: left;
+		color: rgb(255,113,41);
+		font-size: 2.4em;
+		text-align: center;
+		padding-bottom: 24px;
+		font-weight: bold;
 	}
 
 	.border {
@@ -81,8 +84,11 @@
 		font-style: italic;
 	}		
 
+	.categories-block {
+		padding-top: 24px;
+	}
+
 	.host_category_circle {
-		margin-top: 15px;
 		margin-bottom: 15px;
 		margin-right: 7px;
 		padding-top: 5px;
@@ -133,19 +139,30 @@
 			height: 75px;
 			margin: 30px 11px 0px 11px;
 		}
+	}
 
+	.location-block {
+		padding-right: 0px;
+		padding-left: 0px;
+	}
 
+	.tripnumber-block {
+		padding-left: 0px;
+		padding-right: 0px;
 	}
 
 	.host_location {
-		padding-top: 5px;
-		font-family: nexa_light;
+		font-family: bebas_neue;
 		font-weight: bold;
-		font-size: 12px;
-		letter-spacing: 1px;
-		color: rgba(255,255,255,0.4);
+		font-size: 20px;
+		color: #fff;
 		background-color: transparent;
-		text-align: left;
+		text-align: center;
+		border: 1px solid rgba(255,255,255,0.2);
+		border-left: none;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		letter-spaceing: 1px;
 
 		.fa {
 			margin-right: 5px;
@@ -155,21 +172,26 @@
 	.host_bio {
 		color: rgba(255,255,255,0.6);
 		text-align: left;
+		padding-top: 24px;
 	}
 
 	.view_trips {
-		color: rgba(255,255,255,0.5);
-		font-family: nexa_bold;
-		font-size: 1.0em;
-		padding-bottom: 4px;
-		margin-top: 12px;
+		font-family: bebas_neue;
+		font-weight: bold;
+		font-size: 20px;
+		color: #fff;
+		text-align: center;
+		border: 1px solid rgba(255,255,255,0.2);
+		border-right: none;
+		padding-top: 12px;
+		padding-bottom: 12px;
 	}
 
 	.host_contact_btn {
 		width: 100%;
-		font-family: nexa_light;
+		font-family: bebas_neue;
 		font-weight: bold;
-		font-size: 1.1em;
+		font-size: 1.5em;
 		letter-spacing: 1px;
 		padding-top: 5px;
 		padding-bottom: 0px;
@@ -200,11 +222,12 @@
 
 		.image-wrapper{
 				margin-top: 10px;
-	      width: 95px;
-	      height: 65px;
+	      width: 150px;
+	      height: 150px;
 	      border-radius: 4px;
 	      background-size: cover !important;
 	      display: inline-block;
+	      box-shadow: 1px 3px 3px #000;
 
 	      &:nth-child(odd) {
 	      	margin-right: 10px;
@@ -213,14 +236,56 @@
 	}
 }
 
+@media screen and (max-width: 991px){
+	.host_box .host_location {
+		border-right: none;
+		border-bottom: none;
+	}
+
+	.host_box .view_trips {
+		border-left: none;
+	}
+
+	.host_box .host_bio {
+		text-align: center;
+	}
+
+	.host_box .host_image {
+		width: 50%;
+		margin-left: 25%;
+	}
+
+	.host_box .host_contact_btn {
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 780px){
+	.host_box .host_image {
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	.host_box .host_contact_btn {
+		width: 100%;
+	}
+}
+
 /* mobile */
 @media screen and (max-width: 500px){ 
+	
+	.host_box .host_name {
+		line-height: 30px;
+		font-size: 2.0em;
+
+	}
+
 	.host_container {
 		
 	}
 
 	.host_container .host_image {
-		
+
 	}
 }
 

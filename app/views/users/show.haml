@@ -109,9 +109,6 @@
           .panel.panel-default
             .panel-body
               .text-center
-                %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @user.id, "data-host-name"=>@user.get_first_name}
-                  Connect with
-                  %span= @user.get_abbreviated_name.upcase
               .box_social.text-center
                 - if @user.fb_url && !(@user.fb_url == '')
                   %a.btn.btn-default.social_btn.fb{href: "#{@user.fb_url}", target: "_blank", style: "margin-right: 5px;"}

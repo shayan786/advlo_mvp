@@ -283,20 +283,25 @@
               bottom: 14px;
               position: absolute;
               z-index: 100;
-              font-family: 'cabin_regular';
               text-align: center;
               width: 375px;
 
 
 
               .title {
-                font-size: 21px;
+                font-size: 33px;
+                text-shadow: 1px 3px 2px #000;
+                font-family: bebas_neue_bold;
               }
 
 
               .location {
-                color: #C35B26;
+                color: #FF7600;
                 text-transform: uppercase;
+                font-size: 22px;
+                text-shadow: 1px 1px 4px #000;
+                font-family: bebas_neue_bold;
+                letter-spacing: 1px;
               }
 
               .rating-xs {
@@ -366,8 +371,8 @@
         .copy-container {
           position: absolute;
           bottom: 0px;
-          height: 75px;
-          background: rgba(0, 0, 0, 0.75);
+          height: 100%;
+          background: rgba(0, 0, 0, 0.4);
           width: 100%;
         }
 
