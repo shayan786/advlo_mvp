@@ -69,14 +69,13 @@
 }
 
 #how_it_works {
-	background: transparent;
+	background: whitesmoke;
 	padding-top: 50px;
 
 	.hiw-explainer {
-		font-family: cabin_bold;
-		color: #FFF;
+		font-family: cabin_regular;
+		color: #333;
 		font-size: 2em;
-		text-shadow: 1px 1px 2px #000;
 		text-align: center;
 		padding-bottom: 50px;
 		padding-left: 120px;
@@ -115,7 +114,7 @@
 	}	
 
 	.categories {
-		background-color: #fff;
+		background-color: #000;
 		width: 100%;
 		margin-top:	100px;
 		padding-bottom: 100px;
@@ -130,7 +129,6 @@
 		height: 230px;
 		width: 100%;
 		border-radius: 4px;
-		margin-bottom: 10px;
 		margin-top:	24px;
 
 		-moz-transition:-moz-transform 0.3s ease-in; 
@@ -187,7 +185,10 @@
 		text-align: center;
 		line-height: 24px;
 		padding: 28px;
-		color: rgba(255,255,255,0.6);
+		color: #333;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		background-color: rgba(0,0,0,0.3);
 	}
 
 	.hiw-small-host {
@@ -197,7 +198,10 @@
 		line-height: 24px;
 		padding: 28px;
 		letter-spacing: 0px;
-		color: rgba(255,255,255,0.6);
+		color: #333;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		background-color: rgba(0,0,0,0.3);
 	}
 
 	.category_img {
@@ -344,7 +348,27 @@
 }
 
 
+@media screen and (min-width: 1201px) {
 
+	#how_it_works .hiw-small-host {
+		height: 130px;
+	}
+
+	#how_it_works .hiw-small {
+		height: 130px;
+	}
+}
+
+@media screen and (min-width: 991px) and (max-width: 1200px) {
+
+	#how_it_works .hiw-small-host {
+		height: 150px;
+	}
+
+	#how_it_works .hiw-small {
+		height: 150px;
+	}
+}
 
 @media screen and (min-width: 501px) and (max-width: 1248px) {
 
@@ -419,23 +443,23 @@
 		.hiw-small {
 			line-height: 0px;
 			font-size: 1.2em;
-			color: rgba(255,255,255,0.8);
 			text-align: center;
 			line-height: 20px;
-			padding-top: 10px;
+			padding-top: 12px;
 			padding-left: 20px;
 			padding-right: 20px;
+			padding-bottom: 12px;
 		}
 
 		.hiw-small-host {
 			line-height: 0px;
 			font-size: 1.2em;
-			color: rgba(255,255,255,0.8);
 			text-align: center;
 			line-height: 20px;
-			padding-top: 10px;
+			padding-top: 12px;
 			padding-right: 20px;
 			padding-left: 20px;
+			padding-bottom: 12px;
 		}
 		
 		#hiw-btn.btn.btn-default {
