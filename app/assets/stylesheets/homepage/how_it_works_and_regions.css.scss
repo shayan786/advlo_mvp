@@ -69,17 +69,18 @@
 }
 
 #how_it_works {
-	background: whitesmoke;
+	background: #333;
 	padding-top: 50px;
 
 	.hiw-explainer {
 		font-family: cabin_regular;
-		color: #333;
-		font-size: 2em;
+		color: rgba(255,255,255,0.8);
+		font-size: 1.5em;
 		text-align: center;
 		padding-bottom: 50px;
 		padding-left: 120px;
 		padding-right: 120px;
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
 	}
 
 	h3 {
@@ -114,7 +115,7 @@
 	}	
 
 	.categories {
-		background-color: #000;
+		background-color: whitesmoke;
 		width: 100%;
 		margin-top:	100px;
 		padding-bottom: 100px;
@@ -159,7 +160,7 @@
 				letter-spacing: 2px;
 				text-align: center;
 				padding-top: 35px;
-				text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+				text-shadow: 2px 1px 6px rgba(0, 0, 0, 1);
 			}
 		}
 	}
@@ -181,27 +182,26 @@
 
 	.hiw-small {
 		font-size: 1.2em;
-		background-color: transparent;
 		text-align: center;
 		line-height: 24px;
 		padding: 28px;
-		color: #333;
-		border-bottom-left-radius: 4px;
-		border-bottom-right-radius: 4px;
-		background-color: rgba(0,0,0,0.3);
+		color: whitesmoke;
+		border-radius: 4px;
+		background-color: rgba(255,255,255,0.07);
+		margin-top: 10px;
+		text-shadow: 1px 1px 1px #333;
 	}
 
 	.hiw-small-host {
 		font-size: 1.2em;
-		background-color: transparent;
 		text-align: center;
 		line-height: 24px;
 		padding: 28px;
-		letter-spacing: 0px;
-		color: #333;
-		border-bottom-left-radius: 4px;
-		border-bottom-right-radius: 4px;
-		background-color: rgba(0,0,0,0.3);
+		color: whitesmoke;
+		border-radius: 4px;
+		background-color: rgba(255,255,255,0.07);
+		margin-top: 10px;
+		text-shadow: 1px 1px 1px #333;
 	}
 
 	.category_img {
@@ -211,6 +211,7 @@
 		border-radius: 4px;
 		margin-bottom: 10px;
 		margin-top:	24px;
+		box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.6);
 
 		-moz-transition:-moz-transform 0.3s ease-in; 
 		-webkit-transition:-webkit-transform 0.3s ease-in; 
@@ -393,7 +394,7 @@
 	#how_it_works .hiw-explainer {
 		padding-left: 20px;
 		padding-right: 20px;
-		font-size: 1.8em;
+		font-size: 1.2em;
 	}
 
 	#how_it_works .categorysection-header {

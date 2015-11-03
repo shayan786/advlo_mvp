@@ -23,7 +23,7 @@
 
     #adventure-local{
       font-family: nexa_bold;
-      font-size: 5em;
+      font-size: 4.5em;
       padding-top: 32px;
       letter-spacing: 3px;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
@@ -34,6 +34,7 @@
       margin: 0 auto;
       font-size: 1.5em;
       margin-bottom: 15px;
+      text-shadow: 1px 1px 1px #000;
 
       .small {
         font-size: 66%;
@@ -42,7 +43,6 @@
   }
 
   #find_adventure_form {
-    margin-top: 45px;
 
     .input-group-addon {
       background-color: rgba(195,91,38,0.7);
@@ -69,7 +69,7 @@
 
     #location {
       height: 50px;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(255,255,255,0.6);
       border: none;
       box-shadow: none;
       border-radius: 0px;

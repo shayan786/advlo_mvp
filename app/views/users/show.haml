@@ -6,32 +6,30 @@
   - image = "#{asset_path("advlo_mountains.jpg")}"
 
 %div{:itemscope => true, :itemtype => "http://schema.org/Person"}
-  #p_banner{style: "background: url('#{image}') no-repeat center center;"}
-    .container
-      .row
-        .col-md-10.col-md-offset-1#profile-box
-          .panel.panel-default
-            .panel-body.text-center.col-md-4
-              - if @user.avatar.height && @user.avatar.height(:medium) >= 200
-                - profile_img = @user.avatar.url(:medium)
-              - elsif @user.avatar.height && @user.avatar.height(:medium) < 200
-                - profile_img = @user.avatar.url(:large)
-              - else
-                - profile_img = "#{@user.avatar_url}?type=large"
+  .row
+    #p_banner{style: "background: url('#{image}') no-repeat center center;"}
+      .container
+        .row
+          .col-md-12#profile-box
+            .panel.panel-default
+              .panel-body.text-center.col-md-4
+                - if @user.avatar.height && @user.avatar.height(:medium) >= 200
+                  - profile_img = @user.avatar.url(:medium)
+                - elsif @user.avatar.height && @user.avatar.height(:medium) < 200
+                  - profile_img = @user.avatar.url(:large)
+                - else
+                  - profile_img = "#{@user.avatar_url}?type=large"
 
-              .banner_name{itemprop: 'name'}= @user.get_abbreviated_name
-              .banner_subtitle{itemprop: 'nationality'}= @user.location 
+                .banner_name{itemprop: 'name'}= @user.get_abbreviated_name
+                .banner_subtitle{itemprop: 'nationality'}= @user.location 
 
-              .profile-image{style: "background: url('#{profile_img}') no-repeat center center;"}
-              .rich-image{style: 'display:none;', itemprop: 'image', src: profile_img}
-      
-              .text-center
-                %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @user.id, "data-host-name"=>@user.get_first_name}
-                  Connect with
-                  %span= @user.get_abbreviated_name.upcase
-           
-            .row.col-md-8.bio_block
-              .overview_content{itemprop: 'potentialAction'}= @user.bio.gsub(/\n/, '<br/>').html_safe 
+                .profile-image{style: "background: url('#{profile_img}') no-repeat center center;"}
+                .rich-image{style: 'display:none;', itemprop: 'image', src: profile_img}
+        
+                .text-center
+                  %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @user.id, "data-host-name"=>@user.get_first_name}
+                    Connect with
+                    %span= @user.get_abbreviated_name.upcase       
  
   #p_my_adventures
     .container
@@ -112,6 +110,8 @@
           .panel.panel-default
             .panel-body
               .text-center
+                .row.bio_block
+                  .overview_content{itemprop: 'potentialAction'}= @user.bio.gsub(/\n/, '<br/>').html_safe  
               - if @user.video_url
                 .user-video-wrapper.text-center
                   = raw(@user.embed(@user.video_url))
