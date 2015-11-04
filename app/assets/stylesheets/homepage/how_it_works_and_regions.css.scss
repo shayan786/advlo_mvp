@@ -124,6 +124,23 @@
 		padding-top: 44px;
 	}
 
+	.hiw_icon {
+		background-color: #000;
+		border-radius: 50%;
+		border: 5px solid #333;
+		margin-top: 32px;
+		min-height: 114px;
+		margin-right: auto;
+		margin-left: auto;
+		width: 120px;
+	}
+
+	.fa {
+		font-size: 3.5em;
+		color: rgba(195,91,38,1);
+		padding-top: 26px;
+	}
+
 	.hiw_img {
 		box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
 		background-size: cover !important;
@@ -187,9 +204,13 @@
 		padding: 28px;
 		color: whitesmoke;
 		border-radius: 4px;
-		background-color: rgba(255,255,255,0.07);
-		margin-top: 10px;
+		background-color: transparent;
+		margin-top: 36px;
 		text-shadow: 1px 1px 1px #333;
+		border: 6px solid rgba(195, 91, 38, 0.5);
+		border-top: none;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
 	}
 
 	.hiw-small-host {
@@ -446,21 +467,10 @@
 			font-size: 1.2em;
 			text-align: center;
 			line-height: 20px;
-			padding-top: 12px;
+			padding-top: 30px;
 			padding-left: 20px;
 			padding-right: 20px;
-			padding-bottom: 12px;
-		}
-
-		.hiw-small-host {
-			line-height: 0px;
-			font-size: 1.2em;
-			text-align: center;
-			line-height: 20px;
-			padding-top: 12px;
-			padding-right: 20px;
-			padding-left: 20px;
-			padding-bottom: 12px;
+			padding-bottom: 24px;
 		}
 		
 		#hiw-btn.btn.btn-default {

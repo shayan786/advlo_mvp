@@ -72,6 +72,9 @@ Rails.application.routes.draw do
   #investors
   get '/invest'                       => 'application#invest'
 
+  #FAQ
+  get '/faq'                          => 'application#faq' 
+
   #blog
   get '/blog'                         => 'blogpost#index'
   get '/blog/:permalink'              => 'blogpost#show'

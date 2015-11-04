@@ -18,7 +18,7 @@
     text-align: center;
     width: 100%;
     margin-bottom: 30px;
-    margin-top: 150px;
+    margin-top: 200px;
     color: #FFF;
 
     #adventure-local{
@@ -52,6 +52,7 @@
       cursor: pointer;
       border-top-right-radius: 12px;
       border-bottom-right-radius: 12px;
+      border-bottom: 2px solid rgba(255,255,255,0.6);
 
       &:hover {
         color: #FFF;
@@ -69,7 +70,7 @@
 
     #location {
       height: 50px;
-      background-color: rgba(255,255,255,0.6);
+      background-color: rgba(255,255,255,0.3);
       border: none;
       box-shadow: none;
       border-radius: 0px;
@@ -79,6 +80,7 @@
       padding: 0;
       border-bottom-left-radius: 12px;
       border-top-left-radius: 12px;
+      border-bottom: 2px solid rgba(255,255,255,0.6);
     }
   }
 

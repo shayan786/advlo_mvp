@@ -8,22 +8,28 @@
         We believe Adventure begins once you step outside of your comfort zone and it's our goal to get your there; which is why we're creating the most exclusive network of adventure guides around the world. In three simple steps find your next Adventure:
     .row
       .col-md-4
-        .hiw_img{style: "background: url('#{asset_path("background/Sittingontopofmountain.jpeg")}') center center no-repeat"}
+        .hiw_img{style: "background: url('#{asset_path("background/Mountainbikers.jpeg")}') center center no-repeat"}
           .hiw_img_text.text-center
             .large CONNECT
-        .hiw-small 1. Explore our vetted local hosts by destination or activity. Discover who they are and what they can offer.
+            .hiw_icon
+              .fa.fa-globe
+        .hiw-small Explore our local hosts by destination or type of activity. Discover who they are and what they can offer.
       
       .col-md-4
         .hiw_img{style: "background: url('#{asset_path("background/SurfboardonBeach.jpeg")}') center center no-repeat"}
           .hiw_img_text.text-center
             .large CREATE
-        .hiw-small 2. Choose to tailor their existing adventures or start a custom itinerary based on your preferences.
+            .hiw_icon
+              .fa.fa-map-o
+        .hiw-small Choose to tailor their existing adventures or build a custom itinerary with them based on your preferences.
 
       .col-md-4
         .hiw_img{style: "background: url('#{asset_path("background/Snowboarder.jpg")}') center center no-repeat"}
           .hiw_img_text.text-center
             .large ADVENTURE
-        .hiw-small-host 3. Book it! We'll handle the rest while you Adventure Local.
+            .hiw_icon
+              .fa.fa-bicycle
+        .hiw-small Book your custom experience! We'll handle the rest while you Adventure Local.
   
   .container.categories
     %br
@@ -57,7 +63,7 @@
               ROCKS
       .col-md-6
         %a{href: "find?categories=biking,camping,climbing,hiking&locals=false"}
-          .category_img{style: "background: url('#{asset_path("background/advlo_forest.png")}') center center no-repeat"}
+          .category_img{style: "background: url('#{asset_path("background/Trail.jpg")}') center center no-repeat"}
             .category_img_text.text-center{style: "position: relative; top: 0px;"}
               TRAIL
 

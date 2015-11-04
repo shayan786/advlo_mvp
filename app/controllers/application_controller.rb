@@ -64,6 +64,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def faq
+
+  end
+
   def sitemap
     # Countries, us states, cities
     countries = []
