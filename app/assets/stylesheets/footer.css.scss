@@ -1,5 +1,5 @@
 #toggle-sign-in {
-	font-family: 'cabin_regular';
+	font-family: 'cabin_bold';
 	cursor: pointer;
 	margin-bottom: 2px;
 }
@@ -146,7 +146,7 @@
 			.modal-content {
 				max-width: 450px;
 				margin: 0 auto;
-				background-color: rgba(0,0,0,0.85);
+				background-color: #333;
 
 
 				.question-wrapper {
@@ -324,7 +324,7 @@
 	.back-text {
 		font-family: 'cabin_regular' !important;
 		font-size: 13px;
-		color: rgba(255,255,255,0.4);
+		color: rgba(0,0,0,0.8);
 
 		a:hover {
 			text-decoration: none;
@@ -345,19 +345,18 @@
 
 
 		.sign_up_toggle_btn {
-			width: 42%;
+			width: 80%;
 			padding-top: 6px;
-			font-family: nexa_light;
-			font-weight: bold;
+			font-family: nexa_bold;
 			letter-spacing: 1px;
 			font-size: 1.0em;
-			background-color: transparent;
-			border: 1px solid rgba(255,255,255,0.5);
+			background-color: rgba(195,91,38,0.4);
+			border: none;
 			margin-top: 10px;
 			margin-bottom: 57px;
 
 			&:hover {
-				background-color: $advlo_orange;
+				background-color: rgba(195,91,38,0.2);
 				border-color: $advlo_orange;
 				opacity: 0.8;
 			}
@@ -365,10 +364,10 @@
 		.fb_btn {
 			width: 80%;
 			padding-top: 16px;
-			font-family: nexa_light;
+			font-family: nexa_bold;
 			font-weight: bold;
 			letter-spacing: 1px;
-			font-size: 1.2em;
+			font-size: 1em;
 			margin-top: 54px;
 			padding-bottom: 16px;
 		}

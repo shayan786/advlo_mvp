@@ -12,7 +12,7 @@
         .row
           %a.btn.btn-primary.fb_btn{href: "/users/auth/facebook"}
             %i.fa.fa-facebook{style: "margin-right: 28px; font-size: 25px;"}
-            LOGIN WITH FACEBOOK
+            CONNECT WITH FACEBOOK
 
         %form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form", id: 'sign_in_form'}
           =tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -28,7 +28,7 @@
 
         .row
           .btn.btn-primary.sign_in_toggle_btn
-            LOGIN WITH EMAIL
+            CONNECT WITH EMAIL
 
         .row
           .sign_up_link

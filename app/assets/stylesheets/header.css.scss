@@ -386,7 +386,7 @@
 			max-width: 500px;
 			margin: 0 auto;
 			padding-bottom: 15px;
-			background-color: rgba(0,0,0,0.85);
+			background-color: #333;
 		}
 
 		#sign_in_form {
@@ -444,13 +444,13 @@
 
 	.sign_in_toggle_btn {
 		padding-top: 8px;
-		font-family: nexa_light;
-		font-weight: bold;
+		font-family: nexa_bold;
 		letter-spacing: 1px;
 		font-size: 1.0em;
-		background-color: transparent;
-		border: 2px solid rgba(255,255,255,0.5);
+		background-color: rgba(195,91,38,0.4);
+		border: none;
 		margin-top: 10px;
+		width: 80%;
 
 		&:hover {
 			background-color: rgba(0,0,0,0.3);
@@ -460,10 +460,9 @@
 	.fb_btn {
 		width: 80%;
 		padding-top: 16px;
-		font-family: nexa_light;
-		font-weight: bold;
+		font-family: nexa_bold;
 		letter-spacing: 1px;
-		font-size: 1.2em;
+		font-size: 1em;
 		margin-top: 30px;
 		padding-bottom: 16px;
 		padding-right: 48px
