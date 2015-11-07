@@ -1,28 +1,28 @@
 #bottom-login
   .row
-    .col-md-6
-      .join-wrapper
-        .container.join-text.text-center
-          FIND ADVENTURES
-        .join-text-small.text-center
-          Discover experiences that only locals know about
+    .col-md-12.join-host-wrapper
+      .container.join-text.text-center
+        HOST ADVENTURES
+      .join-text-small.text-center
+        Show the world how adventurous you are
+
+      #pre-check-homepage
+        .advlo-partner-bottom
+          %a.btn.btn-primary.bottomlogin_partner_btn{href: "/partner"}
+            GET STARTED
+
+  .row
+    .col-md-12.join-wrapper
+      .container.join-text.text-center
+        FIND ADVENTURES
+      .join-text-small.text-center
+        Discover experiences that only locals know about
 
       #pre-check-homepage
         .advlo-signup-bottom
           %a.btn.btn-primary.bottomlogin_signup_btn
             START EXPLORING
 
-    .col-md-6
-      .join-wrapper
-        .container.join-text.text-center
-          HOST ADVENTURES
-        .join-text-small.text-center
-          Show the world how adventurous you are
-
-      #pre-check-homepage
-        .advlo-partner-bottom
-          %a.btn.btn-primary.bottomlogin_partner_btn{href: "/partner"}
-            GET STARTED
 
 /          %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form_travel'}
 /            = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)

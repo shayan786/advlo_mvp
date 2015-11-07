@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   get 'partner/:guide_category'       => 'adventures#adventure_info'
 
 
+  #mobilehomepage
+
+  get '/m'                            => 'application#mobilehomepage'
 
   get 'travel-fund'                   => 'users#invite' 
 

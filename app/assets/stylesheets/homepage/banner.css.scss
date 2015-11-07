@@ -52,35 +52,24 @@
       cursor: pointer;
       border-top-right-radius: 12px;
       border-bottom-right-radius: 12px;
-      border-bottom: 2px solid rgba(255,255,255,0.6);
-
+      box-shadow: 0px 0px 17px rgba(0,0,0,0.6);
       &:hover {
         color: #FFF;
         background-color: rgba(195,91,38,0.4);
       }
     }
 
-    .searchbar-background {
-      background-color: rgba(0,0,0,0.4);
-      height: 70px;
-      border-radius: 12px;
-      padding-top: 10px;
-      box-shadow: 0px 2px 6px #000;
-    }
-
     #location {
       height: 50px;
-      background-color: rgba(255,255,255,0.3);
+      background-color: rgba(255,255,255,0.85);
       border: none;
-      box-shadow: none;
       border-radius: 0px;
       font-size: 22px;
-      color: #fff;
       text-align: center;
       padding: 0;
       border-bottom-left-radius: 12px;
       border-top-left-radius: 12px;
-      border-bottom: 2px solid rgba(255,255,255,0.6);
+      box-shadow: -7px 0px 17px #000;
     }
   }
 
@@ -200,7 +189,7 @@
   }
 
   .scroll-slow #homepage-text {
-    margin-top: 100px;
+    margin-top: 52px;
   }
 
   .scroll-slow #homepage-text .logo img {
@@ -224,8 +213,8 @@
     margin-top: 10px !important;
   }
   .scroll-slow #homepage-text #explanation {
-    margin-top: 25px !important;
-    margin-bottom: 25px !important;
+    margin-top: 0px !important;
+    margin-bottom: 64px !important;
   }
 
   .scroll-slow .explanation-row .advlo-signup .homepage_fb_btn {
@@ -316,6 +305,10 @@
 
 @media screen and (max-width: 701px){
 
+  .scroll-slow #find_adventure_form #location {
+    font-size: 16px;
+  }
+
   .jumbotron_fix span.large_text {
     font-size: 2.4em !important;
   }
@@ -346,6 +339,12 @@
 
 @media screen and (max-width: 768px){
 
+  #find_adventure_form {
+    margin-top: 128px;
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+  
   .scroll-slow .explanation-row #homepage-explore-mobile {
     display: block !important;
   }
@@ -379,7 +378,7 @@
 
   .scroll-slow #homepage-text #adventure-local {
     font-family: nexa_bold;
-    font-size: 2.6em;
+    font-size: 2.8em;
     padding-top: 0px;
     font-weight: bold;
     letter-spacing: 0px;

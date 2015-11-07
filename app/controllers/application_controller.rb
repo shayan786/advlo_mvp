@@ -56,6 +56,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def m
+
+  end
+
   def terms
 
   end
