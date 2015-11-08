@@ -1,15 +1,14 @@
 #p_banner {
 	position: relative;
 	float: left;
-	height: 500px;
+	height: 340px;
 	width: 100%;
-	margin-bottom: 20px;
-
+	margin-bottom: 286px;
 	background-size: cover !important;
 	
 	#profile-box {
-		margin-top: 6%;
-		background-color: rgba(0,0,0,0.45);
+		margin-top: 64px;
+		background-color: transparent;
 
 		.caption {
 			font-size: 0.65em;
@@ -19,19 +18,21 @@
 	}
 
 	.panel {
-		background-color: rgba(0,0,0,0.45);
+		background-color: transparent;
 		color: $profile_banner_font_color;
 		border: none;
 
 		.panel-body {
 			.profile-image {
-				height: 200px;
-				width: 100%;
-				border-radius: 4px;
+				height: 260px;
+				width: 260px;
+				border-radius: 50%;
 				margin: 0 auto;
 				overflow: hidden;
 				background-size: cover !important;
 				max-width: 350px;
+				margin-top: 30px;
+				border: 6px solid #333;
 
 				.non-fb-img {
 					height: 100%;
@@ -56,9 +57,14 @@
 				padding-bottom: 15px;
 				margin-top: 20px;
 	      		min-width: 250px;
+	      		max-width: 300px;
 				border: none;
 	      		background-color: rgba(195,91,38,1);
 	      		text-shadow: 1px 1px 2px rgba(0,0,0,0.45);
+	      		box-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+	      		font-family: nexa_bold;
+	      		text-transform: uppercase;
+	      		letter-spacing: 1px;
 
 				&:hover {
 					background-color: rgba(195,91,38, 0.6);
@@ -75,21 +81,83 @@
 
 		.banner_name {
 			font-family: $profile_banner_name_font;
-			font-size: 2em;
+			font-size: 2.8em;
 			margin-bottom: 5px;
 			text-transform: uppercase;
-			text-shadow: 1px 1px 2px rgba(0,0,0,.45);
+			text-shadow: 1px 1px 2px rgba(0,0,0,.8);
 		}
 
 		.banner_subtitle {
 			font-family: $profile_banner_subtitle_font;
-			font-size: 1.2em;
+			font-size: 1.6em;
 			font-style: italic;
 			padding-bottom: 15px;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 		}
 
 		.bio_block {
 			padding: 15px;
 		}
 	} 
+}
+
+.social_btn {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 7px 0;
+    font-size: 18px;
+    line-height: 1.6;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #333;
+    color: #fff;
+
+    .social_btn.fb {
+		color: #FFF;
+        background-color: #3B5998;
+        border-color: #3B5998;
+
+    	&:hover {
+          opacity: 0.8;
+        }          
+	}
+
+	.social_btn.twitter {
+        color: #FFF;
+        background-color: #30D8F0;
+        border-color: #30D8F0;
+
+        &:hover {
+          opacity: 0.8;
+        }
+	}
+
+    .social_btn.ta {
+        background-color: #589442;
+        border-color: #589442;
+
+        &:hover {
+          opacity: 0.8;
+        }
+    }
+}
+
+@media screen and (max-width: 781px){
+	
+	#p_banner .panel .panel-body .profile-image {
+		margin-top: 10px;
+		height: 220px;
+		width: 220px;
+	}
+
+	#p_banner {
+		margin-bottom: 264px;
+		height: 274px;
+	}
+
+	#p_banner #profile-box {
+		margin-top: 36px;
+	}
 }
