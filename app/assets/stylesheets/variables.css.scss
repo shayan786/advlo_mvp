@@ -19,6 +19,18 @@ src: asset_url("ProximaNovaBold.otf");
 
 @font-face
 {
+font-family: proxima_light;
+src: asset_url("ProximaNovaLight.otf");
+}
+
+@font-face
+{
+font-family: proxima_thin;
+src: asset_url("ProximaNovaThin.otf");
+}
+
+@font-face
+{
 font-family: cabin_bold;
 src: asset_url("Cabin-Bold.otf");
 }
