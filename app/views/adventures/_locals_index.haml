@@ -1,50 +1,50 @@
 .col-md-12.host_container.text-center
   - locals.each do |host|
     .host_box.text-center
-      .col-md-4
-        .row
-          %a{href: "#{root_url}users/#{host.to_param}"}
-            .host_image{style: "background: url('#{host.get_avatar_url("large")}') center center no-repeat"}
-        .row  
-          %a{href: "#{root_url}users/#{host.to_param}"}
-            .btn.btn-primary.host_profile_btn
-              VIEW PROFILE & ADVENTURES
-        .row  
-          .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
-            CONTACT HOST
-      .col-md-4
-        .row
-          %a{href: "#{root_url}users/#{host.to_param}"}
-            .host_name= host.guide_type == 'business' ? host.name : host.get_first_name
-        .row
-          .host_location
-            %i.fa.fa-map-marker
-            = get_display_location(host.adventures.first)
-        .row
-          - host.get_host_adventure_categories.each do |cat|
-            .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
-              = image_tag get_category_icon_url(cat)
-        .row
-          .col-md-6.location-block
-            .host_events
-              2 Meetups
-          .col-md-6.tripnumber-block
+      .col-md-7
+        .col-md-5
+          .row
             %a{href: "#{root_url}users/#{host.to_param}"}
-              .view_trips
-                - if host.adventures.count > 0 ? count = host.adventures.count : count = ''
-                  %span#trip-count= count <= 1 ? "#{count} ADVENTURE" : "#{count} ADVENTURES"
-        .row
-          .host_bio
-            = truncate(host.bio, length: 200)
-      .col-md-4
-        .row
-          .adventure-thumbnails.text-center
-            - host.adventures.approved.limit(4).each do |adv|
-              %a{href: adventure_path(adv.slug), itemprop: 'url'}
-                - adv_img_show = adv.attachment.url(:hero)
-                .image-wrapper{style: "background: url('#{adv_img_show}') no-repeat center center;"}
+              .host_image{style: "background: url('#{host.get_avatar_url("large")}') center center no-repeat"}
+          .row  
+            %a{href: "#{root_url}users/#{host.to_param}"}
+              .btn.btn-primary.host_profile_btn
+                SELECT HOST
+        
+        .col-md-7
+          .row
+            %a{href: "#{root_url}users/#{host.to_param}"}
+              .host_name= host.guide_type == 'business' ? host.name : host.get_first_name
+          .row
+            .host_location
+              %i.fa.fa-map-marker
+              = get_display_location(host.adventures.first)
+          .row
+            - host.get_host_adventure_categories.each do |cat|
+              .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
+                = image_tag get_category_icon_url(cat)
+          .row
+            .tripnumber-block
+              %a{href: "#{root_url}users/#{host.to_param}"}
+                .view_trips
+                  - if host.adventures.count > 0 ? count = host.adventures.count : count = ''
+                    %span#trip-count= count <= 1 ? "#{count} ADVENTURE TEMPLATE" : "#{count} ADVENTURE TEMPLATES"
+          .row
+            .col-md-12.host_bio
+              = truncate(host.bio, length: 200)
+
+      .col-md-5
+        .adventure-thumbnails
+          - host.adventures.approved.limit(4).each do |adv|
+            %a{href: adventure_path(adv.slug), itemprop: 'url'}
+              - adv_img_show = adv.attachment.url(:hero)
+              .image-wrapper{style: "background: url('#{adv_img_show}') no-repeat center center;"}
 
 = render partial: '/users/contact_host_modal', locals: {res: nil}
+
+/        .row  
+/          .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
+/            CONTACT HOST
 
 :javascript
   host_index_effects();

@@ -1,6 +1,24 @@
 /* ADVLO FONTS */
 @font-face
 {
+font-family: proxima_black;
+src: asset_url("ProximaNovaBlack.otf");
+}
+
+@font-face
+{
+font-family: proxima_regular;
+src: asset_url("ProximaNovaRegular.otf");
+}
+
+@font-face
+{
+font-family: proxima_bold;
+src: asset_url("ProximaNovaBold.otf");
+}
+
+@font-face
+{
 font-family: cabin_bold;
 src: asset_url("Cabin-Bold.otf");
 }

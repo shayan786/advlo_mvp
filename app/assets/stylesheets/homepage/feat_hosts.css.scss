@@ -23,6 +23,7 @@
 	display: inline-block;
 	margin-top: 12px;
 	margin-bottom: 12px;
+	min-height: 360px;
 
 	-moz-transition:-moz-transform 0.3s ease-in; 
 	-webkit-transition:-webkit-transform 0.3s ease-in; 
@@ -61,13 +62,13 @@
 	}
 
 	.host_name {
-		margin-top: 20px;
-		font-family: bebas_neue;
-		letter-spacing: 1px;
-		color: rgb(255,113,41);
-		font-size: 2.4em;
+		margin-top: 30px;
+		font-family: nexa_bold;
+		color: #fff;
+		font-size: 1.8em;
 		text-align: center;
 		font-weight: bold;
+		text-transform: uppercase;
 	}
 
 	.border {
@@ -84,9 +85,9 @@
 	}		
 
 	.host_category_circle {
-		margin-bottom: 12px;
-		margin-top: 12px;
-		margin-right: 7px;
+		margin-bottom: 10px;
+		margin-top: 10px;
+		margin-right: 2px;
 		padding-top: 5px;
 		width: 40px;
 		height: 40px;
@@ -145,6 +146,7 @@
 	.tripnumber-block {
 		padding-left: 0px;
 		padding-right: 0px;
+		border-bottom: 2px solid rgba(195,91,38,0.5);
 	}
 
 	.host_events {
@@ -166,16 +168,18 @@
 	}
 
 	.host_location {
-		font-family: bebas_neue;
+		font-family: cabin_regular;
 		font-weight: bold;
-		font-size: 20px;
-		color: #fff;
+		font-size: 16px;
+		color: rgba(195,91,38,1);
 		background-color: transparent;
 		text-align: center;
 		padding-bottom: 12px;
-		letter-spaceing: 1px;
-		border-bottom: 1px solid rgba(255,255,255,0.2);
+		border-bottom: 2px solid rgba(195,91,38,0.5);
+	}
 
+	.fa-map-marker {
+		color: #fff;
 	}
 
 	.host_bio {
@@ -186,15 +190,11 @@
 	}
 
 	.view_trips {
-		font-family: bebas_neue;
-		font-weight: bold;
-		font-size: 20px;
+		font-family: nexa_bold;
+		font-size: 16px;
 		color: #fff;
 		text-align: center;
-		border: 1px solid rgba(255,255,255,0.2);
-		border-right: none;
-		padding-top: 12px;
-		padding-bottom: 12px;
+		padding-bottom: 10px;
 	}
 
 	.host_contact_btn {
@@ -229,17 +229,16 @@
 
 	.host_profile_btn {
 		width: 100%;
-		font-family: bebas_neue;
+		font-family: nexa_bold;
 		font-weight: bold;
 		font-size: 1.5em;
-		letter-spacing: 1px;
-		padding-top: 5px;
-		padding-bottom: 0px;
+		padding-top: 8px;
+		padding-bottom: 5px;
 		border: none;
-		background-color: #006700;
+		background-color: rgba(195,91,38, 0.6);
 		border-bottom-left-radius: 4px;
 		border-bottom-right-radius: 4px;
-		margin-top: 12px;
+		margin-top: 21px;
 		margin-bottom: 0px;
 		text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 
@@ -258,8 +257,8 @@
 	}
 
 	.adventure-thumbnails {
-		padding-bottom: 10px;
 		margin-top: 20px;
+		margin-bottom: 24px;
 
 		.image-wrapper{
 				margin-top: 10px;
@@ -302,6 +301,10 @@
 
 	.host_box .host_profile_btn {
 		width: 50%;
+	}
+
+	.adventure-thumbnails {
+		display: none;
 	}
 }
 
