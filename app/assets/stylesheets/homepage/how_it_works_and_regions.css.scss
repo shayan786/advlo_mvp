@@ -69,7 +69,7 @@
 }
 
 #how_it_works {
-	background: rgba(0, 0, 0, 0.6);
+	background: #fff;
 	padding-bottom: 40px;
 
 	h3 {
@@ -112,23 +112,21 @@
 		}
 
 		.hiw_img_text{
-			background: rgba(0,0,0,0.4);
-			font-family: bebas_neue;
-			font-weight: bold;
-			letter-spacing: 2px;
+			background: rgba(0,0,0,0.35);
 			color: #FFF;
-			padding-top: 87px;
-			padding-bottom: 88px;
+			padding-top: 95px;
+			padding-bottom: 95px;
+			border-radius: 4px;
 
 			.large {
-				font-size: 5em;
-				color: rgba(255,255,255,0.75);
+				font-size: 2.8em;
+				font-family: proxima_black;
 			}
 
 			.small {
-				line-height: 0px;
 				font-size: 1.5em;
-				color: #fff;
+				font-family: proxima_bold;
+				color: rgba(255,255,255,0.7);
 			}
 
 		}

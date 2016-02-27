@@ -30,7 +30,7 @@
 .navbar {
 	height: 55px;
 	font-family: cabin_bold;
-	background: #000;
+	background: #fff;
 	opacity: $header_opacity;
 	padding: 4px 0 4px 10px;
 	z-index: 1001;
@@ -44,14 +44,18 @@
 	}
 
 	.header-button{
-		margin-right: 20px;
 
 		button.btn-default {
-			border-color: #000;
-			background-color: #000;
+			border: none;
+			background-color: transparent;
+			color: #c35b26;
+			font-family: proxima_black;
+			padding-right: 24px;
+			border-right: 1px solid #000;
+			border-radius: 0px;
 
 			&:hover {
-				border-color: $light_gray;
+				color: #703517;
 			}
 		}
 	}
@@ -70,13 +74,31 @@
 		text-align: center;
 	}
 
-	.login_in_sign_up_btn {
-		border-color: $advlo_orange;
-		background-color: $advlo_orange;
+	.login_in_btn{
+		border: none;
+		background-color: transparent;
+		color: $advlo_orange;
+		font-family: proxima_black;
+		padding-right: 24px;
+		border-right: 1px solid #000;
+		border-radius: 0px;
+		padding-left: 24px;
 
 		&:hover {
-			border-color: $orange;
-			background-color: $orange;
+			color: #703517;
+		}
+	}
+
+	.login_in_sign_up_btn {
+		border: none;
+		background-color: transparent;
+		font-family: proxima_black;
+		color: $advlo_orange;
+		padding-right: 14px;
+		padding-left: 14px;
+
+		&:hover {
+			color: #703517;
 		}
 	}
 }

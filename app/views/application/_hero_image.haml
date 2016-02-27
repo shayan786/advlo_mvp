@@ -1,18 +1,11 @@
-- adv = @rot_adventures.sample
-
-.homepage-photo.jumbotron.jumbotron_fix{:style => "background: url('#{adv.attachment.url(:hero)}') center center no-repeat"}
+.homepage-photo.jumbotron.jumbotron_fix{style: "background: url('#{asset_path("background/Home35.jpg")}') center center no-repeat"}
 
 .scroll-slow
-  %a.adventure-link-wrapper#featured-homepage-adventure{href: "/adventures/#{adv.slug}"}
-    .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-    .adv_copy
-      = adv.title
-      %br
-      with
-      = adv.users.first.get_first_name
-  #homepage-text       
+  #homepage-text
+    #banner-text 
+      FIND YOUR ADVENTURE      
     #explanation
-      Discover and create unique adventure travel experiences with local guides   
+      Discover unique adventure travel experiences with local guides   
 
 
     .row
@@ -40,29 +33,6 @@
       %a
         .bottom
 
-  - if current_user
-    %a.mobile-content-link-wrapper-logged-in{href: "/adventures/#{adv.slug}"}
-      .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-      .adv_copy
-        = adv.title
-        %br
-        with
-        = adv.users.first.get_first_name
-  - else
-    %a.mobile-content-link-wrapper{href: "/adventures/#{adv.slug}"}
-      .host_img{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') center center no-repeat;"}
-      .adv_copy
-        = adv.title
-        %br
-        with
-        = adv.users.first.get_first_name
-
-
-- rot_advs = []
-- @rot_adventures.each do |adv|
-  .preload{style: "display: none; background: url('#{adv.attachment.url(:hero)}') no-repeat -9999px -9999px;"}
-  - adv_obj = {bg_img_url: adv.attachment.url(:hero), url: "#{root_url}adventures/#{adv.slug}", title: adv.title, host_img_url: adv.users.first.get_avatar_url('profile'), host_name: adv.users.first.get_first_name}
-  - rot_advs << adv_obj
 
 
 :javascript
@@ -78,7 +48,6 @@
 
   $(document).ready(function(){
     homepage_find_input_geocomplete();
-    banner_image_rotate(#{rot_advs.to_json});
 
     if( $('.navbar-fixed-top').is(":visible") ){
       $('.scroll-slow').css('top','75px');
