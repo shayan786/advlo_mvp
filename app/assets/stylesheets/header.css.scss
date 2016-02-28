@@ -130,21 +130,20 @@
 			border-bottom-right-radius: 0px;
 			border-bottom-left-radius: 10px;
 			border-top-left-radius: 0px;
-			background: rgba(0, 0, 0, 1);
+			background: #fff;
+			border: none;
 
 			a {
 				text-align: center;
-				font-family: 'cabin_bold' !important;
-				color: #fff !important;
+				font-family: 'proxima_black' !important;
+				color: $advlo_orange !important;
 				font-size: 1.1em;
 				width: 100%;
 				text-align: left;
 
-			}
-
-			.orange-hover:hover {
-				background: rgba(0, 0, 0, 0);
-				color: $advlo_orange !important;
+				&:hover {
+					color: #703517;
+				}
 			}
 
 			.sign_in_form {
@@ -271,29 +270,29 @@
 
 #locations-menu {
 	background: rgba(0,0,0, 0.9);
-	min-height: 150px;
-	width: 650px;
-	font-family: 'cabin_bold';
-	text-transform: capitalize;
+	min-height: 320px;
+	width: 524px;
 	position: relative;
 	height: 464px;
-	top: 0px;
+	top: 1px !important;
 	float: right;
-	right: 23%;
+	right: 14%;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
 
 	.main-location {
-		position: relative;
-		float: left;
 		text-align: left;
 		width: 26%;
-		font-size: 13px;
-		font-weight: bold;
-		margin: 15px;
+		font-size: 10px;
+		font-family: proxima_black;
+		margin-top: 10px;
+		margin-left: 32px;
 
 		a {
 			border-bottom: 2px solid #c35b26;
 			margin-top: 10px;
 			color: #fff;
+			font-size: 15px;
 
 			&:hover {
 				color: $orange;
@@ -303,11 +302,12 @@
 		}
 
 		.sub-location {
-			margin-top: 5px;
+			margin-top: 3px;
+			font-family: proxima_bold;
 
 			a {
 				border-bottom: none;
-				font-size: 1em;
+				font-size: 12px;
 				text-decoration: none;
 
 				&:hover {
@@ -458,29 +458,19 @@
 
 @media only screen and (min-width: 780px) and (max-width: 1000px) {
 	#locations-menu {
-		background: #000;
-		min-height: 150px;
-		font-family: 'nexa_light';
-		text-transform: capitalize;
-		width: 650px;
-		font-size: 13.5px;
-		position: fixed;
-		top: 0px;
 		width: 200px;
-		height: 310px;
-		right: 300px;
-		padding-left: 0px;
+		right: 22%;
+		min-height: 208px !important;
 	}
 
 	.sub-location {
 		display: none;
 	}
 	#locations-menu .main-location {
-		float: left;
-		text-align: left;
-		height: 43px;
-		padding-left: 10px;
 		width: 100%;
+		margin-top: 10px;
+		text-align: center;
+		margin-left: 0px;
 	}
 }
 

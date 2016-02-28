@@ -1,6 +1,6 @@
 #feat_hosts {
 	padding-bottom: 35px;
-	background-color: rgba(255,255,255,0.1);
+	background-color: $advlo_orange;
 
 	.title {
 		font-family: proxima_black;
@@ -18,14 +18,14 @@
 .host_box {
 	border-radius: 4px;
 	margin: 5px;
-	background-color: rgba(0,0,0,0.6);
+	background-color: #fff;
 	width: 375px;
 	height: auto;
 	display: inline-block;
 
-	-moz-transition:-moz-transform 0.3s ease-in; 
-	-webkit-transition:-webkit-transform 0.3s ease-in; 
-	-o-transition:-o-transform 0.3s ease-in;
+	-moz-transition:-moz-transform 0.5s ease-in; 
+	-webkit-transition:-webkit-transform 0.5s ease-in; 
+	-o-transition:-o-transform 0.5s ease-in;
 
 	&:nth-child(3n+3) {
 		margin-right: 0px;
@@ -36,6 +36,11 @@
 		-moz-transform:scale(1.03); 
 		-webkit-transform:scale(1.03);
 		-o-transform:scale(1.03);
+
+		.view_trips{
+			color: #fff;
+			background: $advlo_orange;
+		}
 	}
 
 	.row {
@@ -61,16 +66,10 @@
 
 	.host_name {
 		margin-top: 10px;
-		font-family: cabin_bold;
+		font-family: proxima_black;
 		letter-spacing: 1px;
-		color: #FFF;
-		font-size: 1.2em;
-	}
-
-	.border {
-		margin: 5px auto;
-		border: 1px solid $advlo_orange;
-		width: 325px;
+		color: #000;
+		font-size: 1.4em;
 	}
 
 	.host_tagline {
@@ -137,11 +136,11 @@
 
 	.host_location {
 		padding-top: 5px;
-		font-family: nexa_light;
+		font-family: proxima_thin;
 		font-weight: bold;
 		font-size: 12px;
 		letter-spacing: 1px;
-		color: rgba(255,255,255,0.4);
+		color: rgba(0,0,0,0.7);
 		background-color: transparent;
 
 		.fa {
@@ -150,10 +149,21 @@
 	}
 
 	.view_trips {
-		color: rgba(255,255,255,0.5);
-		font-family: nexa_bold;
-		font-size: 1.0em;
+		color: #333;
+		font-family: proxima_regular;
+		font-size: 0.9em;
 		padding-bottom: 4px;
+		background: transparent;
+		padding-top: 4px;
+		max-width: 160px;
+		margin: auto;
+		margin-bottom: 16px;
+		margin-top: 14px;
+		border-radius: 4px;
+		border: 2px solid $advlo_orange;
+
+		-webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
 	}
 
 	.host_contact_btn {

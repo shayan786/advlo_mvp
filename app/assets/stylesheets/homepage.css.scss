@@ -26,14 +26,14 @@ h1 {
 }
 
 #bottom-login {
-  background-image: asset-url("background/advlo_beach.jpeg");
+  background-image: asset-url("background/girlsoncliff.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   position: relative;
   float: left;
   width: 100%;
-  min-height: 500px;
+  min-height: 600px;
 
 
   .join-wrapper {
@@ -41,7 +41,7 @@ h1 {
   }
 
   .why {
-    font-family: cabin_bold !important;
+    font-family: proxima_bold !important;
     width: 30%;
     position: relative;
     margin: 0 auto;
@@ -53,12 +53,11 @@ h1 {
   }
 
   .join-text {
-    font-family: 'bebas_neue';
+    font-family: proxima_black;
     font-weight: bold;
     color: #fff;
     text-align: center;
     font-size: 4em;
-    letter-spacing: 2px;
     margin-top: 20px;
     float: left;
     text-align: center;
@@ -87,12 +86,13 @@ h1 {
       font-size: 1.4em;
       background-color: transparent;
       background: rgba(40, 94, 142, 0.8);
-      font-family: 'cabin_bold';
+      font-family: proxima_light;
       width: 40%;
       padding-top: 12px;
       padding-bottom: 12px;
       max-width: 300px;
       min-width: 250px;
+      font-weight: bold;
     }
 
     .homepage_email_btn, .sign_up_btn {
@@ -108,7 +108,8 @@ h1 {
 
       height: 35px;
       color: #fff;
-      font-family: 'cabin_bold';
+      font-family: proxima_light;
+      font-weight: bold;
       font-size: 17px;
       padding-top: 5px;
       width: 40%;

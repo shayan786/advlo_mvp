@@ -300,6 +300,15 @@
     font-size: 75%;
   }
 
+  .scroll-slow #homepage-text #banner-text{
+    font-size: 2.6em;
+    font-family: proxima_black;
+    color: #fff;
+    border-bottom: 2px solid $advlo_orange;
+    max-width: 350px;
+    margin: auto;
+  }
+
   #arrow-wrapper {
     margin-top: 25px;
   }
@@ -308,8 +317,9 @@
     margin-top: 10px !important;
   }
   .scroll-slow #homepage-text #explanation {
-    margin-top: 25px !important;
+    margin-top: 10px !important;
     margin-bottom: 25px !important;
+    font-size: 1.8em;
   }
 
   .scroll-slow .explanation-row .advlo-signup .homepage_fb_btn {

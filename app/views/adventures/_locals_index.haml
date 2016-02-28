@@ -11,12 +11,6 @@
         .host_location
           %i.fa.fa-map-marker
           = get_display_location(host.adventures.first)
-      .row
-        .border
-      .row
-        - host.get_host_adventure_categories.each do |cat|
-          .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
-            = image_tag get_category_icon_url(cat)
 
       .row
         %a{href: "#{root_url}users/#{host.to_param}"}
@@ -24,18 +18,22 @@
             VIEW 
             - if host.adventures.count > 0 ? count = host.adventures.count : count = ''
               %span#trip-count= count <= 1 ? "#{count} ADVENTURE" : "#{count} ADVENTURES"
+/      .row
+/        - host.get_host_adventure_categories.each do |cat|
+/          .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}
+/            = image_tag get_category_icon_url(cat)
 
-      .row  
-        .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
-          CONTACT
+/      .row  
+/        .btn.btn-primary.host_contact_btn{"data-target" => "#contact_host_modal", "data-toggle" => "modal", "data-host-id" => host.id, "data-host-name"=>host.get_first_name}
+/          CONTACT
         
 
 
-= render partial: '/users/contact_host_modal', locals: {res: nil}
+/= render partial: '/users/contact_host_modal', locals: {res: nil}
 
-:javascript
-  host_index_effects();
-  contact_host_validation();
-  contact_host_set_values();
+/:javascript
+/  host_index_effects();
+/  contact_host_validation();
+/  contact_host_set_values();
 
 
