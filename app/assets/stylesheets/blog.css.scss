@@ -3,8 +3,49 @@
   float: left; 
   width: 100%;
   height: 100%;
-  margin-top: 65px;
-  margin-bottom: 25px;
+  background: #fff;
+
+  .blogbanner{
+    min-height: 600px;
+    background-size: cover !important; 
+
+    .scroll-slow {
+      position: absolute;
+      width: 100%;
+      top: 60px;
+
+      .blogbanner-text{
+        position: relative;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 30px;
+        margin-top: 180px;
+
+        .blogbanner-header{
+          font-family: proxima_black;
+          font-size: 4em;
+          color: #fff;
+        }
+
+        .blogbanner-btn{
+          border: 2px solid #fff;
+          background: rgba(0,0,0,0.3);
+          color: #fff;
+          font-family: proxima_light;
+          text-transform: uppercase;
+          margin-top: 10px;
+          width: 160px;
+
+          &:hover {
+            background-color: rgba(0,0,0,0.8);
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255,255,255,0.5);
+          }
+        }
+      }
+    }
+  }
 
   .divider {
     border: 1px solid $lighter_gray;
@@ -18,27 +59,14 @@
     border-bottom: 2px solid #c35b26;
     margin-top: 18px;
     font-size: 20px;
-    font-family: nexa_bold;
+    font-family: proxima_black;
     text-align: center;
     margin-bottom: 20px;
     color: #c35b26;
   }
 
   .social-container {
-    width: 100%;
-    position: relative;
-    float: left;
-    margin-bottom: 10px;
-
-    .follow {
-      display: block;
-      float: left;
-      width: 25%;
-      text-align: center;
-    }
-    .follow:hover {
-      opacity: 0.8;
-    }
+    display: none;
   }
 
   .blogpost-title-container {
@@ -52,9 +80,9 @@
     margin-bottom: 5px;
     font-size: 13px;
     text-transform: capitalize;
-    font-family: cabin_regular;
+    font-family: proxima_bold;
     text-align: center;
-    color: #FFF;
+    color: rgba(0,0,0,0.8);
   }
 
   .blog-date {
@@ -81,14 +109,10 @@
   .static-leftbar {
     position: fixed;
     left: 0px;
-    top: 65px;
     width: 16.6666666667%;
-    max-height: 80%;
-    background: transparent;
-  }
-
-  .mobile-blog-list {
-    display: none;
+    height: 100%;
+    background: rgba(0,0,0,0.1);
+    padding-top: 120px;
   }
 
   #right-sidebar-container {
@@ -103,38 +127,37 @@
   }
 
   .blogpost-container {
-    padding-left: 25px;
-
-    .blog-header-title {
-      position: relative;
-      float: left;
-      width: 100%;
-      color: #000;
-      background: transparent;
-      font-size: 40px;
-      letter-spacing: 2px;
-      font-family: nexa_bold;
-      text-align: center;
-      color: #FFF;
-      margin-bottom: 5px;
-      padding-top: 8px;
-    }
+    padding-left: 10px;
+    padding-right: 30px;
+    margin-top: 50px;
 
     .blogpost {
       position: relative;
       float: left;
-      width: 100%;
-      background: rgba(0,0,0,0.5);
-      margin-bottom: 10px;
+      background: transparent;
+      margin-bottom: 36px;
       border-radius: 2px;
+      width: 75%;
+      margin-left: 13%;
+
+      -moz-transition:-moz-transform 0.5s ease-in; 
+      -webkit-transition:-webkit-transform 0.5s ease-in; 
+      -o-transition:-o-transform 0.5s ease-in;
+
+      &:hover{
+        text-decoration: none;
+        -moz-transform:scale(1.01); 
+        -webkit-transform:scale(1.01);
+        -o-transform:scale(1.01);
+        background: rgba(0,0,0,0.1);
+      }
 
       .blog-image {
         max-height: 350px;
         overflow: hidden;
         position: relative;
         float: left;
-        width: 45%;
-        margin: 2.5%;
+        width: 50%;
 
         img {
           width: 100%;
@@ -150,38 +173,36 @@
         height: 100%;
         color: #000;
         line-height: 30px;
+        padding: 12px;
 
         .title {
-          font-family: 'bebas_neue_book';
-          font-size: 30px;
+          font-family: proxima_black;
+          font-size: 2em;
           margin-top: 5px;
           border-bottom: 2px solid #c35b26;
-          color: #c35b26;
+          color: #333;
         }
         .author {
           font-style: italic;
           font-size: 0.9em;
-          color: #FFF;
+          color: #333;
         }
         .excerpt {
-          font-family: 'cabin_regular';
+          font-family: proxima_light;
           font-size: 16px;
           margin-top: 10px;
           line-height: 22px;
           padding-right: 15px;
-          color: #FFF;
+          color: #333;
         }
       }
 
       .read-more-text {
         position: relative;
         float: left;
-        color: #000;
         font-size: 20px;
-        color: #000;
-        font-family: 'bebas_neue';
-        letter-spacing: 1px;
-        margin-top: 15px;
+        font-family: proxima_black;
+        margin-top: 12px;
         color: #c35b26;
       }
 
@@ -192,7 +213,7 @@
         position: absolute;
         bottom: 10px;
         right: 15px;
-        color: #FFF;
+        color: #333;
       }
     }
 
@@ -344,6 +365,11 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
     display: none;
   }
 
+  .blog-page-wrapper .blogpost-container{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
   .blog-page-wrapper .divider {
     display: none !important;
   }
@@ -360,19 +386,6 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
     margin-top: 7px;
   }
 
-
-  .blog-page-wrapper .mobile-blog-list {
-    position: relative;
-    width: 100%;
-    float: left;
-    background: rgba(255,255,255,0.3);
-    height: 50px;
-    margin-bottom: 5px;
-  }
-
-  .blog-page-wrapper .mobile-blog-list {
-    display: block;
-  }
   .static-leftbar {
     display: none;
   }
@@ -390,6 +403,10 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
     margin-top: 10px;
     margin-bottom: 10px;
     float: none;
+  }
+
+  .blog-page-wrapper .blogpost-container .blogpost .blog-preview{
+    margin-top: 0px;
   }
 
   #blog-index-wrapper .blogpost-container .blogpost .blog-preview {
@@ -412,6 +429,21 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
     width: 85% !important;
     margin: 0 auto !important;
     margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 781px){
+
+  .blog-page-wrapper .blogpost-container .blogpost{
+    background: rgba(0,0,0,0.1);
+  }
+
+  .blog-page-wrapper .blogpost-container .blogpost .blog-image{
+    width: 100%;
+  }
+
+  .blog-page-wrapper .blogpost-container .blogpost .blog-preview{
+    width: 100%;
   }
 }
 

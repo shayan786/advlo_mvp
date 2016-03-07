@@ -1,109 +1,96 @@
 - set_meta_tags(get_meta_tags("Travel Journal","Advlo travel journal and blog. Find travel trips, guest posts, and details on the Advlo platform here.","Advlo, Blog, Journal"))
 
 .blog-page-wrapper
-  .static-leftbar
-    .left-wrapper
-      .blogpost-title-container
-        .social-container
-          .follow
-            %a{href: "http://www.facebook.com/advlo", target: "_blank"}
-              = image_tag asset_url('facebook.png')
-          .follow
-            %a{href: "http://www.twitter.com/advlo_", target: "_blank"}
-              = image_tag asset_url('twitter.png')
-          .follow
-            %a{href: "https://plus.google.com/+Advlo-Adventure-Local", target: "_blank"}
-              = image_tag asset_url('googleplus.png')
-          .follow
-            %a{href: "http://www.instagram.com/advlo", target: "_blank"}
-              = image_tag asset_url('instagram.png')
+  .blogbanner{style: "background: url('#{asset_path("background/bridgegreen.jpeg")}') center center no-repeat"}
+    .scroll-slow
+      .blogbanner-text  
+        .blogbanner-header
+          Diversity of Costa Rica
+        %a.btn.btn-primary.blogbanner-btn{href: "/blog/diversity-of-costa-rica"}
+          Read More
 
-        .blogpage-title
-          RECENT POSTS
-        - @blogposts.each do |bp|
-          %a{href:"http://advlo.com/blog/#{bp.permalink}"}
-            .blog-link
-              = bp.title
-              %hr
+  .col-md-12.blogpost-container
 
-  .row
-    .col.col-md-2
-
-
-    .col.col-md-8.blogpost-container
-      .blog-header-title
-        = "ADVENTURE LOCAL BLOG"
-      .mobile-blog-list
-        .social-container
-          .follow
-            %a{href: "http://www.facebook.com/advlo", target: "_blank"}
-              = image_tag asset_url('facebook.png')
-          .follow
-            %a{href: "http://www.twitter.com/advlo_", target: "_blank"}
-              = image_tag asset_url('twitter.png')
-          .follow
-            %a{href: "https://plus.google.com/+Advlo-Adventure-Local", target: "_blank"}
-              = image_tag asset_url('googleplus.png')
-          .follow
-            %a{href: "http://www.instagram.com/advlo", target: "_blank"}
-              = image_tag asset_url('instagram.png')
-
-      - @blogposts.each do |bp|
-        %a{href: "/blog/#{bp.permalink}"}
-          .blogpost
-            .blog-image= image_tag bp.attachment(:large)
-            .blog-preview
-              .title= bp.title
-              .author= "by #{bp.author}"
-              .excerpt= ActionView::Base.full_sanitizer.sanitize( bp.body[0..240] )+ "..."
-              .read-more
-              .read-more-text
-                Read More
-            .blog-post-date
-              = bp.created_at.strftime("%A - %b. %e, %G")
+    - @blogposts.each do |bp|
+      %a{href: "/blog/#{bp.permalink}"}
+        .blogpost
+          .blog-image= image_tag bp.attachment(:large)
+          .blog-preview
+            .title= bp.title
+            .author= "by #{bp.author}"
+            .excerpt= ActionView::Base.full_sanitizer.sanitize( bp.body[0..140] )+ "..."
+            .read-more
+            .read-more-text
+              Read More
+          .blog-post-date
+            = bp.created_at.strftime("%A - %b. %e, %G")
 
           / .share-block
           /   = render_shareable buttons: ["facebook", "twitter", "pinterest", "google_plus"], :url=> "http://advlo.com/blog/#{bp.permalink}"
 
+/.static-leftbar
+/    .left-wrapper
+/      .blogpost-title-container
+/        .social-container
+/          .follow
+/            %a{href: "http://www.facebook.com/advlo", target: "_blank"}
+/              = image_tag asset_url('facebook.png')
+/          .follow
+/            %a{href: "http://www.twitter.com/advlo_", target: "_blank"}
+/              = image_tag asset_url('twitter.png')
+/          .follow
+/            %a{href: "https://plus.google.com/+Advlo-Adventure-Local", target: "_blank"}
+/              = image_tag asset_url('googleplus.png')
+/          .follow
+/            %a{href: "http://www.instagram.com/advlo", target: "_blank"}
+/              = image_tag asset_url('instagram.png')
+
+/        .blogpage-title
+/          RECENT POSTS
+/        - @blogposts.each do |bp|
+/          %a{href:"http://advlo.com/blog/#{bp.permalink}"}
+/            .blog-link
+/              = bp.title
+/              %hr
 
 
-    .col.col-md-2#right-sidebar-container
-      .blogpage-title{style: 'margin-right: 10px;'}
-        FIND YOUR NEXT ADVENTURE
+/    .col.col-md-2#right-sidebar-container
+/      .blogpage-title{style: 'margin-right: 10px;'}
+/        FIND YOUR NEXT ADVENTURE
 
-      #right-content-container
-        / - block = @photos.zip(@tweets).flatten.compact
-        / - block.each do |item|
-        /   .divider
-        /   - if item.class == Hashie::Mash
-        /     %a{href: item.link, target: '_blank'}
-        /       .side-brick
-        /         .photo
-        /           = image_tag item.images.standard_resolution.url
-        /         .title= "#{item.caption.text[0..80]}.."
+/      #right-content-container
+/         - block = @photos.zip(@tweets).flatten.compact
+/         - block.each do |item|
+/           .divider
+/           - if item.class == Hashie::Mash
+/             %a{href: item.link, target: '_blank'}
+/               .side-brick
+/                 .photo
+/                   = image_tag item.images.standard_resolution.url
+/                 .title= "#{item.caption.text[0..80]}.."
               
-        /   - elsif item.class == Twitter::Tweet
-        /     %a{href: item.url, target: "_blank", class: 'tweet-link'}
-        /       .side-item
-        /         = item.text.html_safe
+/           - elsif item.class == Twitter::Tweet
+/             %a{href: item.url, target: "_blank", class: 'tweet-link'}
+/               .side-item
+/                 = item.text.html_safe
 
-        - block = @adventures.zip(@locations).flatten.compact
-        - block.each do |item|
-          - if item.class == Adventure
-            %a{href: "/adventures/#{item.slug}", target: '_blank'}
-              .side-brick
-                .photo{style: "background: url('#{item.attachment.url(:medium)}') center center no-repeat"}
-                .title.text-center
-                  = "#{item.title[0..65]}.."
-                  %br
-                  %i{style: "font-size: 0.8em;"}
-                    = "with #{item.host_name}"
+/        - block = @adventures.zip(@locations).flatten.compact
+/        - block.each do |item|
+/          - if item.class == Adventure
+/            %a{href: "/adventures/#{item.slug}", target: '_blank'}
+/              .side-brick
+/                .photo{style: "background: url('#{item.attachment.url(:medium)}') center center no-repeat"}
+/                .title.text-center
+/                  = "#{item.title[0..65]}.."
+/                  %br
+/                  %i{style: "font-size: 0.8em;"}
+/                    = "with #{item.host_name}"
                 
-            .divider
+/            .divider
               
-          - elsif item
-            %a{href: "/adventures?country=#{item.region}", target: "_blank"}
-              .side-brick
-                .photo{style: "background: url('#{item.attachment.url(:thumb)}') center center no-repeat"}
-                .title.text-center= item.location ? item.location.split.map(&:capitalize).join(' ') : item.region
-            .divider
+/          - elsif item
+/            %a{href: "/adventures?country=#{item.region}", target: "_blank"}
+/              .side-brick
+/                .photo{style: "background: url('#{item.attachment.url(:thumb)}') center center no-repeat"}
+/                .title.text-center= item.location ? item.location.split.map(&:capitalize).join(' ') : item.region
+/            .divider
