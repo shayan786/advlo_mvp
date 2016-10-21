@@ -21,11 +21,11 @@
   .row.text-center
     - if current_user
       .btn.btn-primary.request_time_btn.disabled{"data-target" => "#reservations-request-modal", "data-toggle" => "modal"}
-        SUBMIT
+        Submit
 
     - else
       .btn.btn-primary.request_time_btn.disabled
-        SUBMIT
+        Submit
       :javascript
         $('.request_time_btn').click(function(){
           $('#member-modal').modal('show');

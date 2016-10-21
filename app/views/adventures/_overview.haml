@@ -25,7 +25,7 @@
           .row.default-body
             .col-md-2
               %i.fa.fa-chevron-circle-right 
-              %span.default-title PRICE:
+              %span.default-title Price:
             .col-md-3
               - if @adventure.price_type == 'per_adventure'
                 %span.default-content= "$ #{@adventure.price} per group"
@@ -34,26 +34,26 @@
           .row.default-body
             .col-md-2
               %i.fa.fa-chevron-circle-right 
-              %span.default-title GROUP SIZE:
+              %span.default-title Group Size:
             .col-md-3
               %span.default-content= "#{@adventure.cap_min} - #{@adventure.cap_max} people"
           .row.default-body
             .col-md-2
               %i.fa.fa-chevron-circle-right 
-              %span.default-title DURATION:
+              %span.default-title Duration:
             .col-md-3
               %span.default-content= "#{@adventure.duration_num} #{@adventure.duration_type}"
           .row.default-body
             .col-md-2
               %i.fa.fa-chevron-circle-right 
-              %span.default-title LOCATION:
+              %span.default-title Location:
             .col-md-3
               %span.default-content= @adventure.location
 
           .row.default-body
             .col-md-2
               %i.fa.fa-chevron-circle-right 
-              %span.default-title CATEGORY:
+              %span.default-title Category:
             .col-md-3
               %span.default-content{itemprop: 'category'}
                 - @adventure.category.split(",").each_with_index do |cat, i|
@@ -65,7 +65,7 @@
           .row.default-body
             .col-md-3
               %i.fa.fa-chevron-circle-right
-              %span.default-title.summary-information SUMMARY:
+              %span.default-title.summary-information Summary:
           .row.default_body
             .col-md-8
               .default-summary{itemprop: 'description'}= @adventure.summary.gsub(/\n/, '<br/>').html_safe

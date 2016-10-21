@@ -1,6 +1,6 @@
 %li.dropdown
   %button.btn.btn-primary.navbar-btn.login_in_btn{"data-toggle" => "dropdown", href: "#", style: "margin-right: 10px;"}
-    LOGIN
+    Login
   %ul.dropdown-menu.logged_out_dropdown_menu{role: "menu"}
     %li
       %form.sign_in_form{"accept-charset" => "UTF-8", action: "/users/sign_in", method: "post", roll: "form", id: "sign_in_form"}
@@ -22,8 +22,8 @@
         = link_to "New to Advlo? Sign Up", new_user_registration_path
 %li
   %form
-    .btn.btn-primary.navbar-btn.login_in_sign_up_btn.new-account{style: "margin-right: 10px; font-weight: bold;"}
-      SIGN-UP
+    .btn.btn-primary.navbar-btn.login_in_sign_up_btn.new-account{style: "margin-right: 10px;"}
+      Sign-up
 
 :javascript
   $('.new-account').click(function(){

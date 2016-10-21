@@ -132,6 +132,8 @@
 
       .matrix_header {
         text-align: center;
+        font-family: proxima_bold;
+        letter-spacing: -1px;
         
         .fa {
           margin-right: 8px;
@@ -149,7 +151,7 @@
     }
 
     .host_header {
-      font-family: 'nexa_light';
+      font-family: proxima_bold;
       font-weight: bold;
       font-size: 3em;
       letter-spacing: 3px;
@@ -210,13 +212,11 @@
       .view-profile {
         text-align: center;
         margin-top: 21px;
-        font-family: bebas_neue_book;
+        font-family: proxima_bold;
         font-size: 20px;
-        letter-spacing: 2px;
 
         a {
           color: #fff;
-          text-decoration: underline;
         }
         a:hover {
           opacity: 0.75;
@@ -252,7 +252,7 @@
       margin-top: 10px;
       color: #000;
       opacity: 1;
-      font-family: 'cabin_regular';
+      font-family: proxima_regular;
       min-height: 100px;
 
       .display_percent {

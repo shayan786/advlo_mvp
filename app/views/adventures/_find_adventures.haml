@@ -11,15 +11,14 @@
           .image-wrapper{style: "background: url('#{adv_img}') no-repeat center center;"}
             .copy{id: "#{i}"}
               - if adv.title.length > 38
-                .title{itemprop: 'name'}= "#{adv.title[0..36]}..."
+                .title{itemprop: 'name'}= "#{adv.title[0..32]}..."
               -else
                 .title{itemprop: 'name'}= adv.title
 
               .location{itemprop: 'description'}= get_display_location(adv)
-
-              .host_name= "with #{adv.host_name}"
+            .guide-image
+              .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
               
-
             - if adv.price_type == "per_adventure"
               - if adv.price > 999
                 .btn.btn-info.disabled.per_adventure_btn{style: "right: 70px !important;"}
@@ -39,16 +38,14 @@
 
             .price= "$ #{adv.price}"
 
-            .hover-block{id: i}
-              .guide-image
-                .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
-
-            .copy-container{class: "copy-#{i}"}
 
     %a.adventure-brick.request_block.text-center{href: "/adventures/request", style: 'text-decoration:none;'}
       .image-wrapper= image_tag 'icons/request_icon.png'
-      #request-adv-text REQUEST AN ADVENTURE
+      #request-adv-text Request an Adventure
 
 :javascript
   centerGuideImage();
   
+/.hover-block{id: i}
+/  .guide-image
+/    .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}

@@ -16,9 +16,9 @@
                 .title{itemprop: 'name'}= adv.title
 
               .location{itemprop: 'description'}= get_display_location(adv)
-              
-              .host_name= "With #{adv.host_name}"
-            
+            .guide-image
+              .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
+                          
             - if adv.price_type == "per_adventure"
               - if adv.price > 999
                 .btn.btn-info.disabled.per_adventure_btn{style: "right: 75px !important;"}
@@ -37,9 +37,3 @@
                 DAYS
 
             .price= "$ #{adv.price}"
-
-            .hover-block{id: i}
-              .guide-image
-                .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
-              
-            .copy-container{class: "copy-#{i}"}

@@ -34,6 +34,7 @@ h1 {
   float: left;
   width: 100%;
   min-height: 600px;
+  background-attachment: fixed;
 
 
   .join-wrapper {
@@ -50,6 +51,7 @@ h1 {
     text-align: center;
     font-size: 25px;
     margin-bottom: 15px;
+    letter-spacing: -1px;
   }
 
   .join-text {
@@ -66,11 +68,11 @@ h1 {
 
   @media screen and (max-width: 600px){
     .join-text {
-      font-size: 3em;
+      font-size: 2em;
     }
     .why {
       width: 75%;
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 
@@ -209,5 +211,11 @@ h1 {
 
   .active {
     opacity: 0.6;
+  }
+}
+
+@media screen and (max-width: 991px){
+  #bottom-login{
+    background-attachment: scroll !important;
   }
 }

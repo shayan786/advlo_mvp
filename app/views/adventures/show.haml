@@ -30,9 +30,6 @@
             .image-wrapper{style: "background: url('#{profile_img}') no-repeat center center;"}
 
         - review_count = Review.where(adventure_id: @adventure.id).count
-        - if review_count == 0
-          .link-to-profile
-            %a{href: user_path(@current_guide)} Visit Profile
       .adventure-block
         #adventure-reviews-count
           - if @adventure.title.length > 25
@@ -64,16 +61,16 @@
         -if !@adventure.approved || @current_guide == current_user
           #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 
             %span 
-              BOOK IT
+              Book It
         -else
           - if @adventure.is_subscribed_and_has_redirect_url?
             %a#book-it.btn.btn-success{href: "#{@adventure.subscription_redirect_url}", target: "_blank"}
               %span 
-                BOOK IT
+                Book It
           - else
             #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
               %span 
-                BOOK IT
+                Book It
   .adventure-copy-wrapper
     - flash.each do |key, value|
       .alert-warning.adv-show-alert.text-center
@@ -105,16 +102,16 @@
               -if !@adventure.approved || @current_guide == current_user
                 #book-it.btn.btn-success.disabled{"data-target" => "#event-modal", "data-toggle" => "zl"} 
                   %span 
-                    BOOK IT
+                    Book It
               -else
                 - if @adventure.is_subscribed_and_has_redirect_url?
                   %a#book-it.btn.btn-success{href: "http://#{@adventure.subscription_redirect_url}", target: "_blank"}
                     %span 
-                      BOOK IT
+                      Book It
                 - else
                   #book-it.btn.btn-success{"data-target" => "#event-modal", "data-toggle" => "modal"} 
                     %span 
-                      BOOK IT
+                      Book It
 
     .row.information-container
       #overview.title-brick

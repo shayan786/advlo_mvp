@@ -39,10 +39,6 @@
 
             .price= "$ #{adv.price}"
 
-            .hover-block{id: i}
-              .guide-image
-                .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
-
             .copy-container{class: "copy-#{i}"}
 
     .adventure-brick.request_block.text-center{'data-toggle' => "modal", 'data-target' => '#request_form_modal', style: 'text-decoration:none;'}
@@ -51,4 +47,8 @@
 
 :javascript
   centerGuideImage();
+
+/.hover-block{id: i}
+/  .guide-image
+/    .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
   

@@ -206,14 +206,15 @@
     }
     
     .guide-image {
-      position: relative;
-      top: 10%;
-      width: 175px;
-      height: 175px;
-      text-align: center;
+      position: absolute;
+      bottom: 12px;
+      right: 8px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       overflow: hidden;
-      margin: 0 auto;
+      z-index: 1001;
+      border: 2px solid #fff;
 
       .image-wrapper {
         background-size: cover !important;
@@ -231,23 +232,26 @@
 
       .copy{
         font-size: 14px;
-        color: rgba(0,0,0,0.5);
-        bottom: 5px;
+        background: rgba(255,255,255,0.9);
+        bottom: 0px;
         position: absolute;
         z-index: 100;
         font-family: proxima_black;
-        text-align: center;
+        text-align: left;
         width: 100%;
-
+        padding-left: 12px;
+        padding-top: 4px;
+        padding-bottom: 4px;
 
         .title {
-          font-size: 20px;
-          color: #fff;
+          font-size: 16px;
+          color: rgba(0,0,0,0.8);
+          letter-spacing: -0.5px;
         }
 
         .location {
           color: #C35B26;
-          text-transform: uppercase;
+          text-transform: lowercase;
           font-family: proxima_bold;
         }
 
@@ -274,42 +278,36 @@
       }
 
       .days_duration_btn {
-        font-family: proxima_black;
-        font-weight: bold;
+        font-family: proxima_bold;
         line-height: 14px;
         position: absolute;
-        top: 43px;
-        left: 4px;
+        top: 32px;
+        right: 0px;
         font-size: 12px;
         z-index: 100;
         padding: 4px 4px 4px 7px;
-        width: 62px;
+        width: 57px;
         height: 32px;
-        opacity: 0.8;
-        border-radius: 4px;
+        border-radius: 0px;
         background-color: $advlo_orange;
         border-color: $advlo_orange;
         line-height: 12px;
+        opacity: 1;
       }
 
       .price {
         font-family: proxima_regular;
         position: absolute;
-        top: 4px;
-        left: 4px;
+        top: 180px;
         font-size: 22px;
         z-index: 10;
-        opacity: 0.9;
+        opacity: 1;
         color: #fff;
-        letter-spacing: 0px;
+        letter-spacing: -2px;
         background: rgba(0,0,0,0.5);
-        border-radius: 4px;
+        border-radius: 0px;
         padding: 2px;
-      }
-
-      .user-show-price {
-        bottom: -5px;
-        right: 3px;
+        padding-right: 8px;
       }
     }
   }
@@ -317,13 +315,13 @@
     position: absolute;
     width: 100%;
     height: 225px;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 1);
     display: none;
   }
   .copy-container {
     position: absolute;
     bottom: 0px;
-    height: 75px;
+    height: 56px;
     background: rgba(0, 0, 0, 0.75);
     width: 100%;
   }
@@ -457,7 +455,7 @@
     position: absolute;
     bottom: 31px;
     text-align: center;
-    font-family: 'nexa_light';
+    font-family: proxima_bold;
     font-size: 24px;
     width: 100%;
   }
@@ -488,13 +486,6 @@
     .brick-wrapper .adventure-brick .image-wrapper .price {
       font-size: 25px;
     }
-  }
-
-  .brick-wrapper .adventure-brick .image-wrapper .copy .title {
-    font-size: 16px;
-  }
-  .brick-wrapper .adventure-brick .image-wrapper .copy .location {
-    font-size: 13px;
   }
 }
 
@@ -578,11 +569,6 @@
 
   .brick-wrapper .hover-block {
     height: 176px !important;
-  }
-
-  .brick-wrapper .adventure-brick .guide-image {
-    width: 150px !important;
-    height: 150px !important;
   }
 
   .brick-wrapper .adventure-brick .image-wrapper .price {

@@ -58,7 +58,7 @@
           .adventure_info_box
             .title.pull-left= adv.title.length > 38 ? "#{adv.title[0..36]}..." : adv.title
             .location.pull-left= get_display_location(adv)
-            .host_name.pull-left= "With #{adv.host_name}"
+            .host_name.pull-left= "with #{adv.host_name}"
             .price.pull-right= "$ #{adv.price}"
 
           - num_ppl = 1000.0 / adv.price.to_f

@@ -82,7 +82,7 @@
     text-transform: capitalize;
     font-family: proxima_bold;
     text-align: center;
-    color: rgba(0,0,0,0.8);
+    color: #fff;
   }
 
   .blog-date {
@@ -333,8 +333,8 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
 
 .side-brick {
   position: relative;
-  float: left;
-  width: 100%;
+  margin: auto !important;
+  max-width: 300px;
 
   .photo {
     margin: 5px 10px 10px 0px;
@@ -379,7 +379,10 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
   }
   .blog-page-wrapper #related-adventures-container {
     margin-top: 0px;
-    width: 100%;
+    max-width: 300px;
+    margin: auto;
+    float: initial;
+
   }
 
   .blog-page-wrapper .social-container .follow {
@@ -388,6 +391,10 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
 
   .static-leftbar {
     display: none;
+  }
+
+  .blog-show-wrapper .post-wrapper .blog-image-wrapper .blog-image-excerpt{
+    color: #fff !important;
   }
 
   #disqus_thread {
@@ -486,8 +493,8 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       margin-bottom: 5px;
       text-align: center;
       font-size: 3em;
-      font-family: 'bebas_neue';
-      letter-spacing: 1px;
+      font-family: proxima_black;
+      letter-spacing: -1px;
       color: #c35b26;
     }
 
@@ -564,6 +571,7 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       float: left;
       margin-bottom: 30px !important;
       color: #333333;
+      font-family: proxima_regular;
 
       p {
         line-height: 25px;
@@ -599,9 +607,8 @@ nav.share iframe {border:0; margin-top:0; padding-top:0;} /* if using medium siz
       }
 
       .blog-image-title {
-        font-family: 'bebas_neue';
+        font-family: proxima_bold;
         font-size: 22px;
-        letter-spacing: 1px;
         margin-top: 10px;
         color: #c35b26;
         text-decoration: underline;

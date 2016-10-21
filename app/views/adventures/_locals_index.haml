@@ -15,9 +15,9 @@
       .row
         %a{href: "#{root_url}users/#{host.to_param}"}
           .view_trips
-            VIEW 
+            View 
             - if host.adventures.count > 0 ? count = host.adventures.count : count = ''
-              %span#trip-count= count <= 1 ? "#{count} ADVENTURE" : "#{count} ADVENTURES"
+              %span#trip-count= count <= 1 ? "#{count} Adventure" : "#{count} Adventures"
 /      .row
 /        - host.get_host_adventure_categories.each do |cat|
 /          .host_category_circle{"data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>cat.capitalize}

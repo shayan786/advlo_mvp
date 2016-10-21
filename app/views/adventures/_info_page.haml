@@ -210,7 +210,7 @@
                   Dedicated Support
                 .row.matrix_content
               
-                  An advlo representative to help upload & optimize all your adventures
+                  An Advlo representative to help upload & optimize all your adventures
               .access-block
                 .row.matrix_header
                   .fa.fa-share-square-o
@@ -338,8 +338,6 @@
 
                         .location{itemprop: 'description'}= get_display_location(adv)
                         
-                        .host_name= "With #{adv.host_name}"
-
                       .hover-block{id: i}
                         .guide-image
                           .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
@@ -420,14 +418,6 @@
 
 
 :javascript
-  $(document).ready(function(){
-    $('.view-profile a').hover(function(){
-      $(this).parent().parent().find($('.hover-block')).fadeIn()
-    }, function(){
-      $(this).parent().parent().find($('.hover-block')).fadeOut()
-    })
-  })
-
 
   $('.feature-list-btn').click(function(){
     $(this).hide();

@@ -52,7 +52,7 @@
 	}
 
 	.host_image {
-		height: 200px;
+		height: 230px;
 		width: 100%;
 		background-size: cover !important;
 		margin: 0;
@@ -132,12 +132,13 @@
 
 	.host_location {
 		padding-top: 5px;
-		font-family: proxima_thin;
+		font-family: proxima_regular;
 		font-weight: bold;
 		font-size: 12px;
 		letter-spacing: 1px;
 		color: rgba(0,0,0,0.7);
 		background-color: transparent;
+		text-transform: lowercase;
 
 		.fa {
 			margin-right: 5px;

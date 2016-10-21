@@ -9,8 +9,7 @@
 		min-height: 200px;
 
     .overview_header {
-      font-family: 'nexa_light';
-      font-weight: bold;
+      font-family: 'proxima_bold';
       font-size: 1.5em;
       color: $advlo_orange;
       text-align: center;
@@ -19,13 +18,14 @@
 
     .overview_content {
       margin-top: 5px;
+      font-family: proxima_regular;
       font-size: 1.2em;
       color: #FFF;
       text-align: center;
     }
 
 		.box_header {
-			font-family: $profile_box_header_font;
+			font-family: proxima_bold;
 			color: #fff;
 			font-size: 1.6em;
 			margin-top: 5px;  
@@ -47,6 +47,7 @@
 			padding-bottom: 15px;
 			margin-top: 20px;
 			margin-bottom: 20px;
+      font-family: proxima_bold;
 
 			background-color: $login_btn_color;
 			border-color: $login_btn_color;

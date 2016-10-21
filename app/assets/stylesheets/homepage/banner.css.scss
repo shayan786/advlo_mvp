@@ -35,7 +35,7 @@
 }
 
 .jumbotron_fix {
-	min-height: 600px;
+	min-height: 800px;
 	background-size: cover !important; 
 }
 
@@ -49,12 +49,13 @@
     text-align: center;
     width: 100%;
     margin-bottom: 30px;
-    margin-top: 100px;
+    margin-top: 160px;
 
     #banner-text {
       font-size: 4em;
       font-family: proxima_black;
       color: #fff;
+      letter-spacing: -1px;
     }
 
     #explanation {
@@ -70,13 +71,16 @@
       margin-top: 10px;
 
       .input-group-addon {
-        background-color: rgba(0,0,0,0.6);
-        color: $advlo_orange;
+        background-color: #c35b26;
+        color: #fff;
         font-size: 1.2em;
         border: none;
         cursor: pointer;
-        border-top-right-radius: 24px;
-        border-bottom-right-radius: 24px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        -webkit-transition: .3s ease-in-out;
+        -moz-transition: .3s ease-in-out;
+        -o-transition: .3s ease-in-out;
 
         &:hover {
           color: #FFF;
@@ -87,8 +91,7 @@
       .input-group{
         max-width: 300px;
         margin: auto;
-        box-shadow: 0px 2px 6px #222;
-        border-radius: 100px;
+        border-radius: 4px;
       }
 
       #location {
@@ -101,15 +104,16 @@
         color: #fff;
         text-align: center;
         padding: 0;
-        border-bottom-left-radius: 24px;
-        border-top-left-radius: 24px;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
 
         &:placeholder-shown {
           color: #FFF !important;
-          font-family: proxima_light !important;
+          font-family: proxima_bold !important;
           padding-left: 17px;
           padding-bottom: 3px;
           font-size: 1.6em;
+          letter-spacing: -0.5px;
         }
 
         &::placeholder {
@@ -268,6 +272,13 @@
 }
 
 @media screen and (max-width: 771px){
+  .jumbotron_fix{
+    background-attachment: scroll !important;
+  }
+}
+
+
+@media screen and (max-width: 771px){
   .scroll-slow #homepage-text #explanation {
     width: 89%;
     margin: 0 auto;
@@ -290,49 +301,6 @@
     bottom: 90px;
   }
 }
-
-
-@media screen and (max-width: 500px){
-  .scroll-slow #homepage-text {
-    position: relative;
-    top: 20px;
-    font-size: 75%;
-  }
-
-  .scroll-slow #homepage-text #banner-text{
-    font-size: 2.6em;
-    font-family: proxima_black;
-    color: #fff;
-    border-bottom: 2px solid $advlo_orange;
-    max-width: 350px;
-    margin: auto;
-  }
-
-  #arrow-wrapper {
-    margin-top: 25px;
-  }
-
-  .explanation-row {
-    margin-top: 10px !important;
-  }
-  .scroll-slow #homepage-text #explanation {
-    margin-top: 10px !important;
-    margin-bottom: 25px !important;
-    font-size: 1.8em;
-  }
-
-  .scroll-slow .explanation-row .advlo-signup .homepage_fb_btn {
-    margin-top: 0px;
-  }
-  .scroll-slow {
-    height: 700px;
-  }
-  .jumbotron_fix {
-    min-height: 700px;
-  }
-}
-
-
 
 #request_form_modal {
 	.request_btn {
@@ -457,5 +425,47 @@
     background: #fff;
     width: 100%;
     top: 50px;
+  }
+}
+
+
+@media screen and (max-width: 500px){
+  .scroll-slow #homepage-text {
+    position: relative;
+    top: 20px;
+    font-size: 75%;
+    margin-top: 60px;
+  }
+
+  .scroll-slow #homepage-text #banner-text{
+    font-size: 2.6em;
+    font-family: proxima_black;
+    color: #fff;
+    border-bottom: 2px solid $advlo_orange;
+    max-width: 350px;
+    margin: auto;
+  }
+
+  #arrow-wrapper {
+    margin-top: 25px;
+  }
+
+  .explanation-row {
+    margin-top: 10px !important;
+  }
+  .scroll-slow #homepage-text #explanation {
+    margin-top: 10px !important;
+    margin-bottom: 25px !important;
+    font-size: 1.8em;
+  }
+
+  .scroll-slow .explanation-row .advlo-signup .homepage_fb_btn {
+    margin-top: 0px;
+  }
+  .scroll-slow {
+    height: 700px;
+  }
+  .jumbotron_fix {
+    min-height: 700px;
   }
 }

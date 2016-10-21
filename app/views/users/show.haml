@@ -6,7 +6,7 @@
   - image = "#{asset_path("advlo_mountains.jpg")}"
 
 %div{:itemscope => true, :itemtype => "http://schema.org/Person"}
-  #p_banner{style: "background: url('#{image}') no-repeat center center;"}
+  #p_banner{style: "background: url('#{image}') fixed no-repeat center center;"}
     .container
       .row
         .col-md-4.col-md-offset-4#profile-box
@@ -39,12 +39,12 @@
                 .col-md-1
                 .col-md-4
                   .overview_header
-                    BASED IN 
+                    Based in 
                   .overview_content{itemprop: 'nationality'}= @user.location
                 .col-md-2
                 .col-md-4
                   .overview_header
-                    LANGUAGES:
+                    Languages:
                   .overview_content
                     - @user_languages.each do |l|
                       = l
@@ -55,12 +55,12 @@
                 .col-md-1
                 .col-md-4
                   .overview_header
-                    SEX
+                    Sex
                   .overview_content{itemprop: 'gender'}= @user.sex
                 .col-md-2
                 .col-md-4
                   .overview_header
-                    SKILLS & CERTS:
+                    Skills & Certs:
                   .overview_content
                     - @user_skillsets.each do |sk|
                       = sk
@@ -70,7 +70,7 @@
           .panel.panel-default
             .panel-body
               .box_header.text-center 
-                CONTACT
+                Contact
                 %br
                 %span= @user.get_abbreviated_name.upcase
 
@@ -78,7 +78,7 @@
               .text-center
                 %a.btn.btn-primary.msg_btn{href: "#", 'data-toggle' => "modal", 'data-target' => '#contact_host_modal',"data-host-id" => @user.id, "data-host-name"=>@user.get_first_name}
                   %i.fa.fa-envelope-o
-                  SEND MESSAGE
+                  Send Message
 
               .box_social.text-center
                 - if @user.fb_url && !(@user.fb_url == '')
@@ -98,8 +98,8 @@
   #p_my_adventures
     .container
       .my_adv_header
-        .text-center.nexa-light
-          MY ADVENTURES
+        .text-center
+          My Adventures
           %span.header_sub 
             %span= "( #{@active_adventures.count} )"
 
@@ -123,13 +123,13 @@
 
                         - if adv.location
                           .location= "#{adv.city}, #{adv.state}".upcase
+                      .guide-image
+                        .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
                         
                         / %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
                         / %input{id: "adv_rating_show_#{i}"}  
 
                       .price= "$ #{adv.price}"
-
-                      .copy-container{class: "copy-#{i}"}
 
           .shared-slider-container#user-adventure-slider
             .slider-wrapper
@@ -150,21 +150,19 @@
                             .image-wrapper{style: "background: url('#{adv_img_show}') no-repeat center center;"}
                               .copy{id: "#{i}"}
                                 - if adv.title.length > 38
-                                  .title.profile-page-title= "#{adv.title[0..36]}..."
+                                  .title.profile-page-title= "#{adv.title[0..30]}..."
                                 -else
                                   .title.profile-page-title= adv.title
 
                                 - if adv.location
                                   .location= "#{adv.city}, #{adv.state}".upcase
-
-
-                                .host_name= "With #{adv.host_name}"
+                              .guide-image
+                                .image-wrapper{style: "background: url('#{adv.users.first.get_avatar_url('profile')}') no-repeat center center;"}
                                 
                                 / %input{type: "hidden", id: "adv_rating_value_#{i}", "data-rating"=>"#{adv.rating}"}
                                 / %input{id: "adv_rating_show_#{i}"}
 
                               .user-show-price.price= "$ #{adv.price}"
-                              .user-show-copy-container{class: "copy-#{i}"}
                 
               
         -else
@@ -175,7 +173,7 @@
       .row
         .col-md-12
           .bio_header.text-center
-            .nexa-light BIO
+            Bio
           .bio_body.text-center
             %br
             - if @user.bio
@@ -191,8 +189,8 @@
         .row
           .col-md-12
             .review_header
-              .text-center.nexa-light
-                REVIEWS
+              .text-center
+                Reviews
               .copy-brick.container-fluid#reviews
                 - @reviews.each do |review|
                   = render partial: '/shared/review_brick', locals: {review: review}

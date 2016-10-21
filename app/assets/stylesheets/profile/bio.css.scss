@@ -8,7 +8,7 @@
 	padding-bottom: 30px;
 
 	.bio_header {
-		font-family: nexa_bold !important;
+		font-family: proxima_bold !important;
 		color: $profile_box_header_font_color;
 		font-size: 2.8em;
 	}
@@ -18,9 +18,10 @@
 		font-size: 1.4em;
 		max-width: 80%;
 		margin: 0 auto;
+		font-family: proxima_regular;
 
 		span {
-			font-family: 'nexa_light';
+			font-family: 'proxima_regular';
 			font-size: 35px;
 		}
 	}

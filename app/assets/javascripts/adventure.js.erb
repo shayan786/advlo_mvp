@@ -82,11 +82,9 @@ function highlightFilters(){
 
 function adventureHover(){
   $('.adventure-brick').hover(function(){
-    $(this).find($('.hover-block')).stop(true).show()
     $(this).stop(true).css("background-color", "rgba(0,0,0,0.3)")
   }, function(){
     $(this).stop(true).css('border','none')
-    $(this).find($('.hover-block')).stop(true).fadeOut()
   })
 }
 

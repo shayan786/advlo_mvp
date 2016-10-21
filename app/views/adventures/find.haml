@@ -4,14 +4,11 @@
 - set_meta_tags :twitter => get_twitter_tags("Find An Adventure", "Search our network of local adventure guides to book your next experience", "http://i.imgur.com/a6L0hYB.png")
 
 #find
-  .search_options
-    .row.text-center
-      .btn.btn-default.show_me_select_btn.show_me_locals.active
-        LOCALS
-      .btn.btn-default.show_me_select_btn.show_me_adventures
-        ADVENTURES
-      .btn.btn-default.show_me_select_btn.show_me_activities
-        ACTIVITIES
+  .search_options{style: "background: url('#{asset_path("background/banner_background.jpeg")}') center center no-repeat"}
+
+    .search_title
+      %b{style: "font-family: proxima_black; letter-spacing: 0px;"} Find adventure.
+      Search a location to view local guides and experiences they offer.
 
     .row
       .col-md-6.col-md-offset-3.text-center
@@ -25,29 +22,37 @@
           .row
             .btn.btn-primary.search_btn
               %i.fa.fa-search
-              SEARCH
+              Search
 
     .row
       %form{"accept-charset" => "UTF-8", action: "/find/location", method: "post", roll: "form", id: "find_adventure_form", "data-remote" => "true"}
         =tag(:input, :type => "hidden", :id => "locals", :name => "locals", :value => true)
 
-        .col-md-6.col-md-offset-3
+        .col-md-4.col-md-offset-4
           .form-group
             .input-group
-              %input.form-control{placeholder: "Enter Destination", name: "location", id: "location", onfocus: "focusFunction()", onblur: "unfocusFunction()"}
-              .input-group-addon
-                %i.fa.fa-search
+              %input.form-control{placeholder: "Where to?", name: "location", id: "location", onfocus: "focusFunction()", onblur: "unfocusFunction()"}
+
+    .row.text-center
+      .btn.btn-default.show_me_select_btn.show_me_locals.active
+        Locals
+      .btn.btn-default.show_me_select_btn.show_me_adventures
+        Adventures
+      .btn.btn-default.show_me_select_btn.show_me_activities{style: "display: none;"}
+        Activities
+      .input-group-addon
+        %i.fa.fa-search
 
   .search_results.dark_background
     .row
       .col-md-8.col-md-offset-2
         .begin_search.text-center
-          BEGIN YOUR SEARCH ABOVE
+          Begin your search above
 
     .row
       .col-md-8.col-md-offset-2
         .no_results.text-center
-          SORRY, NO ADVENTURES WERE FOUND IN
+          Sorry, no adventures were found in
           .location
 
     .row
