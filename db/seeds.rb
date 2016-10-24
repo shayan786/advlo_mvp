@@ -11,7 +11,6 @@ Adventure.delete_all
 Event.delete_all
 Reservation.delete_all
 HeroImage.delete_all
-
 AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
 
 host = User.create!(email: 'h@gmail.com', password: 'password', password_confirmation: 'password', name: 'Test Host', avatar_url: "http://graph.facebook.com/1480650951/picture", location: "Seattle, WA, United States", skillset: "Wilderness First Responder (WFR), PSIA Lvl. 1 Snow...", language: "English", sex: "Male", age: 25, is_guide: true, bio: "I'm a gentle giant with a knack for cooking delici...", dob: "1989-08-18", short_description: "Certified Badass", fb_url: "f", tw_url: "t", rating: "", paypal_email: "chrisknight.mail@gmail.com" )
