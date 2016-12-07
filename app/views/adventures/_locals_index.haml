@@ -15,7 +15,6 @@
       .row
         %a{href: "#{root_url}users/#{host.to_param}"}
           .view_trips
-            View 
             - if host.adventures.count > 0 ? count = host.adventures.count : count = ''
               %span#trip-count= count <= 1 ? "#{count} Adventure" : "#{count} Adventures"
 /      .row

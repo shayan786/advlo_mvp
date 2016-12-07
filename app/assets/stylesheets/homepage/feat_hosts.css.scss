@@ -1,12 +1,12 @@
 #feat_hosts {
 	padding-bottom: 35px;
-	background-color: $advlo_orange;
+	background-color: #e4e4e4;
 
 	.title {
 		font-family: proxima_black;
 		font-weight: bold;
 		font-size: 2.8em;
-		color: #FFF;
+		color: #444;
 		letter-spacing: 1px;
 		font-weight: bold;
 		padding-top: 10px;
@@ -147,12 +147,12 @@
 
 	.view_trips {
 		color: #333;
-		font-family: proxima_regular;
+		font-family: proxima_bold;
 		font-size: 0.9em;
 		padding-bottom: 4px;
 		background: transparent;
 		padding-top: 4px;
-		max-width: 160px;
+		max-width: 120px;
 		margin: auto;
 		margin-bottom: 16px;
 		margin-top: 14px;

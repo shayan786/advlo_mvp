@@ -5,29 +5,29 @@
     .why
       Discover exclusive adventures and a global network of local guides  
 
-  #pre-check-homepage
-    .advlo-signup-bottom
-      %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
-        %i.fa.fa-facebook-square
-        Connect with Facebook
-          
+    #pre-check-homepage
+      .advlo-signup-bottom
+        %a.btn.btn-primary.homepage_fb_btn{href: "/users/auth/facebook"}
+          %i.fa.fa-facebook-square
+          Connect with Facebook
+            
 
-      %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form_travel'}
-        = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
-        = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => '', class: 'is_guide_form')
-        = tag(:input, :type => "hidden", :name => "user[guide_type]", :value => '', class: 'guide_type_form')
-        .form-group
-          %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
-        .form-group
-          %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
-        .form-group
-          %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
-        .honeypot
-          %input.form-control{type: "text", name: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
-        %input.btn.btn-primary.sign_up_btn#travel_email_signup{name: "sign_up", type: "submit", value: "JOIN"}
+        %form{"accept-charset" => "UTF-8", action: "/users", method: "post", roll: "form", id: 'signup_modal', class: 'homepage_login_form_travel'}
+          = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+          = tag(:input, :type => "hidden", :name => "user[is_guide]", :value => '', class: 'is_guide_form')
+          = tag(:input, :type => "hidden", :name => "user[guide_type]", :value => '', class: 'guide_type_form')
+          .form-group
+            %input.form-control{placeholder: "Email Address", type: "email", required: "required", name: "user[email]", id: "user_email"}
+          .form-group
+            %input.form-control{placeholder: "Password", type: "password", required: "required", autocomplete: "off", name: "user[password]"}
+          .form-group
+            %input.form-control{placeholder: "Confirm Password", type: "password", required: "required", autocomplete: "off", name: "user[password_confirmation]"}
+          .honeypot
+            %input.form-control{type: "text", name: "honeypot", placeholder: 'This field is like a captcha for bots.. Do not fill in.'}
+          %input.btn.btn-primary.sign_up_btn#travel_email_signup{name: "sign_up", type: "submit", value: "JOIN"}
 
-      .homepage_login_bottom_travel.homepage_email_btn
-        Connect with Email
+        .homepage_login_bottom_travel.homepage_email_btn
+          Connect with Email
 
       
 

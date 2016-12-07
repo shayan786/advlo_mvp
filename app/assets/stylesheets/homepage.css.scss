@@ -26,32 +26,35 @@ h1 {
 }
 
 #bottom-login {
-  background-image: asset-url("background/girlsoncliff.jpeg");
+  background-image: asset-url("background/kayakandmountain.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: bottom center;
   position: relative;
   float: left;
   width: 100%;
-  min-height: 600px;
+  height: 650px;
   background-attachment: fixed;
 
 
   .join-wrapper {
-    margin-top: 75px;
+    padding-top: 140px;
+    background: -webkit-linear-gradient(180deg, rgba(26, 185, 117, 0.8), rgba(73, 118, 150, 0.8));
+    background: linear-gradient(180deg, rgba(26, 185, 117, 0.8), rgba(73, 118, 150, 0.8));
+    min-height: 650px;
   }
 
   .why {
     font-family: proxima_bold !important;
-    width: 30%;
+    max-width: 700px;
     position: relative;
     margin: 0 auto;
     top: 14px;
     color: #fff;
     text-align: center;
-    font-size: 25px;
+    font-size: 42px;
     margin-bottom: 15px;
-    letter-spacing: -1px;
+    letter-spacing: -2px;
   }
 
   .join-text {
@@ -64,16 +67,7 @@ h1 {
     float: left;
     text-align: center;
     width: 100%;
-  }
-
-  @media screen and (max-width: 600px){
-    .join-text {
-      font-size: 2em;
-    }
-    .why {
-      width: 75%;
-      font-size: 16px;
-    }
+    display: none;
   }
 
   .advlo-signup-bottom {
@@ -85,9 +79,11 @@ h1 {
 
     .homepage_fb_btn {
       margin-top: 25px;
+      color: #444;
       font-size: 1.4em;
+      height: 54px;
       background-color: transparent;
-      background: rgba(40, 94, 142, 0.8);
+      background: rgba(255,255,255,0.5) !important;
       font-family: proxima_light;
       width: 40%;
       padding-top: 12px;
@@ -100,20 +96,16 @@ h1 {
     .homepage_email_btn, .sign_up_btn {
       border-radius: 3px;
       cursor: pointer;
-      background-color: transparent;
-      background: rgba(0, 0, 0, 0.3);
-
-      background: rgba(195, 91, 38, 0.8);
-      border-color: rgba(195, 91, 38, 1);
+      height: 54px;
+      background: transparent !important;
+      border: 2px solid rgba(255,255,255,0.5);
       margin: 0 auto;
       margin-top: 10px;
-
-      height: 35px;
       color: #fff;
       font-family: proxima_light;
       font-weight: bold;
       font-size: 17px;
-      padding-top: 5px;
+      padding-top: 12px;
       width: 40%;
       max-width: 300px;
       min-width: 250px;
@@ -217,5 +209,27 @@ h1 {
 @media screen and (max-width: 991px){
   #bottom-login{
     background-attachment: scroll !important;
+  }
+
+  #bottom-login .why{
+    max-width: 350px;
+    margin: auto;
+    letter-spacing: -1px;
+    font-size: 24px;
+  }
+
+  #bottom-login .advlo-signup-bottom .homepage_fb_btn{
+    font-size: 16px;
+    padding-top: 15px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .join-text {
+    font-size: 2em;
+  }
+  .why {
+    width: 75%;
+    font-size: 16px;
   }
 }

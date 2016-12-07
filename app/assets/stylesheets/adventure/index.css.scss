@@ -213,7 +213,7 @@
       height: 72px;
       border-radius: 50%;
       overflow: hidden;
-      z-index: 1001;
+      z-index: 1000;
       border: 2px solid #fff;
 
       .image-wrapper {
@@ -296,6 +296,7 @@
       }
 
       .price {
+        display: none;
         font-family: proxima_regular;
         position: absolute;
         top: 180px;

@@ -71,6 +71,8 @@
 #how_it_works {
 	background: #fff;
 	padding-bottom: 40px;
+	position: relative;
+	z-
 
 	h3 {
 		font-family: 'cabin_bold';
@@ -95,7 +97,7 @@
 
 	.hiw_img {
 		background-size: cover !important;
-		height: 275px;
+		height: 200px;
 		width: 100%;
 		border-radius: 4px;
 		margin-bottom: 10px;
@@ -112,11 +114,11 @@
 		}
 
 		.hiw_img_text{
-			background: rgba(0,0,0,0.35);
+			background: rgba(0,0,0,0.2);
 			color: #FFF;
-			padding-top: 95px;
-			padding-bottom: 95px;
+			padding-top: 64px;
 			border-radius: 4px;
+			height: 100%;
 
 			.large {
 				font-size: 2.8em;

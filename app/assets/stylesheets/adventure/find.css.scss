@@ -8,6 +8,7 @@
   .search_options {
     height: 600px;
     padding-top: 200px;
+    background-size: cover !important;
   .orange_btn{
     border-color: $advlo_orange;
     background-color: $advlo_orange;
@@ -32,7 +33,7 @@
     font-family: proxima_regular;
     font-size: 2.4em;
     color: #fff;
-    text-align: left;
+    text-align: center;
     max-width: 600px;
     margin: auto;
     letter-spacing: -2px;
@@ -112,7 +113,7 @@
 
     #location {
       height: 50px;
-      background-color: rgba(255,255,255,0.15);
+      background-color: rgba(255,255,255,0.75);
       border: none;
       box-shadow: none;
       border-radius: 0px;
@@ -293,7 +294,7 @@
             height: 72px;
             border-radius: 50%;
             overflow: hidden;
-            z-index: 1001;
+            z-index: 1000;
             border: 2px solid #fff;
 
             .image-wrapper {
@@ -375,6 +376,7 @@
             }
 
             .price {
+              display: none;
               font-family: proxima_regular;
               position: absolute;
               top: 180px;
@@ -447,6 +449,18 @@
 }
 
 /* tablet */
+
+@media screen and (max-width: 991px){
+  #find .search_options #find_adventure_form{
+    max-width: 400px;
+    margin: auto;
+  }
+
+  #find .search_options .search_title{
+    font-size: 2em;
+    max-width: 500px;
+  }
+}
 @media screen and (min-width: 501px) and (max-width: 800px){ 
     #find {
         .search_options {
@@ -459,13 +473,26 @@
 
 /* mobile */
 @media screen and (max-width: 500px){ 
-    #find {
-        .search_options {
-            .or {
-                margin-bottom: 10px;
-            }
-        }
-    }
+  #find {
+      .search_options {
+          .or {
+              margin-bottom: 10px;
+          }
+      }
+  }
+
+  #find .search_options{
+    padding-top: 132px;
+  }
+
+  #find .search_options .search_title{
+    font-size: 1.6em;
+    letter-spacing: -1px;
+  }
+
+  #find .search_options #find_adventure_form{
+    max-width: 300px;
+  }
 
   #find .search_results .adventure-container .brick-wrapper .adventure-brick .image-wrapper .copy .title {
     font-size: 14px;
