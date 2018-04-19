@@ -169,13 +169,13 @@ class ApplicationController < ActionController::Base
     @hero_image = HeroImage.where(region: 'Homepage').first
     @feat_adventures = Adventure.approved.where(featured: true).limit(6).order('CREATED_AT desc')
     
-    nearby_adventures = Adventure.near(request.remote_ip,200).approved
+    #nearby_adventures = Adventure.near(request.remote_ip,200).approved
 
-    if nearby_adventures.length > 2
-      @nearby_adventures = nearby_adventures.limit(3)
-    else
+    # if nearby_adventures.length > 2
+    #   @nearby_adventures = nearby_adventures.limit(3)
+    # else
       @new_adventures = Adventure.approved.order('id desc').limit(3)
-    end
+    # end
 
     @feat_hosts = []
 
